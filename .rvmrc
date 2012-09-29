@@ -1,0 +1,13 @@
+rvm_install_on_use_flag=1
+rvm --create use ruby-1.9.3@watir-perf-test  
+
+if [[ -s "./perftest.gems" ]]; then
+  if ! rvm gemset import perftest.gems >/dev/null 2>&1; then
+    echo "ERROR: Unable to bootstrap the gems" >&2
+  fi
+fi
+
+# Bundle is available, non-custom config.
+if command -v bundle >/dev/null && ! grep -q BUNDLE_FROZEN .bundle/config 2>/dev/null ; then
+  bundle install
+fi
