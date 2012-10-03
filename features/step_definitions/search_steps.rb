@@ -1,0 +1,15 @@
+Given /^I am using the (.+) search engine$/ do |engine|
+  @engine = engine.capitalize
+  visit @engine+'::SearchPage'
+  @current_page.should have_expected_title
+end
+
+When /^I search for a? ?"([^"]*)"$/ do |term|
+  @current_page.search_for term
+end
+
+When /^I select the (.+) homepage from the results$/ do |homepage|
+  on @engine+'::ResultsPage' do |page|
+    page.should contain_result homepage.downcase   
+  end
+end
