@@ -1,5 +1,5 @@
 rvm_install_on_use_flag=1
-rvm --create use ruby-1.9.3@watir-perf-test  
+rvm --create use ruby-1.9.3@peerius-cucumber  
 
 if [[ -s "./perftest.gems" ]]; then
   if ! rvm gemset import perftest.gems >/dev/null 2>&1; then
