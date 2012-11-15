@@ -3,6 +3,26 @@ Feature: Smart Content
   As a website user
   I want to see home page content tailored to me
     
+@ctshirts
+Scenario: Content is displayed when supported promotion is used
+    Given I am on the ctshirts homepage
+    When I use the "peerius" ctshirts promotion
+    Then I should see at least 6 items of SMART-content
+
+@ctshirts
+Scenario: Content is not displayed when protected promotion is used
+    Given I am on the ctshirts homepage
+    When I use the "myvc" ctshirts promotion
+    Then I should see no SMART-content
+
+@wip
+@ctshirts
+Scenario: SMART-content links work
+    Given I am on the ctshirts homepage
+    When I use the "peerius" ctshirts promotion
+    And I click the first SMART-content creative image
+    Then I should see a category page
+        
 #@search    
 #Scenario Outline: Search optimisation
 #   Given I am using the <search engine> search engine
@@ -14,19 +34,5 @@ Feature: Smart Content
 #   | Google        | lovehoney g-spot   | Lovehoney | G-spot vibrator |
 #    | Bing          | lovehoney g-spot   | Lovehoney | G-spot vibrator |
 #    | Google        | lovehoney birthday | Lovehoney | 10th Birthday   |
-#    | Bing          | lovehoney birthday | Lovehoney | 10th Birthday   |
-
-
-@ctshirts
-Scenario: Content is displayed
-    Given I am on the ctshirts homepage
-    When I use the "peerius" ctshirts promotion
-    Then I should see at least 6 items of SMART-content
-
-@ctshirts
-Scenario: Content is not displayed
-    Given I am on the ctshirts homepage
-    When I use the "myvc" ctshirts promotion
-    Then I should see no SMART-content
-
+#    | Bing          | lovehoney birthday | Lovehoney | 10th Birthday   |         
   

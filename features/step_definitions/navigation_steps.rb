@@ -5,7 +5,11 @@ Given /^I am using the (.+) search engine$/ do |engine|
 end  
 
 Given /^I am on the (.+) (.+)page$/ do |site,page|
-    @engine = site.capitalize
-    visit site.capitalize+'::'+page.capitalize+'Page'
+    @site = site.capitalize
+    visit @site+'::'+page.capitalize+'Page'
     @current_page.should have_expected_title
+end
+
+Then /^I should see a category page$/ do
+  on_page(@site+"::CategoryPage").is_categorypage?.should == true
 end
