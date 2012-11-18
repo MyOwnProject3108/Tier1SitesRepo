@@ -15,7 +15,6 @@ Scenario: Content is not displayed when protected promotion is used
     When I use the "myvc" ctshirts promotion
     Then I should see no SMART-content
 
-@wip
 @ctshirts
 Scenario: SMART-content links work
     Given I am on the ctshirts homepage

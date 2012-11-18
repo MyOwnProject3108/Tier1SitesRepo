@@ -1,1 +1,3 @@
-default: --no-source --color --format pretty
+default: TEST_SERVER="uat.peerius.com" --no-source --color --format pretty
+test1: TEST_SERVER="test1.local" --no-source --color --format pretty
+html: TEST_SERVER="uat.peerius.com" --no-source --color --format html --out tests.html 
