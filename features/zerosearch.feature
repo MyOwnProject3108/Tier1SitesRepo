@@ -15,10 +15,10 @@ Scenario Outline: Zero search recommendations are shown
 #
 # SMART-API zero-search
 #
-@smartapi   
+@smartapi @wip @internal
 Scenario: SMART-API v1.1 
   Given I am using SMART-API to access livedemoshop
   When I track a search results page
   Then I should get an OK status back
-  And I should see at least 1 API recommendation
+  And I should see at least 1 SMART-rec in the response
     

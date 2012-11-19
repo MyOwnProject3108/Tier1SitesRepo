@@ -1,5 +1,6 @@
 require 'json'
 require 'net/http'
+require 'benchmark'
 
 module Peerius
     class SmartAPI
@@ -7,6 +8,7 @@ module Peerius
         attr_reader :version
         attr_reader :result
         attr_reader :json_request
+        attr_reader :response_times
          
         def initialize(site, version=nil, testserver=nil)
             @version = version.nil? ? "v1_1" : version
@@ -26,6 +28,7 @@ module Peerius
                 "clientToken" => "gfsdkl47gh3248", #livedemoshop
             }
             @json_request = ""
+            @response_times = []
         end
         
         def track(options = {})           
@@ -44,10 +47,14 @@ module Peerius
             params = { :jd => @json_request }
             uri.query = URI.encode_www_form(params) 
             
-            resp = Net::HTTP.start(uri.host, use_ssl: true, verify_mode:OpenSSL::SSL::VERIFY_NONE) do |http|
-                 http.get uri.request_uri
-            end
+            resp = "" 
+            time = Benchmark.realtime do
+                resp = Net::HTTP.start(uri.host, use_ssl: true, verify_mode:OpenSSL::SSL::VERIFY_NONE) do |http|
+                    http.get uri.request_uri
+                end
+            end 
             data = resp.body
+            @response_times.push(time*1000)
 
             # we convert the returned JSON data to native Ruby
             # data structure - a hash
@@ -69,6 +76,48 @@ module Peerius
                 @request_data[$1] = args[0]
             else
               super
+            end
+        end
+
+        class ProductInfo
+            attr_writer :refCode
+
+            def initialize(refCode)
+                @refCode = refCode
+            end
+
+            def to_json(*a)
+                {
+                    "refCode" => "#{@refCode}"
+                }.to_json
+            end
+        end
+        
+        class RecsResponse
+            attr_reader :widgets
+            
+            class Widget
+                attr_reader :name                
+                attr_reader :recs
+                
+                def initialize(widgets)
+                    widgets.each do |widget|
+                        @widgets[]
+                    end
+                    @category= category
+                end
+            
+            end    
+            
+            def initialize(widgets)
+                widgets.each do |widget|
+                    @widgets[]
+                end
+                @category= category
+            end
+
+            def self.json_create(o)
+                new(o)
             end
         end
     end
