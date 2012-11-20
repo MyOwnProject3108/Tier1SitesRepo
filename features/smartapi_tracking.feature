@@ -33,6 +33,16 @@ Feature: SMART-API tracking
         | version |
         | v1      |
         | v1_1    |
+        
+    @smartapi  
+    Scenario Outline: Basket page is tracked using SMART-API v1
+        Given I am using SMART-API <version> to access livedemoshop
+        When I track a basket page
+        Then I should get an OK status back
+        Examples:   
+        | version |
+        | v1      |
+        | v1_1    |
 
     @smartapi   
     Scenario: Search results page is tracked using SMART-API v1.1 
