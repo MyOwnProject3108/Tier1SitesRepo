@@ -7,7 +7,7 @@ Feature: SMART-API performance
     @wip  
     Scenario Outline: Non-SMART page is tracked using SMART-API
         Given I am using SMART-API <version> to access livedemoshop
-        When I track an "other" page
+        When I track a category page
         Then I should get an OK status back
         And I should get no SMART-product content in the response
         And I should get a response in less than 150ms 

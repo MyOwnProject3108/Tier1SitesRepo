@@ -13,7 +13,7 @@ module Ctshirts
       
       def smartContent
         @smartContent = div_elements(:class => "peeriusContent")
-        wait_until(5) do
+        wait_until(10) do
             @smartContent.count > 0 
         end
         return @smartContent

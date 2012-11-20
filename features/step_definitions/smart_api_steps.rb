@@ -33,15 +33,37 @@ When /^I track a basket page$/ do
   @api.track
 end
 
+When /^I track a checkout page$/ do
+  @api.json_type = 'checkout'
+  @api.track
+end 
+
+When /^I track a order page$/ do
+  @api.json_type = 'checkout'
+  @api.track
+end
+
 When /^I track a search results page$/ do
    @api.json_type = 'searchresults'
    @api.json_searchResults = {"term" => "handbags", "results" => []}
+   @api.track
+end 
+
+When /^I track a brand page$/ do
+   @api.json_type = 'brand'
+   @api.json_brand = "Levis"
+   @api.track
+end
+
+When /^I track an attribute page$/ do
+   @api.json_type = 'attribute'
+   @api.json_attribute = {"name" => "style", "value" => "Casual"}
    @api.track
 end
 
 Then /^I should get an? (.+) status back$/ do |status|
   #pp @api.url 
-  #pp @api.result  
+  pp @api.result  
   @api.result["status"].should eq(status)
 end
 
@@ -60,7 +82,8 @@ end
 Then /^I should get no SMART\-product content in the response$/ do
   pp @api.result
   @api.result.has_key?("smartRecs").should be_false
-  #@api.result["smartRecs"].count.should > 0
+  @api.result.has_key?("smartContent").should be_false
+  @api.result.has_key?("smartRanking").should be_false
 end
 
 Then /^I should at least (\d+) items? of SMART\-product content in the response$/ do |expected_content|
