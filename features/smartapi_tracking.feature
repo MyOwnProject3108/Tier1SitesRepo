@@ -60,7 +60,7 @@ Feature: SMART-API tracking
         When I track a order page
         Then I should get an OK status back
 
-    @smartapi   
+    @smartapi @internal  
     Scenario: Search results page is tracked using SMART-API v1.1 
         Given I am using SMART-API to access livedemoshop
         When I track a search results page

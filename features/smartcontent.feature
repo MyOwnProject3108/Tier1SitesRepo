@@ -21,7 +21,9 @@ Scenario: SMART-content links work
     When I use the "peerius" ctshirts promotion
     And I click the first SMART-content creative image
     Then I should see a category page
-        
+	
+
+	
 #@search    
 #Scenario Outline: Search optimisation
 #   Given I am using the <search engine> search engine

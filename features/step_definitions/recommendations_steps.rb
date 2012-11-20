@@ -15,3 +15,7 @@ Then /^I should see at least (\d+) recommendations?$/ do |recsCount|
         page.smartRecs.count.should >= recsCount.to_i
     end
 end
+
+Then /^I should see SMART\-recs$/ do
+	@current_page.smartRecs.count.should > 0
+end
