@@ -103,18 +103,18 @@ end
 
 Then /^I should see at least (\d+) SMART-rec in the response$/ do |expected_recs|
     #pp @api.result
-    @api.result.has_key?("smartRecs").should be_true
-    @api.result["smartRecs"].count.should > 0
+    @api.should have_smart_recs
+    @api.widgets.count.should > 0
+    @api.total_recs.should >= expected_recs 
+  
 end
 
 Then /^I should get no SMART\-product content in the response$/ do
     #pp @api.result
-    @api.result.should_not have_key("smartRecs")
-    @api.result.should_not have_key("smartContent")
-    @api.result.should_not have_key("smartRanking")
+    @api.should_not have_smart_product_content
 end
 
 Then /^I should at least (\d+) items? of SMART\-product content in the response$/ do |expected_content|
     #pp @api.result
-    pending # express the regexp above with the code you wish you had
+    @api.should have_smart_product_content
 end

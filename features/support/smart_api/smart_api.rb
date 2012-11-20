@@ -116,5 +116,29 @@ module Peerius
               super
             end
         end
+        
+        def rec_widgets
+            @result["smartRecs"]
+        end
+        
+        def total_recs
+            rec_widgets.inject(0){|sum, widget| sum + widget["recs"].count}
+        end
+        
+        def has_smart_content?
+            @result.has_key?("smartContent") && @result["smartContent"]["creatives"].count > 0             
+        end
+        
+        def has_smart_recs?
+            @result.has_key?("smartRecs") && @result["smartRecs"].count > 0
+        end
+        
+        def has_smart_ranking_content?
+            @result.has_key?("smartRanking") && @result["smartRanking"].count > 0
+        end
+        
+        def has_smart_product_content?
+            has_smart_recs? || has_smart_content? || has_smart_ranking_content?
+        end
     end
 end
