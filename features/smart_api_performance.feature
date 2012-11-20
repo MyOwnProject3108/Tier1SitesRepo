@@ -4,9 +4,10 @@ Feature: SMART-API performance
   As an app developer
   I want to get quick responses from the API
     
+    @wip
     Scenario Outline: Non-SMART page is tracked using SMART-API
         Given I am using SMART-API <version> to access livedemoshop
-        When I track a category page
+        When I track a checkout page
         Then I should get an OK status back
         And I should get no SMART-product content in the response
         And I should get a response in less than 150ms 

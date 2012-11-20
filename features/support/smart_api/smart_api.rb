@@ -98,6 +98,12 @@ module Peerius
                 data.delete("basket")
             end
             
+            # Reformat basket request
+            if data["checkout"] then
+                data["checkout"]["products"] = data["checkout"]["items"]
+                data["checkout"].delete("items")
+            end
+            
             # Apply mappings
             Hash[data.map {|k, v| [mappings[k] || k, v] }]
         end

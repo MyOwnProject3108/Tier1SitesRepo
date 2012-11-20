@@ -43,6 +43,22 @@ Feature: SMART-API tracking
         | version |
         | v1      |
         | v1_1    |
+    
+    @smartapi  
+    Scenario Outline: Checkout page is tracked using SMART-API v1
+        Given I am using SMART-API <version> to access livedemoshop
+        When I track a checkout page
+        Then I should get an OK status back
+        Examples:   
+        | version |
+        | v1      |
+        | v1_1    |
+    
+    @smartapi  
+    Scenario: Order page is tracked using SMART-API v1.1
+        Given I am using SMART-API to access livedemoshop
+        When I track a order page
+        Then I should get an OK status back
 
     @smartapi   
     Scenario: Search results page is tracked using SMART-API v1.1 
@@ -57,6 +73,12 @@ Feature: SMART-API tracking
     Scenario: Search results page is *not* tracked using SMART-API v1
         Given I am using SMART-API v1 to access livedemoshop
         When I track a search results page
+        Then I should get a fail status back
+        
+    @smartapi  
+    Scenario: Order page is *not* tracked using SMART-API v1
+        Given I am using SMART-API v1 to access livedemoshop
+        When I track a order page
         Then I should get a fail status back
         
     #

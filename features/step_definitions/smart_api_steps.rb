@@ -39,13 +39,36 @@ When /^I track a basket page$/ do
 end
 
 When /^I track a checkout page$/ do
-  @api.json_type = 'checkout'
-  @api.track
+    @api.json_type = 'checkout'
+    items = [
+        {"refCode" => "RC123", "qty" => 5, "price" => 50.5},
+        {"refCode" => "RC124", "qty" => 8, "price" => 52.5},
+    ]
+    @api.json_checkout = {
+        "items" => items, 
+        "currency" => "GBP",
+        "subtotal" => 103,
+        "shipping" => 11.75,
+        "total" => 114.75
+    }
+    @api.track
 end 
 
 When /^I track a order page$/ do
-  @api.json_type = 'checkout'
-  @api.track
+    @api.json_type = 'order'
+    items = [
+        {"refCode" => "RC123", "qty" => 5, "price" => 50.5},
+        {"refCode" => "RC124", "qty" => 8, "price" => 52.5},
+    ]
+    @api.json_order = {
+        "orderNo" => "ABS-DE-123456",
+        "items" => items, 
+        "currency" => "GBP",
+        "subtotal" => 103,
+        "shipping" => 11.75,
+        "total" => 114.75
+    }
+    @api.track
 end
 
 When /^I track a search results page$/ do
@@ -67,8 +90,8 @@ When /^I track an attribute page$/ do
 end
 
 Then /^I should get an? (.+) status back$/ do |status|
-    puts @api.json_request 
-    pp @api.result  
+    #puts @api.json_request 
+    #pp @api.result  
     @api.result["status"].should eq(status)
 end
 
