@@ -3,7 +3,7 @@ Feature: Smart recs
   As a website user
   I want to see personalised recommendations
 
-@ctshirts @wip
+@ctshirts
 Scenario: SMART-recs appear on product page
-    Given I am on the ctshirts productpage
+    Given I am on the ctshirts product page
     Then I should see SMART-recs

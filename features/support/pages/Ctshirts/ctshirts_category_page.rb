@@ -4,9 +4,9 @@ module Ctshirts
       
       div(:productListing, :id => "ctl00_contentBody_productListingSection")
       
-      def is_categorypage?
-        #return productlisting.exists?
-        return true
+      # Returns true if the page is actually a category page
+      def valid?
+        return productListing?
       end
     end  
 end

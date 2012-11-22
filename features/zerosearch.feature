@@ -2,11 +2,13 @@ Feature: Zero search
   In order to get the most out of my shopping experience
   As a website user
   I want to see recommendations on the search page
-  
+
+@ctshirts @cottontraders  
 Scenario Outline: Zero search recommendations are shown
     Given I am on the <site> searchpage
     When I search for <searchterm>
-    Then I should see at least 1 recommendation
+    Then I should end up on the search results page
+    And I should see at least 1 SMART-rec
     Examples:
     | site          | searchterm |
     | ctshirts      | "handbags" |
@@ -15,7 +17,7 @@ Scenario Outline: Zero search recommendations are shown
 #
 # SMART-API zero-search
 #
-@smartapi @wip @internal
+@smartapi @internal
 Scenario: SMART-API v1.1 
   Given I am using SMART-API to access livedemoshop
   When I track a search results page

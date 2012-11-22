@@ -11,7 +11,7 @@ When /^I track a home page$/ do
    @api.track
 end
 
-When /^I track an "other" page$/ do
+When /^I track an "?other"? page$/ do
    @api.json_type = 'home'
    @api.track
 end

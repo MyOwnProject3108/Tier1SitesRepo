@@ -15,12 +15,12 @@ Scenario: Content is not displayed when protected promotion is used
     When I use the "myvc" ctshirts promotion
     Then I should see no SMART-content
 
-@ctshirts
+@ctshirts @wip
 Scenario: SMART-content links work
     Given I am on the ctshirts homepage
     When I use the "peerius" ctshirts promotion
     And I click the first SMART-content creative image
-    Then I should see a category page
+    Then I should end up on a category page
 	
 
 	
