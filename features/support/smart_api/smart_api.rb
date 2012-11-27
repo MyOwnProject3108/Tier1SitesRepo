@@ -13,12 +13,14 @@ module Peerius
         attr_reader :response_times
          
         def initialize(site, version=nil, testserver=nil)
+            @logger = Logger.new('smart_api.log')
             @version = version.nil? ? "v1_1" : version
             if testserver.nil? then  
                 @url = "https://#{site}.peerius.com/tracker/api/#{@version}/rest.pagex"
             else
                 @url = "https://#{testserver}/tracker/api/#{@version}/rest.pagex"
             end
+            @logger.info(@url)
             @request_data = {
                 "ip" => "0.0.0.0",
                 "session" => "new",
@@ -61,7 +63,7 @@ module Peerius
             else
                 @json_request = JSON.generate(request)
             end
-
+            @logger.info(@json_request)            
             params = { :jd => @json_request }
             uri.query = URI.encode_www_form(params) 
             
@@ -77,6 +79,7 @@ module Peerius
             # we convert the returned JSON data to native Ruby
             # data structure - a hash
             @result = JSON.parse(data)
+            @logger.info(@result)            
             
             # Use the returned session and cuid
             if @result["session"] && @result["session"]["session"] then
@@ -121,8 +124,16 @@ module Peerius
             @result["smartRecs"]
         end
         
+        def ranking_widgets
+            @result["smartRanking"]
+        end
+        
         def total_recs
             rec_widgets.inject(0){|sum, widget| sum + widget["recs"].count}
+        end
+        
+        def total_ranking_items
+            ranking_widgets.inject(0){|sum, widget| sum + widget["products"].count}
         end
         
         def has_smart_content?

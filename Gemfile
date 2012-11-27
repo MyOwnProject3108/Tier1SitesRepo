@@ -4,6 +4,7 @@ source 'http://rubygems.org'
 gem 'cucumber'
 gem 'rspec'
 gem 'page-object'
+gem 'fig_newton'
 
 # Reporting gems
 gem 'syntax'

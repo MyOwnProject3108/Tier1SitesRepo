@@ -1,4 +1,4 @@
-Feature: Smart Content
+Feature: SMART-content
   In order to get the most out of my shopping experience
   As a website user
   I want to see home page content tailored to me
@@ -15,7 +15,7 @@ Scenario: Content is not displayed when protected promotion is used
     When I use the "myvc" ctshirts promotion
     Then I should see no SMART-content
 
-@ctshirts @wip
+@ctshirts
 Scenario: SMART-content links work
     Given I am on the ctshirts homepage
     When I use the "peerius" ctshirts promotion
