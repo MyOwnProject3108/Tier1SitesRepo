@@ -108,23 +108,23 @@ When /^I supply SMART\-ranking setup info$/ do
   }
 end
 
+#
+# Clicks
+#
 When /^I track a click for the first SMART-ranking item$/ do
     @api.should have_smart_ranking_content
     @api.ranking_widgets.count.should > 0
     @api.total_ranking_items.should > 0
-    impressionId = @api.ranking_widgets[0]["impressionId"]
-    productId = @api.ranking_widgets[0]["products"][0]["product"]["productId"]
-    refcode = @api.ranking_widgets[0]["products"][0]["product"]["refCode"]
-    @api.json_type = 'product'
-    @api.json_product = {"refCode" => "#{refcode}"}
-    @api.json_info = {
-        "smartRanking" => {
-            "click" => {
-                "impressionId" => "#{impressionId}",
-                "productId" => "#{productId}",
-            }
-        }
-    }
+    @api.ranking_click
+    @api.track    
+end
+
+When /^I track a click for SMART-ranking item number (\d+)$/ do |product|
+    @api.should have_smart_ranking_content
+    @api.ranking_widgets.count.should > 0
+    @api.total_ranking_items.should > 0
+    product_index = product.to_i - 1
+    @api.ranking_click(product_index)
     @api.track    
 end
 
@@ -132,28 +132,13 @@ When /^I track a click for the first SMART\-rec$/ do
     @api.should have_smart_recs
     @api.rec_widgets.count.should > 0
     @api.total_recs.should > 0
-    productId = @api.rec_widgets[0]["recs"][0]["id"]
-    refcode = @api.rec_widgets[0]["recs"][0]["refCode"]
-    @api.json_type = 'product'
-    @api.json_product = {"refCode" => "#{refcode}"}
-    @api.json_info = {
-        "smartRecs" => {
-                "click" => "#{productId}",
-        }
-    }
+    @api.rec_click
     @api.track
 end
 
 When /^I track a click for the first SMART\-content creative$/ do
     @api.should have_smart_content
-    creativeId = @api.content_creatives[0]["id"]
-    @api.json_type = 'category'
-    @api.json_category = "ties"
-    @api.json_info = {
-        "smartContent" => {
-                "click" => "#{creativeId}",
-        }
-    }
+    @api.creative_click
     @api.track
 end
 

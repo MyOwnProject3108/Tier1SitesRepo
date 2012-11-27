@@ -30,6 +30,7 @@ module Peerius
                 "currentURI" => site+"://unknown",
                 "previousURI" => site+"://unknown",
                 "clientToken" => "gfsdkl47gh3248", #livedemoshop
+                "recContent" => "refCodeOnly",
             }
             @json_request = ""
             @response_times = []
@@ -154,6 +155,48 @@ module Peerius
         
         def has_smart_product_content?
             has_smart_recs? || has_smart_content? || has_smart_ranking_content?
+        end
+        
+        #
+        # Clicks
+        #
+        def ranking_click(product_i=0, widget_i=0)
+            impressionId = ranking_widgets[widget_i]["impressionId"]
+            productId = ranking_widgets[widget_i]["products"][product_i]["product"]["productId"]
+            refcode = ranking_widgets[widget_i]["products"][product_i]["product"]["refCode"]
+            json_type = 'product'
+            json_product = {"refCode" => "#{refcode}"}
+            json_info = {
+                "smartRanking" => {
+                    "click" => {
+                        "impressionId" => "#{impressionId}",
+                        "productId" => "#{productId}",
+                    }
+                }
+            }
+        end
+        
+        def rec_click(product_i=0, widget_i=0)
+            productId = rec_widgets[widget_i]["recs"][product_i]["id"]
+            refcode = rec_widgets[widget_i]["recs"][product_i]["refCode"]
+            json_type = 'product'
+            json_product = {"refCode" => "#{refcode}"}
+            json_info = {
+                "smartRecs" => {
+                        "click" => "#{productId}",
+                }
+            }
+        end
+        
+        def creative_click(product_i=0)
+            creativeId = content_creatives[product_i]["id"]
+            json_type = 'category'
+            json_category = "ties"
+            json_info = {
+                "smartContent" => {
+                        "click" => "#{creativeId}",
+                }
+            }
         end
     end
 end

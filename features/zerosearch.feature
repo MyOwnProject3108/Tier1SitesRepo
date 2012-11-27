@@ -23,5 +23,5 @@ Scenario: SMART-API v1.1
   And I am using client token 677ab692r2t3
   When I track a search results page
   Then I should get an OK status back
-  And I should see at least 1 SMART-rec in the response
+  And I should get at least 1 SMART-rec in the response
     

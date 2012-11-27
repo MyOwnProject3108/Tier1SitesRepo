@@ -21,4 +21,7 @@ Feature: SMART-ranking
         And I track a category page
         When I track a click for the first SMART-ranking item
         Then I should get an OK status back
+        When I track a click for SMART-ranking item number 2
+        Then I should get an OK status back
+        
 
