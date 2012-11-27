@@ -11,7 +11,7 @@ Scenario: SMART-recs appear on product page
 #
 # SMART-API SMART-recs
 #    
-@smartapi @wip  
+@smartapi  
     Scenario: SMART-recs clicks can be tracked using SMART-API
         Given I am using SMART-API to access livedemoshop
         When I track the home page

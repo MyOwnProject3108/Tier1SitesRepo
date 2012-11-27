@@ -21,7 +21,16 @@ Scenario: SMART-content links work
     When I use the "peerius" ctshirts promotion
     And I click the first SMART-content creative image
     Then I should end up on a category page
-	
+
+#
+# SMART-API SMART-content
+#    
+@smartapi @wip  
+    Scenario: SMART-content clicks can be tracked using SMART-API
+        Given I am using SMART-API to access livedemoshop
+        When I track the home page
+        And I track a click for the first SMART-content creative
+        Then I should get an OK status back	
 
 	
 #@search    

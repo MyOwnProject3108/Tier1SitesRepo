@@ -144,6 +144,19 @@ When /^I track a click for the first SMART\-rec$/ do
     @api.track
 end
 
+When /^I track a click for the first SMART\-content creative$/ do
+    @api.should have_smart_content
+    creativeId = @api.content_creatives[0]["id"]
+    @api.json_type = 'category'
+    @api.json_category = "ties"
+    @api.json_info = {
+        "smartContent" => {
+                "click" => "#{creativeId}",
+        }
+    }
+    @api.track
+end
+
 Then /^I should get an? (.+) status back$/ do |status|
     #puts @api.json_request 
     #pp @api.result  

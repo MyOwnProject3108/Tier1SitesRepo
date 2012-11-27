@@ -128,6 +128,10 @@ module Peerius
             @result["smartRanking"]
         end
         
+        def content_creatives
+            @result["smartContent"]["creatives"]
+        end
+        
         def total_recs
             rec_widgets.inject(0){|sum, widget| sum + widget["recs"].count}
         end
