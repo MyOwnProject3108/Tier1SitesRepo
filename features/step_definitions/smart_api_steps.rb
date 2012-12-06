@@ -12,7 +12,7 @@ When /^I track (?:a|the) home page$/ do
 end
 
 When /^I track an "?other"? page$/ do
-   @api.json_type = 'home'
+   @api.json_type = 'other'
    @api.track
 end
 
@@ -54,7 +54,7 @@ When /^I track a checkout page$/ do
     @api.track
 end 
 
-When /^I track a order page$/ do
+When /^I track an order page$/ do
     @api.json_type = 'order'
     items = [
         {"refCode" => "RC123", "qty" => 5, "price" => 50.5},
@@ -87,25 +87,21 @@ When /^I track an attribute page$/ do
    @api.json_type = 'attribute'
    @api.json_attribute = {"name" => "style", "value" => "Casual"}
    @api.track
+end
+
+When /^I track the same page another (\d+) times$/ do |n|
+  n.to_i.times do 
+    @api.track
+  end
 end 
 
 When /^I supply SMART\-ranking setup info$/ do
-=begin New Style
   @api.json_smartRanking = {
-      "facets" => "",
+      "facets" => "category=\"ties\"",
       "ordering" => {"orderBy" => "smart"},
       "page" => 1,
       "itemsPerPage" => 20,  
-  }
-=end 
-@api.json_info = {
-    "smartRanking" => {
-      "facets" => "",
-      "ordering" => {"orderBy" => "smart"},
-      "page" => 1,
-      "itemsPerPage" => 20,
-     }  
-  }
+  }  
 end
 
 #
@@ -151,7 +147,7 @@ end
 Then /^I should get a response in less than (\d+)ms$/ do |expected|
     #pp @api.response_times 
     @api.response_times.count.should be > 0
-    @api.response_times.max.should be < expected.to_i
+    @api.average_response_time.should be < expected.to_i
 end 
 
 Then /^I should get at least (\d+) SMART-recs? in the response$/ do |expected_recs|

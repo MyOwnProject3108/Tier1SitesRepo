@@ -7,10 +7,11 @@ Feature: SMART-API performance
     @smartapi
     Scenario Outline: Non-SMART page is tracked using SMART-API
         Given I am using SMART-API <version> to access livedemoshop
-        When I track a checkout page
+        When I track an "other" page
+        And I track the same page another 10 times
         Then I should get an OK status back
         And I should get no SMART-product content in the response
-        And I should get a response in less than 150ms 
+        And I should get a response in less than 300ms 
         Examples:
         | version |
         | v1      |
@@ -20,6 +21,7 @@ Feature: SMART-API performance
     Scenario Outline: SMART page is tracked using SMART-API
         Given I am using SMART-API <version> to access livedemoshop
         When I track a home page
+        And I track the same page another 10 times
         Then I should get an OK status back
         And I should get at least 1 item of SMART-product content in the response
         And I should get a response in less than 300ms 

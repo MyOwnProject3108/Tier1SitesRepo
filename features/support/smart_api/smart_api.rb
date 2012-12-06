@@ -1,6 +1,7 @@
 require 'json'
 require 'net/http'
 require 'benchmark'
+require 'logger'
 require_relative 'smart_api_data'
 
 module Peerius
@@ -34,6 +35,10 @@ module Peerius
             }
             @json_request = ""
             @response_times = []
+        end
+        
+        def average_response_time
+            response_times.reduce(:+) / response_times.count
         end
         
         def session
@@ -84,8 +89,8 @@ module Peerius
             
             # Use the returned session and cuid
             if @result["session"] && @result["session"]["session"] then
-                @request_data["session"] = @result["session"]["session"]
-                @request_data["cuid"] = @result["session"]["cuid"]
+                @request_data["session"] = @result["session"]["session"].to_s
+                @request_data["cuid"] = @result["session"]["cuid"].to_s
             end 
         end
         
@@ -102,8 +107,8 @@ module Peerius
                 data.delete("basket")
             end
             
-            # Reformat basket request
-            if data["checkout"] then
+            # Reformat checkout request
+            if data["checkout"] and data["checkout"]["items"] then
                 data["checkout"]["products"] = data["checkout"]["items"]
                 data["checkout"].delete("items")
             end
@@ -164,9 +169,9 @@ module Peerius
             impressionId = ranking_widgets[widget_i]["impressionId"]
             productId = ranking_widgets[widget_i]["products"][product_i]["product"]["productId"]
             refcode = ranking_widgets[widget_i]["products"][product_i]["product"]["refCode"]
-            json_type = 'product'
-            json_product = {"refCode" => "#{refcode}"}
-            json_info = {
+            @request_data["type"] = 'product'
+            @request_data["product"] = {"refCode" => "#{refcode}"}
+            @request_data["info"] = {
                 "smartRanking" => {
                     "click" => {
                         "impressionId" => "#{impressionId}",
@@ -179,9 +184,9 @@ module Peerius
         def rec_click(product_i=0, widget_i=0)
             productId = rec_widgets[widget_i]["recs"][product_i]["id"]
             refcode = rec_widgets[widget_i]["recs"][product_i]["refCode"]
-            json_type = 'product'
-            json_product = {"refCode" => "#{refcode}"}
-            json_info = {
+            @request_data["type"] = 'product'
+            @request_data["product"] = {"refCode" => "#{refcode}"}
+            @request_data["info"]  = {
                 "smartRecs" => {
                         "click" => "#{productId}",
                 }
@@ -190,9 +195,9 @@ module Peerius
         
         def creative_click(product_i=0)
             creativeId = content_creatives[product_i]["id"]
-            json_type = 'category'
-            json_category = "ties"
-            json_info = {
+            @request_data["type"] = 'category'
+            @request_data["category"] = "ties"
+            @request_data["info"]  = {
                 "smartContent" => {
                         "click" => "#{creativeId}",
                 }

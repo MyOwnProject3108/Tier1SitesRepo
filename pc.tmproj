@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>features/support/hooks.rb</string>
+	<string>features/step_definitions/smart_api_steps.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -31,16 +31,68 @@
 			<string>features</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>utils</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>utils</string>
+		</dict>
+		<dict>
 			<key>filename</key>
 			<string>cucumber.yml</string>
 			<key>lastUsed</key>
-			<date>2012-11-19T19:49:23Z</date>
+			<date>2012-11-28T14:00:04Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>297</integer>
 	<key>metaData</key>
 	<dict>
+		<key>features/smart_api_performance.feature</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>31</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>features/smart_api_tracking.feature</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>80</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>features/smart_recs.feature</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>features/step_definitions/ctshirts_steps.rb</key>
 		<dict>
 			<key>caret</key>
@@ -66,12 +118,12 @@
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>32</integer>
+				<integer>27</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
 		</dict>
-		<key>features/support/env.rb</key>
+		<key>features/step_definitions/navigation_steps.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -85,42 +137,28 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>features/support/hooks.rb</key>
+		<key>features/step_definitions/smart_api_steps.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>130</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>116</integer>
 		</dict>
-		<key>features/support/matchers.rb</key>
+		<key>features/support/smart_api/smart_api.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>43</integer>
 				<key>line</key>
-				<integer>10</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>features/support/pages/Google/google_results_page.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
+				<integer>122</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -130,14 +168,17 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>features/support/env.rb</string>
-		<string>features/support/matchers.rb</string>
-		<string>features/support/hooks.rb</string>
-		<string>features/support/pages/Google/google_results_page.rb</string>
+		<string>features/smart_api_performance.feature</string>
+		<string>features/step_definitions/ctshirts_steps.rb</string>
+		<string>features/step_definitions/navigation_steps.rb</string>
+		<string>features/smart_api_tracking.feature</string>
+		<string>features/smart_recs.feature</string>
+		<string>features/step_definitions/smart_api_steps.rb</string>
+		<string>features/support/smart_api/smart_api.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{21, 250}, {824, 728}}</string>
+	<string>{{-1, 254}, {1442, 728}}</string>
 </dict>
 </plist>

@@ -57,7 +57,7 @@ Feature: SMART-API tracking
     @smartapi  
     Scenario: Order page is tracked using SMART-API v1.1
         Given I am using SMART-API to access livedemoshop
-        When I track a order page
+        When I track an order page
         Then I should get an OK status back
 
     @smartapi @internal  
@@ -78,7 +78,7 @@ Feature: SMART-API tracking
     @smartapi  
     Scenario: Order page is *not* tracked using SMART-API v1
         Given I am using SMART-API v1 to access livedemoshop
-        When I track a order page
+        When I track an order page
         Then I should get a fail status back
         
     #
