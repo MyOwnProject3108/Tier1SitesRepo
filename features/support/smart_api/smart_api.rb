@@ -14,7 +14,8 @@ module Peerius
         attr_reader :response_times
          
         def initialize(site, version=nil, testserver=nil)
-            @logger = Logger.new('smart_api.log')
+            file = open('smart_api.log', File::WRONLY | File::APPEND | File::CREAT)
+            @logger = Logger.new(file)
             @version = version.nil? ? "v1_1" : version
             if testserver.nil? then  
                 @url = "https://#{site}.peerius.com/tracker/api/#{@version}/rest.pagex"
@@ -59,6 +60,13 @@ module Peerius
         
         def track(options = {})           
             callAPI(@request_data.merge(options))
+            clearAPI()
+        end
+        
+        # Clears the request specific parameters
+        def clearAPI
+            persist = ["ip", "session", "cuid", "lang", "site", "currentURI", "previousURI", "clientToken", "recContent"]
+            @request_data.keep_if {|key,value| persist.include? key}          
         end
         
         def callAPI(request)

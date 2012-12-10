@@ -105,6 +105,29 @@ When /^I supply SMART\-ranking setup info$/ do
 end
 
 #
+# Ordering
+#
+When /^I purchase a "(.*?)" using the SMART\-API$/ do |item|
+  step "I purchase 1 \"#{item}\" using the SMART\-API"
+end
+
+When /^I purchase (\d+) "(.*?)" using the SMART\-API$/ do |quantity, item|
+    @api.json_type = 'order'
+    items = [
+        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
+    ]
+    @api.json_order = {
+        "orderNo" => "ABS-DE-123456",
+        "items" => items, 
+        "currency" => "GBP",
+        "subtotal" => 50.50,
+        "shipping" => 1.00,
+        "total" => 51.50
+    }
+    @api.track
+end
+
+#
 # Clicks
 #
 When /^I track a click for the first SMART-ranking item$/ do
@@ -172,4 +195,9 @@ end
 Then /^I should get at least (\d+) items? of SMART\-product content in the response$/ do |expected_content|
     #pp @api.result
     @api.should have_smart_product_content
+end
+
+Then /^the first SMART\-content creative name should contain "(.*?)"$/ do |expected_string|
+  @api.should have_smart_content
+  @api.content_creatives[0]["name"].should include(expected_string)
 end
