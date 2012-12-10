@@ -10,8 +10,8 @@ gem 'fig_newton'
 gem 'syntax'
 
 # database access gems
-gem 'tiny_tds'
-gem 'activerecord'
-gem 'activesupport'
-gem 'activerecord-sqlserver-adapter'
+#gem 'tiny_tds'
+#gem 'activerecord'
+#gem 'activesupport'
+#gem 'activerecord-sqlserver-adapter'
 
