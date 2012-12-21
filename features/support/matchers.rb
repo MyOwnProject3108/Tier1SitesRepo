@@ -9,3 +9,12 @@ RSpec::Matchers.define :contain_result do |result|
         "Expected search results not to include '#{result}'"
     end
 end
+
+RSpec::Matchers.define :be_tracked_as do |page_type| 
+    match do |page|
+        page.tracked_as.include? page_type 
+    end
+    failure_message_for_should do |page|
+        "Expected to track as '#{page_type}' actually tracked as '#{page.tracked_as}'"
+    end
+end

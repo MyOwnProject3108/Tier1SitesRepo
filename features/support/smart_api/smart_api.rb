@@ -89,12 +89,12 @@ module Peerius
             end 
             data = resp.body
             @response_times.push(time*1000)
+            @logger.info(data)
 
             # we convert the returned JSON data to native Ruby
             # data structure - a hash
             @result = JSON.parse(data)
-            @logger.info(@result)            
-            
+                                
             # Use the returned session and cuid
             if @result["session"] && @result["session"]["session"] then
                 @request_data["session"] = @result["session"]["session"].to_s
@@ -182,8 +182,8 @@ module Peerius
             @request_data["info"] = {
                 "smartRanking" => {
                     "click" => {
-                        "impressionId" => "#{impressionId}",
-                        "productId" => "#{productId}",
+                        "impressionId" => impressionId.to_i,
+                        "productId" => productId.to_i,
                     }
                 }
             }
@@ -196,7 +196,7 @@ module Peerius
             @request_data["product"] = {"refCode" => "#{refcode}"}
             @request_data["info"]  = {
                 "smartRecs" => {
-                        "click" => "#{productId}",
+                        "click" => productId.to_i,
                 }
             }
         end
@@ -207,7 +207,7 @@ module Peerius
             @request_data["category"] = "ties"
             @request_data["info"]  = {
                 "smartContent" => {
-                        "click" => "#{creativeId}",
+                        "click" => creativeId.to_i,
                 }
             }
         end

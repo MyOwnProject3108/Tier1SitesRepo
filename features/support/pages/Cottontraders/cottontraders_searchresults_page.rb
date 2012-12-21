@@ -1,18 +1,13 @@
 module Cottontraders
     class SearchResultsPage
       include PageObject
+      include PeeriusHelper
       
-      div(:product_container, :class => 'peeriusProducts')
-      
-      # Returns true if the page is actually a search result page
-      def valid?
-          current_url.include?("search")
-      end
-      
-      # This item should return an array of SMART-rec containers
-      def smartRecs       
-          product_container_element.when_visible.div_elements(:class => 'peeriusProduct')
-      end 
-      
+      div(:page_identifier, :class => "searchContent")
+      div(:smart_recs) do |page|
+          page.div_element(:class => "peeriusProducts").div_elements(:class => 'peeriusProduct')
+      end    
+      div(:smart_content, :class => "peeriusContent")
+        
     end  
 end

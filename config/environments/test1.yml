@@ -1,4 +1,5 @@
-base_url: test1.local
+base_url: test1.lan
+headless: false
 database0: testdenorm0
 database1: testdenorm1
 database2: testdenorm2

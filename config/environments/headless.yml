@@ -1,2 +1,2 @@
 base_url: uat.peerius.com
-headless: false 
+headless: true

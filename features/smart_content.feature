@@ -21,6 +21,7 @@ Scenario: SMART-content links work
     When I use the "peerius" ctshirts promotion
     And I click the first SMART-content creative image
     Then I should end up on a category page
+    And it should be tracked as a category page
 
 #
 # SMART-API SMART-content

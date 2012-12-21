@@ -4,9 +4,17 @@ Feature: SMART-recs
   I want to see personalised recommendations
 
 @ctshirts
-Scenario: SMART-recs appear on product page
-    Given I am on the ctshirts product page
-    Then I should see SMART-recs
+Scenario Outline: SMART-rec links work
+  Given I am on the <site> product page
+  And I click the first SMART-rec image link 
+  Then I should end up on a product page
+  Examples:
+  | site          |
+  | ctshirts      |
+  | wallis        |
+  | cottontraders |
+  | lovehoney     |
+
 
 #
 # SMART-API SMART-recs

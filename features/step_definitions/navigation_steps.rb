@@ -11,7 +11,9 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     
     visit @site+'::'+page_class_name+'Page'
-    @current_page.should have_expected_title
+    if @current_page.respond_to? "has_expected_title?" then
+        @current_page.should have_expected_title
+    end
 end
 
 Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
@@ -19,6 +21,7 @@ Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     
     on_page(@site+'::'+page_class_name+'Page') do |page|
-        page.should be_valid 
+        page.should be_valid
+        @current_page.should be_tracked_as "#{page_class_name}Page" 
     end
 end

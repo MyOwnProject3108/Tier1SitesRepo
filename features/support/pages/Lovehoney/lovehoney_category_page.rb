@@ -1,4 +1,4 @@
-module Ctshirts
+module Lovehoney
     class CategoryPage
       include PageObject
       include PeeriusHelper
