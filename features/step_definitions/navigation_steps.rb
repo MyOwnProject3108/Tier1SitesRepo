@@ -25,3 +25,16 @@ Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
         @current_page.should be_tracked_as "#{page_class_name}Page" 
     end
 end
+
+
+When /^I click login$/ do
+	@current_page.login_click  
+end
+
+When /^I fill in my login details$/ do
+   on_page(@site+'::LoginPage') do |page|
+        page.login("vinod.sathapathi@peerius.com","Pa55word")   
+    end 
+end
+
+
