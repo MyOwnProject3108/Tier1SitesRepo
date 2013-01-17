@@ -3,20 +3,15 @@ module Topman
       include PageObject
       include PeeriusHelper
       
-      direct_url "http://www.topman.com"
-	  text_field(:name,:id=>"login_email")
-      text_field(:pass,:id=>"password")
-	  text_field(:search,:id=>"inppp_search_text")
+      direct_url "http://topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33056&storeId=12555"
+	  text_field(:username, :id=>"login_email")
+      text_field(:password, :id=>"password")  
+	  link(:login_submit, :id=>"login_submit")
 	  
-	  link(:login_submit,:id=>"login_submit")
-	  
-	  def login(username, password)
-		name_element.when_present do
-			name = username
-		end
-		pass = password
-		search = password
-		#login_submit
+	  def login_with(username, password)
+		self.username = username
+		self.password = password
+		login_submit
 	  end
 	  	              
       
