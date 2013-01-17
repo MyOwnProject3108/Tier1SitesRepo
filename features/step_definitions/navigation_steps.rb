@@ -36,6 +36,12 @@ When /^I fill in my login details$/ do
     end 
 end
 
+When /^I add the current product to the basket$/ do
+  @current_page.add_to_basket_element.when_visible
+  @current_page.add_to_basket
+end
+
+
 Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
     # Turn the page description into a page classname (e.g. search page -> SearchPage)
     page_class_name = page.split.collect!{|x| x.capitalize}.join
