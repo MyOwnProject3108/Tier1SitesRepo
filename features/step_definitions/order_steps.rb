@@ -6,3 +6,9 @@ When /^I add the current product to the basket$/ do
   @current_page.add_to_basket_element.when_visible
   @current_page.add_to_basket
 end
+
+When /^I click checkout$/ do
+  @current_page.click_checkout_element.when_visible
+ # @current_page.wait_until(10, 'Success')
+  @current_page.click_checkout
+end

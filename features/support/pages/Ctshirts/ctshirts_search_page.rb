@@ -4,9 +4,10 @@ module Ctshirts
       include PeeriusHelper
       
       URL = "http://www.ctshirts.co.uk/"
+	  direct_url URL
       
       expected_title 'Charles Tyrwhitt for Men\'s Shirts, Suits, Ties, Shoes & Accessories From Jermyn Street, London'
-      direct_url URL
+
       text_field(:search, :id => 'search_term')
       
       def use_promotion(promotion)
