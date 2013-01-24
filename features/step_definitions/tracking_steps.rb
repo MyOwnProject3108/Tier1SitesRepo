@@ -4,3 +4,14 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
   
   @current_page.should be_tracked_as page_class_name+"Page"
 end
+
+Then /^all categories should be tracked as Category pages$/ do
+    categories = @current_page.categories
+    categories.each do |category|
+        pp category
+        # @browser.goto category
+        on_page(@site+"::CategoryPage") do |page|
+            page.should be_tracked_as page_class_name+"Page"
+        end
+    end
+end

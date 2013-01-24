@@ -15,6 +15,11 @@ Scenario: CT Shirts home page is tracked as home page with SPR
     Scenario: CT Shirts category page is tracked correctly
     Given I am on the ctshirts category page
     Then it should be tracked as a Category page
+    
+@ctshirts
+    Scenario: All CT Shirts category pages are tracked correctly
+    Given I am on the ctshirts home page
+    Then all categories should be tracked as Category pages  
 
 @ctshirts
 Scenario: CT Shirts product page is tracked correctly

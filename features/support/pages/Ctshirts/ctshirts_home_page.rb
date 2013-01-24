@@ -20,6 +20,11 @@ module Ctshirts
       def use_promotion(promotion)
         navigate_to "#{URL}/Default.aspx?q=#{promotion}|||||||||||||||&spr=1"
       end
+      
+      # Return an an array of URLs containing every category link
+      def categories
+
+      end
        
     end  
 end
