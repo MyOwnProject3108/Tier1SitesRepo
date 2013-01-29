@@ -49,7 +49,23 @@ Scenario: SMART-content links work
         | "prod-tv017baq" | "Ties"        |
         | "prod-mc075bgd" | "Shoes"       |
 
-        
+@smartapi  
+    Scenario: SMART-content A/B groups can be detected using SMART-API "summary"
+        Given I am using SMART-API to access livedemoshop
+        And I request summary abgroup information
+        When I track a home page
+        Then I should get an OK status back
+        And I should see which smartContent abgroup I am serving
+		
+		
+@smartapi  
+    Scenario: SMART-content A/B groups can be detected using SMART-API "full"
+        Given I am using SMART-API to access livedemoshop
+        And I request full abgroup information
+        When I track a home page
+        Then I should get an OK status back
+        And I should see which smartContent abgroup I am serving
+		And I should see at least 2 smartContent ab test configs        
 	
 #@search    
 #Scenario Outline: Search optimisation

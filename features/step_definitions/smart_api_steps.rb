@@ -6,6 +6,10 @@ Given /^I am using client token (.+)$/ do |token|
   @api.json_clientToken = token
 end
 
+Given /^I request (.+) abgroup information$/ do |type|
+  @api.json_abTestContent= type
+end
+
 When /^I track (?:a|the) home page$/ do
    @api.json_type = 'home'
    @api.track
@@ -201,3 +205,47 @@ Then /^the first SMART\-content creative name should contain "(.*?)"$/ do |expec
   @api.should have_smart_content
   @api.content_creatives[0]["name"].should include(expected_string)
 end
+
+Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
+  has_expected_product = false
+  
+ # pp @api.result["info"]["abtest"]
+  @api.result["info"]["abtest"].should have_at_least(1).product
+  
+  # Check to see that one of the products is the one we are looking for 
+  @api.result["info"]["abtest"].each {|product|	
+	if product.has_key?(expected_product) then
+		has_expected_product = true
+		
+		# Check that the product has an abgroup defined
+		product[expected_product].should have_at_least(1).items
+		product[expected_product].each {|config|
+			config.should have_key("group")
+		}
+	end
+  }
+  
+  has_expected_product.should == true
+  
+end
+
+Then /^I should see at least (\d+) (.+) ab test configs?$/ do |expected_configs, expected_product|
+   # pp @api.result["info"]["abtest"]
+  @api.result["info"]["abtest"].should have_at_least(1).product
+  
+  # Check to see that one of the products is the one we are looking for 
+  @api.result["info"]["abtest"].each {|product|	
+	if product.has_key?(expected_product) then
+		has_expected_product = true
+		
+		# Check that the product has an abgroup defined
+		product[expected_product].should have_at_least(1).items
+		product[expected_product].each {|config|
+			config.should have_key("configs")
+			config["configs"].size.should >= expected_configs.to_i 
+		}
+	end
+  }
+end
+
+
