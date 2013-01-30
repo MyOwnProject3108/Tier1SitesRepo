@@ -3,7 +3,6 @@ Feature: SMART-recs
   As a website user
   I want to see personalised recommendations
 
-@ctshirts
 Scenario Outline: SMART-rec links work
   Given I am on the <site> product page
   And I click the first SMART-rec image link 

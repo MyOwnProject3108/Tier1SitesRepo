@@ -9,10 +9,7 @@ module Topman
 	  #Returns first 4 recs with pProduct class
       div(:smart_recs) do |page|
           page.div_element(:id => "search__").div_elements(:class => 'pProduct') << page.div_element(:class => "pProductLast")
-      end
-	  
-	  
-	  
+      end 
 	  	  
       div(:smart_content, :class => "peeriusContent")
 	  
