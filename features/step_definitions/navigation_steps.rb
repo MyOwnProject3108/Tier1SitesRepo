@@ -41,7 +41,7 @@ Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     
     on_page(@site+'::'+page_class_name+'Page') do |page|
-        page.should be_valid
+        page.should be_valid if page.respond_to? "valid?"
         @current_page.should be_tracked_as "#{page_class_name}Page" 
     end
 end
