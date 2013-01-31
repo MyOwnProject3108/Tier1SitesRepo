@@ -22,14 +22,39 @@ Scenario: CT Shirts product page is tracked correctly
     Then it should be tracked as a product page
     
 @ctshirts
-Scenario: CT Shirts 
-    Given I am on the ctshirts product page
-    Then it should be tracked as a product page    
+Scenario: CT Shirts basket page is tracked correctly
+    Given I am on the ctshirts basket page
+    Then it should be tracked as a basket page    
         
+@ctshirts
+Scenario: CT Shirts checkout page is tracked correctly
+	Given I am on the ctshirts home page
+	When I click login
+	And I fill in my login details
+	And I go to the product page
+	And I add the current product to the basket
+	And I go to the basket page
+	And I click checkout
+	Then it should be tracked as a Checkout page
+		
+@ctshirts 
+Scenario: CT Shirts zero search recommendations are shown
+    Given I am on the ctshirts homepage
+    When I search for "dvd"
+    Then I should end up on the search results page
+    And I should see at least 1 SMART-recs
+	
+@ctshirts 
+Scenario: CT Shirts search results page is tracked correctly
+    Given I am on the ctshirts homepage
+    When I search for "shirt"
+    Then I should end up on the search results page
+			
 @ctshirts
 Scenario: SMART-recs appear on CT Shirts product page
     Given I am on the ctshirts product page
     Then I should see SMART-recs
+    And the debug info should show at least 1 SMART-recs
 
 @ctshirts
 Scenario: SMART-rec links work on CT Shirts product pages
