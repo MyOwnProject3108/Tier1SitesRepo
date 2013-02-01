@@ -14,7 +14,7 @@
    end
    
    profile['extensions.tracker.debugenabled'] = true 
-   profile['extensions.tracker.sites'] = "demo.peerius.com.NEXT.ctshirts.co.uk.NEXT.lovehoney.co.uk.NEXT.wallis.co.uk.NEXT.cottontraders.co.uk.NEXT.topman.com"
+   profile['extensions.tracker.sites'] = "topshop.com.NEXT.demo.peerius.com.NEXT.ctshirts.co.uk.NEXT.lovehoney.co.uk.NEXT.wallis.co.uk.NEXT.cottontraders.co.uk.NEXT.topman.com"
    profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile
 #end

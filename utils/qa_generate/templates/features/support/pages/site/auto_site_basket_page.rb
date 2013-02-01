@@ -4,11 +4,11 @@
 #
 
 module <%= site["site_name"].capitalize %>
-    class HomePage
+    class BasketPage
       include PageObject
       include PeeriusHelper
       
-      URL = "<%= site["home_URL"] %>"
+      URL = "<%= site["basket_URL"] %>"
       direct_url URL            
     end  
 end

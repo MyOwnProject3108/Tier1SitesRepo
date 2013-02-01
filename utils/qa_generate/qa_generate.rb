@@ -5,7 +5,7 @@ YAML::ENGINE.yamler = 'syck'
 require 'trollop'
 require 'fileutils'
 
-QA_GENERATE_VERSION = "0.2"
+QA_GENERATE_VERSION = "0.1.3"
 
 # Specify commandline options
 opts = Trollop::options do
@@ -43,7 +43,7 @@ site_files.each do |site_filename|
   
   # Create an appropriate output directory if one is not supplied.
   output_path = opts[:outfile]
-  output_path = "output/" unless opts[:outfile]
+  output_path = "../../" unless opts[:outfile]
   
   template_files.each do |template_filename|
     if File.file?(template_filename)
@@ -51,7 +51,7 @@ site_files.each do |site_filename|
       FileUtils.mkpath File.dirname(output_filename)    
       output_file = File.open(output_filename, "w")
       template_file = File.open(template_filename, "r") { |f| f.read }
-      generator = ERB.new(template_file)
+      generator = ERB.new(template_file, 0, "<>")
       generator.filename = template_filename
       output_file << generator.result(binding)
     end    
