@@ -15,3 +15,6 @@ gem 'syntax'
 #gem 'activesupport'
 #gem 'activerecord-sqlserver-adapter'
 
+# Generator gems
+gem 'trollop'
+
