@@ -5,7 +5,7 @@ YAML::ENGINE.yamler = 'syck'
 require 'trollop'
 require 'fileutils'
 
-QA_GENERATE_VERSION = "0.1"
+QA_GENERATE_VERSION = "0.2"
 
 # Specify commandline options
 opts = Trollop::options do
