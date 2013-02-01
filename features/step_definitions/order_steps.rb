@@ -9,6 +9,8 @@ end
 
 When /^I click checkout$/ do
   @current_page.click_checkout_element.when_visible
- # @current_page.wait_until(10, 'Success')
   @current_page.click_checkout
 end
+
+
+
