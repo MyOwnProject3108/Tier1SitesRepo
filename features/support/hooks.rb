@@ -13,8 +13,21 @@
        profile['extensions.tracker.enabled'] = false
    end
    
-   profile['extensions.tracker.debugenabled'] = true 
-   profile['extensions.tracker.sites'] = "topshop.com.NEXT.demo.peerius.com.NEXT.ctshirts.co.uk.NEXT.lovehoney.co.uk.NEXT.wallis.co.uk.NEXT.cottontraders.co.uk.NEXT.topman.com"
+   profile['extensions.tracker.debugenabled'] = true
+   
+   # Build a list of sites that the tracker plugin will track
+   tracker_sites = ""
+   File.readlines("features/support/auto_sites.txt").each do |line| 
+     tracker_sites += ".NEXT." unless tracker_sites == ""
+     tracker_sites += line.chomp    
+   end
+   File.readlines("features/support/sites.txt").each do |line| 
+     tracker_sites += ".NEXT." unless tracker_sites == ""
+     tracker_sites += line.chomp    
+   end
+   
+   profile['extensions.tracker.sites'] = tracker_sites
+   
    profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile
 #end
@@ -24,5 +37,5 @@ Before('~@smartapi') do
 end
 
 at_exit do
-    browser.close
+    browser.close unless ENV["keepbrowseropen"]
 end

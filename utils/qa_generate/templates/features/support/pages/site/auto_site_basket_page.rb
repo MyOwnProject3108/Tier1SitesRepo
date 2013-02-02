@@ -8,7 +8,9 @@ module <%= site["site_name"].capitalize %>
       include PageObject
       include PeeriusHelper
       
-      URL = "<%= site["basket_URL"] %>"
-      direct_url URL            
+      URL = "<%= site["basket_page"]["URL"] %>"
+      direct_url URL
+      
+      link(:basket_checkout, <%= site["basket_page"]["basket_checkout_link"] %>)            
     end  
 end

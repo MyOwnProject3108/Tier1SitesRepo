@@ -1,8 +1,32 @@
 site_name: ctshirts
 pretty_name: CT Shirts
 has_recs: yes
-has_content: no
+has_content: yes
 has_ranking: no
 needs_SPR: yes
-home_URL: www.ctshirts.com 
-category_URL: www.ctshirts.com/category
+
+home_page:
+  URL: "www.ctshirts.com"
+  login_link: ':title => "Login"'
+
+product_page:
+  URL: "http://www.ctshirts.co.uk/men%27s-ties/men%27s-woven-silk-ties/Purcell-navy,-red-and-royal-double-stripe-woven-tie?q=peerius||TW838NAV|||||||||||||"	
+  add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
+
+category_page:
+  URL: "http://www.ctshirts.co.uk/mens-suits/mens-business-suits?q=peerius|||||||||||||||"
+
+basket_page:
+  URL: "http://www.ctshirts.co.uk/Basket.aspx" 
+
+login_page:
+  URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"
+  username_field: ':id=>"login_email"'
+  password_field: ':id=>"password"'  
+  login_link: ':id=>"login_submit"'
+
+searchresults_page:
+  URL: "http://www.ctshirts.co.uk/SearchNoResults.aspx?term=abc"
+
+checkout_page:
+  URL: "" 

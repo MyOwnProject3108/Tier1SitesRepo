@@ -27,12 +27,14 @@ When /^I go to the (.+)page$/ do |page|
 end
 
 When /^I click login$/ do
-	@current_page.login_click  
+	@current_page.login_link_element.click  
 end
 
 When /^I fill in my login details$/ do
    on_page(@site+'::LoginPage') do |page|
-        page.login_with("vinod.sathapathi@peerius.com","Pa55word")   
+    		page.username = "vinod.sathapathi@peerius.com"
+    		page.password = "Pa55word"
+    		page.login_submit   
     end 
 end
 

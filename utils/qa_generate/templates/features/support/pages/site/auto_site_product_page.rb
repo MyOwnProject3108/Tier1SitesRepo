@@ -8,7 +8,10 @@ module <%= site["site_name"].capitalize %>
       include PageObject
       include PeeriusHelper
       
-      URL = "<%= site["product_URL"] %>"
-      direct_url URL            
+      URL = "<%= site["product_page"]["URL"] %>"
+      direct_url URL
+      
+      button(:add_to_basket, <%= site["product_page"]["add_to_basket_button"] %>)
+      select_list(:size_select, :id => "product_size_full")            
     end  
 end

@@ -4,13 +4,11 @@
 #
 
 module <%= site["site_name"].capitalize %>
-    class HomePage
+    class SearchResultsPage
       include PageObject
       include PeeriusHelper
       
-      URL = "<%= site["home_page"]["URL"] %>"
-      direct_url URL
-      
-      link(:login_link, <%= site["home_page"]["login_link"] %>)            
+      URL = "<%= site["searchresults_page"]["URL"] %>"
+      direct_url URL            
     end  
 end
