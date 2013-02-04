@@ -3,7 +3,7 @@
 #    browser = Celerity::Browser.new
 #else
    require 'watir-webdriver'
-   profile = Selenium::WebDriver::Firefox::Profile.new
+   profile = Selenium::WebDriver::Firefox::Profile.from_name("QA")
    
    if FigNewton.base_url.include?("test") then
        profile['extensions.tracker.url'] = "//#{FigNewton.base_url}/tracker/peerius.page"

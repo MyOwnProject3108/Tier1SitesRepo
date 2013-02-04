@@ -48,7 +48,9 @@ Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
     end
 end
 
-
+Given /^I use the SPR key$/ do
+  @current_page.add_SPR
+end
 
 
 

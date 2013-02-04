@@ -6,7 +6,7 @@ has_ranking: no
 needs_SPR: yes
 
 home_page:
-  URL: "www.ctshirts.com"
+  URL: "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
   login_link: ':title => "Login"'
 
 product_page:

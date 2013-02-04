@@ -12,6 +12,7 @@ module <%= site["site_name"].capitalize %>
       direct_url URL
       
       button(:add_to_basket, <%= site["product_page"]["add_to_basket_button"] %>)
-      select_list(:size_select, :id => "product_size_full")            
+      select_list(:size_select, :class => "product_size_full")
+      link(:size_link, :class => "active")            
     end  
 end

@@ -5,7 +5,7 @@ module PeeriusHelper
     include PeeriusDebugInfo
       
       # Returns true if SMART-recs are present
-	  def smartRecsEnabled?
+	    def smartRecsEnabled?
           smart_recs_element.count > 0 
       end
       
@@ -32,6 +32,22 @@ module PeeriusHelper
       # Returns true if the page is actually a page of the expected type
       def valid?
           return page_identifier?
+      end
+      
+      def add_SPR
+        url_with_spr = self.current_url
+        
+        # Remove trailing slash from URL
+        url_with_spr.gsub(/\/$/, '')
+        
+        if url_with_spr.include?("?")
+          url_with_spr += "&SPR=1"
+        else
+          url_with_spr += "?SPR=1"
+        end          
+          
+        puts url_with_spr
+        navigate_to url_with_spr
       end
  
 end

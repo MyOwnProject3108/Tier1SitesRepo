@@ -3,14 +3,14 @@ pretty_name: Topshop
 has_recs: yes
 has_content: no
 has_ranking: no
-needs_SPR: false
+needs_SPR: true
 
 home_page:
   URL: "http://www.topshop.com/"
   login_link: ':title => "Login"'
 
 product_page:
-  URL: "http://www.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=9134142&langId=-1&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&pageSize=20"
+  URL: "http://www.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=8775006&langId=-1&sort_field=Relevance&categoryId=208568&parent_categoryId=208495&pageSize=20"
   add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
 
 category_page:
