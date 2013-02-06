@@ -3,7 +3,7 @@ When /^I purchase "(.*?)"$/ do |arg1|
 end
 
 When /^I add the current product to the basket$/ do
-  @current_page.size_select_element.options.first.click
+  @current_page.size_select_element.when_visible.options.first.click
   @current_page.add_to_basket_element.when_visible
   @current_page.add_to_basket
 end

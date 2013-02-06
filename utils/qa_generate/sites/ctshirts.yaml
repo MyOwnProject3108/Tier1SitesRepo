@@ -10,7 +10,7 @@ home_page:
   login_link: ':title => "Login"'
 
 product_page:
-  URL: "http://www.ctshirts.co.uk/men%27s-ties/men%27s-woven-silk-ties/Purcell-navy,-red-and-royal-double-stripe-woven-tie?q=peerius||TW838NAV|||||||||||||"	
+  URL: "http://www.ctshirts.co.uk/men%27s-ties/men%27s-woven-silk-ties/Purcell-navy,-red-and-royal-double-stripe-woven-tie?q=peerius||TW838NAV|||||||||||||"  
   add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
 
 category_page:
