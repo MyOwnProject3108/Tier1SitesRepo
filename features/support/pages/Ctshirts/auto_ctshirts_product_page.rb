@@ -8,7 +8,7 @@ module Ctshirts
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"
+      URL = "http://www.ctshirts.co.uk/men%27s-ties/men%27s-woven-silk-ties/Purcell-navy,-red-and-royal-double-stripe-woven-tie?q=peerius||TW838NAV|||||||||||||"
       direct_url URL
       
       button(:add_to_basket, :id=> "btn_add_2_shop_cart")

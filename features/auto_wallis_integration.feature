@@ -49,18 +49,11 @@ Scenario: wallis zero search recommendations are shown
     Given I am on the wallis homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And I should see at least 1 SMART-recs
+    Then the debug info should show at least 1 SMART-recs
 				
 
 @wallis
 Scenario: SMART-recs appear on wallis product page
     Given I am on the wallis product page
-    Then I should see SMART-recs
-    And the debug info should show at least 1 SMART-recs
-
-@wallis
-Scenario: SMART-rec links work on wallis product pages
-    Given I am on the wallis product page
-    And I click the first SMART-rec image link 
-    Then it should be tracked as a product page
+    Then the debug info should show at least 1 SMART-recs
 

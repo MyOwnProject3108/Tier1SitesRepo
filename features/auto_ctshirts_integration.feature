@@ -55,20 +55,13 @@ Scenario: CT Shirts zero search recommendations are shown
     Given I am on the ctshirts homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And I should see at least 1 SMART-recs
+    Then the debug info should show at least 1 SMART-recs
 				
 
 @ctshirts
 Scenario: SMART-recs appear on CT Shirts product page
     Given I am on the ctshirts product page
-    Then I should see SMART-recs
-    And the debug info should show at least 1 SMART-recs
-
-@ctshirts
-Scenario: SMART-rec links work on CT Shirts product pages
-    Given I am on the ctshirts product page
-    And I click the first SMART-rec image link 
-    Then it should be tracked as a product page
+    Then the debug info should show at least 1 SMART-recs
 
 #
 # SMART-content

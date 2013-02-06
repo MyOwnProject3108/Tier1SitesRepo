@@ -63,20 +63,13 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
     Given I am on the <%= site["site_name"] %> homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And I should see at least 1 SMART-recs
+    Then the debug info should show at least 1 SMART-recs
 				
 
 @<%= site["site_name"] %>
 Scenario: SMART-recs appear on <%= site["pretty_name"] %> product page
     Given I am on the <%= site["site_name"] %> product page
-    Then I should see SMART-recs
-    And the debug info should show at least 1 SMART-recs
-
-@<%= site["site_name"] %>
-Scenario: SMART-rec links work on <%= site["pretty_name"] %> product pages
-    Given I am on the <%= site["site_name"] %> product page
-    And I click the first SMART-rec image link 
-    Then it should be tracked as a product page
+    Then the debug info should show at least 1 SMART-recs
 <% end %>
 
 <% if site["has_content"] %>

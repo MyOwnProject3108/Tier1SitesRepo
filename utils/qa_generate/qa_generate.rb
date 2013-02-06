@@ -73,9 +73,9 @@ site_files.each do |site_filename|
    
   output_file = File.open(output_filename, sitelist_file_mode) do |sitelist|
     site_name = site["home_page"]["URL"]
-    site_name.gsub!(/https?:/,'')
+    site_name.gsub!(/https?:\/\//,'')
     site_name.gsub!(/www\./,'')
-    site_name.gsub!(/\//, '')
+    site_name.gsub!(/\/.*$/, '')
     sitelist.puts site["home_page"]["URL"] + "\n"
   end
   
