@@ -14,10 +14,10 @@ product_page:
   add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
 
 category_page:
-  URL: "http://www.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33056&storeId=12555&productId=8997440&langId=-1&sort_field=Relevance&categoryId=207300&parent_categoryId=207298&pageSize=20"
+  URL: "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33056&storeId=12555&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207300&parent_categoryId=207298&beginIndex=1&pageSize=20"
 
 basket_page:
-  URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555&krypto=bw2BpuZQvDIRSMcapRzCKaWwf9SE8axDf5gpFadKXxCKV0XCrslBPy45tX48BFSUoZle0W1EX9o8%0ADO%2F4DR8U3G8v0EVgPM2DKQgecqmgNDkfd6JBkNaBI%2FxsT%2FMsifHyMFDaERr1crZPdFmiDwh31WA4%0AZ9ueBBFF&ddkey=http:OrderCalculate" 
+  URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555" 
   basket_checkout_link: ':class => "btn_checkout chk_button_primary"'
 
 login_page:

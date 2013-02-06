@@ -39,7 +39,7 @@ Scenario: Topman checkout page is tracked correctly
 Scenario: Topman search results page is tracked correctly
     Given I am on the topman homepage
     When I search for "shirt"
-    Then I should end up on the search results page
+    Then it should be tracked as a search results page
 
 #
 # SMART-recs
@@ -48,7 +48,7 @@ Scenario: Topman search results page is tracked correctly
 Scenario: Topman zero search recommendations are shown
     Given I am on the topman homepage
     When I search for "dvd"
-    Then I should end up on the search results page
+    Then it should be tracked as a search results page
     And I should see at least 1 SMART-recs
 				
 
@@ -62,6 +62,5 @@ Scenario: SMART-recs appear on Topman product page
 Scenario: SMART-rec links work on Topman product pages
     Given I am on the topman product page
     And I click the first SMART-rec image link 
-    Then I should end up on a product page
-    And it should be tracked as a product page
+    Then it should be tracked as a product page
 

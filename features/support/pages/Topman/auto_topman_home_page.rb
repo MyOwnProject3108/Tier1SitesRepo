@@ -11,6 +11,7 @@ module Topman
       URL = "http://www.topman.com/"
       direct_url URL
       
-      link(:login_link, :title => "Login")            
+      link(:login_link, :title => "Login")
+	  text_field(:search, )
     end  
 end

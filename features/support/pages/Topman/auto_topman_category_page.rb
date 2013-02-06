@@ -8,7 +8,7 @@ module Topman
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33057&storeId=12556&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&beginIndex=1&pageSize=20&intcmpid=W_SUPERCAT_LEFTNAV_CLOTHING_UK_WK1_DRESSES"
+      URL = "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33056&storeId=12555&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207300&parent_categoryId=207298&beginIndex=1&pageSize=20"
       direct_url URL            
     end  
 end
