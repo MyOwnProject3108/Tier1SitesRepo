@@ -7,10 +7,10 @@ needs_SPR: yes
 
 home_page:
   URL: "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
-  login_link: ':title => "Login"'
+  login_link: ':href => "https://www.ctshirts.co.uk/AccountLogin.aspx"'
 
 product_page:
-  URL: "http://www.ctshirts.co.uk/men%27s-ties/men%27s-woven-silk-ties/Purcell-navy,-red-and-royal-double-stripe-woven-tie?q=peerius||TW838NAV|||||||||||||"	
+  URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
   add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
 
 category_page:
@@ -21,9 +21,9 @@ basket_page:
 
 login_page:
   URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"
-  username_field: ':id=>"login_email"'
-  password_field: ':id=>"password"'  
-  login_link: ':id=>"login_submit"'
+  username_field: ':id=>"ctl00_contentBody_email"'
+  password_field: ':id=>"ctl00_contentBody_password"'  
+  login_button: ':id=>"ctl00_contentBody_submit"'
 
 searchresults_page:
   URL: "http://www.ctshirts.co.uk/SearchNoResults.aspx?term=abc"

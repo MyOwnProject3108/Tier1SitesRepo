@@ -3,7 +3,7 @@ pretty_name: Topshop
 has_recs: yes
 has_content: no
 has_ranking: no
-needs_SPR: true
+needs_SPR: false
 
 home_page:
   URL: "http://www.topshop.com/"

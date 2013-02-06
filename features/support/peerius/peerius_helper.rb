@@ -41,12 +41,12 @@ module PeeriusHelper
         url_with_spr.gsub(/\/$/, '')
         
         if url_with_spr.include?("?")
-          url_with_spr += "&SPR=1"
+          url_with_spr += "&spr=1"
         else
-          url_with_spr += "?SPR=1"
+          url_with_spr += "?spr=1"
         end          
           
-        puts url_with_spr
+        #puts url_with_spr
         navigate_to url_with_spr
       end
  
