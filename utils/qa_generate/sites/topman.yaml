@@ -1,0 +1,34 @@
+site_name: topman
+pretty_name: Topman
+has_recs: yes
+has_content: no
+has_ranking: no
+needs_SPR: false
+
+home_page:
+  URL: "http://www.topman.com/"
+  login_link: ':title => "Login"'
+
+product_page:
+  URL: "http://www.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33056&storeId=12555&productId=8997440&langId=-1&sort_field=Relevance&categoryId=207300&parent_categoryId=207298&pageSize=20"
+  add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
+
+category_page:
+  URL: "http://www.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33056&storeId=12555&productId=8997440&langId=-1&sort_field=Relevance&categoryId=207300&parent_categoryId=207298&pageSize=20"
+
+basket_page:
+  URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555&krypto=bw2BpuZQvDIRSMcapRzCKaWwf9SE8axDf5gpFadKXxCKV0XCrslBPy45tX48BFSUoZle0W1EX9o8%0ADO%2F4DR8U3G8v0EVgPM2DKQgecqmgNDkfd6JBkNaBI%2FxsT%2FMsifHyMFDaERr1crZPdFmiDwh31WA4%0AZ9ueBBFF&ddkey=http:OrderCalculate" 
+  basket_checkout_link: ':class => "btn_checkout chk_button_primary"'
+
+login_page:
+  URL: "http://topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33056&storeId=12555"
+  username_field: ':id=>"login_email"'
+  password_field: ':id=>"password"'  
+  login_link: ':id=>"login_submit"'
+
+searchresults_page:
+  URL: "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12555&catalogId=33056&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=hsdg&x=0&y=0"
+  
+checkout_page:
+  URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderDisplay?langId=-1&catalogId=33056&storeId=12555&krypto=8F4rqMW1NIT2HrCzbTrqrqDR7yDlD1DPQ615%2FcCIvMFAtaBWSUJQ3orUXX0vDr8yynd7e5Em9po%2B%0Ab6G3FEJEzOaR93mGfy912FhaKRztz2NN9D5wzBx5ec2HWvPkFeLnmkMaee9jFu%2BvsylsnWfiP6q5%0AvW5CtGjzmbAf50K2rpCMIe1kbbGeSvrSav7sMoOxw824C%2FjYz3DoB844hs4fefI%2ByCJOs7lxDZRy%0AytXBve05uUXzhts8SgiRk9wSD5%2BhTnJAfC3Q9yQ1n5ZzzJum%2FKmA0JtJM%2FmHB0%2FKcOmj3lQ1lCmt%0ABOLHQukEAyU6GMRT%2BZMfVSm2ZT6aTHXis%2F3G6eel9L3bjwJI6v%2BQBLM0aObRZbCt55kMV%2Fppx3gD%0AYNaF8vx49ccwh1g%3D&ddkey=http:CatalogNavigationSearchResultCmd" 
+  
