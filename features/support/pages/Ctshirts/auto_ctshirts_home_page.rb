@@ -11,6 +11,7 @@ module Ctshirts
       URL = "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
       direct_url URL
       
-      link(:login_link, :href => "https://www.ctshirts.co.uk/AccountLogin.aspx")            
+      link(:login_link, :href => "https://www.ctshirts.co.uk/AccountLogin.aspx")
+	  text_field(:search, :id => "search_term")
     end  
 end

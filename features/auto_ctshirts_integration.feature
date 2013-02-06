@@ -45,7 +45,7 @@ Scenario: CT Shirts checkout page is tracked correctly
 Scenario: CT Shirts search results page is tracked correctly
     Given I am on the ctshirts homepage
     When I search for "shirt"
-    Then I should end up on the search results page
+    Then it should be tracked as a search results page
 
 #
 # SMART-recs
@@ -54,7 +54,7 @@ Scenario: CT Shirts search results page is tracked correctly
 Scenario: CT Shirts zero search recommendations are shown
     Given I am on the ctshirts homepage
     When I search for "dvd"
-    Then I should end up on the search results page
+    Then it should be tracked as a search results page
     And I should see at least 1 SMART-recs
 				
 
@@ -68,8 +68,7 @@ Scenario: SMART-recs appear on CT Shirts product page
 Scenario: SMART-rec links work on CT Shirts product pages
     Given I am on the ctshirts product page
     And I click the first SMART-rec image link 
-    Then I should end up on a product page
-    And it should be tracked as a product page
+    Then it should be tracked as a product page
 
 #
 # SMART-content
@@ -91,5 +90,4 @@ Scenario: SMART-content links work
     Given I am on the ctshirts homepage
     When I use the "peerius" ctshirts promotion
     And I click the first SMART-content creative image
-    Then I should end up on a category page
-    And it should be tracked as a category page          
+    Then it should be tracked as a category page         

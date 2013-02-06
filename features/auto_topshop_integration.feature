@@ -39,7 +39,7 @@ Scenario: Topshop checkout page is tracked correctly
 Scenario: Topshop search results page is tracked correctly
     Given I am on the topshop homepage
     When I search for "shirt"
-    Then I should end up on the search results page
+    Then it should be tracked as a search results page
 
 #
 # SMART-recs
@@ -48,7 +48,7 @@ Scenario: Topshop search results page is tracked correctly
 Scenario: Topshop zero search recommendations are shown
     Given I am on the topshop homepage
     When I search for "dvd"
-    Then I should end up on the search results page
+    Then it should be tracked as a search results page
     And I should see at least 1 SMART-recs
 				
 
@@ -62,6 +62,5 @@ Scenario: SMART-recs appear on Topshop product page
 Scenario: SMART-rec links work on Topshop product pages
     Given I am on the topshop product page
     And I click the first SMART-rec image link 
-    Then I should end up on a product page
-    And it should be tracked as a product page
+    Then it should be tracked as a product page
 
