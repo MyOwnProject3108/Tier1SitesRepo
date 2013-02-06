@@ -13,3 +13,6 @@ When /^I click checkout$/ do
   @current_page.basket_checkout_element.when_visible
   @current_page.basket_checkout
 end
+
+
+
