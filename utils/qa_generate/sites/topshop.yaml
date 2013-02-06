@@ -8,6 +8,7 @@ needs_SPR: false
 home_page:
   URL: "http://www.topshop.com/"
   login_link: ':title => "Login"'
+  search_field: ':id => "inp_search_text"'
 
 product_page:
   URL: "http://www.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=8775006&langId=-1&sort_field=Relevance&categoryId=208568&parent_categoryId=208495&pageSize=20"
