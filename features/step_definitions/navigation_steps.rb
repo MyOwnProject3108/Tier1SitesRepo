@@ -34,7 +34,8 @@ When /^I fill in my login details$/ do
    on_page(@site+'::LoginPage') do |page|
     		page.username = "vinod.sathapathi@peerius.com"
     		page.password = "Pa55word"
-    		page.login_submit   
+        page.login_submit_link_element.click if @current_page.login_submit_link.exists?
+        page.login_submit_button_element.click if @current_page.login_submit_button.exists?   
     end 
 end
 
@@ -48,7 +49,9 @@ Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
     end
 end
 
-
+Given /^I use the SPR key$/ do
+  @current_page.add_SPR
+end
 
 
 

@@ -1,12 +1,11 @@
 module PeeriusDebugInfo
     include PageObject
-
-	td(:tracked_as_type, :id => 'trackInfo')   
-     
+   
     # Returns the tracking page type for the page
-	def	tracked_as
-		return tracked_as_type 
-	end
+	  def	tracked_as
+		  Watir::Wait.until { @browser.td(:id => 'trackInfo').visible? }
+      return @browser.td(:id => 'trackInfo').text 
+	  end
     
     # Returns an array of the recs that appear in the debug info 
     def debug_recs

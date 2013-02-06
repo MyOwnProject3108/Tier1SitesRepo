@@ -6,7 +6,7 @@ end
 
 When /^I search for a? ?"([^"]*)"$/ do |term|
 	@current_page.search = term
-	@current_page.search_text_field.respond_to?(:send_keys) ? @current_page.search_text_field.send_keys(:enter) : @browser.send_keys('{ENTER}')
+	@current_page.search_element.respond_to?(:send_keys) ? @current_page.search_element.send_keys(:enter) : @browser.send_keys('{ENTER}')
 end
 
 When /^I select the (.+) homepage from the results$/ do |homepage|
