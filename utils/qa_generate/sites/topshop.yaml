@@ -1,6 +1,5 @@
 site_name: topshop
 pretty_name: Topshop
-has_recs: yes
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -17,7 +16,7 @@ home_page:
 
 product_page:
   URL: "http://www.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=8775006&langId=-1&sort_field=Relevance&categoryId=208568&parent_categoryId=208495&pageSize=20"
-  expected_recs: 0
+  expected_recs: 1
   add_to_basket_button: ["button", ':class=> "btn_add_2_shop_cart"']
 
 category_page:
@@ -26,7 +25,7 @@ category_page:
   
 basket_page:
   URL: "https://www.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate" 
-  expected_recs: 0
+  expected_recs: 7
   basket_checkout: ["link", ':class => "btn_checkout"'] 
 
 login_page:
@@ -39,6 +38,7 @@ login_page:
 searchresults_page:
   URL: "http://www.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12556&catalogId=33057&beginIndex=1&viewAllFlag=false&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
   expected_recs: 0
+  zerosearch_recs: 1
   
 checkout_page:
   URL: ""

@@ -1,4 +1,4 @@
-live: FIG_NEWTON_FILE=pt.yml --no-source --color --format pretty --format html --out tests_liv.html 
+live: FIG_NEWTON_FILE=pt.yml --no-source --color --format pretty --format html --out tests_live.html 
 test1: FIG_NEWTON_FILE=test1.yml --no-source --color --format pretty --format html --out tests_test1.html
 default: FIG_NEWTON_FILE=uat.yml --tags ~@internal --no-source --color --format pretty --format html --out tests_uat.html 
 

@@ -1,6 +1,5 @@
 site_name: ctshirts
 pretty_name: CT Shirts
-has_recs: yes
 has_content: no
 has_ranking: no
 needs_SPR: yes
@@ -17,7 +16,7 @@ home_page:
 
 product_page:
   URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
-  expected_recs: 0
+  expected_recs: 7
   add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
 
 category_page:
@@ -26,7 +25,7 @@ category_page:
 
 basket_page:
   URL: "http://www.ctshirts.co.uk/Basket.aspx"
-  expected_recs: 0
+  expected_recs: 1
   basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
 
 login_page:
@@ -39,6 +38,7 @@ login_page:
 searchresults_page:
   URL: "http://www.ctshirts.co.uk/SearchNoResults.aspx?term=abc"
   expected_recs: 0
+  zerosearch_recs: 1
 
 checkout_page:
   URL: ""

@@ -1,4 +1,4 @@
-Feature: SMART-API tracking
+Feature: SMART-API: tracking
   In order to get customer behaviour insights
   As a website owner
   I want to use an API to track user behaviour using Peerius

@@ -1,4 +1,4 @@
-Feature: SMART-recs
+Feature: SMART-API: SMART-recs
   In order to get the most out of my shopping experience
   As a website user
   I want to see personalised recommendations

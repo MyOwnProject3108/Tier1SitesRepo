@@ -1,6 +1,5 @@
 site_name: lovehoney
 pretty_name: Lovehoney
-has_recs: yes
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -17,7 +16,7 @@ home_page:
 
 product_page:
   URL: "http://www.lovehoney.co.uk/product.cfm?p=2869"
-  expected_recs: 0
+  expected_recs: 4
   add_to_basket_button: ["button", ':class=> "std-arrow"']
 
 category_page:
@@ -39,6 +38,7 @@ login_page:
 searchresults_page:
   URL: "http://search.lovehoney.co.uk/"
   expected_recs: 0
+  zerosearch_recs: 0
   
 checkout_page:
   URL: ""

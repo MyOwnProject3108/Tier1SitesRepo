@@ -28,16 +28,19 @@ Scenario: <%= site["pretty_name"] %> home page is tracked correctly
 Scenario: <%= site["pretty_name"] %> category page is tracked correctly
     Given I am on the <%= site["site_name"] %> category page
     Then it should be tracked as a Category page
+    <%= expect_recs_rule(site["category_page"]["expected_recs"]) %>
 
 @<%= site["site_name"] %>
 Scenario: <%= site["pretty_name"] %> product page is tracked correctly
     Given I am on the <%= site["site_name"] %> product page
     Then it should be tracked as a product page
+    <%= expect_recs_rule(site["product_page"]["expected_recs"]) %>
     
 @<%= site["site_name"] %>
 Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
     Given I am on the <%= site["site_name"] %> basket page
-    Then it should be tracked as a basket page    
+    Then it should be tracked as a basket page
+    <%= expect_recs_rule(site["basket_page"]["expected_recs"]) %>    
         
 @<%= site["site_name"] %>
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
@@ -49,29 +52,25 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 	And I go to the basket page
 	And I click checkout
 	Then it should be tracked as a Checkout page
+	<%= expect_recs_rule(site["checkout_page"]["expected_recs"]) %>
   
 @<%= site["site_name"] %> 
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
     Given I am on the <%= site["site_name"] %> homepage
     When I search for "<%= site["valid_search_term"] %>"
     Then it should be tracked as a search results page
+    <%= expect_recs_rule(site["searchresults_page"]["expected_recs"]) %>
 
-<% if site["has_recs"] %>
+<% if site["searchresults_page"]["zerosearch_recs"] > 0 %>
 #
 # SMART-recs
 # 		
-@<%= site["site_name"] %> 
+@<%= site["site_name"] %> @zerosearch
 Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
     Given I am on the <%= site["site_name"] %> homepage
     When I search for "<%= site["zero_search_term"] %>"
     Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
-				
-
-@<%= site["site_name"] %>
-Scenario: SMART-recs appear on <%= site["pretty_name"] %> product page
-    Given I am on the <%= site["site_name"] %> product page
-    Then the debug info should show at least 1 SMART-recs
+    <%= expect_recs_rule(site["searchresults_page"]["zerosearch_recs"]) %>
 <% end %>
 
 <% if site["has_content"] %>
