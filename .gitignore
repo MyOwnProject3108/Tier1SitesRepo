@@ -3,3 +3,4 @@ smart_api.log
 *.html
 Gemfile.lock
 .rvmrc
+*.orig

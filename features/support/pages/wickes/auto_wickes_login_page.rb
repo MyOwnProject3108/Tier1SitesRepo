@@ -12,9 +12,8 @@ module Wickes
       direct_url URL
       
   	  text_field(:username, :id=>"login_email")
-      text_field(:password,:id=>"password")  
-  	  link(:login_submit_link, :id=>"login_submit")
-      button(:login_submit_button, :id=>"login_submit")            
+      text_field(:password, :id=>"password")  
+  	  link(:login_submit, :id=>"login_submit")           
     end  
 end
 

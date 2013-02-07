@@ -34,7 +34,7 @@ Scenario: Wickes basket page is tracked correctly
 Scenario: Wickes checkout page is tracked correctly
 	Given I am on the wickes home page
 	When I click login
-	And I fill in my login details
+	And I login as "webtest@mailinator.com" using password "webtest"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -44,7 +44,7 @@ Scenario: Wickes checkout page is tracked correctly
 @wickes 
 Scenario: Wickes search results page is tracked correctly
     Given I am on the wickes homepage
-    When I search for "shirt"
+    When I search for "ladder"
     Then it should be tracked as a search results page
 
 #
@@ -55,7 +55,7 @@ Scenario: Wickes zero search recommendations are shown
     Given I am on the wickes homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    Then the debug info should show at least 1 SMART-recs
+    And the debug info should show at least 1 SMART-recs
 				
 
 @wickes

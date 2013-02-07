@@ -11,6 +11,6 @@ module Wickes
       URL = "https://www.wickes.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate"
       direct_url URL
       
-      link(:basket_checkout, :class => "btn_checkout chk_button_primary")            
+      button(:basket_checkout, :id => "ctl00_contentBody_submit")            
     end  
 end

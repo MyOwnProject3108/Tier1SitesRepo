@@ -4,28 +4,32 @@ has_recs: yes
 has_content: no
 has_ranking: no
 needs_SPR: true
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: dvd
+valid_search_term: ladder
 
 home_page:
   URL: "http://www.wickes.co.uk/"
-  login_link: ':title => "Login"'
-  search_field: ':id => "sli_search_1"'
+  login_link: ["link", ':title => "Login"']
+  search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
   URL: "http://www.wickes.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=9134142&langId=-1&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&pageSize=20"
-  add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
   URL: "http://www.wickes.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33057&storeId=12556&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&beginIndex=1&pageSize=20&intcmpid=W_SUPERCAT_LEFTNAV_CLOTHING_UK_WK1_DRESSES"
 
 basket_page:
   URL: "https://www.wickes.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate" 
-  basket_checkout_link: ':class => "btn_checkout chk_button_primary"'
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
 
 login_page:
   URL: "https://www.wickes.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33057&storeId=12556&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
-  username_field: ':id=>"login_email"'
-  password_field: ':id=>"password"'  
-  login_link: ':id=>"login_submit"'
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
   URL: "http://www.wickes.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12556&catalogId=33057&beginIndex=1&viewAllFlag=false&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"

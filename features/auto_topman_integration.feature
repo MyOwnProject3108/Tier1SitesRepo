@@ -28,7 +28,7 @@ Scenario: Topman basket page is tracked correctly
 Scenario: Topman checkout page is tracked correctly
 	Given I am on the topman home page
 	When I click login
-	And I fill in my login details
+	And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -38,7 +38,7 @@ Scenario: Topman checkout page is tracked correctly
 @topman 
 Scenario: Topman search results page is tracked correctly
     Given I am on the topman homepage
-    When I search for "shirt"
+    When I search for "shirts"
     Then it should be tracked as a search results page
 
 #
@@ -49,7 +49,7 @@ Scenario: Topman zero search recommendations are shown
     Given I am on the topman homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    Then the debug info should show at least 1 SMART-recs
+    And the debug info should show at least 1 SMART-recs
 				
 
 @topman
