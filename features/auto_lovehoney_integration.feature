@@ -47,13 +47,4 @@ Scenario: Lovehoney search results page is tracked correctly
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 
-#
-# SMART-recs
-# 		
-@lovehoney @zerosearch
-Scenario: Lovehoney zero search recommendations are shown
-    Given I am on the lovehoney homepage
-    When I search for "nappies"
-    Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
 
