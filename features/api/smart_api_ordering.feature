@@ -3,11 +3,12 @@ Feature: SMART-API: ordering
   As a website owner
   I want to use an API to track user behaviour using Peerius
   
-@smartapi   
+@smartapi @internal   
 Scenario: I can order multiple products
-	Given I am using SMART-API v1_1 to access livedemoshop
-	When I order product "ABC-123"
-	When I order product "ABC-456"
-	When I order product "ABC-777"
-	When I order product "HITHERE-TEST"
+	Given I am using SMART-API v1_1 to access topshop
+	And I am using client token 89hyuaa2da3a
+	When I order product "TS02Y21DIND"
+	When I order product "TS02Z31DBLK"
+	When I order product "TS23Y18DGYM"
+	When I order product "TS02Y08CWNE"
 	Then I should get an OK status back
