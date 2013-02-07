@@ -11,29 +11,36 @@ valid_search_term: shirts
 
 home_page:
   URL: "http://www.wallis.co.uk/"
+  expected_recs: 0
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
   URL: "http://www.wallis.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33058&storeId=12557&productId=7588619&langId=-1&sort_field=Relevance&categoryId=209668&parent_categoryId=209327&pageSize=20"
+  expected_recs: 0
   add_to_basket_button: ["button", ':class=> "btn_add_2_shop_cart"']
 
 category_page:
   URL: "http://www.wallis.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33058&storeId=12557&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=209327&beginIndex=1&pageSize=20"
-
+  expected_recs: 0
+  
 basket_page:
   URL: "https://www.wallis.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33058&langId=-1&storeId=12557&ddkey=http:OrderCalculate" 
+  expected_recs: 0
   basket_checkout: ["link", ':class => "btn_checkout"']
 
 login_page:
   URL: "https://www.wallis.co.uk/webapp/wcs/stores/servlet/LogonForm?langId=-1&catalogId=33058&storeId=12557&krypto=xf5mdtz4WJO6XV9y38jM6yJBogGY%2F3Si%2FpWHbCSm%2Bb%2FO0EFSpR%2Brvd07kvXjq5PVMJAnlXQ4nwfn%0AjQQyf9FbWFzt8FvkRxltJ%2BaoavNdUBkevETKC9DXrYxEMUEe0RxwJUpC6%2FUFaKQqu%2BHPM63mj2yE%0AK65QmTwe74oday0LRNBUaHG3XlrluWVuYRpd9YSBhP2M89iasBgpQPtw5n3iVuh1KKyxesNPzzJD%0AuvH%2F%2BcOJ%2B8vIO2G4BKEAmHsPbKC%2BeRUwuR1JJrGk7UYayLuL%2BHAnDJRzX7bHcfXt62MiYyAQcTT9%0AM3SRSp9mzopxt0go1JHG%2BA9ZQmwyUR4X1XSrTLCJ%2FMOAk5ODo4MLh9DOZ8bZ0%2FsG14IrWdFwBdA2%0AXHQoudCZ1sXzgRCTS63STuJ1lcZQge19OiTy0DwNA2lhcYr7e9M81GFMa1M%2Bm0ovAKHeQ90YPHUe%0AYv7Y8ZcBtjnJuP8w%2FHPyTLcZ5hHsLbmnd5CX28d3pQoUuq29oIkhRoibdQPnOPZIB1H9YqElDOHS%0AGVe5SPP6G6mIxOi97E3O7ItYsZ3XEEdj77VLvHQ6Ucc3FOgAHZmxfjZnY%2FYmq8GQG8oIRl%2BtbYje%0AU8fApXr%2BIIVPLHAPge7NPMi6fAfiI9n%2Bk%2FJapOorKlaWet730UbCwMIV17V3mdMUnk6plN2Sgsw8%0ATJ9MHR2NHXeTEGsM09ke&ddkey=https:PreCheckout"
+  expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
   URL: "http://www.wallis.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12557&catalogId=33058&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dress&x=34&y=17"
+  expected_recs: 0
   
 checkout_page:
-  URL: "" 
+  URL: ""
+  expected_recs: 0 
   

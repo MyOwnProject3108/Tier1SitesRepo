@@ -8,7 +8,7 @@ module Wickes
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.wickes.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate"
+      URL = "http://www.wickes.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=wickes&log=22"
       direct_url URL
       
       button(:basket_checkout, :id => "ctl00_contentBody_submit")            

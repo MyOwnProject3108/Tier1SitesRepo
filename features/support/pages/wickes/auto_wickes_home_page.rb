@@ -10,7 +10,7 @@ module Wickes
       URL = "http://www.wickes.co.uk/"
       direct_url URL
       
-      link(:login_link, :title => "Login")
+      link(:login_link, :id => "Lustype_loginlink")
 	    text_field(:search, :id => "sli_search_1")
     end  
 end

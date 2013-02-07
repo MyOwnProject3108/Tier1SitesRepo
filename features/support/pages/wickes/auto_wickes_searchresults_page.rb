@@ -8,7 +8,7 @@ module Wickes
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.wickes.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12556&catalogId=33057&beginIndex=1&viewAllFlag=false&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+      URL = "http://search.wickes.co.uk/search#ts=ajax&method=and&w=bla&isort=score"
       direct_url URL            
     end  
 end

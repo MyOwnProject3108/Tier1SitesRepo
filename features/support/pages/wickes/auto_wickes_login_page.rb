@@ -8,7 +8,7 @@ module Wickes
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.wickes.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33057&storeId=12556&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
+      URL = "https://www.wickes.co.uk/bin/venda?ex=co_wizr-register&bsref=wickes"
       direct_url URL
       
   	  text_field(:username, :id=>"login_email")

@@ -8,9 +8,9 @@ module Wickes
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.wickes.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=9134142&langId=-1&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&pageSize=20"
+      URL = "http://www.wickes.co.uk/rimini-round-basin-500mm+full-pedestal/invt/220725/"
       direct_url URL
       
-      button(:add_to_basket, :id=> "btn_add_2_shop_cart")          
+      button(:add_to_basket, :id=> "bt_prodtail")          
     end  
 end

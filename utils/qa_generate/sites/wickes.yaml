@@ -3,37 +3,44 @@ pretty_name: Wickes
 has_recs: yes
 has_content: no
 has_ranking: no
-needs_SPR: true
+needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
-zero_search_term: dvd
+zero_search_term: nappies
 valid_search_term: ladder
 
 home_page:
   URL: "http://www.wickes.co.uk/"
-  login_link: ["link", ':title => "Login"']
+  expected_recs: 0 
+  login_link: ["link", ':id => "Lustype_loginlink"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
-  URL: "http://www.wickes.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=9134142&langId=-1&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&pageSize=20"
-  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  URL: "http://www.wickes.co.uk/rimini-round-basin-500mm+full-pedestal/invt/220725/"
+  expected_recs: 0 
+  add_to_basket_button: ["button", ':id=> "bt_prodtail"']
 
 category_page:
-  URL: "http://www.wickes.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33057&storeId=12556&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&beginIndex=1&pageSize=20&intcmpid=W_SUPERCAT_LEFTNAV_CLOTHING_UK_WK1_DRESSES"
+  URL: "http://www.wickes.co.uk/exterior-french-doors/solid-oak-french-doors/icat/solidoakfrenchdoors/"
+  expected_recs: 0 
 
 basket_page:
-  URL: "https://www.wickes.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate" 
+  URL: "http://www.wickes.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=wickes&log=22"
+  expected_recs: 0  
   basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
 
 login_page:
-  URL: "https://www.wickes.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33057&storeId=12556&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
+  URL: "https://www.wickes.co.uk/bin/venda?ex=co_wizr-register&bsref=wickes"
+  expected_recs: 0 
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
-  URL: "http://www.wickes.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12556&catalogId=33057&beginIndex=1&viewAllFlag=false&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  URL: "http://search.wickes.co.uk/search#ts=ajax&method=and&w=bla&isort=score"
+  expected_recs: 0
   
 checkout_page:
-  URL: "" 
+  URL: ""
+  expected_recs: 0  
   
