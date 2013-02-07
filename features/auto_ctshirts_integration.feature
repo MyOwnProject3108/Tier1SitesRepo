@@ -44,7 +44,7 @@ Scenario: CT Shirts checkout page is tracked correctly
 @ctshirts 
 Scenario: CT Shirts search results page is tracked correctly
     Given I am on the ctshirts homepage
-    When I search for "shirt"
+    When I search for "shirts"
     Then it should be tracked as a search results page
 
 #

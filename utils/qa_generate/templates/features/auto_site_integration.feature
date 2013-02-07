@@ -51,7 +51,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 @<%= site["site_name"] %> 
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
     Given I am on the <%= site["site_name"] %> homepage
-    When I search for "shirt"
+    When I search for "<%= site["valid_search_term"] %>"
     Then it should be tracked as a search results page
 
 <% if site["has_recs"] %>
@@ -61,7 +61,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 @<%= site["site_name"] %> 
 Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
     Given I am on the <%= site["site_name"] %> homepage
-    When I search for "dvd"
+    When I search for "<%= site["zero_search_term"] %>"
     Then it should be tracked as a search results page
     And the debug info should show at least 1 SMART-recs
 				

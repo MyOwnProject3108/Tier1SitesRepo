@@ -38,7 +38,7 @@ Scenario: Topman checkout page is tracked correctly
 @topman 
 Scenario: Topman search results page is tracked correctly
     Given I am on the topman homepage
-    When I search for "shirt"
+    When I search for "shirts"
     Then it should be tracked as a search results page
 
 #

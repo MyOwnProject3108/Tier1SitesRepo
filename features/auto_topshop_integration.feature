@@ -38,7 +38,7 @@ Scenario: Topshop checkout page is tracked correctly
 @topshop 
 Scenario: Topshop search results page is tracked correctly
     Given I am on the topshop homepage
-    When I search for "shirt"
+    When I search for "shirts"
     Then it should be tracked as a search results page
 
 #

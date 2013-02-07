@@ -12,7 +12,7 @@ module Wallis
       direct_url URL
       
   	  text_field(:username, :id=>"login_email")
-      text_field(:password,:id=>"password")  
+      text_field(:password, :id=>"password")  
   	  link(:login_submit, :id=>"login_submit")           
     end  
 end

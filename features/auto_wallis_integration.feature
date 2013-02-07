@@ -38,7 +38,7 @@ Scenario: Wallis checkout page is tracked correctly
 @wallis 
 Scenario: Wallis search results page is tracked correctly
     Given I am on the wallis homepage
-    When I search for "shirt"
+    When I search for "shirts"
     Then it should be tracked as a search results page
 
 #

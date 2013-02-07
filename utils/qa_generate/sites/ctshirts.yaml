@@ -6,11 +6,13 @@ has_ranking: no
 needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
+zero_search_term: dvd
+valid_search_term: shirts
 
 home_page:
   URL: "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
-  login_link: ':href => "https://www.ctshirts.co.uk/AccountLogin.aspx"'
-  search_field: ':id => "search_term"'
+  login_link: ["link", ':href=> "https://www.ctshirts.co.uk/AccountLogin.aspx"']
+  search_field: ["text_field", ':id => "search_term"']
 
 product_page:
   URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
@@ -25,8 +27,8 @@ basket_page:
 
 login_page:
   URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"
-  username_field: ':id=>"ctl00_contentBody_email"'
-  password_field: ':id=>"ctl00_contentBody_password"'  
+  username_field: ["text_field", ':id=>"ctl00_contentBody_email"']
+  password_field: ["text_field", ':id=>"ctl00_contentBody_password"']  
   login_submit: ["button", ':id=>"ctl00_contentBody_submit"']
 
 searchresults_page:
