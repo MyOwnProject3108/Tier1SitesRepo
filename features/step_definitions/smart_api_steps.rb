@@ -75,6 +75,23 @@ When /^I track an order page$/ do
     @api.track
 end
 
+When /^I order product "(.+)"$/ do |product_id|
+   @api.json_type = 'order'
+    items = [
+        {"refCode" => product_id, "qty" => 1, "price" => 10.00},
+    ]
+    @api.json_order = {
+        "orderNo" => "API-#{product_id}-#{Time.now.to_i}",
+        "items" => items, 
+        "currency" => "GBP",
+        "subtotal" => 10.00,
+        "shipping" => 0.00,
+        "total" => 10.00
+    }
+    @api.track
+end
+
+
 When /^I track a search results page$/ do
    @api.json_type = 'searchresults'
    @api.json_searchResults = {"term" => "handbags", "results" => []}
