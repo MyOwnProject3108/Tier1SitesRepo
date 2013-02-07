@@ -34,7 +34,7 @@ Scenario: CT Shirts basket page is tracked correctly
 Scenario: CT Shirts checkout page is tracked correctly
 	Given I am on the ctshirts home page
 	When I click login
-	And I fill in my login details
+	And I login as "webtest@mailinator.com" using password "webtest"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -55,39 +55,11 @@ Scenario: CT Shirts zero search recommendations are shown
     Given I am on the ctshirts homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And I should see at least 1 SMART-recs
+    And the debug info should show at least 1 SMART-recs
 				
 
 @ctshirts
 Scenario: SMART-recs appear on CT Shirts product page
     Given I am on the ctshirts product page
-    Then I should see SMART-recs
-    And the debug info should show at least 1 SMART-recs
+    Then the debug info should show at least 1 SMART-recs
 
-@ctshirts
-Scenario: SMART-rec links work on CT Shirts product pages
-    Given I am on the ctshirts product page
-    And I click the first SMART-rec image link 
-    Then it should be tracked as a product page
-
-#
-# SMART-content
-#    
-@ctshirts
-Scenario: Content is displayed when supported promotion is used
-    Given I am on the ctshirts homepage
-    When I use the "peerius" ctshirts promotion
-    Then I should see at least 6 items of SMART-content
-
-@ctshirts
-Scenario: Content is not displayed when protected promotion is used
-    Given I am on the ctshirts homepage
-    When I use the "myvc" ctshirts promotion
-    Then I should see no SMART-content
-
-@ctshirts
-Scenario: SMART-content links work
-    Given I am on the ctshirts homepage
-    When I use the "peerius" ctshirts promotion
-    And I click the first SMART-content creative image
-    Then it should be tracked as a category page         

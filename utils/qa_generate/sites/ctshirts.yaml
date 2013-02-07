@@ -1,9 +1,11 @@
 site_name: ctshirts
 pretty_name: CT Shirts
 has_recs: yes
-has_content: yes
+has_content: no
 has_ranking: no
 needs_SPR: yes
+username: webtest@mailinator.com
+password: webtest
 
 home_page:
   URL: "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
@@ -12,19 +14,20 @@ home_page:
 
 product_page:
   URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
-  add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
+  add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
 
 category_page:
   URL: "http://www.ctshirts.co.uk/mens-suits/mens-business-suits?q=peerius|||||||||||||||"
 
 basket_page:
-  URL: "http://www.ctshirts.co.uk/Basket.aspx" 
+  URL: "http://www.ctshirts.co.uk/Basket.aspx"
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
 
 login_page:
   URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"
   username_field: ':id=>"ctl00_contentBody_email"'
   password_field: ':id=>"ctl00_contentBody_password"'  
-  login_button: ':id=>"ctl00_contentBody_submit"'
+  login_submit: ["button", ':id=>"ctl00_contentBody_submit"']
 
 searchresults_page:
   URL: "http://www.ctshirts.co.uk/SearchNoResults.aspx?term=abc"

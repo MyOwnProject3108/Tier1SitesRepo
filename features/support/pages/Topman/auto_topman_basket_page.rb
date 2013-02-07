@@ -11,6 +11,6 @@ module Topman
       URL = "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555"
       direct_url URL
       
-      link(:basket_checkout, :class => "btn_checkout chk_button_primary")            
+      link(:basket_checkout, :class => "btn_checkout")            
     end  
 end

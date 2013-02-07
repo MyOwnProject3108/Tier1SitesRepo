@@ -12,6 +12,6 @@ module Topman
       direct_url URL
       
       link(:login_link, :title => "Login")
-	  text_field(:search, )
+	    text_field(:search, )
     end  
 end

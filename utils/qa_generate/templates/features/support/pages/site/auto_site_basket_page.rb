@@ -11,6 +11,6 @@ module <%= site["site_name"].capitalize %>
       URL = "<%= site["basket_page"]["URL"] %>"
       direct_url URL
       
-      link(:basket_checkout, <%= site["basket_page"]["basket_checkout_link"] %>)            
+      <%= site["basket_page"]["basket_checkout"][0] %>(:basket_checkout, <%= site["basket_page"]["basket_checkout"][1] %>)            
     end  
 end

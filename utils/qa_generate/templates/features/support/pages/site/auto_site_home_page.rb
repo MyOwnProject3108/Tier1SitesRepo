@@ -12,6 +12,6 @@ module <%= site["site_name"].capitalize %>
       direct_url URL
       
       link(:login_link, <%= site["home_page"]["login_link"] %>)
-	  text_field(:search, <%= site["home_page"]["search_field"] %>)
+	    text_field(:search, <%= site["home_page"]["search_field"] %>)
     end  
 end

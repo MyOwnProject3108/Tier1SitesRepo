@@ -11,8 +11,6 @@ module Ctshirts
       URL = "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"
       direct_url URL
       
-      button(:add_to_basket, :id=> "btn_add_2_shop_cart")
-      select_list(:size_select, :class => "product_size_full")
-      link(:size_link, :class => "active")            
+      button(:add_to_basket, :id=> "ctl00_contentBody_ctl02_submit")          
     end  
 end

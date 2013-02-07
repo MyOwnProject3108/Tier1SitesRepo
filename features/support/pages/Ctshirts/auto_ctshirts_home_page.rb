@@ -12,6 +12,6 @@ module Ctshirts
       direct_url URL
       
       link(:login_link, :href => "https://www.ctshirts.co.uk/AccountLogin.aspx")
-	  text_field(:search, :id => "search_term")
+	    text_field(:search, :id => "search_term")
     end  
 end

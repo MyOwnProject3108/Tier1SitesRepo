@@ -8,9 +8,9 @@ module Wallis
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.wallis.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33058&langId=-1&storeId=12557&krypto=bw2BpuZQvDIRSMcapRzCKaWwf9SE8axDf5gpFadKXxCKV0XCrslBPy45tX48BFSUoZle0W1EX9o8%0ADO%2F4DR8U3G8v0EVgPM2DKQgecqmgNDkfd6JBkNaBI%2FxsT%2FMsifHyMFDaERr1crYVJpVgNqokTMFk%0Axwuti6HW&ddkey=http:OrderCalculate"
+      URL = "https://www.wallis.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33058&langId=-1&storeId=12557&ddkey=http:OrderCalculate"
       direct_url URL
       
-      link(:basket_checkout, :class => "btn_checkout chk_button_primary")            
+      link(:basket_checkout, :class => "btn_checkout")            
     end  
 end

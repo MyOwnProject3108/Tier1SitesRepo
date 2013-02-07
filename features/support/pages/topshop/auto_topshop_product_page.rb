@@ -11,8 +11,6 @@ module Topshop
       URL = "http://www.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=8775006&langId=-1&sort_field=Relevance&categoryId=208568&parent_categoryId=208495&pageSize=20"
       direct_url URL
       
-      button(:add_to_basket, :id=> "btn_add_2_shop_cart")
-      select_list(:size_select, :class => "product_size_full")
-      link(:size_link, :class => "active")            
+      button(:add_to_basket, :class=> "btn_add_2_shop_cart")          
     end  
 end

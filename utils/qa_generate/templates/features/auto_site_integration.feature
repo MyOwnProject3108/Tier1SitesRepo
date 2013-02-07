@@ -41,7 +41,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 	Given I am on the <%= site["site_name"] %> home page
 	When I click login
-	And I fill in my login details
+	And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -63,42 +63,22 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
     Given I am on the <%= site["site_name"] %> homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And I should see at least 1 SMART-recs
+    And the debug info should show at least 1 SMART-recs
 				
 
 @<%= site["site_name"] %>
 Scenario: SMART-recs appear on <%= site["pretty_name"] %> product page
     Given I am on the <%= site["site_name"] %> product page
-    Then I should see SMART-recs
-    And the debug info should show at least 1 SMART-recs
-
-@<%= site["site_name"] %>
-Scenario: SMART-rec links work on <%= site["pretty_name"] %> product pages
-    Given I am on the <%= site["site_name"] %> product page
-    And I click the first SMART-rec image link 
-    Then it should be tracked as a product page
+    Then the debug info should show at least 1 SMART-recs
 <% end %>
 
 <% if site["has_content"] %>
 #
 # SMART-content
-#    
+#
 @ctshirts
-Scenario: Content is displayed when supported promotion is used
-    Given I am on the ctshirts homepage
-    When I use the "peerius" ctshirts promotion
-    Then I should see at least 6 items of SMART-content
-
-@ctshirts
-Scenario: Content is not displayed when protected promotion is used
-    Given I am on the ctshirts homepage
-    When I use the "myvc" ctshirts promotion
-    Then I should see no SMART-content
-
-@ctshirts
-Scenario: SMART-content links work
-    Given I am on the ctshirts homepage
-    When I use the "peerius" ctshirts promotion
+Scenario: SMART-content links work on on <%= site["pretty_name"] %> homepage
+    Given I am on the <%= site["site_name"] %> homepage
     And I click the first SMART-content creative image
     Then it should be tracked as a category page         
 <% end %>

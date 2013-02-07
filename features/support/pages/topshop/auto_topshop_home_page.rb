@@ -12,6 +12,6 @@ module Topshop
       direct_url URL
       
       link(:login_link, :title => "Login")
-	  text_field(:search, :id => "inp_search_text")
+	    text_field(:search, :id => "inp_search_text")
     end  
 end

@@ -11,6 +11,6 @@ module Topshop
       URL = "https://www.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate"
       direct_url URL
       
-      link(:basket_checkout, :class => "btn_checkout chk_button_primary")            
+      link(:basket_checkout, :class => "btn_checkout")            
     end  
 end

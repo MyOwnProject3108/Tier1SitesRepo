@@ -28,7 +28,7 @@ Scenario: Topshop basket page is tracked correctly
 Scenario: Topshop checkout page is tracked correctly
 	Given I am on the topshop home page
 	When I click login
-	And I fill in my login details
+	And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -49,18 +49,11 @@ Scenario: Topshop zero search recommendations are shown
     Given I am on the topshop homepage
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And I should see at least 1 SMART-recs
+    And the debug info should show at least 1 SMART-recs
 				
 
 @topshop
 Scenario: SMART-recs appear on Topshop product page
     Given I am on the topshop product page
-    Then I should see SMART-recs
-    And the debug info should show at least 1 SMART-recs
-
-@topshop
-Scenario: SMART-rec links work on Topshop product pages
-    Given I am on the topshop product page
-    And I click the first SMART-rec image link 
-    Then it should be tracked as a product page
+    Then the debug info should show at least 1 SMART-recs
 

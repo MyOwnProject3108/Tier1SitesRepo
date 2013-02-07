@@ -13,8 +13,7 @@ module Ctshirts
       
   	  text_field(:username, :id=>"ctl00_contentBody_email")
       text_field(:password,:id=>"ctl00_contentBody_password")  
-  	  link(:login_submit_link, )
-      button(:login_submit_button, )            
+  	  button(:login_submit, :id=>"ctl00_contentBody_submit")           
     end  
 end
 

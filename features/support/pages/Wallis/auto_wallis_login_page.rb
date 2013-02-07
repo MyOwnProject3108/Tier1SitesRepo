@@ -13,8 +13,7 @@ module Wallis
       
   	  text_field(:username, :id=>"login_email")
       text_field(:password,:id=>"password")  
-  	  link(:login_submit_link, :id=>"login_submit")
-      button(:login_submit_button, :id=>"login_submit")            
+  	  link(:login_submit, :id=>"login_submit")           
     end  
 end
 

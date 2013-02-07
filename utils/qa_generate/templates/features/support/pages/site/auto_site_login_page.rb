@@ -13,8 +13,7 @@ module <%= site["site_name"].capitalize %>
       
   	  text_field(:username, <%= site["login_page"]["username_field"] %>)
       text_field(:password,<%= site["login_page"]["password_field"] %>)  
-  	  link(:login_submit_link, <%= site["login_page"]["login_link"] %>)
-      button(:login_submit_button, <%= site["login_page"]["login_link"] %>)            
+  	  <%= site["login_page"]["login_submit"][0] %>(:login_submit, <%= site["login_page"]["login_submit"][1] %>)           
     end  
 end
 

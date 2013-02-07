@@ -11,6 +11,6 @@ module Ctshirts
       URL = "http://www.ctshirts.co.uk/Basket.aspx"
       direct_url URL
       
-      link(:basket_checkout, )            
+      button(:basket_checkout, :id => "ctl00_contentBody_submit")            
     end  
 end

@@ -30,12 +30,11 @@ When /^I click login$/ do
 	@current_page.login_link_element.click  
 end
 
-When /^I fill in my login details$/ do
+When /^I login as "(.+)" using password "(.+)"$/ do |username, password|
    on_page(@site+'::LoginPage') do |page|
-    		page.username = "vinod.sathapathi@peerius.com"
-    		page.password = "Pa55word"
-        page.login_submit_link_element.click if @current_page.login_submit_link.exists?
-        page.login_submit_button_element.click if @current_page.login_submit_button.exists?   
+    		page.username = username
+    		page.password = password
+        page.login_submit_element.click if @current_page.login_submit_element.exists?   
     end 
 end
 
