@@ -1,4 +1,4 @@
-Feature: SMART-content
+Feature: SMART-API: SMART-content
   In order to get the most out of my shopping experience
   As a website user
   I want to see home page content tailored to me

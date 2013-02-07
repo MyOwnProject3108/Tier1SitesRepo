@@ -7,3 +7,7 @@ end
 Then /^the debug info should show at least (\d+) SMART\-recs?$/ do |expected_recs|
     @current_page.debug_recs.should have_at_least(expected_recs).entries  
 end
+
+Then /^the debug info should show no SMART\-recs?$/ do
+    @current_page.debug_recs.should have(0).entries  
+end

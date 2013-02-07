@@ -1,4 +1,8 @@
 .DS_Store
 smart_api.log
 *.html
+Gemfile.lock
 .rvmrc
+*.orig
+utils/*.rb
+

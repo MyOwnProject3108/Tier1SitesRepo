@@ -1,4 +1,4 @@
-Feature: CT Shirts SMART-API 
+Feature: SMART-API: CT Shirts  
 
 @smartapi @ctshirts
     Scenario: SMART-content clicks can be tracked using SMART-API

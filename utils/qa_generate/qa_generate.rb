@@ -5,8 +5,9 @@ require 'pp'
 require 'psych'
 require 'trollop'
 require 'fileutils'
+require_relative "rules.rb"
 
-QA_GENERATE_VERSION = "0.1.4"
+QA_GENERATE_VERSION = "0.1.5"
 
 # Specify commandline options
 opts = Trollop::options do
@@ -73,9 +74,9 @@ site_files.each do |site_filename|
    
   output_file = File.open(output_filename, sitelist_file_mode) do |sitelist|
     site_name = site["home_page"]["URL"]
-    site_name.gsub!(/https?:/,'')
+    site_name.gsub!(/https?:\/\//,'')
     site_name.gsub!(/www\./,'')
-    site_name.gsub!(/\//, '')
+    site_name.gsub!(/\/.*$/, '')
     sitelist.puts site["home_page"]["URL"] + "\n"
   end
   

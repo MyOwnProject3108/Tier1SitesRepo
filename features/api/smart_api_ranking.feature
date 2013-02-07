@@ -1,4 +1,4 @@
-Feature: SMART-ranking
+Feature: SMART-API: SMART-ranking
   In order to get the most out of my shopping experience
   As a website user
   I want to see personalised category pages

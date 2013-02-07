@@ -40,7 +40,7 @@ module PeeriusHelper
         # Remove trailing slash from URL
         url_with_spr.gsub(/\/$/, '')
         
-        if url_with_spr.include?("?")
+        if url_with_spr.include?("?") or url_with_spr.include?("&") 
           url_with_spr += "&spr=1"
         else
           url_with_spr += "?spr=1"

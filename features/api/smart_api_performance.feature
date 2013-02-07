@@ -1,5 +1,5 @@
 @smartapi
-Feature: SMART-API performance
+Feature: SMART-API: SMART-API performance
   In order to get good response times for my app
   As an app developer
   I want to get quick responses from the API

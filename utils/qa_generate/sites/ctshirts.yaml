@@ -1,33 +1,45 @@
 site_name: ctshirts
 pretty_name: CT Shirts
-has_recs: yes
-has_content: yes
+has_content: no
 has_ranking: no
 needs_SPR: yes
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: dvd
+valid_search_term: shirts
 
 home_page:
   URL: "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
-  login_link: ':href => "https://www.ctshirts.co.uk/AccountLogin.aspx"'
-  search_field: ':id => "search_term"'
+  expected_recs: 0
+  login_link: ["link", ':href=> "https://www.ctshirts.co.uk/AccountLogin.aspx"']
+  search_field: ["text_field", ':id => "search_term"']
 
 product_page:
   URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
-  add_to_basket_button: ':id=> "btn_add_2_shop_cart"'
+  expected_recs: 7
+  add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
 
 category_page:
   URL: "http://www.ctshirts.co.uk/mens-suits/mens-business-suits?q=peerius|||||||||||||||"
+  expected_recs: 0
 
 basket_page:
-  URL: "http://www.ctshirts.co.uk/Basket.aspx" 
+  URL: "http://www.ctshirts.co.uk/Basket.aspx"
+  expected_recs: 1
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
 
 login_page:
   URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"
-  username_field: ':id=>"ctl00_contentBody_email"'
-  password_field: ':id=>"ctl00_contentBody_password"'  
-  login_button: ':id=>"ctl00_contentBody_submit"'
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_contentBody_email"']
+  password_field: ["text_field", ':id=>"ctl00_contentBody_password"']  
+  login_submit: ["button", ':id=>"ctl00_contentBody_submit"']
 
 searchresults_page:
   URL: "http://www.ctshirts.co.uk/SearchNoResults.aspx?term=abc"
+  expected_recs: 0
+  zerosearch_recs: 1
 
 checkout_page:
-  URL: "" 
+  URL: ""
+  expected_recs: 0 
