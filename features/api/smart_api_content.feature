@@ -33,7 +33,7 @@ Feature: SMART-API: SMART-content
         And I request summary abgroup information
         When I track a home page
         Then I should get an OK status back
-        And I should see which smartContent abgroup I am serving
+        And I should see which smartContent abgroup I am serving  
 		
 		
 @smartapi  
@@ -43,5 +43,5 @@ Feature: SMART-API: SMART-content
         When I track a home page
         Then I should get an OK status back
         And I should see which smartContent abgroup I am serving
-		    And I should see at least 2 smartContent ab test configs          
+    	And I should see at least 2 smartContent ab test configs          
   

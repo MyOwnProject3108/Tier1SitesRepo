@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>utils/qa_generate/sites/wickes.yaml</string>
+	<string>smart_api.log</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>smart_api.log</string>
 			<key>lastUsed</key>
-			<date>2013-02-07T10:02:54Z</date>
+			<date>2013-02-07T17:24:00Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -65,50 +67,6 @@
 	<integer>280</integer>
 	<key>metaData</key>
 	<dict>
-		<key>features/api/ctshirts_api.feature</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>9</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-		</dict>
-		<key>features/api/smart_api_content.feature</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>features/api/smart_api_performance.feature</key>
 		<dict>
 			<key>caret</key>
@@ -207,63 +165,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>utils/qa_generate/sites/ctshirts.yaml</key>
+		<key>smart_api.log</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>40</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>6</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>40</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>40</integer>
-			</dict>
-		</dict>
-		<key>utils/qa_generate/sites/lovehoney.yaml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>40</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>7</integer>
-		</dict>
-		<key>utils/qa_generate/sites/topman.yaml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>40</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
 		</dict>
 		<key>utils/qa_generate/sites/topshop.yaml</key>
 		<dict>
@@ -293,54 +207,14 @@
 			<key>firstVisibleLine</key>
 			<integer>6</integer>
 		</dict>
-		<key>utils/qa_generate/sites/wickes.yaml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>40</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>7</integer>
-		</dict>
-		<key>utils/qa_generate/templates/features/auto_site_integration.feature</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>49</integer>
-				<key>line</key>
-				<integer>63</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>44</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>features/api/ctshirts_api.feature</string>
-		<string>features/api/smart_api_content.feature</string>
-		<string>features/api/smart_api_performance.feature</string>
-		<string>features/api/smart_api_ranking.feature</string>
-		<string>features/api/smart_api_recs.feature</string>
-		<string>features/api/smart_api_tracking.feature</string>
-		<string>utils/qa_generate/sites/topshop.yaml</string>
-		<string>utils/qa_generate/sites/wallis.yaml</string>
-		<string>utils/qa_generate/sites/wickes.yaml</string>
-		<string>utils/qa_generate/templates/features/auto_site_integration.feature</string>
-		<string>utils/qa_generate/sites/ctshirts.yaml</string>
-		<string>utils/qa_generate/sites/lovehoney.yaml</string>
-		<string>utils/qa_generate/sites/topman.yaml</string>
+		<string>smart_api.log</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{232, 235}, {1045, 746}}</string>
+	<string>{{2067, 227}, {1045, 746}}</string>
 </dict>
 </plist>
