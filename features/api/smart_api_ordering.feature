@@ -7,8 +7,8 @@ Feature: SMART-API: ordering
 Scenario: I can order multiple products
 	Given I am using SMART-API v1_1 to access topshop
 	And I am using client token 89hyuaa2da3a
-	When I order product "TS02Y21DIND"
-	When I order product "TS02Z31DBLK"
-	When I order product "TS23Y18DGYM"
-	When I order product "TS02Y08CWNE"
+	When I order a "TS02Y21DIND" using the SMART-API
+	When I order a "TS02Z31DBLK" using the SMART-API
+	When I order 2 "TS23Y18DGYM" using the SMART-API
+	When I order 3 "TS02Y08CWNE" using the SMART-API
 	Then I should get an OK status back
