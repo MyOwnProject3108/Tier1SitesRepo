@@ -10,16 +10,17 @@ Given /^I request (.+) abgroup information$/ do |type|
   @api.json_abTestContent= type
 end
 
+Given /^I request (.+) rec content$/ do |type|
+  @api.json_recContent = type
+end
+
 Given /^I request (.+) attributes?$/ do |num_attributes|
   case num_attributes
-  when "no"
-    attributes = ""
   when "all"
-    attributes = "*"
+    @api.json_smartRecs = {"showAttributes" => ["*"]} 
   when "one"
-    attributes = "colour"  
-  end
-  @api.json_smartRecs = {"showAttributes" => [attributes]}   
+    @api.json_smartRecs = {"showAttributes" => ["pricerange"]}   
+  end    
 end
 
 When /^I track (?:a|the) home page$/ do
@@ -231,16 +232,16 @@ Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
   @api.result["info"]["abtest"].should have_at_least(1).product
   
   # Check to see that one of the products is the one we are looking for 
-  @api.result["info"]["abtest"].each {|product|	
-	if product.has_key?(expected_product) then
-		has_expected_product = true
-		
-		# Check that the product has an abgroup defined
-		product[expected_product].should have_at_least(1).items
-		product[expected_product].each {|config|
-			config.should have_key("group")
-		}
-	end
+  @api.result["info"]["abtest"].each {|product| 
+  if product.has_key?(expected_product) then
+    has_expected_product = true
+    
+    # Check that the product has an abgroup defined
+    product[expected_product].should have_at_least(1).items
+    product[expected_product].each {|config|
+      config.should have_key("group")
+    }
+  end
   }
   
   has_expected_product.should == true
@@ -248,37 +249,51 @@ Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
 end
 
 Then /^I should see at least (\d+) (.+) ab test configs?$/ do |expected_configs, expected_product|
-   # pp @api.result["info"]["abtest"]
+  # pp @api.result["info"]["abtest"]
+  @api.result.should have_key("info")
+  @api.result["info"].should have_key("abtest")
   @api.result["info"]["abtest"].should have_at_least(1).product
   
   # Check to see that one of the products is the one we are looking for 
-  @api.result["info"]["abtest"].each {|product|	
-	if product.has_key?(expected_product) then
-		has_expected_product = true
-		
-		# Check that the product has an abgroup defined
-		product[expected_product].should have_at_least(1).items
-		product[expected_product].each {|config|
-			config.should have_key("configs")
-			config["configs"].size.should >= expected_configs.to_i 
-		}
-	end
+  @api.result["info"]["abtest"].each {|product| 
+  if product.has_key?(expected_product) then
+    has_expected_product = true
+    
+    # Check that the product has an abgroup defined
+    product[expected_product].should have_at_least(1).items
+    product[expected_product].each {|config|
+      config.should have_key("configs")
+      config["configs"].size.should >= expected_configs.to_i 
+    }
+  end
   }
 end
 
 #
 # Attributes
 #
-Then /^I should see at least (\d+) attributes?$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see at least (\d+) attributes? per rec$/ do |expected_attributes|
+  @api.should have_smart_recs
+  @api.rec_widgets.count.should > 0
+  @api.total_recs.should > 0
+  @api.rec_widgets[0]["recs"][0].should have_key("attributes")
+  @api.rec_widgets[0]["recs"][0]["attributes"].should have_at_least(expected_attributes).entries
 end
 
-Then /^I should see exactly (\d+) attributes?$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see exactly (\d+) attributes? per rec$/ do |expected_attributes|
+  @api.should have_smart_recs
+  @api.rec_widgets.count.should > 0
+  @api.total_recs.should > 0
+  @api.rec_widgets[0]["recs"][0].should have_key("attributes")
+  @api.rec_widgets[0]["recs"][0]["attributes"].should have(expected_attributes).entries
+  
 end
 
 Then /^I should see no attributes$/ do
-  pending # express the regexp above with the code you wish you had
+  @api.should have_smart_recs
+  @api.rec_widgets.count.should > 0
+  @api.total_recs.should > 0
+  @api.rec_widgets[0]["recs"][0].should_not have_key("attributes")
 end
 
 

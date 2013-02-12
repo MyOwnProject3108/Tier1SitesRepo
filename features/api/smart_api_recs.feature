@@ -31,28 +31,43 @@ Feature: SMART-API: SMART-recs
         And I should see at least 1 smartRecs ab test configs
         
 @smartapi
-    Scenario: All SMART-recs attributes can be retrieved using SMART-API
+    Scenario Outline: All SMART-recs attributes can be retrieved using SMART-API
         Given I am using SMART-API to access livedemoshop
         And I request all attributes
+        And I request <content> rec content
         When I track a product page
         Then I should get an OK status back
         And I should get at least 1 SMART-recs in the response
-        And I should see at least 2 attributes
+        And I should see at least 2 attributes per rec
+        Examples:
+        | content     |
+        | full        |
+        | refCodeOnly |
         
 @smartapi
-    Scenario: Selected SMART-recs attributes can be retrieved using SMART-API
+    Scenario Outline: Selected SMART-recs attributes can be retrieved using SMART-API
         Given I am using SMART-API to access livedemoshop
         And I request one attribute
+        And I request <content> rec content
         When I track a product page
         Then I should get an OK status back
         And I should get at least 1 SMART-recs in the response
-        And I should see exactly 1 attribute
+        And I should see exactly 1 attribute per rec
+        Examples:
+        | content     |
+        | full        |
+        | refCodeOnly |
 
 @smartapi
-    Scenario: SMART-recs attributes are only sent when requested using SMART-API
+    Scenario Outline: SMART-recs attributes are only sent when requested using SMART-API
         Given I am using SMART-API to access livedemoshop
         And I request no attributes
+        And I request <content> rec content
         When I track a product page
         Then I should get an OK status back
         And I should get at least 1 SMART-recs in the response
         And I should see no attributes
+        Examples:
+        | content     |
+        | full        |
+        | refCodeOnly |
