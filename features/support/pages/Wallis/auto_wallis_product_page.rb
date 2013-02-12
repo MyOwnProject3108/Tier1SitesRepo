@@ -11,6 +11,6 @@ module Wallis
       URL = "http://www.wallis.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33058&storeId=12557&productId=7588619&langId=-1&sort_field=Relevance&categoryId=209668&parent_categoryId=209327&pageSize=20"
       direct_url URL
       
-      button(:add_to_basket, :class=> "btn_add_2_shop_cart")          
+      button(:add_to_basket, :id=> "btn_add_2_shop_cart")          
     end  
 end

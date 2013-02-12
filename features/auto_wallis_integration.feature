@@ -27,7 +27,7 @@ Scenario: Wallis basket page is tracked correctly
     Given I am on the wallis basket page
     Then it should be tracked as a basket page
     And the debug info should show at least 5 SMART-recs    
-        
+       
 @wallis
 Scenario: Wallis checkout page is tracked correctly
 	Given I am on the wallis home page

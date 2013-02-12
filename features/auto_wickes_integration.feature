@@ -27,7 +27,7 @@ Scenario: Wickes basket page is tracked correctly
     Given I am on the wickes basket page
     Then it should be tracked as a basket page
     And the debug info should show at least 6 SMART-recs    
-        
+       
 @wickes
 Scenario: Wickes checkout page is tracked correctly
 	Given I am on the wickes home page

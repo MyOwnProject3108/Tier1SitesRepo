@@ -41,9 +41,12 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
     Given I am on the <%= site["site_name"] %> basket page
     Then it should be tracked as a basket page
     <%= expect_recs_rule(site["basket_page"]["expected_recs"]) %>    
-        
+       
 @<%= site["site_name"] %>
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
+<% if site["checkout_page"].has_key?("custom_tracking_test") %>
+<%= site["checkout_page"]["custom_tracking_test"] %>
+<% else %>
 	Given I am on the <%= site["site_name"] %> home page
 	When I click login
 	And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
@@ -53,6 +56,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 	And I click checkout
 	Then it should be tracked as a Checkout page
 	<%= expect_recs_rule(site["checkout_page"]["expected_recs"]) %>
+<% end %>
   
 @<%= site["site_name"] %> 
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly

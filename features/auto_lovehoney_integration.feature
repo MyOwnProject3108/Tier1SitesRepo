@@ -27,7 +27,7 @@ Scenario: Lovehoney basket page is tracked correctly
     Given I am on the lovehoney basket page
     Then it should be tracked as a basket page
     And the debug info should show no SMART-recs    
-        
+       
 @lovehoney
 Scenario: Lovehoney checkout page is tracked correctly
 	Given I am on the lovehoney home page

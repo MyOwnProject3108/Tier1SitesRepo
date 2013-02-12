@@ -27,7 +27,7 @@ Scenario: Topman basket page is tracked correctly
     Given I am on the topman basket page
     Then it should be tracked as a basket page
     And the debug info should show at least 5 SMART-recs    
-        
+       
 @topman
 Scenario: Topman checkout page is tracked correctly
 	Given I am on the topman home page

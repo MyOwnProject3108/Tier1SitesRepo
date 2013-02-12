@@ -27,7 +27,7 @@ Scenario: Cotton Traders basket page is tracked correctly
     Given I am on the cottontraders basket page
     Then it should be tracked as a basket page
     And the debug info should show at least 1 SMART-recs    
-        
+       
 @cottontraders
 Scenario: Cotton Traders checkout page is tracked correctly
 	Given I am on the cottontraders home page

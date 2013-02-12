@@ -27,7 +27,7 @@ Scenario: Topshop basket page is tracked correctly
     Given I am on the topshop basket page
     Then it should be tracked as a basket page
     And the debug info should show at least 7 SMART-recs    
-        
+       
 @topshop
 Scenario: Topshop checkout page is tracked correctly
 	Given I am on the topshop home page

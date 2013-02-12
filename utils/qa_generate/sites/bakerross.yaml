@@ -1,0 +1,58 @@
+site_name: bakerross
+pretty_name: Baker Ross 
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: nappies
+valid_search_term: blue
+
+home_page:
+  URL: "http://www.bakerross.co.uk/"
+  expected_recs: 1 
+  login_link: ["link", ':class => "small-whtext"']
+  search_field: ["text_field", ':id => "searchINPUT"']
+
+product_page:
+  URL: "http://www.bakerross.co.uk/cat_id/CURRAUST/product-Aboriginal-Window-Decorations-EV563.htm"
+  expected_recs: 1 
+  add_to_basket_button: ["link", ':href=> "javascript:document.skuFORM1.submit()"']
+
+category_page:
+  URL: "http://www.bakerross.co.uk/category-Glues-and-Adhesives-ARTSGLUE.htm"
+  expected_recs: 0 
+
+basket_page:
+  URL: "http://www.bakerross.co.uk/basket.asp"
+  expected_recs: 1  
+  basket_checkout: ["image", ':alt => "Proceed To Checkout"']
+  basket_checkout2: ["image", ':alt => "Pay with credit/debit card"']
+
+login_page:
+  URL: "https://www.bakerross.co.uk/customer_lookup.asp"
+  expected_recs: 0 
+  username_field: ["text_field", ':id=>"emaillogin"']
+  password_field: ["text_field", ':id=>"passwordOnSignIn"']  
+  login_submit: ["link", ':href => "javascript:submit_login();"']
+
+searchresults_page:
+  URL: "http://www.bakerross.co.uk/find.asp?name=AAA"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  custom_tracking_test: |
+        Given I am on the bakerross home page
+        When I go to the product page
+        And I add the current product to the basket
+        And I go to the basket page
+        And I click checkout
+        And I click on the element with id "rdPassword2"
+        And I login as "webtest@mailinator.com" using password "webtest"
+        And I click on the link with href "javascript:termsAndConditions()"
+        Then it should be tracked as a Checkout page
+        And the debug info should show no SMART-recs
+  

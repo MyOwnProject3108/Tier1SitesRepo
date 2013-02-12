@@ -27,7 +27,7 @@ Scenario: boohoo basket page is tracked correctly
     Given I am on the boohoo basket page
     Then it should be tracked as a basket page
     And the debug info should show at least 1 SMART-recs    
-        
+       
 @boohoo
 Scenario: boohoo checkout page is tracked correctly
 	Given I am on the boohoo home page

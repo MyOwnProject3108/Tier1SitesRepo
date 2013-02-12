@@ -226,6 +226,8 @@ Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
   has_expected_product = false
   
  # pp @api.result["info"]["abtest"]
+  @api.result.should have_key("info")
+  @api.result["info"].should have_key("abtest")
   @api.result["info"]["abtest"].should have_at_least(1).product
   
   # Check to see that one of the products is the one we are looking for 

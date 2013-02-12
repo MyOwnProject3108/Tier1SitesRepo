@@ -42,4 +42,15 @@ searchresults_page:
 
 checkout_page:
   URL: ""
-  expected_recs: 0 
+  expected_recs: 0
+  custom_tracking_test: |
+     Given I am on the ctshirts home page
+     When I click login
+     And I login as "webtest@mailinator.com" using password "webtest"
+     And I go to the product page
+     And I add the current product to the basket
+     And I go to the basket page
+     And I click checkout
+     And I click on the button with id "ctl00_contentBody_submit" 
+     Then it should be tracked as a Checkout page
+     And the debug info should show no SMART-recs
