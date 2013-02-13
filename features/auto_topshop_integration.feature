@@ -26,13 +26,13 @@ Scenario: Topshop product page is tracked correctly
 Scenario: Topshop basket page is tracked correctly
     Given I am on the topshop basket page
     Then it should be tracked as a basket page
-    And the debug info should show at least 7 SMART-recs    
+    And the debug info should show at least 1 SMART-recs    
        
 @topshop
 Scenario: Topshop checkout page is tracked correctly
 	Given I am on the topshop home page
 	When I click login
-	And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"
+	And I login as "anagha.joshi@peerius.com" using password "Pa55word"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
