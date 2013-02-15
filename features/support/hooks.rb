@@ -14,6 +14,7 @@
    end
    
    profile['extensions.tracker.debugenabled'] = true
+   profile['network.proxy.type'] = 0
    
    # Build a list of sites that the tracker plugin will track
    tracker_sites = ""
