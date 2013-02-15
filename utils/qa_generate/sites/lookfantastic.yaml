@@ -1,0 +1,45 @@
+site_name: lookfantastic
+pretty_name: Look Fantastic
+has_content: no
+has_ranking: no
+needs_SPR: yes
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: dvd
+valid_search_term: shirts
+
+home_page:
+  URL: "http://www.lookfantastic.com/home.dept"
+  expected_recs: 0
+  login_link: ["link", ':href=> "https://www.lookfantastic.com/lookfantasticgroup/login.jsp"']
+  search_field: ["text_field", ':id => "search_term"']
+
+product_page:
+  URL: "http://www.lookfantastic.com/md-formulations-facial-cleanser-all-skin-types-250ml/10548664.html"	
+  expected_recs: 7
+  add_to_basket_button: ["button", ':id=> "cat-button buynow thg-track"']
+
+category_page:
+  URL: "http://www.lookfantastic.com/brands/ardell-lashes.list"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.lookfantastic.com/lookfantasticgroup/my.basket?mvtCTA=b"
+  expected_recs: 1
+  basket_checkout: ["button", ':id => "gotocheckout2"'] 
+
+login_page:
+  URL: "https://www.lookfantastic.com/lookfantasticgroup/login.jsp"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"username"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["button", ':id=>"login-submit"']
+
+searchresults_page:
+  URL: "http://hairandbeauty.lookfantastic.com/search?asug=&w="
+  expected_recs: 0
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: ""
+  expected_recs: 0 

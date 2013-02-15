@@ -47,13 +47,4 @@ Scenario: Mandco search results page is tracked correctly
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 
-#
-# SMART-recs
-# 		
-@mandco @zerosearch
-Scenario: Mandco zero search recommendations are shown
-    Given I am on the mandco homepage
-    When I search for "dvd"
-    Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
 
