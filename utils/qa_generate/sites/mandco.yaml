@@ -1,0 +1,45 @@
+site_name: mandco
+pretty_name: Mandco
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: anagha.joshi@peerius.com
+password: 123123
+zero_search_term: dvd
+valid_search_term: dress
+
+home_page:
+  URL: "http://www.mandco.com/"
+  expected_recs: 0
+  login_link: ["link", ':link_text => "Log In / Register"']
+  search_field: ["text_field", ':id => "q"']
+
+product_page:
+  URL: "http://www.mandco.com/floral-stripe-dress/invt/1208489multi/&bklist=icat,5,10,10010,10010090,10010090190"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+category_page:
+  URL: "http://www.mandco.com/dresses-/new-dresses/icat/10010090190/"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
+  expected_recs: 0 
+  basket_checkout: ["link", ':class => "btn_checkout"'] 
+
+login_page:
+  URL: "https://www.mandco.com/bin/venda?ex=co_wizr-shopcart&display=1&stashid=billtologincaa759c&workflowid=shopcart_1&step=billtologin"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["button", ':class=>"button buttonAlt submit"']
+
+searchresults_page:
+  URL: "http://www.mandco.com/search?q=asjkfhk&categoryPathRefs=10"
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+checkout_page:
+  URL: "https://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&wizard=shopcart&step=confirm&param1=login" 
+  expected_recs: 0
