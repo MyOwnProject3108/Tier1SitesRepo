@@ -2,7 +2,7 @@ site_name: ctshirts
 pretty_name: CT Shirts
 has_content: no
 has_ranking: no
-needs_SPR: yes
+needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
@@ -13,6 +13,7 @@ home_page:
   expected_recs: 0
   login_link: ["link", ':href=> "https://www.ctshirts.co.uk/AccountLogin.aspx"']
   search_field: ["text_field", ':id => "search_term"']
+  needs_SPR: yes
 
 product_page:
   URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
