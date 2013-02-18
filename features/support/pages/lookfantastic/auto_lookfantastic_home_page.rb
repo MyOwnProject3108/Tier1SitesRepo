@@ -10,7 +10,7 @@ module Lookfantastic
       URL = "http://www.lookfantastic.com/home.dept"
       direct_url URL
       
-      link(:login_link, :href=> "https://www.lookfantastic.com/lookfantasticgroup/login.jsp")
-	    text_field(:search, :id => "search_term")
+      link(:login_link, :link=> "Sign in")
+	    text_field(:search, :id => "sli_search_1")
     end  
 end

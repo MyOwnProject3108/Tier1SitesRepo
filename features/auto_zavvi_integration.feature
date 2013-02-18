@@ -8,7 +8,7 @@ Feature: Zavvi Integration
 Scenario: Zavvi home page is tracked correctly
 	Given I am on the zavvi home page
 	Then it should be tracked as a home page
-	And the debug info should show no SMART-recs
+	And the debug info should show at least 3 SMART-recs
 
 @zavvi
 Scenario: Zavvi category page is tracked correctly
@@ -20,19 +20,19 @@ Scenario: Zavvi category page is tracked correctly
 Scenario: Zavvi product page is tracked correctly
     Given I am on the zavvi product page
     Then it should be tracked as a product page
-    And the debug info should show at least 7 SMART-recs
+    And the debug info should show no SMART-recs
     
 @zavvi
 Scenario: Zavvi basket page is tracked correctly
     Given I am on the zavvi basket page
     Then it should be tracked as a basket page
-    And the debug info should show at least 1 SMART-recs    
+    And the debug info should show at least 2 SMART-recs    
        
 @zavvi
 Scenario: Zavvi checkout page is tracked correctly
 	Given I am on the zavvi home page
 	When I click login
-	And I login as "webtest@mailinator.com" using password "webtest"
+	And I login as "testmail@123.com" using password "pass1234"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -47,13 +47,4 @@ Scenario: Zavvi search results page is tracked correctly
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 
-#
-# SMART-recs
-# 		
-@zavvi @zerosearch
-Scenario: Zavvi zero search recommendations are shown
-    Given I am on the zavvi homepage
-    When I search for "dvd"
-    Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
 

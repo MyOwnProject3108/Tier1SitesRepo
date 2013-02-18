@@ -8,7 +8,7 @@ module Notonthehighstreet
       include PageObject
       include PeeriusHelper
       
-      URL = ""
+      URL = "https://www.notonthehighstreet.com/session/new"
       direct_url URL            
     end  
 end

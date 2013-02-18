@@ -10,7 +10,7 @@ module Notonthehighstreet
       URL = "http://www.notonthehighstreet.com/"
       direct_url URL
       
-      link(:login_link, :href=> "https://www.notonthehighstreet.com/AccountLogin.aspx")
-	    text_field(:search, :id => "search-text")
+      link(:login_link, :link_text => "my notonthehighstreet.com")
+	    text_field(:search, :id => "term")
     end  
 end

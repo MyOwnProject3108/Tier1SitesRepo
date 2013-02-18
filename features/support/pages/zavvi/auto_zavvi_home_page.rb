@@ -10,7 +10,7 @@ module Zavvi
       URL = "http://www.zavvi.com/home.dept"
       direct_url URL
       
-      link(:login_link, :href=> "https://www.zavvi.com/AccountLogin.aspx")
+      link(:login_link, :href=> "https://www.zavvi.com/zavvi/accountHome.secure")
 	    text_field(:search, :id => "search-text")
     end  
 end

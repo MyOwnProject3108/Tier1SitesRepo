@@ -8,12 +8,12 @@ module Notonthehighstreet
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.notonthehighstreet.com/checkout/login"
+      URL = "https://www.notonthehighstreet.com/session/new"
       direct_url URL
       
-  	  text_field(:username, :id=>"username")
-      text_field(:password, :id=>"password")  
-  	  button(:login_submit, :id=>"login-submit")           
+  	  text_field(:username, :id=>"session_email")
+      text_field(:password, :id=>"session_password")  
+  	  button(:login_submit, :id=>"sign in")           
     end  
 end
 

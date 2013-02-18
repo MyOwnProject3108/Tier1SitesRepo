@@ -11,6 +11,6 @@ module Lookfantastic
       URL = "http://www.lookfantastic.com/md-formulations-facial-cleanser-all-skin-types-250ml/10548664.html"
       direct_url URL
       
-      button(:add_to_basket, :id=> "cat-button buynow thg-track")          
+      link(:add_to_basket, :class=> "productbuy")          
     end  
 end

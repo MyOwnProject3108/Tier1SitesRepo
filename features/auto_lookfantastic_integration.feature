@@ -5,16 +5,10 @@
 Feature: Look Fantastic Integration
                                                                                                 
 @lookfantastic
-Scenario: Look Fantastic home page is tracked correctly using SPR
+Scenario: Look Fantastic home page is tracked correctly
 	Given I am on the lookfantastic home page
-	And I use the SPR key
-	Then it should be tracked as a home page                                                               
-    And the debug info should show no SMART-recs
-
-Scenario: Look Fantastic home page is tracked correctly without SPR
-	Given I clear my browser cookies
-    And I am on the lookfantastic home page
-	Then it should be tracked as an other page
+	Then it should be tracked as a home page
+	And the debug info should show at least 5 SMART-recs
 
 @lookfantastic
 Scenario: Look Fantastic category page is tracked correctly
@@ -26,7 +20,7 @@ Scenario: Look Fantastic category page is tracked correctly
 Scenario: Look Fantastic product page is tracked correctly
     Given I am on the lookfantastic product page
     Then it should be tracked as a product page
-    And the debug info should show at least 7 SMART-recs
+    And the debug info should show at least 3 SMART-recs
     
 @lookfantastic
 Scenario: Look Fantastic basket page is tracked correctly
@@ -38,7 +32,7 @@ Scenario: Look Fantastic basket page is tracked correctly
 Scenario: Look Fantastic checkout page is tracked correctly
 	Given I am on the lookfantastic home page
 	When I click login
-	And I login as "webtest@mailinator.com" using password "webtest"
+	And I login as "testmail@123.com" using password "pass1234"
 	And I go to the product page
 	And I add the current product to the basket
 	And I go to the basket page
@@ -53,13 +47,4 @@ Scenario: Look Fantastic search results page is tracked correctly
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 
-#
-# SMART-recs
-# 		
-@lookfantastic @zerosearch
-Scenario: Look Fantastic zero search recommendations are shown
-    Given I am on the lookfantastic homepage
-    When I search for "dvd"
-    Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
 

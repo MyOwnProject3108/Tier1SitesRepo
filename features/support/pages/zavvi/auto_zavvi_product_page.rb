@@ -11,6 +11,6 @@ module Zavvi
       URL = "http://www.zavvi.com/dvd/the-world-at-war-the-ultimate-restored-edition/10166563.html"
       direct_url URL
       
-      button(:add_to_basket, :id=> "productbuy")          
+      link(:add_to_basket, :class=> "productbuy")          
     end  
 end

@@ -20,7 +20,7 @@ Scenario: Lovehoney category page is tracked correctly
 Scenario: Lovehoney product page is tracked correctly
     Given I am on the lovehoney product page
     Then it should be tracked as a product page
-    And the debug info should show at least 4 SMART-recs
+    And the debug info should show at least 1 SMART-recs
     
 @lovehoney
 Scenario: Lovehoney basket page is tracked correctly

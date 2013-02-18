@@ -8,9 +8,9 @@ module Lookfantastic
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.lookfantastic.com/lookfantasticgroup/my.basket?mvtCTA=b"
+      URL = "https://www.lookfantastic.com/lookfantasticgroup/my.basket?mvtCTA=a"
       direct_url URL
       
-      button(:basket_checkout, :id => "gotocheckout2")            
+      link(:basket_checkout, :class => "fr")            
     end  
 end

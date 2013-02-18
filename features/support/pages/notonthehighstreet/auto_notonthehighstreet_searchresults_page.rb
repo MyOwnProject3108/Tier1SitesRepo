@@ -8,7 +8,7 @@ module Notonthehighstreet
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.notonthehighstreet.com/search?utf8=%E2%9C%93&term=map&search=find"
+      URL = "http://www.notonthehighstreet.com/search"
       direct_url URL            
     end  
 end

@@ -8,7 +8,7 @@ module Notonthehighstreet
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.notonthehighstreet.com/the3blondebears/product/personalised-definition-text-mug"
+      URL = "http://www.notonthehighstreet.com/outthereinteriors/product/fusion-dinner-plate-blue-red"
       direct_url URL
       
       button(:add_to_basket, :id=> "add_to_cart")          

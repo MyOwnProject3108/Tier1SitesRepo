@@ -2,7 +2,7 @@ site_name: lovehoney
 pretty_name: Lovehoney
 has_content: no
 has_ranking: no
-needs_SPR: false
+needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
@@ -16,7 +16,7 @@ home_page:
 
 product_page:
   URL: "http://www.lovehoney.co.uk/product.cfm?p=2869"
-  expected_recs: 4
+  expected_recs: 1
   add_to_basket_button: ["button", ':class=> "std-arrow"']
 
 category_page:
