@@ -198,6 +198,12 @@ Then /^I should get at least (\d+) SMART-recs? in the response$/ do |expected_re
     @api.total_recs.should >= expected_recs.to_i
 end
 
+Then /^I should get at least (\d+) SMART-content creatives? in the response$/ do |expected_creatives|
+    # @api.content_creatives.collect{|x| pp x["position"]}
+    @api.should have_smart_content
+    @api.content_creatives.count.should >= expected_creatives.to_i
+end
+
 Then /^I should get at least (\d+) items? of SMART\-ranking content$/ do |expected_items|
     #pp @api.result
     @api.should have_smart_ranking_content
