@@ -4,6 +4,7 @@
 #
 
 module Wickes
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

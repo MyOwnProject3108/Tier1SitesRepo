@@ -4,6 +4,7 @@
 #
 
 module Lovehoney
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

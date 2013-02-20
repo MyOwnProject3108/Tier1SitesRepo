@@ -4,6 +4,7 @@
 #
 
 module Bhs
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper

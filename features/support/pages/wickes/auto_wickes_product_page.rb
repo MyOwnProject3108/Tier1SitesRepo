@@ -4,6 +4,7 @@
 #
 
 module Wickes
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

@@ -4,6 +4,7 @@
 #
 
 module Topman
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

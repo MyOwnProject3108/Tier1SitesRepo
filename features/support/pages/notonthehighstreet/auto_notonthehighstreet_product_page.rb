@@ -4,6 +4,7 @@
 #
 
 module Notonthehighstreet
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

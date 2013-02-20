@@ -4,6 +4,7 @@
 #
 
 module Topshop
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

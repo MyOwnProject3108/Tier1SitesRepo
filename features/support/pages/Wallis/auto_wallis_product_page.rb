@@ -4,6 +4,7 @@
 #
 
 module Wallis
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

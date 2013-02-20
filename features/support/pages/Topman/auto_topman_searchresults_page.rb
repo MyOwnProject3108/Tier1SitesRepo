@@ -4,6 +4,7 @@
 #
 
 module Topman
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

@@ -4,6 +4,7 @@
 #
 
 module Boohoo
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

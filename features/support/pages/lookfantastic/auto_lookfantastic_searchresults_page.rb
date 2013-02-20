@@ -4,6 +4,7 @@
 #
 
 module Lookfantastic
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

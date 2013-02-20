@@ -5,6 +5,7 @@
 
 <% page = site["searchresults_page"] %>
 module <%= site["site_name"].capitalize %>
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

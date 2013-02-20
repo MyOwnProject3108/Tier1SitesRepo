@@ -4,6 +4,7 @@
 #
 
 module Lookfantastic
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

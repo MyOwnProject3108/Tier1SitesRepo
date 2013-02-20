@@ -4,6 +4,7 @@
 #
 
 module Lovehoney
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

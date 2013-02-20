@@ -4,6 +4,7 @@
 #
 
 module Lovehoney
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

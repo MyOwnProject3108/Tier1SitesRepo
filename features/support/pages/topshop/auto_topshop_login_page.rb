@@ -4,6 +4,7 @@
 #
 
 module Topshop
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

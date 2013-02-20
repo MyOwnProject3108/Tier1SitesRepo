@@ -4,6 +4,7 @@
 #
 
 module Bhs
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

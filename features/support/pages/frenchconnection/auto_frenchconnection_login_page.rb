@@ -4,6 +4,7 @@
 #
 
 module Frenchconnection
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

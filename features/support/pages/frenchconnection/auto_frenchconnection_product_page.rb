@@ -4,6 +4,7 @@
 #
 
 module Frenchconnection
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

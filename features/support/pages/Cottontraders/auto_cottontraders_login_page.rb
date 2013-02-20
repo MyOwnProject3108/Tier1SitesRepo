@@ -4,6 +4,7 @@
 #
 
 module Cottontraders
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

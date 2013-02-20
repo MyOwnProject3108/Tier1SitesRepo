@@ -5,6 +5,7 @@
 
 <% page = site["login_page"] %>
 module <%= site["site_name"].capitalize %>
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

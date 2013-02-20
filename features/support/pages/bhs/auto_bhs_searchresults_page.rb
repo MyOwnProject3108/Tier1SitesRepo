@@ -4,6 +4,7 @@
 #
 
 module Bhs
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

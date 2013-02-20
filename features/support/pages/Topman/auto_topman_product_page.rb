@@ -4,6 +4,7 @@
 #
 
 module Topman
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

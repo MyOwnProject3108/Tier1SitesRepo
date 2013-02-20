@@ -4,6 +4,7 @@
 #
 
 module Mandco
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

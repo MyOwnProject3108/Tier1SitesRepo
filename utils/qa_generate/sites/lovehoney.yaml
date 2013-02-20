@@ -26,7 +26,7 @@ category_page:
 basket_page:
   URL: "http://www.lovehoney.co.uk/your-basket/"
   expected_recs: 0 
-  basket_checkout: ["link", ':class => "btn_checkout"']
+  basket_checkout: ["button", ':class => "button proceed-to-checkout std-arrow"']
 
 login_page:
   URL: "https://www.lovehoney.co.uk/your-account/sign-in.html"

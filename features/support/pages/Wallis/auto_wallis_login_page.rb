@@ -4,6 +4,7 @@
 #
 
 module Wallis
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

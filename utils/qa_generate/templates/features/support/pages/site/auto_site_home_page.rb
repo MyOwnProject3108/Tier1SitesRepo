@@ -4,6 +4,7 @@
 #
 <% page = site["home_page"] %>
 module <%= site["site_name"].capitalize %>
+  
     class HomePage
       include PageObject
       include PeeriusHelper

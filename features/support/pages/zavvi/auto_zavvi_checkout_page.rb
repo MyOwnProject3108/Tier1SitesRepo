@@ -4,6 +4,7 @@
 #
 
 module Zavvi
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper

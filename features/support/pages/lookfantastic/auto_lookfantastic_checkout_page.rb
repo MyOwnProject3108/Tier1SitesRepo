@@ -4,6 +4,7 @@
 #
 
 module Lookfantastic
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper

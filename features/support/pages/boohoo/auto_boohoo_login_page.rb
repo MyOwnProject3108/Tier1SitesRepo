@@ -4,6 +4,7 @@
 #
 
 module Boohoo
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

@@ -4,6 +4,7 @@
 #
 
 module Notonthehighstreet
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

@@ -5,6 +5,7 @@
 
 <% page = site["checkout_page"] %>
 module <%= site["site_name"].capitalize %>
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper

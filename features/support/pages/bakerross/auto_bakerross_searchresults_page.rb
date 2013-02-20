@@ -4,6 +4,7 @@
 #
 
 module Bakerross
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

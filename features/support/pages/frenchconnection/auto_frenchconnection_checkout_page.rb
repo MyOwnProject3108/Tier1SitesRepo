@@ -4,6 +4,7 @@
 #
 
 module Frenchconnection
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper

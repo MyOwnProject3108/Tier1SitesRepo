@@ -4,6 +4,7 @@
 #
 
 module Bakerross
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

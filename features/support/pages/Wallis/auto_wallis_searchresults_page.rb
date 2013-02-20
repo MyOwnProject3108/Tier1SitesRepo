@@ -4,6 +4,7 @@
 #
 
 module Wallis
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

@@ -4,6 +4,7 @@
 #
 
 module Bakerross
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

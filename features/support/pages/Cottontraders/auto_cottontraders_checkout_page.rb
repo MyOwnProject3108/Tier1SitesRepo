@@ -4,6 +4,7 @@
 #
 
 module Cottontraders
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper

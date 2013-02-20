@@ -4,6 +4,7 @@
 #
 
 module Ctshirts
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

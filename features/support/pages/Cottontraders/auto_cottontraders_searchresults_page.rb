@@ -4,6 +4,7 @@
 #
 
 module Cottontraders
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

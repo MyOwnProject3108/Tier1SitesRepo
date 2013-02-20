@@ -4,6 +4,7 @@
 #
 
 module Ctshirts
+  
     class LoginPage
       include PageObject
       include PeeriusHelper

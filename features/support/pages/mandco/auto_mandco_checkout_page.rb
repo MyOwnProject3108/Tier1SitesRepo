@@ -4,6 +4,7 @@
 #
 
 module Mandco
+  
     class CheckoutPage
       include PageObject
       include PeeriusHelper
