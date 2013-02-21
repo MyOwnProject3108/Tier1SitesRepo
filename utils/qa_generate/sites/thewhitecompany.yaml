@@ -1,0 +1,58 @@
+site_name: thewhitecompany
+pretty_name: thewhitecompany
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: faiyyaz.sultana@peerius.com
+password: Pa55word
+zero_search_term: no
+valid_search_term: towel
+
+home_page:
+  URL: "http://www.thewhitecompany.com/"
+  expected_recs: 0
+  login_link: ["link", ':link => "Sign in . register"']
+  search_field: ["text_field", ':id => "in_site_search"']
+
+product_page:
+  URL: "http://www.thewhitecompany.com/the-little-white-company-childrens-bedroom/childrens-bedroom-accessories/girls-towels/"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
+
+category_page:
+  URL: "http://www.thewhitecompany.com/bathroom/towels/"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.thewhitecompany.com/shopping-bag/"
+  expected_recs: 3 
+  basket_checkout: ["button", ':id => "in_btnCheckout"'] 
+
+login_page:
+  URL: "https://www.thewhitecompany.com/login.aspx"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"in_txtEmailAddress"']
+  password_field: ["text_field", ':id=>"in_txtPassword"']  
+  login_submit: ["button", ':id=>"in_bLogin"']
+
+searchresults_page:
+  URL: "http://www.thewhitecompany.com/search/towel/"
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  custom_tracking_test: |
+    Given I am on the thewhitecompany home page
+    When I click login
+    And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"
+    And I go to the product page
+    And I click on the img with alt "More"
+    And I add the current product to the basket
+    And I go to the basket page
+    And I click checkout
+    And I click on the button with id "in_btnProceed"
+    And I enter the payment details
+    Then it should be tracked as a Checkout page
+    And the debug info should show no SMART-recs

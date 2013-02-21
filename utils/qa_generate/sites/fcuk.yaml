@@ -43,16 +43,15 @@ searchresults_page:
 checkout_page:
   URL: "https://www.frenchconnection.com/checkout.htm#"
   expected_recs: 0
-  custom_tracking_test: |
-    Given I am on the frenchconnection home page
-    When I click login
-    And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"
-    And I go to the product page
-    And I click on the span with class "cust_checkbox_off checkbox"
-    And I add the current product to the basket
-    And I go to the basket page
-    And I click checkout
-    And I click on the link with id "promotionCodeProceed"
-    And I click on the link with id "shippingMethodProceed"
-    Then it should be tracked as a Checkout page
-    And the debug info should show no SMART-recs    
+  checkout_extra_steps:
+    - [link, id, "promotionCodeProceed"]
+    - [link, id, "shippingMethodProceed"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlCreditCardType", "Mastercard"]
+    - [text_field, id, "cardNumber", "5555555555554444"]
+    - [text_field, id, "cardHolderName", "Eerius"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryMonth", "3"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryYear", "2015"]
+    - [text_field, id, "securityCode", "123"]
+    - [checkbox, id, "chkTermsRead"]
+    - [link, id, "paymentProceed"]
+    
