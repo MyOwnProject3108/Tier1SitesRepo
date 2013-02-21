@@ -1,0 +1,56 @@
+site_name: virginwines
+pretty_name: Virgin wines
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: shirts
+valid_search_term: red wine
+
+home_page:
+  URL: "https://www.virginwines.co.uk/"
+  expected_recs: 3
+  login_link: ["link", ':title=> "register"']
+  search_field: ["text_field", ':id => "search"']
+  needs_SPR: no
+
+product_page:
+  URL: "https://www.virginwines.co.uk/AST/wines/PRD~C06055/Beneficio-Cellar-Reserve-McLaren-Vale-Shiraz-2009.jsp"	
+  expected_recs: 2
+  add_to_basket_button: ["button", ':value => "Add to Basket"']
+
+category_page:
+  URL: "https://www.virginwines.co.uk/ourwines/ourwines.jsp?bmForm=ourWinesSearch&type=mostpopular&sort=salesLast14Days+desc"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.virginwines.co.uk/cart/sc_main.jsp"
+  expected_recs: 0
+  basket_checkout: ["button", ':name=> "create_order"'] 
+
+login_page:
+  URL: "https://www.virginwines.co.uk/logon/loginRegister.jsp?bmUID=jPHLwzU"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"logintxt"']
+  password_field: ["text_field", ':id=>"loginpass"']  
+  login_submit: ["button", ':id=>"loginBut"']
+
+searchresults_page:
+  URL: "http://www.virginwines.co.uk"
+  expected_recs: 0
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  custom_tracking_test: |
+     Given I am on the virginwines home page
+     When I click login
+     And I login as "webtest@mailinator.com" using password "webtest"
+     And I go to the product page
+     And I add the current product to the basket
+     And I go to the basket page
+     And I click checkout
+     Then it should be tracked as a Checkout page
+     And the debug info should show no SMART-recs
