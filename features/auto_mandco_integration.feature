@@ -14,24 +14,28 @@ Feature: Mandco Integration
 
 Scenario: Mandco home page is tracked correctly
   Given I am on the mandco home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Mandco category page is tracked correctly
   Given I am on the mandco category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Mandco product page is tracked correctly
   Given I am on the mandco product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Mandco basket page is tracked correctly
   Given I am on the mandco basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show no SMART-recs
@@ -39,6 +43,7 @@ Scenario: Mandco basket page is tracked correctly
 
 Scenario: Mandco checkout page is tracked correctly
   Given I am on the mandco home page
+  And I clear my browser cookies
   
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "123123"
@@ -52,6 +57,7 @@ Scenario: Mandco checkout page is tracked correctly
 
 Scenario: Mandco search results page is tracked correctly
     Given I am on the mandco homepage
+    And I clear my browser cookies
     
     When I search for "dress"
     Then it should be tracked as a search results page

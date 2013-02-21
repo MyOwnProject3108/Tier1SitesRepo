@@ -14,7 +14,7 @@ module Bhs
       
   	  text_field(:username, :id=>"login_email")
       text_field(:password, :id=>"password")  
-  	  button(:login_submit, :id=>"login_submit")           
+  	  link(:login_submit, :id=>"login_submit")           
     end  
 end
 

@@ -19,6 +19,7 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
   <%= page["custom_tracking_test"] %>
 <% else %>
   Given I am on the <%= site["site_name"] %> <%= page_name %> page
+  And I clear my browser cookies
   <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
   <% end %>
@@ -34,6 +35,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   <%= page["custom_tracking_test"] %>
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
+  And I clear my browser cookies
   <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
   <% end %>
@@ -54,6 +56,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
+    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>
@@ -72,6 +75,7 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
+    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>
@@ -91,6 +95,7 @@ Scenario: SMART-content links work on on <%= site["pretty_name"] %> homepage
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
+    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>

@@ -14,24 +14,28 @@ Feature: frenchconnection Integration
 
 Scenario: frenchconnection home page is tracked correctly
   Given I am on the frenchconnection home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: frenchconnection category page is tracked correctly
   Given I am on the frenchconnection category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: frenchconnection product page is tracked correctly
   Given I am on the frenchconnection product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: frenchconnection basket page is tracked correctly
   Given I am on the frenchconnection basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 4 SMART-recs
@@ -52,6 +56,7 @@ Then it should be tracked as a Checkout page
 And the debug info should show no SMART-recs    
 Scenario: frenchconnection search results page is tracked correctly
     Given I am on the frenchconnection homepage
+    And I clear my browser cookies
     
     When I search for "dress"
     Then it should be tracked as a search results page
@@ -63,6 +68,7 @@ Scenario: frenchconnection search results page is tracked correctly
 @zerosearch
 Scenario: frenchconnection zero search recommendations are shown
     Given I am on the frenchconnection homepage
+    And I clear my browser cookies
     
     When I search for "abcd"
     Then it should be tracked as a search results page

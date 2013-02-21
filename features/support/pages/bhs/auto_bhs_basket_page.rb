@@ -13,6 +13,6 @@ module Bhs
       URL = "https://www.bhs.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34096&langId=-1&storeId=13077"
       direct_url URL
       
-      link(:basket_checkout, :id => "ctl00_ctl00_globalmaincontent_maincontent_hlCheckout")            
+      link(:basket_checkout, :class => "btn_checkout chk_button_primary")            
     end  
 end

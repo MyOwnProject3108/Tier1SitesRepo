@@ -14,24 +14,28 @@ Feature: NotontheHighStreet Integration
 
 Scenario: NotontheHighStreet home page is tracked correctly
   Given I am on the notonthehighstreet home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show at least 4 SMART-recs
 
 Scenario: NotontheHighStreet category page is tracked correctly
   Given I am on the notonthehighstreet category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: NotontheHighStreet product page is tracked correctly
   Given I am on the notonthehighstreet product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: NotontheHighStreet basket page is tracked correctly
   Given I am on the notonthehighstreet basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 1 SMART-recs
@@ -39,6 +43,7 @@ Scenario: NotontheHighStreet basket page is tracked correctly
 
 Scenario: NotontheHighStreet checkout page is tracked correctly
   Given I am on the notonthehighstreet home page
+  And I clear my browser cookies
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
@@ -52,6 +57,7 @@ Scenario: NotontheHighStreet checkout page is tracked correctly
 
 Scenario: NotontheHighStreet search results page is tracked correctly
     Given I am on the notonthehighstreet homepage
+    And I clear my browser cookies
     
     When I search for "map"
     Then it should be tracked as a search results page

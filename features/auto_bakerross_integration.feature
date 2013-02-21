@@ -14,24 +14,28 @@ Feature: Baker Ross Integration
 
 Scenario: Baker Ross home page is tracked correctly
   Given I am on the bakerross home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show at least 1 SMART-recs
 
 Scenario: Baker Ross category page is tracked correctly
   Given I am on the bakerross category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Baker Ross product page is tracked correctly
   Given I am on the bakerross product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 1 SMART-recs
 
 Scenario: Baker Ross basket page is tracked correctly
   Given I am on the bakerross basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 1 SMART-recs
@@ -51,6 +55,7 @@ And the debug info should show no SMART-recs
 
 Scenario: Baker Ross search results page is tracked correctly
     Given I am on the bakerross homepage
+    And I clear my browser cookies
     
     When I search for "blue"
     Then it should be tracked as a search results page
@@ -62,6 +67,7 @@ Scenario: Baker Ross search results page is tracked correctly
 @zerosearch
 Scenario: Baker Ross zero search recommendations are shown
     Given I am on the bakerross homepage
+    And I clear my browser cookies
     
     When I search for "nappies"
     Then it should be tracked as a search results page
