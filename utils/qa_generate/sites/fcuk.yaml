@@ -3,8 +3,8 @@ pretty_name: frenchconnection
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: faiyyaz.sultana@peerius.com
-password: Pa55word
+username: webtest@mailinator.com
+password: webtest
 zero_search_term: abcd
 valid_search_term: dress
 
@@ -51,9 +51,10 @@ checkout_page:
     - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlCreditCardType", "Mastercard"]
     - [text_field, id, "cardNumber", "5555555555554444"]
     - [text_field, id, "cardHolderName", "Eerius"]
-    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryMonth", "3"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryMonth", "03"]
     - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryYear", "2015"]
     - [text_field, id, "securityCode", "123"]
     - [checkbox, id, "chkTermsRead"]
     - [link, id, "paymentProceed"]
+   # - [link, id, "confirmProceed"]
     
