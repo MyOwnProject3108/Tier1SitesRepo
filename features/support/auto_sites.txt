@@ -4,6 +4,7 @@ boohoo.com
 burton.co.uk
 cottontraders.co.uk
 ctshirts.co.uk
+fatface.com
 frenchconnection.com
 hqhair.com
 lookfantastic.com
@@ -13,6 +14,7 @@ mankind.co.uk
 notonthehighstreet.com
 thewhitecompany.com
 topman.com
+eu.topman.com
 us.topman.com
 topshop.com
 wallis.co.uk
