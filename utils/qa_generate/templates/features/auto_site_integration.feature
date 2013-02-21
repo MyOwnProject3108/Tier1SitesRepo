@@ -42,10 +42,11 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   When I click login
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
   And I go to the product page
+  <%= extra_steps_rule(site["product_page"]["product_extra_steps"]) %>
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
-  <%= checkout_steps_rule(page["checkout_extra_steps"]) %>
+  <%= extra_steps_rule(page["checkout_extra_steps"]) %>
   Then it should be tracked as a Checkout page
   <%= expect_recs_rule(page["expected_recs"]) %>
 

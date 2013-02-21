@@ -48,6 +48,8 @@ Scenario: frenchconnection checkout page is tracked correctly
   When I click login
   And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"
   And I go to the product page
+  And I click on the span with class "cust_checkbox_off checkbox"
+  
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout

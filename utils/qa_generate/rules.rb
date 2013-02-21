@@ -11,13 +11,13 @@ def expect_recs_rule(expected_recs)
     return rule
 end
 
-def checkout_steps_rule(checkout_steps)
-  return "" if checkout_steps.nil?
+def extra_steps_rule(extra_steps)
+  return "" if extra_steps.nil?
   rule = ""
   
-  pp checkout_steps
+  #pp extra_steps
   
-  checkout_steps.each do |step|
+  extra_steps.each do |step|
     case step[0]
     when "pause"
       rule += "And I pause for #{step[1]} seconds\n  " if step[1] > 1

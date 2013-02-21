@@ -18,6 +18,8 @@ product_page:
   URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "ctl00_ctl00_globalmaincontent_productcontent_btnHiddenAddToBasketRef"']
+  product_extra_steps:
+    - [span, class, "cust_checkbox_off checkbox"]
 
 category_page:
   URL: "http://www.frenchconnection.com/category/Woman+Collections+Dresses/Dresses.htm"

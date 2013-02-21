@@ -48,6 +48,7 @@ Scenario: Topshop checkout page is tracked correctly
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "Pa55word"
   And I go to the product page
+  
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
