@@ -42,5 +42,7 @@ searchresults_page:
   
 checkout_page:
   URL: ""
-  expected_recs: 0 
+  expected_recs: 0
+  checkout_extra_steps:
+    - [button, class, "button std-arrow"]
   
