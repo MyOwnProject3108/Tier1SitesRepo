@@ -46,6 +46,7 @@ Scenario: Zavvi checkout page is tracked correctly
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
+  
   Then it should be tracked as a Checkout page
   And the debug info should show no SMART-recs
 

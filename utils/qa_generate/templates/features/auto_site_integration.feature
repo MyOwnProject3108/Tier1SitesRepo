@@ -43,8 +43,9 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
+  <%= checkout_steps_rule(page["checkout_extra_steps"]) %>
   Then it should be tracked as a Checkout page
-  <%= expect_recs_rule(site["checkout_page"]["expected_recs"]) %>
+  <%= expect_recs_rule(page["expected_recs"]) %>
 
 <% end %>
 <% page = site["searchresults_page"] %>
