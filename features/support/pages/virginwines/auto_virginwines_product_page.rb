@@ -12,6 +12,6 @@ module Virginwines
       URL = "https://www.virginwines.co.uk/AST/wines/PRD~C06055/Beneficio-Cellar-Reserve-McLaren-Vale-Shiraz-2009.jsp"
       direct_url URL
       
-      button(:add_to_basket, :value => "Add to Basket")          
+      button(:add_to_basket, :class => "button redtogreens")          
     end  
 end

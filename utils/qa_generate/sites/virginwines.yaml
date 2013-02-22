@@ -16,9 +16,11 @@ home_page:
   needs_SPR: no
 
 product_page:
-  URL: "https://www.virginwines.co.uk/AST/wines/PRD~C06055/Beneficio-Cellar-Reserve-McLaren-Vale-Shiraz-2009.jsp"	
+  URL: "https://www.virginwines.co.uk/AST/wines/PRD~C06055/Beneficio-Cellar-Reserve-McLaren-Vale-Shiraz-2009.jsp"   
   expected_recs: 2
-  add_to_basket_button: ["button", ':value => "Add to Basket"']
+  add_to_basket_button: ["button", ':class => "button redtogreen"']
+  product_extra_steps:
+    - [pause, 10]
 
 category_page:
   URL: "https://www.virginwines.co.uk/ourwines/ourwines.jsp?bmForm=ourWinesSearch&type=mostpopular&sort=salesLast14Days+desc"
@@ -34,7 +36,7 @@ login_page:
   expected_recs: 0
   username_field: ["text_field", ':id=>"logintxt"']
   password_field: ["text_field", ':id=>"loginpass"']  
-  login_submit: ["button", ':id=>"loginBut"']
+  login_submit: ["link", ':id=>"loginBut"']
 
 searchresults_page:
   URL: "http://www.virginwines.co.uk"

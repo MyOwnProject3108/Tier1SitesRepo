@@ -14,7 +14,7 @@ module Virginwines
       
   	  text_field(:username, :id=>"logintxt")
       text_field(:password, :id=>"loginpass")  
-  	  button(:login_submit, :id=>"loginBut")           
+  	  link(:login_submit, :id=>"loginBut")           
     end  
 end
 
