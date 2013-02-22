@@ -14,24 +14,28 @@ Feature: Wallis Integration
 
 Scenario: Wallis home page is tracked correctly
   Given I am on the wallis home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Wallis category page is tracked correctly
   Given I am on the wallis category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Wallis product page is tracked correctly
   Given I am on the wallis product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Wallis basket page is tracked correctly
   Given I am on the wallis basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 5 SMART-recs
@@ -39,10 +43,12 @@ Scenario: Wallis basket page is tracked correctly
 
 Scenario: Wallis checkout page is tracked correctly
   Given I am on the wallis home page
+  And I clear my browser cookies
   
   When I click login
   And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"
   And I go to the product page
+  
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
@@ -52,6 +58,7 @@ Scenario: Wallis checkout page is tracked correctly
 
 Scenario: Wallis search results page is tracked correctly
     Given I am on the wallis homepage
+    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page
@@ -63,6 +70,7 @@ Scenario: Wallis search results page is tracked correctly
 @zerosearch
 Scenario: Wallis zero search recommendations are shown
     Given I am on the wallis homepage
+    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

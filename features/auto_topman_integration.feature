@@ -14,24 +14,28 @@ Feature: Topman Integration
 
 Scenario: Topman home page is tracked correctly
   Given I am on the topman home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Topman category page is tracked correctly
   Given I am on the topman category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Topman product page is tracked correctly
   Given I am on the topman product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Topman basket page is tracked correctly
   Given I am on the topman basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 5 SMART-recs
@@ -39,10 +43,12 @@ Scenario: Topman basket page is tracked correctly
 
 Scenario: Topman checkout page is tracked correctly
   Given I am on the topman home page
+  And I clear my browser cookies
   
   When I click login
   And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"
   And I go to the product page
+  
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
@@ -52,6 +58,7 @@ Scenario: Topman checkout page is tracked correctly
 
 Scenario: Topman search results page is tracked correctly
     Given I am on the topman homepage
+    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page
@@ -63,6 +70,7 @@ Scenario: Topman search results page is tracked correctly
 @zerosearch
 Scenario: Topman zero search recommendations are shown
     Given I am on the topman homepage
+    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

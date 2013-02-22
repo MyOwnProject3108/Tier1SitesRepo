@@ -12,6 +12,6 @@ module Bhs
       URL = "http://www.bhs.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34096&storeId=13077&productId=8720953&langId=-1&sort_field=Relevance&categoryId=471259&parent_categoryId=471112&pageSize=40"
       direct_url URL
       
-      button(:add_to_basket, :id=> "ctl00_ctl00_globalmaincontent_productcontent_btnHiddenAddToBasketRef")          
+      button(:add_to_basket, :id=> "btn_add_2_shop_cart")          
     end  
 end

@@ -4,6 +4,7 @@
 #
 
 module Virginwines
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

@@ -14,24 +14,28 @@ Feature: boohoo Integration
 
 Scenario: boohoo home page is tracked correctly
   Given I am on the boohoo home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: boohoo category page is tracked correctly
   Given I am on the boohoo category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: boohoo product page is tracked correctly
   Given I am on the boohoo product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 7 SMART-recs
 
 Scenario: boohoo basket page is tracked correctly
   Given I am on the boohoo basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 1 SMART-recs
@@ -39,10 +43,12 @@ Scenario: boohoo basket page is tracked correctly
 
 Scenario: boohoo checkout page is tracked correctly
   Given I am on the boohoo home page
+  And I clear my browser cookies
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
   And I go to the product page
+  
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
@@ -52,6 +58,7 @@ Scenario: boohoo checkout page is tracked correctly
 
 Scenario: boohoo search results page is tracked correctly
     Given I am on the boohoo homepage
+    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page
@@ -63,6 +70,7 @@ Scenario: boohoo search results page is tracked correctly
 @zerosearch
 Scenario: boohoo zero search recommendations are shown
     Given I am on the boohoo homepage
+    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

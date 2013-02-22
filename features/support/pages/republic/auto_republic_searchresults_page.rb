@@ -4,6 +4,7 @@
 #
 
 module Republic
+  
     class SearchResultsPage
       include PageObject
       include PeeriusHelper

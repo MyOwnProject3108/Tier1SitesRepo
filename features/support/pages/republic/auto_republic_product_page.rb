@@ -4,6 +4,7 @@
 #
 
 module Republic
+  
     class ProductPage
       include PageObject
       include PeeriusHelper

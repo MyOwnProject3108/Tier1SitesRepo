@@ -3,8 +3,8 @@ pretty_name: frenchconnection
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: faiyyaz.sultana@peerius.com
-password: Pa55word
+username: webtest@mailinator.com
+password: webtest
 zero_search_term: abcd
 valid_search_term: dress
 
@@ -18,6 +18,8 @@ product_page:
   URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "ctl00_ctl00_globalmaincontent_productcontent_btnHiddenAddToBasketRef"']
+  product_extra_steps:
+    - [span, class, "cust_checkbox_off checkbox"]
 
 category_page:
   URL: "http://www.frenchconnection.com/category/Woman+Collections+Dresses/Dresses.htm"
@@ -43,16 +45,16 @@ searchresults_page:
 checkout_page:
   URL: "https://www.frenchconnection.com/checkout.htm#"
   expected_recs: 0
-  custom_tracking_test: |
-    Given I am on the frenchconnection home page
-    When I click login
-    And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"
-    And I go to the product page
-    And I click on the span with class "cust_checkbox_off checkbox"
-    And I add the current product to the basket
-    And I go to the basket page
-    And I click checkout
-    And I click on the link with id "promotionCodeProceed"
-    And I click on the link with id "shippingMethodProceed"
-    Then it should be tracked as a Checkout page
-    And the debug info should show no SMART-recs    
+  checkout_extra_steps:
+    - [link, id, "promotionCodeProceed"]
+    - [link, id, "shippingMethodProceed"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlCreditCardType", "Mastercard"]
+    - [text_field, id, "cardNumber", "5555555555554444"]
+    - [text_field, id, "cardHolderName", "Eerius"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryMonth", "03"]
+    - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryYear", "2015"]
+    - [text_field, id, "securityCode", "123"]
+    - [checkbox, id, "chkTermsRead"]
+    - [link, id, "paymentProceed"]
+   # - [link, id, "confirmProceed"]
+    

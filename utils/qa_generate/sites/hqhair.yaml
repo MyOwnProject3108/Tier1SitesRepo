@@ -1,0 +1,46 @@
+site_name: hqhair
+pretty_name: hqhair
+has_content: no
+has_ranking: no
+needs_SPR: false
+username:  suer178@gmail.com
+password: Pa55word
+zero_search_term: no
+valid_search_term: cream
+
+home_page:
+  URL: "http://www.hqhair.com/home.dept"
+  expected_recs: 8
+  login_link: ["link", ':title => "Login"']
+  search_field: ["text_field", ':id => "search-text"']
+
+product_page:
+  URL: "http://www.hqhair.com/moroccanoil-the-original-oil-treatment-25ml/10448780.html"
+  expected_recs: 8
+  add_to_basket_button: ["link", ':class=> "productbuy"']
+
+category_page:
+  URL: "http://www.hqhair.com/health-beauty/skincare/anti-ageing.list"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.hqhair.com/hqhair/my.basket"
+  expected_recs: 4
+  basket_checkout: ["link", ':id => "gotocheckout2"']
+
+login_page:
+  URL: "https://www.hqhair.com/hqhair/login.jsp?redirectToLoginOnPasswordReset"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"username"']
+  password_field: ["text_field", ':id=>"password"']
+  login_submit: ["button", ':id=>"login-submit"']
+
+searchresults_page:
+  URL: "http://www.hqhair.com/elysium.search?search=CREAM"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  

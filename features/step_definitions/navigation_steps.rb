@@ -34,7 +34,7 @@ When /^I login as "(.+)" using password "(.+)"$/ do |username, password|
    on_page(@site+'::LoginPage') do |page|
     		page.username = username
     		page.password = password
-        page.login_submit_element.click if @current_page.login_submit_element.exists?   
+        page.login_submit_element.click   
     end 
 end
 

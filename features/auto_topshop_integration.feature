@@ -14,24 +14,28 @@ Feature: Topshop Integration
 
 Scenario: Topshop home page is tracked correctly
   Given I am on the topshop home page
+  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Topshop category page is tracked correctly
   Given I am on the topshop category page
+  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Topshop product page is tracked correctly
   Given I am on the topshop product page
+  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 1 SMART-recs
 
 Scenario: Topshop basket page is tracked correctly
   Given I am on the topshop basket page
+  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 1 SMART-recs
@@ -39,10 +43,12 @@ Scenario: Topshop basket page is tracked correctly
 
 Scenario: Topshop checkout page is tracked correctly
   Given I am on the topshop home page
+  And I clear my browser cookies
   
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "Pa55word"
   And I go to the product page
+  
   And I add the current product to the basket
   And I go to the basket page
   And I click checkout
@@ -52,6 +58,7 @@ Scenario: Topshop checkout page is tracked correctly
 
 Scenario: Topshop search results page is tracked correctly
     Given I am on the topshop homepage
+    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page
@@ -63,6 +70,7 @@ Scenario: Topshop search results page is tracked correctly
 @zerosearch
 Scenario: Topshop zero search recommendations are shown
     Given I am on the topshop homepage
+    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

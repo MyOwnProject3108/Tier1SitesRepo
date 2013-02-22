@@ -4,6 +4,7 @@
 #
 
 module Virginwines
+  
     class LoginPage
       include PageObject
       include PeeriusHelper
