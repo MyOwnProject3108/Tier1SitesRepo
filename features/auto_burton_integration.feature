@@ -50,6 +50,7 @@ Scenario: burton checkout page is tracked correctly
   And I go to the product page
   
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   And I select "Mr" on the select_list with id "address_title"

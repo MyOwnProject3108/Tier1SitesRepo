@@ -44,6 +44,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   And I go to the product page
   <%= extra_steps_rule(site["product_page"]["product_extra_steps"]) %>
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   <%= extra_steps_rule(page["checkout_extra_steps"]) %>

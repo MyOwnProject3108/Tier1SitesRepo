@@ -51,6 +51,7 @@ Scenario: frenchconnection checkout page is tracked correctly
   And I click on the span with class "cust_checkbox_off checkbox"
   
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   And I click on the link with id "promotionCodeProceed"

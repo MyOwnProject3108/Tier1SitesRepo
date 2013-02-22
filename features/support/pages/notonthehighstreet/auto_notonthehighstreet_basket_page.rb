@@ -13,6 +13,6 @@ module Notonthehighstreet
       URL = "http://www.notonthehighstreet.com/cart"
       direct_url URL
       
-      button(:basket_checkout, :id => "proceed_to_checkout_button primary button medium has_icon")            
+      button(:basket_checkout, :name => "button_checkout")            
     end  
 end

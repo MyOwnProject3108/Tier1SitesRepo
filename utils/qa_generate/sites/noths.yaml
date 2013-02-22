@@ -4,7 +4,7 @@ has_content: no
 has_ranking: no
 needs_SPR: no
 username: webtest@mailinator.com
-password: webtest
+password: webtest1234
 zero_search_term: dsavavas
 valid_search_term: map
 
@@ -26,14 +26,14 @@ category_page:
 basket_page:
   URL: "http://www.notonthehighstreet.com/cart"
   expected_recs: 1
-  basket_checkout: ["button", ':id => "proceed_to_checkout_button primary button medium has_icon"'] 
+  basket_checkout: ["button", ':name => "button_checkout"'] 
 
 login_page:
   URL: "https://www.notonthehighstreet.com/session/new"
   expected_recs: 0
   username_field: ["text_field", ':id=>"session_email"']
   password_field: ["text_field", ':id=>"session_password"']  
-  login_submit: ["button", ':id=>"sign in"']
+  login_submit: ["button", ':value=>"sign in"']
 
 searchresults_page:
   URL: "http://www.notonthehighstreet.com/search"

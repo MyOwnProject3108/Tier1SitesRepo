@@ -14,7 +14,7 @@ module Notonthehighstreet
       
   	  text_field(:username, :id=>"session_email")
       text_field(:password, :id=>"session_password")  
-  	  button(:login_submit, :id=>"sign in")           
+  	  button(:login_submit, :value=>"sign in")           
     end  
 end
 

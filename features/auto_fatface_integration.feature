@@ -53,6 +53,7 @@ Scenario: fatface checkout page is tracked correctly
   And I pause for 3 seconds
   
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   

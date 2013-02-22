@@ -52,6 +52,7 @@ Scenario: CT Shirts checkout page is tracked correctly
   And I go to the product page
   
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   And I click on the button with id "ctl00_contentBody_submit"

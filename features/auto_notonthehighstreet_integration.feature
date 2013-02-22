@@ -46,10 +46,11 @@ Scenario: NotontheHighStreet checkout page is tracked correctly
   And I clear my browser cookies
   
   When I click login
-  And I login as "webtest@mailinator.com" using password "webtest"
+  And I login as "webtest@mailinator.com" using password "webtest1234"
   And I go to the product page
   
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   
