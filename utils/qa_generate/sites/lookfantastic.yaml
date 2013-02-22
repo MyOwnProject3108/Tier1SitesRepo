@@ -9,18 +9,18 @@ zero_search_term: dvd
 valid_search_term: shirts
 
 home_page:
-  URL: "http://www.lookfantastic.com/home.dept"
+  URL: "https://www.lookfantastic.com/home.dept?mvtCTA=a"
   expected_recs: 5
   login_link: ["link", ':link=> "Sign in"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
-  URL: "http://www.lookfantastic.com/md-formulations-facial-cleanser-all-skin-types-250ml/10548664.html"	
+  URL: "https://www.lookfantastic.com/md-formulations-facial-cleanser-all-skin-types-250ml/10548664.html?mvtCTA=a"    
   expected_recs: 3
   add_to_basket_button: ["link", ':class=> "productbuy"']
 
 category_page:
-  URL: "http://www.lookfantastic.com/brands/ardell-lashes.list"
+  URL: "https://www.lookfantastic.com/brands/ardell-lashes.list?mvtCTA=a"
   expected_recs: 0
 
 basket_page:
@@ -29,27 +29,18 @@ basket_page:
   basket_checkout: ["link", ':class => "fr"'] 
 
 login_page:
-  URL: "https://www.lookfantastic.com/lookfantasticgroup/login.jsp"
+  URL: "https://www.lookfantastic.com/lookfantasticgroup/login.jsp?mvtCTA=a"
   expected_recs: 0
   username_field: ["text_field", ':id=>"username"']
   password_field: ["text_field", ':id=>"password"']  
   login_submit: ["button", ':id=>"login-submit"']
 
 searchresults_page:
-  URL: "http://hairandbeauty.lookfantastic.com/search?asug=&w="
+  URL: "https://hairandbeauty.lookfantastic.com/search?asug=&w="
   expected_recs: 0
   zerosearch_recs: 0
 
 checkout_page:
   URL: ""
-  expected_recs: 0 
-custom_tracking_test: |
-     Given I am on the ctshirts home page
-     When I click login
-     And I login as "testmail@123.com" using password "pass1234"
-     And I go to the product page
-     And I add the current product to the basket
-     And I go to the basket page
-     And I click checkout
-     Then it should be tracked as a Other page
-     And the debug info should show no SMART-recs
+  expected_recs: 0
+  checkout_extra_steps:

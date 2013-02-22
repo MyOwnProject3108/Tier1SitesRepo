@@ -8,7 +8,7 @@ module Lookfantastic
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.lookfantastic.com/home.dept"
+      URL = "https://www.lookfantastic.com/home.dept?mvtCTA=a"
       direct_url URL
       
       link(:login_link, :link=> "Sign in")

@@ -9,7 +9,7 @@ module Lookfantastic
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.lookfantastic.com/md-formulations-facial-cleanser-all-skin-types-250ml/10548664.html"
+      URL = "https://www.lookfantastic.com/md-formulations-facial-cleanser-all-skin-types-250ml/10548664.html?mvtCTA=a"
       direct_url URL
       
       link(:add_to_basket, :class=> "productbuy")          

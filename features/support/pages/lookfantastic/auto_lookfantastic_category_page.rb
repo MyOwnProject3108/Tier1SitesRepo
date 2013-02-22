@@ -10,7 +10,7 @@ module Lookfantastic
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.lookfantastic.com/brands/ardell-lashes.list"
+      URL = "https://www.lookfantastic.com/brands/ardell-lashes.list?mvtCTA=a"
       direct_url URL            
     end  
 end

@@ -9,7 +9,7 @@ module Lookfantastic
       include PageObject
       include PeeriusHelper
       
-      URL = "http://hairandbeauty.lookfantastic.com/search?asug=&w="
+      URL = "https://hairandbeauty.lookfantastic.com/search?asug=&w="
       direct_url URL            
     end  
 end

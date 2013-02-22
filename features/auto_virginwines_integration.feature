@@ -43,14 +43,20 @@ Scenario: Virgin wines basket page is tracked correctly
 
 Scenario: Virgin wines checkout page is tracked correctly
   Given I am on the virginwines home page
-When I click login
-And I login as "webtest@mailinator.com" using password "webtest"
-And I go to the product page
-And I add the current product to the basket
-And I go to the basket page
-And I click checkout
-Then it should be tracked as a Checkout page
-And the debug info should show no SMART-recs
+  And I clear my browser cookies
+  
+  When I click login
+  And I login as "webtest@mailinator.com" using password "webtest"
+  And I go to the product page
+  And I pause for 10 seconds
+  
+  And I add the current product to the basket
+  And I go to the basket page
+  And I click checkout
+  
+  Then it should be tracked as a Checkout page
+  And the debug info should show no SMART-recs
+
 Scenario: Virgin wines search results page is tracked correctly
     Given I am on the virginwines homepage
     And I clear my browser cookies

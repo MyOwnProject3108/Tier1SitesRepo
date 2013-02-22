@@ -9,7 +9,7 @@ module Lookfantastic
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.lookfantastic.com/lookfantasticgroup/login.jsp"
+      URL = "https://www.lookfantastic.com/lookfantasticgroup/login.jsp?mvtCTA=a"
       direct_url URL
       
   	  text_field(:username, :id=>"username")
