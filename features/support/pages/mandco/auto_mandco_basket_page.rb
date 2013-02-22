@@ -13,6 +13,6 @@ module Mandco
       URL = "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
       direct_url URL
       
-      link(:basket_checkout, :class => "btn_checkout")            
+      button(:basket_checkout, :class => "right btCheckout submit")            
     end  
 end

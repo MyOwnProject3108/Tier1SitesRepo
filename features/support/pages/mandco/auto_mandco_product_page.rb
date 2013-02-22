@@ -12,6 +12,6 @@ module Mandco
       URL = "http://www.mandco.com/floral-stripe-dress/invt/1208489multi/&bklist=icat,5,10,10010,10010090,10010090190"
       direct_url URL
       
-      button(:add_to_basket, :id=> "btn_add_2_shop_cart")          
+      button(:add_to_basket, :id=> "addproduct")          
     end  
 end

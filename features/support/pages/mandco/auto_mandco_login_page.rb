@@ -14,7 +14,7 @@ module Mandco
       
   	  text_field(:username, :id=>"email")
       text_field(:password, :id=>"password")  
-  	  button(:login_submit, :class=>"button buttonAlt submit")           
+  	  button(:login_submit, :class=>"button buttonAlt submit", :index => 1)           
     end  
 end
 

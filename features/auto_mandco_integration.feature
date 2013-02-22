@@ -46,8 +46,11 @@ Scenario: Mandco checkout page is tracked correctly
   And I clear my browser cookies
   
   When I click login
-  And I login as "anagha.joshi@peerius.com" using password "123123"
+  And I login as "webtest@mailinator.com" using password "webtest"
   And I go to the product page
+  And I click on the div with text "10"
+  And I click on the button with id "addproduct"
+  And I pause for 3 seconds
   
   And I add the current product to the basket
   And I go to the basket page

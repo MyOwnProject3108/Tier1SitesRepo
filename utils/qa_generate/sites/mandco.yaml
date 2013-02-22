@@ -3,8 +3,8 @@ pretty_name: Mandco
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: anagha.joshi@peerius.com
-password: 123123
+username: webtest@mailinator.com
+password: webtest
 zero_search_term: dvd
 valid_search_term: dress
 
@@ -17,7 +17,11 @@ home_page:
 product_page:
   URL: "http://www.mandco.com/floral-stripe-dress/invt/1208489multi/&bklist=icat,5,10,10010,10010090,10010090190"
   expected_recs: 3
-  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  add_to_basket_button: ["button", ':id=> "addproduct"']
+  product_extra_steps:
+    - [div, text, "10"]
+    - ["button", id, "addproduct"]
+    - [pause, 3]
 
 category_page:
   URL: "http://www.mandco.com/dresses-/new-dresses/icat/10010090190/"
@@ -26,14 +30,14 @@ category_page:
 basket_page:
   URL: "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
   expected_recs: 0 
-  basket_checkout: ["link", ':class => "btn_checkout"'] 
+  basket_checkout: ["button", ':class => "right btCheckout submit"'] 
 
 login_page:
   URL: "https://www.mandco.com/bin/venda?ex=co_wizr-shopcart&display=1&stashid=billtologincaa759c&workflowid=shopcart_1&step=billtologin"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
   password_field: ["text_field", ':id=>"password"']  
-  login_submit: ["button", ':class=>"button buttonAlt submit"']
+  login_submit: ["button", ':class=>"button buttonAlt submit", :index => 1']
 
 searchresults_page:
   URL: "http://www.mandco.com/search?q=asjkfhk&categoryPathRefs=10"
