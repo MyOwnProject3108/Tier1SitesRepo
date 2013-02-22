@@ -4,15 +4,15 @@
 
 #
 
-module Mandco
+module Fatface
   
     class BasketPage
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
+      URL = "http://www.fatface.com/bin/venda?ex=co_wizr-shopcart&bsref=fatface&log=22"
       direct_url URL
       
-      button(:basket_checkout, :class => "right btCheckout submit")            
+      link(:basket_checkout, :class => "btn_checkout")            
     end  
 end
