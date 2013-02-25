@@ -1,3 +1,4 @@
+@smartapi
 Feature: SMART-API: SMART-ranking
   In order to get the most out of my shopping experience
   As a website user
@@ -6,15 +7,13 @@ Feature: SMART-API: SMART-ranking
 #
 # SMART-API SMART-ranking
 #
-@smartapi  
     Scenario: Category page with SMART-ranking is tracked using SMART-API
         Given I am using SMART-API to access livedemoshop
         When I supply SMART-ranking setup info
         And I track a category page
         Then I should get an OK status back
         And I should get at least 1 items of SMART-ranking content 
-        
-@smartapi 
+         
     Scenario: SMART-ranking clicks can be tracked using SMART-API
         Given I am using SMART-API to access livedemoshop
         When I supply SMART-ranking setup info

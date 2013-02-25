@@ -4,7 +4,6 @@
 
 #
 @wickes
-
 Feature: Wickes Integration
 
 #
@@ -14,28 +13,28 @@ Feature: Wickes Integration
 
 Scenario: Wickes home page is tracked correctly
   Given I am on the wickes home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Wickes category page is tracked correctly
   Given I am on the wickes category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Wickes product page is tracked correctly
   Given I am on the wickes product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 6 SMART-recs
 
 Scenario: Wickes basket page is tracked correctly
   Given I am on the wickes basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 6 SMART-recs
@@ -59,7 +58,7 @@ Scenario: Wickes checkout page is tracked correctly
 
 Scenario: Wickes search results page is tracked correctly
     Given I am on the wickes homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "ladder"
     Then it should be tracked as a search results page

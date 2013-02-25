@@ -4,7 +4,6 @@
 
 #
 @ctshirts
-
 Feature: CT Shirts Integration
 
 #
@@ -14,7 +13,7 @@ Feature: CT Shirts Integration
 
 Scenario: CT Shirts home page is tracked correctly
   Given I am on the ctshirts home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   And I use the SPR key
   
@@ -23,21 +22,21 @@ Scenario: CT Shirts home page is tracked correctly
 
 Scenario: CT Shirts category page is tracked correctly
   Given I am on the ctshirts category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: CT Shirts product page is tracked correctly
   Given I am on the ctshirts product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 7 SMART-recs
 
 Scenario: CT Shirts basket page is tracked correctly
   Given I am on the ctshirts basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 1 SMART-recs
@@ -62,7 +61,7 @@ Scenario: CT Shirts checkout page is tracked correctly
 
 Scenario: CT Shirts search results page is tracked correctly
     Given I am on the ctshirts homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page
@@ -74,7 +73,7 @@ Scenario: CT Shirts search results page is tracked correctly
 @zerosearch
 Scenario: CT Shirts zero search recommendations are shown
     Given I am on the ctshirts homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

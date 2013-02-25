@@ -7,6 +7,7 @@ username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
 valid_search_term: shirts
+ignore: true
 
 home_page:
   URL: "http://www.republic.co.uk/default.aspx?q=peerius|||||||||||||||"

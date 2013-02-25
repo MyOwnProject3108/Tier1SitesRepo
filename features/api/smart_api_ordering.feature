@@ -1,3 +1,4 @@
+@smartapi
 Feature: SMART-API: ordering
   In order to get customer behaviour insights
   As a website owner

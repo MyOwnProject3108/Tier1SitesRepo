@@ -4,7 +4,6 @@
 
 #
 @topmaneu
-
 Feature: Topman EU Integration
 
 #
@@ -14,28 +13,28 @@ Feature: Topman EU Integration
 
 Scenario: Topman EU home page is tracked correctly
   Given I am on the topmaneu home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Topman EU category page is tracked correctly
   Given I am on the topmaneu category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Topman EU product page is tracked correctly
   Given I am on the topmaneu product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Topman EU basket page is tracked correctly
   Given I am on the topmaneu basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 5 SMART-recs
@@ -53,13 +52,14 @@ Scenario: Topman EU checkout page is tracked correctly
   And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
+  And I click on the link with class "btn_proceed_to_payment submit_button chk_button_primary"
   
   Then it should be tracked as a Checkout page
   And the debug info should show no SMART-recs
 
 Scenario: Topman EU search results page is tracked correctly
     Given I am on the topmaneu homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page
@@ -71,7 +71,7 @@ Scenario: Topman EU search results page is tracked correctly
 @zerosearch
 Scenario: Topman EU zero search recommendations are shown
     Given I am on the topmaneu homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

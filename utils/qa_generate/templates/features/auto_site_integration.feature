@@ -4,7 +4,9 @@
 
 #
 @<%= site["site_name"] %>
-
+<% if site["ignore"] %>
+@ignore
+<% end %>
 Feature: <%= site["pretty_name"] %> Integration
 
 #
@@ -14,12 +16,15 @@ Feature: <%= site["pretty_name"] %> Integration
 
 <% for page_name in ["home", "category", "product", "basket"] %>
 <% page = site[page_name+"_page"] %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
 Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% if page.has_key?("custom_tracking_test") %>
   <%= page["custom_tracking_test"] %>
 <% else %>
   Given I am on the <%= site["site_name"] %> <%= page_name %> page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
   <% end %>
@@ -30,6 +35,9 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% end %>
 
 <% page = site["checkout_page"] %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% if page.has_key?("custom_tracking_test") %>
   <%= page["custom_tracking_test"] %>
@@ -53,12 +61,15 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 
 <% end %>
 <% page = site["searchresults_page"] %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 <% if page.has_key?("custom_tracking_test") %>
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>
@@ -72,12 +83,15 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 # Zero search tests
 #
 @zerosearch
+<% if page["ignore"] %>
+@ignore
+<% end %>
 Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <% if page.has_key?("custom_tracking_test") %>
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>
@@ -92,12 +106,15 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 #
 # SMART-content tests
 #
+<% if page["ignore"] %>
+@ignore
+<% end %>
 Scenario: SMART-content links work on on <%= site["pretty_name"] %> homepage
 <% if page.has_key?("custom_tracking_test") %>
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>

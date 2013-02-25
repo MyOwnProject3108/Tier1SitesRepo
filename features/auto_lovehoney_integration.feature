@@ -4,7 +4,6 @@
 
 #
 @lovehoney
-
 Feature: Lovehoney Integration
 
 #
@@ -14,28 +13,28 @@ Feature: Lovehoney Integration
 
 Scenario: Lovehoney home page is tracked correctly
   Given I am on the lovehoney home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Lovehoney category page is tracked correctly
   Given I am on the lovehoney category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Lovehoney product page is tracked correctly
   Given I am on the lovehoney product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 1 SMART-recs
 
 Scenario: Lovehoney basket page is tracked correctly
   Given I am on the lovehoney basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show no SMART-recs
@@ -60,7 +59,7 @@ Scenario: Lovehoney checkout page is tracked correctly
 
 Scenario: Lovehoney search results page is tracked correctly
     Given I am on the lovehoney homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "lube"
     Then it should be tracked as a search results page

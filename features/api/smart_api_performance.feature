@@ -1,5 +1,6 @@
 @performance
 @smartapi
+@ignore
 Feature: SMART-API: SMART-API performance
   In order to get good response times for my app
   As an app developer

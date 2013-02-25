@@ -4,7 +4,6 @@
 
 #
 @virginwines
-
 Feature: Virgin wines Integration
 
 #
@@ -14,28 +13,28 @@ Feature: Virgin wines Integration
 
 Scenario: Virgin wines home page is tracked correctly
   Given I am on the virginwines home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Virgin wines category page is tracked correctly
   Given I am on the virginwines category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Virgin wines product page is tracked correctly
   Given I am on the virginwines product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 2 SMART-recs
 
 Scenario: Virgin wines basket page is tracked correctly
   Given I am on the virginwines basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show no SMART-recs
@@ -60,7 +59,7 @@ Scenario: Virgin wines checkout page is tracked correctly
 
 Scenario: Virgin wines search results page is tracked correctly
     Given I am on the virginwines homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "red wine"
     Then it should be tracked as a search results page
@@ -72,7 +71,7 @@ Scenario: Virgin wines search results page is tracked correctly
 @zerosearch
 Scenario: Virgin wines zero search recommendations are shown
     Given I am on the virginwines homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "shirts"
     Then it should be tracked as a search results page

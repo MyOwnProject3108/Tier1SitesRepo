@@ -9,7 +9,7 @@ module Topmaneu
       include PageObject
       include PeeriusHelper
       
-      URL = "http://eu.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34064&storeId=13061&productId=8741205&langId=-1&sort_field=Relevance&categoryId=336017&parent_categoryId=336013&pageSize=20"
+      URL = "http://eu.topman.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=34064&storeId=13061&productId=5339097&langId=-1"
       direct_url URL
       
       button(:add_to_basket, :id=> "btn_add_2_shop_cart")          

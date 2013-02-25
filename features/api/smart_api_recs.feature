@@ -1,3 +1,4 @@
+@smartapi
 Feature: SMART-API: SMART-recs
   In order to get the most out of my shopping experience
   As a website user

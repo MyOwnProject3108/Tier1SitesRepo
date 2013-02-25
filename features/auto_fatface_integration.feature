@@ -4,7 +4,6 @@
 
 #
 @fatface
-
 Feature: fatface Integration
 
 #
@@ -14,28 +13,28 @@ Feature: fatface Integration
 
 Scenario: fatface home page is tracked correctly
   Given I am on the fatface home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: fatface category page is tracked correctly
   Given I am on the fatface category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: fatface product page is tracked correctly
   Given I am on the fatface product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: fatface basket page is tracked correctly
   Given I am on the fatface basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show at least 6 SMART-recs
@@ -60,7 +59,7 @@ Scenario: fatface checkout page is tracked correctly
 
 Scenario: fatface search results page is tracked correctly
     Given I am on the fatface homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "dress"
     Then it should be tracked as a search results page
@@ -72,7 +71,7 @@ Scenario: fatface search results page is tracked correctly
 @zerosearch
 Scenario: fatface zero search recommendations are shown
     Given I am on the fatface homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "dvd"
     Then it should be tracked as a search results page

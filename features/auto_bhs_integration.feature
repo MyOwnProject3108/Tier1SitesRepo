@@ -4,7 +4,6 @@
 
 #
 @bhs
-
 Feature: bhs Integration
 
 #
@@ -14,28 +13,28 @@ Feature: bhs Integration
 
 Scenario: bhs home page is tracked correctly
   Given I am on the bhs home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: bhs category page is tracked correctly
   Given I am on the bhs category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: bhs product page is tracked correctly
   Given I am on the bhs product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: bhs basket page is tracked correctly
   Given I am on the bhs basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   Then it should be tracked as a basket page
   And the debug info should show no SMART-recs
@@ -68,7 +67,7 @@ Scenario: bhs checkout page is tracked correctly
 
 Scenario: bhs search results page is tracked correctly
     Given I am on the bhs homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "dress"
     Then it should be tracked as a search results page
