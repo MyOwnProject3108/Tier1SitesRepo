@@ -43,7 +43,7 @@ Scenario: Wickes basket page is tracked correctly
 
 Scenario: Wickes checkout page is tracked correctly
   Given I am on the wickes home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"

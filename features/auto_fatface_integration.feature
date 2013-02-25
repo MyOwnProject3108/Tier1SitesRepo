@@ -43,14 +43,12 @@ Scenario: fatface basket page is tracked correctly
 
 Scenario: fatface checkout page is tracked correctly
   Given I am on the fatface home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "Pa55word"
   And I go to the product page
   And I click on the li with class "8"
-  And I click on the button with id "addproduct"
-  And I pause for 3 seconds
   
   And I add the current product to the basket
   And I pause for 2 seconds

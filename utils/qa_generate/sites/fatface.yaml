@@ -20,8 +20,6 @@ product_page:
   add_to_basket_button: ["button", ':id=> "addproduct"']
   product_extra_steps:
     - [li, class, "8"]
-    - ["button", id, "addproduct"]
-    - [pause, 3]
 
 category_page:
   URL: "http://www.fatface.com/women/dresses/icat/womensdresses/"
@@ -35,9 +33,9 @@ basket_page:
 login_page:
   URL: "https://www.fatface.com/bin/venda?ex=co_wizr-register&bsref=fatface"
   expected_recs: 0
-  username_field: ["text_field", ':id=>"email"']
+  username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  
-  login_submit: ["button", ':class=>"button buttonAlt submit"']
+  login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
   URL: "http://www.fatface.com/search?q=dress"

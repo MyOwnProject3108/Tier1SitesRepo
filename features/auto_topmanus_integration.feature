@@ -43,16 +43,17 @@ Scenario: Topman USA basket page is tracked correctly
 
 Scenario: Topman USA checkout page is tracked correctly
   Given I am on the topmanus home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
-  And I login as "anagha.joshi@peerius.com" using password "Pa55word"
+  And I login as "webtest@mailinator.com" using password "webtest1234"
   And I go to the product page
   
   And I add the current product to the basket
   And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
+  And I click on the link with class "btn_proceed_to_payment submit_button chk_button_primary"
   
   Then it should be tracked as a Checkout page
   And the debug info should show no SMART-recs

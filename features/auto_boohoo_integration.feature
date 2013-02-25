@@ -43,7 +43,7 @@ Scenario: boohoo basket page is tracked correctly
 
 Scenario: boohoo checkout page is tracked correctly
   Given I am on the boohoo home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"

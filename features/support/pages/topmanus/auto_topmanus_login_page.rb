@@ -9,7 +9,7 @@ module Topmanus
       include PageObject
       include PeeriusHelper
       
-      URL = "https://us.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33059&storeId=13051"
+      URL = "http://us.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33059&storeId=13051&ddkey=http:LogonForm&geoip=noship"
       direct_url URL
       
   	  text_field(:username, :id=>"login_email")

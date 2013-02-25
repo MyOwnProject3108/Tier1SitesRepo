@@ -43,7 +43,7 @@ Scenario: Lovehoney basket page is tracked correctly
 
 Scenario: Lovehoney checkout page is tracked correctly
   Given I am on the lovehoney home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"

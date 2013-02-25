@@ -43,7 +43,7 @@ Scenario: Topshop basket page is tracked correctly
 
 Scenario: Topshop checkout page is tracked correctly
   Given I am on the topshop home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "Pa55word"

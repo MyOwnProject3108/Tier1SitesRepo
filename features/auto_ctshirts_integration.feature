@@ -45,7 +45,7 @@ Scenario: CT Shirts basket page is tracked correctly
 
 Scenario: CT Shirts checkout page is tracked correctly
   Given I am on the ctshirts home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"

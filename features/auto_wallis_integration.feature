@@ -43,7 +43,7 @@ Scenario: Wallis basket page is tracked correctly
 
 Scenario: Wallis checkout page is tracked correctly
   Given I am on the wallis home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"

@@ -43,7 +43,7 @@ Scenario: burton basket page is tracked correctly
 
 Scenario: burton checkout page is tracked correctly
   Given I am on the burton home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"

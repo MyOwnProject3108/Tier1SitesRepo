@@ -43,7 +43,7 @@ Scenario: Zavvi basket page is tracked correctly
 
 Scenario: Zavvi checkout page is tracked correctly
   Given I am on the zavvi home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "testmail@123.com" using password "pass1234"

@@ -12,9 +12,9 @@ module Fatface
       URL = "https://www.fatface.com/bin/venda?ex=co_wizr-register&bsref=fatface"
       direct_url URL
       
-  	  text_field(:username, :id=>"email")
+  	  text_field(:username, :id=>"login_email")
       text_field(:password, :id=>"password")  
-  	  button(:login_submit, :class=>"button buttonAlt submit")           
+  	  link(:login_submit, :id=>"login_submit")           
     end  
 end
 

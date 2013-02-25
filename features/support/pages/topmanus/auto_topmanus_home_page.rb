@@ -8,7 +8,7 @@ module Topmanus
       include PageObject
       include PeeriusHelper
       
-      URL = "http://us.topman.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13051&catalogId=33059&geoip=home"
+      URL = "http://us.topman.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13051&catalogId=33059&geoip=noship"
       direct_url URL
       
       link(:login_link, :title => "Login")

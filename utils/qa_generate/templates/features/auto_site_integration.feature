@@ -35,7 +35,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   <%= page["custom_tracking_test"] %>
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
   <% end %>

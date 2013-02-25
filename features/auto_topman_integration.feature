@@ -43,7 +43,7 @@ Scenario: Topman basket page is tracked correctly
 
 Scenario: Topman checkout page is tracked correctly
   Given I am on the topman home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"

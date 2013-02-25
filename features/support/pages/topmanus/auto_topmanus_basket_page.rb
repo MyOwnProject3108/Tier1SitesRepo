@@ -10,7 +10,7 @@ module Topmanus
       include PageObject
       include PeeriusHelper
       
-      URL = "https://us.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33059&langId=-1&storeId=13051"
+      URL = "http://us.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33059&langId=-1&storeId=13051&geoip=noship"
       direct_url URL
       
       link(:basket_checkout, :class => "btn_checkout")            

@@ -43,7 +43,7 @@ Scenario: Look Fantastic basket page is tracked correctly
 
 Scenario: Look Fantastic checkout page is tracked correctly
   Given I am on the lookfantastic home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "testmail@123.com" using password "pass1234"

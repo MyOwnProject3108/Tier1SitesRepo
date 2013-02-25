@@ -43,7 +43,7 @@ Scenario: mankind basket page is tracked correctly
 
 Scenario: mankind checkout page is tracked correctly
   Given I am on the mankind home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "user178@gmail.com" using password "pa55word"
