@@ -3,8 +3,8 @@ pretty_name: fatface
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: anagha.joshi@peerius.com
-password: Pa55word
+username: user123@gmail.com
+password: 123123
 zero_search_term: dvd
 valid_search_term: dress
 
@@ -28,7 +28,7 @@ category_page:
 basket_page:
   URL: "http://www.fatface.com/bin/venda?ex=co_wizr-shopcart&bsref=fatface&log=22"
   expected_recs: 6 
-  basket_checkout: ["link", ':class => "btn_checkout"'] 
+  basket_checkout: ["button", ':class => "button buttonArrow right btCheckout submit"'] 
 
 login_page:
   URL: "https://www.fatface.com/bin/venda?ex=co_wizr-register&bsref=fatface"
@@ -40,7 +40,7 @@ login_page:
 searchresults_page:
   URL: "http://www.fatface.com/search?q=dress"
   expected_recs: 0
-  zerosearch_recs: 1
+  zerosearch_recs: 6
   
 checkout_page:
   URL: "https://us.topman.com/webapp/wcs/stores/servlet/OrderDisplay?langId=-1&catalogId=33059&storeId=13051&krypto=8F4rqMW1NIT2HrCzbTrqrqDR7yDlD1DPQ615%2FcCIvMFAtaBWSUJQ3vu3Bv%2B8FEmXn5qsPN4MTb%2Bn%0A3xLBVGOxDIgpieVQ8bzSYzLIGzMMCg6xIYXWM7g%2BJU8McBBz9GriSM%2BxCCAn9U1YUmKsLBDhgT0D%0A0GhtpGPsI8410o9YXpj3AUY6QacOzb8YojkDuiat5IULUSuIr9%2B8HePWer01aII%2FTSP3Oa1jDX%2Fl%0AXPuHJTimNo4%2FcIQY959QrIOBwea4WrXsQASMguEb5YIyGatshE%2FI4Z7QQFEZUmJBKv1z%2BVddarI%2B%0AYOA6STmzFy5inU9IWu7JUspBqktHD7HCDGuk%2FXbAzTtwUHWOwpRpDhBWzUL0JcC6OZhZ9h8mE5EZ%0Aaj6KnwUc4un3bX8%3D&ddkey=https:PreCheckout" 

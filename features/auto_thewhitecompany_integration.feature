@@ -31,29 +31,40 @@ Scenario: thewhitecompany product page is tracked correctly
   And I clear my browser cookies
   
   Then it should be tracked as a product page
-  And the debug info should show at least 3 SMART-recs
+  And the debug info should show at least 2 SMART-recs
 
 Scenario: thewhitecompany basket page is tracked correctly
   Given I am on the thewhitecompany basket page
   And I clear my browser cookies
   
   Then it should be tracked as a basket page
-  And the debug info should show at least 3 SMART-recs
+  And the debug info should show at least 2 SMART-recs
 
 
 Scenario: thewhitecompany checkout page is tracked correctly
   Given I am on the thewhitecompany home page
-When I click login
-And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"
-And I go to the product page
-And I click on the img with alt "More"
-And I add the current product to the basket
-And I go to the basket page
-And I click checkout
-And I click on the button with id "in_btnProceed"
-And I enter the payment details
-Then it should be tracked as a Checkout page
-And the debug info should show no SMART-recs
+  And I clear my browser cookies
+  
+  When I click login
+  And I login as "user178@gmail.com" using password "Pa55word"
+  And I go to the product page
+  And I click on the image with class "spinbox-more"
+  
+  And I add the current product to the basket
+  And I go to the basket page
+  And I click checkout
+  And I click on the button with id "in_btnProceed"
+  And I enter "5555555555554444" on the text_field with id "in_txtCardNumber"
+  And I enter "Eerius" on the text_field with id "in_txtHolderName"
+  And I select "Mastercard" on the select_list with id "sl_cardType"
+  And I select "3" on the select_list with id "sl_month"
+  And I select "2015" on the select_list with id "sl_year"
+  And I enter "123" on the text_field with id "in_cscCode"
+  And I click on the button with id "in_btnPay"
+  
+  Then it should be tracked as a Checkout page
+  And the debug info should show no SMART-recs
+
 Scenario: thewhitecompany search results page is tracked correctly
     Given I am on the thewhitecompany homepage
     And I clear my browser cookies

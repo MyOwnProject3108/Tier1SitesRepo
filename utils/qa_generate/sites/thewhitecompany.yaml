@@ -3,7 +3,7 @@ pretty_name: thewhitecompany
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: faiyyaz.sultana@peerius.com
+username: user178@gmail.com
 password: Pa55word
 zero_search_term: no
 valid_search_term: towel
@@ -16,16 +16,18 @@ home_page:
 
 product_page:
   URL: "http://www.thewhitecompany.com/the-little-white-company-childrens-bedroom/childrens-bedroom-accessories/girls-towels/"
-  expected_recs: 3
+  expected_recs: 2
   add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
-
+  product_extra_steps:
+    - [image, class, "spinbox-more"]
+    
 category_page:
   URL: "http://www.thewhitecompany.com/bathroom/towels/"
   expected_recs: 0
 
 basket_page:
   URL: "http://www.thewhitecompany.com/shopping-bag/"
-  expected_recs: 3 
+  expected_recs: 2
   basket_checkout: ["button", ':id => "in_btnCheckout"'] 
 
 login_page:
@@ -43,16 +45,13 @@ searchresults_page:
 checkout_page:
   URL: "" 
   expected_recs: 0
-  custom_tracking_test: |
-    Given I am on the thewhitecompany home page
-    When I click login
-    And I login as "faiyyaz.sultana@peerius.com" using password "Pa55word"
-    And I go to the product page
-    And I click on the img with alt "More"
-    And I add the current product to the basket
-    And I go to the basket page
-    And I click checkout
-    And I click on the button with id "in_btnProceed"
-    And I enter the payment details
-    Then it should be tracked as a Checkout page
-    And the debug info should show no SMART-recs
+  checkout_extra_steps:
+    - [button, id, "in_btnProceed"]
+    - [text_field, id, "in_txtCardNumber", "5555555555554444"]
+    - [text_field, id, "in_txtHolderName", "Eerius"]
+    - [select_list, id, "sl_cardType", "Mastercard"]
+    - [select_list, id, "sl_month", "3"]
+    - [select_list, id, "sl_year", "2015"]
+    - [text_field, id, "in_cscCode", "123"]
+    - [button, id, "in_btnPay"]
+   

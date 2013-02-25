@@ -46,7 +46,7 @@ Scenario: fatface checkout page is tracked correctly
 #  And I clear my browser cookies
   
   When I click login
-  And I login as "anagha.joshi@peerius.com" using password "Pa55word"
+  And I login as "user123@gmail.com" using password "123123"
   And I go to the product page
   And I click on the li with class "8"
   
@@ -76,5 +76,5 @@ Scenario: fatface zero search recommendations are shown
     
     When I search for "dvd"
     Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
+    And the debug info should show at least 6 SMART-recs
 
