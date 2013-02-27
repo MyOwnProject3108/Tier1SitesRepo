@@ -42,7 +42,7 @@ Scenario: thewhitecompany basket page is tracked correctly
 
 Scenario: thewhitecompany checkout page is tracked correctly
   Given I am on the thewhitecompany home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "user178@gmail.com" using password "Pa55word"
@@ -50,6 +50,7 @@ Scenario: thewhitecompany checkout page is tracked correctly
   And I click on the image with class "spinbox-more"
   
   And I add the current product to the basket
+  And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
   And I click on the button with id "in_btnProceed"
