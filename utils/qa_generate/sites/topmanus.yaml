@@ -15,17 +15,17 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://us.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33059&storeId=13051&productId=8970499&langId=-1&sort_field=Relevance&categoryId=207493&parent_categoryId=207478&pageSize=20&geoip=noship"
+  URL: "http://us.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33059&storeId=13051&productId=8743542&langId=-1&sort_field=Relevance&categoryId=207526&parent_categoryId=207478&pageSize=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
-  URL: "http://us.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33059&storeId=13051&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207526&parent_categoryId=207478&beginIndex=1&pageSize=20&geoip=noship"
+  URL: "http://us.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33059&storeId=13051&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207526&parent_categoryId=207478&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33059&langId=-1&storeId=13051&geoip=noship"
-  expected_recs: 5 
+  expected_recs: 4 
   basket_checkout: ["link", ':class => "btn_checkout"'] 
 
 login_page:

@@ -25,7 +25,7 @@ category_page:
 
 basket_page:
   URL: "http://eu.topman.com/webapp/wcs/stores/servlet/OrderCalculate?langId=-1&storeId=13061&catalogId=34064&updatePrices=1&calculationUsageId=-1&calculationUsageId=-2&calculationUsageId=-7&orderId=.&URL=OrderItemDisplay"
-  expected_recs: 5 
+  expected_recs: 4 
   basket_checkout: ["link", ':class => "btn_checkout"'] 
 
 login_page:

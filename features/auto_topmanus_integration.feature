@@ -37,7 +37,7 @@ Scenario: Topman USA basket page is tracked correctly
 #  And I clear my browser cookies
   
   Then it should be tracked as a basket page
-  And the debug info should show at least 5 SMART-recs
+  And the debug info should show at least 4 SMART-recs
 
 
 Scenario: Topman USA checkout page is tracked correctly

@@ -10,7 +10,7 @@ module Topmanus
       include PageObject
       include PeeriusHelper
       
-      URL = "http://us.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33059&storeId=13051&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207526&parent_categoryId=207478&beginIndex=1&pageSize=20&geoip=noship"
+      URL = "http://us.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33059&storeId=13051&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207526&parent_categoryId=207478&beginIndex=1&pageSize=20"
       direct_url URL            
     end  
 end
