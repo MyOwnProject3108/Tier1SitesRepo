@@ -28,24 +28,24 @@ When /^I track (?:a|the) home page$/ do
    @api.track
 end
 
-When /^I track an "?other"? page$/ do
+When /^I track (?:the|an) "?other"? page$/ do
    @api.json_type = 'other'
    @api.track
 end
 
-When /^I track a product page$/ do
+When /^I track (?:a|the) product page$/ do
    @api.json_type = 'product'
    @api.json_product = {"refCode" => "prod-dw041dpu"}
    @api.track
 end
 
-When /^I track a category page$/ do
+When /^I track (?:a|the) category page$/ do
    @api.json_type = 'category'
    @api.json_category = "ties"
    @api.track
 end
 
-When /^I track a basket page$/ do
+When /^I track (?:a|the) basket page$/ do
   @api.json_type = 'basket'
   items = [
       {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
@@ -55,7 +55,7 @@ When /^I track a basket page$/ do
   @api.track
 end
 
-When /^I track a checkout page$/ do
+When /^I track (?:a|the) checkout page$/ do
     @api.json_type = 'checkout'
     items = [
         {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
@@ -71,7 +71,7 @@ When /^I track a checkout page$/ do
     @api.track
 end 
 
-When /^I track an order page$/ do
+When /^I track (?:the|an) order page$/ do
     @api.json_type = 'order'
     items = [
         {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
@@ -88,19 +88,19 @@ When /^I track an order page$/ do
     @api.track
 end
 
-When /^I track a search results page$/ do
+When /^I track (?:the|a) search results page$/ do
    @api.json_type = 'searchresults'
    @api.json_searchResults = {"term" => "handbags", "results" => []}
    @api.track
 end 
 
-When /^I track a brand page$/ do
+When /^I track (?:the|a) brand page$/ do
    @api.json_type = 'brand'
    @api.json_brand = "Levis"
    @api.track
 end
 
-When /^I track an attribute page$/ do
+When /^I track (?:the|an) attribute page$/ do
    @api.json_type = 'attribute'
    @api.json_attribute = {"name" => "style", "value" => "Casual"}
    @api.track

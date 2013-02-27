@@ -14,7 +14,7 @@ module Peerius
         attr_reader :response_times
          
         def initialize(site, version=nil, testserver=nil)
-            file = open('smart_api.log', File::WRONLY | File::APPEND | File::CREAT)
+            file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
             @version = version.nil? ? "v1_1" : version
             if testserver.nil? then  
@@ -77,7 +77,7 @@ module Peerius
             else
                 @json_request = JSON.generate(request)
             end
-            @logger.info(@json_request)            
+            @logger.info("Request: " + @json_request)            
             params = { :jd => @json_request }
             uri.query = URI.encode_www_form(params) 
             
@@ -89,7 +89,7 @@ module Peerius
             end 
             data = resp.body
             @response_times.push(time*1000)
-            @logger.info(data)
+            @logger.info("Response: " + data)
 
             # we convert the returned JSON data to native Ruby
             # data structure - a hash

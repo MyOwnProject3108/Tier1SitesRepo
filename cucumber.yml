@@ -1,8 +1,20 @@
-live: FIG_NEWTON_FILE=pt.yml --no-source --color --format pretty --format html --out tests_live.html
-pt: FIG_NEWTON_FILE=pt.yml --no-source --color --format pretty --format html --out tests_pt.html
-pt1: FIG_NEWTON_FILE=pt1.yml --no-source --color --format pretty --format html --out tests_pt1.html 
-pt2: FIG_NEWTON_FILE=pt2.yml --no-source --color --format pretty --format html --out tests_pt2.html  
-test1: FIG_NEWTON_FILE=test1.yml --no-source --color --format pretty --format html --out tests_test1.html
-test2: FIG_NEWTON_FILE=test2.yml --no-source --color --format pretty --format html --out tests_test2.html
-uat: FIG_NEWTON_FILE=uat.yml --tags ~@internal --no-source --color --format pretty --format html --out tests_uat.html 
-default: FIG_NEWTON_FILE=test1.yml --no-source --color --format pretty --format html --out tests_test1.html
+<% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
+<% live_servers = ["pt", "pt1", "pt2"] %>
+<% dev_servers = ["test1", "test2", "uat"] %>
+
+<% for server in live_servers %> 
+<%= server %>: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %> --tags ~@internal
+<%= server %>_api: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %> --tags ~@internal --tags @smartapi
+<% end %>
+
+<% for server in dev_servers %> 
+<%= server %>: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %>
+<%= server %>_api: FIG_NEWTON_FILE=<%= server %>.yml --format html --out api_tests_<%= server %>.html <%= common %> --tags @smartapi
+<% end %>
+
+
+default: --profile test1
+sanity: --profile test1
+live: --profile pt
+api: --profile test1_api
+live_api: --profile pt_api

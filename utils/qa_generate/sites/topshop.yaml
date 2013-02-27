@@ -7,6 +7,7 @@ username: anagha.joshi@peerius.com
 password: Pa55word
 zero_search_term: dvd
 valid_search_term: shirts
+apikey: 89hyuaa2da3a
 
 home_page:
   URL: "http://www.topshop.com/"

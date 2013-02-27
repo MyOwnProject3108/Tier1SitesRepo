@@ -1,10 +1,7 @@
-@smartapi
-Feature: SMART-API: ordering
-  In order to get customer behaviour insights
-  As a website owner
-  I want to use an API to track user behaviour using Peerius
-  
-@smartapi @internal   
+@smartapi 
+@topshop
+Feature: SMART-API TopShop specific tests
+    
 Scenario: I can order multiple products
 	Given I am using SMART-API v1_1 to access topshop
 	And I am using client token 89hyuaa2da3a
