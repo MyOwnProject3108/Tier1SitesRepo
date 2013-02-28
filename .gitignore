@@ -1,5 +1,5 @@
 .DS_Store
-smart_api.log
+*.log
 *.html
 Gemfile.lock
 .rvmrc

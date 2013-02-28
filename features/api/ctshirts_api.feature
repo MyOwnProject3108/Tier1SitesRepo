@@ -11,7 +11,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works u
     And I track the home page
     Then the first SMART-content creative name should contain <category_name>
     Examples:
-    | product         | category_name |
-    | "prod-ev003wht" | "Shirts"      |
-    | "prod-tv017baq" | "Ties"        |
-    | "prod-mc075bgd" | "Shoes"       |
+    | product    | category_name |
+    | "LE083BLU" | "cufflinks"   |
+    | "TH099RYL" | "Ties"        |
+    | "MP027TAN" | "Shoes"       |
