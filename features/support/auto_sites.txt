@@ -13,6 +13,7 @@ lovehoney.co.uk
 mandco.com
 mankind.co.uk
 micro-scooters.co.uk
+neweracap.co.uk
 notonthehighstreet.com
 redletterdays.co.uk
 republic.co.uk
@@ -21,6 +22,7 @@ topman.com
 eu.topman.com
 us.topman.com
 topshop.com
+us.topshop.com
 virginwines.co.uk
 wallis.co.uk
 wickes.co.uk
