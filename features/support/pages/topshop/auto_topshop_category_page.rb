@@ -10,7 +10,7 @@ module Topshop
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33057&storeId=12556&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208523&parent_categoryId=203984&beginIndex=1&pageSize=20&intcmpid=W_SUPERCAT_LEFTNAV_CLOTHING_UK_WK1_DRESSES"
+      URL = "http://www.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33057&storeId=12556&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208524&parent_categoryId=203984&beginIndex=1&pageSize=20"
       direct_url URL            
     end  
 end

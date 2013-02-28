@@ -33,9 +33,9 @@ basket_page:
 login_page:
   URL: "https://www.fatface.com/bin/venda?ex=co_wizr-register&bsref=fatface"
   expected_recs: 0
-  username_field: ["text_field", ':id=>"login_email"']
+  username_field: ["text_field", ':id=>"email"']
   password_field: ["text_field", ':id=>"password"']  
-  login_submit: ["link", ':id=>"login_submit"']
+  login_submit: ["button", ':class=>"button buttonAlt submit"']
 
 searchresults_page:
   URL: "http://www.fatface.com/search?q=dress"

@@ -36,9 +36,9 @@ login_page:
   login_submit: ["button", ':class =>"right"']
 
 searchresults_page:
-  URL: "https://www.cottontraders.co.uk/search?q=aaa&searchsubmit=Search&categories=shop"
+  URL: "http://www.cottontraders.co.uk/search?q=shirt&searchsubmit=Search&categories=shop"
   expected_recs: 0
-  zerosearch_recs: 1
+  zerosearch_recs: 5
   
 checkout_page:
   URL: ""
