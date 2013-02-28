@@ -1,0 +1,45 @@
+site_name: schuh
+pretty_name: NotontheHighStreet
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: dsavavas
+valid_search_term: map
+
+home_page:
+  URL: "http://www.schuh.co.uk/"
+  expected_recs: 4
+  login_link: ["link", ':link_text => "my schuh.co.uk"']
+  search_field: ["text_field", ':id => "term"']
+
+product_page:
+  URL: "http://www1.schuh.co.uk/blue-adidas-ac-backpack/7507335060/"	
+  expected_recs: 0
+  add_to_basket_button: ["button", ':id=> "ctl00_ContentPlaceHolder1_btnAddToBasket"']
+  
+category_page:
+  URL: "http://www.schuh.co.uk/mens/trainers/"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www1.schuh.co.uk/basket.aspx"
+  expected_recs: 1
+  basket_checkout: ["img", ':title => "GO TO SECURE CHECKOUT"'] 
+
+login_page:
+  URL: "https://secure1.schuh.co.uk/myaccount/accountlogin.aspx?custAction="
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_ContentPlaceHolder1_ctlAccountLogin_txtEmail"']
+  password_field: ["text_field", ':id=>"ctl00_ContentPlaceHolder1_ctlAccountLogin_txtPassword"']  
+  login_submit: ["button", ':id=>"ctl00_ContentPlaceHolder1_ctlAccountLogin_btnLogin"']
+
+searchresults_page:
+  URL: "http://www.schuh.co.uk/search"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: "https://www.schuh.co.uk/session/new"
+  expected_recs: 0 
