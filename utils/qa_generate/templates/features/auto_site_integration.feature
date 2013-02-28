@@ -28,6 +28,7 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
   <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
   <% end %>
+  <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a <%= page_name %> page
   <%= expect_recs_rule(page["expected_recs"]) %>
 
@@ -50,12 +51,12 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   When I click login
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
   And I go to the product page
-  <%= extra_steps_rule(site["product_page"]["product_extra_steps"]) %>
+  <%= extra_steps_rule(site["product_page"]["extra_steps"]) %>
   And I add the current product to the basket
   And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
-  <%= extra_steps_rule(page["checkout_extra_steps"]) %>
+  <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a Checkout page
   <%= expect_recs_rule(page["expected_recs"]) %>
 

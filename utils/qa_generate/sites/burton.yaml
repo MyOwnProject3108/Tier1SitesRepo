@@ -43,7 +43,7 @@ searchresults_page:
 checkout_page:
   URL: "" 
   expected_recs: 0
-  checkout_extra_steps:
+  extra_steps:
     - [select_list, id, "address_title", "Mr"]
     - [text_field, id, "address_first_name", "P"]
     - [text_field, id, "address_surname", "Eerius"]

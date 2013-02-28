@@ -18,7 +18,7 @@ product_page:
   URL: "http://www.fatface.com/dresses/lilah-border-dress/invt/40989/?colour=Navy"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
-  product_extra_steps:
+  extra_steps:
     - [li, class, "8"]
 
 category_page:

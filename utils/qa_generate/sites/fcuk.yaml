@@ -18,7 +18,7 @@ product_page:
   URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "ctl00_ctl00_globalmaincontent_productcontent_btnHiddenAddToBasketRef"']
-  product_extra_steps:
+  extra_steps:
     - [span, class, "cust_checkbox_off checkbox"]
 
 category_page:
@@ -45,7 +45,7 @@ searchresults_page:
 checkout_page:
   URL: "https://www.frenchconnection.com/checkout.htm#"
   expected_recs: 0
-  checkout_extra_steps:
+  extra_steps:
     - [link, id, "promotionCodeProceed"]
     - [link, id, "shippingMethodProceed"]
     - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlCreditCardType", "Mastercard"]

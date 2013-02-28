@@ -43,5 +43,5 @@ searchresults_page:
 checkout_page:
   URL: "https://eu.topman.com/webapp/wcs/stores/servlet/OrderDisplay?langId=-1&catalogId=34064&storeId=13061&ddkey=https:PreCheckout&geoip=home" 
   expected_recs: 0
-  checkout_extra_steps:
+  extra_steps:
     - [link, class, btn_proceed_to_payment submit_button chk_button_primary]

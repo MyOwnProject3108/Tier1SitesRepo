@@ -15,12 +15,14 @@ Scenario: fatface home page is tracked correctly
   Given I am on the fatface home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: fatface category page is tracked correctly
   Given I am on the fatface category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,15 @@ Scenario: fatface product page is tracked correctly
   Given I am on the fatface product page
 #  And I clear my browser cookies
   
+  And I click on the li with class "8"
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: fatface basket page is tracked correctly
   Given I am on the fatface basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 6 SMART-recs

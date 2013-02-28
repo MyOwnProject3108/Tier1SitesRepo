@@ -15,12 +15,14 @@ Scenario: mankind home page is tracked correctly
   Given I am on the mankind home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: mankind category page is tracked correctly
   Given I am on the mankind category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,14 @@ Scenario: mankind product page is tracked correctly
   Given I am on the mankind product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: mankind basket page is tracked correctly
   Given I am on the mankind basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 3 SMART-recs

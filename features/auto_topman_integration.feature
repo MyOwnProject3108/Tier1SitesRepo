@@ -15,12 +15,14 @@ Scenario: Topman home page is tracked correctly
   Given I am on the topman home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Topman category page is tracked correctly
   Given I am on the topman category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,14 @@ Scenario: Topman product page is tracked correctly
   Given I am on the topman product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Topman basket page is tracked correctly
   Given I am on the topman basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 5 SMART-recs

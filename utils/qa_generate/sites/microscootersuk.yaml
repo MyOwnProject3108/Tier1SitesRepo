@@ -46,5 +46,5 @@ searchresults_page:
 checkout_page:
   URL: ""
   expected_recs: 0
-  checkout_extra_steps:
+  extra_steps:
     - [button, id, "ctl00_contentBody_submit"]

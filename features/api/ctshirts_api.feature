@@ -10,8 +10,14 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works u
     And I purchase a <product> using the SMART-API
     And I track the home page
     Then the first SMART-content creative name should contain <category_name>
+    And I should get at least 6 SMART-content creatives in the response
     Examples:
     | product    | category_name |
+    | "SN061WHT" | "classic"     |
+    | "FT097RYL" | "slim"        |
+    | "RD034SKY" | "extra slim"  |
+    | "CK012COR" | "non-iron"    |
+    | "EPA07GRY" | "Suits"        |
     | "LE083BLU" | "cufflinks"   |
     | "TH099RYL" | "Ties"        |
     | "MP027TAN" | "Shoes"       |

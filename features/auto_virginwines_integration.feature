@@ -15,12 +15,14 @@ Scenario: Virgin wines home page is tracked correctly
   Given I am on the virginwines home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Virgin wines category page is tracked correctly
   Given I am on the virginwines category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,15 @@ Scenario: Virgin wines product page is tracked correctly
   Given I am on the virginwines product page
 #  And I clear my browser cookies
   
+  And I pause for 10 seconds
+  
   Then it should be tracked as a product page
   And the debug info should show at least 2 SMART-recs
 
 Scenario: Virgin wines basket page is tracked correctly
   Given I am on the virginwines basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show no SMART-recs

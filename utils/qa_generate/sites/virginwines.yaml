@@ -19,7 +19,7 @@ product_page:
   URL: "https://www.virginwines.co.uk/AST/wines/PRD~C06055/Beneficio-Cellar-Reserve-McLaren-Vale-Shiraz-2009.jsp"   
   expected_recs: 2
   add_to_basket_button: ["button", ':class => "button redtogreen"']
-  product_extra_steps:
+  extra_steps:
     - [pause, 10]
 
 category_page:

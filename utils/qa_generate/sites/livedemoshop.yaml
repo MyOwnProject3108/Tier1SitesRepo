@@ -10,6 +10,7 @@ valid_search_term: shirts
 apikey: gfsdkl47gh3248
 
 home_page:
+  ignore: yes
   URL: "http://demo.peerius.com/Home"
   expected_recs: 1
   expected_api_recs: 1
@@ -19,20 +20,25 @@ home_page:
   needs_SPR: yes
 
 product_page:
+  ignore: yes
   URL: "http://demo.peerius.com/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
   expected_recs: 7
   add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
 
 category_page:
+  ignore: yes
   URL: "http://www.redletterdays.co.uk/mens-suits/mens-business-suits?q=peerius|||||||||||||||"
   expected_recs: 0
+  expected_api_ranking: 1
 
 basket_page:
+  ignore: yes
   URL: "http://demo.peerius.com/Basket.aspx"
   expected_recs: 1
   basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
 
 login_page:
+  ignore: yes
   URL: "https://demo.peerius.com/AccountLogin.aspx"
   expected_recs: 0
   username_field: ["text_field", ':id=>"ctl00_contentBody_email"']
@@ -40,12 +46,14 @@ login_page:
   login_submit: ["button", ':id=>"ctl00_contentBody_submit"']
 
 searchresults_page:
+  ignore: yes
   URL: "http://demo.peerius.com/SearchNoResults.aspx?term=abc"
   expected_recs: 0
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: yes
   URL: ""
   expected_recs: 0
-  checkout_extra_steps:
+  extra_steps:
     - [button, id, "ctl00_contentBody_submit"]

@@ -15,12 +15,14 @@ Scenario: Mandco home page is tracked correctly
   Given I am on the mandco home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Mandco category page is tracked correctly
   Given I am on the mandco category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,17 @@ Scenario: Mandco product page is tracked correctly
   Given I am on the mandco product page
 #  And I clear my browser cookies
   
+  And I click on the div with text "10"
+  And I click on the button with id "addproduct"
+  And I pause for 3 seconds
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Mandco basket page is tracked correctly
   Given I am on the mandco basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show no SMART-recs

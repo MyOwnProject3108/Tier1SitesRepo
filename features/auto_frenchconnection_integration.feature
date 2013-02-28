@@ -15,12 +15,14 @@ Scenario: frenchconnection home page is tracked correctly
   Given I am on the frenchconnection home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: frenchconnection category page is tracked correctly
   Given I am on the frenchconnection category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,15 @@ Scenario: frenchconnection product page is tracked correctly
   Given I am on the frenchconnection product page
 #  And I clear my browser cookies
   
+  And I click on the span with class "cust_checkbox_off checkbox"
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: frenchconnection basket page is tracked correctly
   Given I am on the frenchconnection basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 4 SMART-recs

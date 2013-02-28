@@ -18,7 +18,7 @@ product_page:
   URL: "http://www.mandco.com/floral-stripe-dress/invt/1208489multi/&bklist=icat,5,10,10010,10010090,10010090190"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
-  product_extra_steps:
+  extra_steps:
     - [div, text, "10"]
     - ["button", id, "addproduct"]
     - [pause, 3]

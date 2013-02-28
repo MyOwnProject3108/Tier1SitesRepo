@@ -17,12 +17,14 @@ Scenario: Microscooters UK home page is tracked correctly
   
   And I use the SPR key
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Microscooters UK category page is tracked correctly
   Given I am on the microscootersuk category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -31,12 +33,14 @@ Scenario: Microscooters UK product page is tracked correctly
   Given I am on the microscootersuk product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 1 SMART-recs
 
 Scenario: Microscooters UK basket page is tracked correctly
   Given I am on the microscootersuk basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 1 SMART-recs

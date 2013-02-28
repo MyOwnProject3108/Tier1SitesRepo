@@ -15,12 +15,14 @@ Scenario: Wallis home page is tracked correctly
   Given I am on the wallis home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Wallis category page is tracked correctly
   Given I am on the wallis category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,14 @@ Scenario: Wallis product page is tracked correctly
   Given I am on the wallis product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Wallis basket page is tracked correctly
   Given I am on the wallis basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 5 SMART-recs

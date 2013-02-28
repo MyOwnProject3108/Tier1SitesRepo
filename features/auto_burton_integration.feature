@@ -15,12 +15,14 @@ Scenario: burton home page is tracked correctly
   Given I am on the burton home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: burton category page is tracked correctly
   Given I am on the burton category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,14 @@ Scenario: burton product page is tracked correctly
   Given I am on the burton product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 4 SMART-recs
 
 Scenario: burton basket page is tracked correctly
   Given I am on the burton basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 7 SMART-recs

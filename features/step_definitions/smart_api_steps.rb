@@ -222,7 +222,7 @@ Then /^I should get at least (\d+) items? of SMART\-product content in the respo
 end
 
 Then /^the first SMART\-content creative name should contain "(.*?)"$/ do |expected_string|
-  # @api.content_creatives.collect{|x| puts "\n#{x["name"]}"}
+  @api.content_creatives.collect{|x| puts "\n#{x["position"]}: #{x["name"]}"}
   @api.should have_smart_content
   @api.content_creatives[0]["name"].should include(expected_string)
 end

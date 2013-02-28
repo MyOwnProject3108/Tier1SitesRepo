@@ -18,7 +18,7 @@ product_page:
   URL: "http://www.thewhitecompany.com/the-little-white-company-childrens-bedroom/childrens-bedroom-accessories/girls-towels/"
   expected_recs: 2
   add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
-  product_extra_steps:
+  extra_steps:
     - [image, class, "spinbox-more"]
     
 category_page:
@@ -45,7 +45,7 @@ searchresults_page:
 checkout_page:
   URL: "" 
   expected_recs: 0
-  checkout_extra_steps:
+  extra_steps:
     - [button, id, "in_btnProceed"]
     - [text_field, id, "in_txtCardNumber", "5555555555554444"]
     - [text_field, id, "in_txtHolderName", "Eerius"]
