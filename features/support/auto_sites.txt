@@ -22,6 +22,7 @@ topman.com
 eu.topman.com
 us.topman.com
 topshop.com
+eu.topshop.com
 us.topshop.com
 virginwines.co.uk
 wallis.co.uk
