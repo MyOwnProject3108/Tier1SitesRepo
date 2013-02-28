@@ -74,5 +74,5 @@ Scenario: Cotton Traders zero search recommendations are shown
     
     When I search for "asdf"
     Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
+    And the debug info should show at least 5 SMART-recs
 
