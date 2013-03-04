@@ -22,7 +22,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works u
     | "FT097RYL" | "slim"        |
     | "RD034SKY" | "extra slim"  |
 #    | "CK012COR" | "non-iron"    |
-    | "EPA07GRY" | "Suits"        |
+    | "EPA07GRY" | "Suits"       |
     | "LE083BLU" | "cufflinks"   |
     | "TH099RYL" | "Ties"        |
     | "MP027TAN" | "Shoes"       |
