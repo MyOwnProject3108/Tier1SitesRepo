@@ -5,18 +5,18 @@ has_ranking: no
 needs_SPR: no
 username: testmail@123.com
 password: pass1234
-zero_search_term: 12345
-valid_search_term: brush
+zero_search_term: no
+valid_search_term: nail
 
 home_page:
   URL: "http://www.beautyexpert.co.uk/home.dept"
-  expected_recs: 5
+  expected_recs: 9
   login_link: ["link", ':link=> "Login"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
   URL: "http://www.beautyexpert.co.uk/decleor-travel-essentials-for-sensitive-skin-5-products/10616195.html"    
-  expected_recs: 3
+  expected_recs: 4
   add_to_basket_button: ["link", ':class=> "productbuy"']
 
 category_page:
@@ -25,7 +25,7 @@ category_page:
 
 basket_page:
   URL: "https://www.beautyexpert.co.uk/beautyexpert/my.basket"
-  expected_recs: 1
+  expected_recs: 3
   basket_checkout: ["link", ':id => "gotocheckout2"'] 
 
 login_page:

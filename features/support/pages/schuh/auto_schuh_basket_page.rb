@@ -13,6 +13,6 @@ module Schuh
       URL = "http://www1.schuh.co.uk/basket.aspx"
       direct_url URL
       
-      img(:basket_checkout, :title => "GO TO SECURE CHECKOUT")            
+      link(:basket_checkout, :href => "https://secure1.schuh.co.uk/chklogin.aspx")            
     end  
 end

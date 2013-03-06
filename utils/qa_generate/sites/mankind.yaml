@@ -5,8 +5,8 @@ has_ranking: no
 needs_SPR: false
 username: user178@gmail.com
 password: pa55word
-zero_search_term: no
-valid_search_term: cream
+zero_search_term: abcd
+valid_search_term: shirt
 
 home_page:
   URL: "http://www.mankind.co.uk/home.dept"
@@ -16,7 +16,7 @@ home_page:
 
 product_page:
   URL: "http://www.mankind.co.uk/american-crew-forming-cream-85gm/10360120.html"
-  expected_recs: 3
+  expected_recs: 4
   add_to_basket_button: ["link", ':class=> "productbuy"']
 
 category_page:
@@ -38,7 +38,7 @@ login_page:
 searchresults_page:
   URL: "http://malegrooming.mankind.co.uk/search?w=cream&asug="
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 8
   
 checkout_page:
   URL: "" 

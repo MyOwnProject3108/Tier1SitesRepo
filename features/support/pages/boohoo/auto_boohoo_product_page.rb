@@ -9,7 +9,7 @@ module Boohoo
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.boohoo.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33058&storeId=12557&productId=7588619&langId=-1&sort_field=Relevance&categoryId=209668&parent_categoryId=209327&pageSize=20"
+      URL = "http://www.boohoo.com/restofworld/footwear/boots/icat/boots/boots/amara-nude-suedette-lace-up-perspex-block-heel-boots/invt/azz53928"
       direct_url URL
       
       button(:add_to_basket, :id=> "ctl00_contentBody_ctl02_submit")          

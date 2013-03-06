@@ -4,13 +4,13 @@
 
 #
 
-module Wickes
+module Thehut
   
     class CategoryPage
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.wickes.co.uk/tools-electrical+plumbing/icat/toolsstorage/"
+      URL = "http://www.thehut.com/catalogue/men.list"
       direct_url URL            
     end  
 end

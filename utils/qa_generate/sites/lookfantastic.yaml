@@ -5,7 +5,7 @@ has_ranking: no
 needs_SPR: no
 username: testmail@123.com
 password: pass1234
-zero_search_term: dvd
+zero_search_term: no
 valid_search_term: shirts
 
 home_page:
