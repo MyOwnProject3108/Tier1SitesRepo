@@ -5,4 +5,5 @@ Gemfile.lock
 .rvmrc
 *.orig
 utils/*.rb
-
+features/**/auto_*
+features/auto_*
