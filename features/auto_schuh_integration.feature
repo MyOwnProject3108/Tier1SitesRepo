@@ -4,62 +4,78 @@
 
 #
 @schuh
-
-Feature: NotontheHighStreet Integration
+Feature: Schuh Integration
 
 #
 # Tracking tests
 #
 
 
-Scenario: NotontheHighStreet home page is tracked correctly
+Scenario: Schuh home page is tracked correctly
   Given I am on the schuh home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a home page
-  And the debug info should show at least 4 SMART-recs
+  And the debug info should show no SMART-recs
 
-Scenario: NotontheHighStreet category page is tracked correctly
+Scenario: Schuh category page is tracked correctly
   Given I am on the schuh category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
-Scenario: NotontheHighStreet product page is tracked correctly
+Scenario: Schuh product page is tracked correctly
   Given I am on the schuh product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
+  And I click on the link with id "size_360"
   
   Then it should be tracked as a product page
-  And the debug info should show no SMART-recs
+  And the debug info should show at least 4 SMART-recs
 
-Scenario: NotontheHighStreet basket page is tracked correctly
+Scenario: Schuh basket page is tracked correctly
   Given I am on the schuh basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
-  And the debug info should show at least 1 SMART-recs
+  And the debug info should show no SMART-recs
 
 
-Scenario: NotontheHighStreet checkout page is tracked correctly
+Scenario: Schuh checkout page is tracked correctly
   Given I am on the schuh home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
-  And I login as "webtest@mailinator.com" using password "webtest1234"
+  And I login as "peeriustest@gmail.com" using password "Pa55word"
+  And I pause for 2 seconds
+  
   And I go to the product page
+  And I click on the link with id "size_360"
   
   And I add the current product to the basket
   And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
+  And I enter "peeriustest@gmail.com" on the text_field with id "ctl00_ContentPlaceHolder1_txtEmail"
+  And I enter "Pa55word" on the text_field with id "ctl00_ContentPlaceHolder1_txtPassword"
+  And I click on the button with id "ctl00_ContentPlaceHolder1_btnContinue"
+  And I pause for 2 seconds
+  And I click on the button with id "ctl00_ContentPlaceHolder1_chkDelOptions1_rptDelOptions_ctl01_radSelect"
+  And I select "Mr" on the select_list with id "ctl00_ContentPlaceHolder1_chkAddressForm1_ddlTitle"
+  And I enter "test" on the text_field with id "ctl00_ContentPlaceHolder1_chkAddressForm1_txtfirstName"
+  And I enter "" on the text_field with id "tl00_ContentPlaceHolder1_chkAddressForm1_txtSurname"
+  And I enter "" on the text_field with id "ctl00_ContentPlaceHolder1_chkAddressForm1_txtPhone"
   
   Then it should be tracked as a Checkout page
   And the debug info should show no SMART-recs
 
-Scenario: NotontheHighStreet search results page is tracked correctly
+Scenario: Schuh search results page is tracked correctly
     Given I am on the schuh homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
     When I search for "map"
     Then it should be tracked as a search results page

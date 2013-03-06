@@ -51,6 +51,7 @@ Scenario: fatface checkout page is tracked correctly
   
   When I click login
   And I login as "user123@gmail.com" using password "123123"
+  
   And I go to the product page
   And I click on the li with class "8"
   

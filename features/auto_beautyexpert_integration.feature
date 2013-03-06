@@ -4,7 +4,6 @@
 
 #
 @beautyexpert
-
 Feature: Beautyexpert Integration
 
 #
@@ -14,39 +13,44 @@ Feature: Beautyexpert Integration
 
 Scenario: Beautyexpert home page is tracked correctly
   Given I am on the beautyexpert home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a home page
-  And the debug info should show at least 5 SMART-recs
+  And the debug info should show at least 9 SMART-recs
 
 Scenario: Beautyexpert category page is tracked correctly
   Given I am on the beautyexpert category page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
 Scenario: Beautyexpert product page is tracked correctly
   Given I am on the beautyexpert product page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a product page
-  And the debug info should show at least 3 SMART-recs
+  And the debug info should show at least 4 SMART-recs
 
 Scenario: Beautyexpert basket page is tracked correctly
   Given I am on the beautyexpert basket page
-  And I clear my browser cookies
+#  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
-  And the debug info should show at least 1 SMART-recs
+  And the debug info should show at least 3 SMART-recs
 
 
 Scenario: Beautyexpert checkout page is tracked correctly
   Given I am on the beautyexpert home page
-  And I clear my browser cookies
+#  And I clear my browser cookies
   
   When I click login
   And I login as "testmail@123.com" using password "pass1234"
+  
   And I go to the product page
   
   And I add the current product to the basket
@@ -59,9 +63,9 @@ Scenario: Beautyexpert checkout page is tracked correctly
 
 Scenario: Beautyexpert search results page is tracked correctly
     Given I am on the beautyexpert homepage
-    And I clear my browser cookies
+#    And I clear my browser cookies
     
-    When I search for "brush"
+    When I search for "nail"
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 

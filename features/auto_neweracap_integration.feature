@@ -15,12 +15,14 @@ Scenario: NewEraCap home page is tracked correctly
   Given I am on the neweracap home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: NewEraCap category page is tracked correctly
   Given I am on the neweracap category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,14 @@ Scenario: NewEraCap product page is tracked correctly
   Given I am on the neweracap product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 11 SMART-recs
 
 Scenario: NewEraCap basket page is tracked correctly
   Given I am on the neweracap basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 5 SMART-recs
@@ -46,13 +50,13 @@ Scenario: NewEraCap checkout page is tracked correctly
   
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "Pa55word"
+  
   And I go to the product page
   
   And I add the current product to the basket
   And I pause for 2 seconds
   And I go to the basket page
   And I click checkout
-  And I click on the link with class "btn_proceed_to_payment submit_button chk_button_primary"
   
   Then it should be tracked as a Checkout page
   And the debug info should show no SMART-recs

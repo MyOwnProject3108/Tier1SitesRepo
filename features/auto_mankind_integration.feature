@@ -33,7 +33,7 @@ Scenario: mankind product page is tracked correctly
   
   
   Then it should be tracked as a product page
-  And the debug info should show at least 3 SMART-recs
+  And the debug info should show at least 4 SMART-recs
 
 Scenario: mankind basket page is tracked correctly
   Given I am on the mankind basket page
@@ -50,6 +50,7 @@ Scenario: mankind checkout page is tracked correctly
   
   When I click login
   And I login as "user178@gmail.com" using password "pa55word"
+  
   And I go to the product page
   
   And I add the current product to the basket
@@ -64,8 +65,19 @@ Scenario: mankind search results page is tracked correctly
     Given I am on the mankind homepage
 #    And I clear my browser cookies
     
-    When I search for "cream"
+    When I search for "shirt"
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 
+#
+# Zero search tests
+#
+@zerosearch
+Scenario: mankind zero search recommendations are shown
+    Given I am on the mankind homepage
+#    And I clear my browser cookies
+    
+    When I search for "abcd"
+    Then it should be tracked as a search results page
+    And the debug info should show at least 8 SMART-recs
 

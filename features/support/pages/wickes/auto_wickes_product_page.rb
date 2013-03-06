@@ -12,6 +12,6 @@ module Wickes
       URL = "http://www.wickes.co.uk/rimini-round-basin-500mm+full-pedestal/invt/220725/"
       direct_url URL
       
-      button(:add_to_basket, :id=> "bt_prodtail")          
+      button(:add_to_basket, :class=> "bt_prodtail")          
     end  
 end

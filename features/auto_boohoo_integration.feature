@@ -50,6 +50,7 @@ Scenario: boohoo checkout page is tracked correctly
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
+  
   And I go to the product page
   
   And I add the current product to the basket
@@ -64,19 +65,8 @@ Scenario: boohoo search results page is tracked correctly
     Given I am on the boohoo homepage
 #    And I clear my browser cookies
     
-    When I search for "shirts"
+    When I search for "dress"
     Then it should be tracked as a search results page
     And the debug info should show no SMART-recs
 
-#
-# Zero search tests
-#
-@zerosearch
-Scenario: boohoo zero search recommendations are shown
-    Given I am on the boohoo homepage
-#    And I clear my browser cookies
-    
-    When I search for "dvd"
-    Then it should be tracked as a search results page
-    And the debug info should show at least 1 SMART-recs
 

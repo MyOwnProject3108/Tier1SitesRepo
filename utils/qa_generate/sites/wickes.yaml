@@ -17,11 +17,11 @@ home_page:
 product_page:
   URL: "http://www.wickes.co.uk/rimini-round-basin-500mm+full-pedestal/invt/220725/"
   expected_recs: 6 
-  add_to_basket_button: ["button", ':id=> "bt_prodtail"']
+  add_to_basket_button: ["button", ':class=> "bt_prodtail"']
 
 category_page:
-  URL: "http://www.wickes.co.uk/exterior-french-doors/solid-oak-french-doors/icat/solidoakfrenchdoors/"
-  expected_recs: 0 
+  URL: "http://www.wickes.co.uk/tools-electrical+plumbing/icat/toolsstorage/"
+  expected_recs: 9 
 
 basket_page:
   URL: "http://www.wickes.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=wickes&log=22"
@@ -31,9 +31,9 @@ basket_page:
 login_page:
   URL: "https://www.wickes.co.uk/bin/venda?ex=co_wizr-register&bsref=wickes"
   expected_recs: 0 
-  username_field: ["text_field", ':id=>"login_email"']
+  username_field: ["text_field", ':id=>"email", :index=>1']
   password_field: ["text_field", ':id=>"password"']  
-  login_submit: ["link", ':id=>"login_submit"']
+  login_submit: ["button", ':alt=>"Sign In"']
 
 searchresults_page:
   URL: "http://search.wickes.co.uk/search#ts=ajax&method=and&w=bla&isort=score"

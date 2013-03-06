@@ -51,6 +51,7 @@ Scenario: thewhitecompany checkout page is tracked correctly
   
   When I click login
   And I login as "user178@gmail.com" using password "Pa55word"
+  
   And I go to the product page
   And I click on the image with class "spinbox-more"
   

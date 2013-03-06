@@ -50,6 +50,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   <% end %>
   When I click login
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
+  <%= extra_steps_rule(site["login_page"]["extra_steps"]) %>
   And I go to the product page
   <%= extra_steps_rule(site["product_page"]["extra_steps"]) %>
   And I add the current product to the basket

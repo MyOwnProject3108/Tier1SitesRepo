@@ -9,7 +9,7 @@ module Zavvi
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.zavvi.com/dvd/the-world-at-war-the-ultimate-restored-edition/10166563.html"
+      URL = "http://www.zavvi.com/dvd/goodnight-sweetheart-series-1-6/8560541.html"
       direct_url URL
       
       link(:add_to_basket, :class=> "productbuy")          

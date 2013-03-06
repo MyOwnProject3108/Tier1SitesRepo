@@ -10,7 +10,7 @@ module Zavvi
       include PageObject
       include PeeriusHelper
       
-      URL = "https://www.zavvi.com/zavvi/my.basket"
+      URL = "https://www.zavvi.com/zavvi/my.basket?mvtCTA=b"
       direct_url URL
       
       link(:basket_checkout, :id => "gotocheckout2")            

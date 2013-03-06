@@ -10,7 +10,7 @@ module Wickes
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.wickes.co.uk/exterior-french-doors/solid-oak-french-doors/icat/solidoakfrenchdoors/"
+      URL = "http://www.wickes.co.uk/tools-electrical+plumbing/icat/toolsstorage/"
       direct_url URL            
     end  
 end

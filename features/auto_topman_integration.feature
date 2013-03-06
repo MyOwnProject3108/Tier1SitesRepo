@@ -50,6 +50,7 @@ Scenario: Topman checkout page is tracked correctly
   
   When I click login
   And I login as "vinod.sathapathi@peerius.com" using password "Pa55word"
+  
   And I go to the product page
   
   And I add the current product to the basket

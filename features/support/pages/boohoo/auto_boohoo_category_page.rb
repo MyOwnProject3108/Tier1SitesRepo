@@ -10,7 +10,7 @@ module Boohoo
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.boohoo.com/restofworld/sale/autumn-winter/icat/sale-autumn-winter/#esp_cf=pdxtcat&esp_filter_pdxtcat=Coats%20%26%20Jackets"
+      URL = "http://www.boohoo.com/restofworld/footwear/boots/icat/boots/"
       direct_url URL            
     end  
 end

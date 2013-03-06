@@ -51,6 +51,7 @@ Scenario: frenchconnection checkout page is tracked correctly
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
+  
   And I go to the product page
   And I click on the span with class "cust_checkbox_off checkbox"
   

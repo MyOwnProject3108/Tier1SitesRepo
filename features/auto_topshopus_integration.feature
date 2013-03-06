@@ -15,12 +15,14 @@ Scenario: Topshop USA home page is tracked correctly
   Given I am on the topshopus home page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
 Scenario: Topshop USA category page is tracked correctly
   Given I am on the topshopus category page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
@@ -29,12 +31,14 @@ Scenario: Topshop USA product page is tracked correctly
   Given I am on the topshopus product page
 #  And I clear my browser cookies
   
+  
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
 Scenario: Topshop USA basket page is tracked correctly
   Given I am on the topshopus basket page
 #  And I clear my browser cookies
+  
   
   Then it should be tracked as a basket page
   And the debug info should show at least 4 SMART-recs
@@ -46,6 +50,7 @@ Scenario: Topshop USA checkout page is tracked correctly
   
   When I click login
   And I login as "anagha.joshi@peerius.com" using password "Pa55word"
+  
   And I go to the product page
   
   And I add the current product to the basket

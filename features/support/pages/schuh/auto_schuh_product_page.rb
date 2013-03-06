@@ -9,7 +9,7 @@ module Schuh
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www1.schuh.co.uk/blue-adidas-ac-backpack/7507335060/"
+      URL = "http://www1.schuh.co.uk/womens-tan-schuh-karmel-pull-on-calf/1522006220/"
       direct_url URL
       
       button(:add_to_basket, :id=> "ctl00_ContentPlaceHolder1_btnAddToBasket")          

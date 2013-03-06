@@ -11,7 +11,7 @@ module Schuh
       URL = "http://www.schuh.co.uk/"
       direct_url URL
       
-      link(:login_link, :link_text => "my schuh.co.uk")
-	    text_field(:search, :id => "term")
+      link(:login_link, :id => "ctl00_lnkMyAccount")
+	    text_field(:search, :id => "searchBox")
     end  
 end

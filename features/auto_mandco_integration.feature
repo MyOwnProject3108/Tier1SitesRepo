@@ -53,6 +53,7 @@ Scenario: Mandco checkout page is tracked correctly
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
+  
   And I go to the product page
   And I click on the div with text "10"
   And I click on the button with id "addproduct"

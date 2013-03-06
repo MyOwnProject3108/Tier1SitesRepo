@@ -9,7 +9,7 @@ module Boohoo
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.boohoo.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12557&catalogId=33058&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dress&x=34&y=17"
+      URL = "http://www.boohoo.com/restofworld/search/page/search/?q=dress"
       direct_url URL            
     end  
 end

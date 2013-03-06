@@ -33,7 +33,7 @@ Scenario: Zavvi product page is tracked correctly
   
   
   Then it should be tracked as a product page
-  And the debug info should show no SMART-recs
+  And the debug info should show at least 4 SMART-recs
 
 Scenario: Zavvi basket page is tracked correctly
   Given I am on the zavvi basket page
@@ -41,7 +41,7 @@ Scenario: Zavvi basket page is tracked correctly
   
   
   Then it should be tracked as a basket page
-  And the debug info should show at least 2 SMART-recs
+  And the debug info should show at least 4 SMART-recs
 
 
 Scenario: Zavvi checkout page is tracked correctly
@@ -50,6 +50,7 @@ Scenario: Zavvi checkout page is tracked correctly
   
   When I click login
   And I login as "testmail@123.com" using password "pass1234"
+  
   And I go to the product page
   
   And I add the current product to the basket

@@ -15,8 +15,8 @@ home_page:
   search_field: ["text_field", ':id => "search-text"']
 
 product_page:
-  URL: "http://www.zavvi.com/dvd/the-world-at-war-the-ultimate-restored-edition/10166563.html"	
-  expected_recs: 0
+  URL: "http://www.zavvi.com/dvd/goodnight-sweetheart-series-1-6/8560541.html"	
+  expected_recs: 4
   add_to_basket_button: ["link", ':class=> "productbuy"']
   
 category_page:
@@ -24,8 +24,8 @@ category_page:
   expected_recs: 0
 
 basket_page:
-  URL: "https://www.zavvi.com/zavvi/my.basket"
-  expected_recs: 2
+  URL: "https://www.zavvi.com/zavvi/my.basket?mvtCTA=b"
+  expected_recs: 4
   basket_checkout: ["link", ':id => "gotocheckout2"'] 
 
 login_page:

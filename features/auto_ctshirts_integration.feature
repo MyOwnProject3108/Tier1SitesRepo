@@ -52,6 +52,7 @@ Scenario: CT Shirts checkout page is tracked correctly
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
+  
   And I go to the product page
   
   And I add the current product to the basket

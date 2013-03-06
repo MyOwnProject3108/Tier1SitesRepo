@@ -25,7 +25,7 @@ Scenario: Wickes category page is tracked correctly
   
   
   Then it should be tracked as a category page
-  And the debug info should show no SMART-recs
+  And the debug info should show at least 9 SMART-recs
 
 Scenario: Wickes product page is tracked correctly
   Given I am on the wickes product page
@@ -50,6 +50,7 @@ Scenario: Wickes checkout page is tracked correctly
   
   When I click login
   And I login as "webtest@mailinator.com" using password "webtest"
+  
   And I go to the product page
   
   And I add the current product to the basket

@@ -12,9 +12,9 @@ module Wickes
       URL = "https://www.wickes.co.uk/bin/venda?ex=co_wizr-register&bsref=wickes"
       direct_url URL
       
-  	  text_field(:username, :id=>"login_email")
+  	  text_field(:username, :id=>"email", :index=>1)
       text_field(:password, :id=>"password")  
-  	  link(:login_submit, :id=>"login_submit")           
+  	  button(:login_submit, :alt=>"Sign In")           
     end  
 end
 
