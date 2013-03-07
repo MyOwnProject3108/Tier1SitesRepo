@@ -1,5 +1,5 @@
 @ignore
 @bhs
 @smartapi
-Feature: bhs SMART-API content
+Feature: BHS SMART-API content
 

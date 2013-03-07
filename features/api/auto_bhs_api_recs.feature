@@ -1,6 +1,6 @@
 @ignore
 @bhs
 @smartapi
-Feature: bhs SMART-API recs
+Feature: BHS SMART-API recs
 
 

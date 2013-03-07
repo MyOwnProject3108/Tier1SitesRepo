@@ -6,6 +6,8 @@ module Smartmanager
       
       URL = "https://#{FigNewton.base_url}/tracker/"
       direct_url URL
+	  div(:page_identifier, :id => "content")
+	  
 	  em(:error_message, :class => "error")
       text_field(:username, :id=>"emailaddress")
       text_field(:password, :id=>"password")  
@@ -14,7 +16,9 @@ module Smartmanager
 	  a(:product_submit, :href=>"analytics/recsreport.page", :index => 0)
 	  a(:product_submit, :href=>"merchandising/overview/list.page")
 	  
-	  
+	    def tracked_as
+	   return "LoginPage"
+	  end
 		 
 
 			  

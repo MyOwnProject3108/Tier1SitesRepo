@@ -1,9 +1,9 @@
 @ignore
 @bhs
 @smartapi
-Feature: bhs SMART-API tracking
+Feature: BHS SMART-API tracking
 
-Scenario Outline: bhs Homepage is tracked using SMART-API
+Scenario Outline: BHS Homepage is tracked using SMART-API
     Given I am using SMART-API <version> to access bhs
     And I am using client token 
     When I track a home page

@@ -1,5 +1,5 @@
 @ignore
 @bhs
 @smartapi
-Feature: bhs SMART-API ranking
+Feature: BHS SMART-API ranking
 

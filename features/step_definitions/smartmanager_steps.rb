@@ -11,3 +11,6 @@ When /^I click "(.+)"$/ do |product|
   @current_page.product_submit_element.click
 end
 
+Given /^I click on logout$/ do
+  @current_page.logout_element.click
+end

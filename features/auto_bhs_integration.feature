@@ -4,14 +4,14 @@
 
 #
 @bhs
-Feature: bhs Integration
+Feature: BHS Integration
 
 #
 # Tracking tests
 #
 
 
-Scenario: bhs home page is tracked correctly
+Scenario: BHS home page is tracked correctly
   Given I am on the bhs home page
 #  And I clear my browser cookies
   
@@ -19,7 +19,7 @@ Scenario: bhs home page is tracked correctly
   Then it should be tracked as a home page
   And the debug info should show no SMART-recs
 
-Scenario: bhs category page is tracked correctly
+Scenario: BHS category page is tracked correctly
   Given I am on the bhs category page
 #  And I clear my browser cookies
   
@@ -27,7 +27,7 @@ Scenario: bhs category page is tracked correctly
   Then it should be tracked as a category page
   And the debug info should show no SMART-recs
 
-Scenario: bhs product page is tracked correctly
+Scenario: BHS product page is tracked correctly
   Given I am on the bhs product page
 #  And I clear my browser cookies
   
@@ -35,7 +35,7 @@ Scenario: bhs product page is tracked correctly
   Then it should be tracked as a product page
   And the debug info should show at least 3 SMART-recs
 
-Scenario: bhs basket page is tracked correctly
+Scenario: BHS basket page is tracked correctly
   Given I am on the bhs basket page
 #  And I clear my browser cookies
   
@@ -44,7 +44,7 @@ Scenario: bhs basket page is tracked correctly
   And the debug info should show no SMART-recs
 
 
-Scenario: bhs checkout page is tracked correctly
+Scenario: BHS checkout page is tracked correctly
   Given I am on the bhs home page
 #  And I clear my browser cookies
   
@@ -70,7 +70,7 @@ Scenario: bhs checkout page is tracked correctly
   Then it should be tracked as a Checkout page
   And the debug info should show no SMART-recs
 
-Scenario: bhs search results page is tracked correctly
+Scenario: BHS search results page is tracked correctly
     Given I am on the bhs homepage
 #    And I clear my browser cookies
     

@@ -7,6 +7,7 @@ module Smartmanager
       direct_url URL
 	  
 	  div(:page_identifier, :id => "welcome")
+	  a(:logout, :href => "/tracker/shop-admin/logout.page")
 	  
 	  def tracked_as
 	   return "HomePage"
