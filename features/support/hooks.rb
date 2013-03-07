@@ -33,7 +33,7 @@
    browser = Watir::Browser.new :firefox, :profile => profile
 #end
 
-Before('~@smartapi') do
+Before do
     @browser = browser
 end
 
