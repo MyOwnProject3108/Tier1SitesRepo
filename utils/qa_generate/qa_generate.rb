@@ -7,7 +7,7 @@ require 'trollop'
 require 'fileutils'
 require_relative "rules.rb"
 
-QA_GENERATE_VERSION = "0.1.5"
+QA_GENERATE_VERSION = "0.1.6"
 
 # Specify commandline options
 opts = Trollop::options do
@@ -56,14 +56,21 @@ site_files.each do |site_filename|
   # Generate output files from templates
   template_files.each do |template_filename|
     if File.file?(template_filename)
-      output_filename = output_path + template_filename.gsub(/templates\//,'').gsub(/site/, site["site_name"])
-      FileUtils.mkpath File.dirname(output_filename)
-      puts "Creating #{output_filename}..."  
-      output_file = File.open(output_filename, "w")
       template_file = File.open(template_filename, "r") { |f| f.read }
       generator = ERB.new(template_file, 0, "<>")
       generator.filename = template_filename
-      output_file << generator.result(binding)
+      output_content = generator.result(binding)
+      
+      output_filename = output_path + template_filename.gsub(/templates\//,'').gsub(/site/, site["site_name"])
+      if (output_content =~ /\A#ignore/) then
+        puts "Skipping #{output_filename}. No tests to run." 
+      else
+        puts "Creating #{output_filename}..."
+        FileUtils.mkpath File.dirname(output_filename)
+        output_file = File.open(output_filename, "w")
+        output_file << output_content
+      end
+      
     end    
   end
   
