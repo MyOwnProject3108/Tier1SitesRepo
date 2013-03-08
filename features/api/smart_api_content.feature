@@ -11,7 +11,8 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works u
     And I track a click for the first SMART-content creative
     And I purchase a <product> using the SMART-API
     And I track the home page
-    Then the first SMART-content creative name should contain <category_name>
+    Then I should get at least 1 SMART-content creatives in the response
+    And the first SMART-content creative name should contain <category_name>
     Examples:
     | product         | category_name |
     | "prod-ev003wht" | "Shirts"      |

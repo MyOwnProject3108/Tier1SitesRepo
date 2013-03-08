@@ -23,10 +23,9 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
   <%= page["custom_tracking_test"] %>
 <% else %>
   Given I am on the <%= site["site_name"] %> <%= page_name %> page
-#  And I clear my browser cookies
-  <% if site["needs_SPR"] or page["needs_SPR"] %>
+<% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
-  <% end %>
+<% end %>
   <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a <%= page_name %> page
   <%= expect_recs_rule(page["expected_recs"]) %>
@@ -43,10 +42,9 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   <%= page["custom_tracking_test"] %>
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
-#  And I clear my browser cookies
-  <% if site["needs_SPR"] or page["needs_SPR"] %>
+<% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
-  <% end %>
+<% end %>
   When I click login
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
   <%= extra_steps_rule(site["login_page"]["extra_steps"]) %>
@@ -70,10 +68,9 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
-#    And I clear my browser cookies
-    <% if site["needs_SPR"] or page["needs_SPR"] %>
+<% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
-    <% end %>
+<% end %>
     When I search for "<%= site["valid_search_term"] %>"
     Then it should be tracked as a search results page
     <%= expect_recs_rule(page["expected_recs"]) %>
@@ -92,7 +89,6 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
-#    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>
@@ -115,7 +111,6 @@ Scenario: SMART-content links work on on <%= site["pretty_name"] %> homepage
 <%= page["custom_tracking_test"] %>
 <% else %>
     Given I am on the <%= site["site_name"] %> homepage
-#    And I clear my browser cookies
     <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
     <% end %>
