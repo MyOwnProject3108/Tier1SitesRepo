@@ -125,11 +125,11 @@ end
 #
 # Ordering
 #
-When /^I (?:purchase|order) a "(.*?)" using the SMART\-API$/ do |item|
+When /^I (?:purchase|order) a "(.*?)" using the SMART\-API\w*(#?.*)$/ do |item,comment|
   step "I purchase 1 \"#{item}\" using the SMART\-API"
 end
 
-When /^I (?:purchase|order) (\d+) "(.*?)" using the SMART\-API$/ do |quantity, item|
+When /^I (?:purchase|order) (\d+) "(.*?)" using the SMART\-API\w*(#?.*)$/ do |quantity, item, comment|
     @api.json_type = 'order'
     items = [
         {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
@@ -199,7 +199,7 @@ Then /^I should get at least (\d+) SMART-recs? in the response$/ do |expected_re
 end
 
 Then /^I should get at least (\d+) SMART-content creatives? in the response$/ do |expected_creatives|
-    # @api.content_creatives.collect{|x| pp x["position"]}
+    @api.content_creatives.collect{|x| puts "\n#{x["position"]}: #{x["name"]}"} if ENV["apidebug"]
     @api.should have_smart_content
     @api.content_creatives.count.should >= expected_creatives.to_i
 end
@@ -222,9 +222,20 @@ Then /^I should get at least (\d+) items? of SMART\-product content in the respo
 end
 
 Then /^the first SMART\-content creative name should contain "(.*?)"$/ do |expected_string|
-  @api.content_creatives.collect{|x| puts "\n#{x["position"]}: #{x["name"]}"}
+  #@api.content_creatives.collect{|x| puts "\n{x["position"]}: #{x["name"]}"}
   @api.should have_smart_content
   @api.content_creatives[0]["name"].should include(expected_string)
+end
+
+Then /^one of the SMART\-content creative names should contain "(.*?)"$/ do |expected_string|
+  #@api.content_creatives.collect{|x| puts "\n#{x["position"]}: #{x["name"]}"}
+  @api.should have_smart_content
+  
+  has_expected_creative = false
+  @api.content_creatives.each {|creative|
+    has_expected_creative = true if creative["name"].include?(expected_string)
+  }
+  has_expected_creative.should == true
 end
 
 #
