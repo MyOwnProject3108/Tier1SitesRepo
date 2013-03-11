@@ -41,6 +41,7 @@ login_page:
     - [pause, 2]
 
 searchresults_page:
+  ignore: true
   URL: "http://www.schuh.co.uk/search"
   expected_recs: 0
   zerosearch_recs: 0
