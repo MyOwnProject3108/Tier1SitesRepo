@@ -34,6 +34,61 @@ When /^I click settings$/ do
 on_page(Smartmanager::HomePage).settings_submit_element.click
 end
 
+When /^I click list of available widgets$/ do
+  on_page(Smartmanager::AdministrationPage).list_widgets_submit_element.click
+end
+
+When /^I click new$/ do
+  on_page(Smartmanager::WidgetsPage).new_widget_element.click
+end
+
+Then /^I enter name as "(.+)"$/ do |widgetname|
+  on_page(Smartmanager::CreatewidgetPage).widgetname = widgetname
+end
+
+Then /^I enter alias as "(.+)"$/ do |widgetalias|
+  on_page(Smartmanager::CreatewidgetPage).widgetalias = widgetalias
+end
+
+Then /^I select algorithm as "(.+)"$/ do |algorithm|
+  on_page(Smartmanager::CreatewidgetPage).select_list_element(:class => "widgetsSelect").select 'Product Catalog'
+ end
+
+ Then /^I select html as "(.+)"$/ do |html|
+  on_page(Smartmanager::CreatewidgetPage).select_list_element(:name => "html").select 'product-bottom.html'
+  end
+  
+ Then /^I select css as "(.+)"$/ do |css|
+  on_page(Smartmanager::CreatewidgetPage).select_list_element(:name => "css").select 'product-bottom.css'
+  end
+
+Then /^I enter max recs as (.+)$/ do |maxrecs|
+  on_page(Smartmanager::CreatewidgetPage).maxrecs = maxrecs
+end
+
+Then /^I select injection point as "(.+)"$/ do |injectionpoint|
+ on_page(Smartmanager::CreatewidgetPage).select_list_element(:id => "injectionPoint").select 'product bottom'
+ end
+
+ Then /^I click try$/ do
+ on_page(Smartmanager::CreatewidgetPage).try_submit_element.click
+end
+
+Then /^I should see "(.+)" message$/ do |successmessage|
+ on_page(Smartmanager::ConfigurationPage).success_message.should == successmessage
+end
+
+Then /^I click save$/ do
+  on_page(Smartmanager::WidgetsPage).save_widget_element.click
+end
+
+Then /^I click back$/ do
+  on_page(Smartmanager::ConfigurationPage).back_submit_element.click
+end
+
+Then /^I should see "(.+)" meesgae$/ do |unsuccessmessage|
+ on_page(Smartmanager::CreatewidgetPage).unsuccess_message.should ==  unsuccessmessage
+end
 
 Given /^I click on logout$/ do
   @current_page.logout_element.click
