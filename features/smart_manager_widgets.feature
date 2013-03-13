@@ -2,7 +2,7 @@
 Feature: SMART-manager
 
 #
-# widget tests -
+# widget tests 
 #
   
 Scenario: Users should be able to view widgets
@@ -73,7 +73,7 @@ Scenario: Users should be able to select saved widgets on the decide per page
   And I click try
   And I click save
   Then I should end up on the configuration page
-  Then I should see "All changes are saved and activated. Online users can view the changes." messgae
+  Then I should see "All changes are saved and activated. Online users can view the changes." message
   And I click back
   Then I should end up on the administration page
   And I click decide widgets per page
@@ -104,7 +104,7 @@ Scenario: Users should be able to edit widgets
   And I click try
   And I click save
   Then I should end up on the configuration page
-  Then I should see "All changes are saved and activated. Online users can view the changes." messgae
+  Then I should see "All changes are saved and activated. Online users can view the changes." message
   And I click back
   Then I should end up on the administration page
   

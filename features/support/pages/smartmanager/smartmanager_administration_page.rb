@@ -8,6 +8,7 @@ module Smartmanager
       direct_url URL
 	  ul(:page_identifier, :id => "peeriusAdmin")
 	  a(:list_widgets_submit, :href => "listwidgets.page")
+	  a(:decide_widgets_submit, :href => "widgetsperpage.page")
 	 	 
 	 def tracked_as
 	   return "AdministrationPage"

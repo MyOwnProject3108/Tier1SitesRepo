@@ -74,9 +74,34 @@ Then /^I select injection point as "(.+)"$/ do |injectionpoint|
  on_page(Smartmanager::CreatewidgetPage).try_submit_element.click
 end
 
-Then /^I should see "(.+)" message$/ do |successmessage|
- on_page(Smartmanager::ConfigurationPage).success_message.should == successmessage
+Then /^I should see "(.+)" message$/ do |message|
+ on_page(Smartmanager::ConfigurationPage).success_message.should == message
 end
+
+Then /^I click decide widgets per page$/ do
+  on_page(Smartmanager::AdministrationPage).decide_widgets_submit_element.click
+end
+
+Then /^I select "(.+)"$/ do |savedwidget|
+  on_page(Smartmanager::PerPage).select_list_element(:name => "widgets['PRODUCT'][0]").select 'AutoTestWidget'
+end
+
+When /^I click edit$/ do
+  on_page(Smartmanager::WidgetsPage).edit_submit_element.click
+end
+
+When /^I click duplicate$/ do
+  on_page(Smartmanager::WidgetsPage).duplicate_submit_element.click
+end
+
+When /^I click delete$/ do
+  on_page(Smartmanager::WidgetsPage).delete_submit_element.click
+end
+
+When /^I click menu$/ do
+  on_page(Smartmanager::WidgetsPage).menu_submit_element.click
+end
+
 
 Then /^I click save$/ do
   on_page(Smartmanager::WidgetsPage).save_widget_element.click
