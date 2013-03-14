@@ -17,12 +17,14 @@ Then /^the debug info should show no SMART\-recs?$/ do
 end
 
 Then /^all categories should be tracked as Category pages$/ do
-    categories = @current_page.categories
-    categories.each do |category|
-        pp category
-        # @browser.goto category
-        on_page(@site+"::CategoryPage") do |page|
-            page.should be_tracked_as page_class_name+"Page"
+    categories = @current_page.category_menu_element.link_elements.collect{|x| x.href}
+    categories.each do |category_link|
+        pp category_link
+        if category_link != "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
+          @browser.goto category_link
+          sleep 2
+          @browser.td(:id => 'trackInfo').text.should include("CategoryPage")
+          @browser.back
         end
     end
 end
