@@ -1,0 +1,45 @@
+site_name: notonthehighstreet
+pretty_name: NotontheHighStreet
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: dsavavas
+valid_search_term: map
+
+home_page:
+  URL: "http://www.notonthehighstreet.com/"
+  expected_recs: 4
+  login_link: ["link", ':link_text => "my notonthehighstreet.com"']
+  search_field: ["text_field", ':id => "term"']
+
+product_page:
+  URL: "http://www.notonthehighstreet.com/outthereinteriors/product/fusion-dinner-plate-blue-red"	
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "add_to_cart"']
+  
+category_page:
+  URL: "http://www.notonthehighstreet.com/home-garden/shop-by-room/kitchen"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.notonthehighstreet.com/cart"
+  expected_recs: 1
+  basket_checkout: ["button", ':name => "button_checkout"'] 
+
+login_page:
+  URL: "https://www.notonthehighstreet.com/session/new"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"session_email"']
+  password_field: ["text_field", ':id=>"session_password"']  
+  login_submit: ["button", ':value=>"sign in"']
+
+searchresults_page:
+  URL: "http://www.notonthehighstreet.com/search"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: "https://www.notonthehighstreet.com/session/new"
+  expected_recs: 0 

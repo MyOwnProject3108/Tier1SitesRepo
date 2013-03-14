@@ -1,4 +1,20 @@
-live: FIG_NEWTON_FILE=pt.yml --no-source --color --format pretty --format html --out tests_liv.html 
-test1: FIG_NEWTON_FILE=test1.yml --no-source --color --format pretty --format html --out tests_test1.html
-default: FIG_NEWTON_FILE=uat.yml --tags ~@internal --no-source --color --format pretty --format html --out tests_uat.html 
+<% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
+<% live_servers = ["pt", "pt1", "pt2"] %>
+<% dev_servers = ["test1", "test2", "uat", "lander"] %>
 
+<% for server in live_servers %> 
+<%= server %>: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %> --tags ~@internal --tags ~@smartapi
+<%= server %>_api: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %> --tags ~@internal --tags @smartapi
+<% end %>
+
+<% for server in dev_servers %> 
+<%= server %>: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %> --tags ~@smartapi
+<%= server %>_api: FIG_NEWTON_FILE=<%= server %>.yml --format html --out api_tests_<%= server %>.html <%= common %> --tags @smartapi
+<% end %>
+
+
+default: --profile test1
+sanity: --profile test1
+live: --profile pt
+api: --profile test1_api
+live_api: --profile pt_api

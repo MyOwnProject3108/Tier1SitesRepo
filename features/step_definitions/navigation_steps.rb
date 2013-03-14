@@ -27,12 +27,14 @@ When /^I go to the (.+)page$/ do |page|
 end
 
 When /^I click login$/ do
-	@current_page.login_click  
+	@current_page.login_link_element.click  
 end
 
-When /^I fill in my login details$/ do
+When /^I login as "(.+)" using password "(.+)"$/ do |username, password|
    on_page(@site+'::LoginPage') do |page|
-        page.login_with("vinod.sathapathi@peerius.com","Pa55word")   
+    		page.username = username
+    		page.password = password
+        page.login_submit_element.click   
     end 
 end
 
@@ -41,12 +43,14 @@ Then /^I should end up on (?:the|a|an) (.+)page$/ do |page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     
     on_page(@site+'::'+page_class_name+'Page') do |page|
-        page.should be_valid
+        page.should be_valid if page.respond_to? "valid?"
         @current_page.should be_tracked_as "#{page_class_name}Page" 
     end
 end
 
-
+Given /^I use the SPR key$/ do
+  @current_page.add_SPR
+end
 
 
 

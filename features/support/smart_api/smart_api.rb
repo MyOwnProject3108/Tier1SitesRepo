@@ -13,14 +13,16 @@ module Peerius
         attr_reader :json_request
         attr_reader :response_times
          
-        def initialize(site, version=nil, testserver=nil)
-            file = open('smart_api.log', File::WRONLY | File::APPEND | File::CREAT)
+        def initialize(site, version=nil, testserver=nil, useSSH=nil)
+            file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
             @version = version.nil? ? "v1_1" : version
+            @useSSH = useSSH.nil? ? true : useSSH
+            urlPrefix = @useSSH ? "https" : "http" 
             if testserver.nil? then  
-                @url = "https://#{site}.peerius.com/tracker/api/#{@version}/rest.pagex"
+                @url = urlPrefix + "://#{site}.peerius.com/tracker/api/#{@version}/rest.pagex"
             else
-                @url = "https://#{testserver}/tracker/api/#{@version}/rest.pagex"
+                @url = urlPrefix + "://#{testserver}/tracker/api/#{@version}/rest.pagex"
             end
             @logger.info(@url)
             @request_data = {
@@ -77,19 +79,20 @@ module Peerius
             else
                 @json_request = JSON.generate(request)
             end
-            @logger.info(@json_request)            
+            @logger.info("Request: " + @json_request)            
             params = { :jd => @json_request }
-            uri.query = URI.encode_www_form(params) 
+            uri.query = URI.encode_www_form(params)
             
             resp = "" 
             time = Benchmark.realtime do
-                resp = Net::HTTP.start(uri.host, use_ssl: true, verify_mode:OpenSSL::SSL::VERIFY_NONE) do |http|
-                    http.get uri.request_uri
+                resp = Net::HTTP.start(uri.host, uri.port, use_ssl: @useSSH, verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
+                     http.get uri.request_uri
                 end
-            end 
+            end
+
             data = resp.body
             @response_times.push(time*1000)
-            @logger.info(data)
+            @logger.info("Response: " + data)
 
             # we convert the returned JSON data to native Ruby
             # data structure - a hash

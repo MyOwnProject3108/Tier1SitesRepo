@@ -1,0 +1,46 @@
+site_name: cottontraders
+pretty_name: Cotton Traders 
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: asdf
+valid_search_term: shirt
+
+home_page:
+  URL: "http://www.cottontraders.co.uk/"
+  expected_recs: 1 
+  login_link: ["link", ':id => "Lustype_loginlink"']
+  search_field: ["text_field", ':id => "q"']
+
+product_page:
+  URL: "http://www.cottontraders.co.uk/accessories/performance-cap/invt/ah10496/"
+  expected_recs: 1
+  add_to_basket_button: ["link", ':href=> "http://www.cottontraders.co.uk/bin/venda?bsref=cottontraders&log=22&mode=add&ex=co_disp-shopc&buy=ah10496&invt=ah10496&ivref=ah10496&qty=1&att1=One size&att2=Black&att3=&att4=&qty=1"']
+
+category_page:
+  URL: "http://www.cottontraders.co.uk/menswear/mens-tops/icat/menstops/"
+  expected_recs: 1 
+
+basket_page:
+  URL: "http://www.cottontraders.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=cottontraders&log=22"
+  expected_recs: 1  
+  basket_checkout: ["button", ':class => "right btCheckout"']
+
+login_page:
+  URL: "https://www.cottontraders.co.uk/bin/venda?ex=co_wizr-register&bsref=cottontraders"
+  expected_recs: 0 
+  username_field: ["text_field", '{:id=>"email", :index => 1}']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["button", ':class =>"right"']
+
+searchresults_page:
+  URL: "http://www.cottontraders.co.uk/search?q=shirt&searchsubmit=Search&categories=shop"
+  expected_recs: 0
+  zerosearch_recs: 5
+  
+checkout_page:
+  URL: ""
+  expected_recs: 0  
+  
