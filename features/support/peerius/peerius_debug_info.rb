@@ -21,4 +21,8 @@ module PeeriusDebugInfo
         return recs
     end
  
+ 
+	def debug_widget_name
+	 return @browser.h2(:xpath => "//*[@id='peeriusDebug']/table[2]/tbody/tr[1]/th/h2").text
+	end
 end

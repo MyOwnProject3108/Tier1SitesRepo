@@ -102,7 +102,6 @@ When /^I click menu$/ do
   on_page(Smartmanager::WidgetsPage).menu_submit_element.click
 end
 
-
 Then /^I click save$/ do
   on_page(Smartmanager::WidgetsPage).save_widget_element.click
 end
