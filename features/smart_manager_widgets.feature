@@ -86,6 +86,7 @@ Scenario: Users should be able to select saved widgets on the decide per page
   Then I should end up on the administration page
   
   
+  
 Scenario: Users should be able to edit widgets
   Given I am on the smartmanager login page
   And I login as "fsultana" using password "4n424yq4n3w"
@@ -140,6 +141,14 @@ Scenario: Users should be able to view the widgets Menu
   When I click list of available widgets
   And I click menu
   Then I should end up on the configuration page
+  
+ Scenario: Peerius Demo Shop product page tracks the widget correctly
+  Given I am on the demoshop authentication page
+  When I go to the product page
+  Then it should be tracked as a product page
+  And the first widget name should be "AutoTestWidgetEdit"
+  
+  
   
   
   
