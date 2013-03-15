@@ -5,3 +5,17 @@ Feature: SMART-API: Non-site specific SMART-ranking tests
   As a website user
   I want to see personalised category pages
 
+Scenario: SMART-ranking A/B groups can be detected using SMART-API "summary"
+    Given I am using SMART-API to access livedemoshop
+    And I request summary abgroup information
+    When I track a category page
+    Then I should get an OK status back
+    And I should see which smartRanking abgroup I am serving
+
+Scenario: SMART-ranking A/B groups can be detected using SMART-API "full"
+    Given I am using SMART-API to access livedemoshop
+    And I request full abgroup information
+    When I track a home page
+    Then I should get an OK status back
+    And I should see which smartRanking abgroup I am serving
+	  And I should see at least 2 smartRanking ab test configs
