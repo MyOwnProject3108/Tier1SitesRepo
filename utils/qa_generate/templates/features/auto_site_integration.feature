@@ -118,3 +118,20 @@ Scenario: SMART-content links work on on <%= site["pretty_name"] %> homepage
     Then it should be tracked as a category page
 <% end %>
 <% end %>
+
+<% page = site["home_page"] %>
+<% if page.has_key?("category_menu") %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
+@allcategories
+Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
+    Given I am on the <%= site["site_name"] %> homepage
+    <% if site["needs_SPR"] or page["needs_SPR"] %>
+    And I use the SPR key
+    <% end %>
+    Then all categories should be tracked as Category pages except:
+    <% page["category_menu_exclude"].each do |category| %>
+    | <%= category %> |
+    <% end %>
+<% end %>
