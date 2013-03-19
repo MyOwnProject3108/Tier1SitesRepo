@@ -151,9 +151,9 @@ Then /^I click deactivate$/ do
 	end
 end
 
-Then /^I click on delete$/ do
+Then /^I click delete group$/ do
 	@delete_text = @current_page.confirm(true) do
-		on_page(Smartmanager::GroupPage).delete_submit_element.click
+		#on_page(Smartmanager::GroupPage).delete_submit_element.click
 		@current_page.delete_submit_element.click
 	end
 end

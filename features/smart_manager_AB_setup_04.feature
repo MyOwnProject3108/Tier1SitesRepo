@@ -46,7 +46,7 @@ Scenario: Users should be able update AB group
  And the text from the confirm should read "Are you sure you want to deactivate this A/B Test? After deactivation, this test can't be activated again."
   Then I should end up on the group page
   
-Scenario: Users should be able delete AB group
+Scenario: Users should be able Add and then delete AB group
    Given I am on the smartmanager login page
   And I login as "fsultana" using password "4n424yq4n3w"
   When I click config
@@ -57,7 +57,7 @@ Scenario: Users should be able delete AB group
   And I select "AutoTestWidgetEdit" for both groups
   And I click create
   Then I should end up on the group page
-  And I click on delete 
+  And I click delete group
   And the text from the delete should read "Are you sure you want to delete this A/B Test? After deletion, all track info for this a/b test is lost." 
   Then I should end up on the group page
   
