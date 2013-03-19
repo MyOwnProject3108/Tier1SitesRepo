@@ -9,6 +9,7 @@ module Smartmanager
 	  ul(:page_identifier, :id => "peeriusAdmin")
 	  a(:list_widgets_submit, :href => "listwidgets.page")
 	  a(:decide_widgets_submit, :href => "widgetsperpage.page")
+	  a(:AB_group_submit, :href => 'abtesting/abtests.page')
 	 	 
 	 def tracked_as
 	   return "AdministrationPage"

@@ -32,5 +32,5 @@ Scenario: SMART-content A/B groups can be detected using SMART-API "full"
     When I track a home page
     Then I should get an OK status back
     And I should see which smartContent abgroup I am serving
-	  And I should see at least 2 smartContent ab test configs
+	And I should see at least 2 smartContent ab test configs
 

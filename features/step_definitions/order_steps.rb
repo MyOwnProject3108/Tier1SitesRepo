@@ -6,6 +6,3 @@ end
 When /^I click checkout$/ do
   @current_page.basket_checkout_element.when_present.click
 end
-
-
-

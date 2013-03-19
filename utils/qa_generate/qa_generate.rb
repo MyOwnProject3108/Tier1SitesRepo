@@ -7,7 +7,7 @@ require 'trollop'
 require 'fileutils'
 require_relative "rules.rb"
 
-QA_GENERATE_VERSION = "0.1.6"
+QA_GENERATE_VERSION = "0.1.7"
 
 # Specify commandline options
 opts = Trollop::options do
@@ -21,7 +21,8 @@ Usage:
        
 where [options] are:
 EOS
-  opt :infile, "Input filename", :type => :string, :default => "sites"
+  opt :infile, "Sites filename/directory", :type => :string, :default => "sites"
+  opt :templates, "Template directory", :type => :string, :default => "templates"
   opt :outfile, "Output directory", :type => :string, :default => "../../"
 #  opt :example, "Output empty.yaml"
 end
@@ -31,6 +32,7 @@ opts[:infile] = "sites" unless opts[:infile]
 
 # Ensure input file exists 
 Trollop::die :infile, "File: '#{opts[:infile]}' must exist" unless File.exist?(opts[:infile])
+Trollop::die :infile, "File: '#{opts[:templates]}' must exist" unless File.exist?(opts[:templates])
 
 input_file = opts[:infile]
 
@@ -38,7 +40,11 @@ if File.directory?(input_file)
    input_file += "/*.yaml"
 end
 
-template_files = Dir["templates/**/*"]
+# Ensure there is a trailing slash
+template_directory = opts[:templates].dup
+template_directory << '/' if template_directory[-1].chr != '/'
+
+template_files = Dir[template_directory+"**/*"]
 site_files = Dir[input_file]
 
 # Start a new sitelist with the first site
@@ -50,8 +56,9 @@ site_files.each do |site_filename|
   site = Psych.load_file(site_filename)
   
   # Create an appropriate output directory if one is not supplied.
-  output_path = opts[:outfile]
+  output_path = opts[:outfile].dup
   output_path = "../../" unless opts[:outfile]
+  output_path << '/' if output_path[-1].chr != '/' 
   
   # Generate output files from templates
   template_files.each do |template_filename|
@@ -61,7 +68,7 @@ site_files.each do |site_filename|
       generator.filename = template_filename
       output_content = generator.result(binding)
       
-      output_filename = output_path + template_filename.gsub(/templates\//,'').gsub(/site/, site["site_name"])
+      output_filename = output_path + template_filename.gsub(/#{template_directory}/,'').gsub(/site/, site["site_name"])
       if (output_content =~ /\A#ignore/) then
         puts "Skipping #{output_filename}. No tests to run." 
       else

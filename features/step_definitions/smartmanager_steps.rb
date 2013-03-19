@@ -114,6 +114,28 @@ Then /^I should see "(.+)" meesgae$/ do |unsuccessmessage|
  on_page(Smartmanager::CreatewidgetPage).unsuccess_message.should ==  unsuccessmessage
 end
 
+When /^I click AB tests$/ do
+  on_page(Smartmanager::AdministrationPage).AB_group_submit_element.click
+end
+
+Then /^I enter A=(.+) and B=(.+)$/ do |percentage1, percentage2|
+   on_page(Smartmanager::GroupPage).percentage1=percentage1
+   on_page(Smartmanager::GroupPage).percentage2=percentage2
+end
+
+#Then /^I select "(.+)" for groupA and groupB$/ do |abwidgetname|
+ # on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-A-0]').select 'AutoTestWidgetEdit'
+ # on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-B-0]').select 'AutoTestWidgetEdit'
+  #end
+
+Then /^I select "(.+)" for both groups$/ do |group|
+ on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-A-0]').select 'AutoTestWidgetEdit'
+ on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-B-0]').select 'AutoTestWidgetEdit'
+end
+Then /^I click create$/ do
+  on_page(Smartmanager::GroupPage).create_submit_element.click
+end
+
 Given /^I click on logout$/ do
   @current_page.logout_element.click
 end

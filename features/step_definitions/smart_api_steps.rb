@@ -23,6 +23,15 @@ Given /^I request (.+) attributes?$/ do |num_attributes|
   end    
 end
 
+Given /^I am using session id (.+)$/ do |session|
+  @api.session = session
+end
+
+Given /^I am using customer id (.+)$/ do |cuid|
+  @api.cuid = cuid
+end
+
+
 When /^I track (?:a|the) home page$/ do
    @api.json_type = 'home'
    @api.track

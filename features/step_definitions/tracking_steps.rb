@@ -15,3 +15,32 @@ end
 Then /^the debug info should show no SMART\-recs?$/ do
     @current_page.debug_recs.should have(0).entries  
 end
+
+Then /^all categories should be tracked as Category pages except:$/ do |exclude_list|
+    categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent'), x.attribute('href')]}
+    exclude_list = exclude_list.raw.flatten!
+    test_pass = true 
+    
+    categories.each do |category|
+      name = category[0]
+      link = category[1]
+      pp "#{name}" if ENV['debugcategory']
+      pp "#{link}" if ENV['debugcategory']
+      if not exclude_list.include?(name.strip)
+        @browser.goto link
+        sleep 2
+        if @browser.td(:id => 'trackInfo').text.include?("CategoryPage")
+          puts "#{name} - PASS"
+        else
+          puts "#{name} - #{@browser.td(:id => 'trackInfo').text} - FAIL"
+          test_pass = false
+        end   
+        @browser.back
+      end
+      test_pass.should == true if ENV['debugcategory']
+    end
+    
+    test_pass.should == true
+end
+
+
