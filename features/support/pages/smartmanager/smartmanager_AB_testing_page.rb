@@ -13,7 +13,11 @@ module Smartmanager
 	 # select_list(:group, :name => 'self[PRODUCT-B-0]')
 	  a(:AB_group_submit, :href => 'abtesting/abtests.page')
 	  button(:create_submit, :class => 'submit120')
-	 	 
+	  button(:update_submit, :class => 'submit120', :index => 0)
+	  button(:deactivate_submit, :class => 'submit120', :index => 1)
+	  button(:delete_submit, :class => 'submit120', :index => 2)
+	  
+	  		
 	 def tracked_as
 	   return "GroupPage"
 	  end

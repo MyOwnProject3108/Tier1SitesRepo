@@ -96,6 +96,7 @@ end
 
 When /^I click delete$/ do
   on_page(Smartmanager::WidgetsPage).delete_submit_element.click
+  #@current_page.delete_submit_element.click
 end
 
 When /^I click menu$/ do
@@ -123,17 +124,50 @@ Then /^I enter A=(.+) and B=(.+)$/ do |percentage1, percentage2|
    on_page(Smartmanager::GroupPage).percentage2=percentage2
 end
 
-#Then /^I select "(.+)" for groupA and groupB$/ do |abwidgetname|
- # on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-A-0]').select 'AutoTestWidgetEdit'
- # on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-B-0]').select 'AutoTestWidgetEdit'
-  #end
-
 Then /^I select "(.+)" for both groups$/ do |group|
  on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-A-0]').select 'AutoTestWidgetEdit'
  on_page(Smartmanager::GroupPage).select_list_element(:name => 'self[PRODUCT-B-0]').select 'AutoTestWidgetEdit'
 end
+
+Then /^I select "(.+)" for groupA$/ do |groupupdate|
+  @current_page.select_list_element(:name => 'self[PRODUCT-A-0]').select 'None'
+end
+
+Then /^I click update$/ do
+  @update_text = @current_page.confirm(true) do
+		#on_page(Smartmanager::GroupPage).update_submit_element.click
+		@current_page.update_submit_element.click		
+  end
+end
+
 Then /^I click create$/ do
-  on_page(Smartmanager::GroupPage).create_submit_element.click
+  @current_page.create_submit_element.click
+end
+
+Then /^I click deactivate$/ do
+	@confirm_text = @current_page.confirm(true) do
+		#on_page(Smartmanager::GroupPage).deactivate_submit_element.click
+		@current_page.deactivate_submit_element.click
+	end
+end
+
+Then /^I click delete group$/ do
+	@delete_text = @current_page.confirm(true) do
+		#on_page(Smartmanager::GroupPage).delete_submit_element.click
+		@current_page.delete_submit_element.click
+	end
+end
+
+Then /^the text from the confirm should read "(.+)"$/ do |deactivatedtext|
+  @confirm_text.should == deactivatedtext
+end
+
+Then /^the text from the update should read "(.*?)"$/ do |updatedtext|
+  @update_text.should == updatedtext
+end
+
+Then /^the text from the delete should read "(.*?)"$/ do |deletedtext|
+  @delete_text.should == deletedtext
 end
 
 Given /^I click on logout$/ do
