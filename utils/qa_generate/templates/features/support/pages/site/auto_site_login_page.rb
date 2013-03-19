@@ -14,7 +14,7 @@ module <%= site["site_name"].capitalize %>
       include PageObject
       include PeeriusHelper
       
-      URL = "<%= page["URL"] %>"
+      URL = "<%= debug_url(page["URL"]) %>"
       direct_url URL
       
   	  <%= page["username_field"][0] %>(:username, <%= page["username_field"][1] %>)

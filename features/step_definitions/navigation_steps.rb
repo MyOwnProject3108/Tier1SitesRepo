@@ -14,6 +14,8 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end
+    #@browser.cookies.add 'peerius_pass_debug', '1'
+    #visit @site+'::'+page_class_name+'Page'
 end
 
 When /^I go to the (.+)page$/ do |page|   

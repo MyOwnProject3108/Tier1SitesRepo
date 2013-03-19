@@ -1,8 +1,8 @@
-#if FigNewton.headless == "true" then
-#    require "celerity"
-#    browser = Celerity::Browser.new
-#else
-   require 'watir-webdriver'
+require 'watir-webdriver'
+
+if ENV["headless"] then
+    browser = Watir::Browser.new :phantomjs
+else
    profile = Selenium::WebDriver::Firefox::Profile.new
    
    if FigNewton.base_url.include?("test") then
@@ -31,7 +31,7 @@
    
    profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile
-#end
+end
 
 Before do
     @browser = browser

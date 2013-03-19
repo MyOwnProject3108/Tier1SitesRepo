@@ -14,7 +14,7 @@ module <%= site["site_name"].capitalize %>
       include PageObject
       include PeeriusHelper
       
-      URL = "<%= page["URL"] %>"
+      URL = "<%= debug_url(page["URL"]) %>"
       direct_url URL
       
       <%= page["add_to_basket_button"][0] %>(:add_to_basket, <%= page["add_to_basket_button"][1] %>)          

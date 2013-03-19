@@ -6,6 +6,7 @@ require 'psych'
 require 'trollop'
 require 'fileutils'
 require_relative "rules.rb"
+require_relative "helpers.rb"
 
 QA_GENERATE_VERSION = "0.1.7"
 
