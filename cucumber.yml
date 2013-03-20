@@ -1,4 +1,5 @@
 <% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
+<% outputName = "cucumber" + ENV['TEST_ENV_NUMBER'] %>
 <% live_servers = ["pt", "pt1", "pt2"] %>
 <% dev_servers = ["test1", "test2", "uat", "lander"] %>
 
@@ -18,6 +19,6 @@ sanity: --profile test1
 live: --profile pt
 api: --profile test1_api
 live_api: --profile pt_api
-jenkins_live: FIG_NEWTON_FILE=pt1.yml headless=true -f pretty -f json --out cucumber.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
-jenkins_uat: FIG_NEWTON_FILE=uat.yml headless=true -f pretty -f json --out cucumber.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
-jenkins_sanity: FIG_NEWTON_FILE=test2.yml headless=true -f pretty -f json --out cucumber.json --no-source --tags ~@ignore --tags ~@internal
+jenkins_live: FIG_NEWTON_FILE=pt1.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
+jenkins_uat: FIG_NEWTON_FILE=uat.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
+jenkins_sanity: FIG_NEWTON_FILE=test2.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal

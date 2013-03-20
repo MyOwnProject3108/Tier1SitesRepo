@@ -8,4 +8,4 @@ utils/*.rb
 features/**/auto_*
 features/support/pages/**/auto_*
 features/auto_*
-cucumber.json
+*.json
