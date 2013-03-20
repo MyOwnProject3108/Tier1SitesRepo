@@ -11,6 +11,14 @@ Scenario: Users should be able to create email recs
   When I click email
   Then I should end up on the email page
   When I click create
+  Then I should end up on the emailcreate page
+  And I enter name as "AutoTestEmail"
+  And I enter content width as 200 and height as 140
+  And  I select title color as "#993300"
+  
+  
+  
+  
   
   
  

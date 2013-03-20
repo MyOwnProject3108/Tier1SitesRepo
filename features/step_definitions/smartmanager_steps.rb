@@ -43,7 +43,8 @@ When /^I click new$/ do
 end
 
 Then /^I enter name as "(.+)"$/ do |widgetname|
-  on_page(Smartmanager::CreatewidgetPage).widgetname = widgetname
+ # on_page(Smartmanager::CreatewidgetPage).widgetname = widgetname
+ @current_page.widgetname = widgetname
 end
 
 Then /^I enter alias as "(.+)"$/ do |widgetalias|
