@@ -18,3 +18,6 @@ sanity: --profile test1
 live: --profile pt
 api: --profile test1_api
 live_api: --profile pt_api
+jenkins_live: FIG_NEWTON_FILE=pt1.yml --format json --out cucumber.json --no-source --tags ~@ignore --tags ~@internal --tags @smartapi
+jenkins_uat: FIG_NEWTON_FILE=headless.yml --format json --out cucumber.json --no-source --tags ~@ignore --tags ~@internal --tags @smartapi
+jenkins_sanity: FIG_NEWTON_FILE=test2.yml --format json --out cucumber.json --no-source --tags ~@ignore --tags ~@internal --tags @smartapi
