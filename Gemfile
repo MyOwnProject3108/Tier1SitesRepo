@@ -5,6 +5,7 @@ gem 'cucumber'
 gem 'rspec'
 gem 'page-object'
 gem 'fig_newton'
+gem 'parallel_tests'
 
 # Reporting gems
 gem 'syntax'
