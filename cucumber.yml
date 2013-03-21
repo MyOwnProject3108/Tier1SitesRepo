@@ -1,5 +1,5 @@
 <% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
-<% outputName = "cucumber" + ENV['TEST_ENV_NUMBER'] %>
+<% outputName = "cucumber" + (ENV['TEST_ENV_NUMBER'] ? ENV['TEST_ENV_NUMBER'] : "") %>
 <% live_servers = ["pt", "pt1", "pt2"] %>
 <% dev_servers = ["test1", "test2", "uat", "lander"] %>
 
