@@ -10,7 +10,12 @@ module Smartmanager
 	  text_field(:widgetname, :name => 'name')
 	  text_field(:width, :id => 'productInfoWidth')
 	  text_field(:height, :id => 'productInfoHeight')
-	  select_list(:color, :class => 'color_swatch')
+	  #select_list(:color, :class => 'color_picker')
+	 # div(:color_submit, :class => "color_swatch",:style => "background-color: rgb(153, 51, 102); border-color: rgb(0, 0, 0);")
+	# div(:color_submit, :style => "background-color: rgb(153, 51, 102); border-color: rgb(0, 0, 0);")
+	div(:color_submit, :class => 'color_picker', :style => "background-color: rgb(0, 0, 0);")
+	
+	
 	 	 
 	 def tracked_as
 	   return "EmailcreatePage"
@@ -19,6 +24,5 @@ module Smartmanager
 			  
     end  
 end
-
 
 

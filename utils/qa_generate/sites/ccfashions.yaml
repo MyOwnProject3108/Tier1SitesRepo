@@ -1,0 +1,50 @@
+site_name: ccfashion
+pretty_name: CC Fashion
+has_content: no
+has_ranking: no
+needs_SPR: false
+username:  suer178@gmail.com
+password: Pa55word
+zero_search_term: dvd
+valid_search_term: dress
+
+home_page:
+  URL: "http://www.ccfashion.co.uk/pws/Home.ice"
+  expected_recs: 0
+  login_link: ["link", ':href => "/pws/secure/ManageAccount.ice?secure_from=login"']
+  search_field: ["text_field", ':id => "keywords"']
+
+product_page:
+  URL: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Dresses/Clematis-Posy-Burnout-Dress/6875"
+  expected_recs: 2
+  add_to_basket_button: ["button", ':id=> "addToBagBtn"']
+  extra_steps:
+    - [span, class, "sizeBox"]
+
+category_page:
+  URL: "http://www.ccfashion.co.uk/fcp/categorylist/dept/dresses"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.ccfashion.co.uk/pws/ShippingOptions.ice"
+  expected_recs: 2
+  basket_checkout: ["img", ':alt => "checkout"']
+  
+
+login_page:
+  URL: "https://www.ccfashion.co.uk/pws/secure/ManageAccount.ice?secure_from=login"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"j_username"']
+  password_field: ["text_field", ':id=>"j_password"']
+  login_submit: ["button", ':class=>"submit"']
+
+searchresults_page:
+  URL: "http://www.ccfashion.co.uk/pws/CatalogueSearch.ice?layout=searchresults.layout&performSearch=true&visible=true&productAttributeName=&productAttributeValue=&productsPerPage=9999&resetFilters=true&isServiceProduct=false&keywords=dress&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 12
+
+checkout_page:
+  URL: "https://www.ccfashion.co.uk/pws/secure/CheckoutAddressAction.ice"
+  expected_recs: 0
+  extra_steps:
+    - [button, id, "proceedToPaymentBtn"]
