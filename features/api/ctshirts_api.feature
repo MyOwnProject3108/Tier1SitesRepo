@@ -7,6 +7,7 @@ Background:
     And I am using SMART-API to access ctshirts
     And I am using client token 677ab692r2t3
 
+@ignore
 Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works with single purchases using SMART-API
     When I track the home page
     Then I should get an OK status back
@@ -26,6 +27,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works w
     | "TH099RYL" | "Ties"        |
     | "MP027TAN" | "Shoes"       |
 
+@ignore
 Scenario: SMART-content merchandising rule "purchasedByCategory" works with multiple purchases using SMART-API
     When I track the home page
     Then I should get an OK status back
@@ -45,3 +47,21 @@ Scenario: SMART-content merchandising rule "purchasedByCategory" works with mult
     And one of the SMART-content creative names should contain "cufflinks"
     And one of the SMART-content creative names should contain "Ties"
     And one of the SMART-content creative names should contain "Shoes"
+
+Scenario: CT Shirts quicktest pt1    
+    #And I am using session id 4513719630
+    #And I am using customer id 2740433268
+    And I am using username "Web Test" and email "webtest@mailinator.com"
+    And the current URI is " "
+    And the previous URI is " "
+    And I track the home page
+    Then I should get an OK status back
+    
+Scenario: CT Shirts quicktest pt2     
+    And I am using the previous session id
+    And I am using the previous customer id
+    And I am using username "Web Test" and email "webtest@mailinator.com"
+    And the current URI is "http://www.ctshirts.co.uk/Default.aspx?q=peerius|||||||||||||||"
+    And the previous URI is "http://www.ctshirts.co.uk/men's-shirts/men's-formal-shirts/White-twill-non--iron-slim-fit-shirt?q=peerius||FN017WHT|||||406,||||||||"
+    And I track the home page
+    Then I should get an OK status back

@@ -31,6 +31,29 @@ Given /^I am using customer id (.+)$/ do |cuid|
   @api.cuid = cuid
 end
 
+Given(/^I am using the previous session id$/) do
+  @api.session = $current_session
+end
+
+Given(/^I am using the previous customer id$/) do
+  @api.cuid = $current_cuid
+end
+
+
+Given(/^I am using username "(.+)" and email "(.+)"$/) do |username, email|
+   @api.json_user = {
+       "name" => username,
+       "email" => email
+     }
+end
+
+Given(/^the current URI is "(.+)"$/) do |uri|
+  @api.json_currentURI = uri
+end
+
+Given(/^the previous URI is "(.+)"$/) do |uri|
+  @api.json_previousURI = uri
+end
 
 When /^I track (?:a|the) home page$/ do
    @api.json_type = 'home'
@@ -192,6 +215,10 @@ Then /^I should get an? (.+) status back$/ do |status|
     #puts @api.json_request 
     #pp @api.result  
     @api.result["status"].should eq(status)
+    $current_session = @api.result["session"]["session"]
+    $current_cuid = @api.result["session"]["cuid"]
+    pp $current_session
+    pp $current_cuid
 end
 
 Then /^I should get a response in less than (\d+)ms$/ do |expected|

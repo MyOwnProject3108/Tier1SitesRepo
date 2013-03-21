@@ -16,6 +16,7 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     end
     @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
     @browser.refresh
+    pp @browser.html
 end
 
 When /^I go to the (.+)page$/ do |page|   
