@@ -2,37 +2,70 @@ Then /^I should see an "(.+)" message$/ do |message|
   @current_page.error_message.should == message
 end
 
-When /^I click reporting$/ do
- on_page(Smartmanager::HomePage).reporting_submit_element.click
+#When /^I click reporting$/ do
+ #on_page(Smartmanager::HomePage).reporting_submit_element.click
+ #@current_page.reporting_submit_element.click
+#end
+
+#When /^I click (.+)$/ do |smartproduct|
+#@current_page.smartproduct_submit_element.click
+#end
+
+#When /^I click (.+) on the smartmanager (.+)page$/ do |smartproduct,page|
+#    # Turn the page description into a page classname (e.g. search page -> SearchPage)
+#    page_class_name = page.split.collect!{|x| x.capitalize}.join
+#	on_page("Smartmanager"+'::'+page_class_name+'Page') do |page|
+#	@current_page.smartproduct_submit_element.click
+# end
+#end
+
+#When /^I click (.+) on the smartmanager (.+)page$/ do |smartproduct, page|
+    # Turn the page description into a page classname (e.g. search page -> SearchPage)
+ #   page_class_name = page.split.collect!{|x| x.capitalize}.join
+	#on_page("Smartmanager"+'::'+page_class_name+'Page') do |page|
+	#case smartproduct
+	#when "config"
+	#	page.config_link.click
+	#when "reporting"
+	#	page.reporting_link.click
+	#end
+#end
+
+When /^I click on the smartmanger reporting link$/ do
+  @current_page.reporting_link_element.click
 end
 
-When /^I click merchandising$/ do
- on_page(Smartmanager::HomePage).merchandising_submit_element.click
+When /^I click on the smartmanger merchandising link$/ do
+@current_page.merchandising_link_element.click
 end
 
-When /^I click email$/ do
-  on_page(Smartmanager::HomePage).email_submit_element.click
+
+When /^I click on the smartmanger email link$/ do
+  @current_page.email_link_element.click
 end
 
-When /^I click config$/ do
-  on_page(Smartmanager::HomePage).config_submit_element.click
+When /^I click on the smartmanger config link$/ do
+ @current_page.config_link_element.click
 end
 
-When /^I click landing$/ do
-  on_page(Smartmanager::HomePage).landing_submit_element.click
+When /^I click on the smartmanger landing link$/ do
+  @current_page.landing_link_element.click
 end
 
-When /^I click ranking$/ do
-  on_page(Smartmanager::HomePage).ranking_submit_element.click
+When /^I click ranking on the smartmanager home page$/ do
+  @current_page.ranking_link_element.click
 end
 
-When /^I click content$/ do
-  on_page(Smartmanager::HomePage).content_submit_element.click
+When /^I click content on the smartmanager home page$/ do
+  @current_page.content_link_element.click
 end
 
-When /^I click settings$/ do
-on_page(Smartmanager::HomePage).settings_submit_element.click
+When /^I click settings on the smartmanager home page$/ do
+@current_page.settings_link_element.click
 end
+
+
+
 
 When /^I click list of available widgets$/ do
   on_page(Smartmanager::AdministrationPage).list_widgets_submit_element.click

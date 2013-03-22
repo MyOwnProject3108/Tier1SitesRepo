@@ -4,13 +4,17 @@ Feature: SMART-manager
 #
 # widget tests 
 #
-  
+ 
+Background:
+Given I am on the smartmanager login page
+And I login as "fsultana" using password "4n424yq4n3w"
+ 
 Scenario: Users should be able to view widgets
-  Given I am on the smartmanager login page
-  And I login as "fsultana" using password "4n424yq4n3w"
-  When I click config
+ # Given I am on the smartmanager login page
+  #And I login as "fsultana" using password "4n424yq4n3w"
+  When I click smart manager config
   Then I should end up on the administration page
-  When I click list of available widgets
+  When I click list of available widgets in smart manager
   Then I should end up on the widgets page
   
  
