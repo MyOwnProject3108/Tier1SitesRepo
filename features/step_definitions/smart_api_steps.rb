@@ -217,8 +217,6 @@ Then /^I should get an? (.+) status back$/ do |status|
     @api.result["status"].should eq(status)
     $current_session = @api.result["session"]["session"]
     $current_cuid = @api.result["session"]["cuid"]
-    pp $current_session
-    pp $current_cuid
 end
 
 Then /^I should get a response in less than (\d+)ms$/ do |expected|
