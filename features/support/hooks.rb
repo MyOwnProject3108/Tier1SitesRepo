@@ -1,7 +1,16 @@
 require 'watir-webdriver'
 
+WEBDRIVER=true
+
 if ENV["headless"] then
+  if ENV["proxy"] then   
+    caps = Selenium::WebDriver::Remote::Capabilities.phantomjs(
+      "phantomjs.cli.args" => "--proxy="+ENV["proxy"]
+    )
+    browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps
+  else
     browser = Watir::Browser.new :phantomjs
+  end  
 else
    profile = Selenium::WebDriver::Firefox::Profile.new
    
