@@ -17,7 +17,9 @@ module Smartmanager
     		self.password = p
         login_submit
       end
-
+           def tracked_as
+	   return "LoginPage"
+	  end
     end
 end
 

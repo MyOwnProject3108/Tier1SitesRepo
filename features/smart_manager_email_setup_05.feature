@@ -15,7 +15,7 @@ Scenario: Users should be able to create email recs
   And I enter name as "AutoTestEmail"
   And I enter content width as 200 and height as 140
   And  I click title color picker 
-  And I click color
+ # And I click color
   
   
   

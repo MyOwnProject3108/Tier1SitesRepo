@@ -171,6 +171,6 @@ Then /^the text from the delete should read "(.*?)"$/ do |deletedtext|
   @delete_text.should == deletedtext
 end
 
-Given /^I click on logout$/ do
+Given /^I click logout$/ do
   @current_page.logout_element.click
 end
