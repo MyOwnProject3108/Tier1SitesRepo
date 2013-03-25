@@ -31,7 +31,12 @@ else
    end
    
    profile['extensions.tracker.debugenabled'] = true
-   profile['network.proxy.type'] = 0
+   
+   if web_proxy then
+     profile.proxy = Selenium::WebDriver::Proxy.new :http => web_proxy
+   else
+     profile['network.proxy.type'] = 0
+   end
    
    # Build a list of sites that the tracker plugin will track
    tracker_sites = ""
