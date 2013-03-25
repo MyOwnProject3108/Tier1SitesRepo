@@ -2,10 +2,18 @@ require 'watir-webdriver'
 
 WEBDRIVER=true
 
+web_proxy = ENV["proxy"]
+begin
+web_proxy = FigNewton.proxy unless web_proxy
+rescue NoMethodError
+end
+
+#pp web_proxy
+
 if ENV["headless"] then
-  if ENV["proxy"] then   
+  if web_proxy then   
     caps = Selenium::WebDriver::Remote::Capabilities.phantomjs(
-      "phantomjs.cli.args" => "--proxy="+ENV["proxy"]
+      "phantomjs.cli.args" => "--proxy="+web_proxy
     )
     browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps
   else
