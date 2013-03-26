@@ -19,7 +19,7 @@ sanity: --profile test1
 live: --profile pt
 api: --profile test1_api
 live_api: --profile pt_api
-jenkins_live: FIG_NEWTON_FILE=pt1.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
-jenkins_uat: FIG_NEWTON_FILE=uat.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
-jenkins_sanity_1: FIG_NEWTON_FILE=test1.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal
-jenkins_sanity_2: FIG_NEWTON_FILE=test2.yml headless=true -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal
+jenkins_live: FIG_NEWTON_FILE=pt1.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
+jenkins_uat: FIG_NEWTON_FILE=uat.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
+jenkins_sanity_1: FIG_NEWTON_FILE=test1.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal
+jenkins_sanity_2: FIG_NEWTON_FILE=test2.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal
