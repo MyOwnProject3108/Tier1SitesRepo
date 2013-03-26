@@ -100,9 +100,9 @@ Scenario: Users should be able to duplicate the available widgets
   When I click on the save widget button
   Then I should end up on the configuration page
    
-#Plz note this scenario should be run only after you've run the duplicate widget scenario (scenario :119) otherwise it'll remove the existing widgets#### 
+#Plz note this scenario should be run only after you've run the create/duplicate widget scenario (scenario :119) otherwise it'll remove the existing widgets#### 
 Scenario: Users should be able to delete duplicate widgets
-  And I click duplicate link on the widgets page
+  And I click delete link on the widgets page
   Then I should end up on the widgets page
   When I click on the save widget button
   Then I should end up on the configuration page

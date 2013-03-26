@@ -12,7 +12,7 @@ module Smartmanager
 	  #a(:save_submit, :href => "savewidgets.page")
 	  a(:edit_submit, :text => "Edit")
 	  a(:duplicate_submit, :text => "Duplicate")
-	  a(:delete_submit, :text => "Delete", :index => 1)
+	  a(:delete_submit, :text => "Delete")
 	  a(:menu_submit, :text => "Menu")
 	  
 	 	 
