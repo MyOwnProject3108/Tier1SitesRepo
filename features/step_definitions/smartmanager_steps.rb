@@ -35,10 +35,6 @@ When /^I click on the smartmanger email link$/ do
   @current_page.email_link_element.click
 end
 
-#When /^I click on the smartmanger config link$/ do
- #@current_page.config_link_element.click
-#end
-
 When /^I click on the smartmanger config link on the home page$/ do
   @current_page.config_link_element.click
   end
@@ -62,13 +58,6 @@ end
 When /^I click on the new button on the widgets page$/ do
   @current_page.new_widget_submit_element.click
 end
-
-
-
-#When /^I click list of available widgets$/ do
- # on_page(Smartmanager::AdministrationPage).list_widgets_submit_element.click
-#end
-
 
 When /^I click on the list of available widgets on the administration page$/ do
   @current_page.list_widgets_link_element.click
@@ -149,22 +138,36 @@ Then /^I select the widget as "(.+)"$/ do |savedwidget|
 @current_page.savedwidget = savedwidget
 end
 
-When /^I click edit$/ do
-  on_page(Smartmanager::WidgetsPage).edit_submit_element.click
+Then /^I click edit link on the widgets page$/ do
+  @current_page.edit_submit_element.click
 end
 
-When /^I click duplicate$/ do
-  on_page(Smartmanager::WidgetsPage).duplicate_submit_element.click
+Then /^I click duplicate link on the widgets page$/ do
+  @current_page.duplicate_submit_element.click
 end
+
+When /^I click on the menu link on the widgets page$/ do
+  @current_page.menu_submit_element.click
+end
+
+
+
+#When /^I click edit$/ do
+ # on_page(Smartmanager::WidgetsPage).edit_submit_element.click
+#end
+
+#When /^I click duplicate$/ do
+ # on_page(Smartmanager::WidgetsPage).duplicate_submit_element.click
+#end
 
 When /^I click delete$/ do
   on_page(Smartmanager::WidgetsPage).delete_submit_element.click
   #@current_page.delete_submit_element.click
 end
 
-When /^I click menu$/ do
-  on_page(Smartmanager::WidgetsPage).menu_submit_element.click
-end
+#When /^I click menu$/ do
+ # on_page(Smartmanager::WidgetsPage).menu_submit_element.click
+#end
 
 #Then /^I click save$/ do
  # on_page(Smartmanager::WidgetsPage).save_widget_element.click
