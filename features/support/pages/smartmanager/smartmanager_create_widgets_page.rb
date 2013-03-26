@@ -7,11 +7,11 @@ module Smartmanager
       URL = "https://#{FigNewton.base_url}/tracker/shop-admin/editwidget.page"
       direct_url URL
 	  div(:page_identifier, :id => "content")
-	  text_field(:widgetname, :id => "name")
-	  text_field(:widgetalias, :id => "alias")
-	  select_list(:algorithm, :class => "widgetsSelect")
-      select_list(:html, :name => "html")
-	  select_list(:css, :name => "css")
+	  text_field(:widgetname, :id => "name", :index => 0)
+	  text_field(:widgetaliasname, :id => "alias", :index => 0)
+	  select_list(:widgetalgorithm, :class => "widgetsSelect")
+      select_list(:htmltemplate, :name => "html")
+	  select_list(:csstemplate, :name => "css")
 	  text_field(:maxrecs, :id => "maxrecs")
 	  select_list(:injectionpoint, :id => 'injectionPoint')
 	  button(:try_submit, :class => 'submit120')

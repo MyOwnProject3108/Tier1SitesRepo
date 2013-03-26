@@ -8,95 +8,96 @@ Feature: SMART-manager
 Background:
 Given I am on the smartmanager login page
 And I login as "fsultana" using password "4n424yq4n3w"
+Then I should end up on the home page
  
 Scenario: Users should be able to view widgets
- # Given I am on the smartmanager login page
-  #And I login as "fsultana" using password "4n424yq4n3w"
-  When I click smart manager config
+  When I click on the smartmanger config link on the home page
   Then I should end up on the administration page
-  When I click list of available widgets in smart manager
+  When I click on the list of available widgets on the administration page
   Then I should end up on the widgets page
   
  
 Scenario: Users should be able to save widgets
-  Given I am on the smartmanager login page
-  And I login as "fsultana" using password "4n424yq4n3w"
-  When I click config
+  When I click on the smartmanger config link on the home page
   Then I should end up on the administration page
-  When I click list of available widgets
-  And I click new
+  When I click on the list of available widgets on the administration page
+  Then I should end up on the widgets page
+  #When I click on the new widget button
+  When I click on the new button on the widgets page
   Then I should end up on the createwidget page
-  And I enter name as "AutoTestWidget"
-  And I enter alias as "AutoTestWidgetAlias"
-  And I select algorithm as "Product Catalog"
-  And I select html as "product-bottom.html"
-  And I select css as "product-bottom.css"
-  And I enter max recs as 3
-  And I select injection point as "product bottom"
-  And I click try
-  And I click save
+  And I enter the widget name as "AutoTestWidget"
+  And I enter the widget alias as "AutoTestWidgetAlias"
+  And I select the widget algorithm as "Product Catalog"
+  And I select the html template as "product-bottom.html"
+  And I select the css template as "product-bottom.css"
+  And I enter maximum recs visible as 3
+  And I select the widget injection point as "product bottom"
+  And I submit the widget form
+  Then I should end up on the widgets page
+  When I click on the save widget button
   Then I should end up on the configuration page
   Then I should see "All changes are saved and activated. Online users can view the changes." message
-  And I click back
+  When I click on the back widget button
   Then I should end up on the administration page
   
  Scenario: Users shouldn't be able to save widgets with special characters
-  Given I am on the smartmanager login page
-  And I login as "fsultana" using password "4n424yq4n3w"
-  When I click config
+  When I click on the smartmanger config link on the home page
   Then I should end up on the administration page
-  When I click list of available widgets
-  And I click new
+  When I click on the list of available widgets on the administration page
+  Then I should end up on the widgets page
+  #When I click on the new widget button
+  When I click on the new button on the widgets page
   Then I should end up on the createwidget page
-  And I enter name as "Auto_TestWidget"
-  And I enter alias as "Auto_TestWidgetAlias"
-  And I select algorithm as "Product Catalog"
-  And I select html as "product-bottom.html"
-  And I select css as "product-bottom.css"
-  And I enter max recs as 3
-  And I select injection point as "product bottom"
-  And I click try
+  And I enter the widget name as "Auto_TestWidget"
+  And I enter the widget alias as "Auto_TestWidgetAlias"
+  And I select the widget algorithm as "Product Catalog"
+  And I select the html template as "product-bottom.html"
+  And I select the css template as "product-bottom.css"
+  And I enter maximum recs visible as 3
+  And I select the widget injection point as "product bottom"
+  And I submit the widget form
   Then I should see "name should be alpha numeric and can contain spaces." meesgae
   
   
 Scenario: Users should be able to select saved widgets on the decide per page
-  Given I am on the smartmanager login page
-  And I login as "fsultana" using password "4n424yq4n3w"
-  When I click config
+  When I click on the smartmanger config link on the home page
   Then I should end up on the administration page
-  When I click list of available widgets
-  And I click new
+  When I click on the list of available widgets on the administration page
+  Then I should end up on the widgets page
+  When I click on the new button on the widgets page
   Then I should end up on the createwidget page
-  And I enter name as "AutoTestWidget"
-  And I enter alias as "AutoTestWidgetAlias"
-  And I select algorithm as "Product Catalog"
-  And I select html as "product-bottom.html"
-  And I select css as "product-bottom.css"
-  And I enter max recs as 3
-  And I select injection point as "product bottom"
-  And I click try
-  And I click save
+  And I enter the widget name as "AutoTestWidget"
+  And I enter the widget alias as "AutoTestWidgetAlias"
+  And I select the widget algorithm as "Product Catalog"
+  And I select the html template as "product-bottom.html"
+  And I select the css template as "product-bottom.css"
+  And I enter maximum recs visible as 3
+  And I select the widget injection point as "product bottom"
+  And I submit the widget form
+  Then I should end up on the widgets page
+  When I click on the save widget button
   Then I should end up on the configuration page
   Then I should see "All changes are saved and activated. Online users can view the changes." message
-  And I click back
+  When I click on the back widget button
   Then I should end up on the administration page
-  And I click decide widgets per page
+   When I click on the decide widgets per page on the administration page
   Then I should end up on the per page
-  And I select "AutoTestWidget"
-  And I click try
-  And I click save
+  And I select the widget as "AutoTestWidget"
+  And I submit the widget form
+  Then I should end up on the administration page
+  When I click on the save widget button
   Then I should end up on the configuration page
-  And I click back
+  Then I should see "All changes are saved and activated. Online users can view the changes." message
+  When I click on the back widget button
   Then I should end up on the administration page
   
   
   
 Scenario: Users should be able to edit widgets
-  Given I am on the smartmanager login page
-  And I login as "fsultana" using password "4n424yq4n3w"
-  When I click config
+  When I click on the smartmanger config link on the home page
   Then I should end up on the administration page
-  When I click list of available widgets
+   When I click on the list of available widgets on the administration page
+  Then I should end up on the widgets page
   And I click edit
   Then I should end up on the createwidget page
   And I enter name as "AutoTestWidgetEdit"

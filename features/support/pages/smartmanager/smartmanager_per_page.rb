@@ -8,6 +8,7 @@ module Smartmanager
       direct_url URL
 	  div(:page_identifier, :id => "content")
 	  select_list(:savedwidget, :name => "widgets['PRODUCT'][0]")
+	  button(:try_submit, :class => "submit120")
 	  
 	 def tracked_as
 	   return "PerPage"

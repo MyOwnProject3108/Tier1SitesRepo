@@ -23,7 +23,8 @@ Scenario: Users should be able to click on Email
   Then I should end up on the email page
   
 Scenario: Users should be able to click on Config
-  When I click on the smartmanger config link 
+#  When I click on the smartmanger config link 
+  When I click on the smartmanger config link on the home page
   Then I should end up on the administration page
   
 Scenario: Users should be able to click on Smart-Landing

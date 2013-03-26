@@ -7,8 +7,9 @@ module Smartmanager
       URL = "https://#{FigNewton.base_url}/tracker/shop-admin/savewidgets.page"
       direct_url URL
 	  div(:page_identifier, :id => "content")
-	  p(:success_message, :class => "message")
-	  a(:back_submit, :href => "welcome-admin.page")
+	  p(:widget_success_message, :class => "message")
+	  #a(:back_submit, :href => "welcome-admin.page")
+	  a(:widget_submit, :href => "welcome-admin.page")
 	  
 	
 	 	 
