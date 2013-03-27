@@ -13,7 +13,7 @@ end
 if ENV["headless"] then
   caps = Selenium::WebDriver::Remote::Capabilities.phantomjs
   caps["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0"
-  caps["phantomjs.cli.args"] = "--proxy=#{web_proxy}" if web_proxy           
+  caps["phantomjs.cli.args"] = "--proxy=#{web_proxy}" if web_proxy and web_proxy != ""          
   browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps  
 else
    profile = Selenium::WebDriver::Firefox::Profile.new

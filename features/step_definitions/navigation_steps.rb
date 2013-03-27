@@ -14,6 +14,9 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end
+    
+    # Show the user agent string
+    #pp @browser.html[/<textarea.+>([^<]+)<\/textarea>/,1]
 end
 
 When /^I go to the (.+)page$/ do |page|   
