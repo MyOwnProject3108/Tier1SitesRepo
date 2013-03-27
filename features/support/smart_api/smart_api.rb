@@ -2,7 +2,6 @@ require 'json'
 require 'net/http'
 require 'benchmark'
 require 'logger'
-require_relative 'smart_api_data'
 
 module Peerius
     class SmartAPI
