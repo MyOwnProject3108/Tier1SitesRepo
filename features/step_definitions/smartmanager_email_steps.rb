@@ -56,3 +56,68 @@ Then /^I select background color "(.+)"$/ do |color|
   @current_page.div_element(:id=>"color_selector").div_element(:class =>"color_swatch", :index => index).click
 end
 
+#Then /^I set the number of items to (\d+)$/ do |items|
+ # @current_page.items = items
+  #@current_page.items.respond_to?(:send_keys) ? @current_page.items_element.send_keys(:enter) : @browser.send_keys('{ENTER}')
+#end
+
+
+
+When /^I drag "(.+)" rule to the position (\d+) slot$/ do |algorithm, position|
+  index = position.to_i - 1
+  rule = @browser.span(:text => algorithm)
+  slot = @browser.div(:id => index.to_s)
+  rule.drag_and_drop_on(slot)
+end
+
+When /^I enter email as "(.+)"$/ do |email|
+  @current_page.email = email
+  pp mailinator(email).email
+end
+
+When /^I click on the trigger test email link$/ do
+  @current_page.test_email_link_element.click
+end
+
+When /^I click on the preview test email link$/ do
+  @current_page.preview_email_link_element.click
+end
+
+  
+Then /^I should see Our Recommendations link on the mailinator page$/ do
+ on_page(Smartmanager::MailinatorPage).recs_link_element.exists?
+end
+
+When /^I click on the save button on the emailcreate page$/ do
+  @current_page.save_email_submit_element.click
+end
+
+When /^I click on the delete link on the email page$/ do
+  @current_page.delete_email_link_element.click
+end
+
+When /^I confirm the delete email widget$/ do
+  @current_page.confirm_delete_email_element.click
+end
+
+When /^I click on the copy this configuration to a new position link$/ do
+  @current_page.copy_configuration_link_element.click
+end
+
+
+#Then /^I click on the Our Recommendations link on the mailinator page$/ do
+ # on_page(Smartmanager::MailinatorPage).recs_link_element.click
+#end
+
+When /^I open Our Recommendations email on the mailinator page$/ do
+on_page(Smartmanager::MailinatorPage).recs_link_element.click
+	#on_page(Smartmanager::MailinatorPage).wait_until_visible do
+	#on_page(Smartmanager::MailinatorPage).text.include? "This is the sample email with Peerius Recommendations."
+#end
+end
+
+#When /^I navigate to the demoshop authentication page$/ do
+ # @browser.goto "http://demoshop:P@ssw0rd@demo.peerius.com"
+#end
+
+

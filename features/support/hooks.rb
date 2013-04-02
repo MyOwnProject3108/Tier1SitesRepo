@@ -17,6 +17,7 @@ if ENV["headless"] then
   browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps  
 else
    profile = Selenium::WebDriver::Firefox::Profile.new
+  # profile.native_events = true #Added by fayaz for tests#
    
    if FigNewton.base_url.include?("test") then
        profile['extensions.tracker.url'] = "//#{FigNewton.base_url}/tracker/peerius.page"

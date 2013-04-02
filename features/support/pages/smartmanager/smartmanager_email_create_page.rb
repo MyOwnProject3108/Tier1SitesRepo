@@ -13,13 +13,18 @@ module Smartmanager
 	  div(:title_color_picker, :class => 'color_picker', :index => 0)
 	  div(:price_color_picker, :class => 'color_picker', :index => 1)
 	  div(:background_color_picker, :class => 'color_picker', :index => 2)
-	
+	  a(:copy_configuration_link, :text => "Copy this configuration to a new Position")
+	   #text_field(:items, :id => 'howMany')
+	   text_field(:email, :name => 'emailId')
+	   a(:test_email_link, :text => 'Trigger Test Email')
+	   button(:save_email_submit, :class => 'submit120')
 	
 	 	 
 	 def tracked_as
 	   return "EmailcreatePage"
 	  end
-
+ 
+  
 			  
     end  
 end
