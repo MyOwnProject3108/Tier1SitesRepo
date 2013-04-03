@@ -100,9 +100,9 @@ When /^I confirm the delete email widget$/ do
   @current_page.confirm_delete_email_element.click
 end
 
-When /^I click on the copy this configuration to a new position link$/ do
-  @current_page.copy_configuration_link_element.click
-end
+#When /^I click on the copy this configuration to a new position link$/ do
+ # @current_page.copy_configuration_link_element.click
+#end
 
 
 #Then /^I click on the Our Recommendations link on the mailinator page$/ do
@@ -121,3 +121,9 @@ end
 #end
 
 
+When /^copy position (\d+) configuration to position (\d+)$/ do |positionx, positiony|
+  slots = [1, 2]
+	slots.each do |x|
+	@current_page.copy_configuration_link_element.click
+ end
+end

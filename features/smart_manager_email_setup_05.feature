@@ -19,16 +19,14 @@ Scenario: Users should be able to create email widget
   And  I select title color "blue"
   And I select price color "red"
   And I select background color "yellow"
-# And I set the number of items to 2
-  When I drag "Product Catalog" rule to the position 1 slot
- #When I drag "Abandoned Basket" rule to the position 2 slot
+   When I drag "Product Catalog" rule to the position 1 slot
+  And copy position 1 configuration to position 2
   And I enter email as "webtest@mailinator.com"
   And I click on the trigger test email link
   When I wait 2 seconds for mail to process
   When I go to the mailinator page
- #Then the email subject should match /omgwtfbbq/
   Then I should see Our Recommendations link on the mailinator page
-  When I open Our Recommendations email on the mailinator page
+ # When I open Our Recommendations email on the mailinator page
   #Then I should see peerius recommendations in the email body
   #Then I should see "This is the sample email with Peerius Recommendations." in the email body
   
