@@ -13,7 +13,7 @@ home_page:
   URL: "http://www.redletterdays.co.uk/Home"
   expected_recs: 0
   expected_api_recs: 12
-  login_link: ["link", ':href=> "https://www.ctshirts.co.uk/AccountLogin.aspx"']
+  login_link: ["link", ':href=> "https://www.redletterdays.co.uk/AccountLogin.aspx"']
   search_field: ["text_field", ':id => "search_term"']
   needs_SPR: yes
   

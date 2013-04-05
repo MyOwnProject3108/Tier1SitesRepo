@@ -5,7 +5,7 @@ Feature: SMART-API CT Shirts specific tests
 Background:
     Given I am using the ctshirts API test config
     And I am using SMART-API to access ctshirts
-    And I am using client token 677ab692r2t3
+    And I am using client token 677ab692r2t31
 
 Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works with single purchases using SMART-API
     When I track the home page
