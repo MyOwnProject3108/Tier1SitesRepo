@@ -2,15 +2,19 @@ require 'watir-webdriver'
 
 WEBDRIVER=true
 
+web_proxy = ENV["proxy"]
+begin
+web_proxy = FigNewton.proxy unless web_proxy
+rescue NoMethodError
+end
+
+#pp web_proxy
+
 if ENV["headless"] then
-  if ENV["proxy"] then   
-    caps = Selenium::WebDriver::Remote::Capabilities.phantomjs(
-      "phantomjs.cli.args" => "--proxy="+ENV["proxy"]
-    )
-    browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps
-  else
-    browser = Watir::Browser.new :phantomjs
-  end  
+  caps = Selenium::WebDriver::Remote::Capabilities.phantomjs
+  caps["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0"
+  caps["phantomjs.cli.args"] = "--proxy=#{web_proxy}" if web_proxy and web_proxy != ""          
+  browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps  
 else
    profile = Selenium::WebDriver::Firefox::Profile.new
    
@@ -23,7 +27,12 @@ else
    end
    
    profile['extensions.tracker.debugenabled'] = true
-   profile['network.proxy.type'] = 0
+   
+   if web_proxy then
+     profile.proxy = Selenium::WebDriver::Proxy.new :http => web_proxy
+   else
+     profile['network.proxy.type'] = 0
+   end
    
    # Build a list of sites that the tracker plugin will track
    tracker_sites = ""

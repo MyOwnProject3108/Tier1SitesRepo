@@ -1,5 +1,6 @@
 base_url: test2.lan
 headless: false
+proxy: utils.lan:9101
 database0: testdenorm0
 database1: testdenorm1
 database2: testdenorm2

@@ -1,6 +1,6 @@
-base_url: test1.lan
+base_url: 192.168.0.246:5443
+proxy: utils.lan:9110
 headless: false
-proxy: utils.lan:9100
 database0: testdenorm0
 database1: testdenorm1
 database2: testdenorm2

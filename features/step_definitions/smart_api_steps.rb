@@ -6,6 +6,14 @@ Given /^I am using client token (.+)$/ do |token|
   @api.json_clientToken = token
 end
 
+Given(/^I am using uat client token (.+)$/) do |token|
+   @api.json_clientToken = token if FigNewton.base_url.include?("uat")
+end
+
+Given(/^I am using production client token (.+)$/) do |token|
+   @api.json_clientToken = token unless FigNewton.base_url.include?("uat")
+end
+
 Given /^I request (.+) abgroup information$/ do |type|
   @api.json_abTestContent= type
 end
@@ -152,6 +160,8 @@ When /^I supply SMART\-ranking setup info$/ do
       "itemsPerPage" => 20,  
   }  
 end
+
+
 
 
 #

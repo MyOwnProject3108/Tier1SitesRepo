@@ -7,11 +7,12 @@ module Smartmanager
       URL = "https://#{FigNewton.base_url}/tracker/shop-admin/listwidgets.page"
       direct_url URL
 	  div(:page_identifier, :id => "content")
-	  a(:new_widget, :href => "editwidget.page")
-	  a(:save_widget, :href => "savewidgets.page")
+	  a(:new_widget_submit, :href => "editwidget.page")
+	  a(:widget_submit, :href => "savewidgets.page")
+	  #a(:save_submit, :href => "savewidgets.page")
 	  a(:edit_submit, :text => "Edit")
 	  a(:duplicate_submit, :text => "Duplicate")
-	  a(:delete_submit, :text => "Delete", :index => 1)
+	  a(:delete_submit, :text => "Delete")
 	  a(:menu_submit, :text => "Menu")
 	  
 	 	 

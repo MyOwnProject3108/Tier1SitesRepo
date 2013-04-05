@@ -11,20 +11,25 @@
 
 Feature: <%= site["pretty_name"] %> SMART-API ranking
 
+Background:
+    Given I am using SMART-API to access <%= site["site_name"] %>
+<% if site["uat_apikey"] %>
+    And I am using uat client token <%= site["uat_apikey"] %>
+    And I am using production client token <%= site["apikey"] %>
+<% else %>
+    And I am using client token <%= site["apikey"] %>
+<% end %>
+
 <% for page_name in ["home", "category", "product", "basket", "checkout", "order", "searchresults", "brand", "attribute", "other"] %>
 <% page = site[page_name+"_page"] %>
 <% if page && page["expected_api_ranking"] %>
 Scenario: <%= site["pretty_name"] %> SMART-ranking can be delivered on <%= page_name %> page using SMART-API
-    Given I am using SMART-API to access <%= site["site_name"] %>
-    And I am using client token <%= site["apikey"] %>
     When I supply SMART-ranking setup info
     And I track the <%= page_name %> page        
     Then I should get an OK status back
     And I should get at least <%= page["expected_api_ranking"] %> items of SMART-ranking content        
 
 Scenario: <%= site["pretty_name"] %> SMART-ranking clicks can be tracked on <%= page_name %> page using SMART-API
-    Given I am using SMART-API to access <%= site["site_name"] %>
-    And I am using client token <%= site["apikey"] %>
     When I supply SMART-ranking setup info
     When I track the <%= page_name %> page
     And I track a click for the first SMART-ranking item

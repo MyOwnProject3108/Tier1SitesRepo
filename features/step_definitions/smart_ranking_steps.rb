@@ -8,11 +8,6 @@
 # end
 
 # When /^I track a click for the first SMART-ranking item$/ do
-    # @current_page.should have_smart_ranking_content
-    # @current_page.ranking_widgets.count.should > 0
-    # @current_page.total_ranking_items.should > 0
-    # @current_page.ranking_click
-    # @current_page.track    
 # end
 
 When /^I track a click for SMART-ranking item number (\d+)$/ do |product|

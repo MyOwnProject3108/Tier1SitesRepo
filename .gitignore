@@ -9,3 +9,5 @@ features/**/auto_*
 features/support/pages/**/auto_*
 features/auto_*
 *.json
+error_pages/
+screenshots/
