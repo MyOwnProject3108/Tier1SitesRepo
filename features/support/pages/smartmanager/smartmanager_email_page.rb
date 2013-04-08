@@ -8,6 +8,8 @@ module Smartmanager
       direct_url URL
 	  table(:page_identifier, :class => "rctable")
 	  a(:create_link, :class => 'submit120')
+	  a(:delete_email_link, :href => '#delete', :index => 2)
+	  a(:confirm_delete_email, :text => "I'm sure")
 	 	 
 	 def tracked_as
 	   return "EmailPage"
