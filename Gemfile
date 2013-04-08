@@ -7,11 +7,6 @@ gem 'page-object'
 gem 'fig_newton'
 gem 'parallel_tests'
 
-gem 'mailinator-spec'
-gem 'nokogiri'
-gem 'actionmailer'
-gem 'i18n', '0.6.1'
-
 # Reporting gems
 gem 'syntax'
 

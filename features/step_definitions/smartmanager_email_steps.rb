@@ -65,7 +65,6 @@ end
 
 When /^I enter email as "(.+)"$/ do |email|
   @current_page.email = email
-  pp mailinator(email).email
 end
 
 When /^I click on the trigger test email link$/ do
