@@ -4,6 +4,7 @@ Feature: SMART-manager
 #
 # email tests 
 #
+#@FF_ESR_Only
 Background:
 Given I am on the smartmanager login page
 And I login as "fsultana" using password "4n424yq4n3w"
