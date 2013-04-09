@@ -30,7 +30,8 @@ category_page:
 basket_page:
   URL: "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
   expected_recs: 0 
-  basket_checkout: ["button", ':class => "right btCheckout submit"'] 
+  basket_checkout: ["button", ':class => "right btCheckout submit"']
+  basket_remove: ["link", ':class => "remove"']  
 
 login_page:
   URL: "https://www.mandco.com/bin/venda?ex=co_wizr-shopcart&display=1&stashid=billtologincaa759c&workflowid=shopcart_1&step=billtologin"

@@ -11,7 +11,7 @@ valid_search_term: nail
 home_page:
   URL: "http://www.beautyexpert.co.uk/home.dept"
   expected_recs: 9
-  login_link: ["link", ':link=> "Login"']
+  login_link: ["link", ':link=> "Sign in"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
@@ -26,7 +26,8 @@ category_page:
 basket_page:
   URL: "https://www.beautyexpert.co.uk/beautyexpert/my.basket"
   expected_recs: 3
-  basket_checkout: ["link", ':id => "gotocheckout2"'] 
+  basket_checkout: ["link", ':id => "gotocheckout2"']
+  basket_remove: ["link", ':class => "productdelete"']  
 
 login_page:
   URL: "https://www.beautyexpert.co.uk/beautyexpert/login.jsp"

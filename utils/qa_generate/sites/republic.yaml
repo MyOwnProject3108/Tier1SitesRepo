@@ -28,7 +28,8 @@ category_page:
 basket_page:
   URL: "http://www.republic.co.uk/Basket.aspx"
   expected_recs: 1
-  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
+  basket_remove: ["link", ':class => "remove"']  
 
 login_page:
   URL: "https://www.republic.co.uk/AccountLogin.aspx"

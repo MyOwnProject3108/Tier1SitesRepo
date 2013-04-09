@@ -47,6 +47,8 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% end %>
   When I click login
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
+  And I go to the basket page
+  And I remove all of the products from the basket
   <%= extra_steps_rule(site["login_page"]["extra_steps"]) %>
   And I go to the product page
   <%= extra_steps_rule(site["product_page"]["extra_steps"]) %>
@@ -57,7 +59,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a Checkout page
   <%= expect_recs_rule(page["expected_recs"]) %>
-
+  
 <% end %>
 <% page = site["searchresults_page"] %>
 <% if page["ignore"] %>

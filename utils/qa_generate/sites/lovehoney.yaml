@@ -16,7 +16,7 @@ home_page:
 
 product_page:
   URL: "http://www.lovehoney.co.uk/product.cfm?p=2869"
-  expected_recs: 1
+  expected_recs: 4
   add_to_basket_button: ["button", ':class=> "std-arrow"']
 
 category_page:
@@ -25,9 +25,10 @@ category_page:
 
 basket_page:
   URL: "http://www.lovehoney.co.uk/your-basket/"
-  expected_recs: 0 
+  expected_recs: 4 
   basket_checkout: ["button", ':class => "button proceed-to-checkout std-arrow"']
-
+  basket_remove: ["button", ':class => "remove"']
+   
 login_page:
   URL: "https://www.lovehoney.co.uk/your-account/sign-in.html"
   expected_recs: 0
@@ -44,5 +45,8 @@ checkout_page:
   URL: ""
   expected_recs: 0
   extra_steps:
+    - [button, id, "has-account-option"]
+    - [text_field, id, "password", "webtest"]
     - [button, class, "button std-arrow"]
-  
+    - [pause,30]
+    

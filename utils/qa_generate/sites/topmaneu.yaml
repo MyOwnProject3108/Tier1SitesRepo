@@ -3,7 +3,7 @@ pretty_name: Topman EU
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: anagha.joshi@peerius.com
+username: vinod.sathapathi@peerius.com
 password: Pa55word
 zero_search_term: dvd
 valid_search_term: shirts
@@ -15,21 +15,22 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=34064&storeId=13061&productId=5339097&langId=-1"
+  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34064&storeId=13061&productId=8863802&langId=-1&sort_field=Relevance&categoryId=336028&parent_categoryId=336014&pageSize=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
-  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=34064&storeId=13061&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=991151&parent_categoryId=336013&beginIndex=1&pageSize=20"
+  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=34064&storeId=13061&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=336028&parent_categoryId=336014&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:
-  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/OrderCalculate?langId=-1&storeId=13061&catalogId=34064&updatePrices=1&calculationUsageId=-1&calculationUsageId=-2&calculationUsageId=-7&orderId=.&URL=OrderItemDisplay"
+  URL: "https://eu.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34064&langId=-1&storeId=13061&krypto=bw2BpuZQvDIRSMcapRzCKaWwf9SE8axDf5gpFadKXxCKV0XCrslBPy45tX48BFSUoZle0W1EX9o8%0ADO%2F4DR8U3G8v0EVgPM2DKQgecqmgNDkfd6JBkNaBI%2FxsT%2FMsifHyHORXNhGMpLk%3D&ddkey=http:OrderCalculate"
   expected_recs: 4 
-  basket_checkout: ["link", ':class => "btn_checkout"'] 
+  basket_checkout: ["link", ':class => "btn_checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
-  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34064&storeId=13061&geoip=home"
+  URL: "https://eu.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34064&storeId=13061&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  

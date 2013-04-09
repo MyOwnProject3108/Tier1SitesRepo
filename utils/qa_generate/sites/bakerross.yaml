@@ -28,6 +28,7 @@ basket_page:
   expected_recs: 1  
   basket_checkout: ["image", ':alt => "Proceed To Checkout"']
   basket_checkout2: ["image", ':alt => "Pay with credit/debit card"']
+  basket_remove: ["link", ':class => "remove"']
 
 login_page:
   URL: "https://www.bakerross.co.uk/customer_lookup.asp"

@@ -32,7 +32,8 @@ category_page:
 basket_page:
   URL: "http://demo.peerius.com/Basket.aspx"
   expected_recs: 1
-  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
+  basket_remove: ["link", ':class => "remove"']
 
 login_page:
   URL: "https://demo.peerius.com/AccountLogin.aspx"

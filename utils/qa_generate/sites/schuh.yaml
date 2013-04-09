@@ -29,6 +29,7 @@ basket_page:
   URL: "http://www1.schuh.co.uk/basket.aspx"
   expected_recs: 0
   basket_checkout: ["link", ':href => "https://secure1.schuh.co.uk/chklogin.aspx"']
+  basket_remove: ["link", ':class => "remove"']
   
 
 login_page:
@@ -55,10 +56,11 @@ checkout_page:
   - [button, id, "ctl00_ContentPlaceHolder1_btnContinue"]
   - [pause, 2]
   - [button, id, "ctl00_ContentPlaceHolder1_chkDelOptions1_rptDelOptions_ctl01_radSelect"]
-  - [select_list, id, "ctl00_ContentPlaceHolder1_chkAddressForm1_ddlTitle", "Mr"]
-  - [text_field, id, "ctl00_ContentPlaceHolder1_chkAddressForm1_txtfirstName", "test"]
-  - [text_field, id, "tl00_ContentPlaceHolder1_chkAddressForm1_txtSurname"]
-  - [text_field, id, "ctl00_ContentPlaceHolder1_chkAddressForm1_txtPhone"]
+ # - [button, id, "ctl00_ContentPlaceHolder1_chkaddressbook1_rptAddressList_ctl01_btnSelect"]
+  # - [select_list, id, "ctl00_ContentPlaceHolder1_chkAddressForm1_ddlTitle", "Mr"]
+  #- [text_field, id, "ctl00_ContentPlaceHolder1_chkAddressForm1_txtfirstName", "test"]
+  #- [text_field, id, "tl00_ContentPlaceHolder1_chkAddressForm1_txtSurname", ""]
+  #- [text_field, id, "ctl00_ContentPlaceHolder1_chkAddressForm1_txtPhone"]
   
   
   

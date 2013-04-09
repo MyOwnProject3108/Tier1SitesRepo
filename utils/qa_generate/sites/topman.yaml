@@ -26,7 +26,8 @@ category_page:
 basket_page:
   URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555"
   expected_recs: 5 
-  basket_checkout: ["link", ':class => "btn_checkout"'] 
+  basket_checkout: ["link", ':class => "btn_checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
   URL: "http://topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33056&storeId=12555"

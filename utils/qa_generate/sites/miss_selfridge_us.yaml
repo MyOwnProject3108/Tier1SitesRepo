@@ -31,7 +31,8 @@ category_page:
 basket_page:
   URL: "http://us.missselfridge.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13069&catalogId=34080"
   expected_recs: 0
-  basket_checkout: ["button", ':name=> "create_order"'] 
+  basket_checkout: ["button", ':name=> "create_order"']
+  basket_remove: ["link", ':class => "remove"']
 
 login_page:
   URL: "http://us.missselfridge.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13069&catalogId=34080&geoip=home"

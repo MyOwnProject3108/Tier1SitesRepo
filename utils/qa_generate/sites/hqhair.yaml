@@ -11,8 +11,9 @@ valid_search_term: cream
 home_page:
   URL: "http://www.hqhair.com/home.dept"
   expected_recs: 8
-  login_link: ["link", ':title => "Login"']
-  search_field: ["text_field", ':id => "search-text"']
+  login_link: ["link", ':link => "Sign in"']
+  search_field: ["text_field", ':name => "search"']
+  
 
 product_page:
   URL: "http://www.hqhair.com/moroccanoil-the-original-oil-treatment-25ml/10448780.html"
@@ -27,6 +28,7 @@ basket_page:
   URL: "https://www.hqhair.com/hqhair/my.basket"
   expected_recs: 4
   basket_checkout: ["link", ':id => "gotocheckout2"']
+  basket_remove: ["link", ':class => "remove"']
 
 login_page:
   URL: "https://www.hqhair.com/hqhair/login.jsp?redirectToLoginOnPasswordReset"
@@ -39,6 +41,8 @@ searchresults_page:
   URL: "http://www.hqhair.com/elysium.search?search=CREAM"
   expected_recs: 0
   zerosearch_recs: 0
+  search_extra_steps:
+    - [pause, 20]
 
 checkout_page:
   URL: ""

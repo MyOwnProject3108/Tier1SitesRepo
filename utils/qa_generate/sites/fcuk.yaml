@@ -29,6 +29,7 @@ basket_page:
   URL: "http://www.frenchconnection.com/basket.htm"
   expected_recs: 4
   basket_checkout: ["link", ':id => "ctl00_ctl00_globalmaincontent_maincontent_hlCheckout"']
+  basket_remove: ["link", ':class => "removeFromBasketButton"']
 
 login_page:
   URL: "https://www.frenchconnection.com/login.htm?returnUrl=%2faccount.htm%3fmode%3dmyaccount"
@@ -47,6 +48,7 @@ checkout_page:
   expected_recs: 0
   extra_steps:
     - [link, id, "promotionCodeProceed"]
+    - [pause, 20]
     - [link, id, "shippingMethodProceed"]
     - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlCreditCardType", "Mastercard"]
     - [text_field, id, "cardNumber", "5555555555554444"]

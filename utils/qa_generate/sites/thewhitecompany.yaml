@@ -28,7 +28,8 @@ category_page:
 basket_page:
   URL: "http://www.thewhitecompany.com/shopping-bag/"
   expected_recs: 2
-  basket_checkout: ["button", ':id => "in_btnCheckout"'] 
+  basket_checkout: ["button", ':id => "in_btnCheckout"']
+  basket_remove: ["link", ':class => "remove"']  
 
 login_page:
   URL: "https://www.thewhitecompany.com/login.aspx"

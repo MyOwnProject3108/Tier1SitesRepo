@@ -27,13 +27,14 @@ basket_page:
   URL: "http://www.cottontraders.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=cottontraders&log=22"
   expected_recs: 1  
   basket_checkout: ["button", ':class => "right btCheckout"']
+  basket_remove: ["link", ':title => "Remove All"']
 
 login_page:
   URL: "https://www.cottontraders.co.uk/bin/venda?ex=co_wizr-register&bsref=cottontraders"
   expected_recs: 0 
-  username_field: ["text_field", '{:id=>"email", :index => 1}']
+  username_field: ["text_field", ':id => "email"']
   password_field: ["text_field", ':id=>"password"']  
-  login_submit: ["button", ':class =>"right"']
+  login_submit: ["button", ':class =>"button buttonAlt submit"']
 
 searchresults_page:
   URL: "http://www.cottontraders.co.uk/search?q=shirt&searchsubmit=Search&categories=shop"
