@@ -1,5 +1,6 @@
 @livedemoshop
 @smartapi
+@smartranking
 Feature: SMART-API: Non-site specific SMART-ranking tests
   In order to get the most out of my shopping experience
   As a website user

@@ -144,14 +144,14 @@ When /^I track the same page another (\d+) times$/ do |n|
   end
 end 
 
-When /^I supply SMART\-ranking setup info$/ do
-  @json.json_smartRanking = {
-      "facets" => "category=\"ties\"",
-      "ordering" => {"orderBy" => "smart"},
-      "page" => 1,
-      "itemsPerPage" => 20,  
-  }  
-end
+# When /^I supply SMART\-ranking setup info$/ do
+  # @json.json_smartRanking = {
+      # "facets" => "category=\"ties\"",
+      # "ordering" => {"orderBy" => "smart"},
+      # "page" => 1,
+      # "itemsPerPage" => 20,  
+  # }  
+# end
 
 
 #
