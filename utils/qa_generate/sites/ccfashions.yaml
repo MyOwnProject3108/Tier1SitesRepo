@@ -29,6 +29,7 @@ basket_page:
   URL: "http://www.ccfashion.co.uk/pws/ShippingOptions.ice"
   expected_recs: 2
   basket_checkout: ["img", ':alt => "checkout"']
+  basket_remove: ["img", ':alt => "remove product from my bag"']
   
 
 login_page:
@@ -40,7 +41,7 @@ login_page:
 
 searchresults_page:
   URL: "http://www.ccfashion.co.uk/pws/CatalogueSearch.ice?layout=searchresults.layout&performSearch=true&visible=true&productAttributeName=&productAttributeValue=&productsPerPage=9999&resetFilters=true&isServiceProduct=false&keywords=dress&x=0&y=0"
-  expected_recs: 0
+  expected_recs: 12
   zerosearch_recs: 12
 
 checkout_page:
@@ -48,3 +49,4 @@ checkout_page:
   expected_recs: 0
   extra_steps:
     - [button, id, "proceedToPaymentBtn"]
+    - [pause, 20]

@@ -12,7 +12,7 @@ valid_search_term: dress
 home_page:
   URL: "http://www.boohoo.com/"
   expected_recs: 0
-  login_link: ["link", ':href=> "https://www.ctshirts.co.uk/AccountLogin.aspx"']
+  login_link: ["link", ':id => "Lustype_loginlink"', ':index => 0']
   search_field: ["text_field", ':id => "search_term"']
 
 product_page:
@@ -27,14 +27,15 @@ category_page:
 basket_page:
   URL: "http://www.boohoo.com/bin/venda?ex=co_wizr-shopcart&bsref=boohoo&log=22"
   expected_recs: 1
-  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
+  basket_remove: ["link", ':class => "remove"']  
 
 login_page:
   URL: "https://www.boohoo.com/bin/venda?ex=co_wizr-register&bsref=boohoo"
   expected_recs: 0
-  username_field: ["text_field", ':id=>"ctl00_contentBody_email"']
-  password_field: ["text_field", ':id=>"ctl00_contentBody_password"']  
-  login_submit: ["button", ':id=>"ctl00_contentBody_submit"']
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["button", ':alt => "Login"', ':index => 1' ]
 
 searchresults_page:
   URL: "http://www.boohoo.com/restofworld/search/page/search/?q=dress"

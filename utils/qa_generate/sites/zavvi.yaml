@@ -26,7 +26,8 @@ category_page:
 basket_page:
   URL: "https://www.zavvi.com/zavvi/my.basket?mvtCTA=b"
   expected_recs: 4
-  basket_checkout: ["link", ':id => "gotocheckout2"'] 
+  basket_checkout: ["link", ':id => "gotocheckout2"']
+  basket_remove: ["link", ':class => "remove"']  
 
 login_page:
   URL: "https://www.zavvi.com/zavvi/login.jsp"

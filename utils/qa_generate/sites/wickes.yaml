@@ -2,7 +2,7 @@ site_name: wickes
 pretty_name: Wickes 
 has_content: no
 has_ranking: no
-needs_SPR: no
+needs_SPR: spr
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
@@ -10,7 +10,7 @@ valid_search_term: ladder
 
 home_page:
   URL: "http://www.wickes.co.uk/"
-  expected_recs: 0 
+  expected_recs: 1 
   login_link: ["link", ':id => "Lustype_loginlink"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
@@ -18,16 +18,19 @@ product_page:
   URL: "http://www.wickes.co.uk/rimini-round-basin-500mm+full-pedestal/invt/220725/"
   expected_recs: 6 
   add_to_basket_button: ["button", ':class=> "bt_prodtail"']
+  extra_steps:
+    - [pause, 30]
 
 category_page:
-  URL: "http://www.wickes.co.uk/tools-electrical+plumbing/icat/toolsstorage/"
-  expected_recs: 9 
+  URL: "http://www.wickes.co.uk/tiles+floors/icat/tilesflooring/"
+  expected_recs: 1 
 
 basket_page:
   URL: "http://www.wickes.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=wickes&log=22"
   expected_recs: 6  
-  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
-
+  basket_checkout: ["button", ':class => "right btCheckout"']
+  basket_remove: ["link", ':text => "Remove"']
+  
 login_page:
   URL: "https://www.wickes.co.uk/bin/venda?ex=co_wizr-register&bsref=wickes"
   expected_recs: 0 

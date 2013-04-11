@@ -19,7 +19,7 @@ product_page:
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:
-    - [li, class, "8"]
+    - [li, class, "10"]
 
 category_page:
   URL: "http://www.fatface.com/women/dresses/icat/womensdresses/"
@@ -28,7 +28,8 @@ category_page:
 basket_page:
   URL: "http://www.fatface.com/bin/venda?ex=co_wizr-shopcart&bsref=fatface&log=22"
   expected_recs: 6 
-  basket_checkout: ["button", ':class => "button buttonArrow right btCheckout submit"'] 
+  basket_checkout: ["button", ':class => "button buttonArrow right btCheckout submit"']
+  basket_remove: ["link", ':title => "Remove Ingrid Stripe Twist Dress"']
 
 login_page:
   URL: "https://www.fatface.com/bin/venda?ex=co_wizr-register&bsref=fatface"

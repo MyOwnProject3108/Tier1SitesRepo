@@ -26,7 +26,8 @@ category_page:
 basket_page:
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34058&langId=-1&storeId=13058"
   expected_recs: 7 
-  basket_checkout: ["link", ':id => "checkout_submit_bottom"'] 
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34058&storeId=13058&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
@@ -43,15 +44,16 @@ searchresults_page:
 checkout_page:
   URL: "" 
   expected_recs: 0
-  checkout_extra_steps:
-   - [select_list, id, "address_title", "Mr"]
-   - [text_field, id, "address_first_name", "peerius"]
-   - [text_field, id, "address_surname", "test"]
-   - [text_field, id, "address_main_telephone", "01049302019"]
-   - [text_field, class, "text address_line_1", "address1"]
-   - [text_field, class, "text address_town", "town"]
-   - [text_field, class, "text address_postcode_manual", "12345"]
+  extra_steps:
+ #  - [select_list, id, "address_title", "Mr"]
+ # - [text_field, id, "address_first_name", "peerius"]
+ #- [text_field, id, "address_surname", "test"]
+ #- [text_field, id, "address_main_telephone", "01049302019"]
+ #- [text_field, class, "text address_line_1", "address1"]
+ #- [text_field, class, "text address_town", "town"]
+ #- [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
+  
    
    
    

@@ -15,18 +15,19 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33052&storeId=12551&productId=8062853&langId=-1&sort_field=Relevance&categoryId=427002&parent_categoryId=223521&pageSize=20"
+  URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33052&storeId=12551&productId=9826283&langId=-1&sort_field=Relevance&categoryId=209037&parent_categoryId=208974&pageSize=20"
   expected_recs: 4
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
-  URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33052&storeId=12551&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=427002&parent_categoryId=223521&beginIndex=1&pageSize=20"
+  URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33052&storeId=12551&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=209037&parent_categoryId=208974&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:
   URL: "https://www.burton.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33052&langId=-1&storeId=12551"
   expected_recs: 7
-  basket_checkout: ["link", ':title => "Checkout"'] 
+  basket_checkout: ["link", ':title => "Checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
   URL: "https://www.burton.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33052&storeId=12551&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"

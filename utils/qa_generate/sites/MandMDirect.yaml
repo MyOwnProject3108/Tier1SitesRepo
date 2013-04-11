@@ -30,6 +30,7 @@ basket_page:
   URL: "http://www.mandmdirect.com/ViewBasket.aspx"
   expected_recs: 4
   basket_checkout: ["link", ':id => "ctl00_ctl00_globalmaincontent_maincontent_hlCheckout"']
+  basket_remove: ["link", ':class => "remove"']
 
 login_page:
   URL: "https://www.mandmdirect.com/Secure/Account/SignIn?ReturnUrl=%2FSecure%2FCheckout%2FAccount"

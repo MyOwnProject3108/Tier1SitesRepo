@@ -22,7 +22,7 @@ home_page:
   needs_SPR: yes
   
 product_page:
-  URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"	
+  URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"    
   expected_recs: 7
   add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
 
@@ -33,7 +33,8 @@ category_page:
 basket_page:
   URL: "http://www.ctshirts.co.uk/Basket.aspx"
   expected_recs: 1
-  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"'] 
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
+  basket_remove: ["link", ':class => "remove"']  
 
 login_page:
   URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"

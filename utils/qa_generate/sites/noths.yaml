@@ -20,13 +20,14 @@ product_page:
   add_to_basket_button: ["button", ':id=> "add_to_cart"']
   
 category_page:
-  URL: "http://www.notonthehighstreet.com/home-garden/shop-by-room/kitchen"
+  URL: "http://www.notonthehighstreet.com/women/womens-jewellery/necklaces-pendants"
   expected_recs: 0
 
 basket_page:
   URL: "http://www.notonthehighstreet.com/cart"
   expected_recs: 1
-  basket_checkout: ["button", ':name => "button_checkout"'] 
+  basket_checkout: ["button", ':name => "button_checkout"']
+  basket_remove: ["link", ':class => "remove_item_button secondary button small skinny mobile_hide"']  
 
 login_page:
   URL: "https://www.notonthehighstreet.com/session/new"
