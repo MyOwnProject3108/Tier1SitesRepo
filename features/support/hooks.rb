@@ -1,4 +1,5 @@
 require 'watir-webdriver'
+require 'tiny_tds'
 
 WEBDRIVER=true
 
@@ -51,6 +52,8 @@ else
    profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile
 end
+
+db0 = TinyTds::Client.new(:username => '3duser', :password => '3d534rch', :host => FigNewton.host, :database => FigNewton.database0)
 
 Before do
     @browser = browser

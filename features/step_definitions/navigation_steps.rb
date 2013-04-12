@@ -2,6 +2,10 @@ Given /^I am using the (.+) search engine$/ do |engine|
   @engine = engine.capitalize
   visit @engine+'::SearchPage'
   @current_page.should have_expected_title
+  
+  # Make sure the debug data is showing
+  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  @browser.refresh
 end  
 
 Given /^I am on the (.+) (.+)page$/ do |site, page|
@@ -17,6 +21,10 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     
     # Show the user agent string
     #pp @browser.html[/<textarea.+>([^<]+)<\/textarea>/,1]
+	
+  # Make sure the debug data is showing
+  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  @browser.refresh
 end
 
 When /^I go to the (.+)page$/ do |page|   
@@ -27,6 +35,10 @@ When /^I go to the (.+)page$/ do |page|
     if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end
+
+  # Make sure the debug data is showing
+  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  @browser.refresh
 end
 
 When /^I click login$/ do

@@ -4,7 +4,7 @@ module PeeriusDebugInfo
     # Returns the tracking page type for the page
 	  def tracked_as
 		  sleep 2
-      Watir::Wait.until { @browser.td(:id => 'trackInfo').exists? }
+          Watir::Wait.until { @browser.td(:id => 'trackInfo').exists? }
           return @browser.td(:id => 'trackInfo').text 
 	  end
     
