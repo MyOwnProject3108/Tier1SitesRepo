@@ -27,10 +27,12 @@ Scenario: <%= site["pretty_name"] %> SMART-content can be delivered on <%= page_
     Then I should get an OK status back
     And I should get at least <%= page["expected_api_content"] %> SMART-content creatives in the response        
 
-Scenario: <%= site["pretty_name"] %> SMART-content clicks can be tracked on <%= page_name %> page using SMART-API
-   
+Scenario: <%= site["pretty_name"] %> SMART-content clicks can be tracked on <%= page_name %> page using SMART-API 
     When I track the <%= page_name %> page
     And I track a click for the first SMART-content creative
+    And I wait for denormalisation to finish
     Then I should get an OK status back
+    Then I should see at least <%= page["expected_api_content"] %> SMART-content impressions in the DB
+    And I should see exactly 1 SMART-content click in the DB
 <% end %>
 <% end %>

@@ -1,2 +1,13 @@
 base_url: uat.peerius.com
 headless: false 
+database0: prodstage-denorm0
+database1: prodstage-denorm1
+database2: prodstage-denorm2
+database3: prodstage-denorm3
+database4: prodstage-denorm4
+database5: prodstage-denorm5
+database6: prodstage-denorm6
+database7: prodstage-denorm7
+username: 3duser
+password: 3d534rch
+host: 89.187.117.122

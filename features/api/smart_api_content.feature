@@ -32,18 +32,24 @@ Scenario: SMART-content A/B groups can be detected using SMART-API "full"
     And I track a home page
     Then I should get an OK status back
     And I should see which smartContent abgroup I am serving
-	And I should see at least 2 smartContent ab test configs
+	  And I should see at least 2 smartContent ab test configs
 
 Scenario: SMART-content impressions are denormalised in the db using SMART-API
     When I track the home page
-	And I track the home page
-	And I track the home page
+	  And I track the home page
+	  And I track the home page
+    And I wait for denormalisation to finish
     Then I should get an OK status back
-	And I should see at least 3 SMART-content impressions in the DB
-	And I should see no SMART-content clicks in the DB
+	  And I should see at least 3 SMART-content impressions in the DB
+	  And I should see no SMART-content clicks in the DB
 	
 Scenario: SMART-content clicks are denormalised in the db using SMART-API
     When I track the home page
     Then I should get an OK status back
     When I track a click for the first SMART-content creative
-	Then I should see at least 1 SMART-content click in the DB
+    When I track the home page
+    When I track a click for the first SMART-content creative
+    When I track the home page
+    When I track a click for the first SMART-content creative
+    And I wait for denormalisation to finish
+	  Then I should see at least 3 SMART-content clicks in the DB

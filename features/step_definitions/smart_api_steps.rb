@@ -1,5 +1,6 @@
 Given /^I am using SMART\-API (v1|v1_1)?.?to access (.+)$/ do |version, site|
-  @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)    
+  @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)
+  @site = site    
 end
 
 Given /^I am using client token (.+)$/ do |token|

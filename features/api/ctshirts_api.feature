@@ -12,7 +12,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works w
     When I track the home page
     Then I should get an OK status back
     When I track a click for the first SMART-content creative
-    And I purchase a <product> using the SMART-API
+    When I purchase a <product> using the SMART-API
     And I track the home page
     Then I should get an OK status back
     And I should get at least 6 SMART-content creatives in the response
