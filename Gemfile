@@ -10,12 +10,13 @@ gem 'parallel_tests'
 # Reporting gems
 gem 'syntax'
 
-# database access gems
-#gem 'tiny_tds'
-#gem 'activerecord'
-#gem 'activesupport'
-#gem 'activerecord-sqlserver-adapter'
+#database access gems
+gem 'tiny_tds'
 
 # Generator gems
 gem 'trollop'
 
+#JSON gems
+
+#gem 'json'
+#gem 'jsonpath'

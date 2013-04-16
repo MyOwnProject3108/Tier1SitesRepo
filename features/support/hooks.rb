@@ -53,10 +53,25 @@ else
    browser = Watir::Browser.new :firefox, :profile => profile
 end
 
-db0 = TinyTds::Client.new(:username => '3duser', :password => '3d534rch', :host => FigNewton.host, :database => FigNewton.database0)
+db0 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database0)
+db1 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database1)
+db2 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database2)
+db3 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database3)
+db4 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database4)
+db5 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database5)
+db6 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database6)
+db7 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database7)
 
 Before do
     @browser = browser
+	@db0 = db0
+	@db1 = db1
+	@db2 = db2
+	@db3 = db3
+	@db4 = db4
+	@db5 = db5
+	@db6 = db6
+	@db7 = db7
 end
 
 at_exit do

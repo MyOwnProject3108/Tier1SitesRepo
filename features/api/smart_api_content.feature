@@ -4,9 +4,11 @@ Feature: SMART-API: Non-site specific SMART-content
   In order to get the most out of my shopping experience
   As a website user
   I want to see home page content tailored to me
-
-Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works using SMART-API
+  
+Background:
     Given I am using SMART-API to access livedemoshop
+
+Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works using SMART-API   
     When I track the home page
     And I track a click for the first SMART-content creative
     And I purchase a <product> using the SMART-API
@@ -20,17 +22,28 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works u
     | "prod-mc075bgd" | "Shoes"       |
 
 Scenario: SMART-content A/B groups can be detected using SMART-API "summary"
-    Given I am using SMART-API to access livedemoshop
-    And I request summary abgroup information
-    When I track a home page
+    When I request summary abgroup information
+    And I track a home page
     Then I should get an OK status back
     And I should see which smartContent abgroup I am serving
 
 Scenario: SMART-content A/B groups can be detected using SMART-API "full"
-    Given I am using SMART-API to access livedemoshop
-    And I request full abgroup information
-    When I track a home page
+    When I request full abgroup information
+    And I track a home page
     Then I should get an OK status back
     And I should see which smartContent abgroup I am serving
 	And I should see at least 2 smartContent ab test configs
 
+Scenario: SMART-content impressions are denormalised in the db using SMART-API
+    When I track the home page
+	And I track the home page
+	And I track the home page
+    Then I should get an OK status back
+	And I should see at least 3 SMART-content impressions in the DB
+	And I should see no SMART-content clicks in the DB
+	
+Scenario: SMART-content clicks are denormalised in the db using SMART-API
+    When I track the home page
+    Then I should get an OK status back
+    When I track a click for the first SMART-content creative
+	Then I should see at least 1 SMART-content click in the DB
