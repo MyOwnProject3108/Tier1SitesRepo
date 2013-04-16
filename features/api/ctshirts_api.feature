@@ -5,7 +5,7 @@ Feature: SMART-API CT Shirts specific tests
 Background:
     Given I am using the ctshirts API test config
     And I am using SMART-API to access ctshirts
-    And I am using uat client token 677ab692r2t3
+    And I am using uat client token 677ab692r2t3u4t
     And I am using production client token 677ab692r2t31
 
 Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works with single purchases using SMART-API
@@ -46,6 +46,27 @@ Scenario: SMART-content merchandising rule "purchasedByCategory" works with mult
     And one of the SMART-content creative names should contain "cufflinks"
     And one of the SMART-content creative names should contain "Ties"
     And one of the SMART-content creative names should contain "Shoes"
+    
+Scenario: SMART-content merchandising rule "purchasedByCategory" works across sessions
+    Given I am using username "Web Test" and email "webtest@mailinator.com"
+    When I order a "LE083BLU" using the SMART-API # -- Cufflinks
+    And I track the home page
+    Then I should get an OK status back
+    And one of the SMART-content creative names should contain "cufflinks"
+    When I start a new session
+    And I track the home page
+    Then I should get an OK status back
+    And one of the SMART-content creative names should contain "cufflinks"
+    
+Scenario: SMART-content merchandising rule "purchasedByCategory" works after I log in
+    When I order a "LE083BLU" using the SMART-API # -- Cufflinks
+    And I track the home page
+    Then I should get an OK status back
+    And one of the SMART-content creative names should contain "cufflinks"
+    Given I am using username "Web Test" and email "webtest@mailinator.com"
+    And I track the home page
+    Then I should get an OK status back
+    And one of the SMART-content creative names should contain "cufflinks"
 
 Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page after visiting a category page
     #Given I am using username "Web Test" and email "webtest@mailinator.com"
@@ -55,6 +76,14 @@ Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page 
     And I create a session and cuid cookie from the api
     Then it should be tracked as a category page
     When I track the home page
+    Then I should get an OK status back
+    
+Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page after visiting a category page
+    #Given I am using username "Web Test" and email "webtest@mailinator.com"
+    Given I am on the ctshirts category page
+    Then it should be tracked as a category page
+    When I pass the session and cuid cookie to the api
+    And I track the home page
     Then I should get an OK status back
     
 Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page after visiting a category page
