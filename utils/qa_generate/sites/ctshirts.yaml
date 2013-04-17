@@ -9,6 +9,11 @@ zero_search_term: dvd
 valid_search_term: shirts
 apikey: 677ab692r2t31
 uat_apikey: 677ab692r2t3u4t
+<<<<<<< HEAD
+=======
+database_num: 3
+site_id: 142
+>>>>>>> e97b003e0409bd00c5e24a8e15810095cffa42e7
 
 home_page:
   ignore: true # CT Shirts homepage is on SMART-API

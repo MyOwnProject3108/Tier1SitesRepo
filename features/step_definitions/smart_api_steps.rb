@@ -1,5 +1,6 @@
 Given /^I am using SMART\-API (v1|v1_1)?.?to access (.+)$/ do |version, site|
-  @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)    
+  @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)
+  @site = site    
 end
 
 Given /^I am using client token (.+)$/ do |token|
@@ -35,18 +36,13 @@ Given /^I am using session id (.+)$/ do |session|
   @api.session = session
 end
 
+Given /^I start a new session$/ do
+  @api.session = "new"
+end
+
 Given /^I am using customer id (.+)$/ do |cuid|
   @api.cuid = cuid
 end
-
-Given(/^I am using the previous session id$/) do
-  @api.session = $current_session
-end
-
-Given(/^I am using the previous customer id$/) do
-  @api.cuid = $current_cuid
-end
-
 
 Given(/^I am using username "(.+)" and email "(.+)"$/) do |username, email|
    @api.json_user = {

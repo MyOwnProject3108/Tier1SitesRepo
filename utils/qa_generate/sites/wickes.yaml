@@ -13,6 +13,8 @@ home_page:
   expected_recs: 1 
   login_link: ["link", ':id => "Lustype_loginlink"']
   search_field: ["text_field", ':id => "sli_search_1"']
+  category_menu: ["div", ':class => "Ltopnavcats topnavigation"']
+  category_menu_exclude: [""]
 
 product_page:
   URL: "http://www.wickes.co.uk/rimini-round-basin-500mm+full-pedestal/invt/220725/"

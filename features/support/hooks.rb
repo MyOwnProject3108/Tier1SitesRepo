@@ -1,4 +1,6 @@
 require 'watir-webdriver'
+require 'tiny_tds'
+require 'psych'
 
 WEBDRIVER=true
 
@@ -52,10 +54,43 @@ else
    browser = Watir::Browser.new :firefox, :profile => profile
 end
 
+# Open all the databases
+db0 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database0)
+db1 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database1)
+db2 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database2)
+db3 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database3)
+db4 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database4)
+db5 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database5)
+db6 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database6)
+db7 = TinyTds::Client.new(:username => FigNewton.username, :password => FigNewton.password, :host => FigNewton.host, :database => FigNewton.database7)
+
+# Create db mapping 
+sites = Psych.load_file("features/support/auto_dbmapping.yaml")
+sites.each_value {|site|
+  site["db"] = eval("db#{site["db"]}") unless site.nil? or site["db"].nil?
+}
+
 Before do
-    @browser = browser
+  @browser = browser
+	@db0 = db0
+	@db1 = db1
+	@db2 = db2
+	@db3 = db3
+	@db4 = db4
+	@db5 = db5
+	@db6 = db6
+	@db7 = db7
+  @sites = sites
 end
 
 at_exit do
     browser.close unless ENV["keepbrowseropen"]
+    db0.close
+    db1.close
+    db2.close
+    db3.close
+    db4.close
+    db5.close
+    db6.close
+    db7.close
 end

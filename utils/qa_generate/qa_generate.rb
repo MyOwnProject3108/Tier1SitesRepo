@@ -48,8 +48,9 @@ template_directory << '/' if template_directory[-1].chr != '/'
 template_files = Dir[template_directory+"**/*"]
 site_files = Dir[input_file]
 
-# Start a new sitelist with the first site
+# Start a new sitelist and dbmapping with the first site
 sitelist_file_mode = "w"
+dbmapping_file_mode = "w"
 
 site_files.each do |site_filename|
   # Load the site YAML file
@@ -87,13 +88,26 @@ site_files.each do |site_filename|
   puts "Creating #{output_filename}..." unless sitelist_file_mode == "a" 
   FileUtils.mkpath File.dirname(output_filename)
    
-  output_file = File.open(output_filename, sitelist_file_mode) do |sitelist|
+  File.open(output_filename, sitelist_file_mode) do |file|
     site_name = site["home_page"]["URL"]
     site_name.gsub!(/https?:\/\//,'')
     site_name.gsub!(/www\./,'')
     site_name.gsub!(/\/.*$/, '')
-    sitelist.puts site["home_page"]["URL"] + "\n"
+    file.puts site["home_page"]["URL"] + "\n"
   end
   
-  sitelist_file_mode = "a"   
+  sitelist_file_mode = "a"
+  
+  # Generate dbmapping
+  output_filename = output_path + "features/support/auto_dbmapping.yaml"
+  puts "Creating #{output_filename}..." unless dbmapping_file_mode == "a" 
+  FileUtils.mkpath File.dirname(output_filename)
+   
+  File.open(output_filename, dbmapping_file_mode) do |file|
+    file.puts "#{site["site_name"]}:\n"
+    file.puts "  db: #{site["database_num"]}" unless site["database_num"].nil?
+    file.puts "  site_id: #{site["site_id"]}" unless site["site_id"].nil?
+  end
+  
+  dbmapping_file_mode = "a"   
 end

@@ -11,5 +11,5 @@ database6: testdenorm6
 database7: testdenorm7
 username: 3duser
 password: 3d534rch
-host: isopoda
+host: testdb
 

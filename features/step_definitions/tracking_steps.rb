@@ -1,7 +1,5 @@
 Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
-  # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+
   
   # Turn the page description into a page classname (e.g. search page -> SearchPage)
   page_class_name = page.split.collect!{|x| x.capitalize}.join
@@ -9,33 +7,24 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
 end
 
 Then /^the first widget name should be "(.+)"$/ do |debug_widget_name|
-  # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
- 
+
   @current_page.debug_widget_name.should include(debug_widget_name)
 end
 
 Then /^the debug info should show at least (\d+) SMART\-recs?$/ do |expected_recs|
-  # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+
   
   @current_page.debug_recs.should have_at_least(expected_recs).entries  
 end
 
 Then /^the debug info should show no SMART\-recs?$/ do
-  # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+
   
   @current_page.debug_recs.should have(0).entries  
 end
 
 Then /^all categories should be tracked as Category pages except:$/ do |exclude_list|
-  # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+
   
   categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent'), x.attribute('href')]}
   exclude_list = exclude_list.raw.flatten!
