@@ -16,7 +16,9 @@ module <%= site["site_name"].capitalize %>
       URL = "<%= debug_url(page["URL"]) %>"
       direct_url URL
       
-      <%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
+      <% if page["login_link"] %>
+        <%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
+      <% end %>
 	    <%= page["search_field"][0] %>(:search, <%= page["search_field"][1] %>)
       <% if page["category_menu"] %>
         <%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
