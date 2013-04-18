@@ -7,6 +7,8 @@ username: testmail@123.com
 password: pass1234
 zero_search_term: no
 valid_search_term: shirts
+database_num: 2
+site_id: 281
 
 home_page:
   URL: "https://www.lookfantastic.com/home.dept?mvtCTA=a"

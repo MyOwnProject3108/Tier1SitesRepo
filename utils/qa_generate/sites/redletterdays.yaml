@@ -8,6 +8,8 @@ password: webtest
 zero_search_term: dvd
 valid_search_term: shirts
 apikey: 6G54jh5d94stg
+database_num: 3
+site_id: 635
 
 home_page:
   URL: "http://www.redletterdays.co.uk/Home"

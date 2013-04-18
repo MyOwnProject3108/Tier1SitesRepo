@@ -7,6 +7,8 @@ username: webtest@mailinator.com
 password: webtest
 zero_search_term: abcd
 valid_search_term: dress
+database_num: 3
+site_id: 605
 
 home_page:
   URL: "http://www.frenchconnection.com/"

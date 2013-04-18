@@ -7,6 +7,8 @@ username: testmail@123.com
 password: pass1234
 zero_search_term: dvd
 valid_search_term: dvd
+database_num: 6
+site_id: 419
 
 home_page:
   URL: "http://www.zavvi.com/home.dept"

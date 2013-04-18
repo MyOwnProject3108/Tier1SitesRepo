@@ -7,6 +7,8 @@ username: user177@gmail.com
 password: Pa55word
 zero_search_term: no
 valid_search_term: shirt
+database_num: 6
+site_id: 287
 
 home_page:
   URL: "http://www.thehut.com/home.dept"

@@ -7,6 +7,8 @@ username: webtest@mailinator.com
 password: webtest
 zero_search_term: shirts
 valid_search_term: red wine
+database_num: 5
+site_id: 251
 
 home_page:
   URL: "https://www.virginwines.co.uk/"

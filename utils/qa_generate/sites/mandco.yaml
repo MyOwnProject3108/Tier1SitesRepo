@@ -7,6 +7,8 @@ username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
 valid_search_term: dress
+database_num: 1
+site_id: 50
 
 home_page:
   URL: "http://www.mandco.com/"

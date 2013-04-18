@@ -7,6 +7,8 @@ username:  suer178@gmail.com
 password: Pa55word
 zero_search_term: no
 valid_search_term: cream
+database_num: 6
+site_id: 425
 
 home_page:
   URL: "http://www.hqhair.com/home.dept"

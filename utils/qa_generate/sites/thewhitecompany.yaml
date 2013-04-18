@@ -7,6 +7,8 @@ username: user178@gmail.com
 password: Pa55word
 zero_search_term: no
 valid_search_term: towel
+database_num: 3
+site_id: 647
 
 home_page:
   URL: "http://www.thewhitecompany.com/"

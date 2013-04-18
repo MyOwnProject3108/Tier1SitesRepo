@@ -7,6 +7,8 @@ username: user178@gmail.com
 password: pa55word
 zero_search_term: no
 valid_search_term: shirt
+database_num: 6
+site_id: 443
 
 home_page:
   URL: "http://www.mankind.co.uk/home.dept"

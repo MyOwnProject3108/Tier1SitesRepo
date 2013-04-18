@@ -8,6 +8,8 @@ password: webtest
 zero_search_term: dvd
 valid_search_term: shirts
 ignore: true
+database_num: 0
+site_id: 15
 
 home_page:
   URL: "http://www.republic.co.uk/default.aspx?q=peerius|||||||||||||||"

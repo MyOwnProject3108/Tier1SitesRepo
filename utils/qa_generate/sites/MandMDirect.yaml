@@ -8,6 +8,8 @@ username: anagha.joshi@peerius.com
 password: test123
 zero_search_term: no
 valid_search_term: shirt
+database_num: 1
+site_id: 54
 
 home_page:
   URL: "http://www.mandmdirect.com/"

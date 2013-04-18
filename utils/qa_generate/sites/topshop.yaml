@@ -8,6 +8,8 @@ password: Pa55word
 zero_search_term: dvd
 valid_search_term: shirts
 apikey: 89hyuaa2da3a
+database_num: 4
+site_id: 223
 
 home_page:
   URL: "http://www.topshop.com/"

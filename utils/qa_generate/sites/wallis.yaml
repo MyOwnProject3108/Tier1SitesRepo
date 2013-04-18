@@ -7,6 +7,8 @@ username: vinod.sathapathi@peerius.com
 password: Pa55word
 zero_search_term: dvd
 valid_search_term: shirts
+database_num: 7
+site_id: 401
 
 home_page:
   URL: "http://www.wallis.co.uk/"

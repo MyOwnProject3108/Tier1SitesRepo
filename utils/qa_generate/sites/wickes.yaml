@@ -7,6 +7,8 @@ username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
 valid_search_term: ladder
+database_num: 2
+site_id: 335
 
 home_page:
   URL: "http://www.wickes.co.uk/"
