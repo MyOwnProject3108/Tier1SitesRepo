@@ -5,11 +5,7 @@ Feature: SMART-API CT Shirts specific tests
 Background:
     Given I am using the ctshirts API test config
     And I am using SMART-API to access ctshirts
-<<<<<<< HEAD
     And I am using client token 677ab692r2t31
-=======
-    And I am using uat client token 677ab692r2t3u4t
->>>>>>> e97b003e0409bd00c5e24a8e15810095cffa42e7
     And I am using production client token 677ab692r2t31
 
 
@@ -17,7 +13,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works w
     When I track the home page
     Then I should get an OK status back
     When I track a click for the first SMART-content creative
-    When I purchase a <product> using the SMART-API
+    And I purchase a <product> using the SMART-API
     And I track the home page
     Then I should get an OK status back
     And I should get at least 6 SMART-content creatives in the response
