@@ -83,7 +83,7 @@ Before do
   @sites = sites
 end
 
-AfterStep('@sanity') do |scenario|
+AfterStep('@web') do |scenario|
   @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 end
 
