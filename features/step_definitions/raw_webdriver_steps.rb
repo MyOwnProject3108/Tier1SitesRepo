@@ -16,3 +16,7 @@ end
 When /^I pause for (.+) seconds?$/ do |seconds|
   sleep seconds.to_i
 end
+
+When /^I capture a screenshot$/ do
+  @browser.screenshot.save 'screenshot.png'
+end
