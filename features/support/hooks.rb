@@ -83,6 +83,10 @@ Before do
   @sites = sites
 end
 
+AfterStep('@sanity') do |scenario|
+  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+end
+
 at_exit do
     browser.close unless ENV["keepbrowseropen"]
     db0.close

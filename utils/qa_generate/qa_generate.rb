@@ -8,7 +8,7 @@ require 'fileutils'
 require_relative "rules.rb"
 require_relative "helpers.rb"
 
-QA_GENERATE_VERSION = "0.1.7"
+QA_GENERATE_VERSION = "0.1.8"
 
 # Specify commandline options
 opts = Trollop::options do

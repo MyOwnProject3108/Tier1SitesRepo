@@ -17,12 +17,9 @@ module <%= site["site_name"].capitalize %>
       direct_url URL
       
       <%= page["basket_checkout"][0] %>(:basket_checkout, <%= page["basket_checkout"][1] %>)
-	  
-	  def remove_product_links
-		<%= page["basket_remove"][0] %>_elements(<%= page["basket_remove"][1] %>)
-		#Added by fayaz
-	#	<%= page["basket_remove"][0] %>(:basket_remove,<%= page["basket_remove"][1] %>)
-
-	  end	  
+    
+      def remove_product_links
+        <%= page["basket_remove"][0] %>_elements(<%= page["basket_remove"][1] %>)
+      end   
     end  
 end
