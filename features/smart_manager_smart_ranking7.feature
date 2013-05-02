@@ -50,3 +50,5 @@ Scenario:User should be able to view the category listings
 	And I click category search link on the smartranking configuration page
 	And I select "Belts" from the search results on the smartranking configuration page
 	And I click on the preview button on the smartranking configuration page
+#	When I navigate to the demoshop authentication page
+	And I login as "demoshop" using password "P@ssw0rd"

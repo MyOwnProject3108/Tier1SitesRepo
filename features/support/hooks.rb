@@ -10,11 +10,19 @@ web_proxy = FigNewton.proxy("") unless web_proxy
 if ENV["headless"] then
   caps = Selenium::WebDriver::Remote::Capabilities.phantomjs
   caps["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0"
-  caps["phantomjs.cli.args"] = "--proxy=#{web_proxy}" if web_proxy and web_proxy != ""          
-  browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps  
+  caps["phantomjs.cli.args"] = "--proxy=#{web_proxy} --webdriver-loglevel='DEBUG'" if web_proxy and web_proxy != ""          
+  browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps
+elsif ENV["chrome"] then
+  proxy = "--proxy-server=#{web_proxy}" if web_proxy and web_proxy != ""
+  #browser = Watir::Browser.new :chrome, :switches => [proxy]
+  browser = Watir::Browser.new :chrome  
 else
    profile = Selenium::WebDriver::Firefox::Profile.new
-  # profile.native_events = true #Added by fayaz for tests#
+   #Selenium::WebDriver::Firefox.path = "C:\\Program Files (x86)\\Mozilla Firefox 19\\firefox.exe"
+   profile.native_events = false
+   caps = Selenium::WebDriver::Remote::Capabilities.firefox(:native_events => false)
+   #driver = Selenium::WebDriver.for(:firefox, profile: profile, desired_capabilities: caps) #added by fayaz
+#puts driver.capabilities[:native_events] #added by fayaz
    
    if FigNewton.base_url.include?("test") then
        profile['extensions.tracker.url'] = "//#{FigNewton.base_url}/tracker/peerius.page"
@@ -46,7 +54,7 @@ else
    profile['extensions.tracker.sites'] = tracker_sites
    
    #profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
-   browser = Watir::Browser.new :firefox, :profile => profile
+   browser = Watir::Browser.new :firefox, :profile => profile, :desired_capabilities => caps
 end
 
 if FigNewton.username("") != "" then
@@ -99,3 +107,9 @@ at_exit do
       db7.close
     end
 end
+
+#Before do
+#profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
+#driver = Watir::Browser.new :firefox, :profile => profile
+#driver = Selenium::WebDriver::Firefox
+#end

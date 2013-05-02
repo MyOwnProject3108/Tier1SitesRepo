@@ -57,10 +57,32 @@ Then /^I select background color "(.+)"$/ do |color|
 end
 
 When /^I drag "(.+)" rule to the position (\d+) slot$/ do |algorithm, position|
-  index = position.to_i - 1
-  rule = @browser.span(:text => algorithm)
-  slot = @browser.div(:id => index.to_s)
-  rule.drag_and_drop_on(slot)
+ # index = position.to_i - 1
+  #rule = @browser.span(:text => algorithm)
+  #slot = @browser.div(:id => index.to_s)
+ # @browser.driver.action.drag_and_drop(rule.wd, slot.wd).perform
+ # @browser.driver.action.drag_and_drop(rule, slot).perform
+ # rule.fire_event("onmousedown")
+  #driver = @browser.driver
+  #driver.action.click_and_hold(rule.wd).perform
+
+  #sleep 2
+  #driver.action.move_to(slot.wd).perform
+
+  #sleep 2
+  #rule.fire_event("onmouseup")
+  @browser.span(:text=>"algorithm").wd.drag_and_drop_on(@browser.div(:id=>"0").wd)
+ # rule.drag_and_drop_on(slot)
+  
+#@browser.span(:text => algorithm).drag_and_drop_by 100, -200
+ #   def drag_and_drop_by(right_by, down_by)
+  #    assert_exists
+   #   assert_has_input_devices_for :drag_and_drop_by
+#
+ #     @browser.action.
+  #           drag_and_drop_by(@element, right_by, down_by).
+   #          perform
+    #end
 end
 
 When /^I enter email as "(.+)"$/ do |email|
@@ -106,3 +128,5 @@ When /^copy position (\d+) configuration to position (\d+)$/ do |positionx, posi
 	@current_page.copy_configuration_link_element.click
  end
 end
+
+

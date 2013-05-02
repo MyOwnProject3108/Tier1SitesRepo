@@ -63,4 +63,9 @@ Then /^I click on the preview button on the smartranking configuration page$/ do
   @current_page.preview_submit_element.click
 end
 
+#When /^I navigate to the demoshop authentication page$/ do
+ # @browser.goto "http://demoshop:P@ssw0rd@demo.peerius.com"
+ #@browser.goto "http://demo.peerius.com."
+#end
+
 

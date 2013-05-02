@@ -1,0 +1,50 @@
+site_name: superdry
+pretty_name: Super Dry
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: dsavavas
+valid_search_term: jacket
+database_num: 5
+site_id: 821
+
+home_page:
+  URL: "http://www.superdry.com/"
+  expected_recs: 0
+  login_link: ["link", ':id => "signin_register"']
+  search_field: ["text_field", ':id => "searchword"']
+
+product_page:
+  URL: "http://www.superdry.com/womens/dresses/details/38273/ventura-daiquiri-dress"    
+  expected_recs: 6
+  add_to_basket_button: ["image", ':src=> "http://image1.superdry.com/public/images/languages/en-GB/add-to-bag.png"']
+  extra_steps:
+    - [span, text, "small UK 10"]
+    
+category_page:
+  URL: "http://www.superdry.com/womens/dresses"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.superdry.com/shopping-bag"
+  expected_recs: 6
+  basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
+  basket_remove: ["button", ':class => "cart-delete button"']  
+
+login_page:
+  URL: "https://www.superdry.com/my-account"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"username_login"']
+  password_field: ["text_field", ':id=>"passwd_login"']  
+  login_submit: ["button", ':name=>"Submit"']
+
+searchresults_page:
+  URL: "http://www.superdry.com/search/jacket"
+  expected_recs: 8
+  zerosearch_recs: 8
+
+checkout_page:
+  URL: "https://www.superdry.com/checkout"
+  expected_recs: 0 

@@ -4,8 +4,8 @@ Given /^I am using the (.+) search engine$/ do |engine|
   @current_page.should have_expected_title
   
   # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+  #@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  #@browser.refresh
 end  
 
 Given /^I am on the (.+) (.+)page$/ do |site, page|
@@ -21,10 +21,11 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     
     # Show the user agent string
     #pp @browser.html[/<textarea.+>([^<]+)<\/textarea>/,1]
+	#pp @browser.html
 	
   # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+  #@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  #@browser.refresh
 end
 
 When /^I go to the (.+)page$/ do |page|   
@@ -37,8 +38,8 @@ When /^I go to the (.+)page$/ do |page|
     end
 
   # Make sure the debug data is showing
-  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  @browser.refresh
+  #@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  #@browser.refresh
 end
 
 When /^I click login$/ do
