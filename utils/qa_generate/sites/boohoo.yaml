@@ -10,6 +10,7 @@ zero_search_term: no
 valid_search_term: dress
 database_num: 3
 site_id: 628
+ignore: true
 
 home_page:
   URL: "http://www.boohoo.com/"

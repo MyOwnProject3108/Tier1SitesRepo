@@ -15,11 +15,12 @@ Feature: <%= site["pretty_name"] %> Integration
 #
 
 
-<% for page_name in ["home", "category", "product", "basket"] %>
+<% for page_name in ["home", "category", "product"] %>
 <% page = site[page_name+"_page"] %>
 <% if page["ignore"] %>
 @ignore
 <% end %>
+@<%= page_name %>_page
 Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% if page.has_key?("custom_tracking_test") %>
   <%= page["custom_tracking_test"] %>
@@ -35,10 +36,34 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% end %>
 <% end %>
 
+<% page = site["basket_page"] %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
+@basket_page
+Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
+<% if page.has_key?("custom_tracking_test") %>
+  <%= page["custom_tracking_test"] %>
+<% else %>
+  Given I am on the <%= site["site_name"] %> basket page
+<% if site["needs_SPR"] or page["needs_SPR"] %>
+  And I use the SPR key
+<% end %>
+  And I remove all of the products from the basket
+  And I go to the product page
+  <%= extra_steps_rule(site["product_page"]["extra_steps"]) %>
+  And I add the current product to the basket
+  And I pause for 2 seconds
+  And I go to the basket page
+  Then it should be tracked as a basket page 
+  <%= expect_recs_rule(page["expected_recs"]) %>
+<% end %>
+
 <% page = site["checkout_page"] %>
 <% if page["ignore"] %>
 @ignore
 <% end %>
+@checkout_page
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% if page.has_key?("custom_tracking_test") %>
   <%= page["custom_tracking_test"] %>
@@ -69,6 +94,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% if page["ignore"] %>
 @ignore
 <% end %>
+@search_page
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 <% if page.has_key?("custom_tracking_test") %>
 <%= page["custom_tracking_test"] %>
@@ -86,7 +112,8 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 #
 # Zero search tests
 #
-@zerosearch
+@search_page
+@zero_search_page
 <% if page["ignore"] %>
 @ignore
 <% end %>

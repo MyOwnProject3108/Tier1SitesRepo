@@ -11,3 +11,5 @@ features/auto_*
 *.json
 error_pages/
 screenshots/
+*.swp
+phantomjs
