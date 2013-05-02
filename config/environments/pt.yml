@@ -1,13 +1,1 @@
 base_url: pt.peerius.com
-headless: false
-database0: testdenorm0
-database1: testdenorm1
-database2: testdenorm2
-database3: testdenorm3
-database4: testdenorm4
-database5: testdenorm5
-database6: testdenorm6
-database7: testdenorm7
-username: 3duser
-password: 3d534rch
-host: isopoda

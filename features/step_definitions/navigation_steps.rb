@@ -42,7 +42,11 @@ When /^I go to the (.+)page$/ do |page|
 end
 
 When /^I click login$/ do
-	@current_page.login_link_element.click  
+	# Workaround for ghostdriver issue 202
+  # https://github.com/detro/ghostdriver/issues/202
+  link = @current_page.login_link_element.attribute('href')
+  @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+  @browser.goto link 
 end
 
 When /^I login as "(.+)" using password "(.+)"$/ do |username, password|
