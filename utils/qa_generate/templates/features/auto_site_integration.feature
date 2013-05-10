@@ -13,7 +13,10 @@ Feature: <%= site["pretty_name"] %> Integration
 #
 # Tracking tests
 #
-
+<% if site["site_timeout"] %>
+Background:
+	Given the site can take up to <%=site["site_timeout"] %> seconds to load each page.  
+<% end %>
 
 <% for page_name in ["home", "category", "product"] %>
 <% page = site[page_name+"_page"] %>

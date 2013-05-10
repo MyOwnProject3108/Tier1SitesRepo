@@ -8,6 +8,11 @@ Given /^I am using the (.+) search engine$/ do |engine|
   #@browser.refresh
 end  
 
+
+Given(/^the site can take up to (\d+) seconds to load each page\.$/) do |timeout|
+	@browser.driver.manage.timeouts.implicit_wait = timeout 	
+end
+
 Given /^I am on the (.+) (.+)page$/ do |site, page|
     @site = site.capitalize
      
