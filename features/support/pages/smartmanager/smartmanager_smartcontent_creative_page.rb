@@ -25,14 +25,17 @@ module Smartmanager
 		a(:relatedprod_submit, :href => "#productSearch")
 		a(:prodsearch_link_submit, :href => "#searchProducts")
 		cell(:prodpick_submit, :text => "Gold plain woven tie")
-		a(:prodadd_selection_link, :href => "#addProducts")
+		link(:prodadd_selection_link_submit, :href => "#addProducts")
 		button(:creative_save_submit, :value => "Save")
 		a(:creative_cancel_submit, :text => "Cancel")
 	    text_field(:relatedproductsearch, :id => "term")
 		cell(:prodresultpick_submit, :text => "Gold plain woven tie")
 		text_field(:relatedcatsearch, :id => "term")
-		
-		
+		a(:delete_creative_link, :href => "#delete1")
+		a(:advanced_creative_link, :href => "#adv1")
+		button(:add_creative_button, :value => "Add Creative")
+		text_field(:creativeurl2, :id => "image2")
+		text_field(:linkurl2, :id => "link2")
 	 	 
 	 def tracked_as
 	   return "SmartcontentCreativePage"

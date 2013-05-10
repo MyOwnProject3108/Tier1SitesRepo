@@ -23,5 +23,13 @@ Scenario: Users should be able to delete on Smart-Content creative
 Scenario: Users should be able to edit on Smart-Content creative
  When I click on the last edit link on the smartcontent page
  Then I should end up on the smartcontent creative page
- 
+ And I enter the creative name as "AutoTestCreativeEdit"
+ And I enter the creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
+ And I enter the creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
+ And I enter related products as "prod-en057nav" on the smartcontent creative page
+ And I enter related category as "Suits>Jackets" on the smartcontent creative page
+ And I enter related attributes as "suit" on the smartcontent creative page
+ And I enter tags as "Suit" on the smartcontent creative page
+ And I click on the save button on the smartcontent creative page
+ Then I should end up on the smartcontent page
  
