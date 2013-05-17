@@ -73,7 +73,7 @@ end
 
 
 Then(/^I click on the product add the selections link on the smartcontent creative page$/) do
- @current_page.prodadd_selection_link_element.click
+ @current_page.prodadd_selection_link_submit_element.click
 end
 
 Then(/^I search for related product "(.*?)" on the smartcontent creative page$/) do |relatedproductsearch|
@@ -99,10 +99,11 @@ Then(/^I select "(.*?)" from the category search results on the smartcontent cre
 end
 
 Then(/^I search for related category "(.*?)" on the smartcontent creative page$/) do |relatedcatsearch|
+@current_page.relatedcatsearch = relatedcatsearch
 #@current_page.relatedcatsearch = relatedcatsearch
 #browser.form(:id, "signin").text_field(:id, "password").set("earth123")
  # @current_page.text_field(:name => "term").set("suits")
-@browser.text_field(:id => "term").set("suits")
+#@browser.text_field(:id => "term").set("suits")
 #@current_page.text_field(:value, "").when_visible.set("suits")
 #@current_page.text
 end
@@ -135,3 +136,62 @@ end
 When(/^I click on the last edit link on the smartcontent page$/) do
    @current_page.image_elements(:src => "/tracker/images/skin2/edit.png").last.click
 end 
+
+Then /^I click on the delete creative link on the smartcontent creative page$/ do
+  @current_page.delete_creative_link_element.click
+end
+
+Then(/^I should see Add Creative button on the smartcontent creative page$/) do
+ puts @current_page.button_element(:value => "Add Creative").exists?
+end
+
+Then /^I click on the Advanced creative link on the smartcontent creative page$/ do
+  @current_page.advanced_creative_link_element.click
+end
+
+Then /^I should see Html label of the creative on the smartcontent creative page$/ do
+ puts @current_page.label_element(:text => "Html").exists?
+end
+
+Then(/^I click on the Add Creative button on the smartcontent creative page$/) do
+  @current_page.add_creative_button_element.click
+end
+
+Then(/^I enter the second creative image url as "(.*?)"$/) do |creativeurl2|
+  @current_page.creativeurl2 = creativeurl2
+end
+
+Then(/^I enter the second creative link url as "(.*?)"$/) do |linkurl2|
+  @current_page.linkurl2 = linkurl2
+end
+
+When(/^I click on the setup link on the smartcontent page$/) do
+  @current_page.setup_link_element.click
+end
+
+Then(/^I click on the create link on the smartcontent setup page$/) do
+  @current_page.create_dynamiccontent_link_element.click
+end
+
+Then(/^I enter content name as "(.*?)" on the smartcontent location page$/) do |contentname|
+ @current_page.contentname = contentname
+end
+
+Then(/^I select content location as home page \(center\)$/) do
+  @current_page.select_list_element(:name => "htmlInjectionPoint").select "home page (center)"
+end
+
+Then(/^I click on the Add content button on the smartcontent location page$/) do
+@current_page.add_content_submit_element.click
+end
+
+Then(/^I select creative image as "(.*?)" on the smartcontent location page$/) do |creativeimage|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creativeimage
+end
+
+Then(/^I enter "(.+)" in the "(.+)" position on the smartcontent location page$/) do |rule, criteria|
+  slots = [1,2]
+  slots.each do |x|
+  @current_page.text_area_element(:class => "autocomplete").set rule
+  end
+end

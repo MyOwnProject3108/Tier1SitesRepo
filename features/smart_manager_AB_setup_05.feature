@@ -64,7 +64,6 @@ Scenario: Users should be able Add and then delete AB group
   
   
   
-  
 
    
   
