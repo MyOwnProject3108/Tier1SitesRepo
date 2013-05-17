@@ -5,8 +5,8 @@ Feature: SMART-API CT Shirts specific tests
 Background:
     Given I am using the ctshirts API test config
     And I am using SMART-API to access ctshirts
-    And I am using client token 677ab692r2t31
-    And I am using production client token 677ab692r2t31
+    And I am using client token 677ab692r2t3
+    And I am using production client token 677ab692r2t3
 
 
 Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works with single purchases using SMART-API
@@ -16,7 +16,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works w
     And I purchase a <product> using the SMART-API
     And I track the home page
     Then I should get an OK status back
-    And I should get at least 6 SMART-content creatives in the response
+    And I should get at least 1 SMART-content creatives in the response
     And the first SMART-content creative name should contain <category_name>
     Examples:
     | product    | category_name |
@@ -40,7 +40,7 @@ Scenario: SMART-content merchandising rule "purchasedByCategory" works with mult
     And I order a "MP027TAN" using the SMART-API # -- Shoes
     And I track the home page
     Then I should get an OK status back
-    And I should get at least 6 SMART-content creatives in the response
+    And I should get at least 1 SMART-content creatives in the response
     And one of the SMART-content creative names should contain "classic"
     And one of the SMART-content creative names should contain "slim"
     And one of the SMART-content creative names should contain "Suit"
