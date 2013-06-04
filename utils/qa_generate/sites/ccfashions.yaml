@@ -22,6 +22,7 @@ product_page:
   add_to_basket_button: ["button", ':id=> "addToBagBtn"']
   extra_steps:
     - [span, class, "sizeBox"]
+    - [pause, 20]
 
 category_page:
   URL: "http://www.ccfashion.co.uk/fcp/categorylist/dept/dresses"

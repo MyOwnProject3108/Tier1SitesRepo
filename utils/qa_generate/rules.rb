@@ -33,3 +33,16 @@ def extra_steps_rule(extra_steps)
 
   return rule
 end
+
+ def expect_content_rule(expected_content)
+    rule1 = "And the debug info should show "
+
+    if expected_content > 0
+        rule1 += "at least #{expected_content}"
+    else
+        rule1 += "no"
+    end
+
+    rule1 += " SMART-content"
+    return rule1
+end

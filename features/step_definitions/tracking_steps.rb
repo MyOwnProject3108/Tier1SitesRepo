@@ -44,4 +44,7 @@ Then /^all categories should be tracked as Category pages except:$/ do |exclude_
   test_pass.should == true
 end
 
+#Then /^the debug info should show at least (\d+) SMART\-content$/ do |expected_content|
+ # @current_page.debug_content.should have_at_least(expected_content).entries
+#end
 
