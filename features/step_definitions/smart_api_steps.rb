@@ -273,7 +273,7 @@ Then /^one of the SMART\-content creative names should contain "(.*?)"$/ do |exp
   
   has_expected_creative = false
   @api.content_creatives.each {|creative|
-    has_expected_creative = true if creative["name"].include?(expected_string)
+ puts   has_expected_creative = true if creative["name"].include?(expected_string)
   }
   has_expected_creative.should == true
 end
@@ -352,6 +352,18 @@ Then /^I should see no attributes$/ do
   @api.rec_widgets.count.should > 0
   @api.total_recs.should > 0
   @api.rec_widgets[0]["recs"][0].should_not have_key("attributes")
+end
+
+When(/^I post request with GBP ip$/) do
+   @api.country_gb
+  end
+  
+When(/^I post request with USA ip$/) do
+  @api.country_us
+end
+   
+When(/^I post request with France ip$/) do
+  @api.country_fr
 end
 
 
