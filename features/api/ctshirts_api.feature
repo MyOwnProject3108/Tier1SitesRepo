@@ -94,3 +94,23 @@ Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page 
     When I pass the session and cuid cookie to the api
     And I track the home page
     Then I should get an OK status back
+	
+	
+Scenario: SMART-content rule "default" works using SMART-API  
+    When I track the home page
+    Then I should get an OK status back
+	And I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS1"
+	
+Scenario: SMART-content rule "tags" works using SMART-API 
+    When I track the home page
+    Then I should get an OK status back
+	And I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS3"
+	
+Scenario: SMART-content rule "country" works using SMART-API 
+    When I request country information
+    And I track the home page
+    Then I should get an OK status back
+	And I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS3"	

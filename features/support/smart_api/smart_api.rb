@@ -213,5 +213,61 @@ module Peerius
                 }
             }
         end
+		
+		#Added by faiyyaz for country="GB" rule----
+		def country_gb()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "89.187.117.101",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en-gb",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "http://www.ctshirts.co.uk",
+                "clientToken" => "677ab692r2t3", #livedemoshop
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+        end
+		
+			#Added by faiyyaz for country="US" rule----
+		def country_us()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "12.25.205.51",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en-gb",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "http://www.ctshirts.co.uk",
+                "clientToken" => "677ab692r2t3", #livedemoshop
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+        end
+		
+			#Added by faiyyaz for country="FR" rule----
+		def country_fr()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "178.251.201.141",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en-gb",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "http://www.ctshirts.co.uk",
+                "clientToken" => "677ab692r2t3", #livedemoshop
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+        end
+		
+		
     end
 end

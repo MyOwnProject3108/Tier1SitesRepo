@@ -23,6 +23,7 @@ Background:Users should be able to create the smaart content creatives
  And I enter related attributes as "suit" on the smartcontent creative page
  And I enter tags as "Suit" on the smartcontent creative page
  And I click on the save button on the smartcontent creative page
+ And I pause for 10 seconds
  Then I should end up on the smartcontent page
  
  Scenario: Users should not be able to save on Smart-Content creative
@@ -36,12 +37,13 @@ Background:Users should be able to create the smaart content creatives
  And I enter related attributes as "suit" on the smartcontent creative page
  And I enter tags as "Suit" on the smartcontent creative page
  And I click on the cancel button on the smartcontent creative page
+ And I pause for 10 seconds
  Then I should end up on the smartcontent page
  
  Scenario: Users should be able to select multiple categories on Smart-Content creative
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
- And I enter the creative name as "AutoTestCreative"
+ And I enter the creative name as "AutoTestCreative1"
  And I enter the creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
  And I enter the creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
  And I click on the search link on the smartcontent creative page for related categories
@@ -52,12 +54,13 @@ Background:Users should be able to create the smaart content creatives
  And I select "category" from the category search results on the smartcontent creative page
  And I click on the category add the selections link on the smartcontent creative page
  And I click on the save button on the smartcontent creative page
+ And I pause for 10 seconds
  Then I should end up on the smartcontent page
  
  Scenario: Users should be able to select multiple products on Smart-Content creative
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
- And I enter the creative name as "AutoTestCreative"
+ And I enter the creative name as "AutoTestCreative2"
  And I enter the creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
  And I enter the creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
  And I click on the search link on the smartcontent creative page for related products
@@ -68,6 +71,7 @@ Background:Users should be able to create the smaart content creatives
  And I select multiple "products" from the category search results on the smartcontent creative page
  And I click on the product add the selections link on the smartcontent creative page
  And I click on the save button on the smartcontent creative page
+ And I pause for 10 seconds
  Then I should end up on the smartcontent page
  
  Scenario: Users should be able to delete the added creative on the Create/Edit Creative page
@@ -91,7 +95,7 @@ Background:Users should be able to create the smaart content creatives
  Scenario: Users should be able to add more creatives through 'Advanced' creative link on the Create/Edit Creative page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
- And I enter the creative name as "AutoTestCreative"
+ And I enter the creative name as "AutoTestCreative3"
  And I enter the creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
  And I enter the creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
  And I click on the Advanced creative link on the smartcontent creative page
@@ -100,6 +104,7 @@ Background:Users should be able to create the smaart content creatives
   And I enter the second creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
  And I enter the second creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
  And I click on the save button on the smartcontent creative page
+ And I pause for 5 seconds
  Then I should end up on the smartcontent page
  
 #This scenario is not working due to selenium bug 

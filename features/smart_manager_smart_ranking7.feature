@@ -33,6 +33,7 @@ Scenario:Validating the error message for valid category
 	And I select the css template as "category.css"
 	And I click the checkbox for allCategories
 	And I preview the smart ranking configuration
+	And I pause for 10 seconds
 	Then I should see "Please provide a valid category" message on the configuration page
 	
 Scenario:User should be able to view the category listings 
@@ -48,7 +49,11 @@ Scenario:User should be able to view the category listings
 	And I click on the search link on the smartranking configuration page
 	And I search for "accessories" on the smartranking configuration page
 	And I click category search link on the smartranking configuration page
+	And I pause for 5 seconds
 	And I select "Belts" from the search results on the smartranking configuration page
+	And I pause for 5 seconds
 	And I click on the preview button on the smartranking configuration page
-#	When I navigate to the demoshop authentication page
-	And I login as "demoshop" using password "P@ssw0rd"
+	And I pause for 5 seconds
+	#When I go to the demoshop
+	#When I navigate to the demoshop authentication page
+	#And I login as "demoshop" using password "P@ssw0rd"

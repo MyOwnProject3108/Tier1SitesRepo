@@ -17,11 +17,11 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 product_page:
-  URL: "http://www.fatface.com/dresses/lilah-scroll-border-dress/invt/41717/?colour=Ivory"
+  URL: "http://www.fatface.com/dresses/natalia-batik-dress/invt/42011?colour=Navy"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:
-    - [li, class, "10"]
+    - [li, class, "6"]
 
 category_page:
   URL: "http://www.fatface.com/women/dresses/icat/womensdresses/"

@@ -10,6 +10,8 @@ module Smartmanager
 	   li(:page_identifier, :text => "Creatives")
 	    a(:create_content_submit, :class => "submit120")
 	    a(:setup_link, :href => "/tracker/shop-admin/dynamiccontent/list.page")
+		#image(:image_submit, :src => "/tracker/images/skin2/thick.png")
+		
 	 def tracked_as
 	   return "SmartcontentPage"
 	  end

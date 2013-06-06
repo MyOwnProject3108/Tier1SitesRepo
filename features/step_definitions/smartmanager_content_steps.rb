@@ -189,9 +189,75 @@ Then(/^I select creative image as "(.*?)" on the smartcontent location page$/) d
   @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creativeimage
 end
 
-Then(/^I enter "(.+)" in the "(.+)" position on the smartcontent location page$/) do |rule, criteria|
-  slots = [1,2]
-  slots.each do |x|
-  @current_page.text_area_element(:class => "autocomplete").set rule
-  end
+#Then(/^I enter "(.+)" in the "(.+)" position on the smartcontent location page$/) do |rule, criteria|
+#  slots = [1,2]
+ # slots.each do |x|
+ # @current_page.text_area_element(:class => "autocomplete").set rule
+ 
+  #end
+#end
+
+Then(/^I enter "(.+)" in the criteria(\d+) position on the smartcontent location page$/) do |rule, criteria|
+  @current_page.rule = rule
+end
+
+Then(/^I enter "(.*?)" in the "(.*?)" position on the smartcontent location page$/) do |rule1, criteria1|
+  @current_page.rule1 = rule1
+end
+
+Then(/^I click on the save button on the smartcontent location page$/) do
+  @current_page.save_button_submit_element.click
+end
+
+Then(/^I Activate the last smartcontent setup on the smartcontent page$/) do
+ # @current_page.image_submit_element.click
+ @current_page.image_elements(:src => "/tracker/images/skin2/thick.png").last.click
+end
+
+Then(/^I click on the Activate button on the smartcontent activation page$/) do
+  @current_page.activate_content_element.click
+end
+
+Then(/^the debug info should show the SMART\-content$/) do
+ # puts @current_page.cell_element(:text => "SmartContent :").exists?
+#puts @browser.h2(:xpath => "//*[@id='peeriusDebug']/table[2]/tbody/tr[1]/th/h2").text
+# puts @browser.text.include?("SmartContent :")
+#puts @browser.h2(:xpath => "//*[@id='peeriusDebug']/table[2]/tbody/tr[1]/th/h2").exists?
+puts @browser.text.include? 'SmartContent : AutoCTShirtsSmartContent (66)'
+ #@browser.send_keys("{ENTER}")
+end
+
+Then(/^I click on the last edit link on the smartcontent setup page$/) do
+  @current_page.image_elements(:src => "/tracker/images/skin2/edit.png").last.click
+end
+
+Then(/^I click on the delete content button on the smartcontent location page$/) do
+  @current_page.delete_submit_element.click
+end
+
+Then(/^I click on the last delete link on the smartcontent setup page$/) do
+  @current_page.image_elements(:src => "/tracker/images/skin2/bin.png").last.click
+end
+
+Then(/^I should see "(.*?)" message on the smartcontent location page$/) do |contentmessage|
+  @current_page.content_message.should == contentmessage
+end
+
+Given(/^I select ctshirts from the sites list on the smartmanager home page$/) do
+ @current_page.select_list_element(:name => "siteName").when_present.select "ctshirts"
+#@current_page.select_list_element(:name => "siteName").option("ctshirts").when_present.select
+#@current_page.select_list_element(:name => "siteName").select "ctshirts".when_visible
+end
+
+Then(/^I select content location as HomePagebanner(\d+)$/) do |location1|
+   @current_page.select_list_element(:name => "htmlInjectionPoint").select "HomePagebanner1"
+end
+
+When(/^I visit the ctshirts home page$/) do
+  visit Ctshirts::HomePage
+   #@browser.send_keys("{ENTER}")
+end
+
+Then(/^I select content location as Home_JSON_IP$/) do
+  @current_page.select_list_element(:name => "htmlInjectionPoint").select "Home_JSON_IP"
 end

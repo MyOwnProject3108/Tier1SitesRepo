@@ -68,4 +68,9 @@ end
  #@browser.goto "http://demo.peerius.com."
 #end
 
+#When(/^I go to the demoshop$/) do
+ # @browser. goto "http://demoshop:P@ssw0rd@demo.peerius.com"
+#end
+
+
 
