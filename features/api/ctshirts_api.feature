@@ -94,23 +94,41 @@ Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page 
     When I pass the session and cuid cookie to the api
     And I track the home page
     Then I should get an OK status back
-	
-	
-Scenario: SMART-content rule "default" works using SMART-API  
+
+#Plz note in this scenario 	we've pause for 4hrs 15mins for session expiry analyser to run
+Scenario: SMART-content rule "customer=returning" from direct works using SMART-API 
     When I track the home page
-    Then I should get an OK status back
-	And I should get at least 1 SMART-content creatives in the response
+    And I track a click for the first SMART-content creative
+    And I purchase a "FP009PNK" using the SMART-API
+    When I start a new session
+	#When I pass the session and cuid cookie to the api
+	And I pause for 15300 seconds
+	 And I track the home page
+    Then I should get at least 1 SMART-content creatives in the response
 	And one of the SMART-content creative names should contain "LS1"
 	
-Scenario: SMART-content rule "tags" works using SMART-API 
+	#Plz note this scenario is dependent on scheduler	
+	Scenario: SMART-content rule "segments" from direct works using SMART-API 
     When I track the home page
-    Then I should get an OK status back
-	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS3"
-	
-Scenario: SMART-content rule "country" works using SMART-API 
-    When I request country information
+	Then I should get an OK status back
+  #  And I track a click for the first SMART-content creative
+    And I purchase a "KH064GRN" using the SMART-API
+	And I purchase a "KH070CRM" using the SMART-API
+	And I purchase a "KH052NTL" using the SMART-API
+  #  When I start a new session
+	 And I track the home page
+    Then I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS1"
+
+#Plz note this scenario is dependent on scheduler	
+Scenario Outline: SMART-content rule "average days between orders" works using SMART-API   
+    When I track the home page
+  #  And I track a click for the first SMART-content creative
+    And I purchase a <product> using the SMART-API
     And I track the home page
-    Then I should get an OK status back
-	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS3"	
+    Then I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS1" 
+    Examples:
+    | product    |
+    | "FP009PNK" |
+	| "FL037BLU" |

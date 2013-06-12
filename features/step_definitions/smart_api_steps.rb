@@ -366,4 +366,44 @@ When(/^I post request with France ip$/) do
   @api.country_fr
 end
 
+#Then(/^I use the current "(.+)" and "(.+)"$/) do |cuid, session|
+ #@api.cuid
+ #@api.session
+#end
+
+When(/^I post the home page request with tags$/) do
+  @api.home_tags
+  @api.track
+end
+
+
+When(/^I post product page request for the gender$/) do
+@api.product_gender
+@api.track
+end
+
+When(/^I post home page request with google search engine as currentURI$/) do
+  @api.home_keyword_google_search
+  @api.track
+end
+
+When(/^I post home page request with google search engine as previousURI$/) do
+  @api.home_organic
+  @api.track
+end
+
+When(/^I post home page request with google search engine as previousURI for PPC$/) do
+ @api.home_ppc
+ @api.track
+end
+
+When(/^I post home page request for source as direct$/) do
+  @api.home_source
+  @api.track
+end
+
+When(/^I post home page request for city$/) do
+  @api.home_city
+  @api.track
+end
 
