@@ -22,6 +22,11 @@ end
 Given /^I request (.+) rec content$/ do |type|
   @api.json_recContent = type
 end
+###
+Given /^I am on a(.+) category page$/ do |type|
+  @api.json_category = type
+end
+##
 
 Given /^I request (.+) attributes?$/ do |num_attributes|
   case num_attributes
@@ -63,6 +68,13 @@ When /^I track (?:a|the) home page$/ do
    @api.json_type = 'home'
    @api.track
 end
+###
+When(/^I track an "(.*?)" category page$/) do|type|
+  @api.json_type = 'category'
+   @api.json_category = "ties"
+   @api.track
+end
+
 
 When /^I track (?:the|an) "?other"? page$/ do
    @api.json_type = 'other'
@@ -75,8 +87,16 @@ When /^I track (?:a|the) product page$/ do
    @api.track
 end
 
-When /^I track (?:a|the) category page$/ do
+
+###
+When /^I track (?:the|an) category page$/ do
    @api.json_type = 'category'
+   @api.json_category = "ties"
+   @api.track
+end
+###
+When(/^I visit "(.*?)" page$/) do |arg1|
+  @api.json_type = 'category'
    @api.json_category = "ties"
    @api.track
 end
@@ -122,6 +142,13 @@ When /^I track (?:the|an) order page$/ do
         "total" => 114.75
     }
     @api.track
+end
+
+When(/^I relogin with username "(.+)" and email "(.+)"$/) do |username, email|
+   @api.json_user = {
+       "name" => username,
+       "email" => email
+     }
 end
 
 When /^I track (?:the|a) search results page$/ do
@@ -170,18 +197,26 @@ end
 When /^I (?:purchase|order) (\d+) "(.*?)" using the SMART\-API\w*(#?.*)$/ do |quantity, item, comment|
     @api.json_type = 'order'
     items = [
-        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
+        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 60.50},
     ]
     @api.json_order = {
         "orderNo" => "API-#{item}-#{Time.now.to_i}",
         "items" => items, 
         "currency" => "GBP",
-        "subtotal" => 50.50,
+        "subtotal" => 60.50,
         "shipping" => 1.00,
-        "total" => 51.50
+        "total" => 61.50
     }
     @api.track
 end
+###
+Then(/^I insert order for a "(.*?)" using the SMART\-API$/) do |quantity, item, comment|
+   @api.json_type = 'order'
+    items = [
+        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
+      ]
+end
+
 
 #
 # Clicks
@@ -277,6 +312,25 @@ Then /^one of the SMART\-content creative names should contain "(.*?)"$/ do |exp
   }
   has_expected_creative.should == true
 end
+###
+Then(/^I visit "(.*?)" page$/) do |arg1|
+  @api.json_type = 'category'
+   @api.json_category = "ties"
+   @api.track
+end
+###
+
+Then(/^I visit a "(.*?)" using the SMART\-API$/) do |arg1|
+  @api.json_type = 'product'
+  @api.track
+end
+###
+
+Then(/^it should get an OK status back$/) do
+  @api.json_type = 'category'
+ end
+
+
 
 #
 # A/B Tests

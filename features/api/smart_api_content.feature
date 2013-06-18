@@ -52,7 +52,7 @@ Scenario: SMART-content clicks are denormalised in the db using SMART-API
     When I track the home page
     When I track a click for the first SMART-content creative
     And I wait for denormalisation to finish
-	  Then I should see at least 3 SMART-content clicks in the DB
+	Then I should see at least 3 SMART-content clicks in the DB
 	  
 Scenario: SMART-content rule "default" works using SMART-API  
     When I track the home page
