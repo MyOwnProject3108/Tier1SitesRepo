@@ -221,11 +221,11 @@ module Peerius
                 "ip" => "89.187.117.101",
                 "session" => "new",
                 "cuid" => "new",
-                "lang" => "en-gb",
+                "lang" => "en",
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t3", #livedemoshop
+                "clientToken" => "677ab692r2t3", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -239,11 +239,11 @@ module Peerius
                 "ip" => "12.25.205.51",
                 "session" => "new",
                 "cuid" => "new",
-                "lang" => "en-gb",
+                "lang" => "en",
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t3", #livedemoshop
+                "clientToken" => "677ab692r2t3", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -257,11 +257,133 @@ module Peerius
                 "ip" => "178.251.201.141",
                 "session" => "new",
                 "cuid" => "new",
-                "lang" => "en-gb",
+                "lang" => "en",
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t3", #livedemoshop
+                "clientToken" => "677ab692r2t3", 
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+		end
+		
+		def product_gender()
+		@request_data = {
+			"ip" => "0.0.0.0",
+			"session" => "new",
+			"cuid" => "new",
+			"site" => "ctshirts",
+			"clientToken" => "677ab692r2t3",
+			"lang" => "en",
+			"currentURI" => "http://www.ctshirts.co.uk",
+			"previousURI" => "http://www.ctshirts.co.uk/men%27s-shirts/men%27s-formal-shirts/Cream-poplin-classic-fit-shirt?q=ukgob||SP003CRM|||||221,||||||||",
+			"recContent" => "refCodeOnly",
+			"type" => "product",
+			"product" => {
+				"refCode" => "SP003CRM"
+						}
+			}
+            @json_request = ""
+            @response_times = []
+		end
+		
+		def home_keyword_google_search()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "0.0.0.0",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk/Default.aspx?q=|||||||||||||||&spr=1&peeriusTestGoogle=white%20shirts",
+                "previousURI" => "http://www.ctshirts.co.uk",
+                "clientToken" => "677ab692r2t3", 
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+		end
+		
+		def home_organic()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "0.0.0.0",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "http://www.google.com/search?q=ct+shirts",
+                "clientToken" => "677ab692r2t3", 
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+		end
+		
+		def home_ppc()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "0.0.0.0",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "http://www.google.co.uk/aclk?sa=l&ai=CHWoay7eHUNrEI4yU0wXnwYGABs-yuc0C18btlDfogq7xBQgAEAEgtlQoA1DH_sn-_P____8BYLu-roPQCqABoJ-J_wPIAQGpAti0WObCw7o-qgQbT9AbVPOnnDAAz592WFxXAAu4UJRHPjy_ZC6UgAWQTg&sig=AOD64_13y4pr5DlT2zSMegw5YXbiwo2YcA&ved=0CB4Q0Qw&adurl=http://akatracking.esearchvision.com/esi/redirect.html%3Fesvt%3D58-GOUKE%26esvq%3Dc%2520t%2520shirts%26esvadt%3D999999-106780-176-1%26esvcrea%3D14719139063%26esvplace%3D%26transferparams%3D0%26esvaid%3D40144%26url%3Dhttp%253a%252f%252fwww.ctshirts.co.uk%252fDefault.aspx%253fq%253dukgob%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C&rct=j&q=%20ct%20shirts&cad=rja",
+                "clientToken" => "677ab692r2t3", 
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+		end
+		
+		def home_tags()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "0.0.0.0",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk/Default.aspx?q=|||||||||||||||&spr=1&peeriusTestGoogle=shirt",
+                "previousURI" => "http://www.ctshirts.co.uk",
+                "clientToken" => "677ab692r2t3", 
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+		end
+		
+		def home_source()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "0.0.0.0",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "",
+                "clientToken" => "677ab692r2t3", 
+                "recContent" => "refCodeOnly",
+            }
+            @json_request = ""
+            @response_times = []
+		end
+
+		def home_city()
+            @request_data = {
+			"type"		=> "home",
+                "ip" => "83.244.219.186",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en",
+                "site" => "ctshirts",
+                "currentURI" => "http://www.ctshirts.co.uk",
+                "previousURI" => "http://www.ctshirts.co.uk",
+                "clientToken" => "677ab692r2t3", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -269,5 +391,8 @@ module Peerius
         end
 		
 		
+
+		
     end
-end
+	end
+

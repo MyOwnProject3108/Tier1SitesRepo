@@ -17,7 +17,7 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 product_page:
-  URL: "http://www.fatface.com/dresses/natalia-batik-dress/invt/42011?colour=Navy"
+  URL: "http://www.fatface.com/dresses/delia-broderie-shift-dress/invt/41992?colour=Navy"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:

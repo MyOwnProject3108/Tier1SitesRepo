@@ -2,7 +2,7 @@ site_name: ctshirts
 pretty_name: CT Shirts
 has_content: no
 has_ranking: no
-needs_SPR: no
+needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
@@ -55,4 +55,4 @@ checkout_page:
   URL: ""
   expected_recs: 0
   extra_steps:
-  #  - [button, id, "ctl00_contentBody_submit"]
+    - [button, id, "ctl00_contentBody_submit"]
