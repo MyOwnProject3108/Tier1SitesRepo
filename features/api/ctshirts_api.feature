@@ -132,3 +132,17 @@ Scenario Outline: SMART-content rule "average days between orders" works using S
     | product    |
     | "FP009PNK" |
 	| "FL037BLU" |
+	
+Scenario Outline: SMART-content rule "total orders" works using SMART-API
+    When I track the home page
+#	And I pause for 20 seconds
+    And I track a click for the first SMART-content creative
+    And I purchase a <product> using the SMART-API
+    And I track the home page
+    Then I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "Casual - knitwear - merino" 
+    Examples:
+    | product    |
+	| "FL037BLU" |
+	| "KH064GRN" |
+	| "KH070CRM" |

@@ -17,7 +17,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://us.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33060&storeId=13052&productId=9493150&langId=-1&sort_field=Relevance&categoryId=208638&parent_categoryId=208580&pageSize=20"
+  URL: "http://us.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33060&storeId=13052&productId=10710552&langId=-1&sort_field=Relevance&categoryId=208634&parent_categoryId=208580&pageSize=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

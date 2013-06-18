@@ -189,13 +189,14 @@ Then(/^I select creative image as "(.*?)" on the smartcontent location page$/) d
   @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creativeimage
 end
 
-#Then(/^I enter "(.+)" in the "(.+)" position on the smartcontent location page$/) do |rule, criteria|
-#  slots = [1,2]
- # slots.each do |x|
- # @current_page.text_area_element(:class => "autocomplete").set rule
- 
-  #end
-#end
+Then(/^I select creative image as "(.*?)" on the smartcontent location page at priority(\d+)$/) do |img2, pri2|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select img2
+end
+
+Then(/^I select third creative image as "(.*?)" on the smartcontent location page at priority(\d+)$/) do |img3, pri3|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[2].creative").select img3
+end
+
 
 Then(/^I enter "(.+)" in the criteria(\d+) position on the smartcontent location page$/) do |rule, criteria|
   @current_page.rule = rule
@@ -204,6 +205,7 @@ end
 Then(/^I enter "(.*?)" in the "(.*?)" position on the smartcontent location page$/) do |rule1, criteria1|
   @current_page.rule1 = rule1
 end
+
 
 Then(/^I click on the save button on the smartcontent location page$/) do
   @current_page.save_button_submit_element.click

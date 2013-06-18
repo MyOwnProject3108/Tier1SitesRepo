@@ -54,7 +54,7 @@ Scenario: SMART-content rule "gender" works using SMART-API
     Then I should get an OK status back
 	And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "New in - summer"
+	And one of the SMART-content creative names should contain "Suits - GROUP"
 	
 Scenario: SMART-content rule "keyword" works using SMART-API 
     When I post home page request with google search engine as currentURI
@@ -86,7 +86,7 @@ Scenario: SMART-content rule "city" from direct works using SMART-API
     When I post home page request for city
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "New in - summer"
+	And one of the SMART-content creative names should contain "Shirts - casual - GROUP"
 	
 Scenario: SMART-content rule "smart" from direct works using SMART-API 
     When I track the home page
@@ -118,20 +118,20 @@ Scenario: SMART-content rule "customer=new" from direct works using SMART-API
     Then I should get at least 1 SMART-content creatives in the response
 	And one of the SMART-content creative names should contain "LS3"
 	
-		
-Scenario Outline: SMART-content rule "total orders" works using SMART-API   
-    When I track the home page
-    And I track a click for the first SMART-content creative
-    And I purchase a <product> using the SMART-API
+Scenario: Testing the smart content as per "weightage(ex:countrycode = GB)" using SMART-API 
+   When I post request with GBP ip
     And I track the home page
-    Then I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Casual - knitwear - merino" 
-    Examples:
-    | product    |
-    | "FL037BLU" |
-	| "KH064GRN" |
-	| "KH070CRM" |
+    Then I should get an OK status back
+	And I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS2"		
 
+Scenario: Testing the smart content as per "weightage(ex:visitor returning)" using SMART-API 
+	When I track the home page
+   # And I track a click for the first SMART-content creative
+    When I start a new session
+	 And I track the home page
+    Then I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS3"
 
 	
 
