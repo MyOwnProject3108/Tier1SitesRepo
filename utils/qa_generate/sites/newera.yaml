@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: shirts
 database_num: 5
 site_id: 785
+integration: json
 
 home_page:
   URL: "www.neweracap.co.uk/"

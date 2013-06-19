@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: shirts
 database_num: 4
 site_id: 219
+integration: standard
 
 home_page:
   URL: "http://www.topman.com/"
