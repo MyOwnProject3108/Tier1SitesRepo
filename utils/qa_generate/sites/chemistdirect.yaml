@@ -9,6 +9,7 @@ zero_search_term: no
 valid_search_term: no
 database_num: 5
 site_id: 821
+integration: json
 
 home_page:
   URL: "http://www.chemistdirect.co.uk/"

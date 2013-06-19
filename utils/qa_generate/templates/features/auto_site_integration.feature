@@ -8,8 +8,10 @@
 @sanity
 @web
 @<%= site["site_name"] %>
+<% if site["integration"] %>
+@<%= site["integration"] %>
+<% end %>
 Feature: <%= site["pretty_name"] %> Integration
-
 #
 # Tracking tests
 #
