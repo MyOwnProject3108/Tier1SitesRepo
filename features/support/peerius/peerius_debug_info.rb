@@ -3,6 +3,16 @@ module PeeriusDebugInfo
    
     # Returns the tracking page type for the page
 	  def tracked_as
+	  # Sometimes debug doesnt show up on the initial load of the page
+	  # if it's not there refresh the page - added by Tom
+	  unless @browser.td(:id => 'trackInfo').exists?
+		@browser.refresh
+	  end
+	  # Sometimes if we refresh search/checkout page it pops up an alert box
+	  # If alert box popped up, click ok and 'resend the value' - added by Tom
+	  if @browser.alert.exists?
+		@browser.alert.ok
+	  end
       @browser.td(:id => 'trackInfo').wait_until_present(60)
       return @browser.td(:id => 'trackInfo').text 
 	  end
