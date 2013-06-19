@@ -2,7 +2,7 @@ site_name: fatface
 pretty_name: fatface
 has_content: no
 has_ranking: no
-needs_SPR: false
+needs_SPR: no
 username: user123@gmail.com
 password: 123123
 zero_search_term: dvd
@@ -42,7 +42,7 @@ login_page:
 
 searchresults_page:
   URL: "http://www.fatface.com/search?q=dress"
-  expected_recs: 0
+  expected_recs: 6
   zerosearch_recs: 6
   
 checkout_page:

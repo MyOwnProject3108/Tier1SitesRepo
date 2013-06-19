@@ -27,7 +27,8 @@ product_page:
 
 category_page:
   URL: "http://www.wickes.co.uk/tiles+floors/icat/tilesflooring/"
-  expected_recs: 1 
+  expected_recs: 1
+
 
 basket_page:
   URL: "http://www.wickes.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=wickes&log=22"

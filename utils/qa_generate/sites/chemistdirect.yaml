@@ -5,8 +5,8 @@ has_ranking: no
 needs_SPR: no
 username: webtest@mailinator.com
 password: webtest1234
-zero_search_term: abcd
-valid_search_term: skin
+zero_search_term: no
+valid_search_term: no
 database_num: 5
 site_id: 821
 
@@ -39,9 +39,10 @@ login_page:
   login_submit: ["button", ':name=>"submit"']
 
 searchresults_page:
-  URL: "http://www.chemistdirect.co.uk/search_results.php?q=skin&page=1&ty=general&cty=&catid=0&catcnt=0&catname=&sort=&pp=&vv=list&sid=&bw=&showTab=&pageSize=32"
-  expected_recs: 8
-  zerosearch_recs: 8
+  ignore: true
+  URL: ""
+  expected_recs: 0
+  zerosearch_recs: 0
 
 checkout_page:
   URL: "https://www.chemistdirect.co.uk/registration/pay_confirm.php"
