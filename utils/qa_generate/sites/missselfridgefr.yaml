@@ -9,9 +9,10 @@ zero_search_term: no
 valid_search_term: no
 database_num: 7
 site_id: 533
+integration: standard
 
 home_page:
-  URL: "http://www.missselfridge.fr/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13067&catalogId=34076"
+  URL: "http://www.missselfridge.fr/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13067&catalogId=34076&geoip=home"
   expected_recs: 0
   login_link: ["link", ':link => "Sign in . register"']
   search_field: ["text_field", ':id => "in_site_search"']

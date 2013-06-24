@@ -9,6 +9,7 @@ zero_search_term: dsavavas
 valid_search_term: map
 database_num: 2
 site_id: 617
+integration: standard
 
 home_page:
   URL: "http://www.schuh.co.uk/"

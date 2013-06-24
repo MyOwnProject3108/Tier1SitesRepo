@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: shirts
 database_num: 7
 site_id: 575
+integration: standard
 
 home_page:
   URL: "http://eu.topshop.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13058&catalogId=34058&geoip=home"

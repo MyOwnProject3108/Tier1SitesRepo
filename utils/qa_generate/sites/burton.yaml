@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: shirt
 database_num: 4
 site_id: 82
+integration: standard
 
 home_page:
   URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=12551&catalogId=33052"

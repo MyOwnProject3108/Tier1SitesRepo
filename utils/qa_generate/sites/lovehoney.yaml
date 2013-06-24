@@ -2,13 +2,14 @@ site_name: lovehoney
 pretty_name: Lovehoney
 has_content: no
 has_ranking: no
-needs_SPR: no
+needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
-valid_search_term: lube
+valid_search_term: toy
 database_num: 3
 site_id: 106
+integration: standard
 
 home_page:
   URL: "http://www.lovehoney.co.uk/"
@@ -41,7 +42,7 @@ login_page:
 searchresults_page:
   URL: "http://search.lovehoney.co.uk/search?w=lube&view=grid"
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 4
   
 checkout_page:
   URL: ""

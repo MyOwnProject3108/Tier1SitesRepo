@@ -9,6 +9,7 @@ zero_search_term: no
 valid_search_term: dress
 database_num: 7
 site_id: 413
+integration: standard
 
 home_page:
   URL: "http://www.isabellaoliver.com/maternity-clothes"

@@ -9,6 +9,7 @@ zero_search_term: shirts
 valid_search_term: red wine
 database_num: 7
 site_id: 539
+integration: standard
 
 home_page:
   URL: "http://us.missselfridge.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13069&catalogId=34080&geoip=home"

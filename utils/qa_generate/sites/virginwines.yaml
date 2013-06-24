@@ -2,13 +2,14 @@ site_name: virginwines
 pretty_name: Virgin wines
 has_content: no
 has_ranking: no
-needs_SPR: no
+needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: shirts
 valid_search_term: red wine
 database_num: 5
 site_id: 251
+integration: standard
 
 home_page:
   URL: "https://www.virginwines.co.uk/"
@@ -18,7 +19,7 @@ home_page:
   needs_SPR: no
 
 product_page:
-  URL: "https://www.virginwines.co.uk/AST/wines/PRD~C06055/Beneficio-Cellar-Reserve-McLaren-Vale-Shiraz-2009.jsp"   
+  URL: "https://www.virginwines.co.uk/AST/wines/PRD~C05086/d%27Arcana-Pinot-Grigio-2011.jsp"   
   expected_recs: 2
   add_to_basket_button: ["button", ':class => "button redtogreen"']
   extra_steps:
@@ -43,8 +44,8 @@ login_page:
 
 searchresults_page:
   URL: "http://www.virginwines.co.uk"
-  expected_recs: 0
-  zerosearch_recs: 1
+  expected_recs: 1
+  zerosearch_recs: 0
 
 checkout_page:
   URL: ""

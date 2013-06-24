@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: shirts
 database_num: 4
 site_id: 231
+integration: standard
 
 home_page:
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13051&catalogId=33059&geoip=noship"

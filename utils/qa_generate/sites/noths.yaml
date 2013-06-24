@@ -9,6 +9,7 @@ zero_search_term: dsavavas
 valid_search_term: map
 database_num: 0
 site_id: 12
+integration: standard
 
 home_page:
   URL: "http://www.notonthehighstreet.com/"
@@ -29,7 +30,8 @@ basket_page:
   URL: "http://www.notonthehighstreet.com/cart"
   expected_recs: 1
   basket_checkout: ["button", ':name => "button_checkout"']
-  basket_remove: ["link", ':class => "remove_item_button secondary button small skinny mobile_hide"']  
+  basket_remove: ["link", ':class => "remove_item_button secondary button small skinny mobile_hide"'] 
+
 
 login_page:
   URL: "https://www.notonthehighstreet.com/session/new"
@@ -45,4 +47,6 @@ searchresults_page:
 
 checkout_page:
   URL: "https://www.notonthehighstreet.com/checkout/your_order"
-  expected_recs: 0 
+  expected_recs: 0
+  extra_steps:  
+     - [pause, 20]

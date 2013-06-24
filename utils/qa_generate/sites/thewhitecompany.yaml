@@ -9,6 +9,7 @@ zero_search_term: no
 valid_search_term: towel
 database_num: 3
 site_id: 647
+integration: standard
 
 home_page:
   URL: "http://www.thewhitecompany.com/"

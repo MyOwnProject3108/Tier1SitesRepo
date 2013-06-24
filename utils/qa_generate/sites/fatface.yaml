@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: dress
 database_num: 1
 site_id: 57
+integration: standard
 
 home_page:
   URL: "http://www.fatface.com/"
