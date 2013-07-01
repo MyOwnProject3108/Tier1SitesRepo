@@ -2,7 +2,7 @@ site_name: wickes
 pretty_name: Wickes 
 has_content: no
 has_ranking: no
-needs_SPR: no
+needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
