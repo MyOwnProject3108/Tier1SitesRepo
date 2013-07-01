@@ -2,7 +2,7 @@ site_name: wickes
 pretty_name: Wickes 
 has_content: no
 has_ranking: no
-needs_SPR: spr
+needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
@@ -51,5 +51,20 @@ searchresults_page:
   
 checkout_page:
   URL: ""
-  expected_recs: 0  
+  expected_recs: 0   
+  custom_tracking_test: |
+      Given I am on the wickes home page
+      When I click login
+      And I login as "webtest@mailinator.com" using password "webtest"
+      And I go to the basket page
+      And I pause for 10 seconds
+      And I remove all of the products from the basket
+      
+      And I go to the product page
+      And I pause for 10 seconds
+      
+      And I add the current product to the basket
+      And I pause for 2 seconds
+      And I go to the basket page
+      And I click checkout
   
