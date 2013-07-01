@@ -3,8 +3,8 @@ pretty_name: Chemist Direct
 has_content: no
 has_ranking: no
 needs_SPR: no
-username: webtest@mailinator.com
-password: webtest1234
+username: p.test@peerius.com
+password: P1234567
 zero_search_term: no
 valid_search_term: no
 database_num: 5
@@ -13,13 +13,13 @@ integration: json
 
 home_page:
   URL: "http://www.chemistdirect.co.uk/"
-  expected_recs: 8
+  expected_recs: 4
   login_link: ["link", ':link => "Sign In"']
   search_field: ["text_field", ':id => "q"']
 
 product_page:
   URL: "http://www.chemistdirect.co.uk/salcura-antiac-skin-therapy-spray_1_177583.html"    
-  expected_recs: 8
+  expected_recs: 4
   add_to_basket_button: ["link", ':class => "buy_now"']
       
 category_page:
@@ -49,5 +49,7 @@ checkout_page:
   URL: "https://www.chemistdirect.co.uk/registration/pay_confirm.php"
   expected_recs: 0
   extra_steps:
+    - [pause,20]
+    - [input, id, "addRadio1"]
     - [image, src, "images/buttons/continue.gif"]
     

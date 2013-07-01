@@ -82,7 +82,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
 <% end %>
   And I go to the basket page
-  And I pause for 7 seconds
+  And I pause for 10 seconds
   And I remove all of the products from the basket
   <%= extra_steps_rule(site["login_page"]["extra_steps"]) %>
   And I go to the product page

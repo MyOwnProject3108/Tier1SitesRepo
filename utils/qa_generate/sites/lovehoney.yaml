@@ -50,6 +50,6 @@ checkout_page:
   extra_steps:
     - [button, id, "has-account-option"]
     - [text_field, id, "password", "webtest"]
-    - [button, class, "button std-arrow"]
-    - [pause,30]
+    - [input, class, "button std-arrow"]
+    - [pause,10]
     
