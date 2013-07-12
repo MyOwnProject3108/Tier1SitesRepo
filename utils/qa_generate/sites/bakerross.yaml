@@ -9,6 +9,7 @@ zero_search_term: nappies
 valid_search_term: blue
 database_num: 5
 site_id: 175
+integration: standard
 
 home_page:
   URL: "http://www.bakerross.co.uk/"

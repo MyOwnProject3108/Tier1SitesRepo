@@ -9,10 +9,11 @@ zero_search_term: dvd
 valid_search_term: dress
 database_num: 1
 site_id: 50
+integration: standard
 
 home_page:
   URL: "http://www.mandco.com/"
-  expected_recs: 0
+  expected_recs: 4
   login_link: ["link", ':link_text => "Log In / Register"']
   search_field: ["text_field", ':id => "q"']
 

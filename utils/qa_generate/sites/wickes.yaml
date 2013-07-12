@@ -2,13 +2,14 @@ site_name: wickes
 pretty_name: Wickes 
 has_content: no
 has_ranking: no
-needs_SPR: spr
+needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
 valid_search_term: ladder
 database_num: 2
 site_id: 335
+integration: standard
 
 home_page:
   URL: "http://www.wickes.co.uk/"
@@ -27,7 +28,8 @@ product_page:
 
 category_page:
   URL: "http://www.wickes.co.uk/tiles+floors/icat/tilesflooring/"
-  expected_recs: 1 
+  expected_recs: 1
+
 
 basket_page:
   URL: "http://www.wickes.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=wickes&log=22"
@@ -49,5 +51,5 @@ searchresults_page:
   
 checkout_page:
   URL: ""
-  expected_recs: 0  
+  expected_recs: 0   
   

@@ -9,6 +9,7 @@ zero_search_term: abcd
 valid_search_term: dress
 database_num: 3
 site_id: 605
+integration: standard
 
 home_page:
   URL: "http://www.frenchconnection.com/"

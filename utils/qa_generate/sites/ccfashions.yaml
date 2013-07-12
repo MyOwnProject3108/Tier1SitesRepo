@@ -9,6 +9,7 @@ zero_search_term: dvd
 valid_search_term: dress
 database_num: 5
 site_id: 815
+integration: json
 
 home_page:
   URL: "http://www.ccfashion.co.uk/pws/Home.ice"
@@ -31,8 +32,8 @@ category_page:
 basket_page:
   URL: "http://www.ccfashion.co.uk/pws/ShippingOptions.ice"
   expected_recs: 2
-  basket_checkout: ["img", ':alt => "checkout"']
-  basket_remove: ["img", ':alt => "remove product from my bag"']
+  basket_checkout: ["image", ':alt => "checkout"']
+  basket_remove: ["image", ':alt => "remove product from my bag"']
   
 
 login_page:

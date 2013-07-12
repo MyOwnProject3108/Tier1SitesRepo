@@ -10,10 +10,11 @@ zero_search_term: no
 valid_search_term: shirt
 database_num: 1
 site_id: 54
+integration: standard
 
 home_page:
   URL: "http://www.mandmdirect.com/"
-  expected_recs: 0
+  expected_recs: 4
   login_link: ["link", ':title => "Sign In"']
   search_field: ["text_field", ':id => "ctl00_ctl00_cphMaster_cphMainHeader_uc_search_tbToolbarSearch"']
 

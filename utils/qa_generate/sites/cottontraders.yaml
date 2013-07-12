@@ -9,6 +9,7 @@ zero_search_term: asdf
 valid_search_term: shirt
 database_num: 0
 site_id: 72
+integration: standard
 
 home_page:
   URL: "http://www.cottontraders.co.uk/"

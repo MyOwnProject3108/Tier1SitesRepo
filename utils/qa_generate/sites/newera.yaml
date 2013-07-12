@@ -9,12 +9,15 @@ zero_search_term: dvd
 valid_search_term: shirts
 database_num: 5
 site_id: 785
+integration: json
 
 home_page:
   URL: "www.neweracap.co.uk/"
   expected_recs: 0
   login_link: ["link", ':title => "MY ACCOUNT"']
   search_field: ["text_field", ':id => "searchINPUT"']
+  extra_steps:
+    - [button, class, "en continue"]
 
 product_page:
   URL: "http://www.neweracap.co.uk/my-first-atlanta-braves-infants-59fifty-prod10706312/"
