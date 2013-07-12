@@ -9,7 +9,7 @@ Background:Users should be able to create new setup for smartcontent
  Given I am on the smartmanager login page
  And I login as "givahnenko" using password "4v1gm0d5k1"
  Given I am on the smartmanager home page
- And I pause for 40 seconds
+ And I pause for 10 seconds
  And I select ctshirts from the sites list on the smartmanager home page
  When I click content on the smartmanager home page
  Then I should end up on the smartcontent page
@@ -305,4 +305,39 @@ Scenario: Users should be able to create new setup for smartcontent
  And I click on the Activate button on the smartcontent activation page
  Then I should end up on the smartcontent page
  
-
+ Scenario Outline: Users should be able to create new setup for smartcontent
+ And I enter content name as <setupName> on the smartcontent location page
+ And I pause for 5 seconds
+ And I select content location as Home_JSON_IP
+ Then I click on the Add content button on the smartcontent location page
+ And I pause for 5 seconds
+ And I select image1 as <imagename1> on the smartcontent location page
+ Then I enter <criteria1> in the criteria1 position on the smartcontent location page
+ Then I click on the Add content button on the smartcontent location page
+ And I pause for 5 seconds
+ And I select image2 as <imagename2> on the smartcontent location page
+ Then I enter <criteria2> in the "criteria2" position on the smartcontent location page
+ #Then I click on the Add content button on the smartcontent location page
+ And I pause for 5 seconds
+ #And I select image3 as <imagename3> on the smartcontent location page
+ #Then I enter <criteria3> in the "criteria3" position on the smartcontent location page
+ 
+ #And I pause for 5 seconds
+ And I click on the save button on the smartcontent location page
+ And I pause for 5 seconds
+ Then I should end up on the smartcontent page
+ And I Activate the last smartcontent setup on the smartcontent page
+ Then I should end up on the smartcontent activation page
+ And I click on the Activate button on the smartcontent activation page
+ Then I should end up on the smartcontent page
+ Examples:
+	|   setupName					      |      imagename1 		       |  		criteria1            |      imagename2 	    		      |  		criteria2           |  imagename3 	 |  	criteria3    		     |
+	|"auto_lastviewedcategory"            |   "Casual - Trousers - stack"  |"lastviewedcategory"        |   "Shirts - formal - classic fit"	  |"lastviewedcategory"         | "Ties - GROUP" |"lastviewedcategory"           |
+	|"auto_purchasedHistoryByCategory" 	  |   "Ties - GROUP"			   |"purchasehistorybycategory" |	"Shoes - GROUP"			 		  |"purchasehistorybycategory"  |  "LS3"         |"purchasehistorybycategory"    |
+	|"auto_purchaseHistoryByAttribute" 	  |   "LS1"			  			   |"purchasehistorybyattributes"|	"Shoes - GROUP"			 		  |"purchasehistorybyattributes"  |  "LS3"       |"purchasehistorybyattributes"  |
+	|"auto_Lastviewedcategorywithparameter" |   "Casual - Trousers - stack"|"lastviewedcategory="TIES""|	"Shirts - formal - classic fit"			 		  |"lastviewedcategory"  |  "LS3"       |"purchasehistorybyattributes"  |
+	
+	
+	
+	
+	

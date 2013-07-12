@@ -263,3 +263,34 @@ end
 Then(/^I select content location as Home_JSON_IP$/) do
   @current_page.select_list_element(:name => "htmlInjectionPoint").select "Home_JSON_IP"
 end
+
+###
+Then(/^I enter content name as <SetupName> on the smartcontent location page$/) do|contentname|
+  @current_page.contentname = contentname
+end
+
+Then(/^I enter <Criteria> in the criteria(\d+) position on the smartcontent location page$/) do |rule1, criteria1|
+  @current_page.rule1 = rule1
+end
+
+Then(/^I enter criteria3 in the "([^"]*)" position on the smartcontent location page$/) do |criteria3|
+	#on_page(Smartmanager::SmartcontentCreativePage).textarea(:name => "creativeConfigs.itemsForView[2].expression").when_present.set(criteria3)
+	#@current_page.cell_element(:name => "creativeConfigs.itemsForView[2].expression").criteria3
+    #@current_page.textarea(:name => criteria3)
+	# @current_page.textarea (:name => "creativeConfigs.itemsForView[2].expression").select criteria3
+	#@current_page.fill_in 'name', :with => criteria3  :username, :id=>"login_email"
+end
+
+Then(/^I select image1 as "([^.]*?)" on the smartcontent location page$/) do |imagename1|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select imagename1
+end
+
+Then(/^I select image2 as "([^.]*?)" on the smartcontent location page$/) do |imagename2|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select imagename2
+end
+
+Then(/^I select image3 as "(.*?)" on the smartcontent location page$/) do |imagename3|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[2].creative").select imagename3
+end
+
+##

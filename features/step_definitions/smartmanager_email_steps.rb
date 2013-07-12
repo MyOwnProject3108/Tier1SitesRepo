@@ -57,20 +57,20 @@ Then /^I select background color "(.+)"$/ do |color|
 end
 
 When /^I drag "(.+)" rule to the position (\d+) slot$/ do |algorithm, position|
- # index = position.to_i - 1
-  #rule = @browser.span(:text => algorithm)
-  #slot = @browser.div(:id => index.to_s)
- # @browser.driver.action.drag_and_drop(rule.wd, slot.wd).perform
- # @browser.driver.action.drag_and_drop(rule, slot).perform
- # rule.fire_event("onmousedown")
-  #driver = @browser.driver
-  #driver.action.click_and_hold(rule.wd).perform
+  # index = position.to_i - 1
+  # rule = @browser.span(:text => algorithm)
+  # slot = @browser.div(:id => index.to_s)
+  # @browser.driver.action.drag_and_drop(rule.wd, slot.wd).perform
+  # @browser.driver.action.drag_and_drop(rule, slot).perform
+  # rule.fire_event("onmousedown")
+  # driver = @browser.driver
+  # driver.action.click_and_hold(rule.wd).perform
 
-  #sleep 2
-  #driver.action.move_to(slot.wd).perform
+  # sleep 2
+  # driver.action.move_to(slot.wd).perform
 
-  #sleep 2
-  #rule.fire_event("onmouseup")
+  # sleep 2
+  # rule.fire_event("onmouseup")
   @browser.span(:text=>"algorithm").wd.drag_and_drop_on(@browser.div(:id=>"0").wd)
  # rule.drag_and_drop_on(slot)
   
@@ -130,3 +130,28 @@ When /^copy position (\d+) configuration to position (\d+)$/ do |positionx, posi
 end
 
 
+#####
+Given(/^I am on smart manager homepage$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I select "(.*?)" from the dropdown$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I click on Emailwidget link for<algorithm>$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I click on debug link$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I land on debug info page$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I click on Email Link$/) do
+  pending # express the regexp above with the code you wish you had
+end
+###

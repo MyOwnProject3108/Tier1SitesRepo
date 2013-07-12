@@ -123,10 +123,19 @@ Scenario: Testing the smart content as per "weightage(ex:countrycode = GB)" usin
     And I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-<<<<<<< HEAD
-	And one of the SMART-content creative names should contain "LS1"	
+	And one of the SMART-content creative names should contain "LS1"
+	And one of the SMART-content creative names should contain "LS2"		
 
-#Activate purchasehistorybycategoryTest	in Shop admin
+Scenario: Testing the smart content as per "weightage(ex:visitor returning)" using SMART-API 
+	When I track the home page
+   # And I track a click for the first SMART-content creative
+    When I start a new session
+	 And I track the home page
+    Then I should get at least 1 SMART-content creatives in the response
+	And one of the SMART-content creative names should contain "LS3"
+	
+
+#Activate purchasehistorybycategoryTest	in Shop admin-Pass--if fails in batch run then plz run individually 
 Scenario Outline: SMART-content merchandising rule "purchasedHistoryByCategory" works with single purchases using SMART-API
     When I track the home page
     Then I should get an OK status back
@@ -135,17 +144,13 @@ Scenario Outline: SMART-content merchandising rule "purchasedHistoryByCategory" 
     And I track the home page
     Then I should get an OK status back
     And I should get at least 1 SMART-content creatives in the response
-    And the first SMART-content creative name should contain <category_name>
+    And one of the SMART-content creative names should contain <category_name>
     Examples:
   	| product    | category_name |
-   # | "SN061WHT" | "NON-IRON"     |
-    #| "JK076BLU" | "trousers"  |
-    | "EPA07GRY" | "Suits"       |
-    | "LE083BLU" | "cufflinks"   |
     | "TH099RYL" | "Ties"        |
     | "MP027TAN" | "Shoes"       |
 	
-#Activate TopBanner - SMART	
+#Activate TopBanner in setup for cufflinks - SMART	-Pass-if fails in batch run then plz run individually 
 Scenario: SMART-content merchandising rule "purchasedHistoryByCategory" works across sessions
     Given I am using username "Web Test" and email "webtest@mailinator.com"
     When I order a "LE083BLU" using the SMART-API # -- Cufflinks
@@ -156,9 +161,10 @@ Scenario: SMART-content merchandising rule "purchasedHistoryByCategory" works ac
 	When I relogin with username "Web Test" and email "webtest@mailinator.com"
     And I track the home page
     Then I should get an OK status back
+	And I should get at least 1 SMART-content creatives in the response
     And one of the SMART-content creative names should contain "cufflinks"
 	
-#Activate PurchaseHistoryByAttribute in Shop admin
+#Activate PurchaseHistoryByAttribute in Shop admin-pass
 Scenario Outline: SMART-content merchandising rule "PurchaseHistoryByAttribute" works with single purchases using SMART-API
     When I track the home page
     Then I should get an OK status back
@@ -175,7 +181,7 @@ Scenario Outline: SMART-content merchandising rule "PurchaseHistoryByAttribute" 
 	#different category from creative
     | "MD019TAN" | "LS1"          |    
 	
-#Activate lastviewedcategoryqa	in Shop admin
+#Activate lastviewedcategoryqa01	in Shop admin-pass
 Scenario: SMART-content merchandising rule "Lastviewedcategory" works with single purchases using SMART-API
     When I track the home page
     Then I should get an OK status back
@@ -186,7 +192,7 @@ Scenario: SMART-content merchandising rule "Lastviewedcategory" works with singl
 	#And one of the SMART-content creative names should contain "ties"
     And one of the SMART-content creative names should contain "Ties"
 	
-#Activate lastviewedcategoryqa--need to remove ties from last setup for LVC	in Shop admin
+#Activate lastviewedcategoryqa--need to remove ties from last setup for lastviewedcategoryqa01	in Shop admin
 Scenario: SMART-content merchandising rule "Lastviewedcategorywithparameter" works with single purchases using SMART-API
     When I track an "ties" category page
     Then it should get an OK status back
@@ -195,67 +201,13 @@ Scenario: SMART-content merchandising rule "Lastviewedcategorywithparameter" wor
     And one of the SMART-content creative names should contain "Trousers"	
 
 
-#Numberofdayssincelastorder 	
-	#Push the home page request with new cuid and session id.From the response 
-	#take the cuid and create historical purchase(post order request).Now use the same cuid and push 
-	#the home page request then should see OK response with the smart content
-	
-Scenario Outline: SMART-content merchandising rule "Numberofdayssincelastorder" works with single purchases using SMART-API
-    When I track the home page
-    Then I should get an OK status back
-    #When I track a click for the first SMART-content creative
-    And I insert order for a <product> using the SMART-API
-    And I track the home page
-    Then I should get an OK status back
-    And I should get at least 1 SMART-content creatives in the response
-    And the first SMART-content creative name should contain <category_name>
-    Examples:
-  	| product    | category_name |
-   # | "SN061WHT" | "NON-IRON"     |
-    #| "JK076BLU" | "trousers"  |
-    | "EPA07GRY" | "Suits"       |
-    | "LE083BLU" | "cufflinks"   |
-    | "TH099RYL" | "Ties"        |
-    | "MP027TAN" | "Shoes"       |
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-  
-    
-	
- 
-	
-=======
-	And one of the SMART-content creative names should contain "LS2"		
-
-Scenario: Testing the smart content as per "weightage(ex:visitor returning)" using SMART-API 
-	When I track the home page
-   # And I track a click for the first SMART-content creative
-    When I start a new session
-	 And I track the home page
-    Then I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS3"
 
 	
+	
+	
+	
+	
+	
+	
+	
 
->>>>>>> 6f8bddeb90559196f2f3cc080e85751e9bfd304d
