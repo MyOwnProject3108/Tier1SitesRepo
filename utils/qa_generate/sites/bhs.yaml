@@ -20,7 +20,7 @@ home_page:
     #And I click on the button with id "btn_search_go"
 
 product_page:
-  URL: "http://www.bhs.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34096&storeId=13077&productId=8720953&langId=-1&sort_field=Relevance&categoryId=471259&parent_categoryId=471112&pageSize=40"
+  URL: "http://www.bhs.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34096&storeId=13077&productId=11017002&langId=-1&sort_field=Relevance&categoryId=471259&parent_categoryId=471112&pageSize=40"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
