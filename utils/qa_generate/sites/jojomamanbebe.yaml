@@ -1,0 +1,61 @@
+site_name: jojomamanbebe
+pretty_name: jojomamanbebe
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: faiyyaz.sultana@peerius.com
+password: Pa55word
+zero_search_term: abcd
+valid_search_term: dress
+database_num: 7
+site_id: 413
+integration: standard
+
+home_page:
+  URL: "http://www.jojomamanbebe.co.uk/"
+  expected_recs: 0
+  login_link: ["link", ':class => "login"']
+  search_field: ["text_field", ':id => "searchwhat"']
+
+product_page:
+  URL: "http://www.jojomamanbebe.co.uk/sp+daisy-print-maternity-top-in-maternity-tunics-and-shirts+b4725"
+  expected_recs: 1
+  add_to_basket_button: ["button", ':id=> "iB1"']
+  extra_steps:
+     - [image, id, "bb_matrixBody_b4725NAV8"]
+     - [pause,10]
+
+category_page:
+  URL: "http://www.jojomamanbebe.co.uk/pp+maternity-tunics-and+shirts"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.jojomamanbebe.co.uk/docontents.asp"
+  expected_recs: 5
+  basket_checkout: ["image", ':src => "http://www.jojomamanbebe.co.uk/assets/images/button_proceedToCheckout.jpg"']
+  basket_remove: ["image", ':alt => "remove item"']
+
+login_page:
+  URL: "https://www.jojomamanbebe.co.uk/login.asp"
+  expected_recs: 0
+  username_field: ["text_field", ':name => "email"']
+  password_field: ["text_field", ':name => "password"']
+  login_submit: ["button", ':name=>"login"']
+
+searchresults_page:
+  URL: "http://www.jojomamanbebe.co.uk/product+t+dress"
+  expected_recs: 0
+  zerosearch_recs: 4
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+  - [button, id, "continue"]
+  - [text_field, id, "card_number", "5555555555554444"]
+  - [select_list, id, "expiry_month", "Mar"]
+  - [select_list, id, "expiry_year", "2015"]
+  - [text_field, id, "check_number", "123"]
+  - [button, id, "orderButton"]
+  
+ 
