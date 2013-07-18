@@ -1,7 +1,7 @@
 <% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
 <% outputName = "cucumber" + (ENV['TEST_ENV_NUMBER'] ? ENV['TEST_ENV_NUMBER'] : "") %>
 <% live_servers = ["pt", "pt1", "pt2"] %>
-<% dev_servers = ["test1", "test2", "uat", "lander", "mario"] %>
+<% dev_servers = ["qa1","test2", "uat", "lander", "mario"] %>
 
 <% for server in live_servers %> 
 <%= server %>: FIG_NEWTON_FILE=<%= server %>.yml --format html --out tests_<%= server %>.html <%= common %> --tags ~@internal --tags ~@smartapi
@@ -14,14 +14,14 @@
 <% end %>
 
 
-default: --profile test1
-sanity: --profile test1
+default: --profile qa1
+sanity: --profile qa1
 live: --profile pt
-api: --profile test1_api
+api: --profile qa1_api
 live_api: --profile pt_api
 jenkins_live: FIG_NEWTON_FILE=pt1.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
 jenkins_uat: FIG_NEWTON_FILE=uat.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
-jenkins_sanity_1: FIG_NEWTON_FILE=test1.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
+jenkins_sanity_1: FIG_NEWTON_FILE=qa1.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
 jenkins_sanity_2: FIG_NEWTON_FILE=test2.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager
-jenkins_smartmanager_1: FIG_NEWTON_FILE=test1.yml proxy=""headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags @smartmanager
+jenkins_smartmanager_1: FIG_NEWTON_FILE=qa1.yml proxy=""headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags @smartmanager
 jenkins_smartmanager_2: FIG_NEWTON_FILE=test2.yml proxy="" headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags @smartmanager
