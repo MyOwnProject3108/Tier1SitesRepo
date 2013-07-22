@@ -27,7 +27,7 @@ Scenario: Users should be able to create email widget
   And I pause for 10 seconds
   When I drag and drop "Abandoned Basket" rule to the position slot on the emailcreate page
   And I pause for 5 seconds
-# And copy position 1 configuration to position 2
+ And copy position 1 configuration to position 2
   And I enter email as "webtestpeerius@mailinator.com"
   And I click on the trigger test email link
   And I pause for 10 seconds

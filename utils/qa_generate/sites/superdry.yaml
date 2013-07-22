@@ -18,12 +18,12 @@ home_page:
   search_field: ["text_field", ':id => "searchword"']
 
 product_page:
-  URL: "http://www.superdry.com/womens/dresses/details/38273/ventura-daiquiri-dress"    
+  URL: "http://www.superdry.com/womens/t-shirts/details/39729/vintage-logo-t-shirt"    
   expected_recs: 6
   add_to_basket_button: ["button", ':value=> "Add to bag"']
   extra_steps:      
       - [span, text, "select size"]
-      - [span, text, "small UK 10"]
+      - [span, text, "medium UK 12"]
       - [pause,40]
     
 category_page:
