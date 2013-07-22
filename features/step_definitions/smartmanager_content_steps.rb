@@ -133,6 +133,16 @@ When(/^I click on the last delete link on the smartcontent page$/) do
 	message.should == "Delete creative?" 
 end
 
+
+Then(/^I click on all the delete rules on the smartcontent setup page$/) do
+	rules_delete = ['tags_rule','default_rule','country_FR_rule','country_US_rule','country_GB_rule','segments_rule','gender_rule','keyword_rule','organic_rule','ppc_rule','source_rule','city_rule','smart_rule','visitor_new_rule','visitor_returning_rule','customer_new_rule','direct_rule','customer_returning_rule']
+	rules_delete.each do |y|
+	link_href = @browser.a(:text=> y).attribute_value("href")
+	link_href_arr = link_href.split("?")
+	@browser.a(:href=>"delete.page?d#{link_href_arr[link_href_arr.count - 1]}").click
+ end
+end
+
 When(/^I click on the last edit link on the smartcontent page$/) do
    @current_page.image_elements(:src => "/tracker/images/skin2/edit.png").last.click
 end 

@@ -10,7 +10,10 @@ module Smartmanager
 		h3(:page_identifier, :text => "Setup")
 		a(:create_dynamiccontent_link, :href => "edit.page")
 		
-	 	 
+	#	def delete_rules(words)
+	#	image_elements(:src => "/tracker/images/skin2/bin.png").click
+	 #	 end
+		 
 	 def tracked_as
 	   return "SmartcontentSetupPage"
 	  end
