@@ -23,7 +23,7 @@ Scenario: Users should be able to create email widget
   And I select price color "red"
   And I select background color "yellow"
   And I pause for 5 seconds
-  And I select no repeat recs as 1 on the emailcreate page
+ # And I select no repeat recs as 1 on the emailcreate page
   And I pause for 10 seconds
   When I drag and drop "Abandoned Basket" rule to the position slot on the emailcreate page
   And I pause for 5 seconds
