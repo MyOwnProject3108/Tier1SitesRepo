@@ -17,14 +17,17 @@ module Smartmanager
 	   #text_field(:items, :id => 'howMany')
 	   text_field(:email, :name => 'emailId')
 	   a(:test_email_link, :text => 'Trigger Test Email')
+	   a(:preview_email_link, :text => 'Preview Email')
 	   button(:save_email_submit, :class => 'submit120')
+	   a(:email_debuginfo_link, :text => "Click here for debug information")
+	   #select_list(:norepeatrecs_submit, :text => '1')
+	   
 	
 	 	 
 	 def tracked_as
 	   return "EmailcreatePage"
 	  end
- 
-  
+	
 			  
     end  
 end

@@ -6,7 +6,7 @@ needs_SPR: false
 username: vinod.sathapathi@peerius.com
 password: Pa55word
 zero_search_term: dvd
-valid_search_term: shirts
+valid_search_term: jumper
 database_num: 4
 site_id: 219
 integration: standard
@@ -14,11 +14,11 @@ integration: standard
 home_page:
   URL: "http://www.topman.com/"
   expected_recs: 0
-  login_link: ["link", ':title => "Login"']
+  login_link: ["link", ':title => "My Account"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33056&storeId=12555&productId=9842146&langId=-1&sort_field=Relevance&categoryId=207185&parent_categoryId=207169&pageSize=20"
+  URL: "http://www.topman.com/en/tmuk/product/clothing-140502/mens-jumpers-cardigans-140513/grey-shawl-collar-jumper-1969499?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
