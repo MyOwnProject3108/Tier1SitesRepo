@@ -3,8 +3,8 @@ pretty_name: Topshop EU
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: anagha.joshi@peerius.com
-password: Pa55word
+username: user112@gmail.com
+password: P@ssw0rd
 zero_search_term: dvd
 valid_search_term: shirts
 database_num: 7
@@ -18,9 +18,11 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://fr.topshop.com/fr/tsfr/produit/v%C3%AAtements-415222/tops-415238/chemisier-en-dentelle-g%C3%A9om%C3%A9trique-2031507?bi=1&ps=20"
+  URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/sweetheart-bodycon-dress-2108180?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
 
 category_page:
   URL: "http://eu.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=34058&storeId=13058&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=339056&parent_categoryId=339500&beginIndex=1&pageSize=20"
@@ -29,7 +31,7 @@ category_page:
 basket_page:
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34058&langId=-1&storeId=13058"
   expected_recs: 7 
-  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_checkout: ["link", ':text => "Checkout"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
@@ -48,13 +50,13 @@ checkout_page:
   URL: "" 
   expected_recs: 0
   extra_steps:
- #  - [select_list, id, "address_title", "Mr"]
- # - [text_field, id, "address_first_name", "peerius"]
- #- [text_field, id, "address_surname", "test"]
- #- [text_field, id, "address_main_telephone", "01049302019"]
- #- [text_field, class, "text address_line_1", "address1"]
- #- [text_field, class, "text address_town", "town"]
- #- [text_field, class, "text address_postcode_manual", "12345"]
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "peerius"]
+   - [text_field, id, "address_surname", "test"]
+   - [text_field, id, "address_main_telephone", "01049302019"]
+   - [text_field, class, "text address_line_1", "address1"]
+   - [text_field, class, "text address_town", "town"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
   
    
