@@ -12,7 +12,7 @@ site_id: 82
 integration: standard
 
 home_page:
-  URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=12551&catalogId=33052"
+  URL: "http://www.burton.co.uk/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':link => "Sign in or register"']
   search_field: ["text_field", ':id => "inp_search_text"']

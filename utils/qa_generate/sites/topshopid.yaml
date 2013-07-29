@@ -1,9 +1,9 @@
-site_name: topshopeu
-pretty_name: Topshop EU
+site_name: topshopid
+pretty_name: Topshop ID
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: user193@gmail.com
+username: user194@gmail.com
 password: P@ssw0rd
 zero_search_term: abcd
 valid_search_term: shoe
@@ -12,25 +12,25 @@ site_id: 575
 integration: standard
 
 home_page:
-  URL: "http://eu.topshop.com/?geoip=home"
+  URL: "http://id.topshop.com/?geoip=id"
   expected_recs: 0
-  login_link: ["link", ':title => "Sign in or register"']
+  login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/fluro-embroided-pencil-dress-2023392?bi=1&ps=20"
+  URL: "http://id.topshop.com/en/tsid/product/clothing-1296151/dresses-1296291/limited-edition-waterfall-shift-dress-2143023?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
     - [pause, 20]
 
 category_page:
-  URL: "http://eu.topshop.com/en/tseu/category/clothing-485092/dresses-485107"
+  URL: "http://id.topshop.com/en/tsid/category/clothing-1296151/dresses-1296291"
   expected_recs: 0
 
 basket_page:
-  URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34058&langId=-1&storeId=13058"
-  expected_recs: 7 
+  URL: "https://id.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=35117&langId=-1&storeId=13090"
+  expected_recs: 5 
   basket_checkout: ["link", ':text => "Checkout"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 

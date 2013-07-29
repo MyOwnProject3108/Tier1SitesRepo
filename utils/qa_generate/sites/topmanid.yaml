@@ -1,0 +1,61 @@
+site_name: topmanid
+pretty_name: Topman ID
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user202@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: shirts
+database_num: 7
+site_id: 581
+integration: standard
+
+home_page:
+  URL: "http://id.topman.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':title => "Login"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://id.topman.com/en/tmid/product/shoes-and-accessories-1928531/casual-shoes-1459568/blue-suede-slip-ons-2075029?bi=1&ps=20"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+category_page:
+  URL: "http://id.topman.com/en/tmid/category/clothing-1459570/mens-jeans-1459636"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://id.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=35109&langId=-1&storeId=13086"
+  expected_recs: 4 
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://id.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=35109&storeId=13086&krypto=dxsQnZqCxqBqzB4RLle6vhk8ELFqAazV0bNkEkcdZFytVIZ21sfix5Uc1mPdeghTjEfYHEgt4Ch7%0AWSDaQwBRgw%3D%3D&ddkey=http:CatalogNavigationSearchResultCmd"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://id.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13086&catalogId=35109&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  extra_steps:
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "09387493479"]
+   - [text_field, class, "text address_line_1", "Units 232-234"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "london"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 20]
+  
