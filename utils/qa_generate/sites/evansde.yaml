@@ -1,9 +1,9 @@
-site_name: evans
-pretty_name: Evans UK
+site_name: evansde
+pretty_name: Evans DE
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: user213@gmail.com
+username: user214@gmail.com
 password: P@ssw0rd
 zero_search_term: dvd
 valid_search_term: dress
@@ -12,37 +12,37 @@ site_id: 219
 integration: standard
 
 home_page:
-  URL: "http://www.evans.co.uk/?geoip=home"
+  URL: "http://www.evansmode.de/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.evans.co.uk/en/evuk/product/clothing-250468/dresses-250498/scarlett-jo-purple-waterfall-stud-detail-dress-2116982?bi=1&ps=24"
+  URL: "http://www.evansmode.de/de/evde/produkt/kleidung-912294/tops-tuniken-2105037/evans-tunika-mit-halskette-rot-2155427?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
     - [pause, 20]
 
 category_page:
-  URL: "http://www.evans.co.uk/en/evuk/category/clothing-250468/dresses-250498"
+  URL: "http://www.evansmode.de/de/evde/kategorie/kleidung-912294/tops-tuniken-2105037"
   expected_recs: 0
 
 basket_page:
-  URL: "https://www.evans.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33054&langId=-1&storeId=12553"
+  URL: "https://www.evansmode.de/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34082&langId=-3&storeId=13070"
   expected_recs: 4 
-  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_checkout: ["link", ':text => "Zur Kasse"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
-  URL: "https://www.evans.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33054&storeId=12553&krypto=6JGpwJoTBogcXSkJp6JNC3Y%2F%2BXJQOxw63aLFYCRK0JMlzcGOIqmXzu3xVgyPmHM8o9JUq3nioyjH%0AwO0dbQ%2BB%2BA%3D%3D&ddkey=http:LogonForm"
+  URL: "https://www.evansmode.de/webapp/wcs/stores/servlet/LogonForm?catalogId=34082&storeId=13070&krypto=Em4krnn4SpDFAAeZN5seIB7fYO10jgpP5TgdKkiCMYqXBVhY2Y6aWzw%2Bdj8NKSl4NrRrMsyf6sjL%0AOGC3p644Vw%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
-  URL: "http://www.evans.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12553&catalogId=33054&beginIndex=1&viewAllFlag=false&pageSize=24&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=25&y=13"
+  URL: "http://www.evansmode.de/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-3&storeId=13070&catalogId=34082&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=11&y=14"
   expected_recs: 0
   zerosearch_recs: 1
   
@@ -51,13 +51,13 @@ checkout_page:
   expected_recs: 0
   extra_steps:
   # - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
-   - [select_list, id, "address_title", "Mr"]
+   - [select_list, id, "address_title", "Herr"]
    - [text_field, id, "address_first_name", "P"]
    - [text_field, id, "address_surname", "Eerius"]
    - [text_field, id, "address_main_telephone", "0208768789"]
-   - [p, class, "enter_manual_address"]
+  # - [p, class, "enter_manual_address"]
    - [text_field, class, "text address_line_1", "Units 207-211"]
    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
-   - [text_field, class, "text address_town", "London"]
-   - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+   - [text_field, class, "text address_town", "town"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
