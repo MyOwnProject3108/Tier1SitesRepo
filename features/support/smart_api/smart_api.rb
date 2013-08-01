@@ -15,7 +15,8 @@ module Peerius
         def initialize(site, version=nil, testserver=nil, useSSH=nil)
             file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
-            @version = version.nil? ? "v1_1" : version
+            #@version = version.nil? ? "v1_1" : version
+			@version = version.nil? ? "v1_2" : version
             @useSSH = useSSH.nil? ? true : useSSH
             urlPrefix = @useSSH ? "https" : "http" 
             if testserver.nil? then  
@@ -75,8 +76,10 @@ module Peerius
 
             if @version == "v1" 
                 @json_request = JSON.generate(migrate_to_api_v1(request)) 
-            else
-                @json_request = JSON.generate(request)
+            else 
+				@json_request = JSON.generate(request)
+				#else
+				#@json_request =JSON.generate(request)
             end
             @logger.info("Request: " + @json_request)            
             params = { :jd => @json_request }

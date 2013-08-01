@@ -10,7 +10,7 @@ valid_search_term: dvd
 
 
 home_page:
-  URL: "http://www.musicroom.com//Home"
+  URL: "http://www.musicroom.com/"
   expected_recs: 0
   expected_api_recs: 12
   login_link: ["link", ':href=> "https://www.musicroom.com/account.aspx"']

@@ -1,7 +1,11 @@
-Given /^I am using SMART\-API (v1|v1_1)?.?to access (.+)$/ do |version, site|
+Given /^I am using SMART\-API (v1|v1_1|v1_2)?.?to access (.+)$/ do |version, site|
   @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)
   @site = site    
 end
+
+# Given(/^I am using SMART\-API (v1d+)_(\d+) to access livedemoshop$/) do |arg1, arg2|
+  # pending # express the regexp above with the code you wish you had
+# end
 
 Given /^I am using client token (.+)$/ do |token|
   @api.json_clientToken = token
@@ -69,7 +73,7 @@ When /^I track (?:a|the) home page$/ do
    @api.track
 end
 ###
-When(/^I track an "(.*?)" category page$/) do|type|
+When(/^I track a "(.*?)" category page$/) do|type|
   @api.json_type = 'category'
    @api.json_category = "ties"
    @api.track
@@ -93,6 +97,9 @@ When /^I track (?:the|an) category page$/ do
    @api.json_type = 'category'
    @api.json_category = "ties"
    @api.track
+end
+When(/^I track a category page$/) do
+  pending # express the regexp above with the code you wish you had
 end
 ###
 When(/^I visit "(.*?)" page$/) do |arg1|
@@ -256,8 +263,10 @@ Then /^I should get an? (.+) status back$/ do |status|
     #puts @api.json_request 
     #pp @api.result  
     @api.result["status"].should eq(status)
-    $current_session = @api.result["session"]["session"]
-    $current_cuid = @api.result["session"]["cuid"]
+    @current_session = @api.result["session"]
+	#$current_session = @api.result["session"]["session"]
+	#@current_cuid = @api.result["session"]["cuid"]
+    @current_cuid = @api.result["cuid"]
 end
 
 Then /^I should get a response in less than (\d+)ms$/ do |expected|

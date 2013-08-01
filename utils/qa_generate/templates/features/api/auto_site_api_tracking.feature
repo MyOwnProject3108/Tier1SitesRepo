@@ -27,6 +27,7 @@ Scenario Outline: <%= site["pretty_name"] %> Homepage is tracked using SMART-API
     | version |
     | v1      |
     | v1_1    |
+	| v1_2    |
 
 Scenario Outline: Product page is tracked using SMART-API
     When I track a product page
@@ -35,6 +36,7 @@ Scenario Outline: Product page is tracked using SMART-API
     | version |
     | v1      |
     | v1_1    |
+	| v1_2    |
 
 Scenario Outline: Category page is tracked using SMART-API v1
     When I track a category page
@@ -51,6 +53,7 @@ Scenario Outline: Basket page is tracked using SMART-API v1
     | version |
     | v1      |
     | v1_1    |
+	| v1_2    |
 
 Scenario Outline: Checkout page is tracked using SMART-API v1
     When I track a checkout page
@@ -59,6 +62,7 @@ Scenario Outline: Checkout page is tracked using SMART-API v1
     | version |
     | v1      |
     | v1_1    |
+	| v1_2    |
 
 Scenario: Order page is tracked using SMART-API v1.1
     When I track an order page

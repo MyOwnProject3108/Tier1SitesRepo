@@ -13,7 +13,7 @@ integration: standard
 
 home_page:
   URL: "http://us.missselfridge.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13069&catalogId=34080&geoip=home"
-  expected_recs: 3
+  expected_recs: 0
   login_link: ["link", ':title=> "register"']
   search_field: ["text_field", ':id => "search"']
   category_menu: ["ul", ':id => "nav_catalog_menu"']

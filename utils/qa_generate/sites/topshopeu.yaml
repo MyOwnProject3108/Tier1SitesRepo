@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34058&storeId=13058&productId=9493054&langId=-1&sort_field=Relevance&categoryId=339056&parent_categoryId=339500&pageSize=20"
+  URL: "http://fr.topshop.com/fr/tsfr/produit/v%C3%AAtements-415222/tops-415238/chemisier-en-dentelle-g%C3%A9om%C3%A9trique-2031507?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

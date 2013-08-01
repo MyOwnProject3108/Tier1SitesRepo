@@ -18,11 +18,11 @@ home_page:
   search_field: ["text_field", ':id => "searchBox"']
 
 product_page:
-  URL: "http://www1.schuh.co.uk/womens-tan-schuh-karmel-pull-on-calf/1522006220/"    
+  URL: "http://www1.schuh.co.uk/toddler-navy-converse-all-star-hi/2502205870/"    
   expected_recs: 4
   add_to_basket_button: ["button", ':id=> "ctl00_ContentPlaceHolder1_btnAddToBasket"']
   extra_steps:
-    - [link, id, "size_360"]
+    - [link, id, "size_200"]
     
 category_page:
   URL: "http://www.schuh.co.uk/mens/trainers/"

@@ -33,4 +33,5 @@ Scenario Outline: Invalid key is used with SMART-API
     | version |
     | v1      |
     | v1_1    |
+	| v1_2    |
 
