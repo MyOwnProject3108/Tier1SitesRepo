@@ -1,0 +1,52 @@
+site_name: tedbaker
+pretty_name: Tedbaker
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user224@gmail.com
+password: P@ssw0rd
+zero_search_term: no
+valid_search_term: no
+database_num: 6
+site_id: 82
+integration: standard
+
+home_page:
+  URL: "http://www.tedbaker.com/home.aspx"
+  expected_recs: 0
+  login_link: ["link", ':text => "MY ACCOUNT"']
+  search_field: ["text_field", ':id => "searchinput"']
+
+product_page:
+  URL: "http://www.tedbaker.com/women%27s/women%27s_accessories/bags/104997-bow_shopper_bag/detail.aspx"
+  expected_recs: 4
+  add_to_basket_button: ["span", ':text=> "ADD TO BAG"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://www.tedbaker.com/women%27s/women%27s_accessories/bags/list.aspx#-"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.tedbaker.com/shoppingbasket/"
+  expected_recs: 5
+  basket_checkout: ["link", ':id => "ctl00_ctl00_ContentPlaceHolder1_MainContent_reg3_ctl00_LnkCheckoutBottom"']
+  basket_remove: ["link", ':id => "ctl00_ctl00_ContentPlaceHolder1_MainContent_reg3_ctl00_UcOrderSummary_UcItemSummary_rptCartItems_ctl00_ucCartRow_LnkRemoveItem"']  
+
+login_page:
+  URL: "https://www.tedbaker.com/myaccount/signin.aspx"
+  expected_recs: 0
+  username_field: ["text_field", ':id => "ctl00_ctl00_ContentPlaceHolder1_MainContent_reg3_ctl00_TxtSiEmail"']
+  password_field: ["text_field", ':id => "ctl00_ctl00_ContentPlaceHolder1_MainContent_reg3_ctl00_TxtSiPassword"']  
+  login_submit: ["link", ':id => "ctl00_ctl00_ContentPlaceHolder1_MainContent_reg3_ctl00_LnkSignIn"']
+
+searchresults_page:
+  ignore: true
+  URL: ""
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0

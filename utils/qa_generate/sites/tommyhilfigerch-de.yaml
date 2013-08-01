@@ -1,0 +1,51 @@
+site_name: tommyhilfigerchde
+pretty_name: Tommy Hilfiger CH-DE
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user236@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: shirt
+database_num: 6
+site_id: 82
+integration: json
+
+home_page:
+  URL: "http://ch.tommy.com/on/demandware.store/Sites-CH-Site/de_CH/Home-Show"
+  expected_recs: 0
+  login_link: ["link", ':text => "Einloggen"']
+  search_field: ["text_field", ':id => "searchinput"']
+
+product_page:
+  URL: "http://ch.tommy.com/Tommy-Slim-Fit-Polo/0857834761,de_CH,pd.html?cgid=206000#!color%3D416%26i%3D2"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':class=> "button active addtocartbutton a"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://ch.tommy.com/Polos/206000,de_CH,sc.html"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://ch.tommy.com/on/demandware.store/Sites-CH-Site/de_CH/Cart-Show"
+  expected_recs: 0
+  basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
+  basket_remove: ["button", ':class => "remove no_print"']  
+
+login_page:
+  URL: "https://ch.tommy.com/on/demandware.store/Sites-CH-Site/de_CH/Account-Show/C747059639"
+  expected_recs: 0
+  username_field: ["text_field", ':id => "dwfrm_login_username"']
+  password_field: ["text_field", ':id => "dwfrm_login_password"']  
+  login_submit: ["button", ':name => "dwfrm_login_customlogin"']
+
+searchresults_page:
+  URL: "http://ch.tommy.com/on/demandware.store/Sites-CH-Site/de_CH/Search-Show?q=shirt"
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0

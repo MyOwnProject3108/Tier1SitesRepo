@@ -1,0 +1,64 @@
+site_name: walliseu
+pretty_name: Wallis EU
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user211@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: dress
+database_num: 7
+site_id: 401
+integration: standard
+
+home_page:
+  URL: "http://euro.wallisfashion.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':title => "Login"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://euro.wallisfashion.com/en/wleu/product/clothing-989288/dresses-989306/black-mesh-detail-dress-2079938?bi=1&ps=20"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://euro.wallisfashion.com/en/wleu/category/clothing-989288/dresses-989306"
+  expected_recs: 0
+  
+basket_page:
+  URL: "https://euro.wallisfashion.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34092&langId=-1&storeId=13075" 
+  expected_recs: 5
+  basket_checkout: ["link", ':text => "Checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']
+
+login_page:
+  URL: "https://euro.wallisfashion.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34092&storeId=13075&krypto=9sWUkWwUoR6eaqLdzgpNw80g9sFXF%2F3CGrILoQu2t0HPGW91wRSjlLg6Wp0tU1HvF2X4fk148p6J%0ASmQKXOY%2FvA%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://euro.wallisfashion.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13075&catalogId=34092&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=53&y=15"
+  expected_recs: 0
+  zerosearch_recs: 6
+  
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+  # - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "01049302019"]
+ #  - [p, class, "enter_manual_address"]
+   - [text_field, class, "text address_line_1", "Units 207-211"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "London"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+  

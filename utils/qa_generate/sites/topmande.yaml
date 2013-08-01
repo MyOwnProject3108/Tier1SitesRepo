@@ -1,0 +1,61 @@
+site_name: topmande
+pretty_name: Topman DE
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user200@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: shirts
+database_num: 7
+site_id: 581
+integration: standard
+
+home_page:
+  URL: "http://de.topman.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':title => "Login"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://de.topman.com/de/tmde/produkt/kleidung-554976/herren-jeans-554982/enge-luke-jeans-von-lee-579902?bi=1&ps=20"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+category_page:
+  URL: "http://de.topman.com/de/tmde/kategorie/kleidung-554976/herren-jeans-554982"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://de.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34060&langId=-3&storeId=13059"
+  expected_recs: 4 
+  basket_checkout: ["link", ':text => "Zur Kasse"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://de.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34060&storeId=13059&krypto=ogeJmQm6IxISFTo%2FL7%2FgOYtCVe7kG1a9eCDb9yXfbwPSAcUYtSYESwnGKtHatauZ6FCGTlOAymtO%0AdVqnw7IXvw%3D%3D&ddkey=http:CatalogNavigationSearchResultCmd"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://de.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-3&storeId=13059&catalogId=34060&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: "https://eu.topman.com/webapp/wcs/stores/servlet/OrderDisplay?langId=-1&catalogId=34064&storeId=13061&ddkey=https:PreCheckout&geoip=home" 
+  expected_recs: 0
+  extra_steps:
+   - [select_list, id, "address_title", "Herr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "09387493479"]
+   - [text_field, class, "text address_line_1", "Units 232-234"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "london"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 20]
+  

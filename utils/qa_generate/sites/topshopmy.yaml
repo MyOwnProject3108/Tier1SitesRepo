@@ -1,0 +1,69 @@
+site_name: topshopmy
+pretty_name: Topshop MY
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user198@gmail.com
+password: P@ssw0rd
+zero_search_term: abcd
+valid_search_term: shoe
+database_num: 7
+site_id: 575
+integration: standard
+
+home_page:
+  URL: "http://my.topshop.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':title => "Sign in or register"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://my.topshop.com/en/tsmy/product/clothing-1157134/dresses-1157274/limited-edition-ruche-maxi-dress-2143001?bi=1&ps=20"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://my.topshop.com/en/tsmy/category/clothing-1157134/dresses-1157274"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://my.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=35113&langId=-1&storeId=13088"
+  expected_recs: 5 
+  basket_checkout: ["link", ':text => "Checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://my.topshop.com/webapp/wcs/stores/servlet/LogonForm?langId=-1&catalogId=35113&storeId=13088&krypto=1%2BMUUV55jMjnRUIZdSdTNA%2Bf3eO7EGOkWy%2FB6Hqr5kUauTqUjPVctubLrLN3Htc6XfXXjn1Udw7h%0AsnTxmlUCYNYVWW9YWDZcUUFGaYd8IL3RBMwXvMDp4TwHNrBq8aAZkodDpYo5hpm4sXLas%2Bntr7Kn%0ApOwK7KKPz9i4BQEEJYPVmepcTZB1lkCiRs%2BFU8FuFwHWkrbSocpf3kw07iO2HluMezK9IYjW4qNJ%0ASSPb5zsj1c8GrThotUnMrCTWOxs7%2FFOespDazFwgTolLvF0Mwrxuwnk7Yhv4T%2B5INfkBQG%2Btwcnj%0ACDmxhkLxBWYUdUR0OHjP7gf%2Fpe7dejr0rt5MwhBaMHauT3en6wGfz8E4xOD9XYIXregxVaVhru76%0AdkqE3NWOGXPSeVTz5uJCrqHk7qtyD1CPxc9ct2QaMYoFqmfuR1ozMYGCp%2FQVLnPri0%2BTNZW1sJ54%0AuzGL6Ec4y4PowwM1cEsuCPiR3FGLUB0BfRNL9mQn6Nt4pfyT2LfOAmDbulzAMevAaxGmAvatDbV0%0AsmWm4mqVmTbWHZnNqFlEmW%2FjDDvl22W0zhHtAywqxhjeAThPqGYB9RXV9uBk%2BzEFaIORU2eiO5tL%0AP77Jp2f6RwD%2FEQWTqpfoz3e987DagTxKSLLhTVKgpoX0aDvOS5neMEfFDFr6wrmjLBlndHHOVnbg%0AdG1lCoHJRVDiHwB8090sWgs%2BlWU8eWOxNIfx4NobOBolaZCJTaVd6R%2BQ4Xomj8iB%2B%2FDOhfJOKwHC%0A%2BLZaQL2W&ddkey=https:PreCheckout"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://my.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13088&catalogId=35113&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=abcd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 7
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  extra_steps:
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "peerius"]
+   - [text_field, id, "address_surname", "test"]
+   - [text_field, id, "address_main_telephone", "02033974945"]
+   - [text_field, class, "text address_line_1", "address1"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "town"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
+   - [pause, 20]
+  
+   
+   
+   
+   
+   
+   

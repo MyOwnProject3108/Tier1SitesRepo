@@ -18,9 +18,12 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 product_page:
-  URL: "http://www.cottontraders.com/long-sleeve-scoop-neck-top/invt/aa12646"
+  URL: "http://www.cottontraders.com/stretch-turtle-neck-top/invt/aa12620"
   expected_recs: 1
-  add_to_basket_button: ["link", ':href=> "http://www.cottontraders.co.uk/bin/venda?bsref=cottontraders&log=22&mode=add&ex=co_disp-shopc&buy=ah10496&invt=ah10496&ivref=ah10496&qty=1&att1=One size&att2=Black&att3=&att4=&qty=1"']
+  add_to_basket_button: ["link", ':text=> "Add to Basket"']
+  extra_steps:  
+    - [pause, 10]
+    - [image, alt, "Add Stretch Turtle Neck Top to Basket"]
 
 category_page:
   URL: "http://www.cottontraders.co.uk/menswear/mens-tops/icat/menstops/"

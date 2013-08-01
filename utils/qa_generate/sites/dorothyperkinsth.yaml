@@ -1,0 +1,66 @@
+site_name: dorothyperkinsth
+pretty_name: dorothyperkins TH
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user224@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: dress
+database_num: 4
+site_id: 219
+integration: standard
+
+home_page:
+  URL: "http://th.dorothyperkins.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':text => "Sign in or register"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://th.dorothyperkins.com/en/dpth/product/clothing-1584002/dresses-1584223/petite-diamante-2in1-dress-2132864?bi=1&ps=20"
+  expected_recs: 1
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+  - [pause, 20]
+
+category_page:
+  URL: "http://th.dorothyperkins.com/en/dpth/category/clothing-1584002/dresses-1584223"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://th.dorothyperkins.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=35099&langId=-1&storeId=13081"
+  expected_recs: 4 
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_remove: ["link", ':class => "remove_bag_item"']
+  extra_steps:
+    - [pause, 20]  
+
+login_page:
+  URL: "https://th.dorothyperkins.com/webapp/wcs/stores/servlet/LogonForm?catalogId=35099&storeId=13081&krypto=sL1GNT%2FvNwWYptit8eRIMo2rthXETZZlHvfvrAXs0hP%2FibeBV8saCezmrRkOGCQ1gzotxk%2F07QzE%0A5c5bvHkUSA%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://th.dorothyperkins.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13081&catalogId=35099&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=5&y=9"
+  expected_recs: 0
+  zerosearch_recs: 5
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  extra_steps:
+  # - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "0208768789"]
+ #  - [p, class, "enter_manual_address"]
+   - [text_field, class, "text address_line_1", "Units 207-211"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "london"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 20]

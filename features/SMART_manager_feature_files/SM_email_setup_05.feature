@@ -59,7 +59,7 @@ Scenario: Verifying the strategy "Best Sellers by Conversion (last 90 days)" in 
   And I pause for 10 seconds
   When I click on the debug information link on the emailcreate page
   And I pause for 10 seconds
- And the debug info should show the "expected strategy" on the emaildebug page
+ Then the debug info should show the "Best Sellers by Conversion (last 90 days)" on the emaildebug page
   #Then the expected strategy should be "Best Sellers by Conversion (last 90 days)" on the emaildebug page
   
   

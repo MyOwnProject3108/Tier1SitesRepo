@@ -1,0 +1,64 @@
+site_name: topshopde
+pretty_name: Topshop DE
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user134@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: shirts
+database_num: 4
+site_id: 227
+integration: standard
+
+home_page:
+  URL: "http://de.topshop.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':title => "Anmeldung"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://de.topshop.com/de/tsde/produkt/bekleidung-345341/kleider-345356/besticktes-ballkleid-1980027?bi=1&ps=20"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://de.topshop.com/de/tsde/kategorie/bekleidung-345341/kleider-345356"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://de.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34054&langId=-3&storeId=13056"
+  expected_recs: 4 
+  basket_checkout: ["link", ':text => "Zur Kasse"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://us.topshop.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33060&storeId=13052&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://us.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13052&catalogId=33060&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  checkout_extra_steps:
+  extra_steps:
+   - [select_list, id, "address_title", "Herr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "09387493479"]
+   - [text_field, class, "text address_line_1", "Units 232-234"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "london"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 20]
+   

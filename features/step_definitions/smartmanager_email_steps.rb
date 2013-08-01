@@ -180,26 +180,33 @@ When(/^I click on the debug information link on the emailcreate page$/) do
 end
 
 When(/^the debug info should show the "(.*?)" on the emaildebug page$/) do |expectedstrategy|
- 
+#puts on_page(Smartmanager::EmaildebugPage).text.include?("expectedstrategy").should == false
+#puts @browser.text.include? '$expectedstrategy'
+ if @browser.text.should == expectedstrategy
+puts "Test passed!"
+else
+puts "Test failed!"
+end
+#puts on_page(Smartmanager::EmaildebugPage).text.include? "expectedstrategy"
  #on_page(Smartmanager::EmaildebugPage).expected_strategy_element.exists?
-#on_page(Smartmanager::EmaildebugPage).expectedstrategy.eql?(expectedstrategy).should == true 
+#pp on_page(Smartmanager::EmaildebugPage).expectedstrategy.eql?(expectedstrategy).should == true 
 #on_page(Smartmanager::EmaildebugPage).expectedstrategy1.eql?(expectedstrategy1).should == true 
-	x = @expectedstrategy
+#	x = @expectedstrategy
 	#if @expectedstrategy['color'] == "red"
 	#@expectedstrategy
-	if(x == expectedstrategy)
-	puts expectedstrategy
-	else if(x == 'Product Catalog')
-	puts expectedstrategy
-	if
-	puts false
+#	if(x == expectedstrategy)
+#	puts expectedstrategy
+#	else if(x == 'Product Catalog')
+#	puts expectedstrategy
+#	if
+#	puts false
 #	if(x='Product Catalog' || 'Best Sellers by Conversion (last 90 days)')
 #	puts true
 #	else
 #	puts false
-	end
-end
-end
+#	end
+#end
+#end
 end
 
 When(/^I enter email as "(.+)" on the mailinator page$/) do |emailrecs|
