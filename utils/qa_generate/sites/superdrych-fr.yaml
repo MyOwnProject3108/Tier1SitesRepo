@@ -1,0 +1,54 @@
+site_name: superdrychchfr
+pretty_name: SuperDry CH CH-FR
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: dsavavas
+valid_search_term: jacket
+database_num: 5
+site_id: 821
+integration: json
+
+home_page:
+  URL: "http://www.superdrystore.ch/ch-fr/"
+  expected_recs: 0
+  login_link: ["link", ':href => "http://www.superdrystore.ch/ch-fr/my-account"']
+  search_field: ["text_field", ':id => "searchword"']
+
+product_page:
+  URL: "http://www.superdrystore.ch/ch-fr/femme/chinos/details/39116/pantacourt-commodity"    
+  expected_recs: 4
+  add_to_basket_button: ["button", ':src=> "http://www.superdrystore.ch/ch-fr/public/images/languages/fr-FR/product/add-to-bag.png"']
+  extra_steps:
+   - [span, xpath, "//div[@id='js_dropdown_product_id']/span"]
+   - [span, text, "XS"]
+   - [pause,40]
+
+    
+category_page:
+  URL: "http://www.superdrystore.ch/ch-fr/femme/chinos"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.superdrystore.ch/ch-fr/shopping-bag"
+  expected_recs: 2
+  basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
+  basket_remove: ["button", ':class => "cart-delete button"']  
+
+login_page:
+  URL: "https://www.superdrystore.ch/ch-fr/my-account"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"username_login"']
+  password_field: ["text_field", ':id=>"passwd_login"']  
+  login_submit: ["button", ':name=>"Submit"']
+
+searchresults_page:
+  URL: "http://www.superdrystore.ch/ch-fr/search/jacket"
+  expected_recs: 5
+  zerosearch_recs: 5
+
+checkout_page:
+  URL: "https://www.superdrystore.ch/ch-fr/checkout"
+  expected_recs: 0 
