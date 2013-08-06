@@ -126,34 +126,54 @@ end
  #     assert_exists
   #    driver.action.drag_and_drop(@element, other.wd).perform
    # end
-   When(/^I drag and drop "(.*?)" rule to the position slot on the emailcreate page$/) do |algorithm|
+   
+   ########Its working###########
+ #  When(/^I drag and drop "(.*?)" rule to the position slot on the emailcreate page$/) do |algorithm|
 #	algorithm = ['Abandoned Basket','Product Catalog','Wishlist highly viewed']
 	#email_strategy.each do |y|
 #	my_element = @browser.span(:text => 'email_strategy')
-my_element = @browser.span(:text => "Abandoned Basket")
+##working####
+#my_element = @browser.span(:text => "Abandoned Basket")
 #my_element = @browser.span(:text => algorithm)
- 
-	target = @browser.div(:class => "droparea ui-droppable ui-sortable")
+
+#working### 
+	#target = @browser.div(:class => "droparea ui-droppable ui-sortable")
 #target = @browser.div(:id => "0")
-	my_element.fire_event("onmousedown")
-	@browser.driver.action.click_and_hold(my_element.wd).perform
-	sleep 10
+#working####
+	#my_element.fire_event("onmousedown")
+	#@browser.driver.action.click_and_hold(my_element.wd).perform
+	#sleep 10
 #@browser.driver.action.move_to(target.wd).move_by(10, 10).click.perform
-	@browser.driver.action.move_to(target.wd).click.perform
-	sleep 5
+##working####
+	#@browser.driver.action.move_to(target.wd).click.perform
+	#sleep 5
 ##@browser.driver.action.release.perform
 	#if y=="Abandoned Basket"
-		my_element.fire_event("onmouseup")
+	#working###
+	#	my_element.fire_event("onmouseup")
 	#end
 	# @browser.driver.action.key_up(:control)
  #action.perform
 # a.drag_and_drop_on(b)
  #@browser.action.drag_and_drop(a, b).perform
  #end
- end
+ #end
 
- When(/^I drag and drop Best Sellers by Conversion \(last (\d+) days\) rule to the position slot on the emailcreate page$/) do |bestseller|
-  my_element1 = @browser.span(:text => "Best Sellers by Conversion (last 90 days)")
+ 
+ When(/^I drag and drop "(.*?)" rule to the position slot on the emailcreate page$/) do |algo|
+    my_element1 = @browser.span(:text => algo)
+  target1 = @browser.div(:class => "droparea ui-droppable ui-sortable")
+  my_element1.fire_event("onmousedown")
+	@browser.driver.action.click_and_hold(my_element1.wd).perform
+	sleep 10
+	@browser.driver.action.move_to(target1.wd).click.perform
+	sleep 5
+	my_element1.fire_event("onmouseup")
+end
+
+
+ When(/^I drag and drop Product Catalog rule to the position slot on the emailcreate page$/) do
+  my_element1 = @browser.span(:text => "Product Catalog")
   target1 = @browser.div(:class => "droparea ui-droppable ui-sortable")
   my_element1.fire_event("onmousedown")
 	@browser.driver.action.click_and_hold(my_element1.wd).perform
@@ -184,14 +204,26 @@ When(/^I click on the debug information link on the emailcreate page$/) do
 @current_page.email_debuginfo_link_element.click
 end
 
-When(/^the debug info should show the "(.*?)" on the emaildebug page$/) do |expectedstrategy|
+Then(/^I should see "(.*?)" on the emaildebug page$/) do |expected_result|
 #puts on_page(Smartmanager::EmaildebugPage).text.include?("expectedstrategy").should == false
 #puts @browser.text.include? '$expectedstrategy'
- if @browser.text.should == expectedstrategy
-puts "Test passed!"
-else
-puts "Test failed!"
+	@browser.window(:title => "Peerius").use do
+	#@browser.text.should == expected_result
+#	@browser.table(:xpath => "//*[@id='peeriusDebug']/tbody/tr[9]/td").text
+#result= @browser.text.include? expected_result
+#puts result.size
+puts (@browser.text.include? expected_result).should == true
+ #   @browser.text.should == expected_result
+ pp @browser.elements(:text => expected_result).size
+ pp @browser.td(:text => expected_result)
+ 
+	@browser.window(:title => "Peerius").close
 end
+ #if @browser.text.should == expectedstrategy
+#puts "Test passed!"
+#else
+#puts "Test failed!"
+#end
 #puts on_page(Smartmanager::EmaildebugPage).text.include? "expectedstrategy"
  #on_page(Smartmanager::EmaildebugPage).expected_strategy_element.exists?
 #pp on_page(Smartmanager::EmaildebugPage).expectedstrategy.eql?(expectedstrategy).should == true 
