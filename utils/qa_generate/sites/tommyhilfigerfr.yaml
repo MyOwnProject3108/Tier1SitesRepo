@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
-  URL: "http://fr.tommy.com/Tommy-Chemise-Polo-Coupe-%22slim%22/0887828019,fr_FR,pd.html?cgid=206000#!color%3D297%26i%3D7"
+  URL: "http://fr.tommy.com/Nanette-Top/1657628583,fr_FR,pd.html?cgid=408000"
   expected_recs: 4
   add_to_basket_button: ["button", ':class=> "button active addtocartbutton a"']
   extra_steps:

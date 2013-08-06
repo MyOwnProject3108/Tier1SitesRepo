@@ -19,11 +19,11 @@ home_page:
 
 product_page:
   URL: "http://www.superdry.com/womens/t-shirts/details/39729/vintage-logo-t-shirt"    
-  expected_recs: 6
+  expected_recs: 1
   add_to_basket_button: ["button", ':value=> "Add to bag"']
   extra_steps:      
     - [span, text, "select size"]
-    - [span, text, "medium UK 12"]
+    - [span, text, "S"]
     - [pause,40]
     
 category_page:

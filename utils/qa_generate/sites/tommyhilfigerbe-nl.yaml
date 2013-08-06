@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
-  URL: "http://be.tommy.com/Tommy-Slim-Fit-Polo/0887828002,nl_BE,pd.html?cgid=206000#!color%3D297%26i%3D6"
+  URL: "http://be.tommy.com/Elly-Rugby-Polo/1M87629951,nl_BE,pd.html?cgid=103000#!color%3D475%26i%3D6"
   expected_recs: 4
   add_to_basket_button: ["button", ':class=> "button active addtocartbutton a"']
   extra_steps:
