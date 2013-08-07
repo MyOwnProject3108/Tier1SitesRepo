@@ -18,11 +18,12 @@ home_page:
   search_field: ["text_field", ':id => "in_site_search"']
 
 product_page:
-  URL: "http://www.thewhitecompany.com/the-little-white-company-childrens-bedroom/childrens-bedroom-accessories/girls-towels/"
+  URL: "http://www.thewhitecompany.com/the-little-white-company/toys-and-books/riley-puppy/"
   expected_recs: 2
   add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
   extra_steps:
-    - [image, class, "spinbox-more"]
+    - [pause,10]
+    - [text_field, id, "in-quantities-RPUTYNNX", "1"]
     
 category_page:
   URL: "http://www.thewhitecompany.com/bathroom/towels/"
