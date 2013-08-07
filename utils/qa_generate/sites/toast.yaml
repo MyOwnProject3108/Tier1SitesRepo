@@ -3,7 +3,7 @@ pretty_name: toast
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: webtest@mailinator.com
+username: webtest1@mailinator.com
 password: webtest
 zero_search_term: dvd
 valid_search_term: top
@@ -54,13 +54,16 @@ checkout_page:
     - [text_field, id, "txtBuildingNameNumber", "30"]
     - [text_field, id, "txtPostalCode", "SE1 0HS"]
     - [link, id, "shippingSearch"]
+    - [pause, 10]
     - [link, id, "51485474.00"]
-    - [checkbox, id, "chkUseForBilling"]
+    - [pause, 10]
     - [select_list, id, "GeneralInfo.title", "Mr"]
     - [text_field, id, "GeneralInfo.first_name", "web"]
     - [text_field, id, "GeneralInfo.last_name", "test"]
     - [text_field, id, "GeneralInfo.tel_number", "02034567245"]
+    - [checkbox, id, "chkUseForBilling"]
+    - [pause, 5]
     - [link, id, "shippingProceed"]
-    - [pause,10]
+    - [pause, 5]
     - [link, id, "shippingMethodProceed"]
     - [pause,10]
