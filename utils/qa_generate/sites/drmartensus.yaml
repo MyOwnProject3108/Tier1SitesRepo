@@ -53,7 +53,7 @@ checkout_page:
   expected_recs: 0
   extra_steps:
   - [pause,5]
-  - [radio, name, "ShippingMethodID", "3"] # not accepting this format.
+  - [input, id, "ShippingMethodID1"] # not accepting this format.
   - [pause, 20]
   - [text_field, name, "CardName", "Amy Fowler"]
   - [text_field, name, "CardNumber", "5555555555554444"]
