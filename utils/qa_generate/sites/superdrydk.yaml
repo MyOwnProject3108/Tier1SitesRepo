@@ -20,11 +20,11 @@ home_page:
 product_page:
   URL: "http://www.superdry.dk/damer/chinos/details/39117/commodity-capribukser"    
   expected_recs: 4
-  add_to_basket_button: ["button", ':src=> "http://www.superdry.dk/public/images/languages/da-DK/add-to-bag.png"']
+  add_to_basket_button: ["button", ':src => "http://www.superdry.dk/public/images/languages/da-DK/product/add-to-bag.png"']
   extra_steps:
    - [span, xpath, "//div[@id='js_dropdown_product_id']/span"]
    - [span, text, "S"]
-   - [pause,40]
+   - [pause,50]
 
     
 category_page:

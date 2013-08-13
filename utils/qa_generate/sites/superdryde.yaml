@@ -20,7 +20,7 @@ home_page:
 product_page:
   URL: "http://www.superdry.de/damen/stiefel/details/37514/schuh-eva"    
   expected_recs: 1
-  add_to_basket_button: ["button", ':src=> "http://www.superdry.de/public/images/languages/de-DE/add-to-bag.png"']
+  add_to_basket_button: ["button", ':src=> "http://www.superdry.de/public/images/languages/de-DE/product/add-to-bag.png"']
   extra_steps:
    - [span, xpath, "//div[@id='js_dropdown_product_id']/span"]
    - [span, text, "4"]
