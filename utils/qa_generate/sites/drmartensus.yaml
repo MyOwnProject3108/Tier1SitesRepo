@@ -3,8 +3,8 @@ pretty_name: drmartensus
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: amy@hotmail.com
-password: 123123
+username: webtest@mailinator.com
+password: P@ssw0rd
 zero_search_term: dvd
 valid_search_term: boots
 database_num: 6
@@ -49,7 +49,7 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
-  URL: "https://store.drmartens.co.uk/checkoutpayment.aspx"
+  URL: ""
   expected_recs: 0
   extra_steps:
   - [pause,5]

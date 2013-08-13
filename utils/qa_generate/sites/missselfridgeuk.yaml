@@ -12,7 +12,7 @@ site_id: 539
 integration: standard
 
 home_page:
-  URL: "http://www.missselfridge.com/#slide1"
+  URL: "http://www.missselfridge.com/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title=> "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']

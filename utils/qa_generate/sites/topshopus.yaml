@@ -12,7 +12,7 @@ site_id: 227
 integration: standard
 
 home_page:
-  URL: "http://us.topshop.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13052&catalogId=33060&geoip=home"
+  URL: "http://us.topshop.com/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']

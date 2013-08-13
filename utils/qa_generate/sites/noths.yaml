@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "term"']
 
 product_page:
-  URL: "http://www.notonthehighstreet.com/outthereinteriors/product/fusion-dinner-plate-blue-red"	
+  URL: "http://www.notonthehighstreet.com/cooperrowevintageliving/product/reclaimed-oak-bench"	
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "add_to_cart"']
   
