@@ -14,7 +14,7 @@ integration: json
 home_page:
   URL: "http://de.tommy.com/"
   expected_recs: 0
-  login_link: ["link", ':text => "Login"']
+  login_link: ["link", ':title => "Einloggen"']
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
