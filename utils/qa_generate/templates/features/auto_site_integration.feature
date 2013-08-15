@@ -77,6 +77,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
 <% end %>
+  And I pause for 10 seconds
 <% if site["home_page"]["login_link"] %>
   When I click login
   And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"

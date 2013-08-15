@@ -253,8 +253,8 @@ Scenario: Verifying the strategy "New products from favourite categories(last 12
   Then I should see "New products from favourite categories(last 120 days)" on the emaildebug page
 
    
-Scenario: Verifying the email triggering functionality with no repeat recs
-  And I enter email name as "AutoTestEmail43"
+Scenario: Verifying no repeat recs
+  And I enter email name as "AutoTestEmail26"
   And I enter email content width as 200 and height as 140
   And  I select title color "blue"
   And I select price color "red"
@@ -262,7 +262,7 @@ Scenario: Verifying the email triggering functionality with no repeat recs
   And I pause for 5 seconds
   And I select no repeat recs as 1 on the emailcreate page
   And I pause for 10 seconds
-  When I drag and drop "New products from favourite categories(last 120 days)" rule to the position slot on the emailcreate page
+  When I drag and drop "New Products(last 14 days)" rule to the position slot on the emailcreate page
   And I pause for 5 seconds
  And copy position 1 configuration to position 2
 #  And I enter email as "webtestpeerius@mailinator.com"
@@ -274,7 +274,7 @@ Scenario: Verifying the email triggering functionality with no repeat recs
   And I pause for 10 seconds
   When I click on the debug information link on the emailcreate page
   And I pause for 10 seconds
-  Then I should see either "(Best Sellers by Revenue ( last 28 days)|Product Catalog)" on the emaildebug page
+  Then I should see either "(New Products(last 14 days) ||Product Catalog)" on the emaildebug page
 #  When I click on the Go button on the mailinator page
  # And I pause for 5 seconds
 #  Then I should see Our Recommendations link on the mailinator page
