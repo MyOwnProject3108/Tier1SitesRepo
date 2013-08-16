@@ -14,7 +14,7 @@ integration: standard
 home_page:
   URL: "http://eu.topman.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13061&catalogId=34064&geoip=home"
   expected_recs: 0
-  login_link: ["link", ':title => "Login"']
+  login_link: ["link", ':title => "My Account"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
