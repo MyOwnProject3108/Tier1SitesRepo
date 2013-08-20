@@ -24,7 +24,7 @@ product_page:
   expected_recs: 3
   add_to_basket_button: ["button", ':name => "addToBasket"']
   extra_steps:
-   - [select_list, id, "selSize", "OS"]
+#   - [select_list, id, "selSize", "OS"]
    - [pause, 20]
 
 category_page:

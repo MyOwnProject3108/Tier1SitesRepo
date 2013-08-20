@@ -23,7 +23,7 @@ product_page:
   add_to_basket_button: ["link", ':text => "Add to Basket"']
   extra_steps:
    - [span, xpath, ".//*[@id='Size-button']/span"]
-   - [link, "text", "UK 4"]
+   - [link, "text", "UK 10"]
    - [pause,20]
 
 category_page: 
