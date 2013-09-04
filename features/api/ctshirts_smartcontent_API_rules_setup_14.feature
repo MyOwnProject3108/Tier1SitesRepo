@@ -92,7 +92,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS1" on the smartcontent location page
+ And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "u.source="direct"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -126,7 +126,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS3" on the smartcontent location page
+ And I select creative image as "LS3 - INACTIVE" on the smartcontent location page
  Then I enter "smart" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -143,7 +143,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS1" on the smartcontent location page
+ And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "u.visitor="new"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -160,7 +160,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS2" on the smartcontent location page
+ And I select creative image as "LS2 - INACTIVE" on the smartcontent location page
  Then I enter "u.visitor="returning"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -177,7 +177,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS3" on the smartcontent location page
+ And I select creative image as "LS3 - INACTIVE" on the smartcontent location page
  Then I enter "u.customer="new"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -194,7 +194,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS1" on the smartcontent location page
+ And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "u.customer="returning"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -211,7 +211,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS1" on the smartcontent location page
+ And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "direct" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -228,7 +228,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS1" on the smartcontent location page
+ And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "default" in the criteria1 position on the smartcontent location page
   And I click on the save button on the smartcontent location page
  Then I should end up on the smartcontent page
@@ -243,7 +243,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS3" on the smartcontent location page
+ And I select creative image as "LS3 - INACTIVE" on the smartcontent location page
  Then I enter "tags" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -260,7 +260,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS1" on the smartcontent location page
+ And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "countrycode="GB"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -277,7 +277,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS2" on the smartcontent location page
+ And I select creative image as "LS2 - INACTIVE" on the smartcontent location page
  Then I enter "countrycode="US"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -294,7 +294,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS3" on the smartcontent location page
+ And I select creative image as "LS3 - INACTIVE" on the smartcontent location page
  Then I enter "countrycode="FR"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
@@ -331,11 +331,11 @@ Scenario: Users should be able to create new setup for smartcontent
  And I click on the Activate button on the smartcontent activation page
  Then I should end up on the smartcontent page
  Examples:
-	|   setupName					      |      imagename1 		       |  		criteria1            |      imagename2 	    		      |  		criteria2           |  imagename3 	 |  	criteria3    		     |
-	|"auto_lastviewedcategory"            |   "Casual - Trousers - stack"  |"lastviewedcategory"        |   "Shirts - formal - classic fit"	  |"lastviewedcategory"         | "Ties - GROUP" |"lastviewedcategory"           |
-	|"auto_purchasedHistoryByCategory" 	  |   "Ties - GROUP"			   |"purchasehistorybycategory" |	"Shoes - GROUP"			 		  |"purchasehistorybycategory"  |  "LS3"         |"purchasehistorybycategory"    |
-	|"auto_purchaseHistoryByAttribute" 	  |   "LS1"			  			   |"purchasehistorybyattributes"|	"Shoes - GROUP"			 		  |"purchasehistorybyattributes"  |  "LS3"       |"purchasehistorybyattributes"  |
-	|"auto_Lastviewedcategorywithparameter" |   "Casual - Trousers - stack"|"lastviewedcategory="TIES""|	"Shirts - formal - classic fit"			 		  |"lastviewedcategory"  |  "LS3"       |"purchasehistorybyattributes"  |
+	|   setupName					      |      imagename1 		       |  		criteria1            |      imagename2 	    		      |  		criteria2           |  
+	|"auto_lastviewedcategory"            |   "Casual - Trousers - stack"  |"lastviewedcategory"        |   "Shirts - formal - classic fit"	  |"lastviewedcategory"         | 
+	|"auto_purchasedHistoryByCategory" 	  |   "Ties - GROUP"			   |"purchasehistorybycategory" |	"Shoes - GROUP"			 		  |"purchasehistorybycategory"  |  
+	|"auto_purchaseHistoryByAttribute" 	  |   "LS1 - INACTIVE"			  			   |"purchasehistorybyattributes"|	"LS3 - INACTIVE"			 		  |"purchasehistorybyattributes"  | 
+	|"auto_Lastviewedcategorywithparameter" |   "Casual - Trousers - stack"|"lastviewedcategory="TIES""|	"Shirts - formal - classic fit"		|"lastviewedcategory"  | 
 	
 	
 	

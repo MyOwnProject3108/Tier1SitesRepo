@@ -21,7 +21,8 @@ Background:
 <% end %>
 
 Scenario Outline: <%= site["pretty_name"] %> Homepage is tracked using SMART-API
-    When I track a home page
+    #When I track a home page using version <version>
+	When I track a home page
     Then I should get an OK status back
     Examples:
     | version |
