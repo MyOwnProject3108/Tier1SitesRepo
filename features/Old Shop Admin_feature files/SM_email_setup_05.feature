@@ -398,7 +398,7 @@ Scenario: verifying the error message for duplicate email widgets
   
    
 Scenario: Verifying no repeat recs
-  And I enter email name as "AutoTestEmail120"
+  And I enter email name as "AutoTestEmail20"
   And I enter email content width as 200 and height as 140
   And  I select title color "blue"
   And I select price color "red"
@@ -515,7 +515,7 @@ Scenario: Verifying no repeat recs
   Then I should end up on the email page
   
   Scenario: Verifying the strategy "Cross-sell, previous purchases and views" in the debug
-  And I enter email name as "AutoTestEmail124"
+  And I enter email name as "AutoTestEmail24"
   And I enter email content width as 200 and height as 140
   And  I select title color "blue"
   And I select price color "red"
