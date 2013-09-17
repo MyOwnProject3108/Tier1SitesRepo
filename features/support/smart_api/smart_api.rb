@@ -15,8 +15,8 @@ module Peerius
         def initialize(site, version=nil, testserver=nil, useSSH=nil)
             file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
-        #    @version = version.nil? ? "v1_1" : version
-			@version = version.nil? ? "v1_2" : version
+            @version = version.nil? ? "v1_1" : version
+		#	@version = version.nil? ? "v1_2" : version
             @useSSH = useSSH.nil? ? true : useSSH
             urlPrefix = @useSSH ? "https" : "http" 
             if testserver.nil? then  
@@ -34,7 +34,7 @@ module Peerius
                 "currentURI" => site+"://unknown",
                 "previousURI" => site+"://unknown",
                 "clientToken" => "gfsdkl47gh3248", #livedemoshop
-                "recContent" => "refCodeOnly",
+                #"recContent" => "refCodeOnly",
             }
             @json_request = ""
             @response_times = []

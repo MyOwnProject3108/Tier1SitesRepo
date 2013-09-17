@@ -100,6 +100,12 @@ When /^I track (?:a|the) product page$/ do
    @api.json_product = {"refCode" => "prod-dw041dpu"}
    @api.track
 end
+##
+When(/^I track the product page for variant info$/) do
+   @api.json_type = 'product'
+   @api.json_product = {"refCode" => "TS16R05BBLK"}
+   @api.track
+   end
 
 
 ###
@@ -235,20 +241,24 @@ end
 	# @api.track
 # end
 
-When(/^I track a variant basket page with varinfo$/) do
+
+When(/^I track a variant "(.*?)" basket page with variant colour "(.*?)" size "(.*?)" using the SMART\-API$/) do|item,col,siz|
+#When(/^I track a variant basket page with varinfo$/) do
 	@api.json_type = 'basket'
 	items = [
-      {"refCode" => "TS13A56EGRN","variant"=>{"colour" => "green","size"=> "4"},"qty" => 3, "price" => 50.5},
-      {"refCode" => "TS16H75UBLK","variant"=>{"colour"=>"black","size"=>"10"}, "qty" => 3, "price" => 52.5},
+	  {"refCode" => "#{item}", "qty" => 3, "variant" => {"colour" =>"#{col}","size" =>"#{siz}"}},
+      #{"refCode" => "TS14J29DACB","variant"=>{"colour" => "acid blue","size"=> "6"},"qty" => 3, "price" => 10.5},
+      #{"refCode" => "TS16H75UBLK","variant"=>{"colour"=>"black","size"=>"10"}, "qty" => 3, "price" => 52.5},
 	   ]
 	 @api.json_basket = {"items" => items, "currency" => "GBP"} 
 	 @api.track
 end
 
-When(/^I order product "(.*?)" with variant info using the SMART\-API$/) do|item|
+#When I order product "TS14J29DACB" with variant colour "acid blue" size "6" using the SMART-API	
+When(/^I order product "(.*?)" with variant colour "(.*?)" size "(.*?)" using the SMART\-API$/) do|item,col,siz|
 	@api.json_type = 'order'
     items = [
-         {"refCode" => "#{item}", "qty" => 3, "variant" => {"colour" =>"green","size" =>"4"},"price" => 60.50},
+         {"refCode" => "#{item}", "qty" => 3, "variant" => {"colour" =>"#{col}","size" =>"#{siz}"},"price" => 60.50},
      ]
      @api.json_order = {
          "orderNo" => "API-#{item}-#{Time.now.to_i}",
@@ -333,6 +343,17 @@ Then /^I should get at least (\d+) SMART-content creatives? in the response$/ do
     @api.content_creatives.count.should >= expected_creatives.to_i
 end
 
+##
+Then(/^one of the variant info should contain "(.*?)"$/) do |var_recs|
+   @api.json_type = 'product'
+   @api.json_product = {"refCode" => "TS03B03DBLK"}
+   @api.track
+   @api.should have_smart_recs
+   #@api.rec_widgets.count.should > 0
+   @api.total_recs.should >= var_recs
+end
+#
+##
 Then /^I should get at least (\d+) items? of SMART\-ranking content$/ do |expected_items|
     #pp @api.result
     @api.should have_smart_ranking_content

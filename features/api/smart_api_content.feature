@@ -54,11 +54,12 @@ Scenario: SMART-content clicks are denormalised in the db using SMART-API
     And I wait for denormalisation to finish
 	Then I should see at least 3 SMART-content clicks in the DB
 	  
-Scenario: SMART-content rule "default" works using SMART-API  
-    When I track the home page
-    Then I should get an OK status back
-	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Ties side"
+##Below scenario covered in Cthsirts_Api _tests
+#Scenario: SMART-content rule "default" works using SMART-API  
+   # When I track the home page
+   # Then I should get an OK status back
+#	And I should get at least 1 SMART-content creatives in the response
+#	And one of the SMART-content creative names should contain "Ties side"
 	
 Scenario: SMART-content merchandising rule "tags" works using SMART-API 
     When I track the home page

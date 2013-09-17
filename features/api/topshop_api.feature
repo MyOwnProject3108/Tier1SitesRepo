@@ -19,10 +19,25 @@ Scenario: I can order products with "variant_info"
 	When I start a new session
 	When I order product "TS19H28EBLK" with variant info using the SMART-API
 	Then I should get an OK status back
+	
+Scenario: I can order products with "variant_info recs"
+	Given I am using SMART-API v1_2 to access topshop
+	And I am using client token 89hyuaa2da3a
+	When I order product "TS35C13ERED" with variant colour "red" size "8" using the SMART-API	
+	Then I should get an OK status back
+	When I track the product page for variant info
+	And I should get at least 2 SMART-recs in the response
+	#And one of the variant info should contain "blue"
 		 
 Scenario: Basket page is tracked using SMART-API v1_2
 	Given I am using SMART-API v1_2 to access topshop
 	And I am using client token 89hyuaa2da3a
-    When I track a variant basket page with varinfo
+	#When I track the product page for variant info
+	#When I add a product "TS16H75UBLK" with variant colour "red" size "6" using the SMART-API to basket
+	When I track a variant "TS16H75UBLK" basket page with variant colour "red" size "6" using the SMART-API	
+    #When I track a variant basket page with varinfo
 	Then I should get an OK status back
-    And I should get at least 1 SMART-recs in the response
+    When I track the product page for variant info
+	And I should get at least 2 SMART-recs in the response
+	Then I should get an OK status back
+#	And one of the variant info should contain "black"
