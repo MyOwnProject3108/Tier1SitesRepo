@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
-  URL: "http://www.tedbaker.com/women%27s/women%27s_accessories/bags/104997-bow_shopper_bag/detail.aspx"
+  URL: "http://www.tedbaker.com/women%27s/women%27s_accessories/phone_cases/list.aspx#-&styCode=107496&colRef=58-LIGHT%20PINK&path=/women%27s/women%27s%20accessories/phone%20cases/"
   expected_recs: 4
   add_to_basket_button: ["span", ':text=> "ADD TO BAG"']
   extra_steps:
