@@ -16,6 +16,7 @@ module Smartmanager
 	  a(:ranking_link, :href => "adaptivelistings/list.pagex")
 	  a(:content_link, :href => "creative/list.page")
 	  a(:settings_link, :href => "/tracker/shop-admin/settings/settings.page")
+	  a(:new_smartmanager_link, :href => "/tracker/smartmanager/reporting/orders.page")
 	  
 	  def tracked_as
 	   return "HomePage"
