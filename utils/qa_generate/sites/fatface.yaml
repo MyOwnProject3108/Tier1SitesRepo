@@ -22,7 +22,7 @@ product_page:
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:
-    - [li, class, "6"]
+    - [li, class, "8"]
 
 category_page:
   URL: "http://www.fatface.com/women/dresses/icat/womensdresses/"

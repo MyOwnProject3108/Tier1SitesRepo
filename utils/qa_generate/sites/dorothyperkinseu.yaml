@@ -18,11 +18,11 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://euro.dorothyperkins.com/en/dpeu/product/clothing-742124/dresses-742148/cream-2in1-jumpsuit-2137173?bi=1&ps=20"
+  URL: "http://euro.dorothyperkins.com/en/dpeu/product/accessories-742126/watches-2183604/silver-and-crystal-watch-2146996?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
-    - [link, text, "20"]
+#    - [link, text, "20"]
     - [pause, 20]
 
 category_page:
