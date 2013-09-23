@@ -61,7 +61,14 @@ checkout_page:
   - [pause,10]
   - [image, alt, "use Address"]
   - [pause,10]
- # -[image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
- 
+# - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
+  - [text_field, id, "card_number", "4444333322221111"]
+  - [select_list, id, "expiry_month", "May"]
+  - [select_list, id, "expiry_year", "2016"]
+  - [text_field, id, "check_number", "123"]
+  - [image, alt, "Continue, to review your order"]
   
- 
+  
+  
+  
+  

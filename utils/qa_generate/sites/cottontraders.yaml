@@ -20,10 +20,10 @@ home_page:
 product_page:
   URL: "http://www.cottontraders.com/stretch-turtle-neck-top/invt/aa12620"
   expected_recs: 1
-  add_to_basket_button: ["link", ':text=> "Add to Basket"']
+  add_to_basket_button: ["link", ':title=> "Click to proceed"']
   extra_steps:  
     - [pause, 10]
-    - [image, alt, "Add Stretch Turtle Neck Top to Basket"]
+    - [image, src, "http://www.cottontraders.com/content/ebiz/cottontraders/resources/images/grid_instock.gif"]
 
 category_page:
   URL: "http://www.cottontraders.co.uk/menswear/mens-tops/icat/menstops/"

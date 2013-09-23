@@ -19,13 +19,14 @@ Scenario: Users should be able to delete email widget
   And  I select title color "blue"
   And I select price color "red"
   And I select background color "yellow"
-  When I drag "Product Catalog" rule to the position 1 slot
+ # When I drag "Product Catalog" rule to the position 1 slot
+  When I drag and drop "Product Catalog" rule to the position slot on the emailcreate page
   And copy position 1 configuration to position 2
   And I enter email as "webtest@mailinator.com"
   And I click on the save button on the emailcreate page
   Then I should end up on the email page
-  When I click on the delete link on the email page
-  And I confirm the delete email widget
+  When I click on the first delete link on the email page
+  And I confirm the delete email widget on the email page
   Then I should end up on the email page  
   
   

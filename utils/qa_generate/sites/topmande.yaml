@@ -18,9 +18,11 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://de.topman.com/de/tmde/produkt/kleidung-554976/herren-jeans-554982/enge-luke-jeans-von-lee-579902?bi=1&ps=20"
+  URL: "http://de.topman.com/de/tmde/produkt/kleidung-554976/herren-kapuzenpullis-1944116/k%C3%A4nguru-kapuzenjacke-lila-585459?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+  - [pause, 20]
 
 category_page:
   URL: "http://de.topman.com/de/tmde/kategorie/kleidung-554976/herren-jeans-554982"

@@ -1,0 +1,62 @@
+site_name: cathkidston
+pretty_name: cathkidston
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: dsavavas
+valid_search_term: bag
+database_num: 5
+site_id: 191
+integration: standard
+
+home_page:
+  URL: "http://www.cathkidston.co.uk/"
+  expected_recs: 0
+  login_link: ["link", ':text => "Login / Register"']
+  search_field: ["text_field", ':id => "searchBox"']
+
+product_page:
+  URL: "http://www.cathkidston.co.uk/p-19941-cath-kidston-kentish-rose-weekend-bag.aspx?referrer=category"    
+  expected_recs: 6
+  add_to_basket_button: ["button", ':class=> "AddToCartButton"']
+  extra_steps:
+   - [pause,40]
+
+category_page:
+  URL: "http://www.cathkidston.co.uk/c-486-cath-kidston-messenger-bags.aspx"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.cathkidston.co.uk/shoppingcart.aspx"
+  expected_recs: 3
+  basket_checkout: ["button", ':id => "btnCheckOutNowBottom"']
+  basket_remove: ["button", ':class => "CartDeleteButton"']  
+
+login_page:
+  URL: "https://www.cathkidston.co.uk/signin.aspx"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"EMail"']
+  password_field: ["text_field", ':id=>"txtPassword"']  
+  login_submit: ["button", ':name=>"existingLoginButton"']
+
+searchresults_page:
+  URL: "https://www.cathkidston.co.uk/searchadv.aspx?SearchTerm=bag"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: "https://www.cathkidston.co.uk/checkoutreview.aspx?paymentmethod=CREDIT+CARD"
+  expected_recs: 0 
+  extra_steps:
+   - [button, id, "btnContinueCheckout"]
+   - [pause,10]
+   - [text_field, id, "CardName", "Webtest"]
+   - [text_field, id, "CardNumber", "4444333322221111"]
+   - [text_field, id, "CardExtraCode", "123"]
+   - [select_list, id, "CardType", "VISA"]
+   - [select_list, id, "CardExpirationMonth", "04"]
+   - [select_list, id, "CardExpirationYear", "2015"]
+   - [button, class, "PaymentPageContinueCheckoutButton"]
+   - [pause,20] 

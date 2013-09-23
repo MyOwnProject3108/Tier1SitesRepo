@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 product_page:
-  URL: "http://www.mandco.com/blouses+shirts/butterfly-pleat-blouson/invt/1156608multi&bklist=icat,4,10,10010,10010290"
+  URL: "http://www.mandco.com/red-ruffle-front-dress/invt/1209531red&bklist=icat,4,10,10010,10010290"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:

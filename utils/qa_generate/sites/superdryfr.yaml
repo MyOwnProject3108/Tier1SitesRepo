@@ -20,7 +20,7 @@ home_page:
 product_page:
   URL: "http://www.superdry.fr/femme/chinos/details/39116/pantacourt-commodity"    
   expected_recs: 4
-  add_to_basket_button: ["button", ':src=> "http://www.superdry.fr/public/images/languages/fr-FR/product/add-to-bag.png"']
+  add_to_basket_button: ["button", ':value => "Ajouter au panier"']
   extra_steps:
    - [span, xpath, "//div[@id='js_dropdown_product_id']/span"]
    - [span, text, "XS"]

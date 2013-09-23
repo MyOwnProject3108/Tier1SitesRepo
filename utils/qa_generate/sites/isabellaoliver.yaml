@@ -14,7 +14,7 @@ integration: standard
 home_page:
   URL: "http://www.isabellaoliver.com/maternity-clothes"
   expected_recs: 0
-  login_link: ["link", ':title => "Sign In/Register"']
+  login_link: ["link", ':text => "Sign In/Register"']
   search_field: ["text_field", ':id => "searchInput"']
   #custom_tracking_test: |
     #And I click on the button with id "btn_search_go"
@@ -22,7 +22,7 @@ home_page:
 product_page:
   URL: "http://www.isabellaoliver.com/maternity-clothes/uk/100/maternity-tops/TP137.html"
   expected_recs: 1
-  add_to_basket_button: ["button", ':class=> "addbutton"']
+  add_to_basket_button: ["span", ':text=> "ADD TO BAG"']
   extra_steps:
     - [select_list, id, "skuvalue1", "Grey Melange"]
     - [select_list, id, "skuvalue2", "L (UK Size 16-18)"]
@@ -35,8 +35,8 @@ category_page:
 basket_page:
   URL: "http://www.isabellaoliver.com/maternity-clothes?dsp=cart"
   expected_recs: 0
-  basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
-  basket_remove: ["link", ':class => "remove_bag_item"']
+  basket_checkout: ["image", ':alt => "Checkout"']
+  basket_remove: ["link", ':text => "remove"']
 
 login_page:
   URL: "https://www.isabellaoliver.com/maternity-clothes/uk/member-login.html"

@@ -10,8 +10,10 @@ valid_search_term: shirts
 database_num: 5
 site_id: 785
 integration: json
+ignore: true
 
 home_page:
+  ignore: true
   URL: "www.neweracap.co.uk/"
   expected_recs: 0
   login_link: ["link", ':title => "MY ACCOUNT"']

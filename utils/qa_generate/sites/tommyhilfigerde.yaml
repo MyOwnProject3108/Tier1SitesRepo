@@ -1,9 +1,9 @@
-site_name: tommyhilfigereu
-pretty_name: Tommy Hilfiger EU
+site_name: tommyhilfigerde
+pretty_name: Tommy Hilfiger DE
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: user227@gmail.com
+username: user321@gmail.com
 password: P@ssw0rd
 zero_search_term: dvd
 valid_search_term: shirt
@@ -12,37 +12,37 @@ site_id: 82
 integration: json
 
 home_page:
-  URL: "http://eu.tommy.com/"
+  URL: "http://de.tommy.com/"
   expected_recs: 0
-  login_link: ["link", ':text => "Login"']
+  login_link: ["link", ':title => "Einloggen"']
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
-  URL: "http://eu.tommy.com/Addy-Printed-Blouse/1M87630126,default,pd.html?cgid=103000#!color%3D475%26i%3D7"
+  URL: "http://de.tommy.com/New-Regular-Fit-Polo/8718397700398,de_DE,pd.html#moredetails"
   expected_recs: 4
   add_to_basket_button: ["button", ':class=> "button active addtocartbutton a"']
   extra_steps:
     - [pause, 20]
 
 category_page:
-  URL: "http://eu.tommy.com/Blouses/103000,default,sc.html"
+  URL: "http://de.tommy.com/Polos/106000,de_DE,sc.html"
   expected_recs: 0
 
 basket_page:
-  URL: "http://eu.tommy.com/on/demandware.store/Sites-EU-Site/default/Cart-Show"
+  URL: "http://de.tommy.com/on/demandware.store/Sites-DE-Site/de_DE/Cart-Show"
   expected_recs: 0
   basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
   basket_remove: ["button", ':class => "remove no_print"']  
 
 login_page:
-  URL: "https://eu.tommy.com/on/demandware.store/Sites-EU-Site/default/Account-Show"
+  URL: "https://de.tommy.com/on/demandware.store/Sites-DE-Site/de_DE/Account-Show"
   expected_recs: 0
   username_field: ["text_field", ':id => "dwfrm_login_username"']
   password_field: ["text_field", ':id => "dwfrm_login_password"']  
   login_submit: ["button", ':name => "dwfrm_login_customlogin"']
 
 searchresults_page:
-  URL: "http://eu.tommy.com/on/demandware.store/Sites-EU-Site/default/Search-Show?q=shirt"
+  URL: "http://de.tommy.com/on/demandware.store/Sites-DE-Site/de_DE/Search-Show?q=shirt"
   expected_recs: 0
   zerosearch_recs: 0
   

@@ -24,7 +24,7 @@ product_page:
   extra_steps:
    - [span, xpath, "//div[@id='js_dropdown_product_id']/span"]
    - [span, text, "XS"]
-   - [pause,40]
+   - [pause,50]
 
     
 category_page:
