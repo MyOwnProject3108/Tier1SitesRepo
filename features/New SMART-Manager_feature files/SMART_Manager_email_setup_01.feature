@@ -20,7 +20,7 @@ Given I am on the smartmanager login page
  Then I should end up on the newemailcreate page
  
  Scenario: Verifying the styling for  
-  And I enter campaign name as "AutoTestEmailCampaign1"
+  And I enter email campaign name as "AutoTestEmailCampaign1"
   And I enter email content width as 220 and height as 140
   And I enter background colour "#804040" on the newemailcreate page
   And I pause for 10 seconds
