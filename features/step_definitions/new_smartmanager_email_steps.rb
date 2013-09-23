@@ -6,7 +6,7 @@ When(/^I click on the "(.*?)" link on the newemail page$/) do |newcampaign|
   @current_page.new_campaign_element.click
 end
 
-Then(/^I enter campaign name as "(.*?)"$/) do |campaignname|
+Then(/^I enter email campaign name as "(.*?)"$/) do |campaignname|
   @current_page.campaignname = campaignname
 end
 
