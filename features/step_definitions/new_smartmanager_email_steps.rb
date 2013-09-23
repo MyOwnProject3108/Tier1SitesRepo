@@ -10,6 +10,35 @@ Then(/^I enter email campaign name as "(.*?)"$/) do |campaignname|
   @current_page.campaignname = campaignname
 end
 
+Then(/^I click on the "(.*?)" on the newemailcreate page$/) do |advlink|
+  @current_page.adv_link_submit_element.click
+end
+
+Then(/^I should see "(.*?)" text on the newemailcreate page$/) do |advmessage|
+  @current_page.adv_message.should == advmessage
+end
+
+Then(/^I enter number of widgets as "(.*?)" on the emailconfiguration page$/) do |numwidgets|
+  @current_page.numwidgets = numwidgets
+end
+
+When(/^I click on the "(.*?)" button on the emailconfiguration page$/) do |createemail1|
+@current_page.create_email1_submit_element.click
+ end
+ 
+ 
+ Then(/^I click on the "(.*?)" class on the emailconfiguration page$/) do |strategyselect|
+@current_page.strategy_select_element.click
+end
+
+ Then(/^I select stategy as "(.*?)" on the emailconfiguration page$/) do |emailstrategy|
+  #@current_page.email_strategy_submit_element.click
+ # @current_page.emailstrategy = emailstrategy
+ #@current_page.list_items(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
+ @current_page.list_element(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
+end
+
+
 #Then(/^I select background colour "(.*?)" on the newemailcreate page$/) do |colour|
 #@current_page.background_colour_picker_element.click
 #@current_page.div_element(:id=>"color_selector").div_element(:class =>"color_swatch", :index => index).click
@@ -25,7 +54,6 @@ Then(/^I enter background colour "(.*?)" on the newemailcreate page$/) do |bgcol
 #@current_page.text_field(:name => 'backgroundColour', :index => 0).send_keys("bgcolour") 
 @current_page.bgcolour = bgcolour
 #@browser.send_keys :enter
-  
 end
 
 
@@ -39,14 +67,16 @@ Then(/^I enter title colour "(.*?)" on the newemailcreate page$/) do |titlecolou
 end
 
 Then(/^I select title font on the newemailcreate page$/) do
-  @current_page.select_list_element(:name => "title.Font").option(:value => "Verdana").click
+   @current_page.select_list_element(:name => "title.Font").when_present.select "Verdana"
+ # working @current_page.select_list_element(:name => "title.Font").option(:value => "Verdana").click
 end
 
 Then(/^I select title characteristics on the newemailcreate page$/) do
-  @current_page.select_list_element(:name => "title.characteristics").option(:value => "ITALIC").click
-end
+@current_page.select_list_element(:name => "title.characteristics").when_present.select "Italic"
+ end
+ 
 Then(/^I select font size on the newemailcreate page$/) do
- @current_page.select_list_element(:name => "title.fontSize").option(:value => "14").click
+@current_page.select_list_element(:name => "title.fontSize").when_present.select "14"
  end
  
  Then(/^I enter price colour "(.*?)" on the newemailcreate page$/) do |pricecolour|
@@ -54,15 +84,15 @@ Then(/^I select font size on the newemailcreate page$/) do
 end
 
 Then(/^I select price font on the newemailcreate page$/) do
-  @current_page.select_list_element(:name => "price.Font").option(:value => "Courier New").click
+   @current_page.select_list_element(:name => "price.Font").when_present.select "Courier New"
 end
 
 Then(/^I select price characteristics on the newemailcreate page$/) do
-  @current_page.select_list_element(:name => "price.characteristics").option(:value => "BOLD_ITALIC").click
+  @current_page.select_list_element(:name => "price.characteristics").when_present.select "Bold Italic"
 end
 
 Then(/^I select price size on the newemailcreate page$/) do
- @current_page.select_list_element(:name => "price.fontSize").option(:value => "15").click
+  @current_page.select_list_element(:name => "price.fontSize").when_present.select "15"
  end
 
 Then(/^I click the next button on the newemailcreate page$/) do
