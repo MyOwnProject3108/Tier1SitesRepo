@@ -255,11 +255,14 @@ Then(/^I should see "(.*?)" message on the smartcontent location page$/) do |con
   @current_page.content_message.should == contentmessage
 end
 
-Given(/^I select ctshirts from the sites list on the smartmanager home page$/) do
- @current_page.select_list_element(:name => "siteName").when_present.select "ctshirts"
-#@current_page.select_list_element(:name => "siteName").option("ctshirts").when_present.select
-#@current_page.select_list_element(:name => "siteName").select "ctshirts".when_visible
+#Given(/^I select ctshirts from the sites list on the smartmanager home page$/) do
+ #@current_page.select_list_element(:name => "siteName").when_present.select "ctshirts"
+#end
+
+Given(/^I select "(.*?)" from the sites list on the smartmanager home page$/) do |siteselection|
+ @current_page.siteselection = siteselection
 end
+
 
 Then(/^I select content location as HomePagebanner(\d+)$/) do |location1|
    @current_page.select_list_element(:name => "htmlInjectionPoint").select "HomePagebanner1"

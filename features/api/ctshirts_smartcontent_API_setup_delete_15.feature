@@ -2,7 +2,7 @@
 Feature: SMART-manager
 
 #
-# Smart content setup deltetion tests
+# Smart content setup deletion tests
 #
  
 Background:Users should be able to create new setup for smartcontent
