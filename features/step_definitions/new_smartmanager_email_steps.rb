@@ -31,12 +31,76 @@ When(/^I click on the "(.*?)" button on the emailconfiguration page$/) do |creat
 @current_page.strategy_select_element.click
 end
 
- Then(/^I select stategy as "(.*?)" on the emailconfiguration page$/) do |emailstrategy|
+#Then(/^I select stategy as "(.*?)"$/) do |emailstrategy|
+# @browser.div(:class => "visual").ul.li(:text => "Best Seller By Revenue in Smart Category").click 
+#@browser.div(:class => "visual").ul.li(:text => "#emailstrategy").click 
+#div_element(:class => "visual").ul.li(:class => "visual-item BESTSELLER_BY_CONVERSION_SMART_CATEGORY").when_present.click
+#@current_page.li_element.click
+#end
+
+Then(/^I select stategy as Best Seller By Revenue in Smart Category$/) do
+ # @current_page.list_element(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY", :index => 3).click
+# @browser.div(:class,'item-list').ul.li(:index => 2)
+ #  @current_page.div_element(:class => "visual").ul.li(:text => "Best Seller By Revenue in Smart Category").when_present.click
+ @browser.div(:class => "visual").ul.li(:text => "Best Seller By Revenue in Smart Category").click
+ end
+ 
+Then(/^I should see "(.*?)" error message on the emailconfiguration page$/) do |itemsmessage|
+  #@current_page.items_message.should == itemsmessage
+# pp @browser.div(:id => "mail_results").ul.li(:text => "Number of Items must be provided.").text.include? "itemsmessage"
+#  @current_page.div_element(:id => "mail_results").ul.li.text.include? "itemsmessage"
+  @current_page.text.include? "itemsmessage"
+end
+
+Then(/^I click on the cancel button on the newemailcreate page$/) do
+ @current_page.cancel_campaign_submit_element.click
+end
+
+
+Then(/^I click on the "(.*?)" tab on the emailconfiguration page$/) do |strategyexpression|
+  @current_page.strategy_expression_link_element.click
+end
+
+When(/^I select the hint as "(.*?)" on the emailconfiguration page$/) do |emailhint|
+ @browser.select_list(:class => "exp_left_hand").option(:value => "r.category").when_present.click
+end
+
+When(/^I select the expression as "(.*?)" on the emailconfiguration page$/) do |emailexp|
+ @browser.select_list(:class => "exp_op operatoroptions").option(:value => "=").when_present.click
+ end
+ 
+Then(/^I enter Category as "(.*?)" on the emailconfiguration page$/) do |attrvalue|
+  @current_page.attrvalue = attrvalue
+#  @browser.send_keys("{ENTER}")
+end
+
+Then(/^I click on the Hints tab on the emailconfiguration page$/) do
+  @current_page.hint_tab_link_element.click
+end
+
+#Then(/^I select hint as "(.*?)" on the emailconfiguration page$/) do |selectemailhint|
+ #@current_page.select_list(:name => "hintsBySlot[0]").option(:value => "unique-category").when_present.click
+#end
+
+#Then(/^I enter stategy as "(.*?)" on the emailconfiguration page$/) do |emailstrategy|
+ # @current_page.emailstrategy = emailstrategy
+#end
+
+
+# Then(/^I select stategy as "(.*?)" on the emailconfiguration page$/) do |emailstrategy|
+ #@current_page.ul(:class => "visual-list context-menu hide").lis(:index => 3 )
+ #@current_page.list_element(:class => "visual-list context-menu hide", :index => 3 ).click
   #@current_page.email_strategy_submit_element.click
  # @current_page.emailstrategy = emailstrategy
  #@current_page.list_items(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
- @current_page.list_element(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
-end
+ #@current_page.list_element(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
+#end
+
+#Then(/^I select strategy from the list with class "(.*?)"$/) do |emailstrategy1|
+  #@current_page.emailstrategy1 = emailstrategy1
+ # @browser.div(:class,'item-list').ul.li(:index => 2)
+ # @current_page.lis(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").select "Best Seller By Revenue in Smart Category"
+#end
 
 
 #Then(/^I select background colour "(.*?)" on the newemailcreate page$/) do |colour|

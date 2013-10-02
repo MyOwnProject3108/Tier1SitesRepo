@@ -16,7 +16,7 @@ module Smartmanager
 	  button(:email_campaign_submit, :class => "btn pull-right next")
 	  a(:adv_link_submit, :text => "Show Advanced Settings")
 	  p(:adv_message, :text => "In advanced mode you will be able to use normal html/css to style these pieces of content.")
- 
+	  a(:cancel_campaign_submit, :class => "btn btn-danger")
 	
 	 	 
 	 def tracked_as

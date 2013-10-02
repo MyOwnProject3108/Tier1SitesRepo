@@ -7,10 +7,10 @@ module Smartmanager
       direct_url URL
 	  div(:page_identifier, :id => "content")
 	  
-	  em(:error_message, :class => "error")
+	  div(:error_message, :class => "error")
       text_field(:username, :id=>"emailaddress")
       text_field(:password, :id=>"password")
-      button(:login_submit, :value=>"Login")
+      button(:login_submit, :class => "btn btn-medium text left btn-primary")
 	  #a(:reporting_submit, :href=>"analytics/recsreport.page", :index => 0)
 	  #a(:smartproduct_submit, :href=>"analytics/recsreport.page", :index => 0)
 	  #a(:smartproduct_submit, :href=>"merchandising/overview/list.page")

@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-jumpers-cardigans-281572/blue-colour-block-stripe-crew-neck-jumper-1870214?bi=1&ps=20"
+  URL: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-shirts-281895/navy-western-denim-shirt-2202383?bi=1&ps=20"
   expected_recs: 4
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
@@ -52,7 +52,7 @@ checkout_page:
     - [text_field, id, "address_first_name", "P"]
     - [text_field, id, "address_surname", "Eerius"]
     - [text_field, id, "address_main_telephone", "02033974940"]
-    - [p, class, "enter_manual_address"]
+ #   - [p, class, "enter_manual_address"]
     - [text_field, class, "text address_line_1", "Units 207-211"]
     - [text_field, class, "text address_line_2", "30 Great Guilford St"]
     - [text_field, class, "text address_town", "London"]

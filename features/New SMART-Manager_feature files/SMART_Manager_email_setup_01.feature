@@ -69,7 +69,7 @@ Scenario: Verifying the "Advanced link" for  Email campaigns for New Smart Manag
   And I pause for 5 seconds
   Then I should see "In advanced mode you will be able to use normal html/css to style these pieces of content." text on the newemailcreate page
   
-  Scenario: Verifying the error message for number of widgets for  Email campaigns for New Smart Manager
+Scenario: Verifying the error message if number of widgets is "-ve" value for Email campaigns
   And I enter email campaign name as "AutoTestEmailCampaign1"
   And I enter email content width as 220 and height as 140
   And I enter background colour "#804040" on the newemailcreate page
@@ -96,10 +96,44 @@ Scenario: Verifying the "Advanced link" for  Email campaigns for New Smart Manag
   And I enter number of widgets as "-1" on the emailconfiguration page
   And I click on the "visual-input" class on the emailconfiguration page
   And I pause for 10 seconds
-  And I select stategy as "Best Seller By Revenue in Smart Category" on the emailconfiguration page
+ # And I enter stategy as "Best Seller By Revenue in Smart Category" on the emailconfiguration page
+#  And I select strategy from the list with class "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY"
+  And I select stategy as Best Seller By Revenue in Smart Category
   And I pause for 10 seconds
   When I click on the "Create mail campaign" button on the emailconfiguration page
+  And I pause for 10 seconds
+  Then I should see "Number of Items must be provided." error message on the emailconfiguration page
   
+Scenario: Verifying the email campaign cancel button
+   And I enter email campaign name as "AutoTestEmailCampaign1"
+   And I pause for 10 seconds
+   And I click on the cancel button on the newemailcreate page
+   And I pause for 10 seconds
+   Then I should end up on the newemail page
+   
+  
+ Scenario: Verifying the expressions for Email campaigns
+  And I enter email campaign name as "AutoTestEmailCampaign1"
+  And I pause for 10 seconds
+  And I click the next button on the newemailcreate page
+  And I pause for 10 seconds
+  Then I should end up on the emailconfiguration page
+  And I click on the "visual-input" class on the emailconfiguration page
+  And I pause for 10 seconds
+  And I select stategy as Best Seller By Revenue in Smart Category
+  And I pause for 10 seconds
+  And I click on the "Expression" tab on the emailconfiguration page
+  And I pause for 10 seconds
+  And I select the hint as "Category" on the emailconfiguration page
+  And I pause for 10 seconds
+  And I select the expression as "equals to" on the emailconfiguration page
+  And I pause for 10 seconds
+  And I enter Category as "shirts" on the emailconfiguration page
+  And I pause for 5 seconds
+  And I click on the Hints tab on the emailconfiguration page
+  And I pause for 10 seconds
+#  And I select hint as "unique-category" on the emailconfiguration page
+ # And I pause for 10 seconds
   
   
   
