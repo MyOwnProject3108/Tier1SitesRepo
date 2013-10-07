@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.burton-menswear.com/en/breu/product/clothing-1676695/mens-jackets-coats-1676814/burgundy-contrast-bomber-jacket-1681705?bi=1&ps=20"
+  URL: "http://eu.burton-menswear.com/en/breu/product/clothing-1676695/mens-knitwear-2280166/tobacco-patch-pocket-cardigan-2317337?bi=1&ps=20"
   expected_recs: 4
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

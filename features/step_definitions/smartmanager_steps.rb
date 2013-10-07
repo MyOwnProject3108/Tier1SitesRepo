@@ -1,4 +1,4 @@
-Then /^I should see an "(.+)" message$/ do |message|
+Then /^I should see "(.+)" error message$/ do |message|
   @current_page.error_message.should == message
 end
 
