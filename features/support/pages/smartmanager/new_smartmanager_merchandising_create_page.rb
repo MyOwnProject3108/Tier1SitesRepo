@@ -7,8 +7,16 @@ module Smartmanager
       URL = "https://#{FigNewton.base_url}/tracker/smartmanager/merchandising/edit.page"
       direct_url URL
 	  h4(:page_identifier, :text => "Create Recommendation Campaign")
-	#  text_field(:campaignname, :id => "the_email_campaign_name")
-	 # text_field(:width, :id => 'productInfoWidth')
+	  text_field(:merchcampaignname, :id => "name")
+	  text_field(:merchdisplaytitle, :id => "slogan")
+	  #select_list(:pagelocation, :id => "location", :value => "PRODUCT_PAGE")
+	  button(:next_submit, :class => "btn pull-right next")
+	  
+	  
+	  
+	  
+	  
+	  #text_field(:width, :id => 'productInfoWidth')
 	  #text_field(:height, :id => 'productInfoHeight')
 	  #text_field(:bgcolour, :name => "backgroundColour", :index => 0)
 	  #text_field(:titlecolour, :class => "colorpicker", :index => 1)
