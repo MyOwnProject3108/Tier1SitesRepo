@@ -10,7 +10,7 @@ Background:Users should be able to create new setup for smartcontent
  And I login as "givahnenko" using password "4v1gm0d5k1"
  Given I am on the smartmanager home page
  And I pause for 20 seconds
- And I select ctshirts from the sites list on the smartmanager home page
+ And I select "ctshirts" from the sites list on the smartmanager home page
  When I click content on the smartmanager home page
  Then I should end up on the smartcontent page
  When I click on the setup link on the smartcontent page

@@ -31,6 +31,19 @@ Then(/^I click the edit rule button on the Recrulesconfig page$/) do
  @current_page.edit_rule_submit_element.click
 end
 
+Then(/^I click on "(.*?)" class on the Recrulesconfig page$/) do |exp|
+@browser.div(:class => "rules-panel master-rules-left clear clearfix").ul.li.div.select_list(:class => "exp_left_hand").click 
+end
+
+Then(/^I select the hint as "(.*?)" on the Recrulesconfig page$/) do |merchhint|
+   @browser.div(:class => "rules-panel master-rules-left clear clearfix").ul.li.div.select_list(:class => "exp_left_hand").option(:value => "r.gender").when_present.click
+  #@browser.select_list(:class => "exp_left_hand").option(:value => "r.category").when_present.click
+end
+
+# Then(/^I click on the class "(.*?)" on Recrulesconfig page$/) do |exp|
+  # @current_page.exp_select_list_element.click
+# end
+
 #Then(/^I select attribute as "(.*?)" on Recrulesconfig page$/) do |setexp|
  #@current_page.select_list_element(:class => "exp_left_hand").option(:value => "r.saleprice").when_present.click
 # end
@@ -39,10 +52,10 @@ end
  # @current_page.set_expression_element.click
 #end
 
-Then(/^I click on class exp_left_hand with text "(.*?)" on Recrulesconfig page$/) do |setexpression|
+#Then(/^I click on class exp_left_hand with text "(.*?)" on Recrulesconfig page$/) do |setexpression|
 #  @current_page.setexpression = setexpression
 #@current_page.set_expression_element.click
 
-@browser.div(:class => "exp_left_hand").option(:text => "Please select").when_present.click
+#@browser.div(:class => "exp_left_hand").option(:text => "Please select").when_present.click
   
-end
+#end

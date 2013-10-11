@@ -10,7 +10,7 @@ Background:Users should be able to create new setup for smartcontent
  And I login as "givahnenko" using password "4v1gm0d5k1"
  Given I am on the smartmanager home page
  And I pause for 40 seconds
- And I select ctshirts from the sites list on the smartmanager home page
+ And I select "ctshirts" from the sites list on the smartmanager home page
  When I click content on the smartmanager home page
  Then I should end up on the smartcontent page
  When I click on the setup link on the smartcontent page
@@ -24,7 +24,7 @@ Scenario: Users should be able to create new setup for smartcontent
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 10 seconds
- And I select creative image as "Suits - GROUP" on the smartcontent location page
+ And I select creative image as "AutoLS1Creative" on the smartcontent location page
  Then I enter "u.gender="male"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
