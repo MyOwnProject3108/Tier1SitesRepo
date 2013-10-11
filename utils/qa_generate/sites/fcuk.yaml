@@ -17,7 +17,9 @@ home_page:
   login_link: ["link", ':title => "Sign In"']
 #  extra_steps:
 #   - [pause, 20]
-  search_field: ["text_field", ':name => "ctl00$ctl00$txtKeywordSearch"']
+  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch"']
+  extra_steps:
+   - [button, id, "ctl00_ctl00_btnDoSearch"]
 
 product_page:
   URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"

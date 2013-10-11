@@ -25,7 +25,7 @@ home_page:
   needs_SPR: yes
   
 product_page:
-  URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Blue-round-starburst-enamel-cufflinks-?q=peerius||LE083BLU|||||||||||||"    
+  URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Navy-fleur-de-lys-motif-enamel-cufflinks?q=peerius||LE370NAV|||||||||||||"    
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
   extra_steps:  
