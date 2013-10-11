@@ -6,7 +6,7 @@ needs_SPR: false
 username: user214@gmail.com
 password: P@ssw0rd
 zero_search_term: dvd
-valid_search_term: dress
+valid_search_term: Kleider
 database_num: 4
 site_id: 219
 integration: standard
@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.evansmode.de/de/evde/produkt/kleidung-912294/tops-tuniken-2105037/evans-tunika-mit-halskette-rot-2155427?bi=1&ps=20"
+  URL: "http://www.evansmode.de/de/evde/produkt/kleidung-912294/kleider-912324/scarlett-jo-2-in-1-sch%C3%B6%C3%9Fchenkleid-schwarz-2318392?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
