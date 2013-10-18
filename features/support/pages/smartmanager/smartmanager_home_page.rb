@@ -18,7 +18,8 @@ module Smartmanager
 	  a(:settings_link, :href => "/tracker/shop-admin/settings/settings.page")
 	  a(:new_smartmanager_link, :href => "/tracker/smartmanager/reporting/orders.page")
 	  select_list(:siteselection, :name => "siteName")
-	  
+	  #a:(Select_site_link, :class=>"select2-choice")
+	  #text field("sitename", "mandco")
 	  def tracked_as
 	   return "HomePage"
 	  end
