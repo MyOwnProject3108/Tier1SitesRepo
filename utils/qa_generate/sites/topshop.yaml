@@ -19,7 +19,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=33057&storeId=12556&productId=10602127&langId=-1&sort_field=Relevance&categoryId=208556&parent_categoryId=204484&pageSize=2000"
+  URL: "http://www.topshop.com/en/tsuk/product/bags-accessories-1702216/bags-purses-462/croc-doctors-bag-2289132?bi=1&ps=20"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

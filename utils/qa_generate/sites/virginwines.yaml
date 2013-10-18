@@ -15,7 +15,7 @@ home_page:
   URL: "https://www.virginwines.co.uk/"
   expected_recs: 3
   login_link: ["link", ':title=> "register"']
-  search_field: ["text_field", ':id => "search"']
+  search_field: ["text_field", ':class => "ui-autocomplete-input"']
   needs_SPR: no
 
 product_page:
