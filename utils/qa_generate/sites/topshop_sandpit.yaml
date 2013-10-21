@@ -7,7 +7,7 @@ username: Peertest@yahoo.com
 password: Pass1234
 zero_search_term: dvd
 valid_search_term: dress
-apikey: 89hyuaa2da3a
+#apikey: 89hyuaa2da3a
 database_num: 4
 site_id: 223
 integration: standard
@@ -54,7 +54,7 @@ checkout_page:
    - [text_field, id, "address_first_name", "P"]
    - [text_field, id, "address_surname", "Eerius"]
    - [text_field, id, "address_main_telephone", "07829102019"]
- #  - [p, class, "enter_manual_address"]
+#   - [p, class, "enter_manual_address"]
    - [text_field, class, "text address_line_1", "Units 232-234"]
    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
    - [text_field, class, "text address_town", "london"]

@@ -34,6 +34,12 @@ Given I am on the smartmanager Newmerchandisingcreate page
  Then I should end up on the Recrulesconfig page
  Then I click the edit rule button on the Recrulesconfig page
  And I pause for 10 seconds
- Then I click on class exp_left_hand with text "Please Select" on Recrulesconfig page
+  And I click on "exp_left_hand" class on the Recrulesconfig page
+  And I pause for 10 seconds
+  And I select the hint as "r.gender" on the Recrulesconfig page
+ # And I select option "Colour" on the Recrulesconfig page
+ # And I pause for 10 seconds
+ #And I click on the class "exp_left_hand" on Recrulesconfig page
+  #Then I click on class exp_left_hand with text "Please Select" on Recrulesconfig page
  And I pause for 10 seconds
  #Then I select attribute as "sale price" on Recrulesconfig page

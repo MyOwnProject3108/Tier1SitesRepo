@@ -16,6 +16,7 @@ Background:
 <% if site["uat_apikey"] %>
     And I am using uat client token <%= site["uat_apikey"] %>
     And I am using production client token <%= site["apikey"] %>
+	And I am using mobile channel client token <%= site["mob_apikeyliv"] %>
 <% else %>
     And I am using client token <%= site["apikey"] %>
 <% end %>

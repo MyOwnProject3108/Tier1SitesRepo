@@ -6,7 +6,7 @@ needs_SPR: false
 username: user210@gmail.com
 password: P@ssw0rd
 zero_search_term: dvd
-valid_search_term: dress
+valid_search_term: tops
 database_num: 7
 site_id: 401
 integration: standard
@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.wallismode.fr/fr/wlfr/produit/v%C3%AAtements-973744/robes-973762/robe-droite-orange-2040670?bi=1&ps=20"
+  URL: "http://www.wallismode.fr/fr/wlfr/produit/accessoires-973770/sacs-sacs-%C3%A0-main-973841/sac-bandouli%C3%A8re-fauve-fiorelli-2069927?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

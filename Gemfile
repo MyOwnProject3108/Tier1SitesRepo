@@ -20,3 +20,4 @@ gem 'trollop'
 
 gem 'json'
 gem 'jsonpath'
+gem 'httparty'

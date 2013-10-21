@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 product_page:
-  URL: "http://www.fatface.com/knits/catrin-pointelle-jumper/invt/42806?colour=Navy"
+  URL: "http://www.fatface.com/dresses/ingrid-winter-paisley-dress/invt/45306?colour=Navy"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:

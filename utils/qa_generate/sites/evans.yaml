@@ -8,6 +8,8 @@ password: P@ssw0rd
 zero_search_term: dvd
 valid_search_term: dress
 database_num: 4
+mob_apikeyliv: iurhrfb43683b
+channel: mobileapp
 site_id: 219
 integration: standard
 
@@ -18,7 +20,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.evans.co.uk/en/evuk/product/clothing-250468/dresses-250498/scarlett-jo-purple-waterfall-stud-detail-dress-2116982?bi=1&ps=24"
+  URL: "http://www.evans.co.uk/en/evuk/product/accessories-250472/bags-250490/evans-black-quilted-satchel-bag-2236321?bi=1&ps=24"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
@@ -55,9 +57,9 @@ checkout_page:
    - [text_field, id, "address_first_name", "P"]
    - [text_field, id, "address_surname", "Eerius"]
    - [text_field, id, "address_main_telephone", "0208768789"]
-   - [p, class, "enter_manual_address"]
-   - [text_field, class, "text address_line_1", "Units 207-211"]
-   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
-   - [text_field, class, "text address_town", "London"]
-   - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+   #- [p, class, "enter_manual_address"]
+   #- [text_field, class, "text address_line_1", "Units 207-211"]
+   #- [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   #- [text_field, class, "text address_town", "London"]
+   #- [text_field, class, "text address_postcode_manual", "SE1 0HS"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]

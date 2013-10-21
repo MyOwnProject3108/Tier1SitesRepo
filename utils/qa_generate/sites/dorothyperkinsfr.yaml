@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.dorothyperkins.fr/fr/dpfr/produit/v%C3%AAtements-695630/robes-695654/combi-pantalon-cr%C3%A8me-2-en-1-2150855?bi=1&ps=20"
+  URL: "http://www.dorothyperkins.fr/fr/dpfr/produit/chaussures-695633/chaussures-talons-695684/chaussures-compens%C3%A9es-noires-dp-occasion-2315427?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

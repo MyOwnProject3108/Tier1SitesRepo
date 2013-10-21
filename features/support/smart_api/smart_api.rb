@@ -15,8 +15,8 @@ module Peerius
         def initialize(site, version=nil, testserver=nil, useSSH=nil)
             file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
-        #    @version = version.nil? ? "v1_1" : version
-			@version = version.nil? ? "v1_2" : version
+            @version = version.nil? ? "v1_1" : version
+		#	@version = version.nil? ? "v1_2" : version
             @useSSH = useSSH.nil? ? true : useSSH
             urlPrefix = @useSSH ? "https" : "http" 
             if testserver.nil? then  
@@ -33,7 +33,7 @@ module Peerius
                 "site" => site,
                 "currentURI" => site+"://unknown",
                 "previousURI" => site+"://unknown",
-                "clientToken" => "gfsdkl47gh3248", #livedemoshop
+				"clientToken" => "gfsdkl47gh3248", #livedemoshop
                 #"recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -78,9 +78,7 @@ module Peerius
                 @json_request = JSON.generate(migrate_to_api_v1(request)) 
             else 
 				@json_request = JSON.generate(request)
-				#else
-				#@json_request =JSON.generate(request)
-            end
+			end
             @logger.info("Request: " + @json_request)            
             params = { :jd => @json_request }
             uri.query = URI.encode_www_form(params)
@@ -195,12 +193,12 @@ module Peerius
         end
         
         def rec_click(product_i=0, widget_i=0)
-            #productId = rec_widgets[widget_i]["recs"][product_i]["id"]
+            productId = rec_widgets[widget_i]["recs"][product_i]["id"]
 			##modified by Shakir for recs click
-			productId = rec_widgets[product_i]["id"]
+			#productId = rec_widgets[product_i]["id"]
 			##modified by Shakir for recs click
-            #refcode = rec_widgets[widget_i]["recs"][product_i]["refCode"]
-			refcode = rec_widgets[product_i]["refCode"]
+            refcode = rec_widgets[widget_i]["recs"][product_i]["refCode"]
+			#refcode = rec_widgets[product_i]["refCode"]
             @request_data["type"] = 'product'
             @request_data["product"] = {"refCode" => "#{refcode}"}
             @request_data["info"]  = {
@@ -219,6 +217,43 @@ module Peerius
                         "click" => creativeId.to_i,
                 }
             }
+        end
+		##requst call for Mobile app api
+		def mobileapp_api1(site1,mob_apikeyliv)
+			@request_data["channel"] = 'mobileapp'
+            @request_data["clientToken"] = mob_apikeyliv
+			@request_data["info"]  = {
+                "SmartAPiMobile" => {
+                        "mobileappsite" => site,
+                }
+			}	
+		end
+			
+		def mobileapp_api(site1,mob_apikeyliv)
+            @request_data = {
+				"ip" => "0.0.0.0",
+                "session" => "new",
+                "cuid" => "new",
+                "lang" => "en-gb",
+                "site" => site1,
+                "currentURI" => site+"://unknown",
+                "previousURI" => site+"://unknown",
+				"channel" => "mobileapp",
+                "mob_apikeyliv" => mob_apikeyliv
+            }
+            @json_request = ""
+            @response_times = []
+        end
+		def mob_apikeyliv
+			@request_data["mob_apikeyliv"]
+		end
+		
+		def clientToken
+            @request_data["clientToken"]
+        end
+        
+        def clientToken=(clientToken)
+            @request_data["clientToken"] = clientToken
         end
 		
 		#Added for country="GB" rule----

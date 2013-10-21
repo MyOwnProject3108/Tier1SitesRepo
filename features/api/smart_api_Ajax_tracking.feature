@@ -13,6 +13,7 @@ Scenario: SMART-recs clicks can be detected using SMART-Ajax call
      Then I should get an OK status back
      And I should see which smartRecs click in DB
 
+Scenario: SMART-API AJAX tracking for Json clients specific tests
 
  Scenario: SMART-recs A/B groups can be detected using SMART-API "full"
         Given I am using SMART-API to access livedemoshop

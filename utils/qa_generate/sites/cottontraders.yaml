@@ -26,8 +26,8 @@ product_page:
     - [image, src, "http://www.cottontraders.com/content/ebiz/cottontraders/resources/images/grid_instock.gif"]
 
 category_page:
-  URL: "http://www.cottontraders.co.uk/menswear/mens-tops/icat/menstops/"
-  expected_recs: 1 
+  URL: "http://www.cottontraders.com/his-and-hers/shirts-/icat/hisnhersshirts"
+  expected_recs: 0 
 
 basket_page:
   URL: "http://www.cottontraders.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=cottontraders&log=22"

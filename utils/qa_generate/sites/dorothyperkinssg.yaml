@@ -46,7 +46,7 @@ login_page:
 searchresults_page:
   URL: "http://sg.dorothyperkins.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13079&catalogId=34597&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
   expected_recs: 0
-  zerosearch_recs: 5
+  zerosearch_recs: 1
   
 checkout_page:
   URL: "" 

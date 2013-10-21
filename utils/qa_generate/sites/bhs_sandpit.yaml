@@ -1,5 +1,5 @@
-site_name: bhs
-pretty_name: BHS
+site_name: bhssandpit
+pretty_name: BHS Sandpit
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -8,9 +8,6 @@ password: Pa55word
 zero_search_term: no
 valid_search_term: dress
 database_num: 7
-#apikey: rye23sdyu342s
-mob_apikeyliv: rye23sdyu342s
-channel: mobileapp
 site_id: 413
 integration: standard
 

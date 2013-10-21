@@ -76,7 +76,20 @@ module Peerius
 		def callAPI(request)
             #uri = URI(@url)
 			uri = URI.parse()
+################
+		#	"http://developer.echonest.com/api/v4/artist/songs?    api_key=RYOXFCWIBV9IM0XCU&name=#{artist_name}&format=json&start=0&results=5")
+			"https://qa1.lan/tracker/api/v1_2/livedemoshop/rec/61828619526/click.pagex?       clientToken=gfsdkl47gh3248&session=5530696620/hKOlopdRra2ZV5edWE6IpFOjl7JWrZdQ&cuid=3357635592/hKOlopdRra2ZV5edWE6GolWql6xVrJ5S"
+			res = Net::HTTP.get_response(url)
 
+			#puts res.body
+
+			parsed = JSON.parse(res.body)
+
+
+			parsed{'songs'}.each do |song| 
+			puts song{'title'} 
+			end
+###########
             if @version == "v1" 
                 @json_request = JSON.generate(migrate_to_api_v1(request)) 
             else 

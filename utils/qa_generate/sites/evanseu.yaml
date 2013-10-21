@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://euro.evansfashion.com/en/eveu/product/clothing-927595/dresses-927625/live-unlimited-black-fossil-print-overlay-dress-2114418?bi=1&ps=20"
+  URL: "http://euro.evansfashion.com/en/eveu/product/accessories-927599/belts-927618/evans-black-keeper-waist-belt-2067532?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
@@ -60,4 +60,4 @@ checkout_page:
    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
    - [text_field, class, "text address_town", "town"]
    - [text_field, class, "text address_postcode_manual", "12345"]
-   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [link, title, "Proceed to Payment"]

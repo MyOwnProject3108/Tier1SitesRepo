@@ -21,7 +21,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works w
     And the first SMART-content creative name should contain <category_name>
     Examples:
     | product    | category_name |
-    | "SN061WHT" | "classic fit"     |
+    | "SN061WHT" | "classic fit" |
     | "FT097RYL" | "slim"        |
     | "RD034SKY" | "extra slim"  |
     | "EPA07GRY" | "Suits"       |

@@ -14,7 +14,7 @@ integration: standard
 home_page:
   URL: "http://euro.dorothyperkins.com/?geoip=home"
   expected_recs: 0
-  login_link: ["link", ':text => "Sign in or register"']
+  login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
