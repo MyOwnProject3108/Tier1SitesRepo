@@ -1,3 +1,29 @@
+##*********************for adding new steps -add at the top, so we know when any new step is added*****************************######################
+Given(/^I am using mobileapp api token "(.*?)"$/) do |arg1|
+#Given(/^I am using mobileapp api token rye(\d+)sdyu(\d+)s$/) do |arg1, arg2|
+  #@api.mobileapp_api()
+  #@api.json_mobileapp_api= 
+end
+
+When(/^I track "(.*?)" home page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+	#@api.mobileapp_api1
+	
+   @api.mobileapp_api {
+		 "site" => site1,
+       "mob_apikeyliv" => mob_apikeyliv
+     }
+	@api.mobileapp_api = mob_apikeyliv
+	
+	@api.mobileapp_api = site1
+	@api.json_type = 'home'
+	#@api.json_mob_apikeyliv=mob_apikeyliv
+	#@api.json_clientToken = mob_apikeyliv
+	#@api.track
+	
+end
+
+##*******below this point are steps added previuosly***################
+
 Given /^I am using SMART\-API (v1|v1_1|v1_2)?.?to access (.+)$/ do |version, site|
   @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)
   @site = site    
@@ -254,7 +280,6 @@ When(/^I track a variant "(.*?)" basket page with variant colour "(.*?)" size "(
 	 @api.track
 end
 
-#When I order product "TS14J29DACB" with variant colour "acid blue" size "6" using the SMART-API	
 When(/^I order product "(.*?)" with variant colour "(.*?)" size "(.*?)" using the SMART\-API$/) do|item,col,siz|
 	@api.json_type = 'order'
     items = [
@@ -276,7 +301,7 @@ Then(/^I insert order for a "(.*?)" using the SMART\-API$/) do |quantity, item, 
    @api.json_type = 'order'
     items = [
         {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
-      ]
+			]
 end
 
 
@@ -317,7 +342,7 @@ end
 Then /^I should get an? (.+) status back$/ do |status|
     #puts @api.json_request 
     #pp @api.result  
-    #@api.result["status"].should eq(status)
+    @api.result["status"].should eq(status)
     @current_session = @api.result["session"]
 	#$current_session = @api.result["session"]["session"]
 	#@current_cuid = @api.result["session"]["cuid"]
@@ -344,13 +369,15 @@ Then /^I should get at least (\d+) SMART-content creatives? in the response$/ do
 end
 
 ##
-Then(/^one of the variant info should contain "(.*?)"$/) do |var_recs|
+
+Then(/^one of the variant title should contain "(.*?)"$/) do |expected_colour|
    @api.json_type = 'product'
    @api.json_product = {"refCode" => "TS03B03DBLK"}
    @api.track
    @api.should have_smart_recs
    #@api.rec_widgets.count.should > 0
-   @api.total_recs.should >= var_recs
+   #@api.total_recs.should >= var_recs
+   @api.total_recs.should >= expected_colour.to_i
 end
 #
 ##
@@ -413,24 +440,24 @@ Then(/^it should get an OK status back$/) do
 Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
   #has_expected_product = false
   
- # pp @api.result["info"]["abtest"]
- # @api.result.should have_key("info")
- # @api.result["info"].should have_key("abtest")
- # @api.result["info"]["abtest"].should have_at_least(1).product
+  #pp @api.result["info"]["abtest"]
+  @api.result.should have_key("info")
+  @api.result["info"].should have_key("abtest")
+  @api.result["info"]["abtest"].should have_at_least(1).product
   
   # Check to see that one of the products is the one we are looking for 
    #pp @api.result["info"]["abtest"]
-  # @api.result["info"]["abtest"].each {|product| 
-  # if product.has_key?(expected_product) then
-   # has_expected_product = true
+   @api.result["info"]["abtest"].each {|product| 
+   if product.has_key?(expected_product) then
+    has_expected_product = true
     
     # # Check that the product has an abgroup defined
-    # product[expected_product].should have_at_least(1).items
-    # product[expected_product].each {|config|
-      # config.should have_key("group")
-    # }
-  # end
-  # }
+     product[expected_product].should have_at_least(1).items
+     product[expected_product].each {|config|
+      config.should have_key("group")
+    }
+  end
+   }
   
   # has_expected_product.should == true
   
