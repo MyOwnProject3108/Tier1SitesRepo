@@ -1,6 +1,6 @@
 @smartapi 
 @arcadia
-Feature: SMART-API Arcadia specific tests for mobileapp api test for different sites, this tewst usese mobile app token key
+Feature: SMART-API Arcadia specific tests for mobileapp api test for different sites.
 Scenario: I can track and get recs for arcadia using mobileapp api for BHS
 	Given I am using SMART-API to access bhs
 	When I track "bhs" home page by using mobileapp api token "rye23sdyu342s"
