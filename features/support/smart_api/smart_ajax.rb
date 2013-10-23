@@ -2,7 +2,6 @@ require 'json'
 require 'net/http'
 require 'benchmark'
 require 'logger'
-require 'HTTParty'
 
 module Peerius
     class SmartAjax
