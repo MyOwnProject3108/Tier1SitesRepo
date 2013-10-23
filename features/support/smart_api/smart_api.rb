@@ -218,35 +218,6 @@ module Peerius
                 }
             }
         end
-		##requst call for Mobile app api
-		def mobileapp_api1(site1,mob_apikeyliv)
-			@request_data["channel"] = 'mobileapp'
-            @request_data["clientToken"] = mob_apikeyliv
-			@request_data["info"]  = {
-                "SmartAPiMobile" => {
-                        "mobileappsite" => site,
-                }
-			}	
-		end
-			
-		def mobileapp_api(site1,mob_apikeyliv)
-            @request_data = {
-				"ip" => "0.0.0.0",
-                "session" => "new",
-                "cuid" => "new",
-                "lang" => "en-gb",
-                "site" => site1,
-                "currentURI" => site+"://unknown",
-                "previousURI" => site+"://unknown",
-				"channel" => "mobileapp",
-                "mob_apikeyliv" => mob_apikeyliv
-            }
-            @json_request = ""
-            @response_times = []
-        end
-		def mob_apikeyliv
-			@request_data["mob_apikeyliv"]
-		end
 		
 		def clientToken
             @request_data["clientToken"]

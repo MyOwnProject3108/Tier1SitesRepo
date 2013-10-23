@@ -34,4 +34,7 @@ Scenario Outline: Invalid key is used with SMART-API
     | v1      |
     | v1_1    |
 	| v1_2    |
+	
+#Scenario Outlne: For Peerius-2044 -to Verify Invalid request for Order page, to verify the request is rejected with error msg
+#	Given I am using SMART-API to access livedemoshop
 

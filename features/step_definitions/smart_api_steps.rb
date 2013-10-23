@@ -4,23 +4,68 @@ Given(/^I am using mobileapp api token "(.*?)"$/) do |arg1|
   #@api.mobileapp_api()
   #@api.json_mobileapp_api= 
 end
+#When(/^I track "(.*?)" basket page by using mobileapp api token "(.*?)" with firstrefcd "(.*?)" secndrefcd "(.*?)"$/) do |arg1, arg2, arg3, arg4|
+When(/^I track "(.*?)" basket page by using mobileapp api token "(.*?)" with firstrefcd "(.*?)" secndrefcd "(.*?)"$/) do |site1, mob_apikeyliv,refcd1,refcd2|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_clientToken = mob_apikeyliv
+	@api.json_type = 'basket'
+	items = [
+      {"refCode" => refcd1, "qty" => 5, "price" => 69.9},
+      {"refCode" => refcd2, "qty" => 8, "price" => 32.3},
+		]
+  @api.json_basket = {"items" => items, "currency" => "GBP"} 
+  @api.track
+end
 
 When(/^I track "(.*?)" home page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
-	#@api.mobileapp_api1
-	
-   @api.mobileapp_api {
-		 "site" => site1,
-       "mob_apikeyliv" => mob_apikeyliv
-     }
-	@api.mobileapp_api = mob_apikeyliv
-	
-	@api.mobileapp_api = site1
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
 	@api.json_type = 'home'
-	#@api.json_mob_apikeyliv=mob_apikeyliv
-	#@api.json_clientToken = mob_apikeyliv
-	#@api.track
-	
+	#@api."channel" => "mobileapp",
+	@api.json_clientToken = mob_apikeyliv
+	@api.track
 end
+
+When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'product'
+	@api.json_product = {"refCode" => "prod-dw041dpu"}
+	@api.json_clientToken = mob_apikeyliv
+	@api.track
+end
+
+When(/^I track "(.*?)" product page rec click by using mobileapp api token "(.*?)" with refocde "(.*?)"$/) do |site1, mob_apikeyliv, refcd|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'product'
+	@api.json_product = {"refCode" => refcd}
+	@api.json_clientToken = mob_apikeyliv
+	@api.track 
+	@api.json_channel = "mobileapp"
+end
+
+When(/^I track "(.*?)" category page by using mobileapp api token "(.*?)" with category "(.*?)"$/) do |site1, mob_apikeyliv, category|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'category'
+	@api.json_category = category
+	@api.json_clientToken = mob_apikeyliv
+	@api.track 
+	@api.json_channel = "mobileapp"
+end
+
+When(/^I track "(.*?)" search page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'searchresults'
+    @api.json_searchResults = {"term" => "shirts", "results" => []}
+	@api.json_clientToken = mob_apikeyliv
+	@api.track 
+end
+
+
 
 ##*******below this point are steps added previuosly***################
 
