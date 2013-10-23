@@ -1,3 +1,4 @@
+@ignore
 @smartapi
 @ctshirts
 Feature: SMART-API CT Shirts specific tests
