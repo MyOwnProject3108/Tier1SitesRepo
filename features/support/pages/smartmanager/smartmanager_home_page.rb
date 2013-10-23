@@ -16,10 +16,10 @@ module Smartmanager
 #	  a(:config_link, :href => "/tracker/shop-admin/welcome-admin.page")
 #	  a(:landing_link, :href => "/tracker/shop-admin/dynamiclandingpage/campaign/list.page")
 #	  a(:ranking_link, :href => "adaptivelistings/list.pagex")
-#	  a(:content_link, :href => "creative/list.page")
+	  a(:content_link, :href => "/tracker/shop-admin/creative/list.page")
 #	  a(:settings_link, :href => "/tracker/shop-admin/settings/settings.page")
 	  a(:new_smartmanager_link, :href => "/tracker/smartmanager/reporting/orders.page")
-	  select_list(:siteselection, :name => "siteName")
+#	  select_list(:siteselection, :name => "siteName")
 	  
 	  def tracked_as
 	   return "HomePage"
