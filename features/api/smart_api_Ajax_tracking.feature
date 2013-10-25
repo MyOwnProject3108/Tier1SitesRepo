@@ -1,19 +1,21 @@
-@ignore
 @livedemoshop
-@smartapi
+@smartajax
 Feature: SMART-API: Non-site specific SMART-recs tests
   In order to get the most out of my shopping experience
   As a website user
   I want to see personalised recommendations
 
-    Scenario: SMART-recs A/B groups can be detected using SMART-API "summary"
-        Given I am using SMART-API to access livedemoshop
-        And I request summary abgroup information
-        When I track a product page
-        Then I should get an OK status back
-        And I should see which smartRecs abgroup I am serving
+Scenario: SMART-recs clicks can be detected using SMART-Ajax call
+     Given I am using SMART-AJAX to access 'livedemoshop'
+	 When I track a product page
+	 Then I should get an OK status back
+     And I request ajax call for click
+     Then I should get an OK status back
+     And I should see which smartRecs click in DB
 
-    Scenario: SMART-recs A/B groups can be detected using SMART-API "full"
+Scenario: SMART-API AJAX tracking for Json clients specific tests
+
+ Scenario: SMART-recs A/B groups can be detected using SMART-API "full"
         Given I am using SMART-API to access livedemoshop
         And I request full abgroup information
         When I track a product page

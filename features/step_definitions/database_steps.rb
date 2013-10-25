@@ -4,7 +4,16 @@ end
 
 Then(/^I should see (.+) (\d+) SMART\-content impressions? in the DB$/) do |comparison, expected_impressions|
 	db = @sites[@site]["db"]
-	q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID="+@api.session
+	
+	if(@api.session.index('/')!=nil)
+		@session=@api.session[0...@api.session.index('/')]
+	else
+		@session=@api.session
+	end
+	
+	#q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID=CAST(RIGHT( "+@api.session ",LEN(@api.session)-CHARINDEX('/',@api.session)) as BIGINT)"
+	q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID="+@session
+	#pp @session
 	result = db.execute(q)
 	
   case comparison
@@ -23,7 +32,12 @@ end
 
 Then(/^I should see (.+) (\d+) SMART\-content clicks? in the DB$/) do |comparison, expected_clicks|
   db = @sites[@site]["db"]
-	q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID="+@api.session+" and clicked=1"
+	if(@api.session.index('/')!=nil)
+		@session=@api.session[0...@api.session.index('/')]
+	else
+		@session=@api.session
+	end
+	q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID="+@session+" and clicked=1"
 	result = db.execute(q)
 	
   case comparison
@@ -42,7 +56,12 @@ end
 
 Then(/^I should see no SMART\-content clicks in the DB$/) do
   db = @sites[@site]["db"]
-	q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID="+@api.session+" and clicked=1"
+  if(@api.session.index('/')!=nil)
+		@session=@api.session[0...@api.session.index('/')]
+	else
+		@session=@api.session
+	end
+	q = "select * from AdaptiveContentImpressions aci inner join [BrowsingAttributes] ba on aci.baid=ba.BAID where sessionID="+@session+" and clicked=1"
 	result = db.execute(q)
 	result.count.should be == 0
   

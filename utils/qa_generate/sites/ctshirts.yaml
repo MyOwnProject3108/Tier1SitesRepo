@@ -10,14 +10,16 @@ valid_search_term: shirts
 apikey: 677ab692r2t31
 uat_apikey: 677ab692r2t3u4t
 database_num: 3
+channel: web
 site_id: 142
 integration: standard
+
 
 home_page:
   ignore: true # CT Shirts homepage is on SMART-API
   URL: "http://www.ctshirts.co.uk/default.aspx?q=peerius|||||||||||||||"
   expected_recs: 0
-  expected_api_content: 6
+  expected_api_content: 2
   login_link: ["link", ':href=> "https://www.ctshirts.co.uk/AccountLogin.aspx"']
   search_field: ["text_field", ':id => "search_term"']
   category_menu: ["div", ':id => "menu"']

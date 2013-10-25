@@ -4,25 +4,27 @@ require 'benchmark'
 require 'logger'
 
 module Peerius
-    class SmartAPI
+    class SmartAjax
+		#include HTTParty
         attr_reader :url
         attr_reader :version
         attr_reader :result
         attr_reader :request_data
-        attr_reader :json_request
+        attr_reader :ajson_request
         attr_reader :response_times
          
-        def initialize(site, version=nil, testserver=nil, useSSH=nil)
-            file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
+        def initialize(site, action,version=nil, testserver=nil, useSSH=nil)
+            file = open("#{site}_smart_api_ajax.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
-            @version = version.nil? ? "v1_1" : version
-		#	@version = version.nil? ? "v1_2" : version
+        #    @version = version.nil? ? "v1_1" : version
+			@version = version.nil? ? "v1_2" : version
             @useSSH = useSSH.nil? ? true : useSSH
             urlPrefix = @useSSH ? "https" : "http" 
             if testserver.nil? then  
-                @url = urlPrefix + "://#{site}.peerius.com/tracker/api/#{@version}/rest.pagex"
-            else
-                @url = urlPrefix + "://#{testserver}/tracker/api/#{@version}/rest.pagex"
+                @url = urlPrefix + "://#{@action}/tracker/api/#{@version}/#{@action}.pagex?/#{@clientToken}"
+            else 
+                #@url = urlPrefix + "://#{testserver}/tracker/api/#{@version}/#{@action}.pagex?/#{@clientToken}"
+				@url = urlPrefix +"://#{@action}/tracker/api/#{@version}/#{@action}.pagex?/#{@clientToken}"
             end
             @logger.info(@url)
             @request_data = {
@@ -33,14 +35,12 @@ module Peerius
                 "site" => site,
                 "currentURI" => site+"://unknown",
                 "previousURI" => site+"://unknown",
-				"clientToken" => "gfsdkl47gh3248", #livedemoshop
+                "clientToken" => "gfsdkl47gh3248", #livedemoshop
                 #"recContent" => "refCodeOnly",
             }
             @json_request = ""
             @response_times = []
-        end
-        
-        def average_response_time
+		def average_response_time
             response_times.reduce(:+) / response_times.count
         end
         
@@ -71,14 +71,31 @@ module Peerius
             @request_data.keep_if {|key,value| persist.include? key}          
         end
         
-        def callAPI(request)
-            uri = URI(@url)
+        end
+		def callAPI(request)
+            #uri = URI(@url)
+			uri = URI.parse()
+################
+		#	"http://developer.echonest.com/api/v4/artist/songs?    api_key=RYOXFCWIBV9IM0XCU&name=#{artist_name}&format=json&start=0&results=5")
+			"https://qa1.lan/tracker/api/v1_2/livedemoshop/rec/61828619526/click.pagex?       clientToken=gfsdkl47gh3248&session=5530696620/hKOlopdRra2ZV5edWE6IpFOjl7JWrZdQ&cuid=3357635592/hKOlopdRra2ZV5edWE6GolWql6xVrJ5S"
+			res = Net::HTTP.get_response(url)
 
+			#puts res.body
+
+			parsed = JSON.parse(res.body)
+
+
+			parsed{'songs'}.each do |song| 
+			puts song{'title'} 
+			end
+###########
             if @version == "v1" 
                 @json_request = JSON.generate(migrate_to_api_v1(request)) 
             else 
 				@json_request = JSON.generate(request)
-			end
+				#else
+				#@json_request =JSON.generate(request)
+            end
             @logger.info("Request: " + @json_request)            
             params = { :jd => @json_request }
             uri.query = URI.encode_www_form(params)
@@ -217,14 +234,6 @@ module Peerius
                         "click" => creativeId.to_i,
                 }
             }
-        end
-		
-		def clientToken
-            @request_data["clientToken"]
-        end
-        
-        def clientToken=(clientToken)
-            @request_data["clientToken"] = clientToken
         end
 		
 		#Added for country="GB" rule----
@@ -433,7 +442,5 @@ module Peerius
             @json_request = ""
             @response_times = []
         end
-		
-    end
 	end
-
+end
