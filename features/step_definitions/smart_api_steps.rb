@@ -1,4 +1,38 @@
 ##*********************for adding new steps -add at the top, so we know when any new step is added*****************************######################
+When(/^I request invalid order details for order page$/) do
+@api.json_type = 'order'
+    items = [
+        {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
+        {"refCode" => "prod-bl020nav", "qty" => 8, "price" => 52.5},
+    ]
+    @api.json_order = {
+        "orderNo" => "",
+        "items" => items, 
+        "currency" => "GBP",
+        "subtotal" => 103,
+        "shipping" => 11.75,
+        "total" => 114.75
+    }
+    @api.track
+end
+
+When(/^I request invalid order details for order page if currency is missing$/) do
+@api.json_type = 'order'
+    items = [
+        {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
+        {"refCode" => "prod-bl020nav", "qty" => 8, "price" => 52.5},
+    ]
+    @api.json_order = {
+        "orderNo" => "API-ABC123-#{Time.now.to_i}",
+        "items" => items, 
+        "currency" => "",
+        "subtotal" => 103,
+        "shipping" => 11.75,
+        "total" => 114.75
+    }
+    @api.track
+end
+
 Given(/^I am using mobileapp api token "(.*?)"$/) do |arg1|
 #Given(/^I am using mobileapp api token rye(\d+)sdyu(\d+)s$/) do |arg1, arg2|
   #@api.mobileapp_api()
