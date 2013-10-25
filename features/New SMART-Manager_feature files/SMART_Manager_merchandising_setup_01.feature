@@ -42,4 +42,5 @@ Given I am on the smartmanager Newmerchandisingcreate page
  #And I click on the class "exp_left_hand" on Recrulesconfig page
   #Then I click on class exp_left_hand with text "Please Select" on Recrulesconfig page
  And I pause for 10 seconds
- #Then I select attribute as "sale price" on Recrulesconfig page
+ Then I select attribute as "sale price" on Recrulesconfig page
+ 
