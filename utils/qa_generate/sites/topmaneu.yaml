@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=1&viewAllFlag=&catalogId=34064&storeId=13061&productId=8863802&langId=-1&sort_field=Relevance&categoryId=336028&parent_categoryId=336014&pageSize=20"
+  URL: "http://eu.topman.com/en/tmeu/product/clothing-617800/mens-shirts-617813/white-long-sleeve-smart-shirt-631922?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

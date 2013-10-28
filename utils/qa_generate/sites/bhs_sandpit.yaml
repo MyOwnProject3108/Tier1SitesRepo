@@ -1,4 +1,3 @@
-ignore: true
 site_name: bhssandpit
 pretty_name: BHS Sandpit
 has_content: no
@@ -10,7 +9,7 @@ zero_search_term: no
 valid_search_term: dress
 database_num: 7
 site_id: 413
-integration: standard
+integration: sandpit
 
 home_page:
   URL: "http://www.bhs.co.uk/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13077&catalogId=34096"

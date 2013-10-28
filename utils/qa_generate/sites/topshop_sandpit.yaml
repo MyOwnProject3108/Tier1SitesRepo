@@ -10,7 +10,7 @@ valid_search_term: dress
 #apikey: 89hyuaa2da3a
 database_num: 4
 site_id: 223
-integration: standard
+integration: sandpit
 
 home_page:
   URL: "http://ts.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=12556&catalogId=33057#slide1"
