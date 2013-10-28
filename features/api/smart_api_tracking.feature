@@ -35,6 +35,12 @@ Scenario Outline: Invalid key is used with SMART-API
     | v1_1    |
 	| v1_2    |
 	
-#Scenario Outlne: For Peerius-2044 -to Verify Invalid request for Order page, to verify the request is rejected with error msg
-#	Given I am using SMART-API to access livedemoshop
+Scenario: For Peerius-2044 -to Verify Invalid request for Order page, to verify the request is rejected with error msg
+	Given I am using SMART-API to access livedemoshop
+	When I request invalid order details for order page
+    Then I should get a fail status back
 
+Scenario: For Peerius-2044 -to Verify Invalid request for Order page, to verify the request is rejected for missing currency error msg
+	Given I am using SMART-API to access livedemoshop
+	When I request invalid order details for order page if currency is missing
+    Then I should get a fail status back	
