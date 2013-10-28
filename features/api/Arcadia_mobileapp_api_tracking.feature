@@ -123,10 +123,10 @@ Scenario: I can track and get recs for topman product using mobileapp api for to
 
 Scenario: I can track and get recs for topman product recs click using mobileapp api for topman
 	Given I am using SMART-API to access topman
-When I track "topman" product page rec click by using mobileapp api token "lkdsa256784ds" with refocde "prod-dw041dpu"
+	When I track "topman" product page rec click by using mobileapp api token "lkdsa256784ds" with refocde "TM68O84DSTN"
 	Then I should get an OK status back
 	And I track a click for the first SMART-rec
-		
+
 Scenario: I can track and get recs for topman category page using mobileapp api for topman
 	Given I am using SMART-API to access topman
 	#And I am using client token lkdsa256784ds
@@ -142,7 +142,7 @@ Scenario: I can track and get recs for topman search results page using mobileap
 
 Scenario: I can track and get recs for topman Basket page using mobileapp api for topman
 	Given I am using SMART-API to access topman
-	When I track "topman" basket page by using mobileapp api token "lkdsa256784ds" with firstrefcd "8613789533" secndrefcd "2837658513"
+	When I track "topman" basket page by using mobileapp api token "lkdsa256784ds" with firstrefcd "TM68O10EBLE" secndrefcd "2837658513"
 	Then I should get an OK status back
 	And I should get at least 1 SMART-rec in the response
 
