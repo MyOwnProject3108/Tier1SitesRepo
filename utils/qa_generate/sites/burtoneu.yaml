@@ -1,0 +1,62 @@
+site_name: burtoneu
+pretty_name: burton EU
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user219@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: blazer
+database_num: 4
+site_id: 82
+integration: standard
+
+home_page:
+  URL: "http://eu.burton-menswear.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':link => "Sign in or register"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://eu.burton-menswear.com/en/breu/product/clothing-1676695/mens-knitwear-2280166/tobacco-patch-pocket-cardigan-2317337?bi=1&ps=20"
+  expected_recs: 4
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://eu.burton-menswear.com/en/breu/category/clothing-1676695/mens-jeans-1676801"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://eu.burton-menswear.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=35119&langId=-1&storeId=13091"
+  expected_recs: 7
+  basket_checkout: ["link", ':title => "Checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://eu.burton-menswear.com/webapp/wcs/stores/servlet/LogonForm?catalogId=35119&storeId=13091&krypto=PiDQeD3mOY3gt4w79DeCfEyRu762uxeiqljJTI1g%2Fzpi9eeR8r5Os9T7B6LqbfjteIr6Et9QiKCq%0AKwXloyNSmQ%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://eu.burton-menswear.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13091&catalogId=35119&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 8
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  extra_steps:
+    - [select_list, id, "address_title", "Mr"]
+    - [text_field, id, "address_first_name", "P"]
+    - [text_field, id, "address_surname", "Eerius"]
+    - [text_field, id, "address_main_telephone", "02033974940"]
+ #  - [p, class, "enter_manual_address"]
+    - [text_field, class, "text address_line_1", "Units 207-211"]
+    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+    - [text_field, class, "text address_town", "London"]
+    - [text_field, class, "text address_postcode_manual", "12345"]
+    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]

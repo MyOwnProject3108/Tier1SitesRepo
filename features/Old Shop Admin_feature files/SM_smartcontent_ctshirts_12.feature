@@ -6,13 +6,26 @@ Feature: SMART-manager
 #
  
 Scenario:Users should be able to see smartcontent for ctshirts
- Given I am on the smartmanager login page
+Given I am on the smartmanager login page
  And I login as "givahnenko" using password "4v1gm0d5k1"
- Given I am on the smartmanager home page
- # And I pause for 40 seconds
- And I select ctshirts from the sites list on the smartmanager home page
- When I click content on the smartmanager home page
+ Then I should end up on the orders page
+ And I pause for 10 seconds
+ And I click on "select2-search" link on the orders page
+ And I enter sitename as "ctshirts" on the orders page
+ And I pause for 5 seconds
+ When I click on old interface link on the orders page
+ And I pause for 5 seconds
+ Then I should end up on the home page
+  When I click content on the smartmanager home page
+ And I pause for 5 seconds  
  Then I should end up on the smartcontent page
+# Given I am on the smartmanager login page
+ #And I login as "givahnenko" using password "4v1gm0d5k1"
+ #Given I am on the smartmanager home page
+ # And I pause for 40 seconds
+ #And I select "ctshirts" from the sites list on the smartmanager home page
+ #When I click content on the smartmanager home page
+ #Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
  And I enter the creative name as "AutoLS1Creative"

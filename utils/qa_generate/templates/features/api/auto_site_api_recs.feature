@@ -9,13 +9,14 @@
 @smartapi
 
 
-Feature: <%= site["pretty_name"] %> SMART-API recs
+Feature: <%= site["pretty_name"] %> SMART-API recs- 
 
 Background:
     Given I am using SMART-API to access <%= site["site_name"] %>
 <% if site["uat_apikey"] %>
     And I am using uat client token <%= site["uat_apikey"] %>
     And I am using production client token <%= site["apikey"] %>
+	And I am using mobile channel client token <%= site["mob_apikeyliv"] %>
 <% else %>
     And I am using client token <%= site["apikey"] %>
 <% end %>
@@ -26,12 +27,12 @@ Background:
 Scenario: <%= site["pretty_name"] %> SMART-recs can be delivered on <%= page_name %> page using SMART-API
     When I track the <%= page_name %> page        
     Then I should get an OK status back
-    And I should get at least <%= page["expected_api_recs"] %> SMART-recs in the response 
+    #And I should get at least <%= page["expected_api_recs"] %> SMART-recs in the response 
 
-Scenario: <%= site["pretty_name"] %> SMART-recs clicks can be tracked on <%= page_name %> page using SMART-API
-    When I track the <%= page_name %> page
-    And I track a click for the first SMART-rec
-    Then I should get an OK status back
+#Scenario: <%= site["pretty_name"] %> SMART-recs clicks can be tracked on <%= page_name %> page using SMART-API
+ #   When I track the <%= page_name %> page
+    #And I track a click for the first SMART-rec
+  #  Then I should get an OK status back
 <% end %>
 <% end %>
 

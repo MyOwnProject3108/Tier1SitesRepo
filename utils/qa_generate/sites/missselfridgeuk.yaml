@@ -8,16 +8,18 @@ password: P@ssw0rd
 zero_search_term: abcd
 valid_search_term: shoe
 database_num: 7
+mob_apikeyliv: qwmngdth1342q
+channel: mobileapp
 site_id: 539
 integration: standard
 
 home_page:
-  URL: "http://www.missselfridge.com/#slide1"
+  URL: "http://www.missselfridge.com/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title=> "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 #  category_menu: ["ul", ':id => "nav_catalog_menu"']
- # category_menu_exclude: ["Dress Shop", "Petite", "Features", "Style Diaries"]
+#  category_menu_exclude: ["Dress Shop", "Petite", "Features", "Style Diaries"]
 #  needs_SPR: no
 
 product_page:
@@ -43,7 +45,7 @@ login_page:
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  
   login_submit: ["link", ':id=>"login_submit"']
-
+  
 searchresults_page:
   URL: "http://www.missselfridge.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12554&catalogId=33055&beginIndex=1&viewAllFlag=false&pageSize=40&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=shoe&x=0&y=0"
   expected_recs: 0
@@ -53,6 +55,7 @@ checkout_page:
   URL: ""
   expected_recs: 0
   extra_steps:
+   - [pause, 5]
    - [select_list, id, "address_title", "Mr"]
    - [text_field, id, "address_first_name", "P"]
    - [text_field, id, "address_surname", "Eerius"]

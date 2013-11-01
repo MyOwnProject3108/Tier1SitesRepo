@@ -14,17 +14,18 @@ integration: json
 home_page:
   URL: "http://www.superdry.com/"
   expected_recs: 0
-  login_link: ["link", ':id => "signin_register"']
-  search_field: ["text_field", ':id => "searchword"']
+  login_link: ["link", ':href => "http://www.superdry.com/my-account"']
+  search_field: ["text_field", ':name => "searchword"']
 
 product_page:
   URL: "http://www.superdry.com/womens/t-shirts/details/39729/vintage-logo-t-shirt"    
-  expected_recs: 6
-  add_to_basket_button: ["button", ':value=> "Add to bag"']
+  expected_recs: 1
+  add_to_basket_button: ["button", ':value => "Add to bag"']
   extra_steps:      
-      - [span, text, "select size"]
-      - [span, text, "medium UK 12"]
-      - [pause,40]
+    - [span, xpath, ".//*[@id='js_dropdown_product_id']/span"]
+#    - [span, text, "select size"]
+    - [span, text, "S"]
+    - [pause,50]
     
 category_page:
   URL: "http://www.superdry.com/womens/dresses"
@@ -32,7 +33,7 @@ category_page:
 
 basket_page:
   URL: "https://www.superdry.com/shopping-bag"
-  expected_recs: 5
+  expected_recs: 4
   basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
   basket_remove: ["button", ':class => "cart-delete button"']  
 
@@ -45,8 +46,8 @@ login_page:
 
 searchresults_page:
   URL: "http://www.superdry.com/search/jacket"
-  expected_recs: 8
-  zerosearch_recs: 8
+  expected_recs: 1
+  zerosearch_recs: 1
 
 checkout_page:
   URL: "https://www.superdry.com/checkout"

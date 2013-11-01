@@ -1,13 +1,15 @@
 site_name: evans
-pretty_name: Evans
+pretty_name: Evans UK
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: webtest@mailinatior.com
-password: webtest@123
+username: user213@gmail.com
+password: P@ssw0rd
 zero_search_term: dvd
-valid_search_term: jeans
+valid_search_term: dress
 database_num: 4
+mob_apikeyliv: iurhrfb43683b
+channel: mobileapp
 site_id: 219
 integration: standard
 
@@ -18,32 +20,46 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.evans.co.uk/en/evuk/product/clothing-250468/evans-purple-tulip-print-top-2124632?bi=1&ps=24"
+  URL: "http://www.evans.co.uk/en/evuk/product/accessories-250472/bags-250490/evans-black-quilted-satchel-bag-2236321?bi=1&ps=24"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
 
 category_page:
-  URL: "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33056&storeId=12555&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207183&parent_categoryId=207169&beginIndex=1&pageSize=20"
+  URL: "http://www.evans.co.uk/en/evuk/category/clothing-250468/dresses-250498"
   expected_recs: 0
 
 basket_page:
-  URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555"
-  expected_recs: 5 
-  basket_checkout: ["link", ':class => "btn_checkout"']
+  URL: "https://www.evans.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33054&langId=-1&storeId=12553"
+  expected_recs: 4 
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
-  URL: "http://topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33056&storeId=12555"
+  URL: "https://www.evans.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33054&storeId=12553&krypto=6JGpwJoTBogcXSkJp6JNC3Y%2F%2BXJQOxw63aLFYCRK0JMlzcGOIqmXzu3xVgyPmHM8o9JUq3nioyjH%0AwO0dbQ%2BB%2BA%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']  
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
-  URL: "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12555&catalogId=33056&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=hsdg&x=0&y=0"
+  URL: "http://www.evans.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12553&catalogId=33054&beginIndex=1&viewAllFlag=false&pageSize=24&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=25&y=13"
   expected_recs: 0
   zerosearch_recs: 1
   
 checkout_page:
-  URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderDisplay?langId=-1&catalogId=33056&storeId=12555&krypto=8F4rqMW1NIT2HrCzbTrqrqDR7yDlD1DPQ615%2FcCIvMFAtaBWSUJQ3orUXX0vDr8yynd7e5Em9po%2B%0Ab6G3FEJEzOaR93mGfy912FhaKRztz2NN9D5wzBx5ec2HWvPkFeLnmkMaee9jFu%2BvsylsnWfiP6q5%0AvW5CtGjzmbAf50K2rpCMIe1kbbGeSvrSav7sMoOxw824C%2FjYz3DoB844hs4fefI%2ByCJOs7lxDZRy%0AytXBve05uUXzhts8SgiRk9wSD5%2BhTnJAfC3Q9yQ1n5ZzzJum%2FKmA0JtJM%2FmHB0%2FKcOmj3lQ1lCmt%0ABOLHQukEAyU6GMRT%2BZMfVSm2ZT6aTHXis%2F3G6eel9L3bjwJI6v%2BQBLM0aObRZbCt55kMV%2Fppx3gD%0AYNaF8vx49ccwh1g%3D&ddkey=http:CatalogNavigationSearchResultCmd" 
+  URL: "" 
   expected_recs: 0
+  extra_steps:
+  # - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "0208768789"]
+   #- [p, class, "enter_manual_address"]
+   #- [text_field, class, "text address_line_1", "Units 207-211"]
+   #- [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   #- [text_field, class, "text address_town", "London"]
+   #- [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]

@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 product_page:
-  URL: "http://www.mandco.com/blouses+shirts/butterfly-pleat-blouson/invt/1156608multi&bklist=icat,4,10,10010,10010290"
+  URL: "http://www.mandco.com/dresses-/lace-ponte-skater-dress/invt/1209760black&bklist=icat,5,10,10010,10010090,10010090210"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
   extra_steps:
@@ -32,7 +32,7 @@ category_page:
 
 basket_page:
   URL: "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
-  expected_recs: 0 
+  expected_recs: 1 
   basket_checkout: ["button", ':class => "right btCheckout submit"']
   basket_remove: ["link", ':class => "remove"']  
 

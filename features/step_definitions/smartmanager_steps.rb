@@ -1,4 +1,4 @@
-Then /^I should see an "(.+)" message$/ do |message|
+Then /^I should see "(.+)" error message$/ do |message|
   @current_page.error_message.should == message
 end
 
@@ -195,6 +195,14 @@ Then /^the text from the delete should read "(.*?)"$/ do |deletedtext|
   @delete_text.should == deletedtext
 end
 
-Given /^I click logout$/ do
-  @current_page.logout_element.click
+Given /^I click logout on the orders page$/ do
+  @current_page.logout_submit_element.click
+end
+
+Then(/^I hover over on Account button$/) do
+  @current_page.account_submit_element.hover
+end
+
+When(/^I click on old interface link on the orders page$/) do
+  @current_page.oldui_link_element.click
 end

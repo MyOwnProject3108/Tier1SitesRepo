@@ -1,0 +1,51 @@
+site_name: tommyhilfigeres
+pretty_name: Tommy Hilfiger ES
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user228@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: shirt
+database_num: 6
+site_id: 82
+integration: json
+
+home_page:
+  URL: "http://es.tommy.com/"
+  expected_recs: 0
+  login_link: ["link", ':text => "Mi Cuenta"']
+  search_field: ["text_field", ':id => "searchinput"']
+
+product_page:
+  URL: "http://es.tommy.com/Caswell-Camisa-Denim/0887838173,es_ES,pd.html?cgid=203000#!color%3D984%26i%3D7"
+  expected_recs: 4
+  add_to_basket_button: ["button", ':class=> "button active addtocartbutton a"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://es.tommy.com/Camisas/203000,es_ES,sc.html"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://es.tommy.com/on/demandware.store/Sites-ES-Site/es_ES/Cart-Show"
+  expected_recs: 0
+  basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
+  basket_remove: ["button", ':class => "remove no_print"']  
+
+login_page:
+  URL: "https://es.tommy.com/on/demandware.store/Sites-ES-Site/es_ES/Account-Show"
+  expected_recs: 0
+  username_field: ["text_field", ':id => "dwfrm_login_username"']
+  password_field: ["text_field", ':id => "dwfrm_login_password"']  
+  login_submit: ["button", ':name => "dwfrm_login_customlogin"']
+
+searchresults_page:
+  URL: "http://es.tommy.com/on/demandware.store/Sites-ES-Site/es_ES/Search-Show?q=shirt"
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0

@@ -18,5 +18,6 @@ gem 'trollop'
 
 #JSON gems
 
-#gem 'json'
-#gem 'jsonpath'
+gem 'json'
+gem 'jsonpath'
+#gem 'httparty'

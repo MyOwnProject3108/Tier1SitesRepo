@@ -4,7 +4,7 @@ has_content: no
 has_ranking: no
 needs_SPR: false
 username: user208@gmail.com
-password: webtest123
+password: P@ssw0rd
 zero_search_term: dvd
 valid_search_term: dress
 database_num: 7
@@ -12,7 +12,7 @@ site_id: 401
 integration: standard
 
 home_page:
-  URL: "http://www.wallismode.de/?geoip=de"
+  URL: "http://www.wallismode.de/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']

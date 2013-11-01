@@ -1,0 +1,51 @@
+site_name: tommyhilfigerbenl
+pretty_name: Tommy Hilfiger BE-NL
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user232@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: shirt
+database_num: 6
+site_id: 82
+integration: json
+
+home_page:
+  URL: "http://be.tommy.com/"
+  expected_recs: 0
+  login_link: ["link", ':text => "Inloggen"']
+  search_field: ["text_field", ':id => "searchinput"']
+
+product_page:
+  URL: "http://be.tommy.com/Elly-Rugby-Polo/1M87629951,nl_BE,pd.html?cgid=103000#!color%3D475%26i%3D6"
+  expected_recs: 4
+  add_to_basket_button: ["button", ':class=> "button active addtocartbutton a"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://be.tommy.com/Polo%27s/206000,nl_BE,sc.html"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://be.tommy.com/on/demandware.store/Sites-BE-Site/nl_BE/Cart-Show"
+  expected_recs: 0
+  basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
+  basket_remove: ["button", ':class => "remove no_print"']  
+
+login_page:
+  URL: "https://be.tommy.com/on/demandware.store/Sites-BE-Site/nl_BE/Account-Show"
+  expected_recs: 0
+  username_field: ["text_field", ':id => "dwfrm_login_username"']
+  password_field: ["text_field", ':id => "dwfrm_login_password"']  
+  login_submit: ["button", ':name => "dwfrm_login_customlogin"']
+
+searchresults_page:
+  URL: "http://fr.tommy.com/on/demandware.store/Sites-FR-Site/fr_FR/Search-Show?q=shirt"
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0

@@ -1,7 +1,116 @@
-Given /^I am using SMART\-API (v1|v1_1)?.?to access (.+)$/ do |version, site|
+##*********************for adding new steps -add at the top, so we know when any new step is added*****************************######################
+When(/^I request invalid order details for order page$/) do
+@api.json_type = 'order'
+    items = [
+        {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
+        {"refCode" => "prod-bl020nav", "qty" => 8, "price" => 52.5},
+    ]
+    @api.json_order = {
+        "orderNo" => "",
+        "items" => items, 
+        "currency" => "GBP",
+        "subtotal" => 103,
+        "shipping" => 11.75,
+        "total" => 114.75
+    }
+    @api.track
+end
+
+When(/^I request invalid order details for order page if currency is missing$/) do
+@api.json_type = 'order'
+    items = [
+        {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
+        {"refCode" => "prod-bl020nav", "qty" => 8, "price" => 52.5},
+    ]
+    @api.json_order = {
+        "orderNo" => "API-ABC123-#{Time.now.to_i}",
+        "items" => items, 
+        "currency" => "",
+        "subtotal" => 103,
+        "shipping" => 11.75,
+        "total" => 114.75
+    }
+    @api.track
+end
+
+Given(/^I am using mobileapp api token "(.*?)"$/) do |arg1|
+#Given(/^I am using mobileapp api token rye(\d+)sdyu(\d+)s$/) do |arg1, arg2|
+  #@api.mobileapp_api()
+  #@api.json_mobileapp_api= 
+end
+#When(/^I track "(.*?)" basket page by using mobileapp api token "(.*?)" with firstrefcd "(.*?)" secndrefcd "(.*?)"$/) do |arg1, arg2, arg3, arg4|
+When(/^I track "(.*?)" basket page by using mobileapp api token "(.*?)" with firstrefcd "(.*?)" secndrefcd "(.*?)"$/) do |site1, mob_apikeyliv,refcd1,refcd2|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_clientToken = mob_apikeyliv
+	@api.json_type = 'basket'
+	items = [
+      {"refCode" => refcd1, "qty" => 5, "price" => 69.9},
+      {"refCode" => refcd2, "qty" => 8, "price" => 32.3},
+		]
+  @api.json_basket = {"items" => items, "currency" => "GBP"} 
+  @api.track
+end
+
+When(/^I track "(.*?)" home page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'home'
+	#@api."channel" => "mobileapp",
+	@api.json_clientToken = mob_apikeyliv
+	@api.track
+end
+
+When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'product'
+	@api.json_product = {"refCode" => "prod-dw041dpu"}
+	@api.json_clientToken = mob_apikeyliv
+	@api.track
+end
+
+When(/^I track "(.*?)" product page rec click by using mobileapp api token "(.*?)" with refocde "(.*?)"$/) do |site1, mob_apikeyliv, refcd|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'product'
+	@api.json_product = {"refCode" => refcd}
+	@api.json_clientToken = mob_apikeyliv
+	@api.track 
+	@api.json_channel = "mobileapp"
+end
+
+When(/^I track "(.*?)" category page by using mobileapp api token "(.*?)" with category "(.*?)"$/) do |site1, mob_apikeyliv, category|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'category'
+	@api.json_category = category
+	@api.json_clientToken = mob_apikeyliv
+	@api.track 
+	@api.json_channel = "mobileapp"
+end
+
+When(/^I track "(.*?)" search page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+	@api.json_type = "channel"
+	@api.json_channel = "mobileapp"
+	@api.json_type = 'searchresults'
+    @api.json_searchResults = {"term" => "shirts", "results" => []}
+	@api.json_clientToken = mob_apikeyliv
+	@api.track 
+end
+
+
+
+##*******below this point are steps added previuosly***################
+
+Given /^I am using SMART\-API (v1|v1_1|v1_2)?.?to access (.+)$/ do |version, site|
   @api = Peerius::SmartAPI.new(site, version, FigNewton.base_url)
   @site = site    
 end
+
+# Given(/^I am using SMART\-API (v1d+)_(\d+) to access livedemoshop$/) do |arg1, arg2|
+  # pending # express the regexp above with the code you wish you had
+# end
 
 Given /^I am using client token (.+)$/ do |token|
   @api.json_clientToken = token
@@ -22,6 +131,11 @@ end
 Given /^I request (.+) rec content$/ do |type|
   @api.json_recContent = type
 end
+###
+Given /^I am on a(.+) category page$/ do |type|
+  @api.json_category = type
+end
+##
 
 Given /^I request (.+) attributes?$/ do |num_attributes|
   case num_attributes
@@ -63,6 +177,23 @@ When /^I track (?:a|the) home page$/ do
    @api.json_type = 'home'
    @api.track
 end
+###
+  
+When(/^I track a home page using version v(\d+)$/) do |version|
+	@api = Peerius::SmartAPI.new(version, FigNewton.base_url)
+   @api.track
+end
+
+When(/^I track a home page using version v(\d+)_(\d+)$/) do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I track a "(.*?)" category page$/) do|type|
+  @api.json_type = 'category'
+   @api.json_category = "ties"
+   @api.track
+end
+
 
 When /^I track (?:the|an) "?other"? page$/ do
    @api.json_type = 'other'
@@ -74,9 +205,28 @@ When /^I track (?:a|the) product page$/ do
    @api.json_product = {"refCode" => "prod-dw041dpu"}
    @api.track
 end
+##
+When(/^I track the product page for variant info$/) do
+   @api.json_type = 'product'
+   @api.json_product = {"refCode" => "TS16R05BBLK"}
+   @api.track
+   end
 
-When /^I track (?:a|the) category page$/ do
+
+###
+When /^I track (?:the|an) category page$/ do
    @api.json_type = 'category'
+   @api.json_category = "ties"
+   @api.track
+end
+When(/^I track a category page$/) do
+  @api.json_type = 'category'
+  @api.json_category = "ties"
+   @api.track
+end
+###
+When(/^I visit "(.*?)" page$/) do |arg1|
+  @api.json_type = 'category'
    @api.json_category = "ties"
    @api.track
 end
@@ -86,7 +236,7 @@ When /^I track (?:a|the) basket page$/ do
   items = [
       {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
       {"refCode" => "prod-bl020nav", "qty" => 8, "price" => 52.5},
-  ]
+		]
   @api.json_basket = {"items" => items, "currency" => "GBP"} 
   @api.track
 end
@@ -122,6 +272,13 @@ When /^I track (?:the|an) order page$/ do
         "total" => 114.75
     }
     @api.track
+end
+
+When(/^I relogin with username "(.+)" and email "(.+)"$/) do |username, email|
+   @api.json_user = {
+       "name" => username,
+       "email" => email
+     }
 end
 
 When /^I track (?:the|a) search results page$/ do
@@ -170,18 +327,62 @@ end
 When /^I (?:purchase|order) (\d+) "(.*?)" using the SMART\-API\w*(#?.*)$/ do |quantity, item, comment|
     @api.json_type = 'order'
     items = [
-        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
+        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 60.50},
     ]
     @api.json_order = {
         "orderNo" => "API-#{item}-#{Time.now.to_i}",
         "items" => items, 
         "currency" => "GBP",
-        "subtotal" => 50.50,
+        "subtotal" => 60.50,
         "shipping" => 1.00,
-        "total" => 51.50
+        "total" => 61.50
     }
     @api.track
 end
+##
+#for variant info--not using for now
+# When(/^I order product "(.*?)" with variant info using the SMART\-API$/) do|items|
+    # @api.variant_info = items
+	# @api.track
+# end
+
+
+When(/^I track a variant "(.*?)" basket page with variant colour "(.*?)" size "(.*?)" using the SMART\-API$/) do|item,col,siz|
+#When(/^I track a variant basket page with varinfo$/) do
+	@api.json_type = 'basket'
+	items = [
+	  {"refCode" => "#{item}", "qty" => 3, "variant" => {"colour" =>"#{col}","size" =>"#{siz}"}},
+      #{"refCode" => "TS14J29DACB","variant"=>{"colour" => "acid blue","size"=> "6"},"qty" => 3, "price" => 10.5},
+      #{"refCode" => "TS16H75UBLK","variant"=>{"colour"=>"black","size"=>"10"}, "qty" => 3, "price" => 52.5},
+	   ]
+	 @api.json_basket = {"items" => items, "currency" => "GBP"} 
+	 @api.track
+end
+
+When(/^I order product "(.*?)" with variant colour "(.*?)" size "(.*?)" using the SMART\-API$/) do|item,col,siz|
+	@api.json_type = 'order'
+    items = [
+         {"refCode" => "#{item}", "qty" => 3, "variant" => {"colour" =>"#{col}","size" =>"#{siz}"},"price" => 60.50},
+     ]
+     @api.json_order = {
+         "orderNo" => "API-#{item}-#{Time.now.to_i}",
+         "items" => items, 
+         "currency" => "GBP",
+         "subtotal" => 50.50,
+         "shipping" => 1.25,
+         "total" => 51.75
+     }
+     @api.track
+end
+
+
+Then(/^I insert order for a "(.*?)" using the SMART\-API$/) do |quantity, item, comment|
+   @api.json_type = 'order'
+    items = [
+        {"refCode" => "#{item}", "qty" => quantity.to_i, "price" => 50.50},
+			]
+end
+
 
 #
 # Clicks
@@ -205,8 +406,8 @@ end
 
 When /^I track a click for the first SMART\-rec$/ do
     @api.should have_smart_recs
-    @api.rec_widgets.count.should > 0
-    @api.total_recs.should > 0
+    @api.rec_widgets.count.should >= 1
+    @api.total_recs.should >= 0
     @api.rec_click
     @api.track
 end
@@ -221,8 +422,10 @@ Then /^I should get an? (.+) status back$/ do |status|
     #puts @api.json_request 
     #pp @api.result  
     @api.result["status"].should eq(status)
-    $current_session = @api.result["session"]["session"]
-    $current_cuid = @api.result["session"]["cuid"]
+    @current_session = @api.result["session"]
+	#$current_session = @api.result["session"]["session"]
+	#@current_cuid = @api.result["session"]["cuid"]
+    @current_cuid = @api.result["cuid"]
 end
 
 Then /^I should get a response in less than (\d+)ms$/ do |expected|
@@ -244,6 +447,19 @@ Then /^I should get at least (\d+) SMART-content creatives? in the response$/ do
     @api.content_creatives.count.should >= expected_creatives.to_i
 end
 
+##
+
+Then(/^one of the variant title should contain "(.*?)"$/) do |expected_colour|
+   @api.json_type = 'product'
+   @api.json_product = {"refCode" => "TS03B03DBLK"}
+   @api.track
+   @api.should have_smart_recs
+   #@api.rec_widgets.count.should > 0
+   #@api.total_recs.should >= var_recs
+   @api.total_recs.should >= expected_colour.to_i
+end
+#
+##
 Then /^I should get at least (\d+) items? of SMART\-ranking content$/ do |expected_items|
     #pp @api.result
     @api.should have_smart_ranking_content
@@ -277,54 +493,74 @@ Then /^one of the SMART\-content creative names should contain "(.*?)"$/ do |exp
   }
   has_expected_creative.should == true
 end
+###
+Then(/^I visit "(.*?)" page$/) do |arg1|
+  @api.json_type = 'category'
+   @api.json_category = "ties"
+   @api.track
+end
+###
+
+Then(/^I visit a "(.*?)" using the SMART\-API$/) do |arg1|
+  @api.json_type = 'product'
+  @api.track
+end
+###
+
+Then(/^it should get an OK status back$/) do
+  @api.json_type = 'category'
+ end
+
+
 
 #
 # A/B Tests
 #
 Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
-  has_expected_product = false
+  #has_expected_product = false
   
- # pp @api.result["info"]["abtest"]
+  #pp @api.result["info"]["abtest"]
   @api.result.should have_key("info")
   @api.result["info"].should have_key("abtest")
   @api.result["info"]["abtest"].should have_at_least(1).product
   
   # Check to see that one of the products is the one we are looking for 
-  @api.result["info"]["abtest"].each {|product| 
-  if product.has_key?(expected_product) then
+   #pp @api.result["info"]["abtest"]
+   @api.result["info"]["abtest"].each {|product| 
+   if product.has_key?(expected_product) then
     has_expected_product = true
     
-    # Check that the product has an abgroup defined
-    product[expected_product].should have_at_least(1).items
-    product[expected_product].each {|config|
+    # # Check that the product has an abgroup defined
+     product[expected_product].should have_at_least(1).items
+     product[expected_product].each {|config|
       config.should have_key("group")
     }
   end
-  }
+   }
   
-  has_expected_product.should == true
+  # has_expected_product.should == true
   
 end
 
 Then /^I should see at least (\d+) (.+) ab test configs?$/ do |expected_configs, expected_product|
   # pp @api.result["info"]["abtest"]
-  @api.result.should have_key("info")
-  @api.result["info"].should have_key("abtest")
-  @api.result["info"]["abtest"].should have_at_least(1).product
+   @api.result.should have_key("info")
+   @api.result["info"].should have_key("abtest")
+   @api.result["info"]["abtest"].should have_at_least(1).product
   
-  # Check to see that one of the products is the one we are looking for 
-  @api.result["info"]["abtest"].each {|product| 
-  if product.has_key?(expected_product) then
-    has_expected_product = true
+  # # Check to see that one of the products is the one we are looking for 
+   @api.result["info"]["abtest"].each {|product| 
+   if product.has_key?(expected_product) then
+     has_expected_product = true
     
-    # Check that the product has an abgroup defined
-    product[expected_product].should have_at_least(1).items
-    product[expected_product].each {|config|
-      config.should have_key("configs")
-      config["configs"].size.should >= expected_configs.to_i 
-    }
-  end
-  }
+    # # Check that the product has an abgroup defined
+    # product[expected_product].should have_at_least(1).items
+    # product[expected_product].each {|config|
+      # config.should have_key("configs")
+      # config["configs"].size.should >= expected_configs.to_i 
+    # }
+   end
+   }
 end
 
 #

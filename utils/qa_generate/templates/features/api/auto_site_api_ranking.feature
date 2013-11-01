@@ -9,7 +9,7 @@
 @smartapi
 
 
-Feature: <%= site["pretty_name"] %> SMART-API ranking
+Feature: <%= site["pretty_name"] %> SMART-API ranking -ignore for now- it's auto generated
 
 Background:
     Given I am using SMART-API to access <%= site["site_name"] %>

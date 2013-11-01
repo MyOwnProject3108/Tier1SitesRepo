@@ -5,7 +5,7 @@ has_ranking: no
 needs_SPR: false
 username: webtest@mailinator.com
 password: webtest
-zero_search_term: abcd
+zero_search_term: dvd
 valid_search_term: dress
 database_num: 3
 site_id: 605
@@ -15,14 +15,18 @@ home_page:
   URL: "http://www.frenchconnection.com/"
   expected_recs: 0
   login_link: ["link", ':title => "Sign In"']
-  search_field: ["text_field", ':name => "ctl00$ctl00$txtKeywordSearch"']
+#  extra_steps:
+#   - [pause, 20]
+  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch"']
+  extra_steps:
+   - [button, id, "ctl00_ctl00_btnDoSearch"]
 
 product_page:
   URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"
   expected_recs: 3
   add_to_basket_button: ["button", ':name => "addToBasket"']
   extra_steps:
-   - [select_list, id, "selSize", "OS"]
+#   - [select_list, id, "selSize", "OS"]
    - [pause, 20]
 
 category_page:
@@ -43,7 +47,7 @@ login_page:
   login_submit: ["button", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_btnlogin2"']
 
 searchresults_page:
-  URL: "http://www.frenchconnection.com/search/keywords are dress/dress.htm"
+  URL: "http://www.frenchconnection.com/search/keywords+are+dvd/dvd.htm"
   expected_recs: 0
   zerosearch_recs: 1
 

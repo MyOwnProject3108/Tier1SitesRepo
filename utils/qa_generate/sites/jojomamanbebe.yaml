@@ -22,7 +22,7 @@ product_page:
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "iB1"']
   extra_steps:
-     - [image, id, "bb_matrixBody_b4725NAV8"]
+     - [image, src, "http://www.jojomamanbebe.co.uk/assets/images/mtx/inStock.jpg"]
      - [pause,10]
 
 category_page:
@@ -33,7 +33,7 @@ basket_page:
   URL: "http://www.jojomamanbebe.co.uk/docontents.asp"
   expected_recs: 5
   basket_checkout: ["image", ':src => "http://www.jojomamanbebe.co.uk/assets/images/button_proceedToCheckout.jpg"']
-  basket_remove: ["image", ':alt => "remove item"']
+  basket_remove: ["image", ':src => "http://www.jojomamanbebe.co.uk/assets/images/button_remove.jpg"']
 
 login_page:
   URL: "https://www.jojomamanbebe.co.uk/login.asp"
@@ -51,11 +51,24 @@ checkout_page:
   URL: ""
   expected_recs: 0
   extra_steps:
-  - [button, id, "continue"]
-  - [text_field, id, "card_number", "5555555555554444"]
-  - [select_list, id, "expiry_month", "Mar"]
-  - [select_list, id, "expiry_year", "2015"]
+  - [image, alt, "Add a New Address"]
+  - [pause,10]
+  - [text_field, id, "initials", "test"]
+  - [text_field, id, "surname", "test1"]
+  - [text_field, id, "day_phone", "07838291919"]
+  - [text_field, id, "postcodefind", "TW3 3TN"]
+  - [button, id, "faBtn",]
+  - [pause,10]
+  - [image, alt, "use Address"]
+  - [pause,10]
+# - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
+  - [text_field, id, "card_number", "4444333322221111"]
+  - [select_list, id, "expiry_month", "May"]
+  - [select_list, id, "expiry_year", "2016"]
   - [text_field, id, "check_number", "123"]
-  - [button, id, "orderButton"]
+  - [image, alt, "Continue, to review your order"]
   
- 
+  
+  
+  
+  

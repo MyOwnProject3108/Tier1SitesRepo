@@ -1,4 +1,4 @@
-base_url: test1.lan
+base_url: qa1.lan
 headless: false
 proxy: utils.lan:9100
 database0: testdenorm0

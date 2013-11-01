@@ -86,13 +86,18 @@ end
 
 Then(/^I select "(.*?)" from the category search results on the smartcontent creative page$/) do |catresultpick|
   cat = ['Jackets','Trousers','Waistcoats']
+# cat = ['suits']
    	cat.each do |x|
 	 @current_page.cell_element(:text => x).click
 	end
  end
  
  Then(/^I select multiple "(.*?)" from the category search results on the smartcontent creative page$/) do |multipleprodpick|
-  product = ['Gold plain woven tie','Charcoal plain woven tie','Blue gingham check narrow tie','Shaw navy floral woven tie','Dark navy narrow stripe narrow tie','Hudson magenta double mogador stripe handmade tie']
+#div_with_scroll = @browser.div(:class => 'ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable ui-resizable')
+#div_with_scroll.elements.last.wd.location_once_scrolled_into_view
+ # product = ['Gold plain woven tie','Charcoal plain woven tie','Blue gingham check narrow tie','Shaw navy floral woven tie','Dark navy narrow stripe narrow tie','Hudson magenta double mogador stripe handmade tie']
+ product = ['Gold plain woven tie','Charcoal plain woven tie']
+# product = ['tie']
     product.each do |y|
 	@current_page.cell_element(:text => y).click
 	end
@@ -135,7 +140,8 @@ end
 
 
 Then(/^I click on all the delete rules on the smartcontent setup page$/) do
-	rules_delete = ['tags_rule','default_rule','country_FR_rule','country_US_rule','country_GB_rule','segments_rule','gender_rule','keyword_rule','organic_rule','ppc_rule','source_rule','city_rule','smart_rule','visitor_new_rule','visitor_returning_rule','customer_new_rule','direct_rule','customer_returning_rule']
+#	rules_delete = ['tags_rule','default_rule','country_FR_rule','country_US_rule','country_GB_rule','segments_rule','gender_rule','keyword_rule','organic_rule','ppc_rule','source_rule','city_rule','smart_rule','visitor_new_rule','visitor_returning_rule','customer_new_rule','direct_rule','customer_returning_rule']
+	rules_delete = ['gender_rule','keyword_rule','organic_rule','ppc_rule','source_rule','city_rule','smart_rule','visitor_new_rule','visitor_returning_rule','customer_new_rule','customer_returning_rule','direct_rule','default_rule','tags_rule','country_GB_rule','country_US_rule','country_FR_rule']
 	rules_delete.each do |y|
 	link_href = @browser.a(:text=> y).attribute_value("href")
 	link_href_arr = link_href.split("?")
@@ -255,11 +261,14 @@ Then(/^I should see "(.*?)" message on the smartcontent location page$/) do |con
   @current_page.content_message.should == contentmessage
 end
 
-Given(/^I select ctshirts from the sites list on the smartmanager home page$/) do
- @current_page.select_list_element(:name => "siteName").when_present.select "ctshirts"
-#@current_page.select_list_element(:name => "siteName").option("ctshirts").when_present.select
-#@current_page.select_list_element(:name => "siteName").select "ctshirts".when_visible
+#Given(/^I select ctshirts from the sites list on the smartmanager home page$/) do
+ #@current_page.select_list_element(:name => "siteName").when_present.select "ctshirts"
+#end
+
+Given(/^I select "(.*?)" from the sites list on the smartmanager login page$/) do |siteselection|
+ @current_page.siteselection = siteselection
 end
+
 
 Then(/^I select content location as HomePagebanner(\d+)$/) do |location1|
    @current_page.select_list_element(:name => "htmlInjectionPoint").select "HomePagebanner1"
@@ -273,3 +282,34 @@ end
 Then(/^I select content location as Home_JSON_IP$/) do
   @current_page.select_list_element(:name => "htmlInjectionPoint").select "Home_JSON_IP"
 end
+
+###
+Then(/^I enter content name as <SetupName> on the smartcontent location page$/) do|contentname|
+  @current_page.contentname = contentname
+end
+
+Then(/^I enter <Criteria> in the criteria(\d+) position on the smartcontent location page$/) do |rule1, criteria1|
+  @current_page.rule1 = rule1
+end
+
+Then(/^I enter criteria3 in the "([^"]*)" position on the smartcontent location page$/) do |criteria3|
+	#on_page(Smartmanager::SmartcontentCreativePage).textarea(:name => "creativeConfigs.itemsForView[2].expression").when_present.set(criteria3)
+	#@current_page.cell_element(:name => "creativeConfigs.itemsForView[2].expression").criteria3
+    #@current_page.textarea(:name => criteria3)
+	# @current_page.textarea (:name => "creativeConfigs.itemsForView[2].expression").select criteria3
+	#@current_page.fill_in 'name', :with => criteria3  :username, :id=>"login_email"
+end
+
+Then(/^I select image1 as "([^.]*?)" on the smartcontent location page$/) do |imagename1|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select imagename1
+end
+
+Then(/^I select image2 as "([^.]*?)" on the smartcontent location page$/) do |imagename2|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select imagename2
+end
+
+Then(/^I select image3 as "(.*?)" on the smartcontent location page$/) do |imagename3|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[2].creative").select imagename3
+end
+
+##

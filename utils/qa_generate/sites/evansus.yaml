@@ -1,0 +1,64 @@
+site_name: evansus
+pretty_name: Evans US
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: user216@gmail.com
+password: P@ssw0rd
+zero_search_term: dvd
+valid_search_term: dress
+database_num: 4
+site_id: 219
+integration: standard
+
+home_page:
+  URL: "http://www.evansusa.com/?geoip=home"
+  expected_recs: 0
+  login_link: ["link", ':title => "Login"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://www.evansusa.com/en/evus/product/clothing-942924/dresses-942954/scarlett-jo-black-2-in-1-peplum-dress-2152471?bi=1&ps=20"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [pause, 20]
+
+category_page:
+  URL: "http://www.evansusa.com/en/evus/category/clothing-942924/dresses-942954"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.evansusa.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34086&langId=-1&storeId=13072"
+  expected_recs: 4 
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://www.evansusa.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34086&storeId=13072&krypto=S9BNDEagYIb960r1Id1EJpxjhpXx2RJ5AW1q2nkM%2FtN1f7aJdCEUcPswmXH4DT1yGJxeLKSfVzgo%0A43J0q29xhA%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://www.evansusa.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13072&catalogId=34086&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  extra_steps:
+  # - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "0208768789"]
+  # - [p, class, "enter_manual_address"]
+   - [text_field, class, "text address_line_1", "Units 207-211"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "town"]
+   - [select_list, id, "shipping_state_select", "Florida"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
