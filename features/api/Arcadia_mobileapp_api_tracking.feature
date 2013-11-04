@@ -8,7 +8,7 @@ Scenario: I can track and get recs for arcadia using mobileapp api for BHS
 
 Scenario: I can track and get recs for bhs product using mobileapp api for BHS
 	Given I am using SMART-API to access bhs
-	When I track "bhs" product page by using mobileapp api token "rye23sdyu342s" 
+	When I track "bhs" product page by using mobileapp api token "rye23sdyu342s" with refocde "TS08L05BWHT" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
@@ -46,7 +46,7 @@ Scenario: I can track and get recs for arcadia using mobileapp api for TOPSHOP
 
 Scenario: I can track and get recs for topshop product using mobileapp api for TOPSHOP
 	Given I am using SMART-API to access topshop
-	When I track "topshop" product page by using mobileapp api token "x4753ag81h37" 
+	When I track "topshop" product page by using mobileapp api token "x4753ag81h37" with refocde "TS08L05BWHT"
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 	
@@ -81,7 +81,7 @@ Scenario: I can track and get recs for arcadia using mobileapp api for WALLIS
 
 Scenario: I can track and get recs for wallis product using mobileapp api for wallis
 	Given I am using SMART-API to access wallis
-	When I track "wallis" product page by using mobileapp api token "srfswrw3223dh" 
+	When I track "wallis" product page by using mobileapp api token "srfswrw3223dh" with refocde "TS08L05BWHT" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
@@ -117,7 +117,7 @@ Scenario: I can track and get recs for arcadia using mobileapp api for TOPMAN
 
 Scenario: I can track and get recs for topman product using mobileapp api for topman
 	Given I am using SMART-API to access topman
-	When I track "topman" product page by using mobileapp api token "lkdsa256784ds" 
+	When I track "topman" product page by using mobileapp api token "lkdsa256784ds" with refocde "TS08L05BWHT" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
@@ -153,7 +153,7 @@ Scenario: I can track and get recs for arcadia using mobileapp api for EVANS
 
 Scenario: I can track and get recs for evans product using mobileapp api for evans
 	Given I am using SMART-API to access evans
-	When I track "evans" product page by using mobileapp api token "iurhrfb43683b" 
+	When I track "evans" product page by using mobileapp api token "iurhrfb43683b" with refocde "TS08L05BWHT" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
@@ -189,7 +189,7 @@ Scenario: I can track and get recs for arcadia using mobileapp api for BURTON
 
 Scenario: I can track and get recs for burton product using mobileapp api for burton
 	Given I am using SMART-API to access burton
-	When I track "burton" product page by using mobileapp api token "bhrvkw68frbyh" 
+	When I track "burton" product page by using mobileapp api token "bhrvkw68frbyh" with refocde "TS08L05BWHT"  
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
@@ -225,13 +225,13 @@ Scenario: I can track and get recs for arcadia using mobileapp api for missselfr
 
 Scenario: I can track and get recs for missselfridge product using mobileapp api for missselfridge
 	Given I am using SMART-API to access missselfridge
-	When I track "missselfridge" product page by using mobileapp api token "qwmngdth1342q" 
+	When I track "missselfridge" product page by using mobileapp api token "qwmngdth1342q" with refocde "TS08L05BWHT" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
 Scenario: I can track and get recs for missselfridge product recs click using mobileapp api for missselfridge
 	Given I am using SMART-API to access missselfridge
-When I track "missselfridge" product page rec click by using mobileapp api token "qwmngdth1342q" with refocde "prod-dw041dpu"
+	When I track "missselfridge" product page rec click by using mobileapp api token "qwmngdth1342q" with refocde "prod-dw041dpu"
 	Then I should get an OK status back
 	And I track a click for the first SMART-rec
 		
@@ -261,13 +261,13 @@ Scenario: I can track and get recs for arcadia using mobileapp api for dorothype
 
 Scenario: I can track and get recs for dorothyperkins product using mobileapp api for dorothyperkins
 	Given I am using SMART-API to access dorothyperkins
-	When I track "dorothyperkins" product page by using mobileapp api token "we45er567dga1" 
+	When I track "dorothyperkins" product page by using mobileapp api token "we45er567dga1" with refocde "TS08L05BWHT" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
 Scenario: I can track and get recs for dorothyperkins product recs click using mobileapp api for dorothyperkins
 	Given I am using SMART-API to access dorothyperkins
-When I track "dorothyperkins" product page rec click by using mobileapp api token "we45er567dga1" with refocde "prod-dw041dpu"
+	When I track "dorothyperkins" product page rec click by using mobileapp api token "we45er567dga1" with refocde "prod-dw041dpu"
 	Then I should get an OK status back
 	And I track a click for the first SMART-rec
 		
