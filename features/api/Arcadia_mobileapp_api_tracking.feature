@@ -52,7 +52,7 @@ Scenario: I can track and get recs for topshop product using mobileapp api for T
 	
 Scenario: I can track and get recs for topshop product recs click using mobileapp api for TOPSHOP
 	Given I am using SMART-API to access topshop
-	When I track "topshop" product page rec click by using mobileapp api token "x4753ag81h37" with refocde "prod-dw041dpu"
+	When I track "topshop" product page rec click by using mobileapp api token "x4753ag81h37" with refocde "TS13A17ECRM"
 	Then I should get an OK status back
 	And I track a click for the first SMART-rec
 	
