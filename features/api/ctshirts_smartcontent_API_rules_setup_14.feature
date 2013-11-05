@@ -473,3 +473,55 @@ And I select "ctshirts" from the sites list on the smartmanager login page
  Then I should end up on the smartcontent page
  
 
+#Scenario Outline: Users should be able to create new setup for smartcontent
+Scenario: Users should be able to create new setup for smartcontent
+ Then I should end up on the orders page
+ And I pause for 10 seconds
+ And I click on "select2-search" link on the orders page
+ And I enter sitename as "ctshirts" on the orders page
+ And I pause for 5 seconds
+ When I click on old interface link on the orders page
+ And I pause for 5 seconds
+ #Then I should end up on the home page
+ #And I select "ctshirts" from the sites list on the smartmanager login page
+ #And I pause for 5 seconds
+ #When I click content on the smartmanager home page
+ #And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
+ And I pause for 5 seconds
+ When I click on the setup link on the smartcontent page
+ Then I should end up on the smartcontent setup page 
+ And I click on the create link on the smartcontent setup page 
+ Then I should end up on the smartcontent location page
+ And I enter content name as "auto_lastviewedcategory" on the smartcontent location page
+ And I pause for 5 seconds
+ And I select content location as Home_JSON_IP
+ Then I click on the Add content button on the smartcontent location page
+ And I pause for 5 seconds
+ And I select creative image as "Casual - Trousers - stack" on the smartcontent location page
+ Then I enter "lastviewedcategory" in the criteria1 position on the smartcontent location page
+ Then I click on the Add content button on the smartcontent location page
+ Then I enter "lastviewedcategory" in the "criteria2" position on the smartcontent location page
+  And I click on the save button on the smartcontent location page
+ Then I should end up on the smartcontent page
+ And I Activate the last smartcontent setup on the smartcontent page
+ Then I should end up on the smartcontent activation page
+ And I click on the Activate button on the smartcontent activation page
+ Then I should end up on the smartcontent page
+ 
+ 
+ #And I pause for 5 seconds
+ #And I click on the save button on the smartcontent location page
+# And I pause for 5 seconds
+# Then I should end up on the smartcontent page
+# And I Activate the last smartcontent setup on the smartcontent page
+# Then I should end up on the smartcontent activation page
+# And I click on the Activate button on the smartcontent activation page
+# Then I should end up on the smartcontent page
+# Examples:
+#	|   setupName					      |      imagename1 		       |  		criteria1            |      imagename2 	    		      |  		criteria2           |  
+#	|"auto_lastviewedcategory"            |   "Casual - Trousers - stack"  |"lastviewedcategory"        |   "Shirts - formal - classic fit"	  |"lastviewedcategory"         | 
+#	|"auto_purchasedHistoryByCategory" 	  |   "Ties - GROUP"			   |"purchasehistorybycategory" |	"Shoes - GROUP"			 		  |"purchasehistorybycategory"  |  #
+#	|"auto_purchaseHistoryByAttribute" 	  |   "LS1 - INACTIVE"			  			   |"purchasehistorybyattributes"|	"LS3 - INACTIVE"			 		  |"purchasehistoryb#yattributes"  | 
+#	|"auto_Lastviewedcategorywithparameter" |   "Casual - Trousers - stack"|"lastviewedcategory="TIES""|	"Shirts - formal - classic fit"		|"lastviewedcategory"  | 
+	

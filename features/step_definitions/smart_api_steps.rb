@@ -38,7 +38,7 @@ Given(/^I am using mobileapp api token "(.*?)"$/) do |arg1|
   #@api.mobileapp_api()
   #@api.json_mobileapp_api= 
 end
-#When(/^I track "(.*?)" basket page by using mobileapp api token "(.*?)" with firstrefcd "(.*?)" secndrefcd "(.*?)"$/) do |arg1, arg2, arg3, arg4|
+
 When(/^I track "(.*?)" basket page by using mobileapp api token "(.*?)" with firstrefcd "(.*?)" secndrefcd "(.*?)"$/) do |site1, mob_apikeyliv,refcd1,refcd2|
 	@api.json_type = "channel"
 	@api.json_channel = "mobileapp"
@@ -60,12 +60,12 @@ When(/^I track "(.*?)" home page by using mobileapp api token "(.*?)"$/) do |sit
 	@api.json_clientToken = mob_apikeyliv
 	@api.track
 end
-
-When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
+When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)" with refocde "(.*?)"$/) do |site1, mob_apikeyliv,refcd|
+#When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
 	@api.json_type = "channel"
 	@api.json_channel = "mobileapp"
 	@api.json_type = 'product'
-	@api.json_product = {"refCode" => "prod-dw041dpu"}
+	@api.json_product = {"refCode" => refcd}
 	@api.json_clientToken = mob_apikeyliv
 	@api.track
 end
