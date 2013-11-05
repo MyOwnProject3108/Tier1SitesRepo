@@ -8,13 +8,13 @@ Scenario: I can track and get recs for arcadia using mobileapp api for BHS
 
 Scenario: I can track and get recs for bhs product using mobileapp api for BHS
 	Given I am using SMART-API to access bhs
-	When I track "bhs" product page by using mobileapp api token "rye23sdyu342s" with refocde "TS08L05BWHT" 
+	When I track "bhs" product page by using mobileapp api token "rye23sdyu342s" with refocde "9732684473" 
 	Then I should get an OK status back
 	And I should get at least 1 SMART-recs in the response
 
 Scenario: I can track and get recs for bhs product recs click using mobileapp api for BHS
 	Given I am using SMART-API to access bhs
-	When I track "bhs" product page rec click by using mobileapp api token "rye23sdyu342s" with refocde "prod-dw041dpu"
+	When I track "bhs" product page rec click by using mobileapp api token "rye23sdyu342s" with refocde "9754014473"
 	Then I should get an OK status back
 	And I track a click for the first SMART-rec
 		
