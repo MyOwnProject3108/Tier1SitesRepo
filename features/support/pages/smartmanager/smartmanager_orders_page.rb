@@ -3,7 +3,7 @@ module Smartmanager
       include PageObject
       include PeeriusHelper
       
-      URL = "https://#{FigNewton.base_url}/tracker/smartmanager/reporting/orders.page"
+      URL = "https://qa1.lan/tracker/smartmanager/reporting/orders.page?activateSMLinks=true"
       direct_url URL
 	  
 	  div(:page_identifier, :class => "report-orders filled-container")

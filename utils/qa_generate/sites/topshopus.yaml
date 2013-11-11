@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topshop.com/en/tsuk/product/bags-accessories-1702216/bags-purses-462/croc-doctors-bag-2289132?bi=1&ps=20"
+  URL: "http://us.topshop.com/en/tsus/product/clothing-70483/dresses-70497/paris-scallop-bodycon-sequin-dress-by-tfnc-2394358?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

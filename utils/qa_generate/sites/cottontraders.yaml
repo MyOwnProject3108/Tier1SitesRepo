@@ -26,7 +26,7 @@ product_page:
     - [image, src, "http://www.cottontraders.com/content/ebiz/cottontraders/resources/images/grid_instock.gif"]
 
 category_page:
-  URL: "http://www.cottontraders.com/his-and-hers/shirts-/icat/hisnhersshirts"
+  URL: "http://www.cottontraders.com/golf-clothing-collection/icat/golf-clothing"
   expected_recs: 0 
 
 basket_page:

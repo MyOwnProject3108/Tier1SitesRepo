@@ -16,9 +16,10 @@ Then I should end up on the orders page
  And I enter sitename as "ctshirts" on the orders page
  And I pause for 5 seconds
  When I click on old interface link on the orders page
- And I pause for 5 seconds
- Then I should end up on the home page
-  When I click content on the smartmanager home page
+  And I pause for 5 seconds
+ # Then I should end up on the home page
+ Then I should end up on the force admin page
+ When I click content on the smartmanager home page
  And I pause for 5 seconds  
  Then I should end up on the smartcontent page
  And I pause for 5 seconds

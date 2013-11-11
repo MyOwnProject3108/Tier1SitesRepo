@@ -19,8 +19,9 @@ Then I should end up on the orders page
  # Given I am on the smartmanager home page
   When I click on old interface link on the orders page
   And I pause for 5 seconds
-  Then I should end up on the home page
-  When I click on the smartmanger reporting link 
+ Then I should end up on the login page
+ # Then I should end up on the force admin page
+  When I click on the smartmanger reporting link
   And I pause for 5 seconds
   Then I should end up on the reporting page
 
