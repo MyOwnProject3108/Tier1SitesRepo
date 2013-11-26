@@ -20,9 +20,9 @@ home_page:
 product_page:
   URL: "http://uk.tommy.com/Pieter-Jersey-Polo/1M87633531,en_GB,pd.html?cgid=106000#!color%3D876%26i%3D6"
   expected_recs: 0
-  add_to_basket_button: ["button", ':title=> "Add to bag"']
+  add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a"']
   extra_steps:
-    - [pause, 20]
+#    - [pause, 5]
 
 category_page:
   URL: "http://uk.tommy.com/Polos/106000,en_GB,sc.html"

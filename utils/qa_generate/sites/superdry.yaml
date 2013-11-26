@@ -18,14 +18,14 @@ home_page:
   search_field: ["text_field", ':name => "searchword"']
 
 product_page:
-  URL: "http://www.superdry.com/womens/t-shirts/details/39729/vintage-logo-t-shirt"    
+  URL: "http://www.superdry.com/womens/watches/details/41724/scuba-pop-watch"    
   expected_recs: 1
   add_to_basket_button: ["button", ':value => "Add to bag"']
   extra_steps:      
-    - [span, xpath, ".//*[@id='js_dropdown_product_id']/span"]
+#    - [span, xpath, ".//*[@id='js_dropdown_product_id']/span"]
 #    - [span, text, "select size"]
-    - [span, text, "S"]
-    - [pause,50]
+#    - [span, text, "S"]
+     - [pause,50]
     
 category_page:
   URL: "http://www.superdry.com/womens/dresses"
