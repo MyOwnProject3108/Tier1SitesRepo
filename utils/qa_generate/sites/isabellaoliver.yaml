@@ -13,7 +13,7 @@ integration: standard
 
 home_page:
   URL: "http://www.isabellaoliver.com/maternity-clothes"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':text => "Account"']
   search_field: ["text_field", ':class => "overTxtLabel"']
  # extra_steps:

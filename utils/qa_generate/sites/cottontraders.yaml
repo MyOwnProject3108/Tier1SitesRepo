@@ -26,8 +26,8 @@ product_page:
     - [image, src, "http://www.cottontraders.com/content/ebiz/cottontraders/resources/images/grid_instock.gif"]
 
 category_page:
-  URL: "http://www.cottontraders.com/golf-clothing-collection/icat/golf-clothing"
-  expected_recs: 0 
+  URL: "http://www.cottontraders.com/mens-shirts/mens-long-sleeve-shirts-/icat/mens-shirts-long&bklist=icat,5,shop,mens,mensshirts,mens-shirts-long"
+  expected_recs: 1 
 
 basket_page:
   URL: "http://www.cottontraders.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=cottontraders&log=22"

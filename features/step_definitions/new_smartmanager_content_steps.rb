@@ -21,235 +21,137 @@ When(/^I click on the smartmanger content link$/) do
   @current_page.content_link_element.click
 end
 
-#Given(/^I click on "(.*?)" class on the orders page$/) do |searchsite|
-#@current_page.
-  #@current_page.text_field(:class => "select2-input select2-focused")
+When(/^I click on the New Create link on the creativelisting page$/) do
+  @current_page.new_create_link_element.click
+end
+
+When(/^I enter the creative name as "(.*?)" on the creativelisting page$/) do |creativename|
+  @current_page.creativename = creativename
+end
+
+When(/^I enter image url as "(.*?)"$/) do |imageurl|
+  @current_page.imageurl = imageurl
+end
+
+When(/^I enter link url as "(.*?)"$/) do |linkurl|
+  @current_page.linkurl = linkurl
+end
+
+#When(/^I enter related categories as "(.*?)" on the creativelisting page$/) do |rcategory|
+#	rcat = ['shirt','formal shirt']
+#	rcat.each do |x|
+#	@current_page.text_field_element(:class => "Click to Search for Categories")
+#	end
+#end
+
+When(/^I click on related products text area with the text "(.*?)"$/) do |prodsearch|
+  @current_page.prod_search_element.click
+end
+
+When(/^I search for "(.*?)" in the related products text area$/) do |searchprodterm|
+  @current_page.searchprodterm = searchprodterm
+  @browser.li(:text, /White/).when_present.click 
+end
+
+
+
+
+When(/^I enter "(.*?)"  in the related attribute text field$/) do |test|
+  @current_page.test = test
+end
+
+
+
+
+
+When(/^I click on text field with the text "(.*?)"$/) do |catsearch|
+  @current_page.cat_search_element.click
+end
+
+When(/^I search for "(.*?)" in the related category text field$/) do |searchfield|
+  @current_page.searchfield = searchfield
+  @browser.li(:text, /shirts/).when_present.click
+ # @current_page.searchfield = searchfield
+  #auto_content = @browser.div(:class => "simple_tags_wrapper categories").div(:class => "visual").div.ul(:class,'visual-list context-menu hide').lis
+  #auto_content.each do |cat|
+	#if cat.text.downcase == "#{searchfield}"
+    #cat.click
+	#sleep 10
+	#end
+  #end
+end
+
+When(/^I click on div with the class "(.*?)"$/) do |arg1|
+  @current_page.div_element(:class => "row creative-options relative").click
+end
+
+When(/^I click on related attributes text field with the text "(.*?)"$/) do |attrsearch|
+ @current_page.attr_search_element.click
+ end
+
+#When(/^I click on related attribute text field with the xpath "(.*?)"$/) do |attrsearch|
+ # @current_page.attrsearch_element.click
+#end
+
+When(/^I search for "(.*?)" in the related attribute text field$/) do |searchattrterm|
+  @current_page.searchattrterm = searchattrterm
+  @browser.li(:text, /fit : tailored/).when_present.click
+  
+end
+
+#When(/^I select fit:tailored from the attribute list$/) do
+#When(/^I click on the first list element$/) do
+ # @browser.ul(:class => "visual-list context-menu hide").li(:class => "visual-item").when_present.first.click
 #end
 
 
-# Given(/^I click on the New and Shiny Smart Manager link on the smartmanager home page$/) do
-  # @current_page.new_smartmanager_link_element.click
+# When(/^I click on div with the class "(.*?)"$/) do |arg1|
+  # @current_page.div_element(:class => "row creative-options relative").click
 # end
 
-# When(/^I click on the "(.*?)" link on the newemail page$/) do |newcampaign|
-  # @current_page.new_campaign_element.click
+
+
+#When(/^I select "(.*?)" from the list$/) do |catlist|
+ # @current_page.select_list_element(:xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[2]/div/div/input/ul/li[16]").when_visible.select catlist
+#end
+
+
+# When(/^I click on "(.*?)" class to search for categories$/) do |catsearch|
+  # @current_page.cat_search_element.click
 # end
 
-# Then(/^I enter email campaign name as "(.*?)"$/) do |campaignname|
-  # @current_page.campaignname = campaignname
-# end
+When(/^I click on span class "(.*?)" on the creativelisting page$/) do |newsetuptab|
+  @current_page.new_setup_tab_element.click
+end
 
-# Then(/^I click on the "(.*?)" on the newemailcreate page$/) do |advlink|
-  # @current_page.adv_link_submit_element.click
-# end
+Then(/^I enter the setup name as "(.*?)" on the adaptivecontent page$/) do |testsetup|
+ @current_page.testsetup = testsetup
+end
 
-# Then(/^I should see "(.*?)" text on the newemailcreate page$/) do |advmessage|
-  # @current_page.adv_message.should == advmessage
-# end
+Then(/^I select placement as "(.*?)" on the adaptivecontent page$/) do |testsetupname|
+  @current_page.select_list_element(:id => "htmlInjectionPoint").select testsetupname
+end
 
-# Then(/^I enter number of widgets as "(.*?)" on the emailconfiguration page$/) do |numwidgets|
-  # @current_page.numwidgets = numwidgets
-# end
+Then(/^I select first creative as "(.*?)" on the adaptivecontent page$/) do |creative1|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creative1
+end
 
-# When(/^I click on the "(.*?)" button on the emailconfiguration page$/) do |createemail1|
-# @current_page.create_email1_submit_element.click
- # end
+Then(/^I click on "(.*?)" link on the adaptivecontent page$/) do |criterialink|
+  @current_page.criterialink_submit_element.click
+end
+
+Then(/^I select option with the value "(.*?)" on the adaptivecontent page$/) do |rule|
+  @browser.select_list(:class => "exp_left_hand").option(:value => "u.visitor").when_present.click
+ end
  
- 
- # Then(/^I click on the "(.*?)" class on the emailconfiguration page$/) do |strategyselect|
-# @current_page.strategy_select_element.click
-# end
-
-# Then(/^I select stategy as "(.*?)"$/) do |emailstrategy|
-# @browser.div(:class => "visual").ul.li(:text => "Best Seller By Revenue in Smart Category").click 
-# @browser.div(:class => "visual").ul.li(:text => "#emailstrategy").click 
-# div_element(:class => "visual").ul.li(:class => "visual-item BESTSELLER_BY_CONVERSION_SMART_CATEGORY").when_present.click
-# @current_page.li_element.click
-# end
-
-#Then(/^I select stategy as Best Seller By Revenue in Smart Category$/) do
- # @current_page.list_element(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY", :index => 3).click
-# @browser.div(:class,'item-list').ul.li(:index => 2)
-  # @current_page.div_element(:class => "visual").ul.li(:text => "Best Seller By Revenue in Smart Category").when_present.click
-# @browser.div(:class => "visual").ul.li(:text => "Best Seller By Revenue in Smart Category").click
-# end
- 
-# Then(/^I should see "(.*?)" error message on the emailconfiguration page$/) do |itemsmessage|
-  # @current_page.items_message.should == itemsmessage
-# pp @browser.div(:id => "mail_results").ul.li(:text => "Number of Items must be provided.").text.include? "itemsmessage"
- # @current_page.div_element(:id => "mail_results").ul.li.text.include? "itemsmessage"
-  # @current_page.text.include? "itemsmessage"
-# end
-
-# Then(/^I click on the cancel button on the newemailcreate page$/) do
- # @current_page.cancel_campaign_submit_element.click
-# end
-
-
-# Then(/^I click on the "(.*?)" tab on the emailconfiguration page$/) do |strategyexpression|
-  # @current_page.strategy_expression_link_element.click
-# end
-
-# When(/^I select the hint as "(.*?)" on the emailconfiguration page$/) do |emailhint|
- # @browser.select_list(:class => "exp_left_hand").option(:value => "r.category").when_present.click
-# end
-
-# When(/^I select the expression as "(.*?)" on the emailconfiguration page$/) do |emailexp|
- # @browser.select_list(:class => "exp_op operatoroptions").option(:value => "=").when_present.click
- # end
- 
-# Then(/^I enter Category as "(.*?)" on the emailconfiguration page$/) do |attrvalue|
-  # @current_page.attrvalue = attrvalue
-# @browser.send_keys("{ENTER}")
-# end
-
-# Then(/^I click on the Hints tab on the emailconfiguration page$/) do
-  # @current_page.hint_tab_link_element.click
-# end
-
-# Then(/^I select hint as "(.*?)" on the emailconfiguration page$/) do |selectemailhint|
- # @current_page.select_list(:name => "hintsBySlot[0]").option(:value => "unique-category").when_present.click
-# end
-
-# Then(/^I enter stategy as "(.*?)" on the emailconfiguration page$/) do |emailstrategy|
- # @current_page.emailstrategy = emailstrategy
-# end
-
-
-# Then(/^I select stategy as "(.*?)" on the emailconfiguration page$/) do |emailstrategy|
- # @current_page.ul(:class => "visual-list context-menu hide").lis(:index => 3 )
- # @current_page.list_element(:class => "visual-list context-menu hide", :index => 3 ).click
-  # @current_page.email_strategy_submit_element.click
- # @current_page.emailstrategy = emailstrategy
- # @current_page.list_items(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
- # @current_page.list_element(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").click
-# end
-
-# Then(/^I select strategy from the list with class "(.*?)"$/) do |emailstrategy1|
-  # @current_page.emailstrategy1 = emailstrategy1
- # @browser.div(:class,'item-list').ul.li(:index => 2)
- # @current_page.lis(:class => "visual-item BESTSELLER_BY_REVENUE_SMART_CATEGORY").select "Best Seller By Revenue in Smart Category"
-# end
-
-
-# Then(/^I select background colour "(.*?)" on the newemailcreate page$/) do |colour|
-# @current_page.background_colour_picker_element.click
-# @current_page.div_element(:id=>"color_selector").div_element(:class =>"color_swatch", :index => index).click
-# @current_page.div_element(:class => "colorpicker-saturation").click
- # end
-
-# Then(/^I select title colour "(.*?)" on the newemailcreate page$/) do |arg1|
- # @current_page.title_colour_picker_element.click
- # @current_page.div_element(:class => "colorpicker-hue").when_visible.click
- # @current_page.div_element(:class => "colorpicker-saturation").click
-# end
-# Then(/^I enter background colour "(.*?)" on the newemailcreate page$/) do |bgcolour|
-#@current_page.text_field(:name => 'backgroundColour', :index => 0).send_keys("bgcolour") 
-# @current_page.bgcolour = bgcolour
-#@browser.send_keys :enter
-# end
-
-
-# Then(/^I enter title colour "(.*?)" on the newemailcreate page$/) do |titlecolour|
-# @current_page.titlecolour = titlecolour
-  # @current_page.titlecolour = titlecolour
-  # @current_page.titlecolour_element.respond_to?(:send_keys) ? @current_page.titlecolour_element.send_keys(:enter) : @browser.send_keys('{ENTER}')
-# @browser.send_keys :enter
- # @browser.send_keys("{ENTER}")
-# @current_page.titlecolour_element.click
-# end
-
-# Then(/^I select title font on the newemailcreate page$/) do
-   # @current_page.select_list_element(:name => "title.Font").when_present.select "Verdana"
- #working @current_page.select_list_element(:name => "title.Font").option(:value => "Verdana").click
-# end
-
-# Then(/^I select title characteristics on the newemailcreate page$/) do
-# @current_page.select_list_element(:name => "title.characteristics").when_present.select "Italic"
- # end
- 
-# Then(/^I select font size on the newemailcreate page$/) do
-# @current_page.select_list_element(:name => "title.fontSize").when_present.select "14"
- # end
- 
- # Then(/^I enter price colour "(.*?)" on the newemailcreate page$/) do |pricecolour|
-  # @current_page.pricecolour = pricecolour
-# end
-
-# Then(/^I select price font on the newemailcreate page$/) do
-   # @current_page.select_list_element(:name => "price.Font").when_present.select "Courier New"
-# end
-
-# Then(/^I select price characteristics on the newemailcreate page$/) do
-  # @current_page.select_list_element(:name => "price.characteristics").when_present.select "Bold Italic"
-# end
-
-# Then(/^I select price size on the newemailcreate page$/) do
-  # @current_page.select_list_element(:name => "price.fontSize").when_present.select "15"
- # end
-
-# Then(/^I click the next button on the newemailcreate page$/) do
-  # @current_page.email_campaign_submit_element.click
-# end
-
-
-# Then(/^I select title font as "(.*?)" on the newemailcreate page$/) do |abc|
-# @current_page.select_list_element(:name => "title.Font").focus
-            # @current_page.select_list_element(:name => "title.Font").click
-            # @current_page.abc = abc
-# @current_page.select_list_element(:name => "title.Font").option(:value => "Verdana").click
-# @current_page.select_list_element.click
- # @current_page.select_list_element(:name => "title.Font").select 'Verdana'
- # @current_page.font1 = font1
-# end
-
-# Then(/^I select title characteristics as "(.*?)" on the newemailcreate page$/) do |char|
- # @current_page.select_list_element(:name => "title.characteristics").option(:value => "ITALIC").click
-  # @current_page.char = char
-# end
-
-# Then(/^I select font size as "(.*?)" on the newemailcreate page$/) do |size|
- # @current_page.select_list_element(:name => "title.fontSize").option(:value => "14").click
-# end
+ Then(/^select operatoroption with the value "(.*?)" on the adaptivecontent page$/) do |arg1|
+ @browser.select_list(:class => "exp_op operatoroptions").option(:value => "=").when_present.click
+end
 
 
 
 
-# Then(/^I select title "(.*?)" as "(.*?)" on the newemailcreate page$/) do |title,style|
-	# @current_page.select_list_element(:name => "title.Font").click
-   # @current_page.title = title
-	# @current_page.style = style
-# end
-
-# Then(/^I select title on the newemailcreate page$/) do
- # @current_page.select_list_element(:name => "title.Font").click
-  # @current_page.title_text("Verdana")
-# end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#When(/^I click on the new setup link on the creativelisting page$/) do
+#  @current_page.new_setup_link_element.when_visible.click
+#@browser.div(:class => "secondary-nav").ul(:id => "mainTab").li.
+#end

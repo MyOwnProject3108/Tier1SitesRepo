@@ -1,5 +1,5 @@
 module Smartmanager
-    class ForceadminPage
+    class ForceAdminPage
       include PageObject
       include PeeriusHelper
 
@@ -33,7 +33,7 @@ module Smartmanager
 #        login_submit
  #     end
            def tracked_as
-	   return "ForceadminPage"
+	   return "ForceAdminPage"
 	  end
     end
 end

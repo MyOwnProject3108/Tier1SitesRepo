@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':name => "searchword"']
 
 product_page:
-  URL: "http://www.superdry.com/womens/t-shirts/details/39729/vintage-logo-t-shirt"    
+  URL: "http://www.superdry.com/womens/t-shirts/details/40216/vintage-logo-t-shirt"    
   expected_recs: 1
   add_to_basket_button: ["button", ':value => "Add to bag"']
   extra_steps:      

@@ -23,7 +23,7 @@ home_page:
     #And I click on the button with id "btn_search_go"
 
 product_page:
-  URL: "http://www.bhs.co.uk/en/bhuk/product/women-1020590/dresses-1020593/grey-herringbonelace-dress-2263607?bi=1&ps=40"
+  URL: "http://www.bhs.co.uk/en/bhuk/product/women-1020590/dresses-1020593/purple-panel-satin-dress-2328939?bi=1&ps=40"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

@@ -331,8 +331,8 @@ And I select "ctshirts" from the sites list on the smartmanager login page
  And I pause for 5 seconds
  And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
  Then I enter "direct" in the criteria1 position on the smartcontent location page
- Then I click on the Add content button on the smartcontent location page
- Then I enter "default" in the "criteria2" position on the smartcontent location page
+# Then I click on the Add content button on the smartcontent location page
+# Then I enter "default" in the "criteria2" position on the smartcontent location page
  And I click on the save button on the smartcontent location page
  Then I should end up on the smartcontent page
  And I Activate the last smartcontent setup on the smartcontent page
