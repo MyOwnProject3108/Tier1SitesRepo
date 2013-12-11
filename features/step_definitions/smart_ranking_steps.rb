@@ -48,22 +48,6 @@ When(/^I supply SMART\-ranking setup with product field for "(.*?)" and expect n
 end
 
 	
-When(/^I request invalid order details for order page$/) do
-@api.json_type = 'order'
-    items = [
-        {"refCode" => "prod-dw041dpu", "qty" => 5, "price" => 50.5},
-        {"refCode" => "prod-bl020nav", "qty" => 8, "price" => 52.5},
-    ]
-    @api.json_order = {
-        "orderNo" => "",
-        "items" => items, 
-        "currency" => "GBP",
-        "subtotal" => 103,
-        "shipping" => 11.75,
-        "total" => 114.75
-    }
-    @api.track
-end
 
 When /^I track a click for SMART-ranking item number (\d+)$/ do |product|
     @current_page.should have_smart_ranking_content
