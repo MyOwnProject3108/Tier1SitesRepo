@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "in_site_search"']
 
 product_page:
-  URL: "http://www.thewhitecompany.com/the-little-white-company/toys-and-books/riley-puppy/"
+  URL: "http://www.thewhitecompany.com/christmas/christmas-table/stoneware-serving-bowl/"
   expected_recs: 2
   add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
   extra_steps:
