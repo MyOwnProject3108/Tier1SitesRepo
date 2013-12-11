@@ -1,7 +1,7 @@
 @smartapi
 @smartranking
 @redletterdays
-Feature: SMART-API: Red Letter Days specific tests
+Feature: SMART-API: Red Letter Days specific tests, includes Ranking test for different scenarios.
 
 #
 # SMART-API zero-search
@@ -30,8 +30,9 @@ Scenario: Zerosearch SMART-recs are delivered using SMART-API
 	When I order 3 "TS08F01VBLK" using the SMART-API
 	Then I should get an OK status back
 
+
 #Request; with same configuration in SM-Setup and in API call without -Product filed-
-Scenario: SMART-ranking can be delivered on category page using SMART-API
+Scenario: SMART-ranking can be delivered on category page using SMART-API : with same configuration in SM-Setup and in API call without -Product filed-
     Given I am using SMART-API to access redletterdays
     And I am using client token 6G54jh5d94stg
     When I supply SMART-ranking setup info
@@ -51,7 +52,7 @@ Scenario: SMART-ranking can be delivered on category page using SMART-API with P
     #And one of the SMART-Ranking listing names should contain "Couples"
    
  #with Product feild---Ranking configured for different category
-Scenario: SMART-ranking can be delivered on category page using SMART-API
+Scenario: SMART-ranking can be delivered on category page using SMART-API :with Product feild---Ranking configured for different category
 	Given I am using SMART-API to access redletterdays
     And I am using client token 6G54jh5d94stg
 	When I supply SMART-ranking setup with product field for "Kids>Kids Sports" and expect no recs 
