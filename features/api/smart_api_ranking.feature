@@ -1,4 +1,3 @@
-@ignore
 @livedemoshop
 @smartapi
 @smartranking

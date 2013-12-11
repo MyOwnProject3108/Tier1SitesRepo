@@ -12,7 +12,7 @@ Scenario: SMART-content rule "default" works using SMART-API
     When I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - formal"
 	
 Scenario: SMART-content rule "tags" works using SMART-API 
     #When I track the home page
@@ -47,7 +47,7 @@ Scenario: SMART-content rule "direct" works using SMART-API
     Then I should get an OK status back
 	And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - formal"
 	
 Scenario: SMART-content rule "gender" works using SMART-API 
     When I post product page request for the gender
@@ -80,7 +80,7 @@ Scenario: SMART-content rule "source" from direct works using SMART-API
     When I post home page request for source as direct
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - formal"
 	
 Scenario: SMART-content rule "city" from direct works using SMART-API 
     When I post home page request for city
@@ -99,7 +99,7 @@ Scenario: SMART-content rule "visitor=new" from direct works using SMART-API
     When I track the home page
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - formal"
 	
 Scenario: SMART-content rule "visitor returning" from direct works using SMART-API 
 	When I track the home page
@@ -123,7 +123,7 @@ Scenario: Testing the smart content as per "weightage(ex:countrycode = GB)" usin
     And I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - formal"
 	#And one of the SMART-content creative names should contain "LS2 - INACTIVE"	
 
 Scenario: Testing the smart content as per "weightage(ex:visitor returning)" using SMART-API 
@@ -148,7 +148,7 @@ Scenario Outline: SMART-content merchandising rule "purchasedHistoryByCategory" 
     Examples:
   	| product    | category_name |
     | "TH099RYL" | "Ties"        |
-    | "MP027TAN" | "LS1 - INACTIVE" |
+    | "MP027TAN" | "Shirts - formal" |
 	
 #Activate TopBanner in setup for cufflinks - SMART	-Pass-if fails in batch run then plz run individually 
 Scenario: SMART-content merchandising rule "purchasedHistoryByCategory" works across sessions
@@ -178,10 +178,10 @@ Scenario Outline: SMART-content merchandising rule "PurchaseHistoryByAttribute" 
     Examples:
   	| product    | attribute_name |
 	# works fine same category as creative
-    | "CD077RED" | "LS1 - INACTIVE"          |  
+    | "CD077RED" | "Shirts - formal"          |  
 	
 	#different category from creative
-    | "MD019TAN" | "LS1 - INACTIVE"          |    
+    | "MD019TAN" | "Shirts - formal"          |    
 	
 #Activate auto_Lastviewedcategorywithparameter in Shop admin-pass
 Scenario: SMART-content merchandising rule "Lastviewedcategorywith paramter" works with single purchases using SMART-API

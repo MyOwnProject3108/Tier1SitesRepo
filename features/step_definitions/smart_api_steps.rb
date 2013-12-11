@@ -60,8 +60,8 @@ When(/^I track "(.*?)" home page by using mobileapp api token "(.*?)"$/) do |sit
 	@api.json_clientToken = mob_apikeyliv
 	@api.track
 end
+
 When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)" with refocde "(.*?)"$/) do |site1, mob_apikeyliv,refcd|
-#When(/^I track "(.*?)" product page by using mobileapp api token "(.*?)"$/) do |site1, mob_apikeyliv|
 	@api.json_type = "channel"
 	@api.json_channel = "mobileapp"
 	@api.json_type = 'product'
@@ -305,14 +305,14 @@ When /^I track the same page another (\d+) times$/ do |n|
   end
 end 
 
-When /^I supply SMART\-ranking setup info$/ do
-  @api.json_smartRanking = {
-      "facets" => "category=\"ties\"",
-      "ordering" => {"orderBy" => "smart"},
-      "page" => 1,
-      "itemsPerPage" => 20,  
-  }  
-end
+#When /^I supply SMART\-ranking setup info$/ do
+ # @api.json_smartRanking = {
+  #    "facets" => "category=\"ties\"",
+  #    "ordering" => {"orderBy" => "smart"},
+  #    "page" => 1,
+  #    "itemsPerPage" => 20,  
+  #}  
+#end
 
 
 
@@ -465,6 +465,10 @@ Then /^I should get at least (\d+) items? of SMART\-ranking content$/ do |expect
     @api.should have_smart_ranking_content
     @api.ranking_widgets.count.should > 0
     @api.total_ranking_items.should >= expected_items.to_i
+end
+
+Then /^I should see at least 0 items of SMART\-ranking$/ do |expected_items|
+	@api.should_not have_smart_ranking_content
 end
 
 Then /^I should get no SMART\-product content in the response$/ do

@@ -50,4 +50,5 @@ searchresults_page:
 checkout_page:
   URL: ""
   expected_recs: 0 
-  
+  extra_steps:
+    - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
