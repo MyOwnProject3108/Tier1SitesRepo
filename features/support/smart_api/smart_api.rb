@@ -16,7 +16,7 @@ module Peerius
             file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
             @version = version.nil? ? "v1_1" : version
-		#	@version = version.nil? ? "v1_2" : version
+		# 	@version = version.nil? ? "v1_2" : version
             @useSSH = useSSH.nil? ? true : useSSH
             urlPrefix = @useSSH ? "https" : "http" 
             if testserver.nil? then  
