@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/fluro-embroided-pencil-dress-2023392?bi=1&ps=20"
+  URL: "http://eu.topshop.com/en/tseu/product/bags-accessories-1702217/bags-purses-485127/sequin-box-clutch-2431071?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
@@ -42,7 +42,7 @@ login_page:
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
-  URL: "http://fr.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-2&storeId=13057&catalogId=34056&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=abcd&x=10&y=6"
+  URL: "http://eu.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13058&catalogId=34058&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=abcd&x=0&y=0"
   expected_recs: 0
   zerosearch_recs: 7
   

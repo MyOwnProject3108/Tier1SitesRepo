@@ -20,8 +20,8 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.wallis.co.uk/en/wluk/product/clothing-265973/tops-265992/navy-embellished-top-2005256?bi=1&ps=20"
-  expected_recs: 3
+  URL: "http://www.wallis.co.uk/en/wluk/product/clothing-265973/dresses-265991/black-spot-lace-tunic-dress-2389241?bi=1&ps=20"
+  expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:

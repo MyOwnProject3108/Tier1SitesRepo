@@ -14,6 +14,11 @@ module PeeriusHelper
           smart_content_element.count > 0 
       end
 	  
+	   # Returns true if SMART-Ranking is present
+      def smartRankingEnabled?
+          smart_ranking_element.count > 0 
+      end
+	  
 	  # Should return an array of SMART-recs
 	  def smartRecs
           smart_recs_element

@@ -8,17 +8,18 @@ Feature: SMART-manager
 Background:Users should be able to create the smaart content creatives
 Given I am on the smartmanager login page
  And I login as "givahnenko" using password "4v1gm0d5k1"
- Then I should end up on the orders page
- And I pause for 10 seconds
+# Then I should end up on the orders page
+# And I pause for 10 seconds
  #And I click on "select2-search" link on the orders page
 # And I enter sitename as "ctshirts" on the orders page
 # And I pause for 5 seconds
- When I click on old interface link on the orders page
- And I pause for 5 seconds
- Then I should end up on the home page
-  When I click content on the smartmanager home page
- And I pause for 5 seconds  
- Then I should end up on the smartcontent page
+# When I click on old interface link on the orders page
+# And I pause for 5 seconds
+# Then I should end up on the forceadmin page
+  #And I pause for 5 seconds
+  #When I click content on the smartmanager home page
+ #And I pause for 5 seconds  
+ #Then I should end up on the smartcontent page
  #Given I am on the smartmanager login page
   #And I login as "fsultana" using password "4n424yq4n3w"
   #Given I am on the smartmanager home page
@@ -26,6 +27,18 @@ Given I am on the smartmanager login page
  #Then I should end up on the smartcontent page
  
  Scenario: Users should be able to save on Smart-Content creative
+ Then I should end up on the orders page
+ And I pause for 10 seconds
+ #And I click on "select2-search" link on the orders page
+# And I enter sitename as "ctshirts" on the orders page
+# And I pause for 5 seconds
+ When I click on old interface link on the orders page
+ And I pause for 5 seconds
+ Then I should end up on the forceadmin page
+  And I pause for 5 seconds
+  When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
  And I enter the creative name as "AutoTestCreative"
@@ -40,6 +53,9 @@ Given I am on the smartmanager login page
  Then I should end up on the smartcontent page
  
  Scenario: Users should not be able to save on Smart-Content creative
+ When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
  And I enter the creative name as "AutoTestCreative"
@@ -54,9 +70,12 @@ Given I am on the smartmanager login page
  Then I should end up on the smartcontent page
  
  Scenario: Users should be able to select multiple categories on Smart-Content creative
+ When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
- And I enter the creative name as "AutoTestCreative1"
+  And I enter the creative name as "AutoTestCreative1"
  And I enter the creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
  And I enter the creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
  And I click on the search link on the smartcontent creative page for related categories
@@ -71,9 +90,12 @@ Given I am on the smartmanager login page
  Then I should end up on the smartcontent page
  
  Scenario: Users should be able to select multiple products on Smart-Content creative
+ When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
- And I enter the creative name as "AutoTestCreative2"
+  And I enter the creative name as "AutoTestCreative2"
  And I enter the creative image url as "http://demoshop:P@ssw0rd@demo.peerius.com/media/baseimages/suits_main_675_480.jpg"
  And I enter the creative link url as "http://demoshop:P@ssw0rd@demo.peerius.com/index.php/suits.html"
  And I click on the search link on the smartcontent creative page for related products
@@ -88,6 +110,11 @@ Given I am on the smartmanager login page
  Then I should end up on the smartcontent page
  
  Scenario: Users should be able to delete the added creative on the Create/Edit Creative page
+ When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
+ When I click on the create link on the smartcontent page
+ Then I should end up on the smartcontent creative page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
  And I enter the creative name as "AutoTestCreative"
@@ -97,6 +124,9 @@ Given I am on the smartmanager login page
  Then I should see Add Creative button on the smartcontent creative page
  
  Scenario: Test case for 'Advanced' creative link on the Create/Edit Creative page
+ When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
  And I enter the creative name as "AutoTestCreative"
@@ -106,6 +136,9 @@ Given I am on the smartmanager login page
  Then I should see Html label of the creative on the smartcontent creative page
  
  Scenario: Users should be able to add more creatives through 'Advanced' creative link on the Create/Edit Creative page
+ When I click content on the smartmanager home page
+ And I pause for 5 seconds  
+ Then I should end up on the smartcontent page
  When I click on the create link on the smartcontent page
  Then I should end up on the smartcontent creative page
  And I enter the creative name as "AutoTestCreative3"

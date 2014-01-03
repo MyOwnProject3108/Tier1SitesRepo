@@ -40,8 +40,8 @@ login_page:
   login_submit: ["button", ':class=>"button-primary"']
 
 searchresults_page:
-  URL: "http://search.lovehoney.co.uk/search?w=lube&view=grid"
-  expected_recs: 0
+  URL: "http://search.lovehoney.co.uk/search?w=toy&p=Q&asug=&view=grid"
+  expected_recs: 4
   zerosearch_recs: 4
   
 checkout_page:
