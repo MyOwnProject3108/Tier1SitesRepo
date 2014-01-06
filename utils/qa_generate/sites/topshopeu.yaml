@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://eu.topshop.com/en/tseu/product/bags-accessories-1702217/bags-purses-485127/sequin-box-clutch-2431071?bi=1&ps=20"
+  URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/mesh-sweetheart-mini-dress-2579678?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
