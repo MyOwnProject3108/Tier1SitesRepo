@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://us.topman.com/en/tmus/product/clothing-172005/mens-shirts-172018/samsoe-and-samsoe-print-shirt-2261392?bi=1&ps=20"
+  URL: "http://us.topman.com/en/tmus/product/clothing-172005/mens-shirts-172018/white-curve-collar-long-sleeve-smart-shirt-2351602?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

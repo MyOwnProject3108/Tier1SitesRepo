@@ -18,7 +18,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://us.topshop.com/en/tsus/product/clothing-70483/dresses-70497/tie-dye-marl-maxi-dress-2424938?bi=1&ps=20"
+  URL: "http://us.topshop.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=0&viewAllFlag=&catalogId=33060&storeId=13052&productId=13486965&langId=-1&categoryId=&parent_category_rn=&searchTerm=TS10K30EOGE&resultCount=1"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

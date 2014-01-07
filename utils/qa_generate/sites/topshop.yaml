@@ -21,7 +21,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topshop.com/en/tsuk/product/bags-accessories-1702216/bags-purses-462/croc-doctors-bag-2289132?bi=1&ps=20"
+  URL: "http://www.topshop.com/en/tsuk/product/clothing-427/dresses-442/mesh-sweetheart-mini-dress-2579675?bi=1&ps=20"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
