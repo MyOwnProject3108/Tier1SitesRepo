@@ -1,0 +1,62 @@
+site_name: jaeger
+pretty_name: Jaeger 
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest123
+zero_search_term: dsafdsfsafsfds
+valid_search_term: coats
+database_num: 1
+site_id: 1339
+integration: standard
+
+home_page:
+  URL: "http://www.jaeger.co.uk/"
+  expected_recs: 0
+  search_field: ["text_field", ':id => "searchinput"']
+
+product_page:
+  URL: "http://www.jaeger.co.uk/Racing%20Car%20Cufflinks/320019E,en_GB,pd.html?dwvar_320019E_color=03000&dwvar_320019E_size=ITM&start=5&cgid=accessories-mens"
+  expected_recs: 1 
+  add_to_basket_button: ["button", ':id=> "addtobag"']
+  extra_steps:      
+    - [a, text, "Size (UK)"]
+    - [a, href, "#ITM"]
+    - [a, text, "Quantity"]
+    - [a, href, "#1"]
+    - [pause,20]
+
+category_page:
+  URL: "http://www.jaeger.co.uk/women-jackets/women-jackets,en_GB,sc.html"
+  expected_recs: 0 
+
+basket_page:
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Cart-Show/C1558086476"
+  expected_recs: 1  
+  basket_checkout: ["link", ':class => "abtnSecurechkout"']
+  basket_remove: ["button", ':class => "textbutton remove-btn"']
+
+login_page:
+  URL: "http://www.jaeger.co.uk/"
+  expected_recs: 0 
+  username_field: ["text_field", ':id=>"dwfrm_login_username"']
+  password_field: ["text_field", ':id=>"dwfrm_login_password"']  
+  login_submit: ["button", ':id => "submit"']
+
+searchresults_page:
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Search-Show?q=coats"
+  expected_recs: 0
+  zerosearch_recs: 1
+  custom_tracking_test: |
+    Given I am on the jaeger home page
+    And I click on the li with class "searchset"
+    And I click on the div with title "SEARCH"
+    And I pause for 6 seconds
+    When I search for "coats"
+    Then it should be tracked as a search results page
+    And the debug info should show no SMART-recs
+  
+checkout_page:
+  URL: ""
+  expected_recs: 0   
