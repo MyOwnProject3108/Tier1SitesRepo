@@ -20,8 +20,8 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-shirts-281895/navy-western-denim-shirt-2202383?bi=1&ps=20"
-  expected_recs: 4
+  URL: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-shirts-281895/dark-pink-plain-shirt-2497581?bi=1&ps=20"
+  expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
@@ -30,7 +30,7 @@ category_page:
 
 basket_page:
   URL: "https://www.burton.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33052&langId=-1&storeId=12551"
-  expected_recs: 7
+  expected_recs: 1
   basket_checkout: ["link", ':title => "Checkout"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
@@ -44,7 +44,7 @@ login_page:
 searchresults_page:
   URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12551&catalogId=33052&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
   expected_recs: 0
-  zerosearch_recs: 8
+  zerosearch_recs: 1
   
 checkout_page:
   URL: "" 
