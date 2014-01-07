@@ -26,7 +26,7 @@ product_page:
     - [image, src, "http://www.cottontraders.com/content/ebiz/cottontraders/resources/images/grid_instock.gif"]
 
 category_page:
-  URL: "http://www.cottontraders.com/mens-shirts/mens-long-sleeve-shirts-/icat/mens-shirts-long&bklist=icat,5,shop,mens,mensshirts,mens-shirts-long"
+  URL: "http://www.cottontraders.com/mens-shirts/all-mens-shirts-/icat/mens-shirts-all&bklist=icat,5,shop,mens,mensshirts,mens-shirts-all"
   expected_recs: 1 
 
 basket_page:
