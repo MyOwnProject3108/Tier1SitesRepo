@@ -1,0 +1,14 @@
+base_url: uat.peerius.com
+headless: false
+database0: ImplLocalDenorm0
+database1: ImplLocalDenorm1
+database2: ImplLocalDenorm2
+database3: ImplLocalDenorm3
+database4: ImplLocalDenorm4
+database5: ImplLocalDenorm5
+database6: ImplLocalDenorm6
+database7: ImplLocalDenorm7
+username: 3duser
+password: 3d534rch
+host: isopoda
+
