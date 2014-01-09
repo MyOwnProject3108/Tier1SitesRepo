@@ -17,6 +17,19 @@ Given(/^I enter sitename as "(.*?)" on the orders page$/) do |sitename|
   end
 end
 
+Then(/^I enter rule as "(.*?)" on the adaptivecontent page$/) do |rule1|
+  @current_page.rule1 = rule1
+#  auto_content1 = @browser.ul(:class,'autosearch-dropdown context-menu').lis
+ # auto_content1.each do |rule1|
+	#if rule1.text.downcase == "new"
+    #rule1.when_present.click
+	#@browser.send_keys :enter
+	#sleep 10
+	#end
+  #end
+end
+
+
 When(/^I click on the smartmanger content link$/) do
   @current_page.content_link_element.click
 end
@@ -96,8 +109,16 @@ When(/^I click on related attributes text field with the text "(.*?)"$/) do |att
 When(/^I search for "(.*?)" in the related attribute text field$/) do |searchattrterm|
   @current_page.searchattrterm = searchattrterm
   @browser.li(:text, /fit : tailored/).when_present.click
-  
+ end
+ 
+ Then(/^I click on Save Setup button on the adaptivecontent page$/) do
+  @current_page.setup_submit_element.click
 end
+
+Then(/^I click on  Add a new row on the adaptivecontent page$/) do
+  @current_page.add_a_new_row_element.click
+end
+
 
 #When(/^I select fit:tailored from the attribute list$/) do
 #When(/^I click on the first list element$/) do
