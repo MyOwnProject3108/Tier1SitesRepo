@@ -29,7 +29,7 @@ category_page:
 basket_page:
   URL: "http://www.bonmarche.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=shop&log=22"
   expected_recs: 0
-  basket_remove: ["span", ':xpath => "//*[@id=yourbasket]/form/div[2]/table/tbody/tr/td[2]/p[2]/a"']
+  basket_remove: ["image", ':alt => "Remove"']
   basket_checkout: ["button", ':class => "button right btCheckout submit"']  
 
 login_page:

@@ -1,0 +1,49 @@
+site_name: predatornutrition
+pretty_name: Predator Nutrition
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: p.test@peerius.com
+password: P1234567
+zero_search_term: dsavavas
+valid_search_term: chocolate
+database_num: 6
+site_id: 1307
+integration: json
+
+home_page:
+  URL: "http://www.predatornutrition.com/"
+  expected_recs: 6
+  login_link: ["link", ':href => "https://www.predatornutrition.com/en/customer/account/login/"']
+  search_field: ["text_field", ':name => "q"']
+
+product_page:
+    URL: "http://www.predatornutrition.com/en/armour-v-180-caps/"    
+    expected_recs: 3
+    add_to_basket_button: ["button", ':value => "Add to basket"']
+    
+category_page:
+  URL: "http://www.predatornutrition.com/en/product/amino-acids/"
+  expected_recs: 3
+
+basket_page:
+  URL: "http://www.predatornutrition.com/en/checkout/cart/"
+  expected_recs: 3
+  basket_checkout: ["button", ':class => "button button-large place-order btn-proceed-checkout btn-checkout"']
+  basket_remove: ["button", ':class => "btn-remove btn-remove2 remove-item"']  
+
+login_page:
+  URL: "https://www.predatornutrition.com/en/customer/account/login/"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"pass"']  
+  login_submit: ["button", ':name=>"send"']
+
+searchresults_page:
+  URL: "http://www.predatornutrition.com/en/catalogsearch/result/?q=chocolate"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: "https://www.predatornutrition.com/en/onestepcheckout/"
+  expected_recs: 0 
