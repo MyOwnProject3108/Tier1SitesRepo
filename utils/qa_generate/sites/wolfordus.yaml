@@ -1,0 +1,54 @@
+site_name: wolfordus
+pretty_name: wolfordus
+has_content: no
+has_ranking: no
+needs_SPR: yes
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: jfdsakfkd
+valid_search_term: leggings
+database_num: 6
+site_id: 1349
+integration: json
+
+home_page:
+  URL: "http://www.wolfordshop.com"
+  expected_recs: 1
+  login_link: ["link", ':href => "http://www.wolfordshop.com/vm/MyAccount/"']
+  search_field: ["text_field", ':id => "search-tag"']
+  needs_SPR: yes
+
+product_page:
+    URL: "http://www.wolfordshop.com/Accessories/Bra-Straps-Naked/cp56538/si4471101/cl2/vt01/"    
+    expected_recs: 1
+    add_to_basket_button: ["a", ':id => "add-to-cart-button-id"']
+    extra_steps:
+    - [span, id, "variant-0-OS"]
+    - [span, id, "variant-1-1499"]
+    
+category_page:
+  URL: "http://www.wolfordshop.com/Accessories/cp56538/cl1/vt01/"
+  expected_recs: 1
+  needs_SPR: yes
+
+basket_page:
+  URL: "https://www.wolfordshop.com/vm/AddOrder/?omni_scView=scView"
+  expected_recs: 1
+  basket_remove: ["button", ':class => "checkout-delete-item"']
+  basket_checkout: ["a", ':class => "continue-shipto-button button"']  
+
+login_page:
+  URL: "https://www.wolfordshop.com/edealinv/servlet/ExecMacro?ctl_nbr=16690&nurl=control%2FMyAccount.vm&vns_id=5&groupId=6251&ei_reqIP=80.87.30.105&tru_ssl_pg=N&SUBCAMPAIGN_ID=-1&isLogOff=Y&ei_pgparamname=nurl&AllowNonSecureAdmin=Y&isMobileRequest=N"
+  expected_recs: 0
+  username_field: ["text_field", ':name => "usname", :index => 0']
+  password_field: ["text_field", ':name => "pwd", :index => 0']
+  login_submit: ["a", ':text=>"Login"']
+
+searchresults_page:
+  URL: "http://www.wolfordshop.com/edealinv/servlet/ExecMacro"
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: "https://www.wolfordshop.com/edealinv/servlet/ExecMacro?ctl_nbr=16690&nurl=control%2FCheckoutShipTo.vm&eurl=control%2FAddOrder.vm&vnpid=19660&CHILD=-1&rurl=control%2FAddOrder.vm&VecMaster=Y&useAdminHost=N&checkoutMethod=Store&Admin=N&venid=2&warn_code=1&MASTER=N&vec_id=14125104&vnsid=5&qnty_15356980=1&flCustOptFilled=Y&storeitem_15356980=Y&userCurrency=USD&ei_pgparamname=nurl&isMobileRequest=N&reloadPage=Y&groupId=6251&SUBCAMPAIGN_ID=-1&tru_ssl_pg=Y&SESSION_ID=webtest%40mailinator.com&storeitem_list=15356980&include_0=Y"
+  expected_recs: 0 
