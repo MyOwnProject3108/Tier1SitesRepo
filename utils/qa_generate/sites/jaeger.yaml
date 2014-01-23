@@ -12,19 +12,27 @@ site_id: 1339
 integration: standard
 
 home_page:
-  URL: "http://www.jaeger.co.uk/"
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
   expected_recs: 0
+ #login_link: ["link", ':class => "myAcc"']
   search_field: ["text_field", ':id => "searchinput"']
+ # extra_steps:
+  # - [a, text, "MY ACCOUNT"]
+#   - [text_field, id, "dwfrm_login_username", webtest@mailinator.com]
+ #  - [text_field, id, "dwfrm_login_password", webtest123]
+#   - [pause,5]
+   #- [button, id, "submit"]
+   #- [pause,30]
 
 product_page:
-  URL: "http://www.jaeger.co.uk/Racing%20Car%20Cufflinks/320019E,en_GB,pd.html?dwvar_320019E_color=03000&dwvar_320019E_size=ITM&start=5&cgid=accessories-mens"
+  URL: "http://www.jaeger.co.uk/Resin%20Beaded%20Collar/420021G,en_GB,pd.html?dwvar_420021G_color=00500&dwvar_420021G_size=ITM&start=16&cgid=accessories-jewellery"
   expected_recs: 1 
   add_to_basket_button: ["button", ':id=> "addtobag"']
   extra_steps:      
-    - [a, text, "Size (UK)"]
-    - [a, href, "#ITM"]
-    - [a, text, "Quantity"]
-    - [a, href, "#1"]
+    - [link, text, "Size (UK)"]
+    - [link, href, "#ITM"]
+    - [link, text, "Quantity"]
+    - [link, href, "#1"]
     - [pause,20]
 
 category_page:
@@ -32,13 +40,13 @@ category_page:
   expected_recs: 0 
 
 basket_page:
-  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Cart-Show/C1558086476"
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Cart-Show"
   expected_recs: 1  
   basket_checkout: ["link", ':class => "abtnSecurechkout"']
   basket_remove: ["button", ':class => "textbutton remove-btn"']
 
 login_page:
-  URL: "http://www.jaeger.co.uk/"
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
   expected_recs: 0 
   username_field: ["text_field", ':id=>"dwfrm_login_username"']
   password_field: ["text_field", ':id=>"dwfrm_login_password"']  
@@ -59,4 +67,38 @@ searchresults_page:
   
 checkout_page:
   URL: ""
-  expected_recs: 0   
+  expected_recs: 0
+  extra_steps:
+   - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
+   - [radio, id, "isExistingCustomer"]
+   - [text_field, id, "dwfrm_login_password", "webtest123"]
+   - [button, id, "continueStepABtn"]
+   - [pause,10]
+   - [radio, id, "isdelivertoaddress"]   
+   - [pause,5]
+   - [button, id, "checkoutButton"]
+   - [pause,5]
+   - [button, id, "checkoutButton"]
+   - [pause,5]
+   - [text_field, id, "paymentmethods_creditcard_owner", "a test"]
+   - [pause, 5]
+   - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
+   - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
+   - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
+   - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
+   - [pause, 5]
+   - [link, class, "sbToggle sbToggleOpen"]
+   - [link, class, "sbSelector, :index => 0'"]
+   - [pause, 2]
+   - [link, href, "#3"]
+   - [link, id, "sbSelector_19426609"]
+   - [link, href, "#2,015"]
+   - [pause, 5]
+   - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
+   - [button, name, "dwfrm_billing_save"]
+   - [pause, 5]
+   
+    
+    
+   
+   

@@ -30,7 +30,7 @@ category_page:
   expected_recs: 0
   
 basket_page:
-  URL: "https://www.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556&ddkey=http:OrderCalculate" 
+  URL: "https://www.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556" 
   expected_recs: 1
   basket_checkout: ["link", ':class => "btn_checkout"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
