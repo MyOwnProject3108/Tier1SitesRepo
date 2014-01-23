@@ -25,7 +25,7 @@ home_page:
    #- [pause,30]
 
 product_page:
-  URL: "http://www.jaeger.co.uk/Resin%20Beaded%20Collar/420021G,en_GB,pd.html?dwvar_420021G_color=00500&dwvar_420021G_size=ITM&start=16&cgid=accessories-jewellery"
+  URL: "http://www.jaeger.co.uk/Pearl%20Cluster%20Bracelet/425403Z,en_GB,pd.html?dwvar_425403Z_color=00300&dwvar_425403Z_size=ITM&start=1&cgid=accessories-jewellery"
   expected_recs: 1 
   add_to_basket_button: ["button", ':id=> "addtobag"']
   extra_steps:      
