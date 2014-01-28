@@ -96,8 +96,8 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a Checkout page
   <%= expect_recs_rule(page["expected_recs"]) %>
-  
 <% end %>
+
 <% page = site["searchresults_page"] %>
 <% if page["ignore"] %>
 @ignore
@@ -114,7 +114,6 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
     When I search for "<%= site["valid_search_term"] %>"
     Then it should be tracked as a search results page
     <%= expect_recs_rule(page["expected_recs"]) %>
-
 <% end %>
 <% if page["zerosearch_recs"] > 0 %>
 #
@@ -138,6 +137,34 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
     Then it should be tracked as a search results page
     <%= expect_recs_rule(page["zerosearch_recs"]) %>
 <% end %>
+<% end %>
+
+<% if site["order_page"] %>
+<% page = site["order_page"] %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
+@order_page
+Scenario: <%= site["pretty_name"] %> order page is tracked correctly
+  Given I am on the <%= site["site_name"] %> home page
+  And I pause for 2 seconds
+<% if site["home_page"]["login_link"] %>
+  When I click login
+  And I login as "<%= site["username"] %>" using password "<%= site["password"] %>"
+<% end %>
+  And I go to the basket page
+  And I pause for 10 seconds
+  And I remove all of the products from the basket
+  <%= extra_steps_rule(site["login_page"]["extra_steps"]) %>
+  And I go to the product page
+  <%= extra_steps_rule(site["product_page"]["extra_steps"]) %>
+  And I add the current product to the basket
+  And I pause for 2 seconds
+  And I go to the basket page
+  And I pause for 10 seconds
+  And I click checkout
+  <%= extra_steps_rule(page["extra_steps"]) %>
+  Then it should be tracked as a Order page
 <% end %>
 
 <% if site["has_content"] %>
@@ -177,3 +204,5 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
     | <%= category %> |
     <% end %>
 <% end %>
+
+

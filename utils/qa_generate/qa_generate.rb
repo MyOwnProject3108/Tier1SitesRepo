@@ -44,15 +44,17 @@ templates_path = cur_path+ "/templates/features"
 output_path = File.expand_path("../..",Dir.pwd)
 utils_path = File.expand_path("..",Dir.pwd) 
 
-# Generate sitelist
-autosites_filename = output_path + "/features/support/auto_sites.txt"
-puts "Creating #{autosites_filename}..." unless sitelist_file_mode == "a" 
-FileUtils.mkpath File.dirname(autosites_filename)
+#if(siteName == "")
+	# Generate sitelist
+	autosites_filename = output_path + "/features/support/auto_sites.txt"
+	puts "Creating #{autosites_filename}..." unless sitelist_file_mode == "a" 
+	FileUtils.mkpath File.dirname(autosites_filename)
 
-# Generate dbmapping
-dbmapping_filename = output_path + "/features/support/auto_dbmapping.yaml"
-puts "Creating #{dbmapping_filename}..." unless dbmapping_file_mode == "a" 
-FileUtils.mkpath File.dirname(dbmapping_filename)
+	# Generate dbmapping
+	dbmapping_filename = output_path + "/features/support/auto_dbmapping.yaml"
+	puts "Creating #{dbmapping_filename}..." unless dbmapping_file_mode == "a" 
+	FileUtils.mkpath File.dirname(dbmapping_filename)
+#end
 
 puts "CONFIG => "
 puts "\tFeature templates are in #{templates_path}/"
@@ -64,7 +66,11 @@ puts "OUTPUT => "
 puts "\tFeature files for each site will be generated in #{output_path}/features"
 puts "\tPage step definition code will be generated in #{output_path}/features/support/pages/<siteName>/"
 
-puts "GENERATE => "
+if(siteName == "" )
+	puts "GENERATE => " 
+else 
+	puts "#{siteName.upcase} => \t\t :: Creating feature files, scenarios and step definition code ..."
+end
 
 def generateFiles(site, siteName, opts, output_path, allSites)
 
@@ -75,7 +81,7 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 	template_files = Dir[template_directory+"**/*"]
 
 	# Generate output files from templates for site
-	puts "\t#{siteName.upcase} \t :: Created feature files, scenarios and step definition code"
+	puts "\t#{siteName.upcase} \t :: Created feature files, scenarios and step definition code" if allSites
 
 	template_files.each do |template_filename|
 		if File.file?(template_filename)

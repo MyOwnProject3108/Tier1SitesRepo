@@ -1,5 +1,5 @@
 site_name: demostore
-pretty_name: Peerius Demo Shop
+pretty_name: Peerius Demo Store
 has_content: no
 has_ranking: no
 needs_SPR: no
@@ -62,4 +62,18 @@ checkout_page:
     - [pause, 5]
     - [radio, id, "p_method_checkmo"]
     - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-    #- [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+
+
+order_page:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+    - [select_list, id, "billing-address-select", "Web Test, Peerius, 232 Great Guildford Street, London, London SE1 0HS, United Kingdom"]
+    - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
+    - [pause, 5]
+    - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
+    - [pause, 5]
+    - [radio, id, "p_method_checkmo"]
+    - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
+    - [pause, 5]
+    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
