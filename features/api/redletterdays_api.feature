@@ -34,7 +34,8 @@ Scenario: Zerosearch SMART-recs are delivered using SMART-API
 Scenario: SMART-ranking can be delivered on category page using SMART-API
     Given I am using SMART-API to access redletterdays
     And I am using client token 6G54jh5d94stg
-    When I supply SMART-ranking setup info
+    #When I supply SMART-ranking setup info
+	When I supply SMART-ranking setup with product field for "Couples>Days Out" and expect no recs 
     And I track the configured category page for "Couples>Days Out"       
     Then I should get an OK status back
     And I should get at least 2 items of SMART-ranking content
