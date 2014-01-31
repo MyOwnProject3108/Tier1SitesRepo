@@ -467,10 +467,6 @@ Then /^I should get at least (\d+) items? of SMART\-ranking content$/ do |expect
     @api.total_ranking_items.should >= expected_items.to_i
 end
 
-Then /^I should see at least 0 items of SMART\-ranking$/ do |expected_items|
-	@api.should_not have_smart_ranking_content
-end
-
 Then /^I should get no SMART\-product content in the response$/ do
     #pp @api.result
     @api.should_not have_smart_product_content

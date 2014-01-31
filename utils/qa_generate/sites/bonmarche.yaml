@@ -1,0 +1,49 @@
+site_name: bonmarche
+pretty_name: bonmarche
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: jfdsakfkd
+valid_search_term: scarf
+database_num: 1
+site_id: 1349
+integration: json
+
+home_page:
+  URL: "http://www.bonmarche.co.uk"
+  expected_recs: 0
+  login_link: ["link", ':href => "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"']
+  search_field: ["text_field", ':id => "q"']
+
+product_page:
+    URL: "http://www.bonmarche.co.uk/bags+brollies/patent-clutch-bag/invt/21561607007/&bklist=icat,5,shop,shopbyproduct,accessories,bags-and-umbrellas&bklist=icat,5,shop,shopbyproduct,accessories,bags-and-umbrellas"    
+    expected_recs: 0
+    add_to_basket_button: ["button", ':class => "add submit addproduct"']
+    
+category_page:
+  URL: "http://www.bonmarche.co.uk/shop-by-product/skirts/icat/skirts/"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.bonmarche.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=shop&log=22"
+  expected_recs: 0
+  basket_remove: ["image", ':alt => "Remove"']
+  basket_checkout: ["button", ':class => "button right btCheckout submit"']  
+
+login_page:
+  URL: "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["button", ':id=>"signinsubmit"']
+
+searchresults_page:
+  URL: "https://www.bonmarche.co.uk/search?categoryPathRefs=shop&q=scarf"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: "https://www.bonmarche.co.uk/bin/venda"
+  expected_recs: 0 

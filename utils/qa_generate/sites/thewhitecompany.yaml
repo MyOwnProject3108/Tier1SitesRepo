@@ -18,22 +18,22 @@ home_page:
   search_field: ["text_field", ':id => "in_site_search"']
 
 product_page:
-  URL: "http://www.thewhitecompany.com/christmas/christmas-table/stoneware-serving-bowl/"
+  URL: "http://www.thewhitecompany.com/candles-and-fragrance/accessories/ceramic-bottle-arch--white/"
   expected_recs: 2
   add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
   extra_steps:
     - [pause,10]
-    - [text_field, id, "in-quantities-RPUTYNNX", "1"]
+    - [text_field, id, "in-quantities-BAHBANWH", "1"]
     
 category_page:
-  URL: "http://www.thewhitecompany.com/bathroom/towels/"
+  URL: "http://www.thewhitecompany.com/clothing/tops/"
   expected_recs: 0
 
 basket_page:
   URL: "http://www.thewhitecompany.com/shopping-bag/"
   expected_recs: 2
   basket_checkout: ["button", ':id => "in_btnCheckout"']
-  basket_remove: ["link", ':class => "remove"']  
+  basket_remove: ["image", ':id => "remove"']  
 
 login_page:
   URL: "https://www.thewhitecompany.com/login.aspx"

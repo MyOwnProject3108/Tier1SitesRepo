@@ -20,7 +20,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.wallis.co.uk/en/wluk/product/clothing-265973/dresses-265991/black-spot-lace-tunic-dress-2389241?bi=1&ps=20"
+  URL: "http://www.wallis.co.uk/en/wluk/product/clothing-265973/dresses-265991/black-and-white-stripe-tunic-dress-2537150?bi=1&ps=20"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
@@ -61,4 +61,5 @@ checkout_page:
    - [text_field, class, "text address_town", "London"]
    - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 5]
   

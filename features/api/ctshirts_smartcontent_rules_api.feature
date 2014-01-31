@@ -145,9 +145,9 @@ Scenario Outline: SMART-content merchandising rule "purchasedHistoryByCategory" 
     And I should get at least 1 SMART-content creatives in the response
     And one of the SMART-content creative names should contain <category_name>
     Examples:
-  	| product    | category_name |
-    | "TH099RYL" | "Ties"        |
-    | "MP027TAN" | "Shirts - formal" |
+  	| product    | category_name     |
+    | "RN057NAV" | "Shirts - formal" |
+    | "FA063WHT" | "Shirts - formal" |
 	
 #Activate TopBanner in setup for cufflinks - SMART	-Pass-if fails in batch run then plz run individually 
 Scenario: SMART-content merchandising rule "purchasedHistoryByCategory" works across sessions

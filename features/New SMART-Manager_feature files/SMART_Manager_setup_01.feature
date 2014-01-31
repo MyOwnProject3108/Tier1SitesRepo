@@ -32,6 +32,28 @@ Given I am on the smartmanager login page
   And I select option with the value "u.visitor" on the adaptivecontent page
   And I pause for 5 seconds
   And select operatoroption with the value "equals to" on the adaptivecontent page
+  And I pause for 5 seconds
+  And I enter rule as "new" on the adaptivecontent page
+  And I pause for 5 seconds
+  And I click on the textarea with class "input-medium the_expression span11 advanced_expression"
+  And I pause for 2 seconds
+  And I click on "criteriaoptions" link on the adaptivecontent page
+  And I pause for 5 seconds
+  And I click on  Add a new row on the adaptivecontent page
+  And I pause for 5 seconds
+  And I select second creative as "LS2 - INACTIVE" on the adaptivecontent page
+  And I pause for 5 seconds
+  And I click on "criteriaoptions" link on the adaptivecontent page
+  And I pause for 5 seconds
+  And I select option with the value "default" on the adaptivecontent page
+  And I pause for 5 seconds
+  And I click on "criteriaoptions" link on the adaptivecontent page
+  And I pause for 5 seconds
+  And I enter weighting as "1.0" on the adaptivecontent page
+  And I pause for 5 seconds
+#  And I click on Save Setup button on the adaptivecontent page
+ # And I pause for 5 seconds
+  
   
   
   

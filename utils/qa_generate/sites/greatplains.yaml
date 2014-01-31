@@ -1,0 +1,49 @@
+site_name: greatplains
+pretty_name: Great Plains
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest2@mailinator.com
+password: webtest1234
+zero_search_term: poaipoisdasd
+valid_search_term: jacket
+database_num: 1
+site_id: 1325
+integration: json
+
+home_page:
+  URL: "http://www.greatplains.co.uk/"
+  expected_recs: 0
+  login_link: ["link", ':href => "/account.htm?mode=myaccount"']
+  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch", :index => 1']
+
+product_page:
+    URL: "http://www.greatplains.co.uk/product/womens+Accessories/JGAMB/Amelie+Chunky+Knit+Night+Socks.htm"    
+    expected_recs: 1
+    add_to_basket_button: ["button", ':id => "addToBasket"']
+    
+category_page:
+  URL: "http://www.greatplains.co.uk/category/womens+Accessories/Accessories.htm"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.greatplains.co.uk/basket.htm"
+  expected_recs: 1
+  basket_checkout: ["link", ':id => "ctl00_ctl00_globalmaincontent_mainContent_hlCheckout"']
+  basket_remove: ["link", ':class => "removeFromBasketButton"']  
+
+login_page:
+  URL: "https://www.greatplains.co.uk/login.htm?returnUrl=%2faccount.htm%3fmode%3dmyaccount"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtLogonId"']
+  password_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtPassword"']  
+  login_submit: ["button", ':name=>"ctl00$ctl00$globalmaincontent$maincontent$btnlogin2"']
+
+searchresults_page:
+  URL: ""
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: "https://www.greatplains.co.uk/checkout.htm"
+  expected_recs: 0 
