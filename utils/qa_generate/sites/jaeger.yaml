@@ -17,15 +17,15 @@ home_page:
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
-  URL: "http://www.jaeger.co.uk/Racing%20Car%20Cufflinks/320019E,en_GB,pd.html?dwvar_320019E_color=03000&dwvar_320019E_size=ITM&start=5&cgid=accessories-mens"
+  URL: "http://www.jaeger.co.uk/Billfold%20Wallet/320024G,en_GB,pd.html?dwvar_320024G_color=07500&dwvar_320024G_size=ITM&start=34&cgid=men-accessories"
   expected_recs: 1 
   add_to_basket_button: ["button", ':id=> "addtobag"']
   extra_steps:      
-    - [a, text, "Size (UK)"]
+    - [a, class, "sbSelector"]
     - [a, href, "#ITM"]
     - [a, text, "Quantity"]
     - [a, href, "#1"]
-    - [pause,20]
+    - [pause,10]
 
 category_page:
   URL: "http://www.jaeger.co.uk/women-jackets/women-jackets,en_GB,sc.html"
@@ -60,3 +60,30 @@ searchresults_page:
 checkout_page:
   URL: ""
   expected_recs: 0   
+  extra_steps:      
+    - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
+    - [button, id, "isExistingCustomer"]
+    - [text_field, id, "dwfrm_login_password", "webtest123"]
+    - [button, id, "continueStepABtn"]
+    - [pause,10]
+    - [button, id, "isdelivertoaddress"]
+    - [button, id, "checkoutButton"]
+    - [button, class, "buttonblack continuecheckout buttonPrimary"]
+    - [text_field, id, "paymentmethods_creditcard_owner", "Peertest"]
+    - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
+    - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
+    - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
+    - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
+    - [a, class, "sbSelector"]
+    - [a, href, "#2,015"]
+    - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
+    - [button, id, "checkoutButton"]
+    
+
+    
+    
+    
+    
+    
+    
+    

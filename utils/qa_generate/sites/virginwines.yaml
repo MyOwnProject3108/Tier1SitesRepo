@@ -2,7 +2,7 @@ site_name: virginwines
 pretty_name: Virgin wines
 has_content: no
 has_ranking: no
-needs_SPR: yes
+needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: shirts
@@ -20,7 +20,7 @@ home_page:
 
 product_page:
   URL: "https://www.virginwines.co.uk/AST/wines/PRD~C05086/d%27Arcana-Pinot-Grigio-2011.jsp"   
-  expected_recs: 2
+  expected_recs: 1
   add_to_basket_button: ["button", ':class => "button redtogreen"']
   extra_steps:
     - [pause, 10]
@@ -29,7 +29,7 @@ product_page:
     - [text_field, class, "qtyInputBox", "2"]
 
 category_page:
-  URL: "https://www.virginwines.co.uk/ourwines/ourwines.jsp?bmForm=ourWinesSearch&type=mostpopular&sort=salesLast14Days+desc"
+  URL: "http://www.virginwines.co.uk/index.jsp?bmForm=filtered_search&SEARCH_INPUT%3C%3EsearchFor=&SEARCH_INPUT%3C%3EATR_WineStyle=*&SEARCH_INPUT%3C%3EATR_WineType=*&SEARCH_INPUT%3C%3EATR_Country=*&SEARCH_INPUT%3C%3EATR_MedalWinner=*&SEARCH_INPUT%3C%3EATR_MedalWinner=*&SEARCH_INPUT%3C%3EpriceRange=&SEARCH_INPUT%3C%3Eethical=false&SEARCH_INPUT%3C%3Eethical=false&SEARCH_INPUT%3C%3EATR_WineCategory=Rose"
   expected_recs: 0
 
 basket_page:

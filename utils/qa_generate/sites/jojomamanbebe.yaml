@@ -18,12 +18,12 @@ home_page:
   search_field: ["text_field", ':id => "searchwhat"']
 
 product_page:
-  URL: "http://www.jojomamanbebe.co.uk/sp+daisy-print-maternity-top-in-maternity-tunics-and-shirts+b4725"
+  URL: "http://www.jojomamanbebe.co.uk/sp+logan-the-lion-crib-soother-in-sleep-training-and-night-lights+b1866"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "iB1"']
-  extra_steps:
-     - [image, src, "http://www.jojomamanbebe.co.uk/assets/images/mtx/inStock.jpg"]
-     - [pause,10]
+#  extra_steps:
+#     - [image, src, "http://www.jojomamanbebe.co.uk/assets/images/mtx/inStock.jpg"]
+#     - [pause,10]
 
 category_page:
   URL: "http://www.jojomamanbebe.co.uk/pp+maternity-tunics-and+shirts"

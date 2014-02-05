@@ -1,10 +1,10 @@
-site_name: topman
+site_name: topmansandpit
 pretty_name: Topman
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: vinod.sathapathi@peerius.com
-password: Pa55word
+username: peertest@yahoo.com
+password: Pass1234
 zero_search_term: dvd
 valid_search_term: jumper
 database_num: 4
@@ -50,4 +50,4 @@ checkout_page:
   URL: "https://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/UserRegistrationForm?langId=-1&catalogId=33056&storeId=12555&krypto=sdYcN%2B6i%2FrlGGrQHQS8vOQG8YamQ2TRQu4E%2F2v0PS9VfF4ntQtiQJwJAu%2F7Tr2El41Vhz5oNCyR8%0AgapYit34QLFCaU9oLVedR3KhYPd452naC%2Ba4Z4gC2M5S4RsiTtBOTDgC78jBfj9ef%2F9EK0ZiXcsu%0AD4ivjhqQrTW%2B7PWRgMu4xmZrnywyIZy30PyrVP0eknsnaABDA3OsoFk9R9JD2nwlD55WX9Q45N%2FG%0AwVuAt2qP5mbftmnglnnkyE9eS05jb%2FveeHWPuVPn9Jj5RknhglM8jOlRp9dpEe%2BRoHrUS2FPvBsW%0ALqsAkvCldzRfB%2FD%2F6th4iNxbkmDBBuVdZ3%2Fo54pzLPBLu9UqU12qCUehKtrvQDjkbhSqOw%3D%3D&ddkey=https:PreCheckout" 
   expected_recs: 0
   extra steps:
-   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [link, class, "btn_checkout chk_button_primary"]
