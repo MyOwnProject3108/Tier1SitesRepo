@@ -12,9 +12,17 @@ site_id: 1339
 integration: standard
 
 home_page:
-  URL: "http://www.jaeger.co.uk/"
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
   expected_recs: 0
+ #login_link: ["link", ':class => "myAcc"']
   search_field: ["text_field", ':id => "searchinput"']
+ # extra_steps:
+  # - [a, text, "MY ACCOUNT"]
+#   - [text_field, id, "dwfrm_login_username", webtest@mailinator.com]
+ #  - [text_field, id, "dwfrm_login_password", webtest123]
+#   - [pause,5]
+   #- [button, id, "submit"]
+   #- [pause,30]
 
 product_page:
   URL: "http://www.jaeger.co.uk/Billfold%20Wallet/320024G,en_GB,pd.html?dwvar_320024G_color=07500&dwvar_320024G_size=ITM&start=34&cgid=men-accessories"
@@ -32,13 +40,13 @@ category_page:
   expected_recs: 0 
 
 basket_page:
-  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Cart-Show/C1558086476"
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Cart-Show"
   expected_recs: 1  
   basket_checkout: ["link", ':class => "abtnSecurechkout"']
   basket_remove: ["button", ':class => "textbutton remove-btn"']
 
 login_page:
-  URL: "http://www.jaeger.co.uk/"
+  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
   expected_recs: 0 
   username_field: ["text_field", ':id=>"dwfrm_login_username"']
   password_field: ["text_field", ':id=>"dwfrm_login_password"']  
@@ -78,12 +86,3 @@ checkout_page:
     - [a, href, "#2,015"]
     - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
     - [button, id, "checkoutButton"]
-    
-
-    
-    
-    
-    
-    
-    
-    

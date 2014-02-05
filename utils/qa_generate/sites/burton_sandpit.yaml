@@ -1,0 +1,62 @@
+site_name: burtonsandpit
+pretty_name: Burton Sandpit
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: faiyyaz.sultana@peerius.com
+password: Pa55word
+zero_search_term: dvd
+valid_search_term: blazer
+database_num: 4
+mob_apikeyliv: bhrvkw68frbyh
+channel: mobileapp
+site_id: 82
+integration: standard
+
+home_page:
+  URL: "http://br.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=12551&catalogId=33052"
+  expected_recs: 0
+  login_link: ["link", ':link => "Sign in or register"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://br.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/ProductDisplay?langId=-1&storeId=12551&catalogId=33052&productId=12229610&categoryId=1125589&parent_category_rn=208974"
+  expected_recs: 1
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+category_page:
+  URL: "http://br.sandpit.arcadiagroup.ltd.uk/en/bruk/category/clothing-281559/mens-chinos-281636?ps=20&intcmpid=clothingchino&viewAllFlag=false&bi=1&sort_field=Relevance"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://br.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33052&langId=-1&storeId=12551"
+  expected_recs: 1
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://br.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33052&storeId=12551&krypto=uv4XFNHYwVG4uTPXJsCkTA%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://br.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/CatalogSearchResultCmd?langId=-1&storeId=12551&catalogId=33052&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: "" 
+  expected_recs: 0
+  extra_steps:
+    - [select_list, id, "address_title", "Mr"]
+    - [text_field, id, "address_first_name", "P"]
+    - [text_field, id, "address_surname", "Eerius"]
+    - [text_field, id, "address_main_telephone", "02033974940"]
+    - [p, class, "enter_manual_address"]
+    - [text_field, class, "text address_line_1", "Units 207-211"]
+    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+    - [text_field, class, "text address_town", "London"]
+    - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]

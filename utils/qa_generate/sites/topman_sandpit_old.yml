@@ -1,0 +1,53 @@
+site_name: topman
+pretty_name: Topman
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: vinod.sathapathi@peerius.com
+password: Pa55word
+zero_search_term: dvd
+valid_search_term: jumper
+database_num: 4
+mob_apikeyliv: lkdsa256784ds
+channel: mobileapp
+site_id: 219
+integration: standard
+
+home_page:
+  URL: "http://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=12555&catalogId=33056"
+  expected_recs: 0
+  login_link: ["link", ':title => "My Account"']
+  search_field: ["text_field", ':id => "inp_search_text"']
+
+product_page:
+  URL: "http://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=0&viewAllFlag=&catalogId=33056&storeId=12555&categoryId=688234&parent_category_rn=207300&productId=10830588&langId=-1"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+category_page:
+  URL: "http://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33056&storeId=12555&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207185&parent_categoryId=207169&beginIndex=1&pageSize=20"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555&krypto=uv4XFNHYwVG96Pbeo%2F0G%2Bg11qrAFKbsQA03CoTp65XadxH%2FuyXdRr2aHVTrZqiGsK%2FNNzgxWclrH%0Aa5oXVp2%2BhfFLE3OR2d%2BipDYdGSQ%2BuAtCsx%2FwcoEsqvc030GI2GT%2BAqBsa58kZcs7H64EBEmllg%3D%3D&ddkey=http:OrderCalculate"
+  expected_recs: 5 
+  basket_checkout: ["link", ':class => "chk_button_primary"']
+  basket_remove: ["link", ':class => "remove_bag_item"']  
+
+login_page:
+  URL: "https://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33056&storeId=12555&krypto=uv4XFNHYwVG4uTPXJsCkTA%3D%3D&ddkey=http:LogonForm"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"login_email"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["link", ':id=>"login_submit"']
+
+searchresults_page:
+  URL: "http://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/CatalogSearchResultCmd?langId=-1&storeId=12555&catalogId=33056&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=xwef&x=0&y=0"
+  expected_recs: 0
+  zerosearch_recs: 1
+  
+checkout_page:
+  URL: "https://tm.sandpit.arcadiagroup.ltd.uk/webapp/wcs/stores/servlet/UserRegistrationForm?langId=-1&catalogId=33056&storeId=12555&krypto=sdYcN%2B6i%2FrlGGrQHQS8vOQG8YamQ2TRQu4E%2F2v0PS9VfF4ntQtiQJwJAu%2F7Tr2El41Vhz5oNCyR8%0AgapYit34QLFCaU9oLVedR3KhYPd452naC%2Ba4Z4gC2M5S4RsiTtBOTDgC78jBfj9ef%2F9EK0ZiXcsu%0AD4ivjhqQrTW%2B7PWRgMu4xmZrnywyIZy30PyrVP0eknsnaABDA3OsoFk9R9JD2nwlD55WX9Q45N%2FG%0AwVuAt2qP5mbftmnglnnkyE9eS05jb%2FveeHWPuVPn9Jj5RknhglM8jOlRp9dpEe%2BRoHrUS2FPvBsW%0ALqsAkvCldzRfB%2FD%2F6th4iNxbkmDBBuVdZ3%2Fo54pzLPBLu9UqU12qCUehKtrvQDjkbhSqOw%3D%3D&ddkey=https:PreCheckout" 
+  expected_recs: 0
+  extra steps:
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
