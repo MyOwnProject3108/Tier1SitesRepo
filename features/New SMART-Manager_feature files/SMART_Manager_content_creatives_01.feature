@@ -30,7 +30,7 @@ Given I am on the smartmanager login page
   And I search for "White t-shirt" in the related products text area
   And I pause for 10 seconds
   And I click on text field with the text "Click to Search for Categories"
-  And I pause for 10 seconds
+  And I pause for 20 seconds
   And I search for "shirts" in the related category text field
   And I pause for 10 seconds
    And I click on related attributes text field with the text "Click to Search Related Attributes"

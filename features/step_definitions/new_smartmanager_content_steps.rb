@@ -161,15 +161,56 @@ Then(/^I click on "(.*?)" link on the adaptivecontent page$/) do |criterialink|
   @current_page.criterialink_submit_element.click
 end
 
-Then(/^I select option with the value "(.*?)" on the adaptivecontent page$/) do |rule|
-  @browser.select_list(:class => "exp_left_hand").option(:value => "u.visitor").when_present.click
- end
- 
- Then(/^select operatoroption with the value "(.*?)" on the adaptivecontent page$/) do |arg1|
- @browser.select_list(:class => "exp_op operatoroptions").option(:value => "=").when_present.click
+Then(/^I click on second "(.*?)" link on the adaptivecontent page$/) do |criteria2link|
+  @current_page.criteria2link_submit_element.click
 end
 
 
+Then(/^I select option with the value "(.*?)"$/) do |rule|
+#  @browser.select_list(:class => "exp_left_hand").option(:value => "u.visitor").when_present.click
+@browser.select_list(:class => "exp_left_hand").option(:value => "#{rule}").when_present.click
+ end
+ 
+ Then(/^select operatoroption with the value "(.*?)"$/) do |arg1|
+# @browser.select_list(:class => "exp_op operatoroptions").option(:value => "=").when_present.click                  working working
+@browser.select_list(:class => "exp_op operatoroptions").option(:value => "#{arg1}").when_present.click
+end
+
+Then(/^I select second creative as "(.*?)" on the adaptivecontent page$/) do |creative2|
+ @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select creative2
+end
+
+Then(/^I click on the first group select list on the adaptivecontent page$/) do
+@browser.select_list(:xpath => "//div[@id='traffic']/table/tbody/tr[2]/td[3]/div/div[3]/ul/li/ul/li/div/select[1]").click
+end
+
+
+Then(/^I select "(.*?)" as second rule on the adaptivecontent page$/) do |rule2|
+@browser.select_list(:xpath => "//div/div/div[@id='traffic']/table/tbody/tr[2]/td[3]/div/div[3]/ul/li/ul/li/div/select[1]").option(:value => "#{rule2}").when_present.click
+ end
+ 
+# Then(/^I click on the rules group on the adaptivecontent page$/) do
+ #@browser.div(:class => "rules-panel clearfix rules-edit-panel adaptive-content-rule-panel").ul(:class => "rule-groups").li(:class => "rule-group curved-all").ul(:class => "rule-rules").li(:class => "rule-rule rule").div(:class => "rule-content starter").select(:class => "exp_left_hand").option(:value => "=").click
+ #@browser.div(:xpath => "//div[@id='traffic']/table/tbody/tr/td[3]/div/div[3]/ul/li/ul/li/div/select[1]").click
+ #@browser.select_list(:class => "exp_left_hand").option(:value => "default").fire_event 'onclick'
+#end
+ 
+ Then(/^I click on textarea with the class "(.*?)"$/) do |ta|
+  #@browser.text_area(:class => "input-medium the_expression span11 advanced_expression").click
+   @browser.text_area(:class => "#{ta}").click
+end
+ 
+ Then(/^I enter second rule as "(.*?)" in the toggle advanced text area$/) do |rule2|
+  @current_page.rule2 = rule2
+end
+
+When(/^I click on the last "(.*?)" link on the creativelisting page$/) do |editlink|
+  @current_page.edit_link_element.last.click
+end
+ 
+ #Then(/^I enter weighting as "(.*?)" on the adaptivecontent page$/) do |arg1|
+  #@current_page.
+#end
 
 
 #When(/^I click on the new setup link on the creativelisting page$/) do
