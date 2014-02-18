@@ -18,9 +18,9 @@ home_page:
   search_field: ["text_field", ':id => "searchinput"']
 
 product_page:
-  URL: "http://uk.tommy.com/Pieter-Jersey-Polo/1M87633531,en_GB,pd.html?cgid=106000#!color%3D876%26i%3D6"
+  URL: "http://uk.tommy.com/Tanks-Watch/1MJ1781348,en_GB,pd.html?cgid=114080#!color%3D000%26i%3D21%26size%3DOS"
   expected_recs: 0
-  add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a"']
+  add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a  "']
   extra_steps:
 #    - [pause, 5]
 
