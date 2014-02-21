@@ -24,6 +24,15 @@ module <%= site["site_name"].capitalize %>
       <% if page["category_menu"] %>
         <%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
       <% end %>
+      <% if page["product_links"] %>
+	    <%= page["product_links"][0] %>(:product_links, <%= page["product_links"][1] %>)
+      <% end %>
+      #<% if page["product_link_filter"] %>
+	  # @product_link_filter = "teststr" # {'<%= page["product_link_filter"][0] %>' => '<%= page["product_link_filter"][1] %>'}
+	  # def product_link_filter
+		#	puts @product_link_filter
+	  # end  
+      #<% end %>
     end  
 end
 <% end %>

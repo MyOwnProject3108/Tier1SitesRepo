@@ -12,35 +12,50 @@ site_id: 1333
 integration: json
 
 home_page:
-  URL: "http://showcase.peerius.com/magento/index.php"
+  URL: "http://showcase.peerius.com/index.php"
   expected_recs: 1
-  login_link: ["link", ':href=> "http://showcase.peerius.com/magento/index.php/customer/account/login/"']
+  login_link: ["link", ':href=> "http://showcase.peerius.com/index.php/customer/account/login/"']
   search_field: ["text_field", ':id => "search"']
+  category_menu: ["ul", ':id => "nav"']
+  category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+  product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"']
+  product_link_filter: ["class|product-image"]
 
 product_page:
-  URL: "http://showcase.peerius.com/magento/index.php/entertainment/blu-ray/10000228.html"
+  URL: "http://showcase.peerius.com/index.php/entertainment/blu-ray/10000228.html"
   expected_recs: 5
   add_to_basket_button: ["button", ':class=> "button"']
 
+random_product_page:
+  expected_recs: 5
+  add_to_basket_button: ["button", ':class=> "button"']
+  product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"']
+  product_link_filter: ["class|product-image"]
+
 category_page:
-  URL: "http://showcase.peerius.com/magento/index.php/entertainment/blu-ray.html"
+  URL: "http://showcase.peerius.com/index.php/entertainment/blu-ray.html"
   expected_recs: 0
 
+random_category_page:
+  expected_recs: 0
+  category_menu: ["ul", ':id => "nav"']
+  category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+
 basket_page:
-  URL: "http://showcase.peerius.com/magento/index.php/checkout/cart/"
+  URL: "http://showcase.peerius.com/index.php/checkout/cart/"
   expected_recs: 5
   basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
   basket_remove: ["link", ':class => "btn-remove"']
 
 login_page:
- URL: "http://showcase.peerius.com/magento/index.php/customer/account/login/"
+ URL: "http://showcase.peerius.com/index.php/customer/account/login/"
  expected_recs: 0
  username_field: ["text_field", ':id=>"email"']
  password_field: ["text_field", ':id=>"pass"']  
  login_submit: ["button", ':id=>"send2"']
 
 searchresults_page:
-  URL: "http://showcase.peerius.com/magento/index.php/catalogsearch/result/?q=sdasdA"
+  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=sdasdA"
   expected_recs: 0
   zerosearch_recs: 5
 

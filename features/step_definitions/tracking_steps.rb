@@ -24,8 +24,8 @@ Then /^all categories should be tracked as Category pages except:$/ do |exclude_
   categories.each do |category|
     name = category[0]
     link = category[1]
-    pp "#{name}" if ENV['debugcategory']
-    pp "#{link}" if ENV['debugcategory']
+    pp "#{name}" if ENV['debugcuke']
+    pp "#{link}" if ENV['debugcuke']
     if not exclude_list.include?(name.strip)
       @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
       @browser.goto link
@@ -38,11 +38,73 @@ Then /^all categories should be tracked as Category pages except:$/ do |exclude_
       end   
       @browser.back
     end
-    test_pass.should == true if ENV['debugcategory']
+    test_pass.should == true if ENV['debugcuke']
   end
   
   test_pass.should == true
 end
+
+Then /^a random category should be tracked as Category page$/ do
+  	categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
+  	category = categories[rand(0..categories.length)]
+  	test_pass = true 
+    cat_name = category[0]
+	cat_url = category[1]
+	#pp "#{@current_page}" if ENV['debugcuke']
+	# pp "#{link}" if ENV['debugcuke']
+	puts "Selected category is #{cat_name} :: #{cat_url}" 
+	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+	@browser.goto cat_url
+	sleep 2
+	if @browser.td(:id => 'trackInfo').text.include?("CategoryPage")
+		puts "#{cat_name} - PASS"
+	else
+		puts "#{cat_name} - #{@browser.td(:id => 'trackInfo').text} - FAIL"
+		test_pass = false
+	end   
+end
+
+Then /^a random product should be tracked as Product page using link filter:$/ do |link_filter|
+  	categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
+	category = categories[rand(0..categories.length)]
+	cat_name = category[0]
+	cat_url = category[1]
+	puts "Selected category is #{cat_name} :: #{cat_url}" if ENV['debugcuke']
+	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+	@browser.goto cat_url
+	sleep 2
+	if @browser.td(:id => 'trackInfo').text.include?("CategoryPage")
+		link_filter = link_filter.raw.flatten!
+		attrib_name = link_filter[0]
+		attrib_val = link_filter[1]
+		products = @current_page.product_links_element.link_elements.reject{|x| x.attribute(attrib_name) != attrib_val}.collect{|x| [x.attribute('title'), x.attribute('href')]}
+
+		puts "Category #{cat_name} has #{products.length} products" if ENV['debugcuke']
+
+		product = products[rand(0..products.length)]
+		prod_name = product[0]
+		prod_url = product[1]
+		puts "Selected product is #{prod_name} :: #{prod_url}" if ENV['debugcuke']
+		@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+		@browser.goto prod_url
+		sleep 2
+		if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
+			puts "#{prod_name} - PASS" if ENV['debugcuke']
+		else
+			puts "#{prod_name} - #{@browser.td(:id => 'trackInfo').text} - FAIL"
+			test_pass = false
+		end  
+	else
+		puts "#{cat_name} - #{@browser.td(:id => 'trackInfo').text} - FAIL"
+		test_pass = false
+	end   
+
+    test_pass.should == true if ENV['debugcuke'] 
+ 
+end
+
+
+
 
 #Then /^the debug info should show at least (\d+) SMART\-content$/ do |expected_content|
  # @current_page.debug_content.should have_at_least(expected_content).entries
