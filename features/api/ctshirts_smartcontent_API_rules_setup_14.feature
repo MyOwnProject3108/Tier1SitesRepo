@@ -33,7 +33,7 @@ Then I should end up on the orders page
  Then I click on the Add content button on the smartcontent location page
  And I pause for 10 seconds
  And I select creative image as "LS1 - INACTIVE" on the smartcontent location page
- Then I enter "u.gender="male"" in the criteria1 position on the smartcontent location page
+ Then I enter "u.gender="male" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
  And I click on the save button on the smartcontent location page

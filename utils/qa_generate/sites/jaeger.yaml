@@ -25,15 +25,15 @@ home_page:
    #- [pause,30]
 
 product_page:
-  URL: "http://www.jaeger.co.uk/Pearl%20Cluster%20Bracelet/425403Z,en_GB,pd.html?dwvar_425403Z_color=00300&dwvar_425403Z_size=ITM&start=1&cgid=accessories-jewellery"
+  URL: "http://www.jaeger.co.uk/Billfold%20Wallet/320024G,en_GB,pd.html?dwvar_320024G_color=07500&dwvar_320024G_size=ITM&start=34&cgid=men-accessories"
   expected_recs: 1 
   add_to_basket_button: ["button", ':id=> "addtobag"']
   extra_steps:      
-    - [link, text, "Size (UK)"]
-    - [link, href, "#ITM"]
-    - [link, text, "Quantity"]
-    - [link, href, "#1"]
-    - [pause,20]
+    - [a, class, "sbSelector"]
+    - [a, href, "#ITM"]
+    - [a, text, "Quantity"]
+    - [a, href, "#1"]
+    - [pause,10]
 
 category_page:
   URL: "http://www.jaeger.co.uk/women-jackets/women-jackets,en_GB,sc.html"
@@ -67,38 +67,31 @@ searchresults_page:
   
 checkout_page:
   URL: ""
-  expected_recs: 0
-  extra_steps:
-   - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
-   - [radio, id, "isExistingCustomer"]
-   - [text_field, id, "dwfrm_login_password", "webtest123"]
-   - [button, id, "continueStepABtn"]
-   - [pause,10]
-   - [radio, id, "isdelivertoaddress"]   
-   - [pause,5]
-   - [button, id, "checkoutButton"]
-   - [pause,5]
-   - [button, id, "checkoutButton"]
-   - [pause,5]
-   - [text_field, id, "paymentmethods_creditcard_owner", "a test"]
-   - [pause, 5]
-   - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
-   - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
-   - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
-   - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
-   - [pause, 5]
-   - [link, class, "sbToggle sbToggleOpen"]
-   - [link, class, "sbSelector, :index => 0'"]
-   - [pause, 2]
-   - [link, href, "#3"]
-   - [link, id, "sbSelector_19426609"]
-   - [link, href, "#2,015"]
-   - [pause, 5]
-   - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
-   - [button, name, "dwfrm_billing_save"]
-   - [pause, 5]
-   
+  expected_recs: 0   
+  extra_steps:      
+    - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
+    - [button, id, "isExistingCustomer"]
+    - [text_field, id, "dwfrm_login_password", "webtest123"]
+    - [button, id, "continueStepABtn"]
+    - [pause,10]
+    - [button, id, "isdelivertoaddress"]
+    - [button, id, "checkoutButton"]
+    - [button, class, "buttonblack continuecheckout buttonPrimary"]
+    - [text_field, id, "paymentmethods_creditcard_owner", "Peertest"]
+    - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
+    - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
+    - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
+    - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
+    - [a, id, "sbToggle_48249891"]
+    - [a, id, "sbToggle_21873837"]
+    - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
+    - [button, id, "checkoutButton"]
+    
+
     
     
-   
-   
+    
+    
+    
+    
+    

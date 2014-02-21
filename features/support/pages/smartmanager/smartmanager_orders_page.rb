@@ -12,6 +12,7 @@ module Smartmanager
 	  a(:site_link_submit, :class => "select2-choice")
 	  text_field(:sitename, :class => "select2-input")
 	  a(:content_link, :href => "/tracker/smartmanager/creative/list.page")
+	  a(:ranking_link, :href => "/tracker/smartmanager/ranking/list.pagex")
 	  button(:account_submit, :class => "btn btn-primary btn-mini")
 	  a(:logout_submit, :href => "/tracker/shop-admin/logout.page")
 	  a(:oldui_link, :href => "/tracker/shop-admin/welcome.page?forceShopadminUI=true")

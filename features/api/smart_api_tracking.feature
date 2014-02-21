@@ -23,7 +23,7 @@ Scenario: Order page is *not* tracked using SMART-API v1
 #
 # Invalid key tests
 #
-@smartapi   
+ 
 Scenario Outline: Invalid key is used with SMART-API
     Given I am using SMART-API <version> to access livedemoshop
     And I am using client token xxbadtokenxx

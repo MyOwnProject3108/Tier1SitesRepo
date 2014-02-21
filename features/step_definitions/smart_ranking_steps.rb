@@ -14,9 +14,10 @@ When(/^I track a Home page$/) do
    @api.json_type = 'home'
    @api.track
 end
+
 When /^I supply SMART\-ranking setup info$/ do
   @api.json_smartRanking = {
-      "facets" => "category=\"Couples>Days Out\"",
+      "facets" => "category=\"ties\"",
       "ordering" => {"orderBy" => "smart"},
       "page" => 1,
       "itemsPerPage" => 20,  
@@ -34,6 +35,21 @@ When(/^I track the category page configured$/) do
    @api.track
 end
 
+When /^I supply SMART\-ranking setup with product field for "(.*?)" and facets cat "(.*?)"$/ do |cat1,facetcat|
+@api.json_type = 'category'
+	   @api.json_category = cat1
+	   @api.json_smartProducts =  [ "smartRanking" ]
+	   @api.json_smartRanking =  {
+	                    "content"      =>      "full",
+                        "facets"        =>      "category= +facetcat \ ",
+                        "ordering"      =>      { "orderBy"=>"price" , "currency"=>"GBP" , "sort"=>"desc"},
+                        "page"          =>      1,
+                        "itemsPerPage"  =>      10
+                        }
+end
+
+
+
 When(/^I supply SMART\-ranking setup with product field for "(.*?)" and expect no recs$/) do |cat1|
 	   @api.json_type = 'category'
 	   @api.json_category = cat1
@@ -48,7 +64,6 @@ When(/^I supply SMART\-ranking setup with product field for "(.*?)" and expect n
 end
 
 	
-
 When /^I track a click for SMART-ranking item number (\d+)$/ do |product|
     @current_page.should have_smart_ranking_content
     @current_page.ranking_widgets.count.should > 0

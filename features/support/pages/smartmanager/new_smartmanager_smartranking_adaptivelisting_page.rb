@@ -1,32 +1,40 @@
 module Smartmanager
   
-    class CreativelistingPage
+    class AdaptivelistingPage
       include PageObject
       include PeeriusHelper
       
-      URL = "https://#{FigNewton.base_url}/tracker/smartmanager/creative/list.page"
+      URL = "https://#{FigNewton.base_url}/tracker/smartmanager/ranking/list.pagex"
       direct_url URL
-		h4(:page_identifier, :text => "Creatives")
-		a(:new_create_link, :class => "btn-create-creative btn btn-success pull-right")
-		text_field(:creativename, :class => "input-xlarge sm_content_the_name pull-left")
-		text_field(:imageurl, :class => "input-small ui-img")
-		text_field(:linkurl, :class => "input-small ui-link")
-		text_field(:searchfield, :class => "visual-input", :index => 1)
-		
-		
-		text_area(:prod_search, :class => "visual-input", :index => 0)
-		text_area(:searchprodterm, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[1]/div/textarea[2]")
+		h4(:page_identifier, :text => "SMART-ranking Overview")
+		a(:create_new_campaign_submit, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/div[1]/a")
+		#a(:create_ranking_submit, :class => "submit120")
+		span(:new_config, :text => "SMART-ranking Configuration")
 		
 		
 		
-		text_field(:cat_search, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[2]/div/div/input")
-		text_field(:attr_search, :class => "visual-input", :index => 2)
 		
-		text_field(:searchattrterm, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[3]/div/div/input")
+		
+	#	a(:new_create_link, :class => "btn-create-creative btn btn-success pull-right")
+	#	text_field(:creativename, :class => "input-xlarge sm_content_the_name pull-left")
+	#	text_field(:imageurl, :class => "input-small ui-img")
+	#	text_field(:linkurl, :class => "input-small ui-link")
+	#	text_field(:searchfield, :class => "visual-input", :index => 1)
+		
+		
+	#	text_area(:prod_search, :class => "visual-input", :index => 0)
+	#	text_area(:searchprodterm, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[1]/div/textarea[2]")
+		
+		
+		
+	#	text_field(:cat_search, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[2]/div/div/input")
+	#	text_field(:attr_search, :class => "visual-input", :index => 2)
+		
+	#	text_field(:searchattrterm, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[3]/div/div/input")
 		
 	#	a(:new_setup_link, :href => "/tracker/smartmanager/adaptivecontent/edit.page")
-		span(:new_setup_tab, :text => "New Setup")
-		link(:edit_link, :class => "edit.page?id=18")
+	#	span(:new_setup_tab, :text => "New Setup")
+	#	link(:edit_link, :class => "edit.page?id=18")
 		
 	#	text_field(:attrsearch, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[3]/div/div/div/input")
 	#	text_field(:searchfield1, :xpath => "//div[@id='wrapper']/div[2]/div/div[2]/form/div[1]/div[3]/div[2]/fieldset/ul/li[3]/div/div/div")
@@ -61,7 +69,7 @@ module Smartmanager
 		# text_field(:linkurl2, :id => "link2")
 	 	 
 	 def tracked_as
-	   return "CreativelistingPage"
+	   return "AdaptivelistingPage"
 	  end
 	  
 				  
