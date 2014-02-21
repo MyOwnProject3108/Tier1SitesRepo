@@ -30,7 +30,7 @@ basket_page:
   URL: "http://www.predatornutrition.com/en/checkout/cart/"
   expected_recs: 3
   basket_checkout: ["button", ':class => "button button-large place-order btn-proceed-checkout btn-checkout"']
-  basket_remove: ["button", ':class => "btn-remove btn-remove2 remove-item"']  
+  basket_remove: ["link", ':class => "btn-remove btn-remove2 remove-item"']  
 
 login_page:
   URL: "https://www.predatornutrition.com/en/customer/account/login/"

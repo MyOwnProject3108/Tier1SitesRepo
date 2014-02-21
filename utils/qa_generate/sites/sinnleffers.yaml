@@ -1,0 +1,49 @@
+site_name: sinnleffers
+pretty_name: Sinnleffers
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest2@mailinator.com
+password: webtest1234
+zero_search_term: poaipoisdasd
+valid_search_term: hose
+database_num: 1
+site_id: 1389
+integration: json
+
+home_page:
+  URL: "http://www.sinnleffers.de/"
+  expected_recs: 0
+  login_link: ["link", ':href => "/account.htm?mode=myaccount"']
+  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch", :index => 1']
+
+product_page:
+    URL: "http://www.sinnleffers.de/Looks-Trends/Trendthemen/Stricktrend-Herren/Schal-im-Burberry-Stil-schwarz-FRAAS.html"    
+    expected_recs: 1
+    add_to_basket_button: ["button", ':value => "in den Warenkorb"']
+    
+category_page:
+  URL: "http://www.sinnleffers.de/Herren/Accessoires/Schals/"
+  expected_recs: 1
+
+basket_page:
+  URL: ""
+  expected_recs: 1
+  basket_checkout: ["link", ':value => "Weiter"']
+  basket_remove: ["link", ':class => "js-remove-button"']   
+
+login_page:
+  URL: ""
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtLogonId"']
+  password_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtPassword"']  
+  login_submit: ["button", ':name=>"ctl00$ctl00$globalmaincontent$maincontent$btnlogin2"']
+
+searchresults_page:
+  URL: ""
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: ""
+  expected_recs: 0 
