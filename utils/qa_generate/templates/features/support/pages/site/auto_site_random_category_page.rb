@@ -13,8 +13,8 @@ module <%= site["site_name"].capitalize %>
 		include PageObject
 		include PeeriusHelper
 
-		<% if page["category_menu"] %>
-		<%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
+		<% if site["category_menu"] %>
+		<%= site["category_menu"][0] %>(:category_menu, <%= site["category_menu"][1] %>)
 		<% end %>
 	end  
 end

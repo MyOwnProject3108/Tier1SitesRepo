@@ -12,12 +12,20 @@ module <%= site["site_name"].capitalize %>
 	class ProductPage
 		include PageObject
 		include PeeriusHelper
-
-		<%= page["add_to_basket_button"][0] %>(:add_to_basket, <%= page["add_to_basket_button"][1] %>) 
-
-		<% if page["product_links"] %>
-		<%= page["product_links"][0] %>(:product_links, <%= page["product_links"][1] %>)
+		# site elements
+		<% if site["add_to_basket_button"] %>
+		<%= site["add_to_basket_button"][0] %>(:add_to_basket, <%= site["add_to_basket_button"][1] %>)
+		<% end %> 
+		<% if site["product_links"] %>
+		<%= site["product_links"][0] %>(:product_links, <%= site["product_links"][1] %>)
 		<% end %>
+		# page elements
+		<% if page["add_to_basket_button"] %>
+		<%= page["add_to_basket_button"][0] %>(:add_to_basket, <%= page["add_to_basket_button"][1] %>)
+		<% end %>
+
+
+
 	end  
 end
 <% end %>

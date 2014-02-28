@@ -1,4 +1,7 @@
 site_name: demostore
+site_id: 1333
+database_num: 0
+integration: json
 pretty_name: Peerius Demo Store
 has_content: no
 has_ranking: no
@@ -7,30 +10,28 @@ username: webtest@mailinator.com
 password: webtest
 zero_search_term: awedasda
 valid_search_term: dvd
-database_num: 0
-site_id: 1333
-integration: json
 
+# site level elements - lelements that can be re-used in multiple page configurations
+add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+category_menu: ["ul", ':id => "nav"']
+category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+# specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
+max_num_of_categories: 5 
+product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"']
+product_link_filter: ["class|product-image"]
+  
 home_page:
   URL: "http://showcase.peerius.com/index.php"
   expected_recs: 1
   login_link: ["link", ':href=> "http://showcase.peerius.com/index.php/customer/account/login/"']
   search_field: ["text_field", ':id => "search"']
-  category_menu: ["ul", ':id => "nav"']
-  category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
-  product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"']
-  product_link_filter: ["class|product-image"]
-
+  
 product_page:
   URL: "http://showcase.peerius.com/index.php/entertainment/blu-ray/10000228.html"
   expected_recs: 5
-  add_to_basket_button: ["button", ':class=> "button"']
 
 random_product_page:
   expected_recs: 5
-  add_to_basket_button: ["button", ':class=> "button"']
-  product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"']
-  product_link_filter: ["class|product-image"]
 
 category_page:
   URL: "http://showcase.peerius.com/index.php/entertainment/blu-ray.html"
@@ -38,8 +39,6 @@ category_page:
 
 random_category_page:
   expected_recs: 0
-  category_menu: ["ul", ':id => "nav"']
-  category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
 
 basket_page:
   URL: "http://showcase.peerius.com/index.php/checkout/cart/"
@@ -55,16 +54,20 @@ login_page:
  login_submit: ["button", ':id=>"send2"']
 
 searchresults_page:
-  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=sdasdA"
+  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=dvd"
   expected_recs: 0
   zerosearch_recs: 5
 
 checkout_page:
-  URL: ""
+  URL: "http://showcase.peerius.com/index.php/checkout/onepage/"
   expected_recs: 0
   extra_steps:
+    - [radio, id, "login:guest"]
+    - [button, id, "onepage-guest-register-button"]
+    - [pause, 2]
     - [text_field, id, "billing:firstname", "Web"]
     - [text_field, id, "billing:lastname", "Test"]
+    - [text_field, id, "billing:email", "peeriustest@email.com"]
     - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
     - [text_field, id, "billing:city", "London"]
     - [text_field, id, "billing:postcode", "SE1 0HS"]
@@ -77,6 +80,8 @@ checkout_page:
     - [pause, 5]
     - [radio, id, "p_method_checkmo"]
     - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
+    - [pause, 5]
+    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
 
 
 order_page:
@@ -92,3 +97,30 @@ order_page:
     - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
     - [pause, 5]
     - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
+
+
+random_order:
+  URL: "http://showcase.peerius.com/index.php"
+  expected_recs: 0
+  extra_steps:
+      - [radio, id, "login:guest"]
+      - [button, id, "onepage-guest-register-button"]
+      - [pause, 2]
+      - [text_field, id, "billing:firstname", "Web"]
+      - [text_field, id, "billing:lastname", "Test"]
+      - [text_field, id, "billing:email", "peeriustest@email.com"]
+      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
+      - [text_field, id, "billing:city", "London"]
+      - [text_field, id, "billing:postcode", "SE1 0HS"]
+      - [text_field, id, "billing:region", "London"]
+      - [select_list, id, "billing:country_id", "United Kingdom"]
+      - [text_field, id, "billing:telephone", "02039723222"]
+      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
+      - [pause, 5]
+      - [radio, id, "s_method_freeshipping_freeshipping", optional]
+      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
+      - [pause, 5]
+      - [radio, id, "p_method_checkmo"]
+      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
+      - [pause, 5]
+      - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
