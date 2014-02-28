@@ -231,7 +231,7 @@ Scenario: <%= site["pretty_name"] %> order page is tracked correctly
 
 <% if site["random_order"] %>
 #
-# Order confirmation page
+# End to end testing
 #
 <% page = site["random_order"] %>
 <% if site["category_menu"] %>
