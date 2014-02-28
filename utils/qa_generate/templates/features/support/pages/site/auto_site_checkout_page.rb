@@ -11,11 +11,11 @@
 module <%= site["site_name"].capitalize %>
   
     class CheckoutPage
-      include PageObject
-      include PeeriusHelper
-      
-      URL = "<%= debug_url(page["URL"]) %>"
-      direct_url URL            
+		include PageObject
+		include PeeriusHelper
+
+		URL = "<%= debug_url(page["URL"]) %>"
+		direct_url URL    
     end  
 end
 <% end %>

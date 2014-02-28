@@ -8,12 +8,12 @@ require 'fileutils'
 require_relative "rules.rb"
 require_relative "helpers.rb"
 
-QA_GENERATE_VERSION = "0.1.8"
+QA_GENERATE_VERSION = "1.0.20140224"
 
 
 # Specify commandline options
 opts = Trollop::options do
-	version "qa_generate #{QA_GENERATE_VERSION} (c) 2013 Peerius Ltd"
+	version "qa_generate #{QA_GENERATE_VERSION} (c) 2014 Peerius Ltd"
 	banner <<-EOS
 qa_generate is a test creation tool which takes YAML input (see: yaml.org) and
 generates .feature and page class files in order to test Peerius code on client sites.

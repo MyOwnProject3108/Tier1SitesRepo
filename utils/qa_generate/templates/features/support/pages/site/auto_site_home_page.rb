@@ -11,22 +11,33 @@
 module <%= site["site_name"].capitalize %>
   
     class HomePage
-      include PageObject
-      include PeeriusHelper
+		include PageObject
+		include PeeriusHelper
+
+		URL = "<%= debug_url(page["URL"]) %>"
+		direct_url URL
+        <%= page["search_field"][0] %>(:search, <%= page["search_field"][1] %>)
+        # site elements
+		<% if site["category_menu"] %>
+		<%= site["category_menu"][0] %>(:category_menu, <%= site["category_menu"][1] %>)
+		<% end %>
+		<% if site["product_links"] %>
+		<%= site["product_links"][0] %>(:product_links, <%= site["product_links"][1] %>)
+		<% end %>
+		#page elements - retained for backward compatibility
+		<% if page["login_link"] %>
+		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
+		<% end %>
+		<% if page["category_menu"] %>
+		<%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
+		<% end %>
+		
+		<% if site["max_num_of_categories"] %>
+		def get_max_num_of_categories
+		        return <%= site["max_num_of_categories"] %>
+        end 
+        <% end %>
       
-      URL = "<%= debug_url(page["URL"]) %>"
-      direct_url URL
-      
-      <% if page["login_link"] %>
-        <%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
-      <% end %>
-	    <%= page["search_field"][0] %>(:search, <%= page["search_field"][1] %>)
-      <% if page["category_menu"] %>
-        <%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
-      <% end %>
-      <% if page["product_links"] %>
-	    <%= page["product_links"][0] %>(:product_links, <%= page["product_links"][1] %>)
-      <% end %>
     end  
 end
 <% end %>

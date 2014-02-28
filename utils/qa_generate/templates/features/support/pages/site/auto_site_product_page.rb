@@ -16,8 +16,14 @@ module <%= site["site_name"].capitalize %>
       
       URL = "<%= debug_url(page["URL"]) %>"
       direct_url URL
-      
-      <%= page["add_to_basket_button"][0] %>(:add_to_basket, <%= page["add_to_basket_button"][1] %>)          
+	  # site elements
+      <% if site["add_to_basket_button"] %>
+      <%= site["add_to_basket_button"][0] %>(:add_to_basket, <%= site["add_to_basket_button"][1] %>)
+      <% end %> 
+      # page elements
+      <% if page["add_to_basket_button"] %>
+      <%= page["add_to_basket_button"][0] %>(:add_to_basket, <%= page["add_to_basket_button"][1] %>)
+      <% end %>
     end  
 end
 <% end %>

@@ -27,7 +27,8 @@ def extra_steps_rule(extra_steps)
     when "select_list"
       rule += "And I select \"#{step[3]}\" on the #{step[0]} with #{step[1]} \"#{step[2]}\"\n  "
     else
-      rule += "And I click on the #{step[0]} with #{step[1]} \"#{step[2]}\"\n  "
+      rule += "And I click the optional #{step[0]} with #{step[1]} \"#{step[2]}\"\n  " if step[3] == "optional"
+      rule += "And I click on the #{step[0]} with #{step[1]} \"#{step[2]}\"\n  " if step[3] == nil
     end
   end
 
