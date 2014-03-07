@@ -41,13 +41,27 @@ When /^I supply SMART\-ranking setup with product field for "(.*?)" and facets c
 	   @api.json_smartProducts =  [ "smartRanking" ]
 	   @api.json_smartRanking =  {
 	                    "content"      =>      "full",
-                        "facets"        =>      "category= +facetcat \ ",
-                        "ordering"      =>      { "orderBy"=>"price" , "currency"=>"GBP" , "sort"=>"desc"},
+						"facets"      =>   facetcat,
+                        #"facets"        =>      "category= +facetcat+\"" ,
+                        "ordering"      =>      { "orderBy"=>"smart" , "currency"=>"GBP" , "sort"=>"asc"},
                         "page"          =>      1,
                         "itemsPerPage"  =>      10
                         }
 end
 
+When /^I supply SMART\-ranking setup without smartproduct field for "(.*?)" and facets cat "(.*?)"$/ do |cat1, facetcat|
+   @api.json_type = 'category'
+	   @api.json_category = cat1
+	   #@api.json_smartProducts =  [ "smartRanking" ]
+	   @api.json_smartRanking =  {
+	                    "content"      =>      "full",
+						"facets"      =>   facetcat,
+                        #"facets"        =>      "category= +facetcat+\"" ,
+                        "ordering"      =>      { "orderBy"=>"smart" , "currency"=>"GBP" , "sort"=>"asc"},
+                        "page"          =>      1,
+                        "itemsPerPage"  =>      10
+                        }
+end
 
 
 When(/^I supply SMART\-ranking setup with product field for "(.*?)" and expect no recs$/) do |cat1|
@@ -57,12 +71,23 @@ When(/^I supply SMART\-ranking setup with product field for "(.*?)" and expect n
 	   @api.json_smartRanking =  {
 	                    "content"      =>      "full",
                         "facets"        =>      "category=\"Couples>Days Out\"",
-                        "ordering"      =>      { "orderBy"=>"price" , "currency"=>"GBP" , "sort"=>"desc"},
+                        "ordering"      =>      { "orderBy"=>"smart" , "currency"=>"GBP" , "sort"=>"asc"},
                         "page"          =>      1,
                         "itemsPerPage"  =>      10
                         }
 end
-
+When /^I supply SMART\-ranking setup with smartrecs only field for "(.*?)" and facets cat "(.*?)"$/ do |cat1, facetcat|
+@api.json_type = 'category'
+	   @api.json_category = cat1
+	   @api.json_smartProducts =  [ "smartRecs" ]
+	   @api.json_smartRanking =  {
+	                    "content"      =>      "full",
+						"facets"      =>   facetcat,
+                        "ordering"      =>      { "orderBy"=>"smart" , "currency"=>"GBP" , "sort"=>"asc"},
+                        "page"          =>      1,
+                        "itemsPerPage"  =>      10
+                        }
+end
 	
 When /^I track a click for SMART-ranking item number (\d+)$/ do |product|
     @current_page.should have_smart_ranking_content
@@ -101,3 +126,64 @@ When /^I click the first SMART\-ranking creative image$/ do
   @current_page.smartRankingEnabled?.should be_true  
   imageCreative = @current_page.smartRanking[0].link_element(:index => 0).when_visible.click
 end
+
+#
+# A/B Tests
+#
+
+   When(/^I track the configured category page for "(.*?)" in AB test$/) do |cat1|
+   has_expected_product = false
+   @api.result["info"]["abtest"]
+   @api.json_type = 'category'
+   @api.json_category = cat1
+   @api.track
+   end
+
+
+  #Then /^I should see which (.+) abgroup I am serving$/ do |expected_product|
+  ##has_expected_product = false
+  ##pp @api.result["info"]["abtest"]
+  #@api.result.should have_key("info")
+  #@api.result["info"].should have_key("abtest")
+  #@api.result["info"]["abtest"].should have_at_least(1).product
+  
+  # #Check to see that one of the products is the one we are looking for 
+   ##pp @api.result["info"]["abtest"]
+   #@api.result["info"]["abtest"].each {|product| 
+   #if product.has_key?(expected_product) then
+    #has_expected_product = true
+    
+    # ## Check that the product has an abgroup defined
+     #product[expected_product].should have_at_least(1).items
+     #product[expected_product].each {|config|
+    #  config.should have_key("group")
+   # }
+  #end
+  # }
+  
+ # # has_expected_product.should == true
+  
+#end
+
+#Then /^I should see at least (\d+) (.+) ab test configs?$/ do |expected_configs, expected_product|
+  ## pp @api.result["info"]["abtest"]
+ #  @api.result.should have_key("info")
+  # @api.result["info"].should have_key("abtest")
+  # @api.result["info"]["abtest"].should have_at_least(1).product
+  
+  ## # Check to see that one of the products is the one we are looking for 
+   #@api.result["info"]["abtest"].each {|product| 
+   #if product.has_key?(expected_product) then
+   #  has_expected_product = true
+    
+    # # Check that the product has an abgroup defined
+    # product[expected_product].should have_at_least(1).items
+    # product[expected_product].each {|config|
+      # config.should have_key("configs")
+      # config["configs"].size.should >= expected_configs.to_i 
+    # }
+   #end
+   #}
+#end
+
+#
