@@ -1,7 +1,7 @@
 @demostoredev
 @smartapi
 @smartranking
-Feature: SMART-API: Non-site specific SMART-ranking tests
+Feature: SMART-API: Non-site specific SMART-ranking tests for DemostoreDev
   In order to get the most out of my shopping experience
   As a website user
   I want to see personalised category pages
