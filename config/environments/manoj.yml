@@ -1,4 +1,4 @@
-base_url: uat.peerius.com
+base_url: localpt.peerius.com
 headless: false
 database0: ImplLocalDenorm0
 database1: ImplLocalDenorm1

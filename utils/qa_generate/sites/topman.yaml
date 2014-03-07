@@ -20,7 +20,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topman.com/en/tmuk/product/clothing-140502/mens-jumpers-cardigans-140513/grey-shawl-collar-jumper-1969499?bi=1&ps=20"
+  URL: "http://www.topman.com/en/tmuk/product/clothing-140502/mens-shirts-140515/white-pocket-smart-shirt-157472?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

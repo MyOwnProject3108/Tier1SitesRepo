@@ -8,11 +8,16 @@ Feature: New SMART-manager
 Background:
 Given I am on the smartmanager login page
  And I login as "givahnenko" using password "4v1gm0d5k1"
- Given I am on the smartmanager home page
+ Given I am on the smartmanager orders page
  And I pause for 10 seconds
- And I select "mandco" from the sites list on the smartmanager home page
- And I click on the New and Shiny Smart Manager link on the smartmanager home page
- Then I should end up on the orders page
+ And I click on "select2-search" link on the orders page
+ And I enter sitename as "mandco" on the orders page
+ And I pause for 5 seconds
+ #Given I am on the smartmanager home page
+ #And I pause for 10 seconds
+# And I select "mandco" from the sites list on the smartmanager home page
+# And I click on the New and Shiny Smart Manager link on the smartmanager home page
+# Then I should end up on the orders page
  When I click on the smartmanger merchandising link
  Then I should end up on the merchoverview page
  When I click on the create a new campaign link on the merchoverview page
@@ -34,13 +39,29 @@ Given I am on the smartmanager Newmerchandisingcreate page
  Then I should end up on the Recrulesconfig page
  Then I click the edit rule button on the Recrulesconfig page
  And I pause for 10 seconds
-  And I click on "exp_left_hand" class on the Recrulesconfig page
-  And I pause for 10 seconds
-  And I select the hint as "r.gender" on the Recrulesconfig page
+#  And I click on the first group select list on the Recrulesconfig page
+  And I select option with the value "r.gender" on the Recrulesconfig page
+ #And I select "r.gender" as a hint on the Recrulesconfig page
+ And I pause for 5 seconds
+ 
+ 
+ And select an expoperatoroption with the value "=" on the Recrulesconfig page
+ And I pause for 5 seconds
+# And I select "female" from the list on the Recrulesconfig page
+  And I enter merch rule as "female" on the Recrulesconfig page
+  And I pause for 5 seconds
+ # And I click on the toggle textarea with name "rule_expression_1" on the Recrulesconfig page
+ And I click on list with the class "rule-group curved-all last" on the Recrulesconfig page
+  And I pause for 5 seconds
+  
+  
+#  And I click on "exp_left_hand" class on the Recrulesconfig page
+#  And I pause for 10 seconds
+#  And I select the hint as "r.gender" on the Recrulesconfig page
  # And I select option "Colour" on the Recrulesconfig page
  # And I pause for 10 seconds
  #And I click on the class "exp_left_hand" on Recrulesconfig page
   #Then I click on class exp_left_hand with text "Please Select" on Recrulesconfig page
- And I pause for 10 seconds
- Then I select attribute as "sale price" on Recrulesconfig page
+# And I pause for 10 seconds
+# Then I select attribute as "sale price" on Recrulesconfig page
  

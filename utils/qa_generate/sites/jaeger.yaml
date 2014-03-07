@@ -82,7 +82,16 @@ checkout_page:
     - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
     - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
     - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
-    - [a, class, "sbSelector"]
-    - [a, href, "#2,015"]
+    - [a, id, "sbToggle_48249891"]
+    - [a, id, "sbToggle_21873837"]
     - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
     - [button, id, "checkoutButton"]
+    
+
+    
+    
+    
+    
+    
+    
+    
