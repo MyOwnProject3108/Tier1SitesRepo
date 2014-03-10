@@ -6,8 +6,8 @@ Feature: SMART-API CT Shirts specific tests
 Background:
     Given I am using the ctshirts API test config
     And I am using SMART-API to access ctshirts
-    And I am using client token 677ab692r2t31
-    And I am using production client token 677ab692r2t31
+    And I am using client token 677ab692r2t3u4t
+    And I am using production client token 677ab692r2t3u4t
 
 
 Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works with single purchases using SMART-API
@@ -172,6 +172,8 @@ Scenario: PEERIUS-1527 -- CT Shirts does not get SMART-content on the home page 
    # | "LE083BLU" | "cufflinks"   |
    # | "TH099RYL" | "Ties"        |
    # | "MP027TAN" | "Shoes"       |
+   
+
 
 
 

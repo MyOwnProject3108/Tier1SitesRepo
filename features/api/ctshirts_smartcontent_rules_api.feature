@@ -1,3 +1,4 @@
+@ignore
 @smartapi
 @ctshirts
 Feature: SMART-API CT Shirts specific Smart Content rule tests
@@ -5,8 +6,8 @@ Feature: SMART-API CT Shirts specific Smart Content rule tests
 Background:
     Given I am using the ctshirts API test config
     And I am using SMART-API to access ctshirts
-    And I am using client token 677ab692r2t31
-    And I am using production client token 677ab692r2t31
+    And I am using client token 677ab692r2t3u4t
+    And I am using production client token 677ab692r2t3u4t
 	
 Scenario: SMART-content rule "default" works using SMART-API  
     When I track the home page
@@ -14,7 +15,7 @@ Scenario: SMART-content rule "default" works using SMART-API
 	And I should get at least 1 SMART-content creatives in the response
 	And one of the SMART-content creative names should contain "LS3 - INACTIVE"
 	
-Scenario: SMART-content rule "tags" works using SMART-API 
+Scenario: SMART-content rule "tags" works using SMART-API -if it fails -rerun by keeping only 'Tag rule' active in Smart Manager.
     #When I track the home page
 	When I post the home page request with tags
     Then I should get an OK status back
@@ -202,7 +203,39 @@ Scenario: SMART-content merchandising rule "Lastviewedcategorywithoutparameter" 
     And one of the SMART-content creative names should contain "Trousers"	
 
 
+Scenario: SMART-content A/B groups can be detected using SMART-API "summary"
+   When I request summary abgroup information
+   #When I track the home page
+    And I track a home page
+    Then I should get an OK status back
+    And I should see which smartContent abgroup I am serving
 
+Scenario: SMART-content A/B groups can be detected using SMART-API "full"
+    When I request full abgroup information
+	When I track the home page
+    And I track a home page
+    Then I should get an OK status back
+    And I should see which smartContent abgroup I am serving
+	And I should see at least 2 smartContent ab test configs
+
+Scenario: SMART-content impressions are denormalised in the db using SMART-API
+    When I track the home page
+	And I track the home page
+	And I wait for denormalisation to finish
+    Then I should get an OK status back
+	And I should see at least 3 SMART-content impressions in the DB
+	And I should see no SMART-content clicks in the DB
+	
+Scenario: SMART-content clicks are denormalised in the db using SMART-API
+    When I track the home page
+    Then I should get an OK status back
+    When I track a click for the first SMART-content creative
+    When I track the home page
+    When I track a click for the first SMART-content creative
+    When I track the home page
+    When I track a click for the first SMART-content creative
+    And I wait for denormalisation to finish
+	Then I should see at least 3 SMART-content clicks in the DB
 	
 	
 	
