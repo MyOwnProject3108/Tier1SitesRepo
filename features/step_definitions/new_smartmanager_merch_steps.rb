@@ -48,7 +48,10 @@ Then(/^I select option with the value "(.*?)" on the Recrulesconfig page$/) do |
 @browser.select_list(:xpath => "//div[@id='recommendation-rules']/div[1]/div/div/div[@id='sidebar']/ul/li/div[3]/div/div/ul/li/ul/li/div/select[1]").option(:value, "#{exp}").when_present.click
  end
  
- 
+ # Then(/^I click on the merch toggle textarea with id "(.*?)"$/) do |tamerch|
+  #@browser.text_area(:class => "input-medium the_expression span11 advanced_expression").click
+  # @browser.text_area(:id => "#{tamerch}").click
+#end
 
 
 #Then(/^I select "(.*?)" as a hint on the Recrulesconfig page$/) do |hint1|
@@ -70,24 +73,22 @@ Then(/^I click on list with the class "(.*?)" on the Recrulesconfig page$/) do |
   
 end
 
+ Then(/^I click on Save Setup button on the Recrulesconfig page$/) do
+  @current_page.merch_setup_submit_element.click
+end
 
+Then(/^I click on Click to add master rules link on the Masterruleconfig page$/) do
+ @current_page.master_rule_submit_element.click
+end
 
-# Then(/^I click on the class "(.*?)" on Recrulesconfig page$/) do |exp|
-  # @current_page.exp_select_list_element.click
-# end
-
-#Then(/^I select attribute as "(.*?)" on Recrulesconfig page$/) do |setexp|
- #@current_page.select_list_element(:class => "exp_left_hand").option(:value => "r.saleprice").when_present.click
-# end
+Then(/^I select expression option with the value "(.*?)" on the Masterruleconfig page$/) do |master|
+@browser.select_list(:class => "exp_left_hand").option(:value, "#{master}").when_present.click
+ end
  
-# Then(/^I click on class "(.*?)" on Recrulesconfig page$/) do |setexpression|
- # @current_page.set_expression_element.click
-#end
+Then(/^select an expoperatoroption with the value "(.*?)" on the Masterruleconfig page$/) do |opt|
+@browser.select_list(:class => "exp_op operatoroptions").option(:value => "#{opt}").when_present.click
+end
 
-#Then(/^I click on class exp_left_hand with text "(.*?)" on Recrulesconfig page$/) do |setexpression|
-#  @current_page.setexpression = setexpression
-#@current_page.set_expression_element.click
-
-#@browser.div(:class => "exp_left_hand").option(:text => "Please select").when_present.click
-  
-#end
+Then(/^I enter merch rule as "(.*?)" on the Masterruleconfig page$/) do |merchval|
+   @current_page.merchval = merchval
+end
