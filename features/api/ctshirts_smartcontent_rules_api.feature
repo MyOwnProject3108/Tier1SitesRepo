@@ -87,7 +87,7 @@ Scenario: SMART-content rule "city" from direct works using SMART-API
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
 	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
-	
+
 Scenario: SMART-content rule "smart" from direct works using SMART-API 
     When I track the home page
      Then I should get an OK status back
