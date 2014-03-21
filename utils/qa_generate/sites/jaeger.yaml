@@ -11,6 +11,9 @@ database_num: 1
 site_id: 1339
 integration: standard
 
+category_menu: ["div", ':id => "navigation"']
+category_menu_exclude: ["New in","New In"]
+
 home_page:
   URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
   expected_recs: 0
