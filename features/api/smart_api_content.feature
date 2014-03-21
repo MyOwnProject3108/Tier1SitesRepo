@@ -22,9 +22,9 @@ Scenario Outline: SMART-content merchandising rule "purchasedByCategory" works u
     | "prod-mc075bgd" | "Shoes"       |
 
 Scenario: SMART-content A/B groups can be detected using SMART-API "summary"
-   # When I request summary abgroup information
+   When I request summary abgroup information
    When I track the home page
-    And I track a home page
+   # And I track a home page
     Then I should get an OK status back
     And I should see which smartContent abgroup I am serving
 

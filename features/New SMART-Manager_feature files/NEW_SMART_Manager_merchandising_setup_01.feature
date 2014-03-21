@@ -13,11 +13,6 @@ Given I am on the smartmanager login page
  And I click on "select2-search" link on the orders page
  And I enter sitename as "mandco" on the orders page
  And I pause for 5 seconds
- #Given I am on the smartmanager home page
- #And I pause for 10 seconds
-# And I select "mandco" from the sites list on the smartmanager home page
-# And I click on the New and Shiny Smart Manager link on the smartmanager home page
-# Then I should end up on the orders page
  When I click on the smartmanger merchandising link
  Then I should end up on the merchoverview page
  When I click on the create a new campaign link on the merchoverview page
@@ -28,40 +23,28 @@ Given I am on the smartmanager Newmerchandisingcreate page
   Then I enter merch campaign name as "AutoTestMerchCampaign1"
   Then I enter merch campaign display title as "AutoTestMerchCampaign1"
   Then I select location from the Location select list on the Newmerchandisingcreate page
-  
 #  NEED TO ADD STEPS TO CHECK IF A CAMPAIGN WITH SAME NAME EXISTS: IF YES THEN CHANGE THE NAME ELSE CLICK ON NEXT BUTTON
-#  Then I click the save campaign button on the Newmerchandisingcreate page
-#  Then I should end up on Newmerchandisingcreate page.
-    
  Then I click the next button on the Newmerchandisingcreate page
  Then I should end up on the Masterruleconfig page
+ And I click on Click to add master rules link on the Masterruleconfig page
+ And I pause for 5 seconds
+ And I select expression option with the value "p.saleprice" on the Masterruleconfig page
+ And I pause for 5 seconds
+ And select an expoperatoroption with the value "<=" on the Masterruleconfig page
+ And I pause for 5 seconds
+ And I enter merch rule as "20" on the Masterruleconfig page
+  And I pause for 5 seconds
  Then I click the next button on the Masterruleconfig page
  Then I should end up on the Recrulesconfig page
  Then I click the edit rule button on the Recrulesconfig page
  And I pause for 10 seconds
-#  And I click on the first group select list on the Recrulesconfig page
-  And I select option with the value "r.gender" on the Recrulesconfig page
- #And I select "r.gender" as a hint on the Recrulesconfig page
+ And I select option with the value "r.gender" on the Recrulesconfig page
  And I pause for 5 seconds
- 
- 
  And select an expoperatoroption with the value "=" on the Recrulesconfig page
  And I pause for 5 seconds
-# And I select "female" from the list on the Recrulesconfig page
-  And I enter merch rule as "female" on the Recrulesconfig page
+ And I enter merch rule as "female" on the Recrulesconfig page
   And I pause for 5 seconds
- # And I click on the toggle textarea with name "rule_expression_1" on the Recrulesconfig page
- And I click on list with the class "rule-group curved-all last" on the Recrulesconfig page
+  And I click on the textarea with class "advanced_expression span9"
   And I pause for 5 seconds
-  
-  
-#  And I click on "exp_left_hand" class on the Recrulesconfig page
-#  And I pause for 10 seconds
-#  And I select the hint as "r.gender" on the Recrulesconfig page
- # And I select option "Colour" on the Recrulesconfig page
- # And I pause for 10 seconds
- #And I click on the class "exp_left_hand" on Recrulesconfig page
-  #Then I click on class exp_left_hand with text "Please Select" on Recrulesconfig page
-# And I pause for 10 seconds
-# Then I select attribute as "sale price" on Recrulesconfig page
- 
+  And I click on Save Setup button on the Recrulesconfig page
+ And I pause for 5 seconds

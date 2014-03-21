@@ -33,7 +33,7 @@ module Peerius
                 "site" => site,
                 "currentURI" => site+"://unknown",
                 "previousURI" => site+"://unknown",
-				"clientToken" => "gfsdkl47gh3248", #livedemoshop
+				"clientToken" => "gfsdkl47gh3248u4t", #livedemoshop
                 #"recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -148,7 +148,11 @@ module Peerius
         def content_creatives
             @result["smartContent"]["creatives"]
         end
-        
+		
+        def ranking_recs
+            @result["smartRanking"]["recs"]
+        end
+		
         def total_recs
             rec_widgets.inject(0){|sum, widget| sum + widget["recs"].count}
         end
@@ -238,7 +242,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -256,7 +260,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -274,7 +278,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -287,7 +291,7 @@ module Peerius
 			"session" => "new",
 			"cuid" => "new",
 			"site" => "ctshirts",
-			"clientToken" => "677ab692r2t31",
+			"clientToken" => "677ab692r2t3u4t",
 			"lang" => "en",
 			"currentURI" => "http://www.ctshirts.co.uk",
 			"previousURI" => "http://www.ctshirts.co.uk/men%27s-shirts/men%27s-formal-shirts/Cream-poplin-classic-fit-shirt?q=ukgob||SP003CRM|||||221,||||||||",
@@ -311,7 +315,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk/Default.aspx?q=|||||||||||||||&spr=1&peeriusTestGoogle=white%20shirts",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -328,7 +332,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.google.com/search?q=ct+shirts",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -345,7 +349,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.google.co.uk/aclk?sa=l&ai=CHWoay7eHUNrEI4yU0wXnwYGABs-yuc0C18btlDfogq7xBQgAEAEgtlQoA1DH_sn-_P____8BYLu-roPQCqABoJ-J_wPIAQGpAti0WObCw7o-qgQbT9AbVPOnnDAAz592WFxXAAu4UJRHPjy_ZC6UgAWQTg&sig=AOD64_13y4pr5DlT2zSMegw5YXbiwo2YcA&ved=0CB4Q0Qw&adurl=http://akatracking.esearchvision.com/esi/redirect.html%3Fesvt%3D58-GOUKE%26esvq%3Dc%2520t%2520shirts%26esvadt%3D999999-106780-176-1%26esvcrea%3D14719139063%26esvplace%3D%26transferparams%3D0%26esvaid%3D40144%26url%3Dhttp%253a%252f%252fwww.ctshirts.co.uk%252fDefault.aspx%253fq%253dukgob%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C%25257C&rct=j&q=%20ct%20shirts&cad=rja",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -362,7 +366,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk/Default.aspx?q=|||||||||||||||&spr=1&peeriusTestGoogle=shirt",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -379,7 +383,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -396,7 +400,7 @@ module Peerius
                 "site" => "ctshirts",
                 "currentURI" => "http://www.ctshirts.co.uk",
                 "previousURI" => "http://www.ctshirts.co.uk",
-                "clientToken" => "677ab692r2t31", 
+                "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
             }
             @json_request = ""
@@ -413,7 +417,7 @@ module Peerius
 			"site"=> "topshop",
 			"currentURI"=> "topshop://unknown",
 			"previousURI"=>"topshop://unknown",
-			"clientToken"=> "89hyuaa2da3a",
+			"clientToken"=> "89hyuaa2da3a1",
 			"recContent"=> "refCodeOnly",
 			"order"=> {
 				"orderNo"=> "API-#{item}-#{Time.now.to_i}",

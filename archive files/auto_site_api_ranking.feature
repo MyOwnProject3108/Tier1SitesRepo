@@ -1,5 +1,5 @@
 <% if site["ignore"] or site["apikey"].nil? %>
-#ignore
+@ignore
 <% end %>
 #
 # This file is auto-generated. Please do not modify!
