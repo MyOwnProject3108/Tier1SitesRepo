@@ -280,9 +280,6 @@ Scenario: SMART-content links work on on <%= site["pretty_name"] %> home page
 @all_categories_test
 Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
     Given I am on the <%= site["site_name"] %> home page
-    <% if site["needs_SPR"] or page["needs_SPR"] %>
-    And I use the SPR key
-    <% end %>
     Then all categories should be tracked as Category pages except:
     <% site["category_menu_exclude"].each do |category| %>
     |<%= category %>|
