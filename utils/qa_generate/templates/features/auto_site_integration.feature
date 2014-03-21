@@ -301,7 +301,7 @@ Scenario: A random category page from <%= site["pretty_name"] %> is tracked corr
 <% end %>
 
 <% page = site["home_page"] %>
-<% if site["category_menu"] %>
+<% if site["category_menu"] && site["product_links"]%>
 <% if page["ignore"] %>
 @ignore
 <% end %>
