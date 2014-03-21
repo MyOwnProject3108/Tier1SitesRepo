@@ -1,4 +1,4 @@
-#@ignore
+@ignore
 @livedemoshop
 @smartapi
 Feature: SMART-API: Non-site specific SMART-content
