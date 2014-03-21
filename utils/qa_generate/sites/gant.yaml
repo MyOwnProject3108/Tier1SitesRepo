@@ -1,0 +1,56 @@
+site_name: gant
+pretty_name: gant
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest1234
+zero_search_term: dsavavas
+valid_search_term: jacket
+database_num: 1
+site_id: 1301
+integration: json
+
+category_menu: ["ul", ':id => "gant-primary-navigation"']
+category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+
+home_page:
+  URL: "http://www.gant.co.uk/"
+  expected_recs: 0
+  login_link: ["link", ':href => "https://www.gant.co.uk/signin"']
+  search_field: ["text_field", ':id => "search-text"']
+
+product_page:
+    URL: "http://www.superdry.com/womens/t-shirts/details/40216/vintage-logo-t-shirt"    
+    expected_recs: 1
+    add_to_basket_button: ["button", ':value => "Add to bag"']
+    extra_steps:      
+    - [span, xpath, ".//*[@id='js_dropdown_product_id']/span"]
+    - [span, text, "S"]
+    - pause[10]
+    
+category_page:
+  URL: "http://www.gant.co.uk/mens-jeans/"
+  expected_recs: 0
+    
+basket_page:
+  URL: "https://www.superdry.com/shopping-bag"
+  expected_recs: 4
+  basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
+  basket_remove: ["button", ':class => "cart-delete button"']  
+
+login_page:
+  URL: "https://www.superdry.com/my-account"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"username_login"']
+  password_field: ["text_field", ':id=>"passwd_login"']  
+  login_submit: ["button", ':name=>"Submit"']
+
+searchresults_page:
+  URL: "http://www.superdry.com/search/jacket"
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: "https://www.superdry.com/checkout"
+  expected_recs: 0 
