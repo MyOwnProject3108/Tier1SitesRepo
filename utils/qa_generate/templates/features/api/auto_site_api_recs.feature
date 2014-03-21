@@ -37,7 +37,7 @@ Scenario: <%= site["pretty_name"] %> SMART-recs can be delivered on <%= page_nam
 <% end %>
 
 <% page = site["searchresults_page"] %>
-<% if page["zerosearch_api_recs"] && page["zerosearch_api_recs"] > 0 %>
+#<% if page["zerosearch_api_recs"] && page["zerosearch_api_recs"] > 0 %>
 @zerosearch
 Scenario: <%= site["pretty_name"] %> Zerosearch SMART-recs can be delivered using SMART-API
   When I track a search results page
