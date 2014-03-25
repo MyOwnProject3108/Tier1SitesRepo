@@ -231,10 +231,10 @@ Scenario: <%= site["pretty_name"] %> order page is tracked correctly
 
 <% if site["random_order"] %>
 #
-# End to end testing
+# End to end - Home to Order
 #
 <% page = site["random_order"] %>
-<% if site["category_menu"] %>
+<% if (site["category_menu"] && site ["product_links"]) %>
 <% if page["ignore"] %>
 @ignore
 <% end %>
@@ -250,6 +250,44 @@ Scenario: Random products from <%= site["pretty_name"] %> are tracked correctly
 <% end %>
 <% end %>
 
+<% if site["random_checkout"] %>
+#
+# End to end - Home to Checkout
+#
+<% page = site["random_checkout"] %>
+<% if (site["category_menu"] && site ["product_links"]) %>
+<% if page["ignore"] %> 
+@ignore
+<% end %>
+@random_checkout
+Scenario: Random products from <%= site["pretty_name"] %> are tracked correctly
+    Given I am on the <%= site["site_name"] %> home page
+    Then one or more random products should be added to basket using link filter: 
+    <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+    And I pause for 5 seconds
+    And I click checkout
+    <%= extra_steps_rule(page["extra_steps"]) %>
+    Then it should be tracked as a Checkout page
+    <%= expect_recs_rule(page["expected_recs"]) %>
+<% end %>
+<% end %>
+
+<% page = site["home_page"] %>
+<% if site["category_menu"] %>
+#
+# All category pages
+#
+<% if page["ignore"] %>
+@ignore
+<% end %>
+@all_categories_test
+Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
+    Given I am on the <%= site["site_name"] %> home page
+    Then all categories should be tracked as Category pages except:
+    <% site["category_menu_exclude"].each do |category| %>
+    |<%= category %>|
+    <% end %>
+<% end %>
 
 <% if site["has_content"] %>
 <% page = site["home_page"] %>
@@ -270,43 +308,6 @@ Scenario: SMART-content links work on on <%= site["pretty_name"] %> home page
     And I click the first SMART-content creative image
     Then it should be tracked as a category page
 <% end %>
-<% end %>
-
-<% page = site["home_page"] %>
-<% if site["category_menu"] %>
-<% if page["ignore"] %>
-@ignore
-<% end %>
-@all_categories_test
-Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
-    Given I am on the <%= site["site_name"] %> home page
-    Then all categories should be tracked as Category pages except:
-    <% site["category_menu_exclude"].each do |category| %>
-    |<%= category %>|
-    <% end %>
-<% end %>
-
-<% page = site["home_page"] %>
-<% if site["category_menu"] %>
-<% if page["ignore"] %>
-@ignore
-<% end %>
-@random_category_test
-Scenario: A random category page from <%= site["pretty_name"] %> is tracked correctly
-    Given I am on the <%= site["site_name"] %> home page
-    Then a random category should be tracked as Category page
-<% end %>
-
-<% page = site["home_page"] %>
-<% if site["category_menu"] && site["product_links"]%>
-<% if page["ignore"] %>
-@ignore
-<% end %>
-@random_product_test
-Scenario: A random product page from <%= site["pretty_name"] %> is tracked correctly
-    Given I am on the <%= site["site_name"] %> home page
-    Then a random product should be tracked as Product page using link filter: 
-    <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
 <% end %>
 
 
