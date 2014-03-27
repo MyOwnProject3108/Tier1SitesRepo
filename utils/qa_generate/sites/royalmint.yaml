@@ -1,0 +1,57 @@
+site_name: royalmint
+site_id: 1333
+database_num: 5
+integration: standard
+pretty_name: Royal Mint
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: p.test@peerius.com
+password: P1234567
+zero_search_term: awedasda
+valid_search_term: coins
+
+# site level elements - lelements that can be re-used in multiple page configurations
+add_to_basket_button: ["button", ':id=> "maincontent_0_add_btnAddToCart"']
+category_menu: ["div", ':id => "flyout-ourcoins"']
+category_menu_exclude: ["About", "Discover", "Home"]
+# specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
+max_num_of_categories: 2
+product_links: ["div", ':xpath=> "#shop-item-container/div/div/a[0]"']
+product_link_filter: [""]
+  
+home_page:
+  URL: "http://www.royalmint.com"
+  expected_recs: 1
+  login_link: ["link", ':href=> "/security/login"']
+  search_field: ["text_field", ':id => "txtSearch"']
+  
+product_page:
+  URL: "http://www.royalmint.com/shop/lunar_year_of_the_horse_2014_uk_one_ounce_silver_proof_coin"
+  expected_recs: 1
+
+category_page:
+  URL: "http://www.royalmint.com/our-coins/events/the-glasgow-2014-commonwealth-games"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.royalmint.com/shop/shoppingbasket"
+  expected_recs: 1
+  basket_checkout: ["button", ':id => "maincontent_0_btnCheckOut"']
+  basket_remove: ["link", ':class => "btn-del"']
+
+login_page:
+ URL: "https://www.royalmint.com/security/login"
+ expected_recs: 0
+ username_field: ["text_field", ':id=>"maincontent_0_ctl01_txtEmail"']
+ password_field: ["text_field", ':id=>"maincontent_0_ctl01_txtPassword"']  
+ login_submit: ["button", ':id=>"maincontent_0_ctl01_btnLogin"']
+
+searchresults_page:
+  URL: "http://www.royalmint.com/search-results?q=coins"
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: "https://www.royalmint.com/shop/checkout"
+  expected_recs: 0
