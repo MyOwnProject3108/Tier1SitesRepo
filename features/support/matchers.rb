@@ -18,3 +18,13 @@ RSpec::Matchers.define :be_tracked_as do |page_type|
         "Expected to track as '#{page_type}' actually tracked as '#{page.tracked_as}'"
     end
 end
+
+
+RSpec::Matchers.define :have_error_message do |message|
+ match do |page|
+ page.error_messages.include? message
+ end
+ failure_message_for_should do |page|
+        "Expected error message was '#{message}'"
+    end
+ end

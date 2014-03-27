@@ -2,10 +2,10 @@
 Feature: New SMART-manager
 
 #
-# smartcontent setup tests for new Smart-manager
+# smartranking setup tests for new Smart-manager
 #
 
-Background:Users should be able to create new setup for smartcontent
+Background:Users should be able to create new setup for smartranking
 Given I am on the smartmanager login page
  And I login as "fsultana" using password "4n424yq4n3w"
  Given I am on the smartmanager orders page
@@ -18,30 +18,28 @@ Given I am on the smartmanager login page
  Then I should end up on the adaptivelisting page
   And I pause for 5 seconds
   
-Scenario: Users should be able to create new setup for smartranking pinning on new UI
- # When I click on the link Create a new campaign on the adaptivelisting page
- #When I click on span with the text "SMART-ranking Configuration"
- When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
+Scenario Outline: Users should be able to create new setup for smartranking pinning and boosting on new UI
+  When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds
   Then I should end up on the rankingconfig page
   And I pause for 5 seconds
-  And I enter ranking campaign name as "AutoRankingPinCampaign" on the rankingconfig page
+  And I enter ranking campaign name as <config_name> on the rankingconfig page
   And I pause for 2 seconds
   And I click on Add all categories checkbox on the rankingconfig page
   And I pause for 2 seconds
-  And I enter influence name as "AutoRankingPinCampaign" on the rankingconfig page
+  And I enter influence name as <influence_name> on the rankingconfig page
+  And I pause for 5 seconds
+  #And I select influence type as "pin" on the rankingconfig page
+   And I select influence type as <influence_type> on the rankingconfig page
   And I pause for 2 seconds
-  #And I click on "pin" radio button on the rankingconfig page
-  And I select influence type as "pin" on the rankingconfig page
-  And I pause for 2 seconds
-  And I enter pin position as "2" on the rankingconfig page
+  And I enter pin position as <influence_position> on the rankingconfig page
   And I pause for 2 seconds
   And I select startdate as currentdate
-  And I pause for 5 seconds
-  And I select option with the value "pricerange"
-  And I pause for 5 seconds
+  And I pause for 10 seconds
+ And I select option with the value "pricerange"
+ And I pause for 5 seconds
   And select operatoroption with the value "="
-  And I pause for 5 seconds
+ And I pause for 5 seconds
   And I search for the category "expensive" on the rankingconfig page
   And I pause for 5 seconds
   And I select option with the value "category" in apply when condition
@@ -53,39 +51,11 @@ Scenario: Users should be able to create new setup for smartranking pinning on n
   And I click on save ranking button on the rankingconfig page
   And I pause for 5 seconds
   
-
- Scenario: Users should be able to create new setup for smartranking boosting on new UI
- When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
-  And I pause for 5 seconds
-  Then I should end up on the rankingconfig page
-  And I pause for 5 seconds
-  And I enter ranking campaign name as "AutoRankingBoostCampaign" on the rankingconfig page
-  And I pause for 2 seconds
-  And I click on Add all categories checkbox on the rankingconfig page
-  And I pause for 2 seconds
-  And I enter influence name as "AutoRankingBoostCampaign" on the rankingconfig page
-  And I pause for 2 seconds
-  And I select influence type "boost" on the rankingconfig page
-  And I pause for 2 second
-  And I enter boost percentage as "100" on the rankingconfig page
-  And I pause for 2 seconds
-  And I select startdate as currentdate
-  And I pause for 5 seconds
-  And I select option with the value "term"
-  And I pause for 5 seconds
-  And select operatoroption with the value "="
-  And I pause for 5 seconds
-  And I search for the category "shirt" on the rankingconfig page
-  And I pause for 5 seconds
-  And I select option with the value "category" in apply when condition
-  And I pause for 5 seconds
-  And select operatoroption with the value "=" in apply when condition
-  And I pause for 5 seconds
-  And I search for the category "Clothing>Mens>Tops" in apply when condition on the rankingconfig page
-  And I pause for 5 seconds
-  And I click on save ranking button on the rankingconfig page
-  And I pause for 5 seconds
-  
+	Examples: set1
+    | config_name  					| influence_name 				      |influence_type  | influence_position|
+    | "AutoRankingPinCampaign"      | "AutoRankingPinCampaign"            |"pin"           |  "1"|
+    | "AutoRankingBoostCampaign"    | "AutoRankingBoostCampaign"          |"boost"         |  "100"|
+   
   Scenario: Users should be able to add new rows in smart ranking config
   When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds
@@ -95,48 +65,51 @@ Scenario: Users should be able to create new setup for smartranking pinning on n
   And I pause for 2 seconds
   And I click on Add all categories checkbox on the rankingconfig page
   And I pause for 2 seconds
-  And I enter influence name as "AutoRankingnewrowCampaign1" on the rankingconfig page
+ # And I enter influence name as "AutoRankingnewrowCampaign1" on the rankingconfig page
+ When I enter first influence name as "AutoRankingnewrowCampaign1"
+ # And I enter "second" influence name as "AutoRankingnewrowCampaign2" on the rankingconfig page
+#  And I enter influence name as "AutoRankingnewrowCampaign1" on the rankingconfig page
   And I pause for 5 seconds
   And I select influence type as "pin" on the rankingconfig page
   And I pause for 2 seconds
-  And I enter pin position as "2" on the rankingconfig page
-  And I pause for 2 seconds
-  And I select startdate as currentdate
-  And I pause for 5 seconds
-  And I select option with the value "pricerange"
-  And I pause for 5 seconds
-  And select operatoroption with the value "="
-  And I pause for 5 seconds
-  And I search for the category "cheap" on the rankingconfig page
-  And I pause for 5 seconds
-  And I select option with the value "category" in apply when condition
-  And I pause for 5 seconds
-  And select operatoroption with the value "=" in apply when condition
-  And I pause for 5 seconds
-  And I search for the category "Clothing>Mens>Tops" in apply when condition on the rankingconfig page
-  And I pause for 5 seconds
-  And I click on span with the class "text-success unselectable"
-  And I pause for 5 seconds
-  And I enter influence name as "AutoRankingnewrowCampaign2" on the rankingconfig page
-  And I pause for 2 seconds
-   And I select influence type "boost" on the rankingconfig page
-  And I pause for 2 second
-  And I enter boost percentage as "100" on the rankingconfig page
-  And I pause for 2 seconds
-  And I select startdate as currentdate
-  And I pause for 5 seconds
-  And I select option with the value "term"
-  And I pause for 5 seconds
-  And select operatoroption with the value "="
-  And I pause for 5 seconds
-  And I search for the category "shirt" on the rankingconfig page
-  And I pause for 5 seconds
-  And I select option with the value "category" in apply when condition
-  And I pause for 5 seconds
-  And select operatoroption with the value "=" in apply when condition
-  And I pause for 5 seconds
-  And I search for the category "Clothing>Mens>Tops" in apply when condition on the rankingconfig page
-  And I pause for 5 seconds
-  And I click on save ranking button on the rankingconfig page
-  And I pause for 5 seconds
+#  And I enter pin position as "2" on the rankingconfig page
+ # And I pause for 2 seconds
+#  And I select startdate as currentdate
+#  And I pause for 5 seconds
+#  And I select option with the value "pricerange"
+#  And I pause for 5 seconds
+#  And select operatoroption with the value "="
+#  And I pause for 5 seconds
+#  And I search for the category "cheap" on the rankingconfig page
+#  And I pause for 5 seconds
+#  And I select option with the value "category" in apply when condition
+#  And I pause for 5 seconds
+#  And select operatoroption with the value "=" in apply when condition
+#  And I pause for 5 seconds
+ # And I search for the category "Clothing>Mens>Tops" in apply when condition on the rankingconfig page
+#  And I pause for 5 seconds
+#  And I click on span with the class "text-success unselectable"
+#  And I pause for 5 seconds
+#  And I enter "second" influence name as "AutoRankingnewrowCampaign2" on the rankingconfig page
+#  And I pause for 2 seconds
+#   And I select influence type "boost" on the rankingconfig page
+#  And I pause for 2 second
+#  And I enter boost percentage as "100" on the rankingconfig page
+#  And I pause for 2 seconds
+#  And I select startdate as currentdate
+#  And I pause for 5 seconds
+#  And I select option with the value "term"
+#  And I pause for 5 seconds
+#  And select operatoroption with the value "="
+#  And I pause for 5 seconds
+#  And I search for the category "shirt" on the rankingconfig page
+ # And I pause for 5 seconds
+#  And I select option with the value "category" in apply when condition
+#  And I pause for 5 seconds
+#  And select operatoroption with the value "=" in apply when condition
+#  And I pause for 5 seconds
+#  And I search for the category "Clothing>Mens>Tops" in apply when condition on the rankingconfig page
+#  And I pause for 5 seconds
+#  And I click on save ranking button on the rankingconfig page
+#  And I pause for 5 seconds
   

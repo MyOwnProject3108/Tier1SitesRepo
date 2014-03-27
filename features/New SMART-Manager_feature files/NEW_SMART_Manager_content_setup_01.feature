@@ -28,28 +28,29 @@ Scenario: Users should be able to create new setup for smartcontent on new UI
   And I select placement as "Home_JSON_IP" on the adaptivecontent page
   And I pause for 5 seconds
   And I select first creative as "LS1 - INACTIVE" on the adaptivecontent page
-  And I pause for 5 seconds
-  And I click on "criteriaoptions" link on the adaptivecontent page
-  And I pause for 5 seconds
+ # And I select first creative as "LS1 - INACTIVE" on the adaptivecontent page
+  #And I pause for 5 seconds
+#  And I click on "criteriaoptions" link on the adaptivecontent page
+#  And I pause for 5 seconds
   And I select option with the value "u.visitor"
   And I pause for 5 seconds
   And select operatoroption with the value "="
   And I pause for 5 seconds
   And I enter rule as "new" on the adaptivecontent page
   And I pause for 5 seconds
-  And I click on the textarea with class "input-medium the_expression span11 advanced_expression"
-  And I pause for 5 seconds
-  And I click on "criteriaoptions" link on the adaptivecontent page
-  And I pause for 5 seconds
+#  And I click on the textarea with class "input-medium the_expression span11 advanced_expression"
+#  And I pause for 5 seconds
+#  And I click on "criteriaoptions" link on the adaptivecontent page
+#  And I pause for 5 seconds
   And I click on  Add a new row on the adaptivecontent page
   And I pause for 5 seconds
   And I select second creative as "LS2 - INACTIVE" on the adaptivecontent page
-  And I pause for 5 seconds
-  And I click on second "criteriaoptions" link on the adaptivecontent page
   And I pause for 10 seconds
+#  And I click on second "criteriaoptions" link on the adaptivecontent page
+#  And I pause for 10 seconds
   And I select "default" as second rule on the adaptivecontent page
- And I click on second "criteriaoptions" link on the adaptivecontent page
-  And I pause for 5 seconds
+# And I click on second "criteriaoptions" link on the adaptivecontent page
+#  And I pause for 5 seconds
   And I click on Save Setup button on the adaptivecontent page
  And I pause for 5 seconds
  

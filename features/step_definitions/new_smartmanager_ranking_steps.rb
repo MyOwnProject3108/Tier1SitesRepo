@@ -19,9 +19,34 @@ When(/^I click on Add all categories checkbox on the rankingconfig page$/) do
   @current_page.all_categories_element.click
 end
 
-Then(/^I enter influence name as "(.*?)" on the rankingconfig page$/) do |influencename|
-  @current_page.influencename = influencename
+##working
+#Then(/^I enter influence name as "(.*?)" on the rankingconfig page$/) do |influencename|
+ # @current_page.influencename = influencename
+#end
+
+
+Then(/^I enter first influence name as "(.*?)"$/) do |influencename1|
+  #@current_page.influencename = influencename
+  @browser.text_field(:influencename1, :id => "the_item_name0", :index => 0)
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Then(/^I enter influence name as "(.*?)" on the rankingconfig page$/) do |infname|
+#  @current_page.influencename = influencename
+ #  on_page(@site+'::RankingconfigPage') do |page|
+  #  		page.infname = infname
+#end
 
 Then(/^I select influence type as "(.*?)" on the rankingconfig page$/) do |influencetype|
   if(influencetype=="pin")
@@ -101,15 +126,23 @@ Then(/^I click on span with the class "(.*?)"$/) do |addanewrow|
 
 end
 
-Then(/^I should see "(.*?)" on the rankingconfig page$/) do |namemsg|
-  @current_page.name_error_msg.should == namemsg
+#Then(/^I should see "(.*?)" on the rankingconfig page$/) do |namemsg|
+ # @current_page.name_error_msg.should == namemsg
+#end
+
+Then(/^I should see the error message "(.*?)"$/) do |msg|
+	@current_page.should have_error_message msg
 end
 
-Then(/^I should see "(.*?)"$/) do |datemsg|
- puts fail unless @browser.text.include? "#{datemsg}"
-end
+# Then(/^I enter "(.*?)" influence name as "(.*?)" on the rankingconfig page$/) do |infnum, infname|
+ # on_page(@site+'::RankingconfigPage') do |page|
+  #  		page.infnum = infnum
+   # 		page.infname = infname
+    #    page.infdet_element.click   
+    #end 
+#end
 
- 
+
 #Then(/^I select option with the value "(.*?)"$/) do |srexp|
  # @browser.select_list(:class => "exp_left_hand").option(:value => "#{srexp}").when_present.click
 #end

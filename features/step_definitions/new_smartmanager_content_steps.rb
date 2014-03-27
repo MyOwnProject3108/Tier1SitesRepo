@@ -153,9 +153,11 @@ Then(/^I select placement as "(.*?)" on the adaptivecontent page$/) do |testsetu
   @current_page.select_list_element(:id => "htmlInjectionPoint").select testsetupname
 end
 
-Then(/^I select first creative as "(.*?)" on the adaptivecontent page$/) do |creative1|
-  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creative1
+Then(/^I select first creative as "(.*?)" on the adaptivecontent page$/) do |creative_name1|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creative_name1
 end
+
+
 
 Then(/^I click on "(.*?)" link on the adaptivecontent page$/) do |criterialink|
   @current_page.criterialink_submit_element.click
@@ -176,8 +178,9 @@ Then(/^I select option with the value "(.*?)"$/) do |rule|
 @browser.select_list(:class => "exp_op operatoroptions").option(:value => "#{arg1}").when_present.click
 end
 
-Then(/^I select second creative as "(.*?)" on the adaptivecontent page$/) do |creative2|
- @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select creative2
+#Then(/^I select second creative as "(.*?)" on the adaptivecontent page$/) do |creative2|
+Then(/^I select second creative as "(.*?)"  on the adaptivecontent page$/) do |creative_name2|
+ @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select creative_name2
 end
 
 Then(/^I click on the first group select list on the adaptivecontent page$/) do
@@ -186,7 +189,8 @@ end
 
 
 Then(/^I select "(.*?)" as second rule on the adaptivecontent page$/) do |rule2|
-@browser.select_list(:xpath => "//div/div/div[@id='traffic']/table/tbody/tr[2]/td[3]/div/div[3]/ul/li/ul/li/div/select[1]").option(:value => "#{rule2}").when_present.click
+#@browser.select_list(:xpath => "//div/div/div[@id='traffic']/table/tbody/tr[2]/td[3]/div/div[3]/ul/li/ul/li/div/select[1]").option(:value => "#{rule2}").when_present.click
+@browser.select_list(:xpath => "//div[@id='traffic']/table/tbody/tr[2]/td[2]/div/div[3]/ul/li/ul/li/div/select[1]").option(:value => "#{rule2}").when_present.click
  end
  
 # Then(/^I click on the rules group on the adaptivecontent page$/) do

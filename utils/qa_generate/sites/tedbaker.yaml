@@ -13,7 +13,7 @@ integration: standard
 
 home_page:
   URL: "http://www.tedbaker.com/uk?country=GB"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':href => "#account"']
   search_field: ["text_field", ':id => "search"']
 
