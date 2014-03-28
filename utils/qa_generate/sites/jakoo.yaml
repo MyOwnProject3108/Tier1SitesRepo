@@ -1,0 +1,67 @@
+site_name: jakoo 
+pretty_name: jakoo
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: vinod.sathapathi@peerius.com
+password: Pa55word
+zero_search_term: no
+valid_search_term: dress
+database_num: 1
+channel: web 
+site_id: 1399
+integration: json
+
+home_page:
+  URL: "http://www.jako-o.com/"
+  expected_recs: 5
+  login_link: ["link", ':id => "loginCheck"']
+  search_field: ["text_field", ':id => "globalSearchInputField"']
+  #custom_tracking_test: |
+    #And I click on the button with id "btn_search_go"
+
+product_page:
+  URL: "http://www.jako-o.com/products-kids-fashion-boy-s-fashion-size-92-158-jeans-and-trousers-straight-cut-trousers--753485.html"
+  expected_recs: 26
+  add_to_basket_button: ["span", ':class=> "jsOnClickBasket"']
+  extra_steps:
+    - [pause, 30]
+
+category_page:
+  URL: "http://www.jako-o.com/products-kids-fashion-girls-fashion-size-92-158-long-sleeves-and-sweatshirts--00004045/"
+  expected_recs: 0
+
+basket_page:
+  URL: "https://www.jako-o.com/warenkorb/anzeige"
+  expected_recs: 0
+  basket_checkout: ["link", ':text => "Proceed to Checkout"']
+  basket_remove: ["link", ':text => "Remove Item"']
+
+login_page:
+  URL: "https://www.dmax-shop.de/account"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"passwort"']
+  login_submit: ["link", ':class =>"button-middle small"']
+
+searchresults_page:
+  URL: "http://www.dmax-shop.de/SwpFindologic/search?sSearch=machette"
+  expected_recs: 3
+  zerosearch_recs: 3
+
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+    - [select_list, id, "address_title", "Mr"]
+    - [text_field, id, "address_first_name", "P"]
+    - [text_field, id, "address_surname", "Eerius"]
+    - [text_field, id, "address_main_telephone", "02033974940"]
+ #   - [p, class, "enter_manual_address"]
+    - [text_field, class, "text address_line_1", "Units 207-211"]
+    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+    - [text_field, class, "text address_town", "London"]
+    - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+    
