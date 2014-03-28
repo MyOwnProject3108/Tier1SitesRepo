@@ -1,0 +1,57 @@
+site_name: lensspirit
+pretty_name: Lensspirit
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: p.test@peerius.com
+password: P1234567
+zero_search_term: nakedgopi
+valid_search_term: lens
+database_num: 1
+site_id: 1419
+integration: json
+
+home_page:
+  URL: "http://www.lensspirit.de/"
+  expected_recs: 5
+  login_link: ["link", ':href => "https://www.lensspirit.de/Login/"']
+  search_field: ["text_field", ':id => "search_autocomplete"']
+  extra_steps:
+    - [pause, 30]
+
+product_page:
+    URL: "http://www.lensspirit.de/Produkt/10522/SofLens-Daily-Disposable-lenses-90-per-box-/cross-selling_recommend-best-B/"    
+    expected_recs: 6
+    add_to_basket_button: ["button", ':value => "Add to shopping cart"']
+    extra_steps:
+        - [select_list, name, "form_input[sphere][0]", "-0.50"]
+    
+category_page:
+  URL: "http://www.lensspirit.de/Top-Produkte/10/Kontaktlinsen/"
+  expected_recs: 3
+
+basket_page:
+  URL: "http://www.lensspirit.de/Cart/"
+  expected_recs: 2
+  basket_checkout: ["button", ':value => "Go to Checkout"']
+  basket_remove: ["link", ':class => "icon-text icon-type-delete"']  
+  extra-steps:
+    - [pause, 10]
+
+login_page:
+  URL: "https://www.lensspirit.de/Login/"
+  expected_recs: 0
+  username_field: ["text_field", ':name=>"form_input[login]"']
+  password_field: ["text_field", ':name=>"form_input[password]"']  
+  login_submit: ["button", ':value=>"Login"']
+  extra-steps:
+    - [pause, 10]
+
+searchresults_page:
+  URL: "https://www.lensspirit.de/search/"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: "https://www.lensspirit.de/checkout/"
+  expected_recs: 0 
