@@ -1,0 +1,49 @@
+site_name: cooksongold
+pretty_name: Cooksongold
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: peerius@test.com
+password: p1234567
+zero_search_term: poaipoisdasd
+valid_search_term: bullion
+database_num: 1
+site_id: 1409
+integration: json
+
+home_page:
+  URL: "http://www.cooksongold.com/"
+  expected_recs: 3
+  login_link: ["link", ':text => "Log In"']
+  search_field: ["text_field", ':id => "query"']
+
+product_page:
+    URL: "http://www.cooksongold.com/Solders/9ct-Yellow-Gold-Solder-Panels------Easy-Assay-Quality-.375-prcode-PEB-000"    
+    expected_recs: 8
+    add_to_basket_button: ["link", ':link_text => "Add to Basket"'] 
+      
+category_page:
+  URL: "http://www.cooksongold.com/Solders/"
+  expected_recs: 4
+
+basket_page:
+  URL: "https://www.cooksongold.com/your_basket.jsp"
+  expected_recs: 8
+  basket_checkout: ["link", ':link_text => "Checkout", :index => 1']
+  basket_remove: ["link", ':title => "Remove Item"']   
+
+login_page:
+  URL: "https://www.cooksongold.com/login_in.jsp?country=gb&shop=c&language=ENG&site400=001&company=001&siteid=IN"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"user"']
+  password_field: ["text_field", ':id=>"password"']  
+  login_submit: ["button", ':value=>"Sign-in"']
+
+searchresults_page:
+  URL: ""
+  expected_recs: 1
+  zerosearch_recs: 4
+
+checkout_page:
+  URL: "https://www.cooksongold.com/your_order.jsp"
+  expected_recs: 0   
