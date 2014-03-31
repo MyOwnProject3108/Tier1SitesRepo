@@ -387,22 +387,6 @@ end
 #
 # Clicks
 #
-When /^I track a click for the first SMART-ranking item$/ do
-    @api.should have_smart_ranking_content
-    @api.ranking_widgets.count.should > 0
-    @api.total_ranking_items.should > 0
-    @api.ranking_click
-    @api.track    
-end
-
-When /^I track a click for SMART-ranking item number (\d+)$/ do |product|
-    @api.should have_smart_ranking_content
-    @api.ranking_widgets.count.should > 0
-    @api.total_ranking_items.should > 0
-    product_index = product.to_i - 1
-    @api.ranking_click(product_index)
-    @api.track    
-end
 
 When /^I track a click for the first SMART\-rec$/ do
     @api.should have_smart_recs

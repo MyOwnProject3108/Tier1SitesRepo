@@ -11,6 +11,9 @@ database_num: 1
 site_id: 1339
 integration: standard
 
+category_menu: ["div", ':id => "navigation"']
+category_menu_exclude: ["New in","New In"]
+
 home_page:
   URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
   expected_recs: 0
@@ -73,19 +76,23 @@ checkout_page:
     - [button, id, "isExistingCustomer"]
     - [text_field, id, "dwfrm_login_password", "webtest123"]
     - [button, id, "continueStepABtn"]
-    - [pause,10]
+    - [pause,5]
     - [button, id, "isdelivertoaddress"]
     - [button, id, "checkoutButton"]
+    - [pause,10]
     - [button, class, "buttonblack continuecheckout buttonPrimary"]
     - [text_field, id, "paymentmethods_creditcard_owner", "Peertest"]
     - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
     - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
     - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
     - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
-    - [a, id, "sbToggle_48249891"]
-    - [a, id, "sbToggle_21873837"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[2]/div[1]/div[1]/a[1]"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[2]/div[1]/div[1]/ul[1]/li[2]/a[1]"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/a[1]"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/ul[1]/li[4]/a[1]"]
     - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
     - [button, id, "checkoutButton"]
+
     
 
     

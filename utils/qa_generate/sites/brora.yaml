@@ -1,0 +1,56 @@
+site_name: brora
+pretty_name: Brora
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: peerius@test.com
+password: p1234567
+zero_search_term: poaipoisdasd
+valid_search_term: jacket
+database_num: 1
+site_id: 1449
+integration: json
+
+home_page:
+  URL: "http://www.brora.co.uk/"
+  expected_recs: 0
+  search_field: ["text_field", ':id => "ctl00_SearchTextBox"']
+
+product_page:
+    URL: "http://www.brora.co.uk/Product/Product.aspx?WebShopCodeStr=S4&WebSegmentCodeStr=S5&WebCategoryCodeStr=CS&StyleCodeStr=JE1405&PT=1&PC=S4-S5-CS"    
+    expected_recs: 3
+    add_to_basket_button: ["button", ':id => "ctl00_BrowseContentPlaceHolder_BuyNowGridButton"']
+    extra_steps:
+        - [button, id, "ctl00_BrowseContentPlaceHolder_GridImageJE1405_MG4031_WONE"]    
+      
+category_page:
+  URL: "http://www.brora.co.uk/Product/Category.aspx?WebShopCodeStr=S4&WebSegmentCodeStr=S5&WebCategoryCodeStr=CS"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.brora.co.uk/Basket/Basket.aspx"
+  expected_recs: 3
+  basket_checkout: ["link", ':id => "ctl00_BrowseContentPlaceHolder_CheckOutImageButton"']
+  basket_remove: ["button", ':class => "ctl00_BrowseContentPlaceHolder_BasketGridView_ctl02_RemoveImageButton"']   
+
+login_page:
+  URL: "https://www.brora.co.uk/CheckOut/Login.aspx"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_BrowseContentPlaceHolder_EmailAddressTextBox"']
+  password_field: ["text_field", ':id=>"ctl00_BrowseContentPlaceHolder_PasswordTextBox"']  
+  login_submit: ["button", ':name=>"ctl00_BrowseContentPlaceHolder_ExistingCustomerLoginButton"']
+
+searchresults_page:
+  URL: ""
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+    - [pause, 20]
+    - [text_field, id, "ctl00_BrowseContentPlaceHolder_EmailAddressTextBox", "peerius@test.com"]
+    - [text_field, id, "ctl00_BrowseContentPlaceHolder_PasswordTextBox", "p1234567"]
+    - [pause, 2]
+    - [button, id, "ctl00_BrowseContentPlaceHolder_ExistingCustomerLoginButton"]  

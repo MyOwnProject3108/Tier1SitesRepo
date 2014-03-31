@@ -48,14 +48,14 @@ Scenario: SMART-content rule "direct" works using SMART-API
     Then I should get an OK status back
 	And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
 	
 Scenario: SMART-content rule "gender" works using SMART-API 
     When I post product page request for the gender
     Then I should get an OK status back
 	And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS1 - INACTIVE"
+	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
 	
 Scenario: SMART-content rule "keyword" works using SMART-API 
     When I post home page request with google search engine as currentURI
@@ -87,8 +87,8 @@ Scenario: SMART-content rule "city" from direct works using SMART-API
     When I post home page request for city
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS3 - INACTIVE"
-	
+	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
+
 Scenario: SMART-content rule "smart" from direct works using SMART-API 
     When I track the home page
      Then I should get an OK status back
