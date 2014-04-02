@@ -65,7 +65,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore"
 			products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
 			
-			plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if 
+			plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
 			prod_ctr = 1
 			while prod_ctr <= num_products do
 				product = products[rand(0..products.length-1)]
@@ -74,7 +74,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
 				# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
 				@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-				@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
+				@browser.goto 'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
 				sleep wait_time_per_product
 
 				if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
@@ -86,14 +86,14 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 								sel_list = eval('@current_page.product_option'+x.to_s+'_element')
 								if sel_list.exists?
 									option = sel_list.options[rand(1..sel_list.options.length-1)].text
-									plog("\t\tSelected option => #{option} ...","magenta")
+									plog("\t\tSelected option => #{option} ...","magenta") if show_log
 									sel_list.when_present.select option
 								end
 								x = x+1
 							end
 						end
 						@current_page.add_to_basket_element.when_present.click
-						plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow")
+						plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
 						sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
 					else #product page is tracking as expected - nothing more to do
 						plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 

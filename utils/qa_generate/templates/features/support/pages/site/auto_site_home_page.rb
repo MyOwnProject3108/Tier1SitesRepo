@@ -29,14 +29,10 @@ module <%= site["site_name"].capitalize %>
       	<% end %> 
       	
       	<% if site["product_options"] 
-		 i = 1 
-		 options = site["product_options"]
-		 options.each do |option_str| 
-		   opt = option_str.split("|") 
+		 site["product_options"].each_with_index do |option, idx| 
 		%>
-		<%= opt[0] %>(:product_option<%=i%>, <%= opt[1] %>)
-		<% i = i + 1 
-		end 
+		<%= option[0] %>(:product_option<%=idx+1%>, <%= option[1] %>)
+		<% end 
 	    end %>
       	
 		#page elements - retained for backward compatibility

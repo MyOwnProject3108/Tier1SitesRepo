@@ -122,7 +122,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
 
 <% if site["random_basket"] %>
 #
-# Random Basket
+# Random basket
 #
 <% page = site["random_basket"] %>
 <% if page["ignore"] %>
