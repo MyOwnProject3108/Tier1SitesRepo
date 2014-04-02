@@ -24,20 +24,74 @@ module <%= site["site_name"].capitalize %>
 		<% if site["product_links"] %>
 		<%= site["product_links"][0] %>(:product_links, <%= site["product_links"][1] %>)
 		<% end %>
+		<% if site["add_to_basket_button"] %>
+		<%= site["add_to_basket_button"][0] %>(:add_to_basket, <%= site["add_to_basket_button"][1] %>)
+      	<% end %> 
+      	
+      	<% if site["product_options"] 
+		 i = 1 
+		 options = site["product_options"]
+		 options.each do |option_str| 
+		   opt = option_str.split("|") 
+		%>
+		<%= opt[0] %>(:product_option<%=i%>, <%= opt[1] %>)
+		<% i = i + 1 
+		end 
+	    end %>
+      	
 		#page elements - retained for backward compatibility
 		<% if page["login_link"] %>
 		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
 		<% end %>
-		<% if page["category_menu"] %>
-		<%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
-		<% end %>
 		
-		<% if site["max_num_of_categories"] %>
+		# methods
 		def get_max_num_of_categories
-		        return <%= site["max_num_of_categories"] %>
-        end 
-        <% end %>
-      
+		<% if site["max_num_of_categories"] %>
+			return <%= site["max_num_of_categories"] %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+
+		def get_max_num_of_products
+		<% if site["max_num_of_products"] %>
+			return <%= site["max_num_of_products"] %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+		
+		def get_wait_time_per_category_page
+		<% if site["wait_time_per_category_page"] %>
+			return <%= site["wait_time_per_category_page"] %>
+		<% else %>
+			return 2
+		<% end %>
+		end 
+		
+		def get_wait_time_per_product_page
+		<% if site["wait_time_per_product_page"] %>
+			return <%= site["wait_time_per_product_page"] %>
+		<% else %>
+			return 2
+		<% end %>
+		end
+		
+		def get_num_of_product_options
+		<% if site["product_options"] %>		
+			return <%= site["product_options"].length %>
+		<% else %>
+			return 0
+		<% end %>		
+		end
+		
+		def show_log
+		<% if site["show_log"] %>
+			return <%= site["show_log"] %>
+		<% else %>
+			return false
+		<% end %>
+		end 
     end  
 end
 <% end %>

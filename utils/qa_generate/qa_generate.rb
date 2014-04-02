@@ -47,29 +47,32 @@ utils_path = File.expand_path("..",Dir.pwd)
 #if(siteName == "")
 	# Generate sitelist
 	autosites_filename = output_path + "/features/support/auto_sites.txt"
-	puts "Creating #{autosites_filename}..." unless sitelist_file_mode == "a" 
+	plog("Creating #{autosites_filename}...","grey") unless sitelist_file_mode == "a" 
 	FileUtils.mkpath File.dirname(autosites_filename)
 
 	# Generate dbmapping
 	dbmapping_filename = output_path + "/features/support/auto_dbmapping.yaml"
-	puts "Creating #{dbmapping_filename}..." unless dbmapping_file_mode == "a" 
+	plog("Creating #{dbmapping_filename}...","grey") unless dbmapping_file_mode == "a" 
 	FileUtils.mkpath File.dirname(dbmapping_filename)
 #end
 
-puts "CONFIG => "
-puts "\tFeature templates are in #{templates_path}/"
-puts "\tSmart Product step definition templates are in #{output_path}/features/step_definitions"
-puts "\tTracking Step definition templates for each page type are in #{templates_path}/support/pages/site"
-puts "\tSite configuration (<siteName>.yaml) files are in #{sites_yaml_path}/"
+site_name = "<siteName>"
+site_name = siteName if siteName != "" 
 
-puts "OUTPUT => "
-puts "\tFeature files for each site will be generated in #{output_path}/features"
-puts "\tPage step definition code will be generated in #{output_path}/features/support/pages/<siteName>/"
+plog("CONFIG => ","grey")
+plog("\tFeature templates are in #{templates_path}/","grey")
+plog("\tSmart Product step definition templates are in #{output_path}/features/step_definitions","grey")
+plog("\tTracking Step definition templates for each page type are in #{templates_path}/support/pages/site","grey")
+plog("\tSite configuration (#{site_name}.yaml) files are in #{sites_yaml_path}/","grey")
+
+plog("OUTPUT => ","grey")
+plog("\tFeature files for each site will be generated in #{output_path}/features","grey")
+plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/#{site_name}/","grey")
 
 if(siteName == "" )
-	puts "GENERATE => " 
+	plog("GENERATE => ","grey") 
 else 
-	puts "#{siteName.upcase} => \t\t :: Creating feature files, scenarios and step definition code ..."
+	plog("#{siteName.upcase} => \t\t :: Creating feature files, scenarios and step definition code ...","grey")
 end
 
 def generateFiles(site, siteName, opts, output_path, allSites)
@@ -81,7 +84,7 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 	template_files = Dir[template_directory+"**/*"]
 
 	# Generate output files from templates for site
-	puts "\t#{siteName.upcase} \t :: Created feature files, scenarios and step definition code" if allSites
+	plog("\t#{siteName.upcase} \t :: Created feature files, scenarios and step definition code","grey") if allSites
 
 	template_files.each do |template_filename|
 		if File.file?(template_filename)
@@ -98,7 +101,7 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 				FileUtils.mkpath File.dirname(output_filename)
 				output_file = File.open(output_filename, "w")
 				output_file << output_content
-				puts "\tCreated file \t  : #{output_filename}" unless allSites
+				plog("\tCreated file \t  : #{output_filename}","grey") unless allSites
 			end
 		end 
 	end
@@ -151,6 +154,6 @@ else
 	end
 
 end
-puts "========= ALL DONE ========"
+plog("========= ALL DONE ========","grey")
 
 

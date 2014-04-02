@@ -14,6 +14,12 @@ database_num: 4
 site_id: 223
 integration: standard
 
+# site variables
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+category_menu_exclude: ["Topshop Magazine"]
+wait_time_per_category_page: 2
+test_all_categories: false
+
 home_page:
   URL: "http://www.topshop.com/"
   expected_recs: 0
