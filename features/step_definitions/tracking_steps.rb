@@ -51,8 +51,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
   	wait_time_per_product = @current_page.get_wait_time_per_product_page
   	
   	show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
-  	cat_ctr = 1
-  	while cat_ctr <= num_categories do
+
+  	num_categories.times do |cat_ctr|
   		category = categories[rand(0..categories.length-1)]
   		cat_name = category[0]
 		cat_url = category[1]
@@ -65,21 +65,20 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore"
 			products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
 			
-			plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
-			prod_ctr = 1
-			while prod_ctr <= num_products do
+			plog("\tCATEGORY #{cat_ctr+1} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
+			num_products.times do |prod_ctr| 
 				product = products[rand(0..products.length-1)]
 				prod_name = product[0]
 				prod_url = product[1]
 				prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
 				# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
 				@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-				@browser.goto 'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
+				@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
 				sleep wait_time_per_product
 
 				if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
 					if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
-						plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
+						plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
 						if @current_page.get_num_of_product_options > 0
 						    x = 1
 						    while x <= @current_page.get_num_of_product_options do
@@ -96,19 +95,17 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 						plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
 						sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
 					else #product page is tracking as expected - nothing more to do
-						plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
+						plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
 					end
 				else
 					plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text} - FAILED","red")
 					test_pass = false
 				end 
-				prod_ctr = prod_ctr + 1
   			end
 		else
 			plog("\t\t#{failed_cat[0]}:\t\t#{failed_cat[1]} \t=> tracked as #{failed_cat[2]} - FAILED","red")
 			test_pass = false
 		end   
-		cat_ctr = cat_ctr + 1
   	end
     test_pass.should == true if ENV['debugcuke'] 
 end
@@ -130,14 +127,14 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 	if(!test_all_categories)
 		num_categories = rand(1..@current_page.get_max_num_of_categories)
 	end
-  	cat_ctr = 1
-  	while cat_ctr <= num_categories do
+
+  	num_categories.times do |cat_ctr|
   		category = categories[cat_ctr] if(test_all_categories)
   		category = categories[rand(0..categories.length-1)] if(!test_all_categories)
   		cat_name = category[0]
 		cat_url = category[1]
 		catTestResponse = nil
-		# plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if show_log
+		# plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
 		if (categories_to_exclude!=nil)
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
@@ -154,7 +151,6 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 		else
 			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 		end
-		cat_ctr = cat_ctr + 1
 	end
 	
 	if (failed_categories.length>0 || undefined_categories.length>0)

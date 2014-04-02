@@ -40,7 +40,7 @@ product_options:
 wait_time_per_product_page: 2
 
 # specify the max number of products to pick per category - if set to 3, 1 to 3 products will be randomly picked from each category 
-max_num_of_products: 1 
+max_num_of_products: 3 
 
 # specify identifier for the 'add to basket' button element from product page 
 add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
