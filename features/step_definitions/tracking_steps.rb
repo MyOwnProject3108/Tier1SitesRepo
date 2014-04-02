@@ -165,7 +165,7 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 		end 
 		if undefined_categories.length>0
 			plog("UNDEFINED CATEGORY PAGES:","red")
-			# list all failed categories
+			# list all undefined categories
 			undefined_categories.each do |ucat|
 				undef_cat = ucat.split("|")
 				plog("\t#{undef_cat[0]}:\t#{undef_cat[1]} \t=> NO TRACK INFO FOUND - FAILED","magenta")
