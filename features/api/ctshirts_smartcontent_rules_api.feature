@@ -27,7 +27,7 @@ Scenario: SMART-content rule "country GBP" works using SMART-API
     And I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - Casual classic fit - 4for100"
 	
 Scenario: SMART-content rule "country US" works using SMART-API 
     When I post request with USA ip
@@ -41,7 +41,7 @@ Scenario: SMART-content rule "country FR" works using SMART-API
     And I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shoes - Business"
 
 Scenario: SMART-content rule "direct" works using SMART-API 
   	When I track the home page
@@ -55,13 +55,13 @@ Scenario: SMART-content rule "gender" works using SMART-API
     Then I should get an OK status back
 	And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
+	And one of the SMART-content creative names should contain "Suits"
 	
 Scenario: SMART-content rule "keyword" works using SMART-API 
     When I post home page request with google search engine as currentURI
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
+	And one of the SMART-content creative names should contain "Shirts - Casual Slim Fit - 4for100"
 	
 Scenario: SMART-content rule "organic" works using SMART-API 
     When I post home page request with google search engine as previousURI
@@ -99,7 +99,7 @@ Scenario: SMART-content rule "visitor=new" from direct works using SMART-API
     When I track the home page
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "LS2 - INACTIVE"
+	And one of the SMART-content creative names should contain "Womenswear"
 	
 Scenario: SMART-content rule "visitor returning" from direct works using SMART-API 
 	When I track the home page

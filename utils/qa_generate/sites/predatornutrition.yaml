@@ -14,8 +14,8 @@ integration: json
 home_page:
   URL: "http://www.predatornutrition.com/"
   expected_recs: 6
-  login_link: ["link", ':href => "https://www.predatornutrition.com/en/customer/account/login/"']
-  search_field: ["text_field", ':name => "q"']
+  login_link: ["link", ':xpath => "//div[1]/div[1]/ul[1]/li[6]/a[2]"']
+  search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
     URL: "http://www.predatornutrition.com/en/armour-v-180-caps/"    

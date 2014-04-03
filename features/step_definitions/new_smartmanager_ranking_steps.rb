@@ -20,9 +20,9 @@ When(/^I click on Add all categories checkbox on the rankingconfig page$/) do
 end
 
 ##working
-#Then(/^I enter influence name as "(.*?)" on the rankingconfig page$/) do |influencename|
- # @current_page.influencename = influencename
-#end
+Then(/^I enter influence name as "(.*?)" on the rankingconfig page$/) do |influencename|
+  @current_page.influencename = influencename
+end
 
 
 Then(/^I enter first influence name as "(.*?)"$/) do |influencename1|
@@ -133,6 +133,12 @@ end
 Then(/^I should see the error message "(.*?)"$/) do |msg|
 	@current_page.should have_error_message msg
 end
+
+Then(/^I should see the success message "(.*?)"$/) do |msg|
+  @current_page.should have_success_message msg
+end
+
+
 
 # Then(/^I enter "(.*?)" influence name as "(.*?)" on the rankingconfig page$/) do |infnum, infname|
  # on_page(@site+'::RankingconfigPage') do |page|

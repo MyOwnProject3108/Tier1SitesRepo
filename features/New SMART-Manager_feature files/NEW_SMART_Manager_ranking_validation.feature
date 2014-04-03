@@ -52,7 +52,7 @@ Given I am on the smartmanager login page
   Then I should see the error message "Name cannot be empty"
 
   
-Scenario Outline: User should be able to see an error message if startdate equals to enddate
+Scenario: User should be able to see an error message if startdate equals to enddate
   When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds
   Then I should end up on the rankingconfig page
@@ -187,5 +187,65 @@ Scenario: User should be able to see an error message if influence title is empt
   And I click on save ranking button on the rankingconfig page
   And I pause for 5 seconds
   Then I should see the error message "Please provide criteria for influence [TestA]"
-	
+  
+  #Added in sprint 121
+  Scenario: User should be able to see an error message for duplicate campaigns
+  When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
+  And I pause for 5 seconds
+  Then I should end up on the rankingconfig page
+  And I pause for 5 seconds
+  And I enter ranking campaign name as "AutoTest" on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on Add all categories checkbox on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on save ranking button on the rankingconfig page
+  And I pause for 5 seconds
+  Then I should end up on the rankingconfig page
+  And I pause for 5 seconds
+  When I go to the adaptivelisting page
+  And I pause for 5 seconds
+  When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
+  And I pause for 5 seconds
+  Then I should end up on the rankingconfig page
+  And I pause for 5 seconds
+  And I enter ranking campaign name as "AutoTest" on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on Add all categories checkbox on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on save ranking button on the rankingconfig page
+  Then I should see the error message "There is already a campaign with name of [AutoTest]"
+  
+Scenario Outline: User should be able to see an error message if startdate is empty
+  When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
+  And I pause for 5 seconds
+  Then I should end up on the rankingconfig page
+  And I pause for 5 seconds
+  And I enter ranking campaign name as <config_name> on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on Add all categories checkbox on the rankingconfig page
+  And I pause for 2 seconds
+  And I enter influence name as <influence_name> on the rankingconfig page
+  And I pause for 5 seconds
+  And I select influence type as <influence_type> on the rankingconfig page
+  And I pause for 2 seconds
+  And I enter pin position as <influence_position> on the rankingconfig page
+  And I pause for 5 seconds
+ And I select option with the value "pricerange"
+ And I pause for 2 seconds
+  And select operatoroption with the value "="
+ And I pause for 5 seconds
+  And I search for the category "cheap" on the rankingconfig page
+  And I pause for 5 seconds
+  And I select option with the value "category" in apply when condition
+  And I pause for 5 seconds
+  And select operatoroption with the value "=" in apply when condition
+  And I pause for 5 seconds
+  And I search for the category "Clothing>Mens>Tops" in apply when condition on the rankingconfig page
+  And I pause for 5 seconds
+  And I click on save ranking button on the rankingconfig page
+  And I pause for 5 seconds
+ Then I should see the error message "start date is invalid for influence [AutoTestPin]"
+ Examples: set1
+    | config_name  	  | influence_name 		|influence_type  | influence_position|
+    | "AutoTest"      | "AutoTestPin"       |"pin"           |  "1"|
 	

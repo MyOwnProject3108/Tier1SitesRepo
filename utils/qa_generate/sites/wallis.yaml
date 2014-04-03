@@ -20,7 +20,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.wallis.co.uk/en/wluk/product/clothing-265973/dresses-265991/black-and-white-stripe-tunic-dress-2537150?bi=1&ps=20"
+  URL: "http://www.wallis.co.uk/webapp/wcs/stores/servlet/ProductDisplay?catalogId=33058&storeId=12557&productId=13258165&langId=-1"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 

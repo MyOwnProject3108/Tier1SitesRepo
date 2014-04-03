@@ -56,6 +56,21 @@ Scenario Outline: Users should be able to create new setup for smartranking pinn
     | "AutoRankingPinCampaign"      | "AutoRankingPinCampaign"            |"pin"           |  "1"|
     | "AutoRankingBoostCampaign"    | "AutoRankingBoostCampaign"          |"boost"         |  "100"|
    
+ #Added in sprint 121  
+ Scenario: Users should be able to create S-Ranking config for All Categories
+  When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
+  And I pause for 5 seconds
+  Then I should end up on the rankingconfig page
+  And I pause for 5 seconds
+  And I enter ranking campaign name as "AutoAllCategoryCampaign" on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on Add all categories checkbox on the rankingconfig page
+  And I pause for 2 seconds
+  And I click on save ranking button on the rankingconfig page
+  And I pause for 5 seconds
+  Then I should see the success message "Successfully saved your settings."
+  
+  
   Scenario: Users should be able to add new rows in smart ranking config
   When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds

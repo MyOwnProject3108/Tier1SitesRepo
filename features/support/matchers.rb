@@ -28,3 +28,13 @@ RSpec::Matchers.define :have_error_message do |message|
         "Expected error message was '#{message}'"
     end
  end
+ 
+ 
+ RSpec::Matchers.define :have_success_message do |message|
+ match do |page|
+ page.success_messages.include? message
+ end
+ failure_message_for_should do |page|
+        "Expected success message was '#{message}'"
+    end
+ end

@@ -8,6 +8,7 @@ utils/*.rb
 features/**/auto_*
 features/support/pages/**/auto_*
 features/auto_*
+api_logs
 *.json
 error_pages/
 screenshots/

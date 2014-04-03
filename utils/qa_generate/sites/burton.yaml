@@ -25,7 +25,7 @@ product_page:
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
-  URL: "hhttp://www.burton.co.uk/en/bruk/category/clothing-281559/mens-jeans-281570"
+  URL: "http://www.burton.co.uk/en/bruk/category/clothing-281559/mens-jeans-281570"
   expected_recs: 0
 
 basket_page:

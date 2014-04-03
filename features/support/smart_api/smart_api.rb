@@ -13,7 +13,7 @@ module Peerius
         attr_reader :response_times
          
         def initialize(site, version=nil, testserver=nil, useSSH=nil)
-            file = open("#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
+            file = open("logs/api_logs/#{site}_smart_api.log", File::WRONLY | File::APPEND | File::CREAT)
             @logger = Logger.new(file)
         #    @version = version.nil? ? "v1_1" : version
 		 	@version = version.nil? ? "v1_2" : version
