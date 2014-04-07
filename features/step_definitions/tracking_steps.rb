@@ -32,6 +32,15 @@ When /^one or more random products are added to basket using link filter:$/ do |
   	test_random_product_page_and_add_to_basket_tracking(link_filter,true)
 end
 
+When /^I auto-generate (.+) using "(.+)" for the (.+) with (.+) "(.+)"$/ do |data_type, value, element, locator, locator_value|
+	gen_value = value
+	gen_value = eval("autogenerate_"+data_type+'("'+value+'")')
+	plog("\tAuto-generated " + data_type.upcase + " => " + gen_value, "magenta")
+	@browser.send(element.to_sym, locator.to_sym => locator_value).wd.location_once_scrolled_into_view 
+	@browser.send(element.to_sym, locator.to_sym => locator_value).set(gen_value)
+end
+
+
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file
 # and randomly opens the specified number of categories and then opens the specified number of product pages from each per category 
 # Params:
@@ -85,7 +94,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 								sel_list = eval('@current_page.product_option'+x.to_s+'_element')
 								if sel_list.exists?
 									option = sel_list.options[rand(1..sel_list.options.length-1)].text
-									plog("\t\tSelected option => #{option} ...","magenta") if show_log
+									plog("\tSelected option => #{option} ...","magenta") if show_log
 									sel_list.when_present.select option
 								end
 								x = x+1
@@ -114,14 +123,16 @@ end
 # Params:
 # +categories_to_exclude+:: a collection of categories that need to be excluded (applies only if test_all_categories is set to true)
 # +test_all_categories+:: boolean - true if all catgeories need to be tested else false
-def test_random_category_or_all_category_tracking(categories_to_exclude,test_all_categories)
+def test_random_category_or_all_category_tracking(excluded_categories,test_all_categories)
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
-    categories_to_exclude = categories_to_exclude.raw.flatten! if categories_to_exclude != nil
+    categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil
+
 	test_pass = true 
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
 	show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 	  	
-	num_categories = categories.length-1
+	num_categories = categories.length
+	tracked_categories = Array.new
 	failed_categories = Array.new
 	undefined_categories = Array.new
 	if(!test_all_categories)
@@ -139,19 +150,31 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 				if catTestResponse != nil
-					if catTestResponse.include?("UNDEFINED") 
-						 undefined_categories << catTestResponse 
+					if catTestResponse.include?("SUCCESS") 
+						tracked_categories << catTestResponse 
+					elsif catTestResponse.include?("UNDEFINED") 
+						undefined_categories << catTestResponse 
 					else
 						failed_categories << catTestResponse 
 					end
 				end
 			else
-				plog("\t\tExcluding CATEGORY #{cat_name} : #{cat_url}","yellow") if show_log
+				plog("\t\tExcluding CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
 			end
 		else
 			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 		end
 	end
+	
+	if tracked_categories.length>0
+				plog("TRACKED CATEGORY PAGES:","green")
+				# list all tracked categories
+				tracked_categories.each do |tcat|
+					tracked_cat = tcat.split("|")
+					plog("\t#{tracked_cat[0]}:\t#{tracked_cat[1]}","green")
+				end
+				test_pass = false
+	end 
 	
 	if (failed_categories.length>0 || undefined_categories.length>0)
 		if failed_categories.length>0
@@ -159,12 +182,12 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 			# list all failed categories
 			failed_categories.each do |fcat|
 				failed_cat = fcat.split("|")
-				plog("\t#{failed_cat[0]}:\t#{failed_cat[1]} \t=> tracked as #{failed_cat[2]} - FAILED","magenta")
+				plog("\t#{failed_cat[0]}:\t#{failed_cat[1]} \t=> tracked as #{failed_cat[2]} Page - FAILED","red")
 			end
 			test_pass = false
 		end 
 		if undefined_categories.length>0
-			plog("UNDEFINED CATEGORY PAGES:","red")
+			plog("UNDEFINED CATEGORY PAGES:","magenta")
 			# list all undefined categories
 			undefined_categories.each do |ucat|
 				undef_cat = ucat.split("|")
@@ -175,7 +198,13 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 	else
 		test_pass.should == true	
 	end
-	
+	plog("=========================================================================","grey")
+	plog("\tTOTAL TESTED\t=> #{num_categories} category pages","yellow")
+	plog("\tTEST PASSED \t=> #{tracked_categories.length} category pages","green") if tracked_categories.length>0
+	plog("\tTEST FAILED \t=> #{failed_categories.length} category pages","red") if failed_categories.length>0
+	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} pages","magenta") if undefined_categories.length>0
+	plog("\tEXCLUDED    \t=> #{excluded_categories.raw.length} category pages","grey") if excluded_categories.raw.length>0
+	plog("=========================================================================","grey")
 end
 
 # This function tests if a category page is tracking correctly. 
@@ -187,10 +216,12 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	sleep wait_time
 	cat_name = cat_name.length > 20 ? cat_name[0..17].gsub(/\s\w+\s*$/,'...') : cat_name
 	if @browser.td(:id => 'trackInfo').exists?
-		if @browser.td(:id => 'trackInfo').text.include?("CategoryPage")
-			plog("#{cat_name} : \t#{cat_url}\t=> tracked as Category page with unique Id [#{@browser.td(:id => 'categoryUniqueId').text}]","green") if show_log
+		page_type = @browser.td(:id => 'trackInfo').text[/For(.*?)Page/m, 1]
+		if page_type.include?("Category")
+			testResponse = "#{cat_name}|#{cat_url}|SUCCESS"
+			# plog("#{cat_name} : \t#{cat_url}\t=> tracked as Category page with unique Id [#{@browser.td(:id => 'categoryUniqueId').text}]","green") if show_log
 		else
-			testResponse = "#{cat_name}|#{cat_url}|#{@browser.td(:id => 'trackInfo').text}"
+			testResponse = "#{cat_name}|#{cat_url}|#{page_type}"
 		end   
 	else
 		testResponse = "#{cat_name}|#{cat_url}|<<UNDEFINED>>"
@@ -203,3 +234,22 @@ end
 #Then /^the debug info should show at least (\d+) SMART\-content$/ do |expected_content|
  # @current_page.debug_content.should have_at_least(expected_content).entries
 #end
+
+def autogenerate_firstname(seed_value)
+	prefix = seed_value
+	rand_value = rand(1..999999).to_s
+    return prefix+rand_value
+end
+
+def autogenerate_lastname(seed_value)
+	prefix = seed_value
+	rand_value = rand(1..999999).to_s
+    return prefix+rand_value
+end
+
+def autogenerate_email(seed_value)
+	prefix = seed_value.partition('@').first
+	domain = seed_value.partition('@').last
+	rand_value = rand(1..999999).to_s
+    return prefix+rand_value+'@'+domain
+end

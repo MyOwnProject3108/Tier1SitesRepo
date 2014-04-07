@@ -5,13 +5,19 @@ has_ranking: no
 needs_SPR: false
 username: faiyyaz.sultana@peerius.com
 password: Pa55word
-zero_search_term: toy
+zero_search_term: dvd
 valid_search_term: blazer
 database_num: 4
 mob_apikeyliv: bhrvkw68frbyhu4t
 channel: mobileapp
 site_id: 82
 integration: standard
+
+# site variables
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+category_menu_exclude: ["Facebook","Twitter","Google","Pinterest","Instagram","YouTube","Information Pages","The Knowledge Blog"]
+wait_time_per_category_page: 5
+test_all_categories: false
 
 home_page:
   URL: "http://www.burton.co.uk/?geoip=home"
@@ -25,7 +31,7 @@ product_page:
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
-  URL: "hhttp://www.burton.co.uk/en/bruk/category/clothing-281559/mens-jeans-281570"
+  URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33052&storeId=12551&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=209037&parent_categoryId=208974&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:

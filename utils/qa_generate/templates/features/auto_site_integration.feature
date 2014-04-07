@@ -205,7 +205,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 <% end %>
 <% end %>
 
-<% if page["zerosearch_recs"] > 0 %>
+<% if site["zerosearch_recs"] %>
 #
 # Zero search page
 #
