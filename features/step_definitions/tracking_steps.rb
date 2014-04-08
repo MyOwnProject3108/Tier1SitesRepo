@@ -125,7 +125,8 @@ end
 # +test_all_categories+:: boolean - true if all catgeories need to be tested else false
 def test_random_category_or_all_category_tracking(excluded_categories,test_all_categories)
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
-    categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil
+    categories_to_exclude = nil
+    categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil && test_all_categories
 
 	test_pass = true 
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
@@ -149,31 +150,27 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 		if (categories_to_exclude!=nil)
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
-				if catTestResponse != nil
-					if catTestResponse.include?("SUCCESS") 
-						tracked_categories << catTestResponse 
-					elsif catTestResponse.include?("UNDEFINED") 
-						undefined_categories << catTestResponse 
-					else
-						failed_categories << catTestResponse 
-					end
-				end
 			else
 				plog("\t\tExcluding CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
 			end
 		else
 			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 		end
+		if catTestResponse != nil
+			tracked_categories << catTestResponse if catTestResponse.include?("SUCCESS")
+			undefined_categories << catTestResponse if catTestResponse.include?("UNDEFINED")
+			failed_categories << catTestResponse if catTestResponse.include?("FAILED")
+		end
 	end
 	
 	if tracked_categories.length>0
-				plog("TRACKED CATEGORY PAGES:","green")
-				# list all tracked categories
-				tracked_categories.each do |tcat|
-					tracked_cat = tcat.split("|")
-					plog("\t#{tracked_cat[0]}:\t#{tracked_cat[1]}","green")
-				end
-				test_pass = false
+		plog("TRACKED CATEGORY PAGES:","green") if show_log
+		# list all tracked categories
+		tracked_categories.each do |tcat|
+			tracked_cat = tcat.split("|")
+			plog("\t#{tracked_cat[0]}:\t#{tracked_cat[1]}","green") if show_log
+		end
+		test_pass = true
 	end 
 	
 	if (failed_categories.length>0 || undefined_categories.length>0)
@@ -199,11 +196,11 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 		test_pass.should == true	
 	end
 	plog("=========================================================================","grey")
-	plog("\tTOTAL TESTED\t=> #{num_categories} category pages","yellow")
-	plog("\tTEST PASSED \t=> #{tracked_categories.length} category pages","green") if tracked_categories.length>0
-	plog("\tTEST FAILED \t=> #{failed_categories.length} category pages","red") if failed_categories.length>0
-	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} pages","magenta") if undefined_categories.length>0
-	plog("\tEXCLUDED    \t=> #{excluded_categories.raw.length} category pages","grey") if excluded_categories.raw.length>0
+	plog("\tTOTAL TESTED\t=> #{num_categories} category page" + (num_categories>1?"s":""),"yellow")
+	plog("\tTEST PASSED \t=> #{tracked_categories.length} category page" + (tracked_categories.length>1?"s":""),"green") if tracked_categories.length>0
+	plog("\tTEST FAILED \t=> #{failed_categories.length} category page" + (failed_categories.length>1?"s":""),"red") if failed_categories.length>0
+	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} page"+ (undefined_categories.length>1?"s":""),"magenta") if undefined_categories.length>0
+	plog("\tEXCLUDED    \t=> #{excluded_categories.raw.length} category pages","grey") if test_all_categories 
 	plog("=========================================================================","grey")
 end
 
