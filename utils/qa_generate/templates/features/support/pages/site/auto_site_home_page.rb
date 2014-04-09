@@ -24,20 +24,86 @@ module <%= site["site_name"].capitalize %>
 		<% if site["product_links"] %>
 		<%= site["product_links"][0] %>(:product_links, <%= site["product_links"][1] %>)
 		<% end %>
+		<% if site["add_to_basket_button"] %>
+		<%= site["add_to_basket_button"][0] %>(:add_to_basket, <%= site["add_to_basket_button"][1] %>)
+      	<% end %> 
+      	
+      	<% if site["product_options"] 
+		 site["product_options"].each_with_index do |option, idx| 
+		%>
+		<%= option[0] %>(:product_option<%=idx+1%>, <%= option[1] %>)
+		<% end 
+	    end %>
+      	
 		#page elements - retained for backward compatibility
 		<% if page["login_link"] %>
 		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
 		<% end %>
-		<% if page["category_menu"] %>
-		<%= page["category_menu"][0] %>(:category_menu, <%= page["category_menu"][1] %>)
-		<% end %>
 		
-		<% if site["max_num_of_categories"] %>
+		# methods
 		def get_max_num_of_categories
-		        return <%= site["max_num_of_categories"] %>
-        end 
-        <% end %>
-      
+		<% if site["max_num_of_categories"] %>
+			return <%= site["max_num_of_categories"] %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+
+		def get_max_num_of_products
+		<% if site["max_num_of_products"] %>
+			return <%= site["max_num_of_products"] %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+		
+		def get_num_of_reloads_per_category
+		<% if site["num_of_reloads_per_category"] %>
+			return <%= site["num_of_reloads_per_category"] %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+		
+		def get_wait_time_per_category_page
+		<% if site["wait_time_per_category_page"] %>
+			return <%= site["wait_time_per_category_page"] %>
+		<% else %>
+			return 2
+		<% end %>
+		end 
+		
+		def get_categories_to_exclude_list
+		<% if site["category_menu_exclude"] %>		
+			return <%= site["category_menu_exclude"] %>
+		<% else %>
+			return []
+		<% end %>		
+		end
+		
+		def get_wait_time_per_product_page
+		<% if site["wait_time_per_product_page"] %>
+			return <%= site["wait_time_per_product_page"] %>
+		<% else %>
+			return 2
+		<% end %>
+		end
+		
+		def get_num_of_product_options
+		<% if site["product_options"] %>		
+			return <%= site["product_options"].length %>
+		<% else %>
+			return 0
+		<% end %>		
+		end
+		
+		def show_log
+		<% if site["show_log"] %>
+			return <%= site["show_log"] %>
+		<% else %>
+			return false
+		<% end %>
+		end 
     end  
 end
 <% end %>

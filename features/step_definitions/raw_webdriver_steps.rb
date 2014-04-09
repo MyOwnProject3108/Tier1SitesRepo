@@ -1,18 +1,18 @@
-When /^I click on the (.+) with (.+) "(.+)"$/ do | element, locator, locator_value |
+When /^I click the (.+) with (.+) "(.+)"$/ do | element, locator, locator_value |
   @browser.send(element.to_sym, locator.to_sym => locator_value).wd.location_once_scrolled_into_view  
   @browser.send(element.to_sym, locator.to_sym => locator_value).click
 end
 
-When /^I click the optional (.+) with (.+) "(.+)"$/ do | element, locator, locator_value |
+When /^I click optional (.+) with (.+) "(.+)"$/ do | element, locator, locator_value |
 	begin
 	  @browser.send(element.to_sym, locator.to_sym => locator_value).wd.location_once_scrolled_into_view  
 	  @browser.send(element.to_sym, locator.to_sym => locator_value).when_present(5).click
 	rescue Watir::Exception::UnknownObjectException
-	  puts "The optional #{element} element with #{locator} \"#{locator_value}\" was not found. Resuming the test..."
+	  plog("The optional #{element} element with #{locator} \"#{locator_value}\" was not found. Resuming the test...","grey")
  	end
 end
 
-When /^I enter "(.+)" on the (.+) with (.+) "(.+)"$/ do |value, element, locator, locator_value|
+When /^I enter "(.+)" in the (.+) with (.+) "(.+)"$/ do |value, element, locator, locator_value|
   @browser.send(element.to_sym, locator.to_sym => locator_value).wd.location_once_scrolled_into_view 
   @browser.send(element.to_sym, locator.to_sym => locator_value).set(value)
 end

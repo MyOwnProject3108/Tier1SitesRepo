@@ -1,4 +1,4 @@
-site_name: demostore
+site_name: demostore_data_bot
 site_id: 1333
 database_num: 0
 integration: json
@@ -25,9 +25,6 @@ wait_time_per_category_page: 3
 # specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
 max_num_of_categories: 1 
 
-# number of times the page needs to be reloaded if trackInfo is not readable when page is loaded first time
-num_of_reload_attempts: 2
-
 # xpath or id to container that contains all the product page links on a category page
 # I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
 # as this does not require a product link filter to extract specific links
@@ -43,7 +40,7 @@ product_options:
 wait_time_per_product_page: 2
 
 # specify the max number of products to pick per category - if set to 3, 1 to 3 products will be randomly picked from each category 
-max_num_of_products: 2 
+max_num_of_products: 1 
 
 # specify identifier for the 'add to basket' button element from product page 
 add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
@@ -62,69 +59,14 @@ random_product:
 random_category:
   expected_recs: 0
 
-basket_page:
-  URL: "http://showcase.peerius.com/index.php/checkout/cart/"
-  expected_recs: 5
-  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "btn-remove"']
-  
 random_basket:
   expected_recs: 5
   basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
   basket_remove: ["link", ':class => "btn-remove"']
 
-login_page:
-  URL: "http://showcase.peerius.com/index.php/customer/account/login/"
-  expected_recs: 0
-  username_field: ["text_field", ':id=>"email"']
-  password_field: ["text_field", ':id=>"pass"']  
-  login_submit: ["button", ':id=>"send2"']
-
-searchresults_page:
-  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=dvd"
-  expected_recs: 0
-  zerosearch_recs: 5
-
 checkout_page:
   URL: "http://showcase.peerius.com/index.php/checkout/onepage/"
   expected_recs: 0
-  extra_steps:
-    - [radio, id, "login:guest"]
-    - [button, id, "onepage-guest-register-button"]
-    - [pause, 2]
-    - [text_field, id, "billing:firstname", "Web"]
-    - [text_field, id, "billing:lastname", "Test"]
-    - [text_field, id, "billing:email", "peeriustest@email.com"]
-    - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-    - [text_field, id, "billing:city", "London"]
-    - [text_field, id, "billing:postcode", "SE1 0HS"]
-    - [text_field, id, "billing:region", "London"]
-    - [select_list, id, "billing:country_id", "United Kingdom"]
-    - [text_field, id, "billing:telephone", "02039723222"]
-    - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [radio, id, "p_method_checkmo"]
-    - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
-
-
-order_page:
-  URL: ""
-  expected_recs: 0
-  extra_steps:
-    - [select_list, id, "billing-address-select", "Web Test, Peerius, 232 Great Guildford Street, London, London SE1 0HS, United Kingdom"]
-    - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [radio, id, "p_method_checkmo"]
-    - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
-
 
 random_order:
   URL: "http://showcase.peerius.com/index.php"
@@ -152,27 +94,4 @@ random_order:
       - [pause, 5]
       - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
       
-random_checkout:
-  URL: "http://showcase.peerius.com/index.php"
-  expected_recs: 0
-  extra_steps:
-      - [radio, id, "login:guest"]
-      - [button, id, "onepage-guest-register-button"]
-      - [pause, 2]
-      - [text_field, id, "billing:firstname", "Web"]
-      - [text_field, id, "billing:lastname", "Test"]
-      - [text_field, id, "billing:email", "peeriustest@email.com"]
-      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-      - [text_field, id, "billing:city", "London"]
-      - [text_field, id, "billing:postcode", "SE1 0HS"]
-      - [text_field, id, "billing:region", "London"]
-      - [select_list, id, "billing:country_id", "United Kingdom"]
-      - [text_field, id, "billing:telephone", "02039723222"]
-      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "s_method_freeshipping_freeshipping", optional]
-      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "p_method_checkmo"]
-      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
 
