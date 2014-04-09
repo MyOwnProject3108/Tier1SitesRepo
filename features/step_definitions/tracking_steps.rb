@@ -60,61 +60,72 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
   	wait_time_per_product = @current_page.get_wait_time_per_product_page
   	
   	show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
-
-  	num_categories.times do |cat_ctr|
+	cat_ctr = 1
+  	while cat_ctr <= num_categories
   		category = categories[rand(0..categories.length-1)]
   		cat_name = category[0]
 		cat_url = category[1]
-		 
-		@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-		@browser.goto cat_url
-		sleep wait_time_per_category
-		if @browser.td(:id => 'trackInfo').text.include?("CategoryPage")
-			products = @current_page.product_links_element.link_elements
-			products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore"
-			products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
-			
-			plog("\tCATEGORY #{cat_ctr+1} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
-			num_products.times do |prod_ctr| 
-				product = products[rand(0..products.length-1)]
-				prod_name = product[0]
-				prod_url = product[1]
-				prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
-				# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
-				@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-				@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
-				sleep wait_time_per_product
+		exclude_cat = false
+		if (@current_page.get_categories_to_exclude_list.length>0)
+			cats_to_exclude = @current_page.get_categories_to_exclude_list*","
+			exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
+		end
+		
+		if !exclude_cat
+			catTestResponse = nil
+			plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if show_log
+			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
+			if catTestResponse != nil && catTestResponse.include?("SUCCESS")
+				products = @current_page.product_links_element.link_elements
+				# plog("\t#{products.length} products","yellow") if show_log
+				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore"
+				products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
 
-				if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
-					if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
-						plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
-						if @current_page.get_num_of_product_options > 0
-						    x = 1
-						    while x <= @current_page.get_num_of_product_options do
-								sel_list = eval('@current_page.product_option'+x.to_s+'_element')
-								if sel_list.exists?
-									option = sel_list.options[rand(1..sel_list.options.length-1)].text
-									plog("\tSelected option => #{option} ...","magenta") if show_log
-									sel_list.when_present.select option
+				plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
+				num_products.times do |prod_ctr| 
+					product = products[rand(0..products.length-1)]
+					prod_name = product[0]
+					prod_url = product[1]
+					prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
+					# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
+					@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+					@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
+					sleep wait_time_per_product
+
+					if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
+						if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
+							plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
+							if @current_page.get_num_of_product_options > 0
+								x = 1
+								while x <= @current_page.get_num_of_product_options do
+									sel_list = eval('@current_page.product_option'+x.to_s+'_element')
+									if sel_list.exists?
+										option = sel_list.options[rand(1..sel_list.options.length-1)].text
+										plog("\tSelected option => #{option} ...","magenta") if show_log
+										sel_list.when_present.select option
+									end
+									x = x+1
 								end
-								x = x+1
 							end
+							@current_page.add_to_basket_element.when_present.click
+							plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
+							sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
+						else #product page is tracking as expected - nothing more to do
+							plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
 						end
-						@current_page.add_to_basket_element.when_present.click
-						plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
-						sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
-					else #product page is tracking as expected - nothing more to do
-						plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
-					end
-				else
-					plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text} - FAILED","red")
-					test_pass = false
-				end 
-  			end
+					else
+						plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text} - FAILED","red")
+						test_pass = false
+					end 
+				end
+			else
+				plog("\t\t#{cat_name}:\t\t#{cat_url} \t=> tracked as " + catTestResponse.split("|")[2] + " page - FAILED","red")
+				test_pass = false
+			end 
+			cat_ctr = cat_ctr + 1
 		else
-			plog("\t\t#{failed_cat[0]}:\t\t#{failed_cat[1]} \t=> tracked as #{failed_cat[2]} - FAILED","red")
-			test_pass = false
-		end   
+			plog("\tIgnoring Excluded CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
+		end
   	end
     test_pass.should == true if ENV['debugcuke'] 
 end
@@ -136,9 +147,8 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 	tracked_categories = Array.new
 	failed_categories = Array.new
 	undefined_categories = Array.new
-	if(!test_all_categories)
-		num_categories = rand(1..@current_page.get_max_num_of_categories)
-	end
+	
+	num_categories = rand(1..@current_page.get_max_num_of_categories) if(!test_all_categories)
 
   	num_categories.times do |cat_ctr|
   		category = categories[cat_ctr] if(test_all_categories)
@@ -146,7 +156,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
   		cat_name = category[0]
 		cat_url = category[1]
 		catTestResponse = nil
-		# plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
+		plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
 		if (categories_to_exclude!=nil)
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
@@ -159,8 +169,9 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 		if catTestResponse != nil
 			tracked_categories << catTestResponse if catTestResponse.include?("SUCCESS")
 			undefined_categories << catTestResponse if catTestResponse.include?("UNDEFINED")
-			failed_categories << catTestResponse if catTestResponse.include?("FAILED")
+			failed_categories << catTestResponse if catTestResponse.include?("FAILED") || catTestResponse.include?("Other")
 		end
+		#@browser.back
 	end
 	
 	if tracked_categories.length>0
@@ -192,6 +203,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 			end
 			test_pass = false
 		end
+		test_pass.should == false	
 	else
 		test_pass.should == true	
 	end
@@ -209,9 +221,23 @@ end
 def test_category_page(cat_name,cat_url,wait_time,show_log)
 	testResponse = nil
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-	@browser.goto cat_url
+	@browser.goto cat_url #"http://www.alexandalexa.com/home-school/kids-bedroom" #
 	sleep wait_time
 	cat_name = cat_name.length > 20 ? cat_name[0..17].gsub(/\s\w+\s*$/,'...') : cat_name
+	reload_attempts = @current_page.get_num_of_reloads_per_category
+	if !(@browser.td(:id => 'trackInfo').exists?) 
+		reload_attempts.times do |attempt|
+			if !@browser.td(:id => 'trackInfo').exists?
+				plog("\tTrackInfo Not Found : Reload attempt #{attempt} ...", "grey") if show_log
+				@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+				@browser.refresh 
+				@browser.alert.ok if @browser.alert.exists?
+				sleep wait_time #@browser.td(:id => 'trackInfo').wait_until_present(10)
+			else 
+			 	break
+			end
+		end
+	end
 	if @browser.td(:id => 'trackInfo').exists?
 		page_type = @browser.td(:id => 'trackInfo').text[/For(.*?)Page/m, 1]
 		if page_type.include?("Category")
@@ -219,11 +245,10 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 			# plog("#{cat_name} : \t#{cat_url}\t=> tracked as Category page with unique Id [#{@browser.td(:id => 'categoryUniqueId').text}]","green") if show_log
 		else
 			testResponse = "#{cat_name}|#{cat_url}|#{page_type}"
-		end   
+		end 
 	else
 		testResponse = "#{cat_name}|#{cat_url}|<<UNDEFINED>>"
 	end
-	@browser.back
 	return testResponse
 end
 

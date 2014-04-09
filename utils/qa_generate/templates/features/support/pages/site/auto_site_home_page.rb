@@ -57,6 +57,14 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def get_num_of_reloads_per_category
+		<% if site["num_of_reloads_per_category"] %>
+			return <%= site["num_of_reloads_per_category"] %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+		
 		def get_wait_time_per_category_page
 		<% if site["wait_time_per_category_page"] %>
 			return <%= site["wait_time_per_category_page"] %>
@@ -64,6 +72,14 @@ module <%= site["site_name"].capitalize %>
 			return 2
 		<% end %>
 		end 
+		
+		def get_categories_to_exclude_list
+		<% if site["category_menu_exclude"] %>		
+			return <%= site["category_menu_exclude"] %>
+		<% else %>
+			return []
+		<% end %>		
+		end
 		
 		def get_wait_time_per_product_page
 		<% if site["wait_time_per_product_page"] %>

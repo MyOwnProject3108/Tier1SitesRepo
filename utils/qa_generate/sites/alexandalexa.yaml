@@ -14,34 +14,26 @@ valid_search_term: red dress
 #### site level variables ####
 show_log: true
 
-# xpath or id to container that contains all the product page links on a category page
 category_menu: ["ul", ':id => "nav"']
-category_menu_exclude: ["Home","Sale"]
+category_menu_exclude: ["SALE","Denim","Boots & Wellies"]
 test_all_categories: true
 
-# specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
 wait_time_per_category_page: 5
 
-# specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
-max_num_of_categories: 3
+max_num_of_categories: 1
 
-# xpath or id to container that contains all the product page links on a category page
-# I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
-# as this does not require a product link filter to extract specific links
-# but I have used the follwing to provide an example use of product_link_filter
-product_links: ["div", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul"'] 
-product_link_filter: ["class|p-name"] 
+num_of_reloads_per_category: 2
+
+product_links: ["ul", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul[1]"'] 
+product_link_filter: ["class|p-name a-center s12 db r clear"] 
+
 product_options:   
     - [select_list, ':xpath=> "/html/body/div[2]/div[2]/section/div[3]/form/div[2]/div/div/dl/dd/div/select"']
 
+wait_time_per_product_page: 3
 
-# specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
-wait_time_per_product_page: 2
+max_num_of_products: 2 
 
-# specify the max number of products to pick per category - if set to 3, 1 to 3 products will be randomly picked from each category 
-max_num_of_products: 1 
-
-# specify identifier for the 'add to basket' button element from product page 
 add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
 
 #### page level config ####
@@ -53,9 +45,13 @@ home_page:
   search_field: ["text_field", ':id => "search"']
 
 random_product:
-  expected_recs: 5
+  expected_recs: 4
 
 random_category:
+  expected_recs: 0
+
+category_page:
+  URL: "http://www.alexandalexa.com/shoes/baby-toddler-shoes"
   expected_recs: 0
 
 basket_page:
