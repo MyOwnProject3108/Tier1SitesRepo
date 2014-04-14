@@ -69,6 +69,16 @@ Scenario Outline: Users should be able to create new setup for smartranking pinn
   And I click on save ranking button on the rankingconfig page
   And I pause for 5 seconds
   Then I should see the success message "Successfully saved your settings."
+  And I pause for 5 seconds
+  When I go to the adaptivelisting page
+  And I pause for 5 seconds
+  #When I Activate the last smartcontent setup on the adaptivelisting page
+ #Then I should end up on the smartcontent activation page
+ And I click on the Activate button on the smartcontent adaptivelisting page
+ And I pause for 5 seconds
+ #Then I should end up on the smartcontent page 
+  
+  
   
   
   Scenario: Users should be able to add new rows in smart ranking config

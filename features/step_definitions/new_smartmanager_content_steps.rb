@@ -157,6 +157,10 @@ Then(/^I select first creative as "(.*?)" on the adaptivecontent page$/) do |cre
   @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].creative").select creative_name1
 end
 
+Then(/^I select first creative size as "(.*?)" on the adaptivecontent page$/) do |creative_size1|
+  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[0].content").select creative_size1
+end
+
 
 
 Then(/^I click on "(.*?)" link on the adaptivecontent page$/) do |criterialink|
@@ -181,6 +185,10 @@ end
 #Then(/^I select second creative as "(.*?)" on the adaptivecontent page$/) do |creative2|
 Then(/^I select second creative as "(.*?)"  on the adaptivecontent page$/) do |creative_name2|
  @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].creative").select creative_name2
+end
+
+Then(/^I select second creative size as "(.*?)" on the adaptivecontent page$/) do |creative_size2|
+ @current_page.select_list_element(:name => "creativeConfigs.itemsForView[1].content").select creative_size2
 end
 
 Then(/^I click on the first group select list on the adaptivecontent page$/) do

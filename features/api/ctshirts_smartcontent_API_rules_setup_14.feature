@@ -408,7 +408,7 @@ And I select "ctshirts" from the sites list on the smartmanager login page
  And I select content location as Home_JSON_IP
  Then I click on the Add content button on the smartcontent location page
  And I pause for 5 seconds
- And I select creative image as "LS2 - INACTIVE" on the smartcontent location page
+ And I select creative image as "Shirts - Casual classic fit - 4for100" on the smartcontent location page
  Then I enter "countrycode="GB"" in the criteria1 position on the smartcontent location page
  Then I click on the Add content button on the smartcontent location page
  Then I enter "default" in the "criteria2" position on the smartcontent location page
