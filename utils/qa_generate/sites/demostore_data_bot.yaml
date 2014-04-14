@@ -17,13 +17,13 @@ show_log: true
 # xpath or id to container that contains all the product page links on a category page
 category_menu: ["ul", ':id => "nav"']
 category_menu_exclude: ["Home", "Electricals", "Entertainment", "Health & Beauty"]
-test_all_categories: true
+test_all_categories: false
 
 # specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
 wait_time_per_category_page: 3
 
 # specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
-max_num_of_categories: 1 
+max_num_of_categories: 3 
 
 # xpath or id to container that contains all the product page links on a category page
 # I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
@@ -40,7 +40,7 @@ product_options:
 wait_time_per_product_page: 2
 
 # specify the max number of products to pick per category - if set to 3, 1 to 3 products will be randomly picked from each category 
-max_num_of_products: 1 
+max_num_of_products: 2 
 
 # specify identifier for the 'add to basket' button element from product page 
 add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']

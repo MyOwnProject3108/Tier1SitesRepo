@@ -15,10 +15,12 @@ site_id: 223
 integration: standard
 
 # site variables
+show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
 category_menu_exclude: ["Topshop Magazine"]
 wait_time_per_category_page: 3
-test_all_categories: false
+test_all_categories: true
+num_of_reloads_per_category: 2
 
 home_page:
   URL: "http://www.topshop.com/"

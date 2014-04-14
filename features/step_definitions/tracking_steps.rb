@@ -73,7 +73,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 		
 		if !exclude_cat
 			catTestResponse = nil
-			plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if show_log
+			# plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if show_log
 			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 			if catTestResponse != nil && catTestResponse.include?("SUCCESS")
 				products = @current_page.product_links_element.link_elements
@@ -156,7 +156,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
   		cat_name = category[0]
 		cat_url = category[1]
 		catTestResponse = nil
-		plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
+		# plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
 		if (categories_to_exclude!=nil)
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
@@ -228,7 +228,7 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	if !(@browser.td(:id => 'trackInfo').exists?) 
 		reload_attempts.times do |attempt|
 			if !@browser.td(:id => 'trackInfo').exists?
-				plog("\tTrackInfo Not Found : Reload attempt #{attempt} ...", "grey") if show_log
+				plog("\tTrackInfo NOT FOUND on #{cat_url} : Reload attempt #{attempt+1} ...", "grey") if show_log
 				@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 				@browser.refresh 
 				@browser.alert.ok if @browser.alert.exists?

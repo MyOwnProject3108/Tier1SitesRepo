@@ -228,9 +228,30 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <% end %>
 <% end %>
 
+<% if site["random_checkout"] %>
+#
+# End to end test - checkout
+#
+<% page = site["random_checkout"] %>
+<% if site["category_menu"] %>
+<% if page["ignore"] %>
+@ignore
+<% end %>
+@random_order
+Scenario: End to end test : All pages on <%= site["pretty_name"] from home page to checkout page are tracked correctly
+    Given I am on the <%= site["site_name"] %> home page
+    When one or more random products are added to basket using link filter: 
+    <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+    And I pause for 5 seconds
+    And I go to the checkout page 
+    <%= extra_steps_rule(page["extra_steps"]) %>
+    Then it should be tracked as a Checkout page
+<% end %>
+<% end %>
+
 <% if site["random_order"] %>
 #
-# End to end test
+# End to end test - order 
 #
 <% page = site["random_order"] %>
 <% if site["category_menu"] %>
@@ -238,7 +259,7 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 @ignore
 <% end %>
 @random_order
-Scenario: Random products from <%= site["pretty_name"] %> are tracked correctly
+Scenario: End to end test: All pages on <%= site["pretty_name"] from home page to order confirmation are tracked correctly
     Given I am on the <%= site["site_name"] %> home page
     When one or more random products are added to basket using link filter: 
     <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
