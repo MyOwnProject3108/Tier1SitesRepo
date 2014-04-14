@@ -11,6 +11,15 @@ database_num: 5
 site_id: 821
 integration: json
 
+#### site level variables ####
+show_log: true
+
+category_menu: ["div", ':class => "main-menu"']
+category_menu_exclude: ["menuitem9999"]
+test_all_categories: true
+
+
+
 home_page:
   URL: "http://www.superdry.com/"
   expected_recs: 0
