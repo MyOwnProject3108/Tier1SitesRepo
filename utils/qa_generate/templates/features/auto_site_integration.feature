@@ -238,7 +238,7 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 @ignore
 <% end %>
 @random_order
-Scenario: End to end test : All pages on <%= site["pretty_name"] from home page to checkout page are tracked correctly
+Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home page to checkout page are tracked correctly
     Given I am on the <%= site["site_name"] %> home page
     When one or more random products are added to basket using link filter: 
     <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
@@ -259,7 +259,7 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] from home page 
 @ignore
 <% end %>
 @random_order
-Scenario: End to end test: All pages on <%= site["pretty_name"] from home page to order confirmation are tracked correctly
+Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home page to order confirmation are tracked correctly
     Given I am on the <%= site["site_name"] %> home page
     When one or more random products are added to basket using link filter: 
     <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>

@@ -6,8 +6,8 @@ pretty_name: AlexandAlexa
 has_content: no
 has_ranking: no
 needs_SPR: no
-username: webtest@mailinator.com
-password: webtest
+username: faiyyaz.sultana@peerius.com
+password: P@ssw0rd
 zero_search_term: abcd
 valid_search_term: red dress
 
@@ -26,11 +26,10 @@ num_of_reloads_per_category: 2
 
 product_links: ["ul", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul[1]"'] 
 product_link_filter: ["class|p-name a-center s12 db r clear"] 
-
 product_options:   
     - [select_list, ':xpath=> "/html/body/div[2]/div[2]/section/div[3]/form/div[2]/div/div/dl/dd/div/select"']
-
-wait_time_per_product_page: 3
+                               
+wait_time_per_product_page: 5
 
 max_num_of_products: 2 
 
@@ -45,7 +44,7 @@ home_page:
   search_field: ["text_field", ':id => "search"']
 
 random_product:
-  expected_recs: 4
+  expected_recs: 1
 
 random_category:
   expected_recs: 0
@@ -53,118 +52,41 @@ random_category:
 category_page:
   URL: "http://www.alexandalexa.com/shoes/baby-toddler-shoes"
   expected_recs: 0
+  
+product_page:
+  URL: "http://www.alexandalexa.com/il-gufo-and-white-cotton-dress-navy"
+  expected_recs: 1
+ # add_to_basket_button: ["button", ':class=> "add-to-cart btn-primary"']
+  
 
 basket_page:
-  URL: "http://showcase.peerius.com/index.php/checkout/cart/"
-  expected_recs: 5
+  URL: "http://www.alexandalexa.com/checkout/cart/"
+  expected_recs: 1
   basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
   basket_remove: ["link", ':class => "btn-remove"']
   
 random_basket:
-  expected_recs: 5
-  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "btn-remove"']
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "button btn-proceed-checkout btn-checkout"']
+  basket_remove: ["link", ':class => "remove-item"']
 
 login_page:
-  URL: "http://showcase.peerius.com/index.php/customer/account/login/"
+  URL: "https://www.alexandalexa.com/customer/account/login/"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
   password_field: ["text_field", ':id=>"pass"']  
   login_submit: ["button", ':id=>"send2"']
 
 searchresults_page:
-  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=dvd"
+  URL: "http://www.alexandalexa.com/catalogsearch/result/?q=dvd"
   expected_recs: 0
-  zerosearch_recs: 5
-
-checkout_page:
-  URL: "http://showcase.peerius.com/index.php/checkout/onepage/"
-  expected_recs: 0
-  extra_steps:
-    - [radio, id, "login:guest"]
-    - [button, id, "onepage-guest-register-button"]
-    - [pause, 2]
-    - [text_field, id, "billing:firstname", "Web"]
-    - [text_field, id, "billing:lastname", "Test"]
-    - [text_field, id, "billing:email", "peeriustest@email.com"]
-    - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-    - [text_field, id, "billing:city", "London"]
-    - [text_field, id, "billing:postcode", "SE1 0HS"]
-    - [text_field, id, "billing:region", "London"]
-    - [select_list, id, "billing:country_id", "United Kingdom"]
-    - [text_field, id, "billing:telephone", "02039723222"]
-    - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [radio, id, "p_method_checkmo"]
-    - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
-
-
-order_page:
-  URL: ""
-  expected_recs: 0
-  extra_steps:
-    - [select_list, id, "billing-address-select", "Web Test, Peerius, 232 Great Guildford Street, London, London SE1 0HS, United Kingdom"]
-    - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [radio, id, "p_method_checkmo"]
-    - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
-
-
-random_order:
-  URL: "http://showcase.peerius.com/index.php"
-  expected_recs: 0
-  extra_steps:
-      - [radio, id, "login:guest"]
-      - [button, id, "onepage-guest-register-button"]
-      - [pause, 2]
-      - [text_field, id, "billing:firstname", "Web"]
-      - [text_field, id, "billing:lastname", "Test"]
-      - [text_field, id, "billing:email", "peeriustest@email.com"]
-      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-      - [text_field, id, "billing:city", "London"]
-      - [text_field, id, "billing:postcode", "SE1 0HS"]
-      - [text_field, id, "billing:region", "London"]
-      - [select_list, id, "billing:country_id", "United Kingdom"]
-      - [text_field, id, "billing:telephone", "02039723222"]
-      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "s_method_freeshipping_freeshipping", optional]
-      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "p_method_checkmo"]
-      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
+  zerosearch_recs: 0
       
-random_checkout:
-  URL: "http://showcase.peerius.com/index.php"
+checkout_page:
+  URL: "https://www.alexandalexa.com/checkout/onepage/"
   expected_recs: 0
   extra_steps:
-      - [radio, id, "login:guest"]
-      - [button, id, "onepage-guest-register-button"]
-      - [pause, 2]
-      - [text_field, id, "billing:firstname", "Web"]
-      - [text_field, id, "billing:lastname", "Test"]
-      - [text_field, id, "billing:email", "peeriustest@email.com"]
-      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-      - [text_field, id, "billing:city", "London"]
-      - [text_field, id, "billing:postcode", "SE1 0HS"]
-      - [text_field, id, "billing:region", "London"]
-      - [select_list, id, "billing:country_id", "United Kingdom"]
-      - [text_field, id, "billing:telephone", "02039723222"]
-      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "s_method_freeshipping_freeshipping", optional]
-      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "p_method_checkmo"]
-      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
+     - [button, id, "shipping-btn"]
+     - [pause, 5]
+    
 
