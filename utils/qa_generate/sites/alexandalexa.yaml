@@ -63,7 +63,7 @@ basket_page:
   URL: "http://www.alexandalexa.com/checkout/cart/"
   expected_recs: 1
   basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "btn-remove"']
+  basket_remove: ["link", ':class => "remove-item"']
   
 random_basket:
   expected_recs: 1

@@ -78,7 +78,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			if catTestResponse != nil && catTestResponse.include?("SUCCESS")
 				products = @current_page.product_links_element.link_elements
 				# plog("\t#{products.length} products","yellow") if show_log
-				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore"
+				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*"
+				products = products.reject{|x| x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
 				products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
 
 				plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log

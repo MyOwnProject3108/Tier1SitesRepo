@@ -11,6 +11,14 @@ database_num: 5
 site_id: 815
 integration: json
 
+#### site level variables ####
+show_log: true
+
+# xpath or id to container that contains all the product page links on a category page
+category_menu: ["ul", ':id => "topNavLevel1"']
+category_menu_exclude: ["Shop All Clothes", "Collections", "Petite", "Accessories", "Style Advice", "Sale", "Viyella"]
+test_all_categories: true
+
 home_page:
   URL: "http://www.ccfashion.co.uk/pws/Home.ice"
   expected_recs: 0
