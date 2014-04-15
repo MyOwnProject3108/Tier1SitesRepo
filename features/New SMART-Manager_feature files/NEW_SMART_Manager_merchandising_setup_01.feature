@@ -48,3 +48,4 @@ Given I am on the smartmanager Newmerchandisingcreate page
   And I pause for 5 seconds
   And I click on Save Setup button on the Recrulesconfig page
  And I pause for 5 seconds
+

@@ -11,7 +11,7 @@ module Smartmanager
 	  text_field(:merchdisplaytitle, :id => "slogan")
 	  #select_list(:pagelocation, :id => "location", :value => "PRODUCT_PAGE")
 	  button(:next_submit, :class => "btn pull-right next")
-	  
+	  button(:save_button, :class => "save_campaign")
 	  
 	  
 	  

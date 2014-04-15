@@ -15,6 +15,7 @@ end
 #end
 
 Then(/^I select location from the Location select list on the Newmerchandisingcreate page$/) do
+
  @current_page.select_list_element(:id => "location").when_present.select "Product Page"
  #@current_page.select_list_element(:id => "location").option(:value => "PRODUCT_PAGE").click
 end
@@ -92,3 +93,10 @@ end
 Then(/^I enter merch rule as "(.*?)" on the Masterruleconfig page$/) do |merchval|
    @current_page.merchval = merchval
 end
+
+Then(/^I click on Save Campaign button on the Newmerchandisingcreate page$/) do
+  @current_page.save_button.click
+end
+
+
+
