@@ -17,9 +17,26 @@ show_log: true
 category_menu: ["div", ':class => "main-menu"']
 category_menu_exclude: ["menuitem9999"]
 test_all_categories: true
+wait_time_per_category_page: 3
+max_num_of_categories: 1
+num_of_reloads_per_category: 5
 
+# xpath or id to container that contains all the product page links on a category page
+# I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
+# as this does not require a product link filter to extract specific links
+# but I have used the follwing to provide an example use of product_link_filter
+product_links: ["ul", ':class => "grid4"'] 
+product_link_filter: ["rel|product"]
+product_options: 
+    - [select_list, ':xpath=> "/html/body/div[3]/div/div[2]/form/div/select"']
+    - [li, ':xpath=> "/html/body/div[3]/div/div[2]/form/div/div/ul/li[1]"']
+                               
+wait_time_per_product_page: 5
+max_num_of_products: 1
 
-
+#add_to_basket_button: ["button", ':xpath=> "//[@id=\"add-to-bag\"]/input[1]"']
+add_to_basket_button: ["button", ':value => "Add to bag"']
+                              
 home_page:
   URL: "http://www.superdry.com/"
   expected_recs: 0
@@ -42,10 +59,15 @@ category_page:
 
 basket_page:
   URL: "https://www.superdry.com/shopping-bag"
-  expected_recs: 4
+  expected_recs: 1
   basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
-  basket_remove: ["button", ':class => "cart-delete button"']  
+  basket_remove: ["button", ':class => "cart-delete button"']
 
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
+  basket_remove: ["button", ':class => "cart-delete button"']
+ 
 login_page:
   URL: "https://www.superdry.com/my-account"
   expected_recs: 0
