@@ -15,8 +15,9 @@ home_page:
   URL: "http://www.greatplains.co.uk/"
   expected_recs: 0
   login_link: ["link", ':href => "/account.htm?mode=myaccount"']
-  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch", :index => 1']
-
+#  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch", :index => 1']
+  search_field: ["text_field", ':id => "site_search"']
+  
 product_page:
     URL: "http://www.greatplains.co.uk/product/womens+Accessories/JGAMB/Amelie+Chunky+Knit+Night+Socks.htm"    
     expected_recs: 1

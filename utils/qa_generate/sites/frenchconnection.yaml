@@ -41,8 +41,16 @@ login_page:
 
 searchresults_page:
   URL: ""
-  expected_recs: 1
+  expected_recs: 0
   zerosearch_recs: 1
+  custom_tracking_test: |
+    Given I am on the frenchconnection home page
+    And I click on the div with id "searchAlert"
+#    And I click on the div with title "SEARCH"
+    And I pause for 6 seconds
+    When I search for "coats"
+    Then it should be tracked as a search results page
+    And the debug info should show no SMART-recs
 
 checkout_page:
   URL: "https://www.frenchconnection.com/checkout.htm"
