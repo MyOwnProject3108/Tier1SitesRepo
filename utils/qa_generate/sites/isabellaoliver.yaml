@@ -11,8 +11,28 @@ database_num: 7
 site_id: 413
 integration: standard
 
+# site variables
+show_log: true
+category_menu: ["ul", ':id => "nav-top-list"']
+category_menu_exclude: ["Looks We Love", "Worn By", "Magazine"]
+wait_time_per_category_page: 5
+test_all_categories: true
+num_of_reloads_per_category: 2
+
+product_links: ["ol", ':xpath=> "//div[@id=\"product-items-content\"]/div/div/div/ol"']
+
+product_link_filter: ["class|quickview-button"]
+product_options: 
+    - [select_list, ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/div[2]/div/div[2]/div/div/ul"']
+         
+     
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
+
+
 home_page:
-  URL: "http://www.isabellaoliver.com/maternity-clothes"
+  URL: "www.isabellaoliver.com/uk"
   expected_recs: 1
   login_link: ["link", ':text => "Account"']
   search_field: ["text_field", ':class => "textinput overtext"']
@@ -20,6 +40,12 @@ home_page:
   # - [text_field, id, "nav-top-search", "dress"]
   #custom_tracking_test: |
     #And I click on the button with id "btn_search_go"
+    
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
 
 product_page:
   URL: "http://www.isabellaoliver.com/uk/shop/maternity-clothes/isabella-oliver-accessories/maternity-obi-belt-mustard.htm"

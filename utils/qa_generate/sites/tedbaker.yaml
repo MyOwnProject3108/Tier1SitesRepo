@@ -11,11 +11,34 @@ database_num: 6
 site_id: 82
 integration: standard
 
+
+# site variables
+show_log: true
+category_menu: ["ul", ':class => "wrap colour_dark_items_active_mobile colour_dark_links_active_desktop colour_light_links_hover_desktop"']
+category_menu_exclude: ["Men's"]
+wait_time_per_category_page: 5
+test_all_categories: true
+num_of_reloads_per_category: 2
+
+product_links: ["div", ':xpath=> "/html/body/div/div[3]/div[2]/div[3]"'] 
+product_link_filter: ["data-productid|*"]
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
+
+
+
 home_page:
   URL: "http://www.tedbaker.com/uk?country=GB"
   expected_recs: 1
   login_link: ["link", ':href => "#account"']
   search_field: ["text_field", ':id => "search"']
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
 
 product_page:
   URL: "http://www.tedbaker.com/uk/Womens/Accessories/Bags/LUCON-Small-shopper-bag-Pale-Green/p/108369-38-PALE-GREEN"

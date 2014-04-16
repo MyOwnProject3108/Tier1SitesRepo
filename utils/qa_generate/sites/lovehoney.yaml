@@ -16,23 +16,12 @@ show_log: false
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["ul", ':id => "nav"']
-category_menu_exclude: ["Home", "Gifts", "Sale", "Community", "Help"]
-test_all_categories: false
-
-# specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
-wait_time_per_category_page: 3
-
-# specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
-max_num_of_categories: 5 
-
-# number of times the page needs to be reloaded if trackInfo is not readable when page is loaded first time
+category_menu_exclude: ["Gifts", "Sale", "Community", "Help"]
+test_all_categories: true
+wait_time_per_category_page: 5
+max_num_of_categories: 1 
 num_of_reloads_per_category: 2
 
-# xpath or id to container that contains all the product page links on a category page
-# I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
-# as this does not require a product link filter to extract specific links
-# but I have used the follwing to provide an example use of product_link_filter
-#product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
 product_links: ["div", ':xpath=> "/html/body/div[2]/div[2]/div[3]/div/ol/li/div[7]"'] 
 product_link_filter: ["class|fn"] 
 product_options: 
