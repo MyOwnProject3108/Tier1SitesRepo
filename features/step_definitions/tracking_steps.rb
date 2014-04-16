@@ -79,10 +79,21 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			if catTestResponse != nil && catTestResponse.include?("SUCCESS")
 				products = @current_page.product_links_element.link_elements
 				# plog("\t#{products.length} products","yellow") if show_log
-				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*"
-				products = products.reject{|x| x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
+				
+				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
+				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
+				# Reject links that DO NOT have the attribute with name <filter_attrib_name> where the attribute value <filter_attrib_val> is indeterminate or random
+				products = products.reject{|x| !x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
+				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>
+				products = products.reject{|x| !x.attribute(filter_attrib_name).include?(filter_attrib_val.gsub("%",'')) } if filter_attrib_val.include?('%')
+				# Collect all links that have an attributes "title" and "href"
 				products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
-
+				
+				if products.length == 0
+					fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_name}(#{cat_url}) using link filter => #{link_filter}"))
+					break
+				end
+				
 				plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
 				num_products.times do |prod_ctr| 
 					product = products[rand(0..products.length-1)]
@@ -127,12 +138,12 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 					cat_ctr = cat_ctr + 1 
 					test_pass = false
 				else
-					plog("\t\tIGNORING #{cat_name} (#{cat_url}) because it is tracked as " + catTestResponse.split("|")[2].upcase + " page","grey")
+					plog("\tIGNORING " + catTestResponse.split("|")[2].upcase + " PAGE " + "#{cat_name} (#{cat_url})" ,"grey")
 				end
 			end 
 			
 		else
-			plog("\tIgnoring Excluded CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
+			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
 		end
   	end
     test_pass.should == true if ENV['debugcuke'] 

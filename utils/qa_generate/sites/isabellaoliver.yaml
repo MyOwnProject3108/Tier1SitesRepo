@@ -22,7 +22,7 @@ ignore_cat_tracked_as_other_page: true
 
 product_links: ["ol", ':xpath=> "//div[@id=\"product-items-content\"]/div/div/div/ol"']
 
-product_link_filter: ["class|quickview-button"]
+product_link_filter: ["title|View full details%"]
 product_options: 
     - [select_list, ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/div[2]/div/div[2]/div/div/ul"']
          
