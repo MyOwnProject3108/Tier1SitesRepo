@@ -1,0 +1,2 @@
+class PeeriusConfigurationError < StandardError
+end
