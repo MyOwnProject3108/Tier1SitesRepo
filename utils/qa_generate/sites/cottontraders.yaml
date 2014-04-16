@@ -11,12 +11,43 @@ database_num: 0
 site_id: 72
 integration: standard
 
+#### site level variables ####
+show_log: false
+
+#xpath or id to container that contains all the product page links on a category page
+category_menu: ["ul", ':id => "topnavstandard"']
+category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footwear", "Accessories", "Collections", "Overseas","Men's Tops"]
+test_all_categories: true
+
+wait_time_per_category_page: 3
+max_num_of_categories: 5 
+num_of_reloads_per_category: 2
+
+#product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
+product_links: ["div", ':xpath=> "html/body/div/div/div[2]/div[5]/div/div[6]/ul/li/form/div/div[2]"'] 
+product_link_filter: ["class|catswatch"] 
+product_options: 
+     - [select_list, ':radio=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
+
+wait_time_per_product_page: 2
+
+max_num_of_products: 2 
+
+add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+
+
 home_page:
   URL: "http://www.cottontraders.co.uk/"
   expected_recs: 1 
   login_link: ["link", ':id => "Lustype_loginlink"']
   search_field: ["text_field", ':id => "q"']
 
+random_product:
+  expected_recs: 5
+  
+random_category:
+  expected_recs: 0
+  
 product_page:
   URL: "http://www.cottontraders.com/stretch-turtle-neck-top/invt/aa12620"
   expected_recs: 1
