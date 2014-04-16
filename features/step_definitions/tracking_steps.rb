@@ -60,6 +60,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
   	wait_time_per_product = @current_page.get_wait_time_per_product_page
   	
   	show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
+  	ignore_cat_tracked_as_other_page = (@current_page.ignore_cat_tracked_as_other_page && @current_page.ignore_cat_tracked_as_other_page ==  true) ? true : false
 	cat_ctr = 1
   	while cat_ctr <= num_categories
   		category = categories[rand(0..categories.length-1)]
@@ -115,15 +116,21 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 							plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
 						end
 					else
-						plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text} - FAILED","red")
+						plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text.upcase} - FAILED","red")
 						test_pass = false
 					end 
 				end
+				cat_ctr = cat_ctr + 1
 			else
-				plog("\t\t#{cat_name}:\t\t#{cat_url} \t=> tracked as " + catTestResponse.split("|")[2] + " page - FAILED","red")
-				test_pass = false
+				if !ignore_cat_tracked_as_other_page
+					plog("\t\t#{cat_name}:\t\t#{cat_url} \t=> tracked as " + catTestResponse.split("|")[2].upcase + " page - FAILED","red")
+					cat_ctr = cat_ctr + 1 
+					test_pass = false
+				else
+					plog("\t\tIGNORING #{cat_name} (#{cat_url}) because it is tracked as " + catTestResponse.split("|")[2].upcase + " page","grey")
+				end
 			end 
-			cat_ctr = cat_ctr + 1
+			
 		else
 			plog("\tIgnoring Excluded CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
 		end

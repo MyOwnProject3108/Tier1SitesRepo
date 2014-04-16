@@ -104,6 +104,14 @@ module <%= site["site_name"].capitalize %>
 			return false
 		<% end %>
 		end 
+		
+		def ignore_cat_tracked_as_other_page
+		<% if site["ignore_cat_tracked_as_other_page"] %>
+			return <%= site["ignore_cat_tracked_as_other_page"] %>
+		<% else %>
+			return false
+		<% end %>
+		end 
     end  
 end
 <% end %>

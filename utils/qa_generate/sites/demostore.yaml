@@ -28,6 +28,12 @@ max_num_of_categories: 1
 # number of times the page needs to be reloaded if trackInfo is not readable when page is loaded first time
 num_of_reloads_per_category: 2
 
+# If category page tracking is not very reliable ,i.e., there are a number of category pages that are tracked as 'Other' page 
+# OR if the site genuinley has a number of links that can be accessed from the home page navigation that are NOT category pages
+# Then the following flag if set to true will ignore if a randomly seleceted link is not a category page and will retry until a category page is found
+# The default is false
+ignore_cat_tracked_as_other_page: true
+
 # xpath or id to container that contains all the product page links on a category page
 # I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
 # as this does not require a product link filter to extract specific links
