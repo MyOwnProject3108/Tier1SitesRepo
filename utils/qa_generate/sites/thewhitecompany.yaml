@@ -11,12 +11,38 @@ database_num: 3
 site_id: 647
 integration: standard
 
+#### site level variables ####
+show_log: true
+
+#xpath or id to container that contains all the product page links on a category page
+category_menu: ["div", ':id => "site_container"']
+category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footwear", "Accessories", "Collections", "Overseas","Men's Tops"]
+test_all_categories: false
+
+wait_time_per_category_page: 3
+max_num_of_categories: 10 
+num_of_reloads_per_category: 2
+
+#product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
+product_links: ["ul", ':xpath=> "/html/body/div/div[3]/form/section/ul"']  
+product_link_filter: ["class|text-center"] 
+wait_time_per_product_page: 2
+max_num_of_products: 3 
+add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+        
+#### page level config ####
 home_page:
   URL: "http://www.thewhitecompany.com/"
   expected_recs: 0
   login_link: ["link", ':link => "Sign in . register"']
   search_field: ["text_field", ':id => "in_site_search"']
 
+random_product:
+  expected_recs: 3
+  
+random_category:
+  expected_recs: 0
+  
 product_page:
   URL: "http://www.thewhitecompany.com/candles-and-fragrance/accessories/ceramic-bottle-arch--white/"
   expected_recs: 2
@@ -35,6 +61,11 @@ basket_page:
   basket_checkout: ["button", ':id => "in_btnCheckout"']
   basket_remove: ["image", ':id => "remove"']  
 
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["button", ':id => "in_btnCheckout"']
+  basket_remove: ["image", ':id => "remove"']
+  
 login_page:
   URL: "https://www.thewhitecompany.com/login.aspx"
   expected_recs: 0
@@ -59,4 +90,19 @@ checkout_page:
     - [select_list, id, "sl_year", "2015"]
     - [text_field, id, "in_cscCode", "123"]
     - [button, id, "in_btnPay"]
+   
+random_checkout:
+  URL: "http://www.thewhitecompany.com/"
+  expected_recs: 0
+  extra_steps:
+      - [button, id, "checkout_submit_bottom"]
+      - [pause, 2]
+      - [link, id, "btn_register"]
+  #    - [pause, 2]
+  #    - [select_list, id, "address_title", "Mr"]
+  #    - [text_field, id, "address_first_name", "P"]
+  #    - [text_field, id, "address_surname", "Eerius"]
+  #    - [text_field, id, "address_main_telephone", "02033974940"]
+  #    - [p, class, "enter_manual_address"]
+  #    - [text_field, class, "text address_line_1", "Units 207-211"]
    
