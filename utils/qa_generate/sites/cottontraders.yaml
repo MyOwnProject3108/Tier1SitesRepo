@@ -20,20 +20,20 @@ category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footw
 test_all_categories: false
 
 wait_time_per_category_page: 5
-max_num_of_categories: 10 
+max_num_of_categories: 1 
 num_of_reloads_per_category: 2
 
 #product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
 product_links: ["ul", ':xpath=> "//div[@id=\"searchResults\"]/div[6]/ul"'] 
 product_link_filter: ["class|moredetail"] 
-#product_options: 
-#     - [select_list, ':radio=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
+product_options: 
+    - [table, ':xpath=> "//div[@id=\"grid\"]/form/table[1]"']
 
 wait_time_per_product_page: 2
 
-max_num_of_products: 2 
+max_num_of_products: 1 
 
-add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+add_to_basket_button: ["link", ':xpath=> "//div[@id=\"prodpageBasketButton\"]/a"']
 
 
 home_page:
@@ -47,6 +47,9 @@ random_product:
   
 random_category:
   expected_recs: 0
+  
+random_basket:
+  expected_recs: 2
   
 product_page:
   URL: "http://www.cottontraders.com/stretch-turtle-neck-top/invt/aa12620"

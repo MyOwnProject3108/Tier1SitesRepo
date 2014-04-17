@@ -65,7 +65,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
   	while cat_ctr <= num_categories
   		category = categories[rand(0..categories.length-1)]
   		cat_name = category[0]
-		cat_url = category[1]
+		cat_url = category[1] #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
 		exclude_cat = false
 		if (@current_page.get_categories_to_exclude_list.length>0)
 			cats_to_exclude = @current_page.get_categories_to_exclude_list*","
@@ -102,23 +102,14 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 					prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
 					# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
 					@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-					@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html'
+					@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html' "http://www.cottontraders.com/womens-shirts+blouses/34-sleeve-spot-print-blouse/invt/ab10892" #
 					sleep wait_time_per_product
 
 					if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
 						if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
 							plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
 							if @current_page.get_num_of_product_options > 0
-								x = 1
-								while x <= @current_page.get_num_of_product_options do
-									sel_list = eval('@current_page.product_option'+x.to_s+'_element')
-									if sel_list.exists?
-										option = sel_list.options[rand(1..sel_list.options.length-1)].text
-										plog("\tSelected option => #{option} ...","magenta") if show_log
-										sel_list.when_present.select option
-									end
-									x = x+1
-								end
+								select_product_options(show_log)
 							end
 							@current_page.add_to_basket_element.when_present.click
 							plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
@@ -270,6 +261,29 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	end
 	return testResponse
 end
+
+def select_product_options(show_log)
+	x = 1
+	while x <= @current_page.get_num_of_product_options do
+		product_options = eval('@current_page.product_option'+x.to_s+'_element')
+		preselect_element = eval('@current_page.preselect_option'+x.to_s+'_element') if @current_page.get_num_of_preselect_options > 0
+		#plog("LIST IS A #{product_options.class} with parent #{product_options.parent} ","blue")
+		prod_links = product_options.link_elements if product_options.is_a?(PageObject::Elements::Table)
+		if product_options.exists?
+			option = product_options.options[rand(1..product_options.options.length-1)].text if product_options.is_a?(PageObject::Elements::SelectList)
+			option = product_options.lis[rand(1..product_options.lis.length-1)] if product_options.is_a?(PageObject::Elements::UnorderedList)
+			option = prod_links[rand(1..prod_links.length-1)] if product_options.is_a?(PageObject::Elements::Table)
+			plog("\tSelected option => #{option.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
+			product_options.when_present.select option if product_options.is_a?(PageObject::Elements::SelectList)
+			preselect_elem.click if @current_page.get_num_of_preselect_options > 0
+			option.click if product_options.is_a?(PageObject::Elements::UnorderedList)
+			option.click if product_options.is_a?(PageObject::Elements::Table)
+		end
+		x = x+1
+	end
+end
+
+
 
 
 #Then /^the debug info should show at least (\d+) SMART\-content$/ do |expected_content|
