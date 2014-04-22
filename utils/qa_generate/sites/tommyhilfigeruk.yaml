@@ -1,5 +1,5 @@
-site_name: tommyhilfiger
-pretty_name: Tommy Hilfiger
+site_name: tommyhilfigeruk
+pretty_name: Tommy Hilfiger UK
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -10,6 +10,23 @@ valid_search_term: shirt
 database_num: 6
 site_id: 82
 integration: json
+
+#### site level variables ####
+show_log: true
+category_menu: ["ul", ':class => "mainMenu"']
+category_menu_exclude: ["Hilfiger Denim", "Features"]
+test_all_categories: true
+wait_time_per_category_page: 3
+max_num_of_categories: 1
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+
+product_links: ["div", ':id=> "mansory"'] 
+product_link_filter: ["class|swatchanchor selected"] 
+wait_time_per_product_page: 2
+max_num_of_products: 2
+add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a  "']
+
 
 home_page:
   URL: "http://uk.tommy.com/"
