@@ -48,7 +48,6 @@ end
 # +add_to_basket+:: boolean - true if each selected product needs to be added to basket else false
 def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_basket)
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
-	
 	link_filter = link_filter.raw.flatten!
 	filter_attrib_name = link_filter[0]
 	filter_attrib_val = link_filter[1]
@@ -138,6 +137,37 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 		end
   	end
     test_pass.should == true if ENV['debugcuke'] 
+end
+
+def select_product_options(show_log)
+	x = 1
+	while x <= @current_page.get_num_of_product_options do
+		product_options = eval('@current_page.product_option'+x.to_s+'_element')
+		if product_options.exists?
+			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
+			# plog("LIST IS A #{product_options.class} with parent #{product_options.parent} ","blue") if show_log
+	
+			case 
+			when product_options.is_a?(PageObject::Elements::SelectList)
+				option = product_options.options[rand(1..product_options.options.length-1)].text 
+				plog("\tSelected option => #{option} ...","magenta") if show_log
+				product_options.when_present.select option 
+			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
+				prod_links = product_options.link_elements 
+				option = prod_links[rand(0..prod_links.length-1)] 
+				option.click
+			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
+				option = product_options.lis[rand(1..product_options.lis.length-1)] 			
+				product_options_preselect.click if @current_page.has_product_options_preselect
+				plog("\tPre-selected => #{product_options_preselect.html}","magenta") if show_log
+				plog("\tSelected option => #{option.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
+				option.click 
+			else
+				# do nothing
+			end
+	 	end
+		x = x+1
+	end
 end
 
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file
@@ -261,29 +291,6 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	end
 	return testResponse
 end
-
-def select_product_options(show_log)
-	x = 1
-	while x <= @current_page.get_num_of_product_options do
-		product_options = eval('@current_page.product_option'+x.to_s+'_element')
-		preselect_element = eval('@current_page.preselect_option'+x.to_s+'_element') if @current_page.get_num_of_preselect_options > 0
-		#plog("LIST IS A #{product_options.class} with parent #{product_options.parent} ","blue")
-		prod_links = product_options.link_elements if product_options.is_a?(PageObject::Elements::Table)
-		if product_options.exists?
-			option = product_options.options[rand(1..product_options.options.length-1)].text if product_options.is_a?(PageObject::Elements::SelectList)
-			option = product_options.lis[rand(1..product_options.lis.length-1)] if product_options.is_a?(PageObject::Elements::UnorderedList)
-			option = prod_links[rand(1..prod_links.length-1)] if product_options.is_a?(PageObject::Elements::Table)
-			plog("\tSelected option => #{option.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
-			product_options.when_present.select option if product_options.is_a?(PageObject::Elements::SelectList)
-			preselect_elem.click if @current_page.get_num_of_preselect_options > 0
-			option.click if product_options.is_a?(PageObject::Elements::UnorderedList)
-			option.click if product_options.is_a?(PageObject::Elements::Table)
-		end
-		x = x+1
-	end
-end
-
-
 
 
 #Then /^the debug info should show at least (\d+) SMART\-content$/ do |expected_content|

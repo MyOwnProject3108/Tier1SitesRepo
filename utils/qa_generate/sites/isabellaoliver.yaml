@@ -24,8 +24,9 @@ product_links: ["ol", ':xpath=> "//div[@id=\"product-items-content\"]/div/div/di
 
 product_link_filter: ["title|View full details%"]
 product_options: 
-    - [select_list, ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/div[2]/div/div[2]/div/div/ul"']
-         
+    - [ul, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/div/ul"' ]
+product_options_preselect:
+    - [a, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/a"']         
      
 wait_time_per_product_page: 2
 max_num_of_products: 1 
@@ -46,6 +47,9 @@ random_product:
   expected_recs: 1
 
 random_category:
+  expected_recs: 0
+
+random_basket:
   expected_recs: 0
 
 product_page:

@@ -32,10 +32,14 @@ module <%= site["site_name"].capitalize %>
 		 site["product_options"].each_with_index do |option, idx| 
 		%>
 		<%= option[0] %>(:product_option<%=idx+1%>, <%= option[1] %>)
-		<% if option[2] %> 
-		<%= option[2].partition('|').first %>(:preselect_option<%=idx+1%>, <%= option[2].partition('|').last %>)
-		<% end
-		end 
+		<% end 
+	    end %>
+	    
+	    <% if site["product_options_preselect"] 
+		 site["product_options_preselect"].each_with_index do |option_preselect, idx| 
+		%>
+		<%= option_preselect[0] %>(:product_options_preselect<%=idx+1%>, <%= option_preselect[1] %>)
+		<% end 
 	    end %>
       	
 		#page elements - retained for backward compatibility
@@ -100,11 +104,11 @@ module <%= site["site_name"].capitalize %>
 		<% end %>		
 		end
 		
-		def get_num_of_preselect_options
-		<% if site["preselect_options"] %>		
-			return <%= site["preselect_options"].length %>
+		def has_product_options_preselect
+		<% if site["product_options_preselect"] %>		
+			return true
 		<% else %>
-			return 0
+			return false
 		<% end %>		
 		end
 		

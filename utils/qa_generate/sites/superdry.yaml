@@ -28,8 +28,9 @@ num_of_reloads_per_category: 5
 product_links: ["ul", ':class => "grid4"'] 
 product_link_filter: ["rel|product"]
 product_options: 
-    - [ul, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/ul"', 'span|:xpath=> "//div[@id=\"js_dropdown_product_id\"]/span[1]"']
- #  - [li, ':xpath=> "/html/body/div[3]/div/div[2]/form/div/div/ul/li[1]"']
+    - [ul, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/ul"']
+product_options_preselect:
+    - [span, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/span[1]"']
                                
 wait_time_per_product_page: 5
 max_num_of_products: 1

@@ -12,7 +12,7 @@ site_id: 72
 integration: standard
 
 #### site level variables ####
-show_log: false
+show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "topnavstandard"']
