@@ -7,12 +7,19 @@ WEBDRIVER=true
 web_proxy = ENV["proxy"]
 web_proxy = FigNewton.proxy("") unless web_proxy
 
-if ENV["headless"] then
+if ENV['HEADLESS'] == 'true'
+  require 'headless'
+  headless = Headless.new
+  headless.start
+  at_exit do
+    headless.destroy
+  end
+elsif ENV['WINHEADLESS'] 
   caps = Selenium::WebDriver::Remote::Capabilities.phantomjs
   caps["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0"
   caps["phantomjs.cli.args"] = "--proxy=#{web_proxy} --webdriver-loglevel='DEBUG'" if web_proxy and web_proxy != ""          
   browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps
-elsif ENV["chrome"] then
+elsif ENV['chrome'] 
   proxy = "--proxy-server=#{web_proxy}" if web_proxy and web_proxy != ""
   #browser = Watir::Browser.new :chrome, :switches => [proxy]
   browser = Watir::Browser.new :chrome  

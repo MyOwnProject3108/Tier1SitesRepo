@@ -10,8 +10,10 @@ module PeeriusDebugInfo
 	  end
 	  # Sometimes if we refresh search/checkout page it pops up an alert box
 	  # If alert box popped up, click ok and 'resend the value' - added by Tom
-	  if @browser.alert.exists?
-		@browser.alert.ok
+	  if !ENV["headlessw"]
+		  if @browser.alert.exists? &&
+			@browser.alert.ok
+		  end
 	  end
       @browser.td(:id => 'trackInfo').wait_until_present(60)
       return @browser.td(:id => 'trackInfo').text 

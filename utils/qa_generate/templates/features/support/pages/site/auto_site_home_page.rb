@@ -21,6 +21,9 @@ module <%= site["site_name"].capitalize %>
 		<% if site["category_menu"] %>
 		<%= site["category_menu"][0] %>(:category_menu, <%= site["category_menu"][1] %>)
 		<% end %>
+		<% if site["category_menu_preselect"] %>
+		<%= site["category_menu_preselect"][0] %>(:category_menu_preselect, <%= site["category_menu_preselect"][1] %>)
+		<% end %>
 		<% if site["product_links"] %>
 		<%= site["product_links"][0] %>(:product_links, <%= site["product_links"][1] %>)
 		<% end %>
