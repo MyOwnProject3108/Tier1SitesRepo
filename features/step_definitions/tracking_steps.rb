@@ -81,6 +81,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
 				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
+				# Reject links that DO have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>  Added by fayaz
+#				products = products.reject{|x| x.attribute(filter_attrib_name) = filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%') && !filter_attrib_val.include?('%')
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> where the attribute value <filter_attrib_val> is indeterminate or random
 				products = products.reject{|x| !x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>

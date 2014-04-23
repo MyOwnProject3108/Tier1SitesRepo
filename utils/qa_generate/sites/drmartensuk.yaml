@@ -11,12 +11,40 @@ database_num: 6
 site_id: 863
 integration: standard
 
+
+# site variables
+show_log: true
+category_menu: ["div", ':id => "nav_main"']
+category_menu_exclude: ["Industrial","Clearance","Stand for Something","Like us on Facebook","Follow us on Twitter","Contact"]
+test_all_categories: true
+wait_time_per_category_page: 3
+max_num_of_categories: 1
+num_of_reloads_per_category: 5
+
+product_links: ["div", ':xpath=> "/html/body/div[3]/div/div[5]/div[3]/div[2]/div[3]"'] 
+product_link_filter: ["ignore|ignore"]
+product_options: 
+  #  - [ul, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/div/ul"' ]
+     - [div, ':xpath=> "/html/body/div[3]/div/div[5]/div[3]/div/div[2]/div[4]/div"']
+
+     
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["link", ':id => "prod_add_to_cart_bt"']
+
+
 home_page:
   URL: "http://uk.drmartens.com/uk/"
   expected_recs: 0
   login_link: ["link", ':href => "/uk/login"']
   search_field: ["text_field", ':id => "search"']
 
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
 product_page:
   URL: "http://uk.drmartens.com/uk/Accessories/Accessories-Shoe-Care/Dr-Martens-Ultra-Protector/p/AC034001"
   expected_recs: 3
@@ -32,7 +60,13 @@ category_page:
 
 basket_page:
   URL: "http://uk.drmartens.com/uk/cart"
-  expected_recs: 6
+  expected_recs: 1
+  basket_checkout: ["button", ':id=>"checkoutButtonBottom"']
+  basket_remove: ["link", ':href=>"javascript:submitRemove(0);"']
+  
+random_basket:
+  URL: "http://uk.drmartens.com/uk/cart"
+  expected_recs: 1
   basket_checkout: ["button", ':id=>"checkoutButtonBottom"']
   basket_remove: ["link", ':href=>"javascript:submitRemove(0);"']
 
@@ -65,4 +99,13 @@ checkout_page:
    # - [checkbox, id, "chkTermsRead"]
    # - [link, id, "paymentProceed"]
    # - [link, id, "confirmProceed"]
+   
+random_checkout:
+  URL: "http://www.superdry.com/"
+  expected_recs: 0
+  extra_steps:
+      - [link, class, "checkout-link checkout_btn"]
+      - [pause, 2]
+      - [link, class, "checkout-link continuecheckout_btn"]
+      - [pause, 2]
     
