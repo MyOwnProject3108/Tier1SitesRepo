@@ -31,9 +31,6 @@ Background:
 <% end %>
 @<%= page_name %>_page
 Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
-<% if page.has_key?("custom_tracking_test") %>
-  <%= page["custom_tracking_test"] %>
-<% else %>
   Given I am on the <%= site["site_name"] %> <%= page_name %> page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
@@ -41,7 +38,6 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
   <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a <%= page_name %> page
   <%= expect_recs_rule(page["expected_recs"]) %>
-<% end %>
 <% end %>
 <% end %>
 
@@ -55,18 +51,17 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% end %>
 @random_product
 Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %> is/are tracked correctly
-<% if page.has_key?("custom_tracking_test") %>
-  <%= page["custom_tracking_test"] %>
-<% else %>
   Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
+<% end %>
+<% if site["category_menu_preselect"] %>
+  And I visit the first top navigation page 
 <% end %>
   <%= extra_steps_rule(page["extra_steps"]) %>
   Then each randomly selected product should be tracked as a Product page using link filter: 
   <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
   <%= expect_recs_rule(page["expected_recs"]) %>
-<% end %>
 <% end %>
 
 <% if site["random_category"] %>
@@ -79,17 +74,16 @@ Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %>
 <% end %>
 @random_category
 Scenario: A random category page from <%= site["pretty_name"] %> is tracked correctly
-<% if page.has_key?("custom_tracking_test") %>
-  <%= page["custom_tracking_test"] %>
-<% else %>
-  Given I am on the <%= site["site_name"] %> home page
+Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
+<% end %>
+<% if site["category_menu_preselect"] %>
+  And I visit the first top navigation page 
 <% end %>
   <%= extra_steps_rule(page["extra_steps"]) %>
   Then each randomly selected category should be tracked as a Category page
   <%= expect_recs_rule(page["expected_recs"]) %>
-<% end %>
 <% end %>
 
 <% if site["basket_page"] && site["product_page"] %>
@@ -102,9 +96,6 @@ Scenario: A random category page from <%= site["pretty_name"] %> is tracked corr
 <% end %>
 @basket_page
 Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
-<% if page.has_key?("custom_tracking_test") %>
-  <%= page["custom_tracking_test"] %>
-<% else %>
   Given I am on the <%= site["site_name"] %> basket page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
@@ -118,7 +109,6 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
   Then it should be tracked as a basket page 
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
-<% end %>
 
 <% if site["random_basket"] %>
 #
@@ -130,16 +120,16 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
 <% end %>
 @random_basket
 Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a random product is added to basket
-#    Given I am on the <%= site["site_name"] %> basket page
+    Given I am on the <%= site["site_name"] %> home page
   <% if site["needs_SPR"] or page["needs_SPR"] %>
     And I use the SPR key
   <% end %>
-#    And I remove all of the products from the basket
-#    And I go to the home page
-    Given I am on the <%= site["site_name"] %> home page
-    And one or more random products are added to basket using link filter: 
+  <% if site["category_menu_preselect"] %>
+    And I visit the first top navigation page 
+  <% end %>
+    And I add one or more random products to basket using link filter: 
     <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
-	And I pause for 2 seconds
+    And I pause for 2 seconds
     And I go to the basket page
     Then it should be tracked as a basket page 
     <%= expect_recs_rule(page["expected_recs"]) %>
@@ -155,9 +145,6 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a ran
 <% end %>
 @checkout_page
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
-<% if page.has_key?("custom_tracking_test") %>
-  <%= page["custom_tracking_test"] %>
-<% else %>
   Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
@@ -182,7 +169,6 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   Then it should be tracked as a Checkout page
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
-<% end %>
 
 <% if site["searchresults_page"] %>
 #
@@ -194,17 +180,14 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% end %>
 @search_page
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
-<% if page.has_key?("custom_tracking_test") %>
-<%= page["custom_tracking_test"] %>
-<% else %>
    Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
    And I use the SPR key
 <% end %>
+<%= extra_steps_rule(page["extra_steps"]) %>
    When I search for "<%= site["valid_search_term"] %>"
    Then it should be tracked as a search results page
    <%= expect_recs_rule(page["expected_recs"]) %>
-<% end %>
 <% end %>
 
 <% if site["zerosearch_recs"] %>
@@ -216,18 +199,15 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 @ignore
 <% end %>
 Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
-<% if page.has_key?("custom_tracking_test") %>
-<%= page["custom_tracking_test"] %>
-<% else %>
    Given I am on the <%= site["site_name"] %> home page
-   <% if site["needs_SPR"] or page["needs_SPR"] %>
+<% if site["needs_SPR"] or page["needs_SPR"] %>
    And I use the SPR key
-   <% end %>
+<% end %>
+   <%= extra_steps_rule(page["extra_steps"]) %>
    When I search for "<%= site["zero_search_term"] %>"
    And I pause for 5 seconds
    Then it should be tracked as a search results page
    <%= expect_recs_rule(page["zerosearch_recs"]) %>
-<% end %>
 <% end %>
 
 <% if site["random_checkout"] %>
@@ -241,13 +221,19 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <% end %>
 @random_checkout
 Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home page to checkout page are tracked correctly
-    Given I am on the <%= site["site_name"] %> home page
-    When one or more random products are added to basket using link filter: 
-    <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
-    And I pause for 5 seconds
-    And I go to the basket page 
-    <%= extra_steps_rule(page["extra_steps"]) %>
-    Then it should be tracked as a Checkout page
+   Given I am on the <%= site["site_name"] %> home page
+<% if site["needs_SPR"] or page["needs_SPR"] %>
+   And I use the SPR key
+<% end %>
+<% if site["category_menu_preselect"] %>
+   And I visit the first top navigation page 
+<% end %>
+   And I add one or more random products to basket using link filter: 
+   <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+   And I pause for 5 seconds
+   And I go to the basket page 
+   <%= extra_steps_rule(page["extra_steps"]) %>
+   Then it should be tracked as a Checkout page
 <% end %>
 <% end %>
 
@@ -263,7 +249,13 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home pa
 @random_order
 Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home page to order confirmation are tracked correctly
     Given I am on the <%= site["site_name"] %> home page
-    When one or more random products are added to basket using link filter: 
+<% if site["needs_SPR"] or page["needs_SPR"] %>
+    And I use the SPR key
+<% end %>
+<% if site["category_menu_preselect"] %>
+    And I visit the first top navigation page 
+<% end %>
+    And I add one or more random products to basket using link filter: 
     <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
     And I pause for 5 seconds
     And I go to the checkout page 
@@ -282,11 +274,23 @@ Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home pag
 <% end %>
 @all_categories
 Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
+<% if site["category_menu_preselect"] %>
+<% site["num_of_category_menu_preselect_items"].times  do |page_index| %>
+    Given I am on the <%= site["site_name"] %> home page
+    And I visit the top navigation page with index: 
+    |<%= page_index %>|
+    Then all categories should be tracked as Category pages except:
+<% site["category_menu_exclude"].each do |excluded_category| %>
+    |<%= excluded_category %>|
+<% end %>
+<% end %>
+<% else %>
     Given I am on the <%= site["site_name"] %> home page
     Then all categories should be tracked as Category pages except:
-    <% site["category_menu_exclude"].each do |excluded_category| %>
+<% site["category_menu_exclude"].each do |excluded_category| %>
     |<%= excluded_category %>|
-    <% end %>
+<% end %>
+<% end %>
 <% end %>
 
 
