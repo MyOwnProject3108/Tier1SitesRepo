@@ -216,7 +216,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
   		cat_name = category[0]
 		cat_url = category[1]
 		catTestResponse = nil
-		plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
+		plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log && ENV["DEBUG"]
 		if (categories_to_exclude!=nil)
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
