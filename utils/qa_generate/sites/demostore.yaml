@@ -106,6 +106,10 @@ searchresults_page:
   expected_recs: 0
   zerosearch_recs: 5
 
+checkout_page:
+  URL: "http://showcase.peerius.com/index.php/checkout/onepage/"
+  expected_recs: 0
+
 order_page:
   URL: ""
   expected_recs: 0

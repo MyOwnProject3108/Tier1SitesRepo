@@ -28,8 +28,16 @@ Then /^each randomly selected product should be tracked as a Product page using 
 	test_random_product_page_and_add_to_basket_tracking(link_filter,false)
 end
 
-When /^one or more random products are added to basket using link filter:$/ do |link_filter|
+When /^I add one or more random products to basket using link filter:$/ do |link_filter|
   	test_random_product_page_and_add_to_basket_tracking(link_filter,true)
+end
+
+When /^I visit the top navigation page with index:$/ do |page_index|
+   	visit_nav_page(page_index, true)
+end
+
+When /^I visit the first top navigation page$/ do 
+   	visit_nav_page(0, false)
 end
 
 When /^I auto-generate (.+) using "(.+)" for the (.+) with (.+) "(.+)"$/ do |data_type, value, element, locator, locator_value|
@@ -40,7 +48,18 @@ When /^I auto-generate (.+) using "(.+)" for the (.+) with (.+) "(.+)"$/ do |dat
 	@browser.send(element.to_sym, locator.to_sym => locator_value).set(gen_value)
 end
 
-
+def visit_nav_page(page_index,is_table_data)
+    show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
+    nav_elements = @current_page.category_menu_preselect_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
+    #nav_element = nav_elements.flatten!
+    nav_link = nav_elements[page_index.raw.flatten![0].to_i] if is_table_data
+    nav_link = nav_elements[page_index] if !is_table_data
+    plog("\tNO CAT LINKS on Home Page - USING nav link => #{nav_link[0]} :: #{nav_link[1]}", "yellow") if show_log
+	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+	@browser.goto nav_link[1] 
+end
+	
+	
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file
 # and randomly opens the specified number of categories and then opens the specified number of product pages from each per category 
 # Params:
@@ -177,13 +196,14 @@ end
 # +categories_to_exclude+:: a collection of categories that need to be excluded (applies only if test_all_categories is set to true)
 # +test_all_categories+:: boolean - true if all catgeories need to be tested else false
 def test_random_category_or_all_category_tracking(excluded_categories,test_all_categories)
+    show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
+
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
     categories_to_exclude = nil
     categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil && test_all_categories
 
 	test_pass = true 
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
-	show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 	  	
 	num_categories = categories.length
 	tracked_categories = Array.new
@@ -198,7 +218,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
   		cat_name = category[0]
 		cat_url = category[1]
 		catTestResponse = nil
-		# plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
+		plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log
 		if (categories_to_exclude!=nil)
 			if not categories_to_exclude.include?(cat_name.strip)
 				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
@@ -256,6 +276,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} page"+ (undefined_categories.length>1?"s":""),"magenta") if undefined_categories.length>0
 	plog("\tEXCLUDED    \t=> #{excluded_categories.raw.length} category pages","grey") if test_all_categories 
 	plog("=========================================================================","grey")
+	@browser.cookies.clear
 end
 
 # This function tests if a category page is tracking correctly. 
@@ -265,9 +286,9 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 	@browser.goto cat_url #"http://www.alexandalexa.com/home-school/kids-bedroom" #
 	sleep wait_time
-	cat_name = cat_name.length > 20 ? cat_name[0..17].gsub(/\s\w+\s*$/,'...') : cat_name
+	cat_name = cat_name.length > 20 ? cat_name[0..17].gsub(/\s\w+\s*$/,'...').gsub(/\s+/, "") : cat_name.gsub(/\s+/, "")
 	reload_attempts = @current_page.get_num_of_reloads_per_category
-	if !(@browser.td(:id => 'trackInfo').exists?) 
+	if !(@browser.td(:id => 'trackInfo').exists? && @browser.td(:id => 'trackInfo').text != nil) 
 		reload_attempts.times do |attempt|
 			if !@browser.td(:id => 'trackInfo').exists?
 				plog("\tTrackInfo NOT FOUND on #{cat_url} : Reload attempt #{attempt+1} ...", "grey") if show_log
@@ -282,6 +303,13 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	end
 	if @browser.td(:id => 'trackInfo').exists?
 		page_type = @browser.td(:id => 'trackInfo').text[/For(.*?)Page/m, 1]
+		# Sometimes the element exists but watir is unable to read due to a modal div popup as is the case with tedbaker
+		unless page_type != nil 
+			@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+			@browser.refresh 
+			page_type = @browser.td(:id => 'trackInfo').text[/For(.*?)Page/m, 1]
+		end
+		#plog("DEBUG => #{page_type} // #{@browser.div(:id => 'peeriusDebug')}","red")
 		if page_type.include?("Category")
 			testResponse = "#{cat_name}|#{cat_url}|SUCCESS"
 			# plog("#{cat_name} : \t#{cat_url}\t=> tracked as Category page with unique Id [#{@browser.td(:id => 'categoryUniqueId').text}]","green") if show_log
