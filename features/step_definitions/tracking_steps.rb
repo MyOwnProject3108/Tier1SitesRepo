@@ -173,6 +173,7 @@ def select_product_options(show_log)
 				#option = product_options.options[rand(1..product_options.options.length-1)].text 
 				opt_index = rand(1..product_options.options.length-1)
 				plog("\tSelected option => #{opt_index} ...","magenta") if show_log
+				product_options_preselect.click if @current_page.has_product_options_preselect
 				#product_options.when_present.select option 
 				product_options.option(:index => opt_index).when_present.select 
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
@@ -185,6 +186,9 @@ def select_product_options(show_log)
 				plog("\tPre-selected => #{product_options_preselect.html}","magenta") if show_log
 				plog("\tSelected option => #{option.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
 				option.click 
+			when product_options.is_a?(PageObject::Elements::Image)
+				plog("\tSelected option => #{product_options} ...","magenta") if show_log
+				product_options.click
 			else
 				# do nothing
 			end
