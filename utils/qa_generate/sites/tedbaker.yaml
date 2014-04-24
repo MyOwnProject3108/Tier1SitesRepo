@@ -11,7 +11,6 @@ database_num: 6
 site_id: 82
 integration: standard
 
-
 # site variables
 show_log: true
 #category_menu: ["ul", ':class => "wrap colour_dark_items_active_mobile colour_dark_links_active_desktop colour_light_links_hover_desktop"']
@@ -24,12 +23,14 @@ test_all_categories: true
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
-product_links: ["div", ':xpath=> "//div[@id=\"content\"]/div/div[2]/div[2]"'] 
+product_links: ["div", ':class=> "product_list index"'] 
 product_link_filter: ["class|image"]
+product_options: 
+     - [select_list, ':id=> "product_select_size"']
+          
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
-
+add_to_basket_button: ["button", ':class=> "button add_to_cart major full_mobile colour_dark"']
 
 
 home_page:
@@ -45,7 +46,9 @@ random_category:
   expected_recs: 0
 
 random_basket:
-  expected_recs: 0
+  expected_recs: 1
+  basket_checkout: ["link", ':href => "/uk/cart/checkout"']
+  basket_remove: ["link", ':class => "link item_remove"']
 
 product_page:
   URL: "http://www.tedbaker.com/uk/Womens/Accessories/Bags/LUCON-Small-shopper-bag-Pale-Green/p/108369-38-PALE-GREEN"
@@ -67,8 +70,8 @@ basket_page:
 login_page:
   URL: "http://www.tedbaker.com/uk?country=GB"
   expected_recs: 0
-  username_field: ["text_field", ':name => "j_username"']
-  password_field: ["text_field", ':name => "j_password"']  
+  username_field: ["text_field", ':class => "box ng-pristine ng-invalid ng-invalid-required ng-valid-email"']
+  password_field: ["text_field", ':class => "box ng-pristine ng-invalid ng-invalid-required"']  
   login_submit: ["button", ':class => "button colour_dark"']
   extra steps:
    - [a, class, "toggle_desktop"]
@@ -79,6 +82,19 @@ searchresults_page:
   expected_recs: 0
   zerosearch_recs: 0
   
-checkout_page:
-  URL: "" 
+#checkout_page:
+ # URL: "" 
+#  expected_recs: 0
+  
+  
+random_checkout:
+  URL: "http://www.tedbaker.com/uk?country=GB"
   expected_recs: 0
+  extra_steps:
+      - [link, class, "button major full_mobile colour_dark checkout_secure"]
+      - [pause, 2]
+
+
+      
+      
+

@@ -170,9 +170,11 @@ def select_product_options(show_log)
 	
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
-				option = product_options.options[rand(1..product_options.options.length-1)].text 
-				plog("\tSelected option => #{option} ...","magenta") if show_log
-				product_options.when_present.select option 
+				#option = product_options.options[rand(1..product_options.options.length-1)].text 
+				opt_index = rand(1..product_options.options.length-1)
+				plog("\tSelected option => #{opt_index} ...","magenta") if show_log
+				#product_options.when_present.select option 
+				product_options.option(:index => opt_index).when_present.select 
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
 				prod_links = product_options.link_elements 
 				option = prod_links[rand(0..prod_links.length-1)] 
