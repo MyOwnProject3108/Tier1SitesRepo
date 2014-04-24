@@ -22,7 +22,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':id=> "mansory"'] 
-product_link_filter: ["class|swatchanchor selected"] 
+product_link_filter: ["wtname|listing.productdetail"] 
 wait_time_per_product_page: 2
 max_num_of_products: 2
 add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a  "']
@@ -33,6 +33,13 @@ home_page:
   expected_recs: 0
   login_link: ["link", ':text => "Login"']
   search_field: ["text_field", ':id => "searchinput"']
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
 
 product_page:
   URL: "http://uk.tommy.com/Tanks-Watch/1MJ1781348,en_GB,pd.html?cgid=114080#!color%3D000%26i%3D21%26size%3DOS"
@@ -49,7 +56,13 @@ basket_page:
   URL: "http://uk.tommy.com/on/demandware.store/Sites-GB-Site/en_GB/Cart-Show"
   expected_recs: 0
   basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
-  basket_remove: ["button", ':class => "remove no_print"']  
+  basket_remove: ["button", ':class => "remove no_print"']
+
+random_basket:
+  expected_recs: 0
+  basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
+  basket_remove: ["button", ':class => "remove no_print"']
+  
 
 login_page:
   URL: "https://uk.tommy.com/on/demandware.store/Sites-GB-Site/en_GB/Account-Show"
@@ -66,3 +79,13 @@ searchresults_page:
 checkout_page:
   URL: "" 
   expected_recs: 0
+  
+random_checkout:
+  URL: "http://uk.tommy.com/"
+  expected_recs: 0
+  extra_steps:
+      - [button, class, "button active top"]
+      - [pause, 2]
+      - [button, id, "continuecheckoutbutton"]
+      - [pause, 2]
+    
