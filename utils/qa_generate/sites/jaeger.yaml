@@ -62,14 +62,14 @@ searchresults_page:
   URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Search-Show?q=coats"
   expected_recs: 0
   zerosearch_recs: 1
-  custom_tracking_test: |
-    Given I am on the jaeger home page
-    And I click on the li with class "searchset"
-    And I click on the div with title "SEARCH"
-    And I pause for 6 seconds
-    When I search for "coats"
-    Then it should be tracked as a search results page
-    And the debug info should show no SMART-recs
+#  custom_tracking_test: |
+#   Given I am on the jaeger home page
+#    And I click on the li with class "searchset"
+#    And I click on the div with title "SEARCH"
+#    And I pause for 6 seconds
+#    When I search for "coats"
+#    Then it should be tracked as a search results page
+#    And the debug info should show no SMART-recs
   
 checkout_page:
   URL: ""

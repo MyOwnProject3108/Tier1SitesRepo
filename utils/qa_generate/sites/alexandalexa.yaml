@@ -17,12 +17,10 @@ show_log: true
 category_menu: ["ul", ':id => "nav"']
 category_menu_exclude: ["SALE","Denim","Boots & Wellies"]
 test_all_categories: true
-
 wait_time_per_category_page: 5
-
 max_num_of_categories: 1
-
 num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
 
 product_links: ["ul", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul[1]"'] 
 product_link_filter: ["class|p-name a-center s12 db r clear"] 
@@ -30,10 +28,9 @@ product_options:
     - [select_list, ':xpath=> "/html/body/div[2]/div[2]/section/div[3]/form/div[2]/div/div/dl/dd/div/select"']
                                
 wait_time_per_product_page: 5
-
 max_num_of_products: 2 
 
-add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/div/button"']
 
 #### page level config ####
   

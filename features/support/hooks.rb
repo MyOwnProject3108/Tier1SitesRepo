@@ -1,18 +1,27 @@
 require 'watir-webdriver'
 require 'tiny_tds'
 require 'psych'
+require_relative 'peerius/peerius_utils'
+require 'headless' if ENV['HEADLESS'] == 'true'
+
+if ENV['HEADLESS'] == 'true'
+  headless = Headless.new
+  headless.start
+  plog("I AM HEADLESS... SO MIGHT NOT REALLY KNOW WHERE AM HEADED...","yellow")
+end
 
 WEBDRIVER=true
 
 web_proxy = ENV["proxy"]
 web_proxy = FigNewton.proxy("") unless web_proxy
 
-if ENV["headless"] then
+if ENV['WINHEADLESS'] 
   caps = Selenium::WebDriver::Remote::Capabilities.phantomjs
   caps["phantomjs.page.settings.userAgent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0"
   caps["phantomjs.cli.args"] = "--proxy=#{web_proxy} --webdriver-loglevel='DEBUG'" if web_proxy and web_proxy != ""          
   browser = Watir::Browser.new :phantomjs, :desired_capabilities => caps
-elsif ENV["chrome"] then
+  plog("I AM HEADLESS... SO MIGHT NOT REALLY KNOW WHERE AM HEADED...","yellow")
+elsif ENV['chrome'] 
   proxy = "--proxy-server=#{web_proxy}" if web_proxy and web_proxy != ""
   #browser = Watir::Browser.new :chrome, :switches => [proxy]
   browser = Watir::Browser.new :chrome  
@@ -95,16 +104,20 @@ AfterStep('@web') do |scenario|
 end
 
 at_exit do
-    browser.close unless ENV["keepbrowseropen"]
-    if FigNewton.username("") != "" then
-      db0.close
-      db1.close
-      db2.close
-      db3.close
-      db4.close
-      db5.close
-      db6.close
-      db7.close
+    if ENV['HEADLESS'] == 'true'
+       headless.destroy
+    else 
+       browser.close unless ENV["keepbrowseropen"]
+       if FigNewton.username("") != "" then
+            db0.close
+            db1.close
+            db2.close
+            db3.close
+            db4.close
+            db5.close
+            db6.close
+            db7.close
+      end
     end
 end
 
@@ -114,11 +127,3 @@ end
 #driver = Selenium::WebDriver::Firefox
 #end
 
-def plog(text, color)
-	puts "\033[1;30m#{text}\033[0m" if color=="grey"
-	puts "\033[1;31m#{text}\033[0m" if color=="red"
-	puts "\033[1;32m#{text}\033[0m" if color=="green"
-	puts "\033[1;33m#{text}\033[0m" if color=="yellow"
-	puts "\033[1;35m#{text}\033[0m" if color=="magenta"
-	puts "\033[1;36m#{text}\033[0m" if color=="blue"
-end

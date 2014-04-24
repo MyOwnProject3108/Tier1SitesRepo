@@ -21,6 +21,9 @@ module <%= site["site_name"].capitalize %>
 		<% if site["category_menu"] %>
 		<%= site["category_menu"][0] %>(:category_menu, <%= site["category_menu"][1] %>)
 		<% end %>
+		<% if site["category_menu_preselect"] %>
+		<%= site["category_menu_preselect"][0] %>(:category_menu_preselect, <%= site["category_menu_preselect"][1] %>)
+		<% end %>
 		<% if site["product_links"] %>
 		<%= site["product_links"][0] %>(:product_links, <%= site["product_links"][1] %>)
 		<% end %>
@@ -32,6 +35,13 @@ module <%= site["site_name"].capitalize %>
 		 site["product_options"].each_with_index do |option, idx| 
 		%>
 		<%= option[0] %>(:product_option<%=idx+1%>, <%= option[1] %>)
+		<% end 
+	    end %>
+	    
+	    <% if site["product_options_preselect"] 
+		 site["product_options_preselect"].each_with_index do |option_preselect, idx| 
+		%>
+		<%= option_preselect[0] %>(:product_options_preselect<%=idx+1%>, <%= option_preselect[1] %>)
 		<% end 
 	    end %>
       	
@@ -94,6 +104,14 @@ module <%= site["site_name"].capitalize %>
 			return <%= site["product_options"].length %>
 		<% else %>
 			return 0
+		<% end %>		
+		end
+		
+		def has_product_options_preselect
+		<% if site["product_options_preselect"] %>		
+			return true
+		<% else %>
+			return false
 		<% end %>		
 		end
 		

@@ -1,0 +1,14 @@
+base_url: showcasebe.peerius.com
+headless: false
+database0: Denorm0
+database1: Denorm0
+database2: Denorm0
+database3: Denorm0
+database4: Denorm0
+database5: Denorm0
+database6: Denorm0
+database7: Denorm0
+username: 3duser
+password: 3d534rch
+host: 192.168.0.49
+

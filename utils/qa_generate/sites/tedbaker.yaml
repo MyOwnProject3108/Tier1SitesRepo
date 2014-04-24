@@ -14,14 +14,18 @@ integration: standard
 
 # site variables
 show_log: true
-category_menu: ["ul", ':class => "wrap colour_dark_items_active_mobile colour_dark_links_active_desktop colour_light_links_hover_desktop"']
-category_menu_exclude: ["Men's"]
+#category_menu: ["ul", ':class => "wrap colour_dark_items_active_mobile colour_dark_links_active_desktop colour_light_links_hover_desktop"']
+category_menu: ["ul", ':xpath => "//nav[@id=\"categories\"]/ul[1]"']
+category_menu_preselect: ["li", ':xpath => "//ul[@id=\"gender\"]/li[2]"']
+num_of_category_menu_preselect_items: 2
+category_menu_exclude: ["Mens"]
 wait_time_per_category_page: 5
 test_all_categories: true
 num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
 
-product_links: ["div", ':xpath=> "/html/body/div/div[3]/div[2]/div[3]"'] 
-product_link_filter: ["data-productid|*"]
+product_links: ["div", ':xpath=> "//div[@id=\"content\"]/div/div[2]/div[2]"'] 
+product_link_filter: ["class|image"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
@@ -38,6 +42,9 @@ random_product:
   expected_recs: 1
 
 random_category:
+  expected_recs: 0
+
+random_basket:
   expected_recs: 0
 
 product_page:

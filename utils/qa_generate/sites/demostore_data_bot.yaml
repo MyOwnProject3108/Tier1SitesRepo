@@ -18,31 +18,20 @@ show_log: true
 category_menu: ["ul", ':id => "nav"']
 category_menu_exclude: ["Home", "Electricals", "Entertainment", "Health & Beauty"]
 test_all_categories: false
-
-# specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
-wait_time_per_category_page: 3
-
-# specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
+wait_time_per_category_page: 2
+ignore_cat_tracked_as_other_page: true
 max_num_of_categories: 3 
 
-# xpath or id to container that contains all the product page links on a category page
-# I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
-# as this does not require a product link filter to extract specific links
-# but I have used the follwing to provide an example use of product_link_filter
+
 product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
 product_link_filter: ["class|product-image"] 
+wait_time_per_product_page: 2
+max_num_of_products: 2 
+
 product_options: 
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"']
 
-
-# specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
-wait_time_per_product_page: 2
-
-# specify the max number of products to pick per category - if set to 3, 1 to 3 products will be randomly picked from each category 
-max_num_of_products: 2 
-
-# specify identifier for the 'add to basket' button element from product page 
 add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
 
 #### page level config ####
@@ -60,6 +49,12 @@ random_category:
   expected_recs: 0
 
 random_basket:
+  expected_recs: 5
+  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
+  basket_remove: ["link", ':class => "btn-remove"']
+
+basket_page:
+  URL: "http://showcase.peerius.com/index.php/checkout/cart/"
   expected_recs: 5
   basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
   basket_remove: ["link", ':class => "btn-remove"']

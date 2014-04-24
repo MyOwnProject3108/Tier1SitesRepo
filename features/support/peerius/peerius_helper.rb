@@ -54,5 +54,5 @@ module PeeriusHelper
         #puts url_with_spr
         navigate_to url_with_spr
       end
- 
+
 end
