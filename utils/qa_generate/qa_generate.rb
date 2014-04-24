@@ -8,7 +8,7 @@ require 'fileutils'
 require_relative "rules.rb"
 require_relative "helpers.rb"
 
-QA_GENERATE_VERSION = "1.0.20140224"
+QA_GENERATE_VERSION = "1.0.20140423"
 
 
 # Specify commandline options
@@ -38,41 +38,50 @@ siteName = ARGV[0] ? ARGV[0] : ""
 sitelist_file_mode = "w"
 dbmapping_file_mode = "w"
 
-cur_path = File.dirname(__FILE__)
+cur_path = File.expand_path(".",Dir.pwd)
 sites_yaml_path = cur_path + "/sites"
-templates_path = cur_path+ "/templates/features"
-output_path = File.expand_path("../..",Dir.pwd)
+templates_path = cur_path + "/templates/features"
 utils_path = File.expand_path("..",Dir.pwd) 
+output_path = File.expand_path("../..",Dir.pwd)
+
 
 #if(siteName == "")
 	# Generate sitelist
 	autosites_filename = output_path + "/features/support/auto_sites.txt"
-	plog("Creating #{autosites_filename}...","grey") unless sitelist_file_mode == "a" 
+	plog("Creating #{autosites_filename}...","grey") unless sitelist_file_mode == "a" if(siteName == "")
 	FileUtils.mkpath File.dirname(autosites_filename)
 
 	# Generate dbmapping
 	dbmapping_filename = output_path + "/features/support/auto_dbmapping.yaml"
-	plog("Creating #{dbmapping_filename}...","grey") unless dbmapping_file_mode == "a" 
+	plog("Creating #{dbmapping_filename}...","grey") unless dbmapping_file_mode == "a" if(siteName == "")
 	FileUtils.mkpath File.dirname(dbmapping_filename)
 #end
 
 site_name = "<siteName>"
 site_name = siteName if siteName != "" 
+num_sites = 0
 
-plog("CONFIG => ","grey")
-plog("\tFeature templates are in #{templates_path}/","grey")
-plog("\tSmart Product step definition templates are in #{output_path}/features/step_definitions","grey")
-plog("\tTracking Step definition templates for each page type are in #{templates_path}/support/pages/site","grey")
-plog("\tSite configuration (#{site_name}.yaml) files are in #{sites_yaml_path}/","grey")
-
-plog("OUTPUT => ","grey")
-plog("\tFeature files for each site will be generated in #{output_path}/features","grey")
-plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/#{site_name}/","grey")
+if(siteName == "" )
+	plog("CONFIG => ","grey")
+	plog("\tSite config yaml files are in #{sites_yaml_path}/","grey")
+	plog("\tFeature templates are in #{templates_path}/","grey")
+	plog("\tStep definition templates are in #{output_path}/features/step_definitions","grey")
+	plog("\tSupport modules for each page type are in #{templates_path}/support/pages/site","grey")
+	plog("OUTPUT => ","grey")
+	plog("\tFeature files for each site will be generated in #{output_path}/features","grey")
+	plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/#{site_name}/","grey")
+else
+	plog("### #{siteName.upcase} CONFIG ### ","grey")
+	plog("\tSite config file\t   : #{sites_yaml_path}/#{site_name}.yaml","grey")
+	plog("### #{siteName.upcase} OUTPUT ### ","grey")
+	#plog("\tFeature file \t\t:: #{output_path}/features/auto_#{site_name}_integration.feature","grey")
+	#plog("\tSupport modules \t:: #{output_path}/support/pages/site/","grey")
+end
 
 if(siteName == "" )
 	plog("GENERATE => ","grey") 
 else 
-	plog("#{siteName.upcase} => \t\t :: Creating feature files, scenarios and step definition code ...","grey")
+	#plog("#{siteName.upcase} => \t\t :: Creating feature files, scenarios and step definition code ...","grey")
 end
 
 def generateFiles(site, siteName, opts, output_path, allSites)
@@ -85,14 +94,13 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 
 	# Generate output files from templates for site
 	plog("\t#{siteName.upcase} \t :: Created feature files, scenarios and step definition code","grey") if allSites
-
+	files = Array.new
 	template_files.each do |template_filename|
 		if File.file?(template_filename)
 			template_file = File.open(template_filename, "r") { |f| f.read }
 			generator = ERB.new(template_file, 0, "<>")
 			generator.filename = template_filename
 			output_content = generator.result(binding)
-
 			output_filename = output_path + "/" + template_filename.gsub(/#{template_directory}/,'').gsub(/site/, site["site_name"])
 			if (output_content =~ /\A#ignore/) then
 				# puts "Skipping #{output_filename}. No tests to run." 
@@ -101,9 +109,22 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 				FileUtils.mkpath File.dirname(output_filename)
 				output_file = File.open(output_filename, "w")
 				output_file << output_content
-				plog("\tCreated file \t  : #{output_filename}","grey") unless allSites
+				filename = template_filename.split("/")[-1].gsub(/site/, site["site_name"])
+				if output_filename.include?(".feature")
+					plog("\tCreated feature file\t   : #{output_path}/features/auto_#{siteName}_integration.feature","grey") unless allSites
+				else
+					files << filename
+				end
+				
 			end
 		end 
+	end
+	plog("\tCreated support modules in : #{output_path}/support/pages/site/","grey") unless allSites
+	if !allSites && files.length > 4
+		plog("\t\t\t\t   : #{files[0..3].join(", ")}","grey") 
+	    plog("\t\t\t\t   : #{files[4..-1].join(", ")}","grey") 
+	else
+		plog("\t\t\t\t   : #{files.join(", ")}","grey") if !allSites 
 	end
 	return true
 end
@@ -112,6 +133,7 @@ if(siteName!="")
 	siteFile = Psych.load_file("sites/#{siteName}.yaml")
 	# Generate output files from templates for site
 	generateFiles(siteFile,siteName,opts,output_path,allSites=false)
+	plog("### QA_GENERATE DONE FOR #{site_name.upcase} ###","grey")
 else
 		
 	# Ensure input file exists 
@@ -127,6 +149,7 @@ else
 	# output_path = File.dirname(__FILE__)
 
 	site_files = Dir[input_file]
+	num_sites = site_files.length
 	site_files.each do |site_filename|
 		# Load the site YAML file
 		#site = YAML::load(File.open(site_filename, 'r:utf-8'))
@@ -151,9 +174,10 @@ else
 			dbmfile.puts "  site_id: #{siteFile["site_id"]}" unless siteFile["site_id"].nil?
 		end
 		dbmapping_file_mode = "a"
+	
 	end
-
+	plog("### QA_GENERATE DONE FOR #{num_sites} SITES ###","grey")
 end
-plog("========= ALL DONE ========","grey")
+
 
 
