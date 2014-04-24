@@ -201,9 +201,6 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
     show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
-    categories.each do |cat|
-    puts cat
-    end
     categories_to_exclude = nil
     categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil && test_all_categories
 
