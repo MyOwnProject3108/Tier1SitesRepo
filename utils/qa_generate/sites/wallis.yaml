@@ -20,6 +20,7 @@ category_menu_exclude: ["Holiday Shop","Be Inspired","Wedding"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':xpath=> "/html/body/div/div[3]/div/div[3]"'] 
 product_link_filter: ["data-productid|*"]

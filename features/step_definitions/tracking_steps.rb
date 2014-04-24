@@ -206,34 +206,50 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 
 	test_pass = true 
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
-	  	
+	ignore_cat_tracked_as_other_page = (@current_page.ignore_cat_tracked_as_other_page && @current_page.ignore_cat_tracked_as_other_page ==  true) ? true : false
+	
 	num_categories = categories.length
 	tracked_categories = Array.new
 	failed_categories = Array.new
 	undefined_categories = Array.new
 	
 	num_categories = rand(1..@current_page.get_max_num_of_categories) if(!test_all_categories)
-
-  	num_categories.times do |cat_ctr|
-  		category = categories[cat_ctr] if(test_all_categories)
-  		category = categories[rand(0..categories.length-1)] if(!test_all_categories)
-  		cat_name = category[0]
-		cat_url = category[1]
-		catTestResponse = nil
-		plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log && ENV["DEBUG"]
-		if (categories_to_exclude!=nil)
-			if not categories_to_exclude.include?(cat_name.strip)
-				catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
+	
+	cat_ctr = 1
+  	while cat_ctr <= num_categories  
+		cat_name = nil
+		cat_url = nil
+		
+		unless cat_url!= nil 
+			category = categories[cat_ctr] if(test_all_categories)
+			category = categories[rand(0..categories.length-1)] if(!test_all_categories)
+			cat_name = category[0]
+			cat_url = category[1]
+		end
+		
+  		exclude_cat = false
+		if (@current_page.get_categories_to_exclude_list.length>0)
+			cats_to_exclude = @current_page.get_categories_to_exclude_list*","
+			exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
+		end
+		
+		if !exclude_cat
+			catTestResponse = nil
+			plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if show_log && ENV["DEBUG"]
+			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
+			
+			if catTestResponse.include?("Other") && ignore_cat_tracked_as_other_page
+				plog("\tIGNORING " + catTestResponse.split("|")[2].upcase + " PAGE " + "#{cat_name} (#{cat_url})" ,"grey")
 			else
-				plog("\t\tExcluding CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
+				cat_ctr = cat_ctr + 1
+				if catTestResponse != nil
+					tracked_categories << catTestResponse if catTestResponse.include?("SUCCESS")
+					undefined_categories << catTestResponse if catTestResponse.include?("UNDEFINED")
+					failed_categories << catTestResponse if catTestResponse.include?("Other")
+				end
 			end
 		else
-			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
-		end
-		if catTestResponse != nil
-			tracked_categories << catTestResponse if catTestResponse.include?("SUCCESS")
-			undefined_categories << catTestResponse if catTestResponse.include?("UNDEFINED")
-			failed_categories << catTestResponse if catTestResponse.include?("FAILED") || catTestResponse.include?("Other")
+			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
 		end
 		#@browser.back
 	end
