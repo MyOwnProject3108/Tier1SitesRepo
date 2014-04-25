@@ -205,6 +205,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
     show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
+    categories = categories.reject{|x| x[1]==nil }
     categories_to_exclude = nil
     categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil && test_all_categories
 
@@ -212,26 +213,22 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
 	ignore_cat_tracked_as_other_page = (@current_page.ignore_cat_tracked_as_other_page && @current_page.ignore_cat_tracked_as_other_page ==  true) ? true : false
 	
-	num_categories = categories.length
 	tracked_categories = Array.new
 	failed_categories = Array.new
 	undefined_categories = Array.new
+	ignored_categories = Array.new
 	
-	num_categories = rand(1..@current_page.get_max_num_of_categories) if(!test_all_categories)
+	num_categories = categories.length if test_all_categories
+	num_categories = rand(1..@current_page.get_max_num_of_categories) if !test_all_categories
 	
-	cat_ctr = 1
-  	while cat_ctr <= num_categories  
-		cat_name = nil
-		cat_url = nil
+	cat_ctr = 0
+  	while cat_ctr < num_categories  
+  		category = categories[cat_ctr] if(test_all_categories)
+		category = categories[rand(0..categories.length-1)] if !test_all_categories
+		cat_name = category[0]
+		cat_url = category[1]
 		
-		unless cat_url!= nil 
-			category = categories[cat_ctr] if(test_all_categories)
-			category = categories[rand(0..categories.length-1)] if(!test_all_categories)
-			cat_name = category[0]
-			cat_url = category[1]
-		end
-		
-  		exclude_cat = false
+ 		exclude_cat = false
 		if (@current_page.get_categories_to_exclude_list.length>0)
 			cats_to_exclude = @current_page.get_categories_to_exclude_list*","
 			exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
@@ -243,51 +240,33 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 			
 			if catTestResponse.include?("Other") && ignore_cat_tracked_as_other_page
-				plog("\tIGNORING " + catTestResponse.split("|")[2].upcase + " PAGE " + "#{cat_name} (#{cat_url})" ,"grey")
-			else
-				cat_ctr = cat_ctr + 1
-				if catTestResponse != nil
-					tracked_categories << catTestResponse if catTestResponse.include?("SUCCESS")
-					undefined_categories << catTestResponse if catTestResponse.include?("UNDEFINED")
-					failed_categories << catTestResponse if catTestResponse.include?("Other")
-				end
+				plog("\tIGNORING " + catTestResponse.split("|")[2].upcase + " PAGE " + "#{cat_name} (#{cat_url})" ,"grey") if show_log && ENV["DEBUG"]
 			end
+			tracked_categories << catTestResponse if catTestResponse.include?("SUCCESS")
+			undefined_categories << catTestResponse if catTestResponse.include?("UNDEFINED")
+			failed_categories << catTestResponse if catTestResponse.include?("Other") && !ignore_cat_tracked_as_other_page
+			ignored_categories << catTestResponse if catTestResponse.include?("Other") && ignore_cat_tracked_as_other_page
+			
 		else
-			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
+			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if show_log && ENV["DEBUG"]
+		end
+		cat_ctr = cat_ctr + 1 if test_all_categories 
+		if !test_all_categories
+		  cat_ctr = cat_ctr + 1 if !(catTestResponse.include?("Other") && ignore_cat_tracked_as_other_page)
 		end
 		#@browser.back
 	end
 	
 	if tracked_categories.length>0
-		plog("TRACKED CATEGORY PAGES:","green") if show_log
-		# list all tracked categories
-		tracked_categories.each do |tcat|
-			tracked_cat = tcat.split("|")
-			plog("\t#{tracked_cat[0]}:\t#{tracked_cat[1]}","green") if show_log
-		end
+		show_tested_categories(tracked_categories,"TRACKED",show_log)
 		test_pass = true
 	end 
+	show_tested_categories(ignored_categories,"IGNORED",show_log) if ignored_categories.length>0
 	
-	if (failed_categories.length>0 || undefined_categories.length>0)
-		if failed_categories.length>0
-			plog("FAILED CATEGORY PAGES:","red")
-			# list all failed categories
-			failed_categories.each do |fcat|
-				failed_cat = fcat.split("|")
-				plog("\t#{failed_cat[0]}:\t#{failed_cat[1]} \t=> tracked as #{failed_cat[2]} Page - FAILED","red")
-			end
-			test_pass = false
-		end 
-		if undefined_categories.length>0
-			plog("UNDEFINED CATEGORY PAGES:","magenta")
-			# list all undefined categories
-			undefined_categories.each do |ucat|
-				undef_cat = ucat.split("|")
-				plog("\t#{undef_cat[0]}:\t#{undef_cat[1]} \t=> NO TRACK INFO FOUND - FAILED","magenta")
-			end
-			test_pass = false
-		end
-		test_pass.should == false	
+	if (failed_categories.length>0 || undefined_categories.length>0  || ignored_categories.length>0)
+		show_tested_categories(failed_categories,"FAILED",show_log) if failed_categories.length>0
+		show_tested_categories(undefined_categories,"UNDEFINED",show_log) if undefined_categories.length>0
+		test_pass = false
 	else
 		test_pass.should == true	
 	end
@@ -296,6 +275,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 	plog("\tTEST PASSED \t=> #{tracked_categories.length} category page" + (tracked_categories.length>1?"s":""),"green") if tracked_categories.length>0
 	plog("\tTEST FAILED \t=> #{failed_categories.length} category page" + (failed_categories.length>1?"s":""),"red") if failed_categories.length>0
 	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} page"+ (undefined_categories.length>1?"s":""),"magenta") if undefined_categories.length>0
+	plog("\tIGNORED \t=> #{ignored_categories.length} page"+ (ignored_categories.length>1?"s":""),"grey") if ignored_categories.length>0 && ignore_cat_tracked_as_other_page
 	plog("\tEXCLUDED    \t=> #{excluded_categories.raw.length} category pages","grey") if test_all_categories 
 	plog("=========================================================================","grey")
 	@browser.cookies.clear
@@ -366,4 +346,13 @@ def autogenerate_email(seed_value)
 	domain = seed_value.partition('@').last
 	rand_value = rand(1..999999).to_s
     return prefix+rand_value+'@'+domain
+end
+
+def show_tested_categories(cat_list, status, show_log)
+	msg_colour = (status == "TRACKED"? "green" : (status == "FAILED"? "red" : (status == "FAILED"? "magenta" : "grey")))
+	plog("#{status} CATEGORY PAGES:",msg_colour) if show_log
+	cat_list.each do |tcat|
+		cat = tcat.split("|")
+		plog("\t#{cat[0]}:\t#{cat[1]}",msg_colour) if show_log
+	end
 end
