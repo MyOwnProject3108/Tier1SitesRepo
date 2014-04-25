@@ -17,18 +17,22 @@ show_log: true
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "site_container"']
 category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footwear", "Accessories", "Collections", "Overseas","Men's Tops"]
-test_all_categories: false
-
+test_all_categories: true
+ignore_cat_tracked_as_other_page: true
 wait_time_per_category_page: 3
-max_num_of_categories: 10 
+max_num_of_categories: 1 
 num_of_reloads_per_category: 2
-
-#product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
-product_links: ["ul", ':xpath=> "/html/body/div/div[3]/form/section/ul"']  
-product_link_filter: ["class|text-center"] 
 wait_time_per_product_page: 2
-max_num_of_products: 3 
-add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+max_num_of_products: 1
+
+product_links: ["ul", ':xpath=> "/html/body/div/div[3]/form/section/ul"']  
+product_link_filter: ["class|text-center"]
+product_options: 
+    - [select_list, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/select"']
+product_options_preselect:
+    - [img, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li[2]/div/img[1]"']   
+     
+add_to_basket_button: ["div", ':id=> "add-to-bag-btn"']
         
 #### page level config ####
 home_page:
@@ -95,9 +99,16 @@ random_checkout:
   URL: "http://www.thewhitecompany.com/"
   expected_recs: 0
   extra_steps:
-      - [button, id, "checkout_submit_bottom"]
+      - [button, id, "in_btnCheckout"]
       - [pause, 2]
-      - [link, id, "btn_register"]
+      - [text_field, id, "in_txtEmailAddress", "peeriustest@email.com", "autogenerate_email"]
+      - [pause, 2]
+      - [button, id, "IBGuest"]
+      - [pause, 2]
+      
+      
+       
+  #   - [link, id, "btn_register"]
   #    - [pause, 2]
   #    - [select_list, id, "address_title", "Mr"]
   #    - [text_field, id, "address_first_name", "P"]
