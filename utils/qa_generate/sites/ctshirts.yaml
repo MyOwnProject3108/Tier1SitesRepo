@@ -14,6 +14,36 @@ channel: web
 site_id: 142
 integration: standard
 
+# site variables
+show_log: true
+category_menu: ["ul", ':xpath => "//div[@id=\"menu\"]/ul"']
+category_menu_exclude: ["Nothing"]
+max_num_of_categories: 1
+wait_time_per_category_page: 2
+test_all_categories: true
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+out_of_stock_msg: "THIS PRODUCT IS SOLD OUT"
+
+product_links: ["div", ':id=> "ctl00_contentBody_productListingSection"'] 
+product_link_filter: ["class|img"]
+product_options: 
+     - [ul, ':xpath=> "html/body/div[3]/ul"']
+     - [dl, ':xpath=> "html/body/div[4]/dl"']   
+     - [ul, ':xpath=> "html/body/div[4]/ul"'] 
+     - [ul, ':xpath=> "html/body/ul[2]"'] 
+     
+     
+product_options_preselect: 
+     - [a, ":class=> 'tooltip_link'", 0]
+     - [a, ":class=> 'tooltip_link'", 1]
+     - [a, ":class=> 'tooltip_link'", 1]
+     - [div, ":class=> 'selectedTxt'"]
+          
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':value=> "Add to basket"']
+
 
 home_page:
  # ignore: true # CT Shirts homepage is on SMART-API
@@ -63,3 +93,31 @@ checkout_page:
   extra_steps:
     - [pause, 10]
     - [button, id, "ctl00_contentBody_submit"]
+
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+
+random_checkout:
+  expected_recs: 0
+  extra_steps:
+    - [button, id, "ctl00_contentBody_submit"]
+    - [pause, 5]
+    - [text_field, id, "ctl00_contentBody_email", "p.test@gmail.com", "autogenerate_email"]
+    - [button, id, "ctl00_contentBody_submit"]
+    - [pause, 5]
+    - [text_field, id, "ctl00_contentBody_first_name", "Web", "autogenerate_firstname"]
+    - [text_field, id, "ctl00_contentBody_last_name", "Test", "autogenerate_lastname"]
+    - [text_field, id, "ctl00_contentBody_tel_number", "0209898989"]
+    - [text_field, id, "ctl00_contentBody_street1", "Peerius, 232 Great Guildford Street"]
+    - [a, id , "manualAddressEntry"]
+    - [text_field, id, "ctl00_contentBody_town", "London"]
+    - [text_field, id, "ctl00_contentBody_postcode", "SE1 0HS"]
+    - [button, id, "ctl00_contentBody_submit"]
+    - [pause, 5]

@@ -23,3 +23,4 @@ gem 'jsonpath'
 #gem 'httparty'
 
 gem 'headless'
+gem 'sanitize'

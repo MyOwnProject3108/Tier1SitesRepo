@@ -54,5 +54,11 @@ module PeeriusHelper
         #puts url_with_spr
         navigate_to url_with_spr
       end
+      
+      # Returns true if the page is actually a page of the expected type
+	  def elem_exists(elem)
+	  puts elem
+	       return eval("@browser."+elem+".exists?")
+      end
 
 end

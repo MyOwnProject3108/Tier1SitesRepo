@@ -96,8 +96,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			catTestResponse = test_category_page(cat_name,cat_url,wait_time_per_category,show_log)
 			if catTestResponse != nil && catTestResponse.include?("SUCCESS")
 				products = @current_page.product_links_element.link_elements
-				# plog("\t#{products.length} products","yellow") if show_log
-				
+	
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
 				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
 				# Reject links that DO have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>  Added by fayaz
@@ -115,32 +114,37 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				end
 				
 				plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
-				num_products.times do |prod_ctr| 
+				prod_ctr = 1
+				while prod_ctr <= num_products
 					product = products[rand(0..products.length-1)]
 					prod_name = product[0]
-					prod_url = product[1]
+					prod_url = product[1]  
 					prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
 					# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
 					@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 					@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html' "http://www.cottontraders.com/womens-shirts+blouses/34-sleeve-spot-print-blouse/invt/ab10892" #
 					sleep wait_time_per_product
-
-					if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
-						if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
-							plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
-							if @current_page.get_num_of_product_options > 0
-								select_product_options(show_log)
+					out_of_stock = false
+					out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
+					if !out_of_stock
+						if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
+							if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
+								plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if show_log
+								if @current_page.get_num_of_product_options > 0
+									select_product_options(show_log)
+								end
+								@current_page.add_to_basket_element.when_present.click
+								plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
+								sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
+							else #product page is tracking as expected - nothing more to do
+								plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
 							end
-							@current_page.add_to_basket_element.when_present.click
-							plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if show_log
-							sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
-						else #product page is tracking as expected - nothing more to do
-							plog("\tPRODUCT #{prod_ctr+1} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
+						else
+							plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text.upcase} - FAILED","red")
+							test_pass = false
 						end
-					else
-						plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text.upcase} - FAILED","red")
-						test_pass = false
-					end 
+						prod_ctr = prod_ctr + 1
+					end
 				end
 				cat_ctr = cat_ctr + 1
 			else
@@ -164,15 +168,17 @@ def select_product_options(show_log)
 	x = 1
 	while x <= @current_page.get_num_of_product_options do
 		product_options = eval('@current_page.product_option'+x.to_s+'_element')
+		#plog("LIST IS A #{product_options.class}","blue") if show_log
 		if product_options.exists?
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
-			# plog("LIST IS A #{product_options.class} with parent #{product_options.parent} ","blue") if show_log
+			
+			#plog("LIST IS A #{product_options.class} with parent #{product_options.first} ","blue") if show_log
 	
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
 				#option = product_options.options[rand(1..product_options.options.length-1)].text 
 				opt_index = rand(1..product_options.options.length-1)
-				plog("\tSelected option => #{opt_index} ...","magenta") if show_log
+				plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","magenta") if show_log
 				product_options_preselect.click if @current_page.has_product_options_preselect
 				#product_options.when_present.select option 
 				product_options.option(:index => opt_index).when_present.select 
@@ -181,11 +187,21 @@ def select_product_options(show_log)
 				option = prod_links[rand(0..prod_links.length-1)] 
 				option.click
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
-				option = product_options.lis[rand(1..product_options.lis.length-1)] 			
+				option = product_options.lis[rand(1..product_options.lis.length-1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect
-				plog("\tPre-selected => #{product_options_preselect.html}","magenta") if show_log
-				plog("\tSelected option => #{option.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
-				option.click 
+				plog("\tPre-selected => #{strip_clean(product_options_preselect.html)}","blue") if show_log
+				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if show_log
+				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
+				option.links.first.click if option.links.first.exists?
+				option.click if !option.links.first.exists?
+			when product_options.is_a?(PageObject::Elements::Element) #ctshirts
+				option = product_options.dds[rand(1..product_options.dds.length-1)] 
+				product_options_preselect.click if @current_page.has_product_options_preselect
+				plog("\tPre-selected => #{strip_clean(product_options_preselect.html)}","magenta") if show_log
+				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if show_log
+				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
+				option.links.first.click if option.links
+				option.click if !option.links
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if show_log
 				product_options.click

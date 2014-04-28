@@ -71,9 +71,9 @@ if(siteName == "" )
 	plog("\tFeature files for each site will be generated in #{output_path}/features","grey")
 	plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/#{site_name}/","grey")
 else
-	plog("### #{siteName.upcase} CONFIG ### ","grey")
+	plog(":: #{siteName.upcase} CONFIG => ","grey")
 	plog("\tSite config file\t   : #{sites_yaml_path}/#{site_name}.yaml","grey")
-	plog("### #{siteName.upcase} OUTPUT ### ","grey")
+	plog(":: #{siteName.upcase} OUTPUT => ","grey")
 	#plog("\tFeature file \t\t:: #{output_path}/features/auto_#{site_name}_integration.feature","grey")
 	#plog("\tSupport modules \t:: #{output_path}/support/pages/site/","grey")
 end
@@ -111,7 +111,7 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 				output_file << output_content
 				filename = template_filename.split("/")[-1].gsub(/site/, site["site_name"])
 				if output_filename.include?(".feature")
-					plog("\tCreated feature file\t   : #{output_path}/features/auto_#{siteName}_integration.feature","grey") unless allSites
+					plog("\tCreated feature file\t   : #{output_filename}","grey") unless allSites
 				else
 					files << filename
 				end
@@ -133,7 +133,7 @@ if(siteName!="")
 	siteFile = Psych.load_file("sites/#{siteName}.yaml")
 	# Generate output files from templates for site
 	generateFiles(siteFile,siteName,opts,output_path,allSites=false)
-	plog("### QA_GENERATE DONE FOR #{site_name.upcase} ###","grey")
+	plog("<<<< QA_GENERATE DONE FOR #{site_name.upcase} >>>>","grey")
 else
 		
 	# Ensure input file exists 
@@ -176,7 +176,7 @@ else
 		dbmapping_file_mode = "a"
 	
 	end
-	plog("### QA_GENERATE DONE FOR #{num_sites} SITES ###","grey")
+	plog("<<<< QA_GENERATE DONE FOR #{num_sites} SITES >>>>","grey")
 end
 
 

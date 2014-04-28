@@ -16,12 +16,15 @@ module <%= site["site_name"].capitalize %>
       
       URL = "<%= debug_url(page["URL"]) %>"
       direct_url URL
-      
+      <% if page["basket_remove"] %>
       <%= page["basket_checkout"][0] %>(:basket_checkout, <%= page["basket_checkout"][1] %>)
-    
+      <% end %>
+       
+      <% if page["basket_remove"] %>
       def remove_product_links
         <%= page["basket_remove"][0] %>_elements(<%= page["basket_remove"][1] %>)
-      end   
+      end 
+      <% end %>
     end  
 end
 <% end %>

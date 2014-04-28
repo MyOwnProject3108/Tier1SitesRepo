@@ -41,8 +41,12 @@ module <%= site["site_name"].capitalize %>
 	    <% if site["product_options_preselect"] 
 		 site["product_options_preselect"].each_with_index do |option_preselect, idx| 
 		%>
+		<% if option_preselect[2] %>
+		<%= option_preselect[0] %>(:product_options_preselect<%=idx+1%>, <%= option_preselect[1] %>, :index=> <%= option_preselect[2] %> )
+		<% else %>
 		<%= option_preselect[0] %>(:product_options_preselect<%=idx+1%>, <%= option_preselect[1] %>)
-		<% end 
+		<% end
+		end 
 	    end %>
       	
 		#page elements - retained for backward compatibility
@@ -104,6 +108,14 @@ module <%= site["site_name"].capitalize %>
 			return <%= site["product_options"].length %>
 		<% else %>
 			return 0
+		<% end %>		
+		end
+		
+		def get_out_of_stock_msg
+		<% if site["out_of_stock_msg"] %>		
+			return "<%= site["out_of_stock_msg"] %>"
+		<% else %>
+			return nil
 		<% end %>		
 		end
 		

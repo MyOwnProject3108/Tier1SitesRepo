@@ -77,23 +77,6 @@ home_page:
   login_link: ["link", ':href=> "http://showcase.peerius.com/index.php/customer/account/login/"']
   search_field: ["text_field", ':id => "search"']
 
-random_product:
-  expected_recs: 5
-
-random_category:
-  expected_recs: 0
-
-basket_page:
-  URL: "http://showcase.peerius.com/index.php/checkout/cart/"
-  expected_recs: 5
-  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "btn-remove"']
-  
-random_basket:
-  expected_recs: 5
-  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "btn-remove"']
-
 login_page:
   URL: "http://showcase.peerius.com/index.php/customer/account/login/"
   expected_recs: 0
@@ -106,27 +89,26 @@ searchresults_page:
   expected_recs: 0
   zerosearch_recs: 5
 
+basket_page:
+  URL: "http://showcase.peerius.com/index.php/checkout/cart/"
+  expected_recs: 5
+  
 checkout_page:
   URL: "http://showcase.peerius.com/index.php/checkout/onepage/"
   expected_recs: 0
 
-order_page:
-  URL: ""
-  expected_recs: 0
-  extra_steps:
-    - [select_list, id, "billing-address-select", "Web Test, Peerius, 232 Great Guildford Street, London, London SE1 0HS, United Kingdom"]
-    - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [radio, id, "p_method_checkmo"]
-    - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-    - [pause, 5]
-    - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
+random_product:
+  expected_recs: 5
 
+random_category:
+  expected_recs: 0
+
+random_basket:
+  expected_recs: 5
+  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
+  basket_remove: ["link", ':class => "btn-remove"']
 
 random_order:
-  URL: "http://showcase.peerius.com/index.php"
   expected_recs: 0
   extra_steps:
       - [radio, id, "login:guest"]
@@ -151,27 +133,26 @@ random_order:
       - [pause, 5]
       - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
       
-random_checkout:
-  URL: "http://showcase.peerius.com/index.php"
-  expected_recs: 0
-  extra_steps:
-      - [radio, id, "login:guest"]
-      - [button, id, "onepage-guest-register-button"]
-      - [pause, 2]
-      - [text_field, id, "billing:firstname", "Web"]
-      - [text_field, id, "billing:lastname", "Test"]
-      - [text_field, id, "billing:email", "peeriustest@email.com"]
-      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-      - [text_field, id, "billing:city", "London"]
-      - [text_field, id, "billing:postcode", "SE1 0HS"]
-      - [text_field, id, "billing:region", "London"]
-      - [select_list, id, "billing:country_id", "United Kingdom"]
-      - [text_field, id, "billing:telephone", "02039723222"]
-      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "s_method_freeshipping_freeshipping", optional]
-      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "p_method_checkmo"]
-      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
+#random_checkout:
+# expected_recs: 0
+#  extra_steps:
+#      - [radio, id, "login:guest"]
+      #- [button, id, "onepage-guest-register-button"]
+      #- [pause, 2]
+      #- [text_field, id, "billing:firstname", "Web"]
+      #- [text_field, id, "billing:lastname", "Test"]
+      #- [text_field, id, "billing:email", "peeriustest@email.com"]
+      #- [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
+      #- [text_field, id, "billing:city", "London"]
+      #- [text_field, id, "billing:postcode", "SE1 0HS"]
+      #- [text_field, id, "billing:region", "London"]
+      #- [select_list, id, "billing:country_id", "United Kingdom"]
+      #- [text_field, id, "billing:telephone", "02039723222"]
+      #- [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
+      #- [pause, 5]
+      #- [radio, id, "s_method_freeshipping_freeshipping", optional]
+      #- [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
+      #- [pause, 5]
+      #- [radio, id, "p_method_checkmo"]
+      #- [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
 
