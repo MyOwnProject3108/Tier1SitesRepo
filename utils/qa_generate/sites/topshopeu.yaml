@@ -11,14 +11,37 @@ database_num: 7
 site_id: 575
 integration: standard
 
+
+# site variables
+show_log: true
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+category_menu_exclude: ["We_Love"]
+wait_time_per_category_page: 3
+test_all_categories: true
+num_of_reloads_per_category: 2
+product_links: ["div", ':id=> "wrapper_page_content"'] 
+product_link_filter: ["data-productid|*"] 
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_products: 5 
+add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+#### page level config ####
+
 home_page:
   URL: "http://eu.topshop.com/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title => "Sign in or register"']
   search_field: ["text_field", ':id => "inp_search_text"']
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
 
 product_page:
-  URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/mesh-sweetheart-mini-dress-2579678?bi=1&ps=20"
+  URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/white-paisley-textured-sweetheart-prom-dress-by-rare-2912299?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
@@ -30,9 +53,15 @@ category_page:
 
 basket_page:
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34058&langId=-1&storeId=13058"
-  expected_recs: 7 
+  expected_recs: 1 
   basket_checkout: ["link", ':text => "Checkout"']
-  basket_remove: ["link", ':class => "remove_bag_item"']  
+  basket_remove: ["link", ':class => "remove_bag_item"']
+
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':text => "Checkout"']
+  basket_remove: ["link", ':class => "remove_bag_item"']
+  
 
 login_page:
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34058&storeId=13058&krypto=ZmXU4%2F298ZR5E%2F0A%2BRepeYwmdebl9zQSPBD8LHbBD%2BmuZ5pEGZo88KNp9F2YJhO8CEqkzHXu08s9%0ANonYFRXhUg%3D%3D&ddkey=http:CatalogNavigationSearchResultCmd"
@@ -44,7 +73,7 @@ login_page:
 searchresults_page:
   URL: "http://eu.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13058&catalogId=34058&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=abcd&x=0&y=0"
   expected_recs: 0
-  zerosearch_recs: 7
+  zerosearch_recs: 1
   
 checkout_page:
   URL: "" 
@@ -59,7 +88,26 @@ checkout_page:
    - [text_field, class, "text address_town", "town"]
    - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
-   - [pause, 20]
+   - [pause, 5]
+   
+random_checkout:
+  URL: "http://us.topshop.com/?geoip=home"
+  expected_recs: 0
+  extra_steps:
+      - [link, id, "checkout_submit_bottom"]
+      - [pause, 2]
+      - [link, id, "btn_register"]
+      - [pause, 2]
+      - [select_list, id, "address_title", "Mr"]
+      - [text_field, id, "address_first_name", "P"]
+      - [text_field, id, "address_surname", "Eerius"]
+      - [text_field, id, "address_main_telephone", "0123456789"]
+#     - [p, class, "enter_manual_address"]
+      - [text_field, class, "text address_line_1", "address1"]
+      - [text_field, class, "text address_line_2", "address2"]
+      - [text_field, class, "text address_town", "dublin"]
+      - [text_field, class, "text address_postcode_manual", "12345"]
+      - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
   
    
    
