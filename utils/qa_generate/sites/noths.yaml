@@ -11,14 +11,37 @@ database_num: 0
 site_id: 12
 integration: standard
 
+
+# site variables
+show_log: true
+category_menu: ["ul", ':xpath => "/html/body/div/nav/div/div/div/ul"']
+category_menu_exclude: ["see more"]
+wait_time_per_category_page: 3
+test_all_categories: true
+num_of_reloads_per_category: 2
+product_links: ["div", ':xpath=> "//div[@id=\"item_list\"]/div[2]"'] 
+product_link_filter: ["image|preview"] 
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_products: 5 
+add_to_basket_button: ["button", ':id=> "add_to_cart"']
+
+#### page level config ####
+
 home_page:
   URL: "http://www.notonthehighstreet.com/"
   expected_recs: 0
   login_link: ["link", ':link_text => "my notonthehighstreet.com"']
   search_field: ["text_field", ':id => "term"']
 
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
 product_page:
-  URL: "http://www.notonthehighstreet.com/cooperrowevintageliving/product/reclaimed-oak-bench"	
+  URL: "http://www.notonthehighstreet.com/cooperrowevintageliving/product/reclaimed-oak-bench"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "add_to_cart"']
   
@@ -32,7 +55,13 @@ basket_page:
   basket_checkout: ["button", ':name => "button_checkout"']
   basket_remove: ["link", ':class => "remove_item_button secondary button small skinny mobile_hide"'] 
 
-
+random_basket:
+  expected_recs: 1
+  expected_recs: 1
+  basket_checkout: ["button", ':name => "button_checkout"']
+  basket_remove: ["link", ':class => "remove_item_button secondary button small skinny mobile_hide"']
+  
+  
 login_page:
   URL: "https://www.notonthehighstreet.com/session/new"
   expected_recs: 0
