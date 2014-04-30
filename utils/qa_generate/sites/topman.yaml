@@ -26,9 +26,12 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topman.com/en/tmuk/product/clothing-140502/mens-shirts-140515/white-pocket-smart-shirt-157472?bi=1&ps=20"
+  URL: "http://www.topman.com/en/tmuk/product/shoes-and-accessories-1928527/wallets-140529/brown-leather-look-cardholder-2876655?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+  extra_steps:
+    - [select_list, id, "product_size_full", "000"]
+    - [pause,2]
 
 category_page:
   URL: "http://www.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33056&storeId=12555&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207183&parent_categoryId=207169&beginIndex=1&pageSize=20"
@@ -37,7 +40,7 @@ category_page:
 basket_page:
   URL: "https://www.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33056&langId=-1&storeId=12555"
   expected_recs: 5 
-  basket_checkout: ["link", ':class => "btn_checkout"']
+  basket_checkout: ["link", ':id => "checkout_submit_bottom"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:

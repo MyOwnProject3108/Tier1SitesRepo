@@ -93,6 +93,8 @@ checkout_page:
   extra_steps:
     - [pause, 10]
     - [button, id, "ctl00_contentBody_submit"]
+    - [button, id, "ctl00_contentBody_ConfirmAddresses"]
+    - [pause, 5]
 
 
 random_product:
@@ -122,3 +124,4 @@ random_checkout:
     - [text_field, id, "ctl00_contentBody_postcode", "SE1 0HS"]
     - [button, id, "ctl00_contentBody_submit"]
     - [pause, 5]
+
