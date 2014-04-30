@@ -117,6 +117,7 @@ random_checkout:
     - [text_field, id, "ctl00_contentBody_tel_number", "0209898989"]
     - [text_field, id, "ctl00_contentBody_street1", "Peerius, 232 Great Guildford Street"]
     - [a, id , "manualAddressEntry"]
+    - [pause, 5]
     - [text_field, id, "ctl00_contentBody_town", "London"]
     - [text_field, id, "ctl00_contentBody_postcode", "SE1 0HS"]
     - [button, id, "ctl00_contentBody_submit"]

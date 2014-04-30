@@ -65,21 +65,21 @@ end
     return rule1
 end
 
+@rand_value = rand(1..999999).to_s
+
 def generate_firstname(seed_value)
 	prefix = seed_value
-	rand_value = rand(1..999999).to_s
-    return prefix+rand_value
+	#rand_value = rand(1..999999).to_s
+    return prefix+@rand_value
 end
 
 def generate_lastname(seed_value)
 	prefix = seed_value
-	rand_value = rand(1..999999).to_s
-    return prefix+rand_value
+    return prefix+@rand_value
 end
 
 def generate_email(seed_value)
 	prefix = seed_value.partition('@').first
 	domain = seed_value.partition('@').last
-	rand_value = rand(1..999999).to_s
-    return prefix+rand_value+'@'+domain
+    return prefix+@rand_value+'@'+domain
 end
