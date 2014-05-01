@@ -40,9 +40,10 @@ When /^I visit the first top navigation page$/ do
    	visit_nav_page(0, false)
 end
 
+@@rand_value = rand(1..999999).to_s
 When /^I auto-generate (.+) using "(.+)" for the (.+) with (.+) "(.+)"$/ do |data_type, value, element, locator, locator_value|
 	gen_value = value
-	gen_value = eval("autogenerate_"+data_type+'("'+value+'")')
+	gen_value = eval("autogenerate_"+data_type+'("'+value+'","'+ @@rand_value + '")')
 	plog("\tAuto-generated " + data_type.upcase + " => " + gen_value, "magenta")
 	@browser.send(element.to_sym, locator.to_sym => locator_value).wd.location_once_scrolled_into_view 
 	@browser.send(element.to_sym, locator.to_sym => locator_value).set(gen_value)
@@ -345,22 +346,22 @@ end
  # @current_page.debug_content.should have_at_least(expected_content).entries
 #end
 
-def autogenerate_firstname(seed_value)
+def autogenerate_firstname(seed_value, rand_value)
 	prefix = seed_value
-	rand_value = rand(1..999999).to_s
+	#rand_value = rand(1..999999).to_s
     return prefix+rand_value
 end
 
-def autogenerate_lastname(seed_value)
+def autogenerate_lastname(seed_value, rand_value)
 	prefix = seed_value
-	rand_value = rand(1..999999).to_s
+	#rand_value = rand(1..999999).to_s
     return prefix+rand_value
 end
 
-def autogenerate_email(seed_value)
+def autogenerate_email(seed_value, rand_value)
 	prefix = seed_value.partition('@').first
 	domain = seed_value.partition('@').last
-	rand_value = rand(1..999999).to_s
+	#rand_value = rand(1..999999).to_s
     return prefix+rand_value+'@'+domain
 end
 
