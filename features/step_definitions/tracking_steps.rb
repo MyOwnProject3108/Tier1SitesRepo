@@ -189,7 +189,7 @@ def select_product_options(show_log)
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
 				option = product_options.lis[rand(1..product_options.lis.length-1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect
-				plog("\tPre-selected => #{strip_clean(product_options_preselect.html)}","blue") if show_log
+				plog("\tPre-selected => #{strip_clean(product_options_preselect.html)}","blue") if show_log &&  @current_page.has_product_options_preselect
 				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if show_log
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
 				option.links.first.click if option.links.first.exists?

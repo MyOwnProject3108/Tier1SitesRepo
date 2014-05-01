@@ -88,8 +88,8 @@ checkout_page:
     - [text_field, class, "text address_town", "London"]
     - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
     - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
-	
-	
+    
+    
 random_checkout:
   URL: "http://www.topshop.com/"
   expected_recs: 0
