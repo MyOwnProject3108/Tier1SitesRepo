@@ -41,6 +41,14 @@ num_of_reloads_per_category: 2
 # then the following flag, if set to true, will ignore such pages and will try a different link until a category page is found. Default is false.
 ignore_cat_tracked_as_other_page: true
 
+# To allow random selection of products from pages besides the first page - Without this products are randomly selected from the first page of a randomly selected category
+category_page_info: 
+   - ["total_text","p|:xpath|\"//html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/div[1]/p\""] 
+   - ["total_text_filter","between|of|total"] 
+   - ["items_per_page","12"] 
+   - ["url_filter","?p=<pagenum>"] 
+
+
 # The xpath or id of the html element that contains all the product links on a category page
 product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
 

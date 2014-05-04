@@ -85,12 +85,13 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
   		category = categories[rand(0..categories.length-1)]
   		cat_name = category[0]
 		cat_url = category[1] #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
+		
 		exclude_cat = false
 		if (@current_page.get_categories_to_exclude_list.length>0)
 			cats_to_exclude = @current_page.get_categories_to_exclude_list*","
 			exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
 		end
-		
+		cat_info = Array.new
 		if !exclude_cat
 			catTestResponse = nil
 			# plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if show_log
@@ -109,12 +110,14 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				# Collect all links that have an attributes "title" and "href"
 				products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
 				
+				cat_info = catTestResponse.split("|")
+				
 				if products.length == 0
-					fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_name}(#{cat_url}) using link filter => #{link_filter}"))
+					fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]}) using link filter => #{link_filter}"))
 					break
 				end
 				
-				plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_name} :: #{cat_url} :: has #{products.length} products","yellow") if show_log
+				plog("\tCATEGORY #{cat_ctr} of #{num_categories} => #{cat_info[0]} :: #{cat_info[1]} :: has #{products.length} products","yellow") if show_log
 				prod_ctr = 1
 				while prod_ctr <= num_products
 					product = products[rand(0..products.length-1)]
@@ -150,16 +153,16 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				cat_ctr = cat_ctr + 1
 			else
 				if !ignore_cat_tracked_as_other_page
-					plog("\t\t#{cat_name}:\t\t#{cat_url} \t=> tracked as " + catTestResponse.split("|")[2].upcase + " page - FAILED","red")
+					plog("\t\t#{cat_info[0]}:\t\t#{cat_info[1]} \t=> tracked as #{cat_info[2].upcase} page - FAILED","red")
 					cat_ctr = cat_ctr + 1 
 					test_pass = false
 				else
-					plog("\tIGNORING " + catTestResponse.split("|")[2].upcase + " PAGE " + "#{cat_name} (#{cat_url})" ,"grey")
+					plog("\tIGNORING #{cat_info[2].upcase} PAGE " + "#{cat_info[0]} (#{cat_info[1]})" ,"grey")
 				end
 			end 
 			
 		else
-			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if show_log
+			plog("\tIGNORING EXCLUDED CATEGORY #{cat_info[0]} : #{cat_info[1]}","grey") if show_log
 		end
   	end
     test_pass.should == true if ENV['debugcuke'] 
@@ -195,6 +198,9 @@ def select_product_options(show_log)
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
 				option.links.first.click if option.links.first.exists?
 				option.click if !option.links.first.exists?
+			when product_options.is_a?(PageObject::Elements::Image)
+				plog("\tSelected option => #{product_options} ...","magenta") if show_log
+				product_options.click
 			when product_options.is_a?(PageObject::Elements::Element) #ctshirts
 				option = product_options.dds[rand(1..product_options.dds.length-1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect
@@ -203,9 +209,6 @@ def select_product_options(show_log)
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if show_log
 				option.links.first.click if option.links
 				option.click if !option.links
-			when product_options.is_a?(PageObject::Elements::Image)
-				plog("\tSelected option => #{product_options} ...","magenta") if show_log
-				product_options.click
 			else
 				# do nothing
 			end
@@ -304,6 +307,12 @@ def test_category_page(cat_name,cat_url,wait_time,show_log)
 	testResponse = nil
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 	@browser.goto cat_url #"http://www.alexandalexa.com/home-school/kids-bedroom" #
+
+	if (@current_page.get_category_page_info.length>0)
+		cat_url = get_category_page_with_filter(cat_name, cat_url, show_log)
+		@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+		@browser.goto cat_url 
+	end
 	sleep wait_time
 	cat_name = cat_name.length > 20 ? cat_name[0..17].gsub(/\s\w+\s*$/,'...').gsub(/\s+/, "") : cat_name.gsub(/\s+/, "")
 	reload_attempts = @current_page.get_num_of_reloads_per_category
@@ -372,4 +381,37 @@ def show_tested_categories(cat_list, status, show_log)
 		cat = tcat.split("|")
 		plog("\t#{cat[0]}:\t#{cat[1]}",msg_colour) if show_log
 	end
+end
+
+def get_category_page_with_filter(cat_name, cat_url, show_log)
+	url_filter = ""
+	val_array = Array.new
+	filter_crit = Array.new
+	page_num = 1
+	has_more_pages = false
+	total_products = nil
+	@current_page.get_category_page_info.each do |key,value|
+		case key
+			when "total_text"
+				val_array = value.split("|")
+				elem = eval("@browser."+val_array[0]+"(" +val_array[1]+ "=>" +val_array[2]+")")
+				url_filter = elem.text
+			when "total_text_filter"
+				filter_crit = value.split("|")
+				has_more_pages = true if url_filter.include?(filter_crit[1])
+				total_products = url_filter[/#{filter_crit[1]}(.*?)#{filter_crit[2]}/m, 1].strip! if filter_crit[0]=="between" && url_filter.include?(filter_crit[1])
+			when "items_per_page"
+				page_num = total_products.to_i/value.to_i if url_filter != "1"
+				page_num = rand(1..page_num)
+			when "url_filter"
+				url_filter = value.gsub("<pagenum>",page_num.to_s) 
+			else
+			    # do nothing
+		end
+		
+	end
+    plog("\tCATEGORY #{cat_name} :: #{cat_url} - TOTAL PRODUCTS => #{total_products}","grey") if show_log && has_more_pages
+	cat_url = cat_url + url_filter
+	return cat_url
+
 end

@@ -95,6 +95,14 @@ module <%= site["site_name"].capitalize %>
 		<% end %>		
 		end
 		
+		def get_category_page_info
+		<% if site["category_page_info"] %>
+			return <%= site["category_page_info"] %>
+		<% else %>
+			return []
+		<% end %>
+		end
+	
 		def get_wait_time_per_product_page
 		<% if site["wait_time_per_product_page"] %>
 			return <%= site["wait_time_per_product_page"] %>

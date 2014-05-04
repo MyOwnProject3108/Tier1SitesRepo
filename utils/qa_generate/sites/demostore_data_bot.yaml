@@ -16,17 +16,23 @@ show_log: true
 
 # xpath or id to container that contains all the product page links on a category page
 category_menu: ["ul", ':id => "nav"']
-category_menu_exclude: ["Home", "Electricals", "Entertainment", "Health & Beauty"]
+category_menu_exclude: ["Mens", "Home", "Electricals", "Entertainment", "Health & Beauty"]
 test_all_categories: false
 wait_time_per_category_page: 2
 ignore_cat_tracked_as_other_page: true
 max_num_of_categories: 3 
+category_page_info: 
+   - ["total_text","p|:xpath|\"//html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/div[1]/p\""] 
+   - ["total_text_filter","between|of|total"] 
+   - ["items_per_page","12"] 
+   - ["url_filter","?p=<pagenum>"] 
+
 
 
 product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
 product_link_filter: ["class|product-image"] 
 wait_time_per_product_page: 2
-max_num_of_products: 2 
+max_num_of_products: 3 
 
 product_options: 
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
