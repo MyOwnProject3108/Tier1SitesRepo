@@ -1,0 +1,53 @@
+ignore: true
+site_name: musicroom
+pretty_name: MusicRoom
+has_content: no
+has_ranking: no
+needs_SPR: yes
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: shirts
+valid_search_term: dvd
+
+
+home_page:
+  URL: "http://www.musicroom.com/"
+  expected_recs: 0
+  expected_api_recs: 12
+  login_link: ["link", ':href=> "https://www.musicroom.com/account.aspx"']
+  search_field: ["text_field", ':id => "search_term"']
+  needs_SPR: no
+  
+
+product_page:
+  URL: "hhttp://www.musicroom.com/se/id_no/01021899/details.html"	
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "ctl00_ctl00_cphFullWidth_cphContent_ucProductDetails_btnAddToBasket"']
+
+category_page:
+  URL: "http://www.musicroom.com/browse/arrangementgroup.aspx?category_id=store1_arrangementgroup4"
+  expected_recs: 3
+
+basket_page:
+  URL: "http://www.musicroom.com/basketdetails.aspx"
+  expected_recs: 1
+  basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
+  basket_remove: ["link", ':class => "remove"'] 
+
+login_page:
+  URL: "https://www.musicroom.com/account.aspx"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_contentBody_email"']
+  password_field: ["text_field", ':id=>"ctl00_contentBody_password"']  
+  login_submit: ["button", ':id=>"ctl00_contentBody_submit"']
+
+searchresults_page:
+  URL: "http://www.musicroom.com/search/find.aspx?searchtext=abc"
+  expected_recs: 0
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+    - [button, id, "ctl00_ctl00_cphMain_cphContent_btnProceedToSecureCheckoutTop"]

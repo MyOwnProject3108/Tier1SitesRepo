@@ -1,0 +1,54 @@
+ignore: true
+site_name: Mandmdirect
+pretty_name: MandMDirect
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: anagha.joshi@peerius.com
+password: test123
+zero_search_term: no
+valid_search_term: shirt
+database_num: 1
+site_id: 54
+integration: standard
+
+home_page:
+  URL: "http://www.mandmdirect.com/"
+  expected_recs: 4
+  login_link: ["link", ':title => "Sign In"']
+  search_field: ["text_field", ':id => "ctl00_ctl00_cphMaster_cphMainHeader_uc_search_tbToolbarSearch"']
+
+product_page:
+  URL: "http://www.mandmdirect.com/01/details/PX102/Womens-Conversational-Print-Dress-Dark-Red"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "ctl00_ctl00_globalmaincontent_productcontent_btnHiddenAddToBasketRef"']
+  product_extra_steps:
+    - [span, class, "cust_checkbox_off checkbox"]
+
+category_page:
+  URL: "http://www.mandmdirect.com/01/womens/dresses-and-skirts"
+  expected_recs: 0
+
+basket_page:
+  URL: "http://www.mandmdirect.com/ViewBasket.aspx"
+  expected_recs: 4
+  basket_checkout: ["link", ':id => "ctl00_ctl00_globalmaincontent_maincontent_hlCheckout"']
+  basket_remove: ["link", ':class => "remove"']
+
+login_page:
+  URL: "https://www.mandmdirect.com/Secure/Account/SignIn?ReturnUrl=%2FSecure%2FCheckout%2FAccount"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtLogonId"']
+  password_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtPassword"']
+  login_submit: ["button", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_btnlogin2"']
+
+searchresults_page:
+  URL: "http://www.mandmdirect.com/01/?Search=shirt"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  URL: ""
+  expected_recs: 0
+  
+    
