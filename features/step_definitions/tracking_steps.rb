@@ -118,8 +118,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 					fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]}) using link filter => #{link_filter}"))
 					break
 				end
-				page_info = ""
-				page_info = "Page #{cat_info[3]} of " if cat_info[3] != 1
+				
+				page_info = "Page #{cat_info[3]} of " #if cat_info[3] != 1
 				plog("\t#{page_info}CATEGORY #{cat_ctr} of #{num_categories} => #{cat_info[0]} :: #{cat_info[1]} :: has #{products.length} products","yellow") if @@show_log
 				prod_ctr = 1
 				while prod_ctr <= num_products
