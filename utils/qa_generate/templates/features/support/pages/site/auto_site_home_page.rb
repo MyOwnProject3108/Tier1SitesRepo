@@ -95,9 +95,9 @@ module <%= site["site_name"].capitalize %>
 		<% end %>		
 		end
 		
-		def get_category_page_info
-		<% if site["category_page_info"] %>
-			return <%= site["category_page_info"] %>
+		def get_category_paging_info
+		<% if site["category_paging_info"] %>
+			return <%= site["category_paging_info"] %>
 		<% else %>
 			return []
 		<% end %>

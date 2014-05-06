@@ -311,7 +311,7 @@ def test_category_page(cat_name,cat_url,wait_time)
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 	@browser.goto cat_url #"http://www.alexandalexa.com/home-school/kids-bedroom" #
 	page_num = 1
-	if (@current_page.get_category_page_info.length>0)
+	if (@current_page.get_category_paging_info.length>0)
 		cat_info = get_category_page_with_filter(cat_name, cat_url)
 		cat_url = cat_info[0]
 		page_num = cat_info[1]
@@ -391,7 +391,7 @@ def get_category_page_with_filter(cat_name, cat_url)
 	page_num = 1
 	has_more_pages = false
 	total_products = nil
-	@current_page.get_category_page_info.each do |page_key,page_val|
+	@current_page.get_category_paging_info.each do |page_key,page_val|
 		case page_key
 			when "total_products_text"
 				elem_array = page_val.split("|")

@@ -21,7 +21,7 @@ test_all_categories: false
 wait_time_per_category_page: 2
 ignore_cat_tracked_as_other_page: true
 max_num_of_categories: 3 
-category_page_info: 
+category_paging_info: 
    - ["total_products_text","p|:xpath|\"html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/div[1]/p\""] 
    - ["total_products_text_filter","between|of|total"] 
    - ["products_per_page","12"] 
