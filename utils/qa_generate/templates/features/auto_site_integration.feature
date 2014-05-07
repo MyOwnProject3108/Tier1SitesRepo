@@ -109,6 +109,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
   And I add the current product to the basket
   And I pause for 2 seconds
   And I go to the basket page
+  <%= extra_steps_rule(page["extra_steps"]) %>
   Then it should be tracked as a basket page 
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
