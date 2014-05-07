@@ -19,7 +19,7 @@ category_menu: ["ul", ':id => "nav"']
 
 # A comma separated list of names for the categories that you want to exclude. The names should match the the text of the links that are displayed ont eh page. 
 # Currently you have to pass atleast one entry - will be refined later so that this becomes optional
-category_menu_exclude: ["Home", "Electricals", "Entertainment", "Health & Beauty"]
+categories_to_exclude: ["Home", "Electricals", "Entertainment" ] #, "Health & Beauty"]
 
 # If set to true the @all_categories test will be generated for the site. Default is false.
 test_all_categories: true
@@ -68,6 +68,10 @@ product_link_filter: ["class|product-image"]
 product_options: 
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"']
+
+# If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
+# Products with titles that contain at least one of the following key words wil be excluded from the testing process.
+product_keywords_to_exclude: ["Canvas", "Boot", "Digital", "Mens", "Shoes", "Flop", "Trainer", "Blue", "ml" ]
 
 
 # If product pages take time to load, you can specify the wait time. Default is 2 secs.

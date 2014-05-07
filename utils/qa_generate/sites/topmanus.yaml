@@ -14,7 +14,7 @@ integration: standard
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-category_menu_exclude: ["Brands","Inspire Me"]
+categories_to_exclude: ["Brands","Inspire Me"]
 wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2

@@ -297,14 +297,14 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
   And I visit the top navigation page with index: 
   |<%= page_index %>|
   Then all categories should be tracked as Category pages except:
-<% site["category_menu_exclude"].each do |excluded_category| %>
+<% site["categories_to_exclude"].each do |excluded_category| %>
   |<%= excluded_category %>|
 <% end %>
 <% end %>
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
   Then all categories should be tracked as Category pages except:
-<% site["category_menu_exclude"].each do |excluded_category| %>
+<% site["categories_to_exclude"].each do |excluded_category| %>
   |<%= excluded_category %>|
 <% end %>
 <% end %>

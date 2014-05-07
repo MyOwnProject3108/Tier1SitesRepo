@@ -16,7 +16,7 @@ integration: standard
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-category_menu_exclude: ["Facebook","Twitter","Google","Pinterest","Instagram","YouTube","Information Pages","The Knowledge Blog"]
+categories_to_exclude: ["Facebook","Twitter","Google","Pinterest","Instagram","YouTube","Information Pages","The Knowledge Blog"]
 wait_time_per_category_page: 5
 test_all_categories: true
 num_of_reloads_per_category: 2

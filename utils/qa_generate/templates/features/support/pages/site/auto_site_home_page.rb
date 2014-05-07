@@ -87,9 +87,9 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
-		def get_categories_to_exclude_list
-		<% if site["category_menu_exclude"] %>		
-			return <%= site["category_menu_exclude"] %>
+		def get_categories_to_exclude
+		<% if site["categories_to_exclude"] %>		
+			return <%= site["categories_to_exclude"] %>
 		<% else %>
 			return []
 		<% end %>		
@@ -116,6 +116,14 @@ module <%= site["site_name"].capitalize %>
 			return <%= site["product_options"].length %>
 		<% else %>
 			return 0
+		<% end %>		
+		end
+		
+		def get_product_keywords_to_exclude
+		<% if site["product_keywords_to_exclude"] %>		
+			return <%= site["product_keywords_to_exclude"] %>
+		<% else %>
+			return []
 		<% end %>		
 		end
 		
