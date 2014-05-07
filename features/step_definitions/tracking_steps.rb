@@ -98,9 +98,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			cat_test_response = nil
 			# plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if @@show_log
 			cat_test_response = test_category_page(cat_name,cat_url,wait_time_per_category)
-
+			cat_info = cat_test_response.split("|") if cat_test_response != nil
 			if cat_test_response != nil && cat_test_response.include?("SUCCESS")
-				cat_info = cat_test_response.split("|")
 				products = @current_page.product_links_element.link_elements
 	
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
