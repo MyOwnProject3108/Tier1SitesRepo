@@ -24,6 +24,7 @@ product_links: ["div", ':id=> "wrapper_page_content"']
 product_link_filter: ["data-productid|*"]
 product_options: 
     - [select_list, ':id=> "product_size_full"']
+    - [select_list, ':id=> "choosesize_1"']
 
 
     

@@ -16,7 +16,7 @@ show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "topnavstandard"']
-category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footwear", "Accessories", "Collections", "Overseas","Men's Tops"]
+category_menu_exclude: ["Overseas"]
 test_all_categories: false
 
 wait_time_per_category_page: 5
@@ -42,13 +42,15 @@ home_page:
   search_field: ["text_field", ':id => "q"']
 
 random_product:
-  expected_recs: 5
+  expected_recs: 1
   
 random_category:
-  expected_recs: 0
+  expected_recs: 1
   
 random_basket:
-  expected_recs: 2
+  expected_recs: 1
+  basket_checkout: ["button", ':class => "right btCheckout"']
+  basket_remove: ["link", ':title => "Remove All"']
   
 product_page:
   URL: "http://www.cottontraders.com/stretch-turtle-neck-top/invt/aa12620"
@@ -87,3 +89,32 @@ checkout_page:
 random_checkout:
   URL: "http://www.cottontraders.com/"
   expected_recs: 0
+  extra_steps:
+    - [button, class, "button buttonArrow right btCheckout submit btCheckoutBottom"]
+    - [pause, 2]
+    - [button, xpath, "/html/body/div/div[2]/div/div[2]/div[7]/div/div[2]/form/fieldset/div/div[2]/input"]
+    - [pause, 2]
+    - [text_field, id, "fname", "Web", "generate_firstname"]
+    - [text_field, id, "lname", "Test", "generate_lastname"]
+    - [text_field, id, "phone", "02039723222"]
+    - [select_list, id, "cntrylist", "United Kingdom"]
+    - [pause, 2]
+    - [text_field, id, "zipc", "SE1 0HS"]
+    - [link, id, "enterManually"]
+    - [pause, 2]
+    - [text_field, id, "num", "Peerius"]
+    - [text_field, id, "addr1", "232 Great Guildford Street"]
+    - [text_field, id, "city", "london"]
+    - [pause, 2]
+    - [text_field, id, "usemail", "webtest@mailinator.com", "generate_email"]
+    - [text_field, id, "usemailconfirm", "webtest@mailinator.com", "generate_email"]
+    - [text_field, id, "uspswd", "webtest"]
+    - [text_field, id, "uspswd2", "webtest"]
+    - [button, class, "button buttonArrow  btCheckout  right noMargin btCheckoutBottomBilling"]
+    - [pause, 2]
+    
+    
+    
+    
+    
+    
