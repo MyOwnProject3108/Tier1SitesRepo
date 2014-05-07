@@ -23,6 +23,7 @@ product_link_filter: ["data-productid|*"]
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
 max_num_of_products: 5 
+max_num_of_categories: 1
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 

@@ -20,17 +20,17 @@ category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footw
 test_all_categories: true
 ignore_cat_tracked_as_other_page: true
 wait_time_per_category_page: 3
-max_num_of_categories: 1 
+max_num_of_categories: 5 
 num_of_reloads_per_category: 2
 wait_time_per_product_page: 2
 max_num_of_products: 1
 
-product_links: ["ul", ':xpath=> "/html/body/div/div[3]/form/section/ul"']  
+product_links: ["ul", ':id=> "ls-category-products"']  
 product_link_filter: ["class|text-center"]
 product_options: 
     - [select_list, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/select"']
-    - [img, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li[2]/div/img[1]"']
-      
+    - [img, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/div/img[1]"']
+                       
 add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
         
 #### page level config ####
