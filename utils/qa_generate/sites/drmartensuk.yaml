@@ -15,7 +15,7 @@ integration: standard
 # site variables
 show_log: true
 category_menu: ["div", ':id => "nav_main"']
-category_menu_exclude: ["Industrial","Clearance","Stand for Something","Like us on Facebook","Follow us on Twitter","Contact"]
+categories_to_exclude: ["Industrial","Clearance","Stand for Something","Like us on Facebook","Follow us on Twitter","Contact"]
 test_all_categories: true
 wait_time_per_category_page: 3
 max_num_of_categories: 1

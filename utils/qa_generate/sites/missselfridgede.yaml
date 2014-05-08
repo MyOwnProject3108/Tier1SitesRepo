@@ -17,7 +17,7 @@ home_page:
   login_link: ["link", ':title=> "Einloggen oder registrieren"']
   search_field: ["text_field", ':id => "inp_search_text"']
 #  category_menu: ["ul", ':id => "nav_catalog_menu"']
- # category_menu_exclude: ["Dress Shop", "Petite", "Features", "Style Diaries"]
+ # categories_to_exclude: ["Dress Shop", "Petite", "Features", "Style Diaries"]
 #  needs_SPR: no
 
 product_page:

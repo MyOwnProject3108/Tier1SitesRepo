@@ -17,7 +17,7 @@ show_log: true
 category_menu: ["ul", ':xpath => "//nav[@id=\"categories\"]/ul[1]"']
 category_menu_preselect: ["li", ':xpath => "//ul[@id=\"gender\"]/li[2]"']
 num_of_category_menu_preselect_items: 2
-category_menu_exclude: ["Mens"]
+categories_to_exclude: ["Mens"]
 wait_time_per_category_page: 5
 test_all_categories: true
 num_of_reloads_per_category: 2

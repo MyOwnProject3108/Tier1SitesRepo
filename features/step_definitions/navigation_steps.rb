@@ -24,13 +24,13 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
         @current_page.should have_expected_title
     end
     
-    # Show the user agent string
-    #pp @browser.html[/<textarea.+>([^<]+)<\/textarea>/,1]
+	# Show the user agent string
+	#pp @browser.html[/<textarea.+>([^<]+)<\/textarea>/,1]
 	#pp @browser.html
-	
-  # Make sure the debug data is showing
-  #@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  #@browser.refresh
+
+	# Make sure the debug data is showing
+	#@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+	#@browser.refresh
 end
 
 When /^I go to the (.+)page$/ do |page|   

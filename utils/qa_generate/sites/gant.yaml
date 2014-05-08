@@ -12,7 +12,7 @@ site_id: 1301
 integration: json
 
 category_menu: ["ul", ':id => "gant-primary-navigation"']
-category_menu_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+categories_to_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
 
 home_page:
   URL: "http://www.gant.co.uk/"

@@ -17,7 +17,7 @@ home_page:
   login_link: ["link", ':href => "http://www.missselfridge.fr/webapp/wcs/stores/servlet/LogonForm?storeId=13067&catalogId=34076"']
   search_field: ["text_field", ':id => "inp_search_text"']
 #  category_menu: ["ul", ':id => "nav_catalog_menu"']
- # category_menu_exclude: [Dress Shop", "Petite", "Features", "Style Diaries"]
+ # categories_to_exclude: [Dress Shop", "Petite", "Features", "Style Diaries"]
 
 product_page:
   URL: "http://www.missselfridge.fr/fr/msfr/produit/v%C3%AAtements-854443/robes-854456/robe-midi-orn%C3%A9e-de-perles-esprit-azt%C3%A8que-2093019?bi=1&ps=40"   
