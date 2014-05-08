@@ -11,6 +11,25 @@ database_num: 3
 site_id: 605
 integration: standard
 
+# site variables
+show_log: true
+category_menu: ["div", ':class => "top_navigation_dropdown clearfix"']
+category_menu_exclude: ["Woman", "Man", "Homeware", "Outlet", "Discover", "blog"]
+wait_time_per_category_page: 3
+test_all_categories: true
+num_of_reloads_per_category: 2
+product_links: ["div", ':id=> "category_product_container"'] 
+product_link_filter: ["class|category_product_link"]
+product_options: 
+     - [select_list, ':id=> "selColour"']
+     - [select_list, ':id=> "selSize"'] 
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_categories: 1
+max_num_of_products: 5 
+add_to_basket_button: ["button", ':id=> "addToBasket"']
+
+
 home_page:
   URL: "http://www.frenchconnection.com/"
   expected_recs: 0
@@ -20,6 +39,15 @@ home_page:
   search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch"']
   extra_steps:
    - [button, id, "ctl00_ctl00_btnDoSearch"]
+   
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+ 
+random_basket:
+  expected_recs: 1
 
 product_page:
   URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"
@@ -68,4 +96,41 @@ checkout_page:
     - [checkbox, id, "chkTermsRead"]
     - [link, id, "paymentProceed"]
    # - [link, id, "confirmProceed"]
+   
+#random checkout uses guest checkout so steps below are for guest user/new user registration after basket page.
+
+random_checkout:
+  expected_recs: 0
+  extra_steps:
+      - [link, id, "ctl00_ctl00_globalmaincontent_mainContent_hlCheckout"]
+#     - [text_field, id, "txtGuestEmail", "peertest@yahoo.com", "generate_email"]
+#     - [link, id, "guest"]
+#     - [radio, id, "rbHomeDelivery"]
+#     - [text_field, id, "txtBuildingNameNumber", "30"]
+#     - [text_field, id, "txtPostalCode", "SE1 0HS"]
+#     - [link, id, "manualEntry"]
+#     - [text_field, id, "GeneralInfo.first_name", "Test", "generate_firstname"]
+#     - [text_field, id, "GeneralInfo.last_name", "Test", "generate_lastname"]
+#     - [text_field, id, "GeneralInfo.tel_number", "02078627562"]
+#     - [text_field, id, "GeneralInfo.address_line1", "30 Great Guildford Street"]
+#     - [text_field, id, "GeneralInfo.city", "London"]
+#     - [text_field, id, "GeneralInfo.postal_code", "SE1 0HS"]
+#     - [input, id, "chkUseForBilling"]
+#     - [link, id, "shippingProceed"]
+#     - [link, id, "promotionCodeProceed"]
+#     - [link, id, "shippingMethodProceed"]
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     

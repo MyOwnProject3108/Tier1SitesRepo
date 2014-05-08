@@ -31,6 +31,8 @@ basket_page:
   expected_recs: 8
   basket_checkout: ["link", ':link_text => "Checkout", :index => 1']
   basket_remove: ["link", ':title => "Remove Item"'] 
+  extra_steps:
+      - [select_list, id, "delivery", "P1"]
  
 login_page:
   URL: "https://www.cooksongold.com/login_in.jsp?country=gb&shop=c&language=ENG&site400=001&company=001&siteid=IN"
@@ -47,3 +49,4 @@ searchresults_page:
 checkout_page:
   URL: "https://www.cooksongold.com/your_order.jsp"
   expected_recs: 0   
+ran
