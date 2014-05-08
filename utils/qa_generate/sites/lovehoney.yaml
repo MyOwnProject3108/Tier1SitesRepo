@@ -16,7 +16,7 @@ show_log: false
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["ul", ':id => "nav"']
-category_menu_exclude: ["Gifts", "Sale", "Community", "Help"]
+categories_to_exclude: ["Gifts", "Sale", "Community", "Help"]
 test_all_categories: true
 wait_time_per_category_page: 5
 max_num_of_categories: 1 

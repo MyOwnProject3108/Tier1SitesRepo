@@ -17,7 +17,7 @@ show_log: true
 add_to_basket_button: ["button", ':id=> "maincontent_0_add_btnAddToCart"']
 
 category_menu: ["div", ':id => "flyout-ourcoins"']
-category_menu_exclude: ["About", "Discover", "Home"]
+categories_to_exclude: ["About", "Discover", "Home"]
 test_all_categories: true
 wait_time_per_category_page: 3
 

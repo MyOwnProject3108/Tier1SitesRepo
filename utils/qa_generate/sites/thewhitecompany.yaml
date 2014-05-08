@@ -16,7 +16,7 @@ show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "site_container"']
-category_menu_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footwear", "Accessories", "Collections", "Overseas","Men's Tops"]
+categories_to_exclude: ["Home", "His and Hers", "Menswear", "Womenswear", "Footwear", "Accessories", "Collections", "Overseas","Men's Tops"]
 test_all_categories: true
 ignore_cat_tracked_as_other_page: true
 wait_time_per_category_page: 3

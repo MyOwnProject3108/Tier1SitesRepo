@@ -15,7 +15,7 @@ valid_search_term: red dress
 show_log: true
 
 category_menu: ["ul", ':id => "nav"']
-category_menu_exclude: ["SALE","Denim","Boots & Wellies"]
+categories_to_exclude: ["SALE","Denim","Boots & Wellies"]
 test_all_categories: true
 wait_time_per_category_page: 5
 max_num_of_categories: 1

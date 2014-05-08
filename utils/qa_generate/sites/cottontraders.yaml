@@ -16,7 +16,7 @@ show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "topnavstandard"']
-category_menu_exclude: ["Overseas"]
+categories_to_exclude: ["Overseas"]
 test_all_categories: false
 
 wait_time_per_category_page: 5
