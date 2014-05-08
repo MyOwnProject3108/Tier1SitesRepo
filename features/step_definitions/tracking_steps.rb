@@ -184,7 +184,7 @@ def select_product_options
 			when product_options.is_a?(PageObject::Elements::SelectList)
 				#option = product_options.options[rand(1..product_options.options.length-1)].text 
 				opt_index = rand(1..product_options.options.length-1)
-				plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","magenta") if @@show_log && product_options.visible?
+				plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","magenta") if @@show_log && product_options.visible? &&product_options.enabled?
 				product_options_preselect.click if @current_page.has_product_options_preselect
 				#product_options.when_present.select option 
 				product_options.option(:index => opt_index).when_present.select if product_options.visible?
