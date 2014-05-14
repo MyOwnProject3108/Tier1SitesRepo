@@ -14,7 +14,7 @@ integration: standard
 # site variables
 show_log: true
 category_menu: ["div", ':class => "top_navigation_dropdown clearfix"']
-category_menu_exclude: ["Woman", "Man", "Homeware", "Outlet", "Discover", "blog"]
+categories_to_exclude: ["Woman", "Man", "Homeware", "Outlet", "Discover", "blog"]
 wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2
@@ -26,7 +26,7 @@ product_options:
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
 max_num_of_categories: 1
-max_num_of_products: 5 
+max_num_of_products: 2 
 add_to_basket_button: ["button", ':id=> "addToBasket"']
 
 
