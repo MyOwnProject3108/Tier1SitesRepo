@@ -21,6 +21,7 @@ Scenario: SMART-recs A/B groups can be detected using SMART-API "full"
      And I should see which smartRecs abgroup I am serving
      And I should see at least 1 smartRecs ab test configs
         
+
 Scenario Outline: All SMART-recs attributes can be retrieved using SMART-API-CURRENTLY THIS SCENARIO FAILS AS LIVEDEMOSHOP DOESN'T SERVE ANY RECS
     Given I am using SMART-API to access livedemoshop
     And I request all attributes

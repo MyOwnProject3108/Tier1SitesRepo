@@ -10,7 +10,7 @@ Feature: SMART-API: Non-site specific SMART-ranking tests for DemostoreDev
 Scenario:01 Activate Ranking Campaign in Db for API test 
 	Given I am using SMART-API to access demostoredev
     And I am using client token d3m05t0r3d3vt35tu4t
-    Then I activate "API test" ranking category campaign in DB 
+    Then I activate "API test1" ranking category campaign in DB 
     
 Scenario:02 SMART-ranking can be delivered on category page using SMART-API
     Given I am using SMART-API to access demostoredev

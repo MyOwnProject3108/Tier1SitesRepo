@@ -20,7 +20,7 @@ category_menu: ["ul", ':xpath => "//div[@id=\"menu\"]/ul"']
 categories_to_exclude: ["Nothing"]
 max_num_of_categories: 1
 wait_time_per_category_page: 2
-test_all_categories: true
+test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 out_of_stock_msg: "THIS PRODUCT IS SOLD OUT"
@@ -64,7 +64,7 @@ product_page:
     - [pause, 10]
 
 category_page:
-  URL: "http://www.ctshirts.co.uk/mens-suits/mens-business-suits?q=peerius|||||||||||||||"
+  URL: "http://www.ctshirts.co.uk/mens-shirts/mens-formal-shirts?q=gbpdefault|||||||||||||||"
   expected_recs: 0
 
 basket_page:
