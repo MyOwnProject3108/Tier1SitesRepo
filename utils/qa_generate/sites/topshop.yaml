@@ -3,8 +3,8 @@ pretty_name: Topshop
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: Peertest@yahoo.com
-password: Pass1234
+username: webtest123@mailinator.com
+password: webtest123
 zero_search_term: dvd
 valid_search_term: shirts
 apikey: 89hyuaa2da3a1
@@ -35,7 +35,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
-  URL: "http://www.topshop.com/en/tsuk/product/clothing-427/dresses-442/mesh-sweetheart-mini-dress-2579675?bi=1&ps=20"
+  URL: "http://www.topshop.com/en/tsuk/product/clothing-427/dresses-442/v-front-chuck-on-dress-2888889?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

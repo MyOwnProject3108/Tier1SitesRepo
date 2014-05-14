@@ -1,4 +1,4 @@
-@ignore
+#@ignore
 @smartapi
 @ctshirts
 Feature: SMART-API CT Shirts specific Smart Content rule tests
@@ -22,12 +22,12 @@ Scenario: SMART-content rule "tags" works using SMART-API -if it fails -rerun by
 	And I should get at least 1 SMART-content creatives in the response
 	And one of the SMART-content creative names should contain "Shirts - Casual Slim Fit - 4for100"
 	
-Scenario: SMART-content rule "country GBP" works using SMART-API 
+Scenario: SMART-content rule "country GB" works using SMART-API 
    When I post request with GBP ip
     And I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Shirts - Casual classic fit - 4for100"
+	And one of the SMART-content creative names should contain "Womenswear"
 	
 Scenario: SMART-content rule "country US" works using SMART-API 
     When I post request with USA ip
@@ -147,8 +147,8 @@ Scenario Outline: SMART-content merchandising rule "purchasedHistoryByCategory" 
     And one of the SMART-content creative names should contain <category_name>
     Examples:
   	| product    | category_name     |
-    | "RN057NAV" | "Shirts - formal" |
-    | "FA063WHT" | "Shirts - formal" |
+    | "HT114NAV" | "men's casual shirts" |
+    | "FA063WHT" | "men's casual shirts" |
 	
 #Activate TopBanner in setup for cufflinks - SMART	-Pass-if fails in batch run then plz run individually 
 Scenario: SMART-content merchandising rule "purchasedHistoryByCategory" works across sessions

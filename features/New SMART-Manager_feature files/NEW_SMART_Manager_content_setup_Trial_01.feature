@@ -92,11 +92,11 @@ Scenario Outline: Users should be able to create new setup for smartcontent on n
  Examples: set2
     | setup_name  		                | placement_name		     |creative_name1                         |creative_size1        | keywords_attribute           | creative_name2                           |creative_size2       | rule2    |
     | "ppc_rule"                        | "Home_JSON_IP"             |"Womenswear"                           |"default"             | "ppc"                        | "Suits"                                  |"default"            | "default"|
-	| "source_rule"                     | "Home_JSON_IP"             |"Casual - Trousers"                    |"default"             | "direct"                     | "Shirts - Casual Slim Fit - 4for100"     |"default"            | "default"|
+#	| "source_rule"                     | "Home_JSON_IP"             |"Casual - Trousers"                    |"default"             | "direct"                     | "Shirts - Casual Slim Fit - 4for100"     |"default"            | "default"|
 	| "smart_rule"                      | "Home_JSON_IP"             |"Womenswear"                           |"default"             | "smart"                      | "Casual - Trousers"                      |"default"            | "default"|
 	| "direct_rule"                     | "Home_JSON_IP"             |"Suits"                                |"default"             | "direct"                     | "Womenswear"                             |"default"            | "default"|
 	| "tags_rule"                       | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "tags"                       | "Womenswear"                             |"default"            | "default"|
-	| "purchasehistorybycategory_rule"  | "Home_JSON_IP"             |"Casual - Trousers"                    |"default"             | "purchasehistorybycategory"  | "Suits"                                  |"default"            | "default"|
+	| "purchasehistorybycategory_rule"  | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "purchasehistorybycategory"  | "Suits"                                  |"default"            | "default"|
 	| "purchasehistorybyattribute_rule" | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "purchasehistorybyattribute" | "Womenswear"                             |"default"            | "default"|
 	
    
