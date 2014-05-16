@@ -10,7 +10,7 @@ module PeeriusDebugInfo
 	  end
 	  # Sometimes if we refresh search/checkout page it pops up an alert box
 	  # If alert box popped up, click ok and 'resend the value' - added by Tom
-	  if !ENV["headlessw"]
+	  if !ENV["WINHEADLESS"]
 		  if @browser.alert.exists? &&
 			@browser.alert.ok
 		  end

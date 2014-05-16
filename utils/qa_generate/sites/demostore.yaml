@@ -19,7 +19,7 @@ category_menu: ["ul", ':id => "nav"']
 
 # A comma separated list of names for the categories that you want to exclude. The names should match the the text of the links that are displayed ont eh page. 
 # Currently you have to pass atleast one entry - will be refined later so that this becomes optional
-categories_to_exclude: ["Home", "Electricals", "Entertainment" ] #, "Health & Beauty"]
+categories_to_exclude: ["title|Home", "title|Electricals", "title|Entertainment" , "url|bathroom" ] #, "Health & Beauty"]
 
 # If set to true the @all_categories test will be generated for the site. Default is false.
 test_all_categories: true

@@ -13,7 +13,7 @@ integration: standard
 
 # site variables
 show_log: true
-category_menu: ["ul", ':xpath => "/html/body/div/div/div[4]/div/ul"']
+category_menu: ["ul", ':id => "menu"']
 
 categories_to_exclude: ["Gift Sets & Vouchers"]
 

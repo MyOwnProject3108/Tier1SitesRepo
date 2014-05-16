@@ -89,10 +89,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 		cat_url = category[1] #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
 		
 		exclude_cat = false
-		if (@current_page.get_categories_to_exclude.length > 0)
-			cats_to_exclude = @current_page.get_categories_to_exclude*","
-			exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
-		end
+		exclude_cat = should_exclude_category(cat_name,cat_url) if @current_page.get_categories_to_exclude.length > 0
 		
 		if !exclude_cat
 			cat_test_response = nil
@@ -101,9 +98,10 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			cat_info = cat_test_response.split("|") if cat_test_response != nil
 			if cat_test_response != nil && cat_test_response.include?("SUCCESS")
 				products = @current_page.product_links_element.link_elements
-	
+
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
 				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
+				
 				# Reject links that DO have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>  Added by fayaz
 #				products = products.reject{|x| x.attribute(filter_attrib_name) = filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%') && !filter_attrib_val.include?('%')
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> where the attribute value <filter_attrib_val> is indeterminate or random
@@ -111,8 +109,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>
 				products = products.reject{|x| !x.attribute(filter_attrib_name).include?(filter_attrib_val.gsub("%",'')) } if filter_attrib_val.include?('%')
 				# Collect all links that have an attributes "title" and "href"
-				products = products.collect{|x| [x.attribute('title'), x.attribute('href')]}
-			
+				products = products.collect{|x|	x.attribute('title')!="" ?	[x.attribute('title'), x.attribute('href')] : [x.text, x.attribute('href')]}
+	
 				if products.length == 0
 					fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]}) using link filter => #{link_filter}"))
 					break
@@ -143,7 +141,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 						option_selected = true
 						out_of_stock = false
 						out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
-						if !out_of_stock
+						
+						if out_of_stock == false
 							if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
 								if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
 									plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if @@show_log
@@ -151,6 +150,16 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 										option_selected = select_product_options
 									end
 									@current_page.add_to_basket_element.when_present.click
+									has_add_to_basket_error_msg = @current_page.get_add_to_basket_error_msg != nil ? true : false
+						
+									if has_add_to_basket_error_msg
+										add_to_basket_error_msg = @current_page.get_add_to_basket_error_msg
+										
+										while @browser.text.include?(add_to_basket_error_msg)
+											option_selected = select_product_options
+											@current_page.add_to_basket_element.when_present.click
+										end
+									end
 									plog("\tADDED TO BASKET => #{prod_name} :: #{prod_url}","yellow") if @@show_log
 									sleep wait_time_per_category # do we need a wait time for basket ? why not use the category wait time?
 								else #product page is tracking as expected - nothing more to do
@@ -203,21 +212,23 @@ def select_product_options
 				opt_index = rand(1..product_options.options.length - 1)
 				#plog("\tDisabled option => #{product_options.option(:index => opt_index).text} ... #{product_options.option(:index => opt_index).disabled?}","magenta")
 				if product_options.options.length >1 
+					# This is not perfect as we are likley to pick the same option again. Ideally, we could store each selected option that was disabled in an array 
+					# and pick a random one only if it was not picked already. Maybe later.
 					while product_options.option(:index => opt_index).disabled? && tries < product_options.options.length do
-				    plog("\tDisabled option => #{product_options.option(:index => opt_index).text} ...","grey") if @@show_log
-					opt_index = rand(1..product_options.options.length - 1)
-					tries = tries + 1
+						plog("\tDisabled option => #{product_options.option(:index => opt_index).text} ...","grey") if @@show_log
+						opt_index = rand(1..product_options.options.length - 1)
+						tries = tries + 1
+					end
+					if product_options.option(:index => opt_index).disabled?
+						plog("\tTried #{tries} times. I give up.","red") if @@show_log
+						option_selected = false
+					end
 				end
-				if product_options.option(:index => opt_index).disabled?
-					plog("\tTried #{tries} times. I give up.","red") if @@show_log
-					option_selected = false
-				end
-				end
-				if !product_options.disabled? 
-					plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","blue") if @@show_log && product_options.visible?
+				if product_options.disabled? == false 
+					plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
 					#product_options.when_present.select option 
-					product_options.option(:index => opt_index).when_present.select if product_options.visible?
+					product_options.option(:index => opt_index).when_present.select #if product_options.visible?
 					option_selected = true
 				end
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
@@ -228,7 +239,7 @@ def select_product_options
 				option = product_options.lis[rand(1..product_options.lis.length - 1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect
 				plog("\tPre-selected => #{strip_clean(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
-				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if @@show_log
+				plog("\tSelected option => #{strip_clean(strip_tags(option.html))}","magenta") if @@show_log
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if @@show_log
 				option.links.first.click if option.links.first.exists?
 				option.click if !option.links.first.exists?
@@ -256,13 +267,13 @@ end
 # Params:
 # +categories_to_exclude+:: a collection of categories that need to be excluded (applies only if test_all_categories is set to true)
 # +test_all_categories+:: boolean - true if all catgeories need to be tested else false
-def test_random_category_or_all_category_tracking(excluded_categories,test_all_categories)
+def test_random_category_or_all_category_tracking(categories_to_exclude,test_all_categories)
 	@@show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
     categories = categories.reject{|x| x[1]==nil }
     categories_to_exclude = nil
-    categories_to_exclude = excluded_categories.raw.flatten! if excluded_categories != nil && test_all_categories
+    categories_to_exclude = categories_to_exclude.raw.flatten! if categories_to_exclude != nil && test_all_categories
 
 	test_pass = true 
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
@@ -281,20 +292,22 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
   		category = categories[cat_ctr] if(test_all_categories)
 		category = categories[rand(0..categories.length - 1)] if !test_all_categories
 		cat_name = category[0]
-		cat_url = category[1]
+		cat_url = "http://showcase.peerius.com/index.php/home/bathroom.html" #category[1]
 		
  		exclude_cat = false
 		if (@current_page.get_categories_to_exclude.length > 0)
-			cats_to_exclude = @current_page.get_categories_to_exclude*","
-			exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
+			#cats_to_exclude = @current_page.get_categories_to_exclude*","
+			#exclude_cat = true if cats_to_exclude.include?(cat_name.strip)
+			exclude_cat = should_exclude_category(cat_name,cat_url)
 		end
-		
+		ignore_other_page = false
 		if !exclude_cat
 			cat_test_response = nil
 			plog("Checking CATEGORY #{cat_ctr+1} #{cat_name} : #{cat_url} ...","grey") if @@show_log && ENV["DEBUG"]
 			cat_test_response = test_category_page(cat_name,cat_url,wait_time_per_category)
 			
 			if cat_test_response.include?("Other") && ignore_cat_tracked_as_other_page
+				ignore_other_page = true
 				plog("\tIGNORING " + cat_test_response.split("|")[2].upcase + " PAGE " + "#{cat_name} (#{cat_url})" ,"grey") if @@show_log && ENV["DEBUG"]
 			end
 			tracked_categories << cat_test_response if cat_test_response.include?("SUCCESS")
@@ -307,7 +320,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 		end
 		cat_ctr = cat_ctr + 1 if test_all_categories 
 		if !test_all_categories
-		  cat_ctr = cat_ctr + 1 if !(cat_test_response.include?("Other") && ignore_cat_tracked_as_other_page)
+		  cat_ctr = cat_ctr + 1 if !(ignore_other_page)
 		end
 		#@browser.back
 	end
@@ -331,7 +344,7 @@ def test_random_category_or_all_category_tracking(excluded_categories,test_all_c
 	plog("\tTEST FAILED \t=> #{failed_categories.length} category page" + (failed_categories.length > 1?"s":""),"red") if failed_categories.length > 0
 	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} page"+ (undefined_categories.length > 1?"s":""),"magenta") if undefined_categories.length > 0
 	plog("\tIGNORED \t=> #{ignored_categories.length} page"+ (ignored_categories.length > 1?"s":""),"grey") if ignored_categories.length > 0 && ignore_cat_tracked_as_other_page
-	plog("\tEXCLUDED    \t=> #{excluded_categories.raw.length} category pages","grey") if test_all_categories 
+	plog("\tEXCLUDED    \t=> #{categories_to_exclude.raw.length} category pages","grey") if test_all_categories 
 	plog("=========================================================================","grey")
 	@browser.cookies.clear
 end
@@ -452,3 +465,22 @@ end
 #Then /^the debug info should show at least (\d+) SMART\-content$/ do |expected_content|
  # @current_page.debug_content.should have_at_least(expected_content).entries
 #end
+
+def should_exclude_category(cat_name, cat_url)
+	exclude_cat = false
+
+	cat_info_to_exclude = @current_page.get_categories_to_exclude
+	
+	cat_info_to_exclude.each do |cat_info|
+	  exclude_cat = true  if cat_info.include?(cat_name.strip)
+	  
+	  if cat_info.include?("|")
+	  	info_type = cat_info.split("|")[0] 
+	  	info_value = cat_info.split("|")[1] 
+	  	
+	  	exclude_cat = true if info_type == "url" && cat_url.include?(info_value)
+	  	exclude_cat = true if info_type == "title" && info_value.include?(cat_name.strip)
+	  end
+	end
+    return exclude_cat
+end

@@ -158,6 +158,15 @@ module <%= site["site_name"].capitalize %>
 			return false
 		<% end %>
 		end 
+		
+		def get_add_to_basket_error_msg
+		<% if site["add_to_basket_error_msg"] %>		
+			return "<%= site["add_to_basket_error_msg"] %>"
+		<% else %>
+			return nil
+		<% end %>	
+		end
+		
     end  
 end
 <% end %>

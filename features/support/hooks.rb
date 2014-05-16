@@ -40,7 +40,7 @@ else
        profile['extensions.tracker.url'] = "//#{FigNewton.base_url}/tracker/peerius.page"
        profile['extensions.tracker.enabled'] = false
    end
-   
+
    profile['extensions.tracker.debugenabled'] = true
    
    if web_proxy and web_proxy != "" then
