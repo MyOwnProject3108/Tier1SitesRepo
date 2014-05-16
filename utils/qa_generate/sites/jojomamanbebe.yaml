@@ -13,7 +13,7 @@ integration: standard
 
 # site variables
 show_log: true
-category_menu: ["ul", ':xpath => "/html/body/div/div/div[4]/div/ul"']
+category_menu: ["ul", ':id => "menu"']
 
 categories_to_exclude: ["Gift Sets & Vouchers"]
 
@@ -23,11 +23,10 @@ test_all_categories: true
 
 num_of_reloads_per_category: 2
 
-product_links: ["div", ':id=> "category_product_container"'] 
-product_link_filter: ["class|category_product_link"]
+product_links: ["div", ':id=> "partsList"'] 
+product_link_filter: ["class|pli_product"]
 product_options: 
-     - [select_list, ':id=> "selColour"']
-     - [select_list, ':id=> "selSize"']
+     - [table, ':class=> "matrixTable"']
      
 ignore_cat_tracked_as_other_page: true
 
@@ -37,7 +36,7 @@ max_num_of_categories: 1
 
 max_num_of_products: 2 
 
-add_to_basket_button: ["button", ':id=> "addToBasket"']
+add_to_basket_button: ["button", ':id=> "iB1"']
 
 
 home_page:
@@ -51,6 +50,9 @@ random_product:
 
 random_category:
   expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
 
 product_page:
   URL: "http://www.jojomamanbebe.co.uk/sp+mini-bath-tub-in-bathtime-and-healthcare+b9169"
