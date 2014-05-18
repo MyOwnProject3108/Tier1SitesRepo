@@ -17,11 +17,11 @@ Then /^the debug info should show no SMART\-recs?$/ do
 end
 
 Then /^all categories should be tracked as Category pages except:$/ do |categories_exclude_list|
- 	test_random_category_or_all_category_tracking(categories_exclude_list,true)
+ 	test_random_category_or_all_category_tracking(true)
 end
 
 Then /^each randomly selected category should be tracked as a Category page$/ do
-  	test_random_category_or_all_category_tracking(nil,false)
+  	test_random_category_or_all_category_tracking(false)
 end
 
 Then /^each randomly selected product should be tracked as a Product page using link filter:$/ do |link_filter|
@@ -267,13 +267,15 @@ end
 # Params:
 # +categories_to_exclude+:: a collection of categories that need to be excluded (applies only if test_all_categories is set to true)
 # +test_all_categories+:: boolean - true if all catgeories need to be tested else false
-def test_random_category_or_all_category_tracking(categories_to_exclude,test_all_categories)
+def test_random_category_or_all_category_tracking(test_all_categories)
 	@@show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
     categories = categories.reject{|x| x[1]==nil }
     categories_to_exclude = nil
-    categories_to_exclude = categories_to_exclude.raw.flatten! if categories_to_exclude != nil && test_all_categories
+    #categories_to_exclude = categories_to_exclude.raw.flatten! if categories_to_exclude != nil && test_all_categories
+    categories_to_exclude = @current_page.get_categories_to_exclude if test_all_categories
+    cats_excluded = 0
 
 	test_pass = true 
 	wait_time_per_category = @current_page.get_wait_time_per_category_page
@@ -283,6 +285,7 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 	failed_categories = Array.new
 	undefined_categories = Array.new
 	ignored_categories = Array.new
+	excluded_categories = Array.new
 	
 	num_categories = categories.length if test_all_categories
 	num_categories = rand(1..@current_page.get_max_num_of_categories) if !test_all_categories
@@ -292,7 +295,7 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
   		category = categories[cat_ctr] if(test_all_categories)
 		category = categories[rand(0..categories.length - 1)] if !test_all_categories
 		cat_name = category[0]
-		cat_url = "http://showcase.peerius.com/index.php/home/bathroom.html" #category[1]
+		cat_url = category[1]
 		
  		exclude_cat = false
 		if (@current_page.get_categories_to_exclude.length > 0)
@@ -316,7 +319,8 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 			ignored_categories << cat_test_response if cat_test_response.include?("Other") && ignore_cat_tracked_as_other_page
 			
 		else
-			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if @@show_log && ENV["DEBUG"]
+			cats_excluded = cats_excluded + 1
+			plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if @@show_log #&& ENV["DEBUG"]
 		end
 		cat_ctr = cat_ctr + 1 if test_all_categories 
 		if !test_all_categories
@@ -330,11 +334,12 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 		test_pass = true
 	end 
 	show_tested_categories(ignored_categories,"IGNORED") if ignored_categories.length > 0
+	show_tested_categories(excluded_categories,"EXCLUDED") if excluded_categories.length > 0
 	
 	if (failed_categories.length > 0 || undefined_categories.length > 0  || ignored_categories.length > 0)
 		show_tested_categories(failed_categories,"FAILED") if failed_categories.length > 0
 		show_tested_categories(undefined_categories,"UNDEFINED") if undefined_categories.length > 0
-		test_pass = false
+		test_pass.should = false
 	else
 		test_pass.should == true	
 	end
@@ -344,7 +349,7 @@ def test_random_category_or_all_category_tracking(categories_to_exclude,test_all
 	plog("\tTEST FAILED \t=> #{failed_categories.length} category page" + (failed_categories.length > 1?"s":""),"red") if failed_categories.length > 0
 	plog("\tNO TRACKINFO\t=> #{undefined_categories.length} page"+ (undefined_categories.length > 1?"s":""),"magenta") if undefined_categories.length > 0
 	plog("\tIGNORED \t=> #{ignored_categories.length} page"+ (ignored_categories.length > 1?"s":""),"grey") if ignored_categories.length > 0 && ignore_cat_tracked_as_other_page
-	plog("\tEXCLUDED    \t=> #{categories_to_exclude.raw.length} category pages","grey") if test_all_categories 
+	plog("\tEXCLUDED    \t=> #{cats_excluded} category pages","grey") if test_all_categories 
 	plog("=========================================================================","grey")
 	@browser.cookies.clear
 end
@@ -403,25 +408,22 @@ end
 
 def autogenerate_firstname(seed_value, rand_value)
 	prefix = seed_value
-	#rand_value = rand(1..999999).to_s
     return prefix+rand_value
 end
 
 def autogenerate_lastname(seed_value, rand_value)
 	prefix = seed_value
-	#rand_value = rand(1..999999).to_s
     return prefix+rand_value
 end
 
 def autogenerate_email(seed_value, rand_value)
 	prefix = seed_value.partition('@').first
 	domain = seed_value.partition('@').last
-	#rand_value = rand(1..999999).to_s
     return prefix+rand_value+'@'+domain
 end
 
 def show_tested_categories(cat_list, status)
-	msg_colour = (status == "TRACKED"? "green" : (status == "FAILED"? "red" : (status == "FAILED"? "magenta" : "grey")))
+	msg_colour = (status == "TRACKED"? "green" : (status == "FAILED"? "red" : (status == "UNDEFINED"? "magenta" : "grey")))
 	plog("#{status} CATEGORY PAGES:",msg_colour) if @@show_log
 	cat_list.each do |tcat|
 		cat = tcat.split("|")
@@ -472,7 +474,7 @@ def should_exclude_category(cat_name, cat_url)
 	cat_info_to_exclude = @current_page.get_categories_to_exclude
 	
 	cat_info_to_exclude.each do |cat_info|
-	  exclude_cat = true  if cat_info.include?(cat_name.strip)
+	  exclude_cat = true if cat_info.include?(cat_name.strip)
 	  
 	  if cat_info.include?("|")
 	  	info_type = cat_info.split("|")[0] 
