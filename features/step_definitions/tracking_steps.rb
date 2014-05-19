@@ -122,7 +122,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				while prod_ctr <= num_products
 					product = products[rand(0..products.length - 1)]
 					prod_name = product[0]
-					prod_url = "http://www.toast.co.uk/men.htm"#product[1]  
+					prod_url = product[1]  
 					
 					exclude_prod = false
 					if (@current_page.get_product_keywords_to_exclude.length > 0)
