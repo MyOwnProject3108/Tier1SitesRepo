@@ -22,7 +22,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["ol", ':xpath=> "//div[@id=\"product-items-content\"]/div/div/div/ol"']
-product_link_filter: ["title|View full details%"]
+product_link_filter: ["title", "View full details%"]
 product_options: 
     - [ul, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/div/ul"' ]
     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']

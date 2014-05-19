@@ -60,7 +60,7 @@ product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div
 # Links that don't have this attribute or attribute/value pair will be discarded. You can specify [ignore|ignore] if you do not need to specify a filter. 
 # If you want to match just by attribute name, then you can use [<attribute_name>|*].
 # If you want to match using a partial value of an attribute, then you can use [<attribute_name>|<partial_value>%]
-product_link_filter: ["class|product-image"] 
+product_link_filter: ["class", "product-image"] 
 
 # Mandatory if you cannot add a product to basket without selecting variants such as colour and size on a product page.
 # Optional, if a site does not require additional product options to be selected when you add a product to basket.

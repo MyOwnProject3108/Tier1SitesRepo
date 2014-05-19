@@ -20,7 +20,7 @@ wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2
 product_links: ["div", ':xpath=> "//div[@id=\"item_list\"]/div[2]"'] 
-product_link_filter: ["image|preview"] 
+product_link_filter: ["image", "preview"] 
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
 max_num_of_products: 5 

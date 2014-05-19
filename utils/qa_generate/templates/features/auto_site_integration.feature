@@ -58,8 +58,7 @@ Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>
-  Then each randomly selected product should be tracked as a Product page using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  Then each randomly selected product should be tracked as a Product page 
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
 
@@ -131,8 +130,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a ran
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
-  And I add one or more random products to basket using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  And I add one or more random products to basket 
   And I pause for 2 seconds
   And I go to the basket page
   Then it should be tracked as a basket page 
@@ -241,8 +239,7 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home pa
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
-  And I add one or more random products to basket using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  And I add one or more random products to basket
   And I pause for 5 seconds
   And I go to the basket page 
 <% if page["extra_steps"] %>
@@ -270,8 +267,7 @@ Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home pag
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
-  And I add one or more random products to basket using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  And I add one or more random products to basket 
   And I pause for 5 seconds
   And I go to the checkout page 
 <% if page["extra_steps"] %>

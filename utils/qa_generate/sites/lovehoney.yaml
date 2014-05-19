@@ -25,7 +25,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':id=> "products"'] 
-product_link_filter: ["class|fn"] 
+product_link_filter: ["class", "fn"] 
 product_options: 
      - [radio, ':xpath=> "/html/body/div[2]/div[2]/div[3]/div/ol/li/div/ol/li/form/ul/li[1]/label/input"']
      - [select_list, ':name=> "p"']

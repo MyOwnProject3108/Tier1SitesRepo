@@ -22,7 +22,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':id=> "mansory"'] 
-product_link_filter: ["wtname|listing.productdetail"] 
+product_link_filter: ["wtname", "listing.productdetail"] 
 wait_time_per_product_page: 2
 max_num_of_products: 2
 add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a  "']

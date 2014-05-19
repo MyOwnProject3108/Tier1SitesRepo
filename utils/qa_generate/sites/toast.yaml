@@ -14,13 +14,13 @@ integration: standard
 
 # site variables
 show_log: true
-category_menu: ["div", ':class => "//form[@id=\"aspnetForm\"]/nav/div"']
+category_menu: ["div", ':xpath=> "//form[@id=\"aspnetForm\"]/nav/div"']
 categories_to_exclude: ["Lookbook","Editorial","url|#"]
 wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2
 product_links: ["div", ':class=> "category-product-items grid-80 tablet-grid-90 mobile-grid-100 prefix-10 suffix-10 tablet-suffix-5 tablet-prefix-5 grid-parent"'] 
-product_link_filter: ["href|*"]
+product_link_filter: ["href", "*"]
 
     
 ignore_cat_tracked_as_other_page: true
@@ -35,6 +35,7 @@ home_page:
   login_link: ["link", ':href => "/account.htm?mode=myaccount"']
   search_field: ["text_field", ':class => "formBox"']
   extra_steps:
+   - [alert,20]
    - [pause,20]
    
 random_product:

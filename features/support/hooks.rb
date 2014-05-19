@@ -104,7 +104,7 @@ AfterStep('@web') do |scenario|
 end
 
 at_exit do
-    if ENV['HEADLESS'] == 'true'
+    if ENV['HEADLESS'] == 'true' || ENV['WINHEADLESS'] == true
        headless.destroy
     else 
        browser.close unless ENV["keepbrowseropen"]
