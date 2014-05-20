@@ -292,16 +292,24 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
   Given I am on the <%= site["site_name"] %> home page
   And I visit the top navigation page with index: 
   |<%= page_index %>|
+<% if site["categories_to_exclude"] %>
   Then all categories should be tracked as Category pages except:
-<% site["categories_to_exclude"].each do |excluded_category| %>
+  <% site["categories_to_exclude"].each do |excluded_category| %>
   |<%= excluded_category %>|
+  <% end %>
+<% else %>
+  Then all categories should be tracked as Category pages	
 <% end %>
 <% end %>
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
+<% if site["categories_to_exclude"] %>
   Then all categories should be tracked as Category pages except:
-<% site["categories_to_exclude"].each do |excluded_category| %>
+  <% site["categories_to_exclude"].each do |excluded_category| %>
   |<%= excluded_category %>|
+  <% end %>
+<% else %>
+  Then all categories should be tracked as Category pages	
 <% end %>
 <% end %>
 <% end %>

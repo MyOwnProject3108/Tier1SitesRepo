@@ -11,15 +11,23 @@ password: webtest
 zero_search_term: awedasda
 valid_search_term: dvd
 
+### static test properties ###
+
+# This allows you to override random category and random product selection if you need to test specific scenarios during test configuration 
+# or for troubleshooting specific scenarios. enable_static_test needs to be set to true for the override to work.
+enable_static_test: false
+static_test_prod_url: "http://showcase.peerius.com/index.php/10455858.html"
+static_test_cat_url: ""
+
 #### site level variables ####
 show_log: true
 
 # xpath or id of the html element that includes all the category page links on the home page
 category_menu: ["ul", ':id => "nav"']
 
-# A comma separated list of names for the categories that you want to exclude. The names should match the the text of the links that are displayed ont eh page. 
-# Currently you have to pass atleast one entry - will be refined later so that this becomes optional
-categories_to_exclude: ["title|Home", "title|Electricals", "title|Entertainment" , "url|bathroom" ] #, "Health & Beauty"]
+# A comma separated list of exact names or partial titles/urls for the categories that you want to exclude. 
+# You can either specify exact matches, i.e, the names should match the text of the links that are displayed on the page, or partial category title or url matches.
+categories_to_exclude: ["Home", "title=>Electricals", "title=>Entertainment" , "url=>bathroom" , "Health & Beauty"]
 
 # If set to true the @all_categories test will be generated for the site. Default is false.
 test_all_categories: true
@@ -41,7 +49,7 @@ num_of_reloads_per_category: 2
 # then the following flag, if set to true, will ignore such pages and will try a different link until a category page is found. Default is false.
 ignore_cat_tracked_as_other_page: true
 
-# By default products are selected from the first page of a category page listing. This property will allow random selection of products from pages besides the first page if a category has products that cannot all be listed on one page.
+# By default products are selected from the first page of a category page listing. This property will allow random selection of products from any page if a category has products that are listed on muliple pages.
 # total_products_text - the html element that contains the text that displays the total number of products in a category
 # total_products_text_filter - the text to filter out from the total_products_text so that we extract the number. Options are between|<text_before>|<text_after> or after|<text_before> or before|<text_after>
 # products_per_page - The number of products that displayed one each page - specify default number if the number of products can be changed.
@@ -68,6 +76,14 @@ product_link_filter: ["class", "product-image"]
 product_options: 
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
      - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"']
+     
+# If product options are clickable images or links which have no disable property and if some of them are unclickable because they have gone out of stock or are not available for the pre-selected option, 
+# then you can use this property to filter specific option elements that contain a specific attribute/value. 
+# Requires 3 values for each option - first value is the type of element - eg. link or img, 
+# second value is the attribute such as title or alt and the final value is the value of the attribute to match against. 
+# Currently, only supports partial (if you use wild card % at the end of the value) or full string match.
+# product_option_filter:                       ---- INCLUDED FOR DEMOSTORE AS A REFERENCE BUT COMMENTED OUT AS IT IS NOT APPLICABLE TO DEMOSTORE  
+#     - ["img", "title", "Click to add this%"] ---- INCLUDED FOR DEMOSTORE AS A REFERENCE BUT COMMENTED OUT AS IT IS NOT APPLICABLE TO DEMOSTORE 
 
 # If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
 # Products with titles that contain at least one of the following key words wil be excluded from the testing process.
@@ -84,6 +100,12 @@ max_num_of_products: 2
 # This is not strictly a random test property and this can be already be set at page level for static URL based tests. 
 # However, this is mandatory for random_basket, random_checkout or end-to-end tests are to work.
 add_to_basket_button: ["button", ':xpath=> "//form[@id=\"product_addtocart_form\"]/div/div/div/button"']
+
+# On some sites, product options cannot be clicked as the option might not be available or is out of stock. 
+# So the product cannot be added to basket until a valid available option is clicked. 
+# If the site displays an error message if the product was nto added to basket, then specify the message 
+# so that a different option can be selected to successfully add the product tp basket.
+# add_to_basket_error_msg: "PLEASE SELECT A SIZE" ---- INCLUDED FOR DEMOSTORE AS A REFERENCE BUT COMMENTED OUT AS IT IS NOT APPLICABLE TO DEMOSTORE
 
 #### page level config ####
   

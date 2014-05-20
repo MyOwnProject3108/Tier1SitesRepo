@@ -20,6 +20,10 @@ Then /^all categories should be tracked as Category pages except:$/ do |categori
  	test_random_category_or_all_category_tracking(true)
 end
 
+Then /^all categories should be tracked as Category pages $/ do 
+ 	test_random_category_or_all_category_tracking(true)
+end
+
 Then /^each randomly selected category should be tracked as a Category page$/ do
   	test_random_category_or_all_category_tracking(false)
 end
@@ -467,14 +471,14 @@ def should_exclude_category(cat_name, cat_url)
 	cat_info_to_exclude = @current_page.get_categories_to_exclude
 	
 	cat_info_to_exclude.each do |cat_info|
-	  exclude_cat = true if cat_info.include?(cat_name.strip)
+	  exclude_cat = true if cat_info.include?(cat_name.strip) # exact title match if => IS NOT included in the cat_info
 	  
-	  if cat_info.include?("|")
-	  	info_type = cat_info.split("|")[0] 
-	  	info_value = cat_info.split("|")[1] 
+	  if cat_info.include?("=>") # partial title or url match if => IS included in the cat_info
+	  	info_type = cat_info.split("=>")[0] 
+	  	info_value = cat_info.split("=>")[1] 
 	  	
 	  	exclude_cat = true if info_type == "url" && cat_url.include?(info_value)
-	  	exclude_cat = true if info_type == "title" && info_value.include?(cat_name.strip)
+	  	exclude_cat = true if info_type == "title" && cat_name.strip.include?(info_value) # partial title match 
 	  end
 	end
     return exclude_cat
