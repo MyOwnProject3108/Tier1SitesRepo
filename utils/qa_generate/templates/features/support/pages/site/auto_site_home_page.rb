@@ -17,6 +17,10 @@ module <%= site["site_name"].capitalize %>
 		URL = "<%= debug_url(page["URL"]) %>"
 		direct_url URL
         <%= page["search_field"][0] %>(:search, <%= page["search_field"][1] %>)
+		#page elements - retained for backward compatibility
+		<% if page["login_link"] %>
+		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
+		<% end %>
         # site elements
 		<% if site["category_menu"] %>
 		<%= site["category_menu"][0] %>(:category_menu, <%= site["category_menu"][1] %>)
@@ -48,13 +52,24 @@ module <%= site["site_name"].capitalize %>
 		<% end
 		end 
 	    end %>
-      	
-		#page elements - retained for backward compatibility
-		<% if page["login_link"] %>
-		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
-		<% end %>
-		
+
 		# methods
+		def get_product_link_filter
+		<% if site["product_link_filter"] %>		
+			return <%= site["product_link_filter"] %>
+		<% else %>
+			return []
+		<% end %>		
+		end
+		
+		def get_product_option_filter
+		<% if site["product_option_filter"] %>		
+			return <%= site["product_option_filter"] %>
+		<% else %>
+			return []
+		<% end %>		
+		end
+		
 		def get_max_num_of_categories
 		<% if site["max_num_of_categories"] %>
 			return <%= site["max_num_of_categories"] %>
@@ -166,6 +181,33 @@ module <%= site["site_name"].capitalize %>
 			return nil
 		<% end %>	
 		end
+		
+		
+		def is_static_test_enabled
+		<% if site["enable_static_test"] %>
+			return <%= site["enable_static_test"] %>
+		<% else %>
+			return false
+		<% end %>
+		end 
+		
+		def get_static_test_cat_url
+		<% if site["static_test_cat_url"] != "" %>
+			return "<%= site["static_test_cat_url"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end
+		
+		def get_static_test_prod_url
+		<% if site["static_test_prod_url"] != nil %>
+			return "<%= site["static_test_prod_url"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
+		
+		
 		
     end  
 end

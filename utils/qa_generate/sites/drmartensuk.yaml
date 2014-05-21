@@ -22,7 +22,7 @@ max_num_of_categories: 1
 num_of_reloads_per_category: 5
 
 product_links: ["div", ':xpath=> "/html/body/div[3]/div/div[5]/div[3]/div[2]/div[3]"'] 
-product_link_filter: ["ignore|ignore"]
+
 product_options: 
   #  - [ul, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/div/ul"' ]
      - [div, ':xpath=> "/html/body/div[3]/div/div[5]/div[3]/div/div[2]/div[4]/div"']

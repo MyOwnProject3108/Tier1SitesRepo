@@ -23,7 +23,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':xpath=> "/html/body/div/div[3]/div/div[3]"'] 
-product_link_filter: ["data-productid|*"]
+product_link_filter: ["data-productid", "*"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']

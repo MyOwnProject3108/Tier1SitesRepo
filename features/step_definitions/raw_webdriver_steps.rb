@@ -29,3 +29,7 @@ end
 When /^I capture a screenshot$/ do
   @browser.screenshot.save 'screenshot.png'
 end
+
+When /^I close the browser alert$/ do |seconds|
+  @browser.alert.ok
+end

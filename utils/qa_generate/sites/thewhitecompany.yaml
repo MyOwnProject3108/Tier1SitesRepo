@@ -26,7 +26,7 @@ wait_time_per_product_page: 2
 max_num_of_products: 1
 
 product_links: ["ul", ':id=> "ls-category-products"']  
-product_link_filter: ["class|text-center"]
+product_link_filter: ["class", "text-center"]
 product_options: 
     - [select_list, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/select"']
     - [img, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/div/img[1]"']

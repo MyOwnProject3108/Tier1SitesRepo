@@ -24,7 +24,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':class=> "product_list index"'] 
-product_link_filter: ["class|image"]
+product_link_filter: ["class", "image"]
 product_options: 
      - [select_list, ':id=> "product_select_size"']
           

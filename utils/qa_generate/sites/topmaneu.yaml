@@ -19,7 +19,7 @@ wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "wrapper_page_content"'] 
-product_link_filter: ["data-productid|*"] 
+product_link_filter: ["data-productid", "*"] 
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
 max_num_of_products: 5 

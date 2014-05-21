@@ -26,7 +26,7 @@ ignore_cat_tracked_as_other_page: true
 out_of_stock_msg: "THIS PRODUCT IS SOLD OUT"
 
 product_links: ["div", ':id=> "ctl00_contentBody_productListingSection"'] 
-product_link_filter: ["class|img"]
+product_link_filter: ["class", "img"]
 product_options: 
      - [ul, ':xpath=> "html/body/div[3]/ul"']
      - [dl, ':xpath=> "html/body/div[4]/dl"']   

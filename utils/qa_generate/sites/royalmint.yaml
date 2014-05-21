@@ -24,7 +24,6 @@ wait_time_per_category_page: 3
 # specify the max number of categories to pick from - if set to 3, products will be picked from a random number of catagrries between 1 to 3 
 max_num_of_categories: 2
 product_links: ["div", ':xpath=> "#shop-item-container/div/div/a[0]"']
-product_link_filter: [""]
   
 home_page:
   URL: "http://www.royalmint.com"

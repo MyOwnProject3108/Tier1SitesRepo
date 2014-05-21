@@ -19,7 +19,7 @@ wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "category_product_container"'] 
-product_link_filter: ["class|category_product_link"]
+product_link_filter: ["class", "category_product_link"]
 product_options: 
      - [select_list, ':id=> "selColour"']
      - [select_list, ':id=> "selSize"'] 

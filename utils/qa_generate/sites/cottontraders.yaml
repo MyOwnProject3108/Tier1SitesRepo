@@ -25,7 +25,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["ul", ':xpath=> "//div[@id=\"searchResults\"]/div[6]/ul"'] 
-product_link_filter: ["class|moredetail"] 
+product_link_filter: ["class", "moredetail"] 
 product_options: 
     - [table, ':xpath=> "//div[@id=\"grid\"]/form/table[1]"']
 
