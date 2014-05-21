@@ -47,6 +47,7 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 @ignore
 <% end %>
 @random_product
+<% plog("Test initiated at #{Time.new.inspect}","grey") %>
 Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %> is/are tracked correctly
   Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
@@ -293,10 +294,7 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
   And I visit the top navigation page with index: 
   |<%= page_index %>|
 <% if site["categories_to_exclude"] %>
-  Then all categories should be tracked as Category pages except:
-  <% site["categories_to_exclude"].each do |excluded_category| %>
-  |<%= excluded_category %>|
-  <% end %>
+  Then all categories except the categories that match the exclusion criteria :"<%= site["categories_to_exclude"]*', ' %>" should be tracked as Category pages
 <% else %>
   Then all categories should be tracked as Category pages	
 <% end %>
@@ -304,10 +302,7 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
 <% if site["categories_to_exclude"] %>
-  Then all categories should be tracked as Category pages except:
-  <% site["categories_to_exclude"].each do |excluded_category| %>
-  |<%= excluded_category %>|
-  <% end %>
+  Then all categories except the categories that match the exclusion criteria :"<%= site["categories_to_exclude"]*', ' %>" should be tracked as Category pages
 <% else %>
   Then all categories should be tracked as Category pages	
 <% end %>
