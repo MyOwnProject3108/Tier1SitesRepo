@@ -14,8 +14,8 @@ integration: standard
 
 # site variables
 show_log: true
-category_menu: ["div", ':class => "//form[@id=\"aspnetForm\"]/nav/div"']
-categories_to_exclude: ["Lookbook","Editorial","url|#"]
+category_menu: ["ul", ':xpath => "/html/body/div[4]/form/nav/nav/nav/ul"']
+categories_to_exclude: ["title|Home","title|Editorial","url|#"]
 wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2
@@ -41,7 +41,7 @@ random_product:
   expected_recs: 1
 
 random_category:
-  expected_recs: 0
+  expected_recs: 1
    
 product_page:
   URL: "http://www.toast.co.uk/product/women+tops/C7AAA/HALI+TOP.htm?categoryref=%2fcategory.aspx%3fcategoryid%3dwomen%2520tops%26seoterm%3dtops%26&pcat=women+tops&adimage=&clr=C7AAA_indigoecru"

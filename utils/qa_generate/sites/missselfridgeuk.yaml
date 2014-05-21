@@ -23,7 +23,7 @@ home_page:
 #  needs_SPR: no
 
 product_page:
-  URL: "http://www.missselfridge.com/en/msuk/product/clothing-299047/dresses-299060/pu-shoulder-bodycon-dress-1816302?bi=1&ps=40"   
+  URL: "http://www.missselfridge.com/en/msuk/product/clothing-299047/dresses-299060/floral-trumpet-hem-dress-2943782?bi=1&ps=40"   
   expected_recs: 2
   add_to_basket_button: ["button", ':id => "btn_add_2_shop_cart"']
   extra_steps:
