@@ -11,8 +11,8 @@ database_num: 7
 site_id: 413
 integration: standard
 
-enable_static_test: true
-static_test_prod_url: "http://www.jojomamanbebe.co.uk/sp+striped-long-sleeved-tops+b8371"
+enable_static_test: false
+static_test_prod_url: "http://www.jojomamanbebe.co.uk/sp+bird-stripe-footless-tights-in-socks-tights-and-shoes+b8666" #"http://www.jojomamanbebe.co.uk/sp+striped-long-sleeved-tops+b8371"
 static_test_cat_url: ""
 
 # site variables
