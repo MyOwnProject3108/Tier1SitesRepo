@@ -1,5 +1,5 @@
 site_name: frenchconnection
-pretty_name: frenchconnection
+pretty_name: frenchconnection UK
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -36,7 +36,7 @@ home_page:
   login_link: ["link", ':title => "Sign In"']
 #  extra_steps:
 #   - [pause, 20]
-  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch"']
+  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch", :index => 1']
   extra_steps:
    - [button, id, "ctl00_ctl00_btnDoSearch"]
    

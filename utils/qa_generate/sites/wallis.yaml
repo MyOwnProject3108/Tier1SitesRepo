@@ -76,6 +76,7 @@ searchresults_page:
   zerosearch_recs: 6
   
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0
   extra_steps:
@@ -84,7 +85,7 @@ checkout_page:
    - [text_field, id, "address_first_name", "P"]
    - [text_field, id, "address_surname", "Eerius"]
    - [text_field, id, "address_main_telephone", "02033974940"]
-   - [p, class, "enter_manual_address"]
+#   - [p, class, "enter_manual_address"]
    - [text_field, class, "text address_line_1", "Units 207-211"]
    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
    - [text_field, class, "text address_town", "London"]

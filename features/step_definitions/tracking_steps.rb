@@ -221,7 +221,7 @@ def select_product_options
 					plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
 					#product_options.when_present.select option 
-					product_options.option(:index => opt_index).when_present.select #if product_options.visible?
+					product_options.option(:index => opt_index).when_present.select #if product_options.visible?  #visible option for burton
 					option_selected = true
 				end
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
