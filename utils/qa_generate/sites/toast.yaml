@@ -34,7 +34,7 @@ home_page:
   URL: "http://www.toast.co.uk/"
   expected_recs: 0
   login_link: ["link", ':href => "http://www.toast.co.uk/account.htm?mode=myaccount"']
-  search_field: ["text_field", ':xpath => "/html/body/div[2]/form/header/nav/div/div/div[2]/ul/li/div/input[1]", :index => 0']
+  search_field: ["text_field", ':xpath => "/html/body/div/form/header/nav/div/div/div[2]/ul/li/div/input[1]", :index => 0']
 #  extra_steps:
 #  - [button, xpath, "/html/body/div[2]/form/header/nav/div/div/div[2]/ul/li/div/input[2]"]
 #   - [alert,20]
