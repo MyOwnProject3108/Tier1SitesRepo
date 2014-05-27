@@ -119,7 +119,7 @@ random_checkout:
   - [text_field, id, "email", "webtest@mailinator.com", "generate_email"]
   - [text_field, id, "npswd", "test1"]
   - [text_field, name, "cpswd", "test1"]
-  - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_Register.jpg"]
+  - [image, xpath, "/html/body/div/div/div[4]/div/div[3]/form/dl/dd[4]/input"]
   - [text_field, id, "initials", "test"]
   - [text_field, id, "surname", "test"]
   - [text_field, id, "day_phone", "02086723452"]
