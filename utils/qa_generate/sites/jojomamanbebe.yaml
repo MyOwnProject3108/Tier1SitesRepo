@@ -115,10 +115,11 @@ random_checkout:
   URL: ""
   expected_recs: 0
   extra_steps:
+  - [link, id, "checkoutBtn"]
   - [text_field, id, "email", "webtest@mailinator.com", "generate_email"]
   - [text_field, id, "npswd", "test1"]
-  - [text_field, class, "std", "test1"]
-  - [image, alt, "Continue"]
+  - [text_field, name, "cpswd", "test1"]
+  - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_Register.jpg"]
   - [text_field, id, "initials", "test"]
   - [text_field, id, "surname", "test"]
   - [text_field, id, "day_phone", "02086723452"]
