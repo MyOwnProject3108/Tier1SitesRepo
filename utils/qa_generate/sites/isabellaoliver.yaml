@@ -17,7 +17,7 @@ category_menu: ["ul", ':id => "nav-top-list"']
 categories_to_exclude: ["Looks We Love", "Worn By", "Magazine", "Shop", "Outlet", "Baukjen"]
 max_num_of_categories: 1
 wait_time_per_category_page: 5
-test_all_categories: true
+test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
@@ -33,7 +33,8 @@ product_options_preselect:
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 #add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
-add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
+#add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
+add_to_basket_button: ["span", ':id=> "cartButtonSubmit"']
 
 
 home_page:

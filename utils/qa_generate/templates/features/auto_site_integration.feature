@@ -201,7 +201,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
 
-<% if site["zerosearch_recs"] %>
+<% if page["zerosearch_recs"] %>
 #
 # Zero search page
 #

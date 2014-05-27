@@ -23,7 +23,7 @@ categories_to_exclude: ["Gift Sets & Vouchers"]
 
 wait_time_per_category_page: 3
 
-test_all_categories: true
+test_all_categories: false
 
 num_of_reloads_per_category: 2
 
@@ -105,6 +105,29 @@ checkout_page:
   - [image, alt, "use Address"]
   - [pause,10]
 # - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
+  - [text_field, id, "card_number", "4444333322221111"]
+  - [select_list, id, "expiry_month", "May"]
+  - [select_list, id, "expiry_year", "2016"]
+  - [text_field, id, "check_number", "123"]
+  - [image, alt, "Continue, to review your order"]
+
+random_checkout:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+  - [text_field, id, "email", "webtest@mailinator.com", "generate_email"]
+  - [text_field, id, "npswd", "test1"]
+  - [text_field, class, "std", "test1"]
+  - [image, alt, "Continue"]
+  - [text_field, id, "initials", "test"]
+  - [text_field, id, "surname", "test"]
+  - [text_field, id, "day_phone", "02086723452"]
+  - [text_field, id, "address", "30 Avenue Street"]
+  - [text_field, id, "city", "30 Avenue Street"]
+  - [text_field, id, "postcode", "SE1 0HS"]
+  - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
+  - [image, alt, "Use selected address"]
+  - [pause, 5]
   - [text_field, id, "card_number", "4444333322221111"]
   - [select_list, id, "expiry_month", "May"]
   - [select_list, id, "expiry_year", "2016"]

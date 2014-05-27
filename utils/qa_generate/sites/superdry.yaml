@@ -16,7 +16,7 @@ show_log: true
 
 category_menu: ["div", ':class => "main-menu"']
 categories_to_exclude: ["menuitem9999"]
-test_all_categories: true
+test_all_categories: false
 wait_time_per_category_page: 3
 max_num_of_categories: 1
 num_of_reloads_per_category: 5
