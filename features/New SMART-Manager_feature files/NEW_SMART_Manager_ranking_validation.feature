@@ -5,7 +5,7 @@ Feature: New SMART-manager
 # smartranking validation tests for new Smart-manager
 #
 
-Background:Users should be able to create new setup for smartcontent
+Background:Validating the error messages for S-Ranking
 Given I am on the smartmanager login page
  And I login as "fsultana" using password "4n424yq4n3w"
  Given I am on the smartmanager orders page
@@ -18,7 +18,7 @@ Given I am on the smartmanager login page
  Then I should end up on the adaptivelisting page
   And I pause for 5 seconds
 
- Scenario Outline: User should be able to see an error message for empty config name
+ Scenario: User should be able to see an error message for empty config name
   When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds
   Then I should end up on the rankingconfig page
@@ -86,7 +86,7 @@ Scenario: User should be able to see an error message if startdate equals to end
   And I pause for 5 seconds
  Then I should see the error message "end date should be after start date"
 
-	
+    
 Scenario: User should be able to see an error message if categories is empty
   When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds
@@ -118,7 +118,7 @@ Scenario: User should be able to see an error message if categories is empty
   And I click on save ranking button on the rankingconfig page
   And I pause for 5 seconds
   Then I should see the error message "Please specify categories"
-	
+    
 Scenario: User should be able to see an error message if influence title is empty
   When I click on span with the text "SMART-ranking Configuration" on the adaptivelisting page
   And I pause for 5 seconds
@@ -246,6 +246,6 @@ Scenario Outline: User should be able to see an error message if startdate is em
   And I pause for 5 seconds
  Then I should see the error message "start date is invalid for influence [AutoTestPin]"
  Examples: set1
-    | config_name  	  | influence_name 		|influence_type  | influence_position|
+    | config_name        | influence_name         |influence_type  | influence_position|
     | "AutoTest"      | "AutoTestPin"       |"pin"           |  "1"|
-	
+    

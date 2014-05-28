@@ -11,13 +11,20 @@ database_num: 3
 site_id: 106
 integration: standard
 
+
+
+enable_static_test: false
+static_test_prod_url: "http://www.lovehoney.co.uk/product.cfm?p=13913"
+static_test_cat_url: ""
+
+
 #### site level variables ####
 show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["ul", ':id => "nav"']
-categories_to_exclude: ["title|Gifts", "title|Sale", "url|community", "url|help"]
-
+categories_to_exclude: ["title=>Gifts", "title=>Sale", "url=>community", "url=>help"]
+out_of_stock_msg: "Sorry, this item is currently unavailable"
 test_all_categories: true
 wait_time_per_category_page: 5
 max_num_of_categories: 1 
@@ -25,9 +32,9 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["div", ':id=> "products"'] 
-product_link_filter: ["class|fn"] 
+product_link_filter: ["class", "fn"] 
 product_options: 
-     - [radio, ':xpath=> "/html/body/div[2]/div[2]/div[3]/div/ol/li/div/ol/li/form/ul/li[1]/label/input"']
+     - [ul, ':xpath=> "//form[@id=\"productForm\"]/ul"']
      - [select_list, ':name=> "p"']
 #    - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
 
@@ -83,7 +90,7 @@ login_page:
 
 searchresults_page:
   URL: "http://search.lovehoney.co.uk/search?w=toy&p=Q&asug=&view=grid"
-  expected_recs: 4
+  expected_recs: 0
   zerosearch_recs: 0
   
 checkout_page:
@@ -93,5 +100,15 @@ checkout_page:
     - [button, id, "has-account-option"]
     - [text_field, id, "password", "webtest"]
     - [button, class, "button std-arrow"]
-    - [pause,10]
+    - [pause,2]
+    
+random_checkout:
+  URL: "http://www.lovehoney.co.uk/"
+  expected_recs: 0
+  extra_steps:
+      - [button, class, "button proceed-to-checkout std-arrow"]
+      - [text_field, id, "email", "webtest@mailinator.com", "generate_email"]
+#      - [text_field, id, "password"]
+      - [button, class, "button std-arrow"]
+      - [pause, 2]
     

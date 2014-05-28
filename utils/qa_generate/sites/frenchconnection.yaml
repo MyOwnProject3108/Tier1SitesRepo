@@ -1,5 +1,5 @@
 site_name: frenchconnection
-pretty_name: frenchconnection
+pretty_name: frenchconnection UK
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -19,7 +19,7 @@ wait_time_per_category_page: 3
 test_all_categories: true
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "category_product_container"'] 
-product_link_filter: ["class|category_product_link"]
+product_link_filter: ["class", "category_product_link"]
 product_options: 
      - [select_list, ':id=> "selColour"']
      - [select_list, ':id=> "selSize"'] 
@@ -28,7 +28,7 @@ wait_time_per_product_page: 2
 max_num_of_categories: 1
 max_num_of_products: 2 
 add_to_basket_button: ["button", ':id=> "addToBasket"']
-
+custom_search_js : "document.getElementById('sbox_container').className = 'clearfix open';"
 
 home_page:
   URL: "http://www.frenchconnection.com/"
@@ -36,9 +36,9 @@ home_page:
   login_link: ["link", ':title => "Sign In"']
 #  extra_steps:
 #   - [pause, 20]
-  search_field: ["text_field", ':id => "ctl00_ctl00_txtKeywordSearch"']
-  extra_steps:
-   - [button, id, "ctl00_ctl00_btnDoSearch"]
+  search_field: ["text_field", ':id => "site_search"']
+  #extra_steps:
+   #- [button, id, "ctl00_ctl00_btnDoSearch"]
    
 random_product:
   expected_recs: 1
@@ -76,7 +76,7 @@ login_page:
 
 searchresults_page:
   URL: "http://www.frenchconnection.com/search/keywords+are+dvd/dvd.htm"
-  expected_recs: 0
+  expected_recs: 1
   zerosearch_recs: 1
 
 checkout_page:

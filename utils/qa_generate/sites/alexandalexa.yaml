@@ -23,7 +23,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["ul", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul[1]"'] 
-product_link_filter: ["class|p-name a-center s12 db r clear"] 
+product_link_filter: ["class","p-name a-center s12 db r clear"] 
 product_options:   
     - [select_list, ':xpath=> "/html/body/div[2]/div[2]/section/div[3]/form/div[2]/div/div/dl/dd/div/select"']
                                

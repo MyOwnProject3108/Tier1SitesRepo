@@ -16,7 +16,11 @@ Then /^the debug info should show no SMART\-recs?$/ do
   	@current_page.debug_recs.should have(0).entries  
 end
 
-Then /^all categories should be tracked as Category pages except:$/ do |categories_exclude_list|
+Then /^all categories except the categories that match the exclusion criteria :"(.+)" should be tracked as Category pages$/ do |categories_exclude_list|
+ 	test_random_category_or_all_category_tracking(true)
+end
+
+Then /^all categories should be tracked as Category pages$/ do 
  	test_random_category_or_all_category_tracking(true)
 end
 
@@ -24,12 +28,12 @@ Then /^each randomly selected category should be tracked as a Category page$/ do
   	test_random_category_or_all_category_tracking(false)
 end
 
-Then /^each randomly selected product should be tracked as a Product page using link filter:$/ do |link_filter|
-	test_random_product_page_and_add_to_basket_tracking(link_filter,false)
+Then /^each randomly selected product should be tracked as a Product page$/ do 
+	test_random_product_page_and_add_to_basket_tracking(false)
 end
 
-When /^I add one or more random products to basket using link filter:$/ do |link_filter|
-  	test_random_product_page_and_add_to_basket_tracking(link_filter,true)
+When /^I add one or more random products to basket$/ do 
+  	test_random_product_page_and_add_to_basket_tracking(true)
 end
 
 When /^I visit the top navigation page with index:$/ do |page_index|
@@ -50,6 +54,25 @@ When /^I auto-generate (.+) using "(.+)" for the (.+) with (.+) "(.+)"$/ do |dat
 	@browser.send(element.to_sym, locator.to_sym => locator_value).set(gen_value)
 end
 
+###########################################
+# The methods and the madness starts here
+###########################################
+def autogenerate_firstname(seed_value, rand_value)
+	prefix = seed_value
+    return prefix+rand_value
+end
+
+def autogenerate_lastname(seed_value, rand_value)
+	prefix = seed_value
+    return prefix+rand_value
+end
+
+def autogenerate_email(seed_value, rand_value)
+	prefix = seed_value.partition('@').first
+	domain = seed_value.partition('@').last
+    return prefix+rand_value+'@'+domain
+end
+
 def visit_nav_page(page_index,is_table_data)
     nav_elements = @current_page.category_menu_preselect_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
     #nav_element = nav_elements.flatten!
@@ -60,20 +83,15 @@ def visit_nav_page(page_index,is_table_data)
 	@browser.goto nav_link[1] 
 end
 	
-	
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file
 # and randomly opens the specified number of categories and then opens the specified number of product pages from each per category 
 # Params:
-# +link_filter+:: a collection of element identifiers to extract product links from a category page
 # +add_to_basket+:: boolean - true if each selected product needs to be added to basket else false
-def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_basket)
+def test_random_product_page_and_add_to_basket_tracking(add_to_basket)
 	@@show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
-	link_filter = link_filter.raw.flatten!
-	filter_attrib_name = link_filter[0]
-	filter_attrib_val = link_filter[1]
-  	
+
   	num_categories = rand(1..@current_page.get_max_num_of_categories)
   	wait_time_per_category = @current_page.get_wait_time_per_category_page
   	
@@ -86,8 +104,9 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
   	while cat_ctr <= num_categories
   		category = categories[rand(0..categories.length - 1)]
   		cat_name = category[0]
-		cat_url = category[1] #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
-		
+		cat_url = category[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_cat_url == nil #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
+		cat_url = @current_page.get_static_test_cat_url if @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != nil
+
 		exclude_cat = false
 		exclude_cat = should_exclude_category(cat_name,cat_url) if @current_page.get_categories_to_exclude.length > 0
 		
@@ -98,19 +117,9 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 			cat_info = cat_test_response.split("|") if cat_test_response != nil
 			if cat_test_response != nil && cat_test_response.include?("SUCCESS")
 				products = @current_page.product_links_element.link_elements
-
-				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
-				products = products.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
 				
-				# Reject links that DO have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>  Added by fayaz
-#				products = products.reject{|x| x.attribute(filter_attrib_name) = filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%') && !filter_attrib_val.include?('%')
-				# Reject links that DO NOT have the attribute with name <filter_attrib_name> where the attribute value <filter_attrib_val> is indeterminate or random
-				products = products.reject{|x| !x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
-				# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>
-				products = products.reject{|x| !x.attribute(filter_attrib_name).include?(filter_attrib_val.gsub("%",'')) } if filter_attrib_val.include?('%')
-				# Collect all links that have an attributes "title" and "href"
-				products = products.collect{|x|	x.attribute('title')!="" ?	[x.attribute('title'), x.attribute('href')] : [x.text, x.attribute('href')]}
-	
+				products = get_filtered_product_links(products) 
+
 				if products.length == 0
 					fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]}) using link filter => #{link_filter}"))
 					break
@@ -122,7 +131,8 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 				while prod_ctr <= num_products
 					product = products[rand(0..products.length - 1)]
 					prod_name = product[0]
-					prod_url = product[1]  
+					prod_url = product[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_prod_url == nil
+					prod_url = @current_page.get_static_test_prod_url if @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != nil
 					
 					exclude_prod = false
 					if (@current_page.get_product_keywords_to_exclude.length > 0)
@@ -166,7 +176,7 @@ def test_random_product_page_and_add_to_basket_tracking(link_filter,add_to_baske
 									plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
 								end
 							else
-								plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text.upcase} - FAILED","red")
+								plog("\t\t#{prod_name}:\t\t#{prod_url} \t=> tracked as #{@browser.td(:id => 'trackInfo').text} - FAILED","red")
 								test_pass = false
 							end
 							prod_ctr = prod_ctr + 1 if option_selected
@@ -199,11 +209,10 @@ def select_product_options
 	option_selected = true
 	while x <= @current_page.get_num_of_product_options do
 		product_options = eval('@current_page.product_option'+x.to_s+'_element')
+		product_option_filter = @current_page.get_product_option_filter[x-1] if @current_page.get_product_option_filter.length > x-1
 		#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 		if product_options.exists?
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
-			
-			#plog("LIST IS A #{product_options.class} with parent #{product_options.first} ","blue") if @@show_log
 	
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
@@ -228,18 +237,22 @@ def select_product_options
 					plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
 					#product_options.when_present.select option 
-					product_options.option(:index => opt_index).when_present.select #if product_options.visible?
+					product_options.option(:index => opt_index).when_present.select #if product_options.visible?  #visible option for burton
 					option_selected = true
 				end
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
-				prod_links = product_options.link_elements 
-				option = prod_links[rand(0..prod_links.length - 1)] 
+				prod_links = product_options.imgs if product_option_filter && product_option_filter[0]=="img"
+				prod_links = product_options.links if !product_option_filter
+				if product_option_filter
+					prod_links = prod_links.reject{|x| !eval("x."+product_option_filter[1]).include?(product_option_filter[2].gsub("%",'')) } if product_option_filter[2].include?('%')
+				end
+				option = prod_links[rand(0..prod_links.length - 1)]
 				option.click
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
 				option = product_options.lis[rand(1..product_options.lis.length - 1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect
-				plog("\tPre-selected => #{strip_clean(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
-				plog("\tSelected option => #{strip_clean(strip_tags(option.html))}","magenta") if @@show_log
+				plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
+				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if @@show_log
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if @@show_log
 				option.links.first.click if option.links.first.exists?
 				option.click if !option.links.first.exists?
@@ -265,7 +278,6 @@ end
 
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file
 # Params:
-# +categories_to_exclude+:: a collection of categories that need to be excluded (applies only if test_all_categories is set to true)
 # +test_all_categories+:: boolean - true if all catgeories need to be tested else false
 def test_random_category_or_all_category_tracking(test_all_categories)
 	@@show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
@@ -360,7 +372,7 @@ end
 def test_category_page(cat_name,cat_url,wait_time)
 	cat_test_response = nil
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-	@browser.goto cat_url #"http://www.alexandalexa.com/home-school/kids-bedroom" #
+	@browser.goto cat_url 
 	page_num = 1
 	if (@current_page.get_category_paging_info.length > 0)
 		cat_info = get_category_page_with_filter(cat_name, cat_url)
@@ -404,23 +416,6 @@ def test_category_page(cat_name,cat_url,wait_time)
 		cat_test_response = "#{cat_name}|#{cat_url}|<<UNDEFINED>>|#{page_num}"
 	end
 	return cat_test_response
-end
-
-
-def autogenerate_firstname(seed_value, rand_value)
-	prefix = seed_value
-    return prefix+rand_value
-end
-
-def autogenerate_lastname(seed_value, rand_value)
-	prefix = seed_value
-    return prefix+rand_value
-end
-
-def autogenerate_email(seed_value, rand_value)
-	prefix = seed_value.partition('@').first
-	domain = seed_value.partition('@').last
-    return prefix+rand_value+'@'+domain
 end
 
 def show_tested_categories(cat_list, status)
@@ -475,15 +470,40 @@ def should_exclude_category(cat_name, cat_url)
 	cat_info_to_exclude = @current_page.get_categories_to_exclude
 	
 	cat_info_to_exclude.each do |cat_info|
-	  exclude_cat = true if cat_info.include?(cat_name.strip)
+	  exclude_cat = true if cat_info.include?(cat_name.strip) # exact title match if => IS NOT included in the cat_info
 	  
-	  if cat_info.include?("|")
-	  	info_type = cat_info.split("|")[0] 
-	  	info_value = cat_info.split("|")[1] 
+	  if cat_info.include?("=>") # partial title or url match if => IS included in the cat_info
+	  	info_type = cat_info.split("=>")[0] 
+	  	info_value = cat_info.split("=>")[1] 
 	  	
 	  	exclude_cat = true if info_type == "url" && cat_url.include?(info_value)
-	  	exclude_cat = true if info_type == "title" && info_value.include?(cat_name.strip)
+	  	exclude_cat = true if info_type == "title" && cat_name.strip.include?(info_value) # partial title match 
 	  end
 	end
     return exclude_cat
+end
+
+# This function filters product links extracted from a category page based on the filter criteria specified in the yaml config 
+# Returns filtered product links collection
+# Params:
+# +product_links+:: array of product link elements extracted from the category page
+def get_filtered_product_links(product_links)
+
+	if @current_page.get_product_link_filter.length > 0
+		link_filter = @current_page.get_product_link_filter
+		filter_attrib_name = link_filter[0]
+		filter_attrib_val = link_filter[1]
+		# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
+		product_links = product_links.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
+		# Reject links that DO have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>  Added by fayaz
+		#product_links = product_links.reject{|x| x.attribute(filter_attrib_name) = filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%') && !filter_attrib_val.include?('%')
+		# Reject links that DO NOT have the attribute with name <filter_attrib_name> where the attribute value <filter_attrib_val> is indeterminate or random
+		product_links = product_links.reject{|x| !x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
+		# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>
+		product_links = product_links.reject{|x| !x.attribute(filter_attrib_name).include?(filter_attrib_val.gsub("%",'')) } if filter_attrib_val.include?('%')
+		# Collect all links that have an attributes "title" and "href"
+	end
+	product_links = product_links.collect{|x|	x.attribute('title')!="" ?	[x.attribute('title'), x.attribute('href')] : [strip_tags(x.text), x.attribute('href')]}
+	
+	return product_links
 end

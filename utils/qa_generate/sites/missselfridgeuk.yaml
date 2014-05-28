@@ -13,17 +13,38 @@ channel: mobileapp
 site_id: 539
 integration: standard
 
+
+#### site level variables ####
+
+show_log: true
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+categories_to_exclude: ["title => Going Out"]
+test_all_categories: true
+ignore_cat_tracked_as_other_page: true
+wait_time_per_category_page: 3
+max_num_of_categories: 1 
+num_of_reloads_per_category: 2
+wait_time_per_product_page: 2
+max_num_of_products: 1
+product_links: ["div", ':id=> "wrapper_page_content"'] 
+product_link_filter: ["data-productid", "*"]
+add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+
 home_page:
   URL: "http://www.missselfridge.com/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title=> "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
-#  category_menu: ["ul", ':id => "nav_catalog_menu"']
-#  categories_to_exclude: ["Dress Shop", "Petite", "Features", "Style Diaries"]
-#  needs_SPR: no
 
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
 product_page:
-  URL: "http://www.missselfridge.com/en/msuk/product/clothing-299047/dresses-299060/pu-shoulder-bodycon-dress-1816302?bi=1&ps=40"   
+  URL: "http://www.missselfridge.com/en/msuk/product/clothing-299047/dresses-299060/floral-trumpet-hem-dress-2943782?bi=1&ps=40"   
   expected_recs: 2
   add_to_basket_button: ["button", ':id => "btn_add_2_shop_cart"']
   extra_steps:
@@ -38,6 +59,12 @@ basket_page:
   expected_recs: 4
   basket_checkout: ["link", ':text=> "Checkout"']
   basket_remove: ["link", ':class => "remove_bag_item"']
+  
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
+  basket_remove: ["link", ':class => "remove_bag_item"']
+  
 
 login_page:
   URL: "https://www.missselfridge.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33055&storeId=12554&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
@@ -66,4 +93,23 @@ checkout_page:
    - [text_field, class, "text address_town", "london"]
    - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
-   - [pause, 20]
+   - [pause, 2]
+   
+random_checkout:
+  URL: "http://www.missselfridge.com/?geoip=home"
+  expected_recs: 0
+  extra_steps:
+      - [link, id, "checkout_submit_bottom"]
+      - [pause, 2]
+      - [link, id, "btn_register"]
+      - [pause, 2]
+      - [select_list, id, "address_title", "Mr"]
+      - [text_field, id, "address_first_name", "P"]
+      - [text_field, id, "address_surname", "Eerius"]
+      - [text_field, id, "address_main_telephone", "02033974940"]
+      - [p, class, "enter_manual_address"]
+      - [text_field, class, "text address_line_1", "Units 207-211"]
+      - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+      - [text_field, class, "text address_town", "London"]
+      - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+      - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]

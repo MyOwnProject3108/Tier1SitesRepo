@@ -28,7 +28,7 @@ ignore_cat_tracked_as_other_page: true
 num_of_reloads_per_category: 2
 
 product_links: ["div", ':xpath=> "/html/body/div/div[2]/div/div/div/div[2]"'] 
-product_link_filter: ["class|productTitle"] 
+product_link_filter: ["class", "productTitle"] 
 product_options: 
       - [ul, ':id=> "sizesList"']    
 #     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"'] 

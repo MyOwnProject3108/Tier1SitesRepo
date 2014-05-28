@@ -30,7 +30,7 @@ category_paging_info:
 
 
 product_links: ["div", ':xpath=> "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]"'] 
-product_link_filter: ["class|product-image"] 
+product_link_filter: ["class", "product-image"] 
 wait_time_per_product_page: 2
 max_num_of_products: 3 
 

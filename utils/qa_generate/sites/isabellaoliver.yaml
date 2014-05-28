@@ -17,12 +17,12 @@ category_menu: ["ul", ':id => "nav-top-list"']
 categories_to_exclude: ["Looks We Love", "Worn By", "Magazine", "Shop", "Outlet", "Baukjen"]
 max_num_of_categories: 1
 wait_time_per_category_page: 5
-test_all_categories: true
+test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
 product_links: ["ol", ':xpath=> "//div[@id=\"product-items-content\"]/div/div/div/ol"']
-product_link_filter: ["title|View full details%"]
+product_link_filter: ["title", "View full details%"]
 product_options: 
     - [ul, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/div/ul"' ]
     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
@@ -32,7 +32,9 @@ product_options_preselect:
      
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
+#add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
+#add_to_basket_button: ["button", ':xpath=> "/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[4]/form/div/button"']
+add_to_basket_button: ["span", ':id=> "cartButtonSubmit"']
 
 
 home_page:
@@ -54,7 +56,7 @@ random_category:
 product_page:
   URL: "http://www.isabellaoliver.com/uk/shop/maternity-clothes/maternity-dresses/serafina-maternity-dress-dark-grey-melange.htm"
   expected_recs: 1
-  add_to_basket_button: ["button", ':class=> "btn-lg addtocart-button"']
+  add_to_basket_button: ["button", ':class=> "btn-lg btn-major fr no-margin"']
   extra_steps:
     - [pause, 30]
 
@@ -86,10 +88,11 @@ searchresults_page:
   zerosearch_recs: 0
 
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0
   extra_steps:
-    - [button, class, "btn-med continue"]
+    - [span, text, "Secure Checkout"]
     - [pause, 10]
     - [button, class, "btn-med continue"]
     - [pause, 10]
@@ -110,27 +113,49 @@ checkout_page:
     - [pause, 10]
     
 random_checkout:
-  URL: ""
   expected_recs: 0
   extra_steps:
+    - [span, text, "Secure Checkout"]
+    - [pause, 5]
+    - [span, text, "Continue"]
+    - [pause, 5]
+    - [text_field, id, "email", "webtest@mailinator.com", "generate_email" ]
+    - [pause, 5]
+    - [button, xpath, "/html/body/div/div[3]/div/div/div[2]/div/div[2]/div/div/form[2]/div/div/dl/dd[2]/button[1]"]
+    - [pause, 2]
+    - [link, "xpath", "//div[@id='-title_chzn']/a"]
+    - [li, "id", "-title_chzn_o_1"]
+#   - [select_list, id, "-title", "Ms"]
+    - [pause, 2]
+    - [text_field, id, "firstname", "test"]
+    - [text_field, id, "lastname", "peerius"]
+    - [text_field, id, "postcode", "TW3 3TN"]
+    - [pause, 2]
+    - [button, id, "findAddressBtn"]
+    - [pause, 2]
+    - [select_list, xpath, "/html/body/div/div[3]/div/div/div[2]/div/div[2]/div/div/form/div/dl/dd[4]/div/select", "Flat 1 Hamilton Court 147 Hanworth Road Hounslow"]
+    - [pause, 2]
+    - [text_field, id, "phone", "07825151515"]
     - [button, class, "btn-med continue"]
-    - [pause, 10]
+    - [pause, 2]
     - [button, class, "btn-med continue"]
-    - [pause, 10]
+    - [pause, 2]
     - [button, class, "btn-med continue"]
-    - [pause, 10]
-    - [button, class, "btn-med continue"]
-    - [pause, 10]
+    - [pause, 2]
+    - [button, id, "credit-card-button"]
+    - [pause, 2]
     - [text_field, id, "cardnumber", "5555555555554444"]
-    - [span, text, "Select month"]
-    - [li, id, "expirymonth_chzn_o_4"]
-    - [pause, 10]
-    - [span, text, "Select year"]
-    - [pause, 10]
-    - [li, id, "expiryyear_chzn_o_4"]
-    - [pause, 10]
+    - [text_field, id, "cardname", "test"]
+#   - [select_list, id, "expirymonth", "1: January"]
+    - [link, "xpath", "//div[@id='expirymonth_chzn']/a"]
+    - [li, "id", "expirymonth_chzn_o_1"]
+    - [pause, 2]
+    - [link, "xpath", "//div[@id='expiryyear_chzn']/a"]
+    - [li, "id", "expiryyear_chzn_o_4"]
+#   - [select_list, id, "expiryyear", "2016"]
+    - [pause, 2]
     - [text_field, id, "cardcvv", "123"]
     - [button, class, "btn-med continue"]
-    - [pause, 10]
-    
+    - [pause, 2]
+      
     

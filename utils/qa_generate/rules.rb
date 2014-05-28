@@ -24,6 +24,8 @@ def extra_steps_rule(extra_steps)
 			action = step[0]
 		end
 		case action
+		when "alert"
+			rule += "And I close the browser alert\n  "
 		when "pause"
 			rule += "And I pause for #{step[1]} second" + (step[1]>1?"s\n  ":"\n  ")
 		when "text_field" #you could generate a random value every time you run qagenerate to avoid tests from failing after some time 

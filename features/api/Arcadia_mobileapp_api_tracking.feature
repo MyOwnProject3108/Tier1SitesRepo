@@ -214,7 +214,7 @@ Scenario: I can track and get recs for burton search results page using mobileap
 
 Scenario: I can track and get recs for burton Basket page using mobileapp api for burton
 	Given I am using SMART-API to access burton
-	When I track "burton" basket page by using mobileapp api token "bhrvkw68frbyhu4t" with firstrefcd "8613789533" secndrefcd "2837658513"
+	When I track "burton" basket page by using mobileapp api token "bhrvkw68frbyhu4t" with firstrefcd "BR22P21ERED" secndrefcd "BR22P23EWHT"
 	Then I should get an OK status back
 	And I should get at least 1 SMART-rec in the response
 	

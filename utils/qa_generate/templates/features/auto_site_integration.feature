@@ -47,6 +47,7 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 @ignore
 <% end %>
 @random_product
+<% plog("Test initiated at #{Time.new.inspect}","grey") %>
 Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %> is/are tracked correctly
   Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] or page["needs_SPR"] %>
@@ -58,8 +59,7 @@ Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>
-  Then each randomly selected product should be tracked as a Product page using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  Then each randomly selected product should be tracked as a Product page 
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
 
@@ -131,8 +131,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a ran
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
-  And I add one or more random products to basket using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  And I add one or more random products to basket 
   And I pause for 2 seconds
   And I go to the basket page
   Then it should be tracked as a basket page 
@@ -202,7 +201,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
 
-<% if site["zerosearch_recs"] %>
+<% if page["zerosearch_recs"] %>
 #
 # Zero search page
 #
@@ -241,8 +240,7 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home pa
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
-  And I add one or more random products to basket using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  And I add one or more random products to basket
   And I pause for 5 seconds
   And I go to the basket page 
 <% if page["extra_steps"] %>
@@ -270,8 +268,7 @@ Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home pag
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
-  And I add one or more random products to basket using link filter: 
-  <% site["product_link_filter"].each do |link_filter| %>|<%= link_filter %>|<% end %>
+  And I add one or more random products to basket 
   And I pause for 5 seconds
   And I go to the checkout page 
 <% if page["extra_steps"] %>
@@ -296,16 +293,18 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
   Given I am on the <%= site["site_name"] %> home page
   And I visit the top navigation page with index: 
   |<%= page_index %>|
-  Then all categories should be tracked as Category pages except:
-<% site["categories_to_exclude"].each do |excluded_category| %>
-  |<%= excluded_category %>|
+<% if site["categories_to_exclude"] %>
+  Then all categories except the categories that match the exclusion criteria :"<%= site["categories_to_exclude"]*', ' %>" should be tracked as Category pages
+<% else %>
+  Then all categories should be tracked as Category pages	
 <% end %>
 <% end %>
 <% else %>
   Given I am on the <%= site["site_name"] %> home page
-  Then all categories should be tracked as Category pages except:
-<% site["categories_to_exclude"].each do |excluded_category| %>
-  |<%= excluded_category %>|
+<% if site["categories_to_exclude"] %>
+  Then all categories except the categories that match the exclusion criteria :"<%= site["categories_to_exclude"]*', ' %>" should be tracked as Category pages
+<% else %>
+  Then all categories should be tracked as Category pages	
 <% end %>
 <% end %>
 <% end %>

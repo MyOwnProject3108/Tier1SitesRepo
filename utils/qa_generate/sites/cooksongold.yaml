@@ -49,4 +49,3 @@ searchresults_page:
 checkout_page:
   URL: "https://www.cooksongold.com/your_order.jsp"
   expected_recs: 0   
-ran

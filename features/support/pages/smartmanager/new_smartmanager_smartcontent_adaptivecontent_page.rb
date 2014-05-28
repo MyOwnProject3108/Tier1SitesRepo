@@ -17,7 +17,8 @@ module Smartmanager
 		span(:add_a_new_row, :class => "text-success unselectable", :index => 1)
 		#div(:rule1, :class => "autosearch-wrap autosearch exp_right_hand_autocomplete clear clearfix")
 		text_area(:rule2, :name => "creativeConfigs.itemsForView[0].expression")
-		div(:div_succ, :class => "success")		
+		div(:div_succ, :class => "success")
+		ul(:div_err, :class => 'error')		
 	#	def select_creative_num(num)
 	#	select_list(:class => "chooseimage", :index => num-1)
 		
@@ -26,7 +27,11 @@ module Smartmanager
 
 		def success_messages
 		div_succ_element.text
-		end		
+		end
+
+		def error_messages
+		div_err_element.text
+		end			
 		
 		
 	 def tracked_as

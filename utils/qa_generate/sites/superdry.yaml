@@ -16,17 +16,14 @@ show_log: true
 
 category_menu: ["div", ':class => "main-menu"']
 categories_to_exclude: ["menuitem9999"]
-test_all_categories: true
+test_all_categories: false
 wait_time_per_category_page: 3
 max_num_of_categories: 1
 num_of_reloads_per_category: 5
+ignore_cat_tracked_as_other_page: true
 
-# xpath or id to container that contains all the product page links on a category page
-# I could have used the xpath : "html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/ul/li/h2" to get the first product link  
-# as this does not require a product link filter to extract specific links
-# but I have used the follwing to provide an example use of product_link_filter
 product_links: ["ul", ':class => "grid4"'] 
-product_link_filter: ["rel|product"]
+product_link_filter: ["rel", "product"]
 product_options: 
     - [ul, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/ul"']
 product_options_preselect:

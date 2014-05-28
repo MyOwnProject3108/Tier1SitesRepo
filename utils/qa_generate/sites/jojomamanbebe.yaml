@@ -11,6 +11,10 @@ database_num: 7
 site_id: 413
 integration: standard
 
+enable_static_test: false
+static_test_prod_url: "http://www.jojomamanbebe.co.uk/sp+bird-stripe-footless-tights-in-socks-tights-and-shoes+b8666" #"http://www.jojomamanbebe.co.uk/sp+striped-long-sleeved-tops+b8371"
+static_test_cat_url: ""
+
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "menu"']
@@ -19,14 +23,16 @@ categories_to_exclude: ["Gift Sets & Vouchers"]
 
 wait_time_per_category_page: 3
 
-test_all_categories: true
+test_all_categories: false
 
 num_of_reloads_per_category: 2
 
 product_links: ["div", ':id=> "partsList"'] 
-product_link_filter: ["class|pli_product"]
+product_link_filter: ["class", "pli_product"]
 product_options: 
-     - [table, ':class=> "matrixTable"']
+     - [table, ':class=> "matrixTable"'] 
+product_option_filter:
+     - ["img", "title", "Click to add this%"]
      
 ignore_cat_tracked_as_other_page: true
 
@@ -34,7 +40,7 @@ wait_time_per_product_page: 2
 
 max_num_of_categories: 1
 
-max_num_of_products: 2 
+max_num_of_products: 1 
 
 add_to_basket_button: ["button", ':id=> "iB1"']
 
@@ -88,17 +94,62 @@ checkout_page:
   URL: ""
   expected_recs: 0
   extra_steps:
-  - [image, alt, "Add a New Address"]
-  - [pause,10]
-  - [text_field, id, "initials", "test"]
-  - [text_field, id, "surname", "test1"]
-  - [text_field, id, "day_phone", "07838291919"]
-  - [text_field, id, "postcodefind", "TW3 3TN"]
-  - [button, id, "faBtn",]
-  - [pause,10]
-  - [image, alt, "use Address"]
-  - [pause,10]
+#  - [image, alt, "Add a New Address"]
+#  - [pause,10]
+#  - [text_field, id, "initials", "test"]
+#  - [text_field, id, "surname", "test1"]
+#  - [text_field, id, "day_phone", "07838291919"]
+#  - [text_field, id, "postcodefind", "TW3 3TN"]
+#  - [button, id, "faBtn",]
+#  - [pause,10]
+#  - [image, alt, "use Address"]
+ # - [pause,10]
 # - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
+  - [button, name, "submitSA"]
+  - [pause,2]
+  - [text_field, id, "card_number", "4444333322221111"]
+  - [select_list, id, "expiry_month", "May"]
+  - [select_list, id, "expiry_year", "2016"]
+  - [text_field, id, "check_number", "123"]
+  - [image, alt, "Continue, to review your order"]
+
+random_checkout:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+  - [link, id, "checkoutBtn"]
+  - [text_field, id, "email", "webtest@mailinator.com", "generate_email"]
+  - [text_field, id, "npswd", "test1234"]
+  - [text_field, name, "cpswd", "test1234"]
+  - [button, name, "submitRI"]
+  - [text_field, id, "initials", "test"]
+  - [text_field, id, "surname", "test"]
+  - [text_field, id, "day_phone", "02086723452"]
+# - [text_field, id, "postcodefind", "TW3 3TN"]
+# - [button, id, "faBtn",]
+# - [pause,2]
+# - [image, alt, "use Address"]
+# - [pause,5]
+  - [text_field, id, "address", "30 Avenue Street"]
+  - [text_field, id, "city", "30 Avenue Street"]
+  - [text_field, id, "postcode", "SE1 0HS"]
+# - [button, name, "submitSA"]
+  - [button, xpath, "//div[@id=\"orderDeliveryAddress\"]/div[2]/dl/dd/input"]
+  - [pause,2]
+#  - [button, name, "submitUA"]
+#  - [pause,2]
+#  - [text_field, id, "initials", "test"]
+#  - [text_field, id, "surname", "test"]
+#  - [text_field, id, "day_phone", "02086723452"]
+#  - [text_field, id, "postcodefind", "TW3 3TN"]
+#  - [button, id, "faBtn",]
+#  - [pause,2]
+#  - [image, alt, "use Address"]
+#  - [pause,5]
+#  - [image, alt, "Use selected address"]
+#  - [pause, 5]
+  - [button, name, "submitSA"]
+  - [pause,2]
   - [text_field, id, "card_number", "4444333322221111"]
   - [select_list, id, "expiry_month", "May"]
   - [select_list, id, "expiry_year", "2016"]
