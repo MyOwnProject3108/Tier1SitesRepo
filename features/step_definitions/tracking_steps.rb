@@ -259,6 +259,10 @@ def select_product_options
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
 				product_options.click
+			when product_options.is_a?(PageObject::Elements::Div) #kickz
+				prod_links = product_options.links 
+				option = prod_links[rand(0..prod_links.length - 1)]
+				option.click
 			when product_options.is_a?(PageObject::Elements::Element) #ctshirts - for dl/dt/dd elements
 				option = product_options.dds[rand(1..product_options.dds.length - 1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect

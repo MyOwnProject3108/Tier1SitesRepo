@@ -52,8 +52,8 @@ product_link_filter: ["id","variant%"]
 # Mandatory if you cannot add a product to basket without selecting variants such as colour and size on a product page.
 # Optional, if a site does not require additional product options to be selected when you add a product to basket.
 # Currently only supports options that are displayed as dropdown options in an html select element.
-#product_options: 
-     #- [link, ':id=> "EU-4"']
+product_options: 
+    - [div, ':id=> "1SizeContainer"']
 
 # If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
 # Products with titles that contain at least one of the following key words will be excluded from the testing process.
