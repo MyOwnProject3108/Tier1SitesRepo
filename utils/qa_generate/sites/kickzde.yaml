@@ -1,0 +1,124 @@
+site_name: kickzde
+site_id: 1509
+database_num: 1
+integration: json
+pretty_name: Kickz DE
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: awedasda
+valid_search_term: nike
+
+#### site level variables ####
+show_log: true
+
+# xpath or id of the html element that includes all the category page links on the home page
+category_menu: ["ul", ':xpath => "/html/body/div[2]/div/div[2]/ul/li/ul"']
+
+# A comma separated list of names for the categories that you want to exclude. The names should match the the text of the links that are displayed ont eh page. 
+# Currently you have to pass atleast one entry - will be refined later so that this becomes optional
+categories_to_exclude: ["Neu", "Marken", "Nike", "Jordan","K1X","Adidas","Vans","New Balance","Supra"]
+
+# If set to true the @all_categories test will be generated for the site. Default is false.
+test_all_categories: false
+
+# If category pages take time to load, you can specify the wait time. Default is 2 secs.
+wait_time_per_category_page: 3
+
+# The upper bound or the max number of categories to consider as the random sample size.
+# If set to 3, a random number of categories from 1 to 3 will be selected. Default is 1.
+max_num_of_categories: 2
+
+# If category pages are slow to load for a site, and trackInfo is not reliably being read by the web driver, 
+# then you might want to reload the page one or more times until the trackInfo is available to read. 
+# Specify the number of times you want the page to be reloaded. Default is 1. 
+num_of_reloads_per_category: 2
+
+# If category page tracking is not very reliable ,i.e., there are a number of category pages that are tracked as 'Other' page 
+# OR if a site genuinely has a number of Other Page links that can be accessed from the home page navigation menu, 
+# then the following flag, if set to true, will ignore such pages and will try a different link until a category page is found. Default is false.
+ignore_cat_tracked_as_other_page: true
+
+# The xpath or id of the html element that contains all the product links on a category page
+product_links: ["div", ':id=> "product_list_container"'] 
+# If there are links that are not product links, you can specify this filter so that links that have a specific attribute are selected. 
+# Links that don't have this attribute or attribute/value pair will be discarded. You can specify [ignore|ignore] if you do not need to specify a filter. 
+# If you want to match just by attribute name, then you can use [<attribute_name>|*].
+# If you want to match using a partial value of an attribute, then you can use [<attribute_name>|<partial_value>%]
+product_link_filter: ["id","variant%"] 
+
+# Mandatory if you cannot add a product to basket without selecting variants such as colour and size on a product page.
+# Optional, if a site does not require additional product options to be selected when you add a product to basket.
+# Currently only supports options that are displayed as dropdown options in an html select element.
+#product_options: 
+     #- [link, ':id=> "EU-4"']
+
+# If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
+# Products with titles that contain at least one of the following key words will be excluded from the testing process.
+#product_keywords_to_exclude: ["Canvas", "Boot", "Digital", "Mens", "Shoes", "Flop", "Trainer", "Blue", "ml" ]
+
+
+# If product pages take time to load, you can specify the wait time. Default is 2 secs.
+wait_time_per_product_page: 2
+
+# The upper bound or the max number of products to consider from each category as the random sample size.
+# If set to 3, a random number of products from 1 to 3 will be selected. Default is 1
+max_num_of_products: 5 
+
+# This is not strictly a random test property and this can be already be set at page level for static URL based tests. 
+# However, this is mandatory for random_basket, random_checkout or end-to-end tests are to work.
+add_to_basket_button: ["button", ':id=> "addToBasket"']
+
+#### page level config ####
+  
+home_page:
+  URL: "http://www.kickz.com/de/"
+  expected_recs: 6
+  #login_link: ["link", ':href=> "http://showcase.peerius.com/index.php/customer/account/login/"']
+  search_field: ["text_field", ':id => "quicksearchfield"']
+
+login_page:
+  URL: "http://showcase.peerius.com/index.php/customer/account/login/"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"pass"']  
+  login_submit: ["button", ':id=>"send2"']
+
+searchresults_page:
+  URL: "http://www.kickz.com/de/catalog/fullTextSearch?queryString=nike&search=suche"
+  expected_recs: 5
+  zerosearch_recs: 5
+
+basket_page:
+  URL: "http://www.kickz.com/de/cart"
+  expected_recs: 5
+  
+checkout_page:
+  URL: "https://www.kickz.com/de/checkout/addresses?actionName=addresses"
+  expected_recs: 0
+
+random_product:
+  expected_recs: 5
+
+random_category:
+  expected_recs: 0
+
+random_basket:
+  expected_recs: 5
+  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
+  basket_remove: ["td", ':text => "Zur sicheren Kasse"']
+      
+random_checkout:
+  expected_recs: 0
+  extra_steps:
+      - [td, class, "checkout_btn_mid"]
+      - [pause, 2]
+      - [radio, id, "have_password"]
+      - [text_field, id, "user_email", "webtest@mailinator.com"]
+      - [pause, 2]
+      - [text_field, id, "user_password", "webtest"]
+      - [pause, 2]
+      - [button, class, "green_safe_btn"]
+
