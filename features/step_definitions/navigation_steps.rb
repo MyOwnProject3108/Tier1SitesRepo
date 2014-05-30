@@ -77,5 +77,7 @@ Given /^I use the SPR key$/ do
   @current_page.add_SPR
 end
 
-
+And /^I am in an AB group$/ do
+	@current_page.add_AB_group(@current_page.get_ab_group)
+end
 

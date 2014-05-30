@@ -215,6 +215,13 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def get_ab_group
+		<% if site["ab_test_group"] != nil %>
+			return "<%= site["ab_test_group"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
 		
 		
     end  

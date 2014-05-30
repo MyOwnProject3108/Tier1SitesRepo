@@ -30,6 +30,9 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% if site["needs_SPR"] or page["needs_SPR"] %>
   And I use the SPR key
 <% end %>
+<% if site["ab_test_group"] %>
+  And I am in an AB group
+<% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>

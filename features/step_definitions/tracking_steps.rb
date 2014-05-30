@@ -311,7 +311,9 @@ def test_random_category_or_all_category_tracking(test_all_categories)
   		category = categories[cat_ctr] if(test_all_categories)
 		category = categories[rand(0..categories.length - 1)] if !test_all_categories
 		cat_name = category[0]
-		cat_url = category[1]
+		#cat_url = category[1]
+		cat_url = category[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_cat_url == nil 
+		cat_url = @current_page.get_static_test_cat_url if @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != nil
 		
  		exclude_cat = false
 		if (@current_page.get_categories_to_exclude.length > 0)
@@ -480,7 +482,8 @@ def should_exclude_category(cat_name, cat_url)
 	  	info_type = cat_info.split("=>")[0] 
 	  	info_value = cat_info.split("=>")[1] 
 	  	
-	  	exclude_cat = true if info_type == "url" && cat_url.include?(info_value)
+	  	exclude_cat = true if info_type == "url" && !info_value.include?("%") && cat_url.include?(info_value)
+		exclude_cat = true if info_type == "url" && info_value.include?("%") && cat_url.end_with?(info_value.gsub("%",""))
 	  	exclude_cat = true if info_type == "title" && cat_name.strip.include?(info_value) # partial title match 
 	  end
 	end
