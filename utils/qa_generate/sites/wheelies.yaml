@@ -1,0 +1,117 @@
+site_name: wheelies
+site_id: 1479
+database_num: 1
+integration: json
+pretty_name: Wheelies
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: p.test@peerius.com
+password: P1234567
+zero_search_term: awedasda
+valid_search_term: bike
+
+### static test properties ###
+
+# This allows you to override random category and random product selection if you need to test specific scenarios during test configuration 
+enable_static_test: false
+static_test_prod_url: "http://www.wheelies.co.uk/p56689/Specialized-Align-Road-Cycling-Helmet.aspx"
+static_test_cat_url: "http://www.wheelies.co.uk/c23/accessories.aspx"
+
+#### site level variables ####
+show_log: true
+
+# What ab test is the customer in
+ab_test_group: 1
+
+# xpath or id of the html element that includes all the category page links on the home page
+category_menu: ["ul", ':id => "main-navigation"']
+
+# A comma separated list of exact names or partial titles/urls for the categories that you want to exclude. 
+categories_to_exclude: ["Clearance", "Brands" , "Guides" , "Blog", "url=>%wheelies.co.uk/"  ]
+
+# If set to true the @all_categories test will be generated for the site. Default is false.
+test_all_categories: false
+
+# If category pages take time to load, you can specify the wait time. Default is 2 secs.
+wait_time_per_category_page: 5
+
+# The upper bound or the max number of categories to consider as the random sample size.
+# If set to 3, a random number of categories from 1 to 3 will be selected. Default is 1.
+max_num_of_categories: 1 
+
+num_of_reloads_per_category: 2
+
+ignore_cat_tracked_as_other_page: false
+
+# The xpath or id of the html element that contains all the product links on a category page
+product_links: ["ul", ':id=> "products"'] 
+
+# If there are links that are not product links, you can specify this filter so that links that have a specific attribute are selected.
+product_link_filter: ["class", "product large"] 
+
+# If product pages take time to load, you can specify the wait time. Default is 2 secs.
+wait_time_per_product_page: 2
+
+# The upper bound or the max number of products to consider from each category as the random sample size.
+# If set to 3, a random number of products from 1 to 3 will be selected. Default is 1
+max_num_of_products: 2 
+
+# This is not strictly a random test property and this can be already be set at page level for static URL based tests. 
+# However, this is mandatory for random_basket, random_checkout or end-to-end tests are to work.
+add_to_basket_button: ["button", ':id=> "ctl00_ContentPlaceHolder1_Repeater1_ctl00_btnAddToCart"']
+
+#### page level config ####
+  
+home_page:
+  URL: "http://www.wheelies.co.uk/"
+  expected_recs: 3
+  login_link: ["link", ':href=> "http://www.wheelies.co.uk/UserAdmin/Default.aspx"']
+  search_field: ["text_field", ':id => "ctl00_ctl03_tbSearch"']
+
+login_page:
+  URL: "https://www.wheelies.co.uk/login-register.aspx"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_UserName"']
+  password_field: ["text_field", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_Password"']  
+  login_submit: ["button", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_LoginButton"']
+
+searchresults_page:
+  URL: "http://www.wheelies.co.uk/Catalogue.aspx?search=bike"
+  expected_recs: 4
+  zerosearch_recs: 4
+
+basket_page:
+  URL: "http://www.wheelies.co.uk/ViewCart.aspx"
+  expected_recs: 0
+  extra_steps:
+    - [pause, 2]
+  
+checkout_page:
+  URL: "https://www.wheelies.co.uk/Checkout.aspx"
+  expected_recs: 0
+
+random_product:
+  expected_recs: 4
+
+random_category:
+  expected_recs: 0
+
+random_basket:
+  expected_recs: 0
+  basket_checkout: ["button", ':id => "ctl00_ContentPlaceHolder1_btnCheckOut"']
+  basket_remove: ["button", ':class => "ctl00_ContentPlaceHolder1_CartItems_ctl00_DeleteButton"']
+      
+random_checkout:
+  expected_recs: 0
+  extra_steps:
+        - [button, id, "ctl00_ContentPlaceHolder1_btnCheckOut"]
+        - [pause, 2]
+        - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_UserName", "PTest"]
+        - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_Password", "P1234567"]
+        - [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_LoginButton"]
+        - [pause, 2]
+        - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Add1", "Unit 232"]
+        - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Town", "London"]
+        - [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_btnSubmit"]
+        - [pause, 2]
