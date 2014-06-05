@@ -1,0 +1,146 @@
+site_name: zoogigant
+site_id: (TObeGIVEN-dbSiteNumber)
+database_num: 1
+integration: json
+pretty_name: Zoogigant
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: awedasda
+valid_search_term: computer
+
+#### site level variables ####
+show_log: true
+
+# This allows you to override random category and random product selection if you need to test specific scenarios during test configuration 
+# or for troubleshooting specific scenarios. enable_static_test needs to be set to true for the override to work.
+enable_static_test: false
+static_test_prod_url: ""
+static_test_cat_url: "http://www.zoogigant.de/Vogel/Wintervogelfutter-1385/Meisenringe-1391/"
+
+# xpath or id of the html element that includes all the category page links on the home page
+category_menu: ["div", ':xpath => "//div[@id=\"megadropdown\"]"']
+
+# A comma separated list of names for the categories that you want to exclude. The names should match the the text of the links that are displayed ont eh page. 
+# Currently you have to pass atleast one entry - will be refined later so that this becomes optional
+categories_to_exclude: ["Home", "JigsawPuzzles", "RandomGifts", "AllBooks"]
+
+# If set to true the @all_categories test will be generated for the site. Default is false.
+test_all_categories: true
+
+# If category pages take time to load, you can specify the wait time. Default is 2 secs.
+wait_time_per_category_page: 2
+
+# The upper bound or the max number of categories to consider as the random sample size.
+# If set to 3, a random number of categories from 1 to 3 will be selected. Default is 1.
+max_num_of_categories: 1 
+
+# If category pages are slow to load for a site, and trackInfo is not reliably being read by the web driver, 
+# then you might want to reload the page one or more times until the trackInfo is available to read. 
+# Specify the number of times you want the page to be reloaded. Default is 1. 
+num_of_reloads_per_category: 1
+
+# If category page tracking is not very reliable ,i.e., there are a number of category pages that are tracked as 'Other' page 
+# OR if a site genuinely has a number of Other Page links that can be accessed from the home page navigation menu, 
+# then the following flag, if set to true, will ignore such pages and will try a different link until a category page is found. Default is false.
+ignore_cat_tracked_as_other_page: false
+
+# The xpath or id of the html element that contains all the product links on a category page
+product_links: ["div", ':xpath=> "//div[@id=\"product_listing\"]"'] 
+
+
+# If there are links that are not product links, you can specify this filter so that links that have a specific attribute are selected. 
+# Links that don't have this attribute or attribute/value pair will be discarded. You can specify [ignore|ignore] if you do not need to specify a filter. 
+# If you want to match just by attribute name, then you can use [<attribute_name>|*].
+# If you want to match using a partial value of an attribute, then you can use [<attribute_name>|<partial_value>%]
+product_link_filter: ["class", "product_link"] 
+
+########################## TO DO from here
+# Mandatory if you cannot add a product to basket without selecting variants such as colour and size on a product page.
+# Optional, if a site does not require additional product options to be selected when you add a product to basket.
+# Currently only supports options that are displayed as dropdown options in an html select element.
+product_options: 
+     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
+     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"']
+
+# If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
+# Products with titles that contain at least one of the following key words wil be excluded from the testing process.
+product_keywords_to_exclude: ["Canvas", "Boot", "Digital", "Mens", "Shoes", "Flop", "Trainer"]
+
+
+# If product pages take time to load, you can specify the wait time. Default is 2 secs.
+wait_time_per_product_page: 2
+
+# The upper bound or the max number of products to consider from each category as the random sample size.
+# If set to 3, a random number of products from 1 to 3 will be selected. Default is 1
+max_num_of_products: 1 
+
+# This is not strictly a random test property and this can be already be set at page level for static URL based tests. 
+# However, this is mandatory for random_basket, random_checkout or end-to-end tests are to work.
+add_to_basket_button: ["link", ':id=> "cart_button"']
+
+#### page level config ####
+  
+home_page:
+  URL: "http://www.zoogigant.de"
+  expected_recs: 1
+  login_link: ["link", ':href=> "www.zoogigant.de/login.php"']
+  search_field: ["text_field", ':id => "search"']
+
+login_page:
+  URL: "www.zoogigant.de/login.php"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"email"']
+  password_field: ["text_field", ':id=>"pass"']  
+  login_submit: ["button", ':id=>"send2"']
+
+searchresults_page:
+  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=dvd"
+  expected_recs: 0
+  zerosearch_recs: 5
+
+basket_page:
+  URL: "http://www.zoogigant.de/shopping_cart.php"
+  expected_recs: 5
+  
+checkout_page:
+  URL: "https://www.zoogigant.de/checkout_shipping.php"
+  expected_recs: 0
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 1
+
+random_basket:
+  expected_recs: 4
+
+random_order:
+  expected_recs: 0
+  extra_steps:
+      - [radio, id, "login:guest"]
+      - [button, id, "onepage-guest-register-button"]
+      - [pause, 2]
+      - [text_field, id, "billing:firstname", "Web", "autogenerate_firstname"]
+      - [text_field, id, "billing:lastname", "Test", "autogenerate_lastname"]
+      - [text_field, id, "billing:email", "peeriustest@email.com", "autogenerate_email"]
+      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
+      - [text_field, id, "billing:city", "London"]
+      - [text_field, id, "billing:postcode", "SE1 0HS"]
+      - [text_field, id, "billing:region", "London"]
+      - [select_list, id, "billing:country_id", "United Kingdom"]
+      - [text_field, id, "billing:telephone", "02039723222"]
+      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
+      - [pause, 5]
+      - [radio_optional, id, "s_method_freeshipping_freeshipping"]
+      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
+      - [pause, 5]
+      - [radio, id, "p_method_checkmo"]
+      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
+      - [pause, 5]
+      - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
+      
+
