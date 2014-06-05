@@ -15,6 +15,15 @@ Background:
 	Given the site can take up to <%=site["site_timeout"] %> seconds to load each page.  
 <% end %>
 
+Background:
+  Given I am on the <%= site["site_name"] %> home page
+<% if site["needs_SPR"] %>
+  And I use the SPR key
+<% end %>
+<% if site["ab_test_group"] %>
+  And I am in an AB group
+<% end %> 
+
 <% for page_name in ["home", "category", "product"] %>
 <% if site[page_name+"_page"] %>
 <% page = site[page_name+"_page"] %>
@@ -26,13 +35,6 @@ Background:
 <% end %>
 @<%= page_name %>_page
 Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
-  Given I am on the <%= site["site_name"] %> <%= page_name %> page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>
@@ -52,13 +54,6 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 @random_product
 <% plog("Test initiated at #{Time.new.inspect}","grey") %>
 Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %> is/are tracked correctly
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
@@ -79,13 +74,6 @@ Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %>
 <% end %>
 @random_category
 Scenario: A random category page from <%= site["pretty_name"] %> is tracked correctly
-Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
@@ -136,13 +124,6 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
 <% end %>
 @random_basket
 Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a random product is added to basket
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
@@ -163,13 +144,6 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a ran
 <% end %>
 @checkout_page
 Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
   And I pause for 10 seconds
 <% if site["home_page"]["login_link"] %>
   When I click login
@@ -207,13 +181,6 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% end %>
 @search_page
 Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>  
@@ -231,13 +198,6 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 @ignore
 <% end %>
 Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>   When I search for "<%= site["zero_search_term"] %>"
@@ -257,13 +217,6 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <% end %>
 @random_checkout
 Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home page to checkout page are tracked correctly
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
@@ -288,13 +241,6 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home pa
 <% end %>
 @random_order
 Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home page to order confirmation are tracked correctly
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
 <% if site["category_menu_preselect"] %>
   And I visit the first top navigation page 
 <% end %>
@@ -320,7 +266,6 @@ Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home pag
 Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
 <% if site["category_menu_preselect"] %>
 <% site["num_of_category_menu_preselect_items"].times  do |page_index| %>
-  Given I am on the <%= site["site_name"] %> home page
   And I visit the top navigation page with index: 
   |<%= page_index %>|
 <% if site["categories_to_exclude"] %>
@@ -330,7 +275,6 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
 <% end %>
 <% end %>
 <% else %>
-  Given I am on the <%= site["site_name"] %> home page
 <% if site["categories_to_exclude"] %>
   Then all categories except the categories that match the exclusion criteria :"<%= site["categories_to_exclude"]*', ' %>" should be tracked as Category pages
 <% else %>
@@ -348,13 +292,6 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
 @ignore
 <% end %>
 Scenario: SMART-content links work on on <%= site["pretty_name"] %> home page
-  Given I am on the <%= site["site_name"] %> home page
-<% if site["needs_SPR"] or page["needs_SPR"] %>
-  And I use the SPR key
-<% end %>
-<% if site["ab_test_group"] and site["home_page"] %>
-  And I am in an AB group
-<% end %>
   And I click the first SMART-content creative image
   Then it should be tracked as a category page
 <% end %>
