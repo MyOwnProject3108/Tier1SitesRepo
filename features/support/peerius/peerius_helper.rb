@@ -54,6 +54,22 @@ module PeeriusHelper
         #puts url_with_spr
         navigate_to url_with_spr
       end
+	  
+	  def add_AB_group(ab_group)
+        url_with_ab = self.current_url
+        
+        # Remove trailing slash from URL
+        url_with_ab.gsub(/\/$/, '')
+        
+        if url_with_ab.include?("?") or url_with_ab.include?("&") 
+          url_with_ab += "&peerius_ab_group=" + ab_group.to_s 
+        else
+          url_with_ab += "?peerius_ab_group=" + ab_group.to_s
+        end          
+          
+        #puts url_with_spr
+        navigate_to url_with_ab
+      end
       
       # Returns true if the page is actually a page of the expected type
 	  def elem_exists(elem)

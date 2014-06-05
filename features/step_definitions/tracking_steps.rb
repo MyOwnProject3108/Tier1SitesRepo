@@ -54,6 +54,25 @@ When /^I auto-generate (.+) using "(.+)" for the (.+) with (.+) "(.+)"$/ do |dat
 	@browser.send(element.to_sym, locator.to_sym => locator_value).set(gen_value)
 end
 
+###########################################
+# The methods and the madness starts here
+###########################################
+def autogenerate_firstname(seed_value, rand_value)
+	prefix = seed_value
+    return prefix+rand_value
+end
+
+def autogenerate_lastname(seed_value, rand_value)
+	prefix = seed_value
+    return prefix+rand_value
+end
+
+def autogenerate_email(seed_value, rand_value)
+	prefix = seed_value.partition('@').first
+	domain = seed_value.partition('@').last
+    return prefix+rand_value+'@'+domain
+end
+
 def visit_nav_page(page_index,is_table_data)
     nav_elements = @current_page.category_menu_preselect_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
     #nav_element = nav_elements.flatten!
@@ -63,7 +82,6 @@ def visit_nav_page(page_index,is_table_data)
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 	@browser.goto nav_link[1] 
 end
-	
 	
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file
 # and randomly opens the specified number of categories and then opens the specified number of product pages from each per category 
@@ -195,8 +213,6 @@ def select_product_options
 		#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 		if product_options.exists?
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
-			
-			#plog("LIST IS A #{product_options.class} with parent #{product_options.first} ","blue") if @@show_log
 	
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
@@ -221,7 +237,7 @@ def select_product_options
 					plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
 					#product_options.when_present.select option 
-					product_options.option(:index => opt_index).when_present.select #if product_options.visible?
+					product_options.option(:index => opt_index).when_present.select #if product_options.visible?  #visible option for burton
 					option_selected = true
 				end
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
@@ -243,6 +259,10 @@ def select_product_options
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
 				product_options.click
+			when product_options.is_a?(PageObject::Elements::Div) #kickz
+				prod_links = product_options.links 
+				option = prod_links[rand(0..prod_links.length - 1)]
+				option.click
 			when product_options.is_a?(PageObject::Elements::Element) #ctshirts - for dl/dt/dd elements
 				option = product_options.dds[rand(1..product_options.dds.length - 1)] 
 				product_options_preselect.click if @current_page.has_product_options_preselect
@@ -291,7 +311,9 @@ def test_random_category_or_all_category_tracking(test_all_categories)
   		category = categories[cat_ctr] if(test_all_categories)
 		category = categories[rand(0..categories.length - 1)] if !test_all_categories
 		cat_name = category[0]
-		cat_url = category[1]
+		#cat_url = category[1]
+		cat_url = category[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_cat_url == nil 
+		cat_url = @current_page.get_static_test_cat_url if @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != nil
 		
  		exclude_cat = false
 		if (@current_page.get_categories_to_exclude.length > 0)
@@ -402,23 +424,6 @@ def test_category_page(cat_name,cat_url,wait_time)
 	return cat_test_response
 end
 
-
-def autogenerate_firstname(seed_value, rand_value)
-	prefix = seed_value
-    return prefix+rand_value
-end
-
-def autogenerate_lastname(seed_value, rand_value)
-	prefix = seed_value
-    return prefix+rand_value
-end
-
-def autogenerate_email(seed_value, rand_value)
-	prefix = seed_value.partition('@').first
-	domain = seed_value.partition('@').last
-    return prefix+rand_value+'@'+domain
-end
-
 def show_tested_categories(cat_list, status)
 	msg_colour = (status == "TRACKED"? "green" : (status == "FAILED"? "red" : (status == "UNDEFINED"? "magenta" : "grey")))
 	plog("#{status} CATEGORY PAGES:",msg_colour) if @@show_log
@@ -477,7 +482,8 @@ def should_exclude_category(cat_name, cat_url)
 	  	info_type = cat_info.split("=>")[0] 
 	  	info_value = cat_info.split("=>")[1] 
 	  	
-	  	exclude_cat = true if info_type == "url" && cat_url.include?(info_value)
+	  	exclude_cat = true if info_type == "url" && !info_value.include?("%") && cat_url.include?(info_value)
+		exclude_cat = true if info_type == "url" && info_value.include?("%") && cat_url.end_with?(info_value.gsub("%",""))
 	  	exclude_cat = true if info_type == "title" && cat_name.strip.include?(info_value) # partial title match 
 	  end
 	end

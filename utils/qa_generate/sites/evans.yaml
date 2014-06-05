@@ -13,14 +13,39 @@ channel: mobileapp
 site_id: 219
 integration: standard
 
+# site variables
+show_log: true
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+categories_to_exclude: ["Topshop Magazine","New In","Premium Shoes"]
+wait_time_per_category_page: 3
+test_all_categories: false
+num_of_reloads_per_category: 2
+product_links: ["div", ':id=> "wrapper_page_content"'] 
+product_link_filter: ["data-productid", "*"] 
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
+out_of_stock_msg: "Sorry, this item is out of stock."
+
+
 home_page:
   URL: "http://www.evans.co.uk/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+  
 product_page:
-  URL: "http://www.evans.co.uk/en/evuk/product/accessories-250472/bags-250490/evans-black-quilted-satchel-bag-2236321?bi=1&ps=24"
+  URL: "http://www.evans.co.uk/en/evuk/product/clothing-250468/knitwear-250496/evans-blue-2-in-1-jumper-2968588?bi=1&ps=24"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:

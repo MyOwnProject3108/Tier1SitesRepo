@@ -207,6 +207,21 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def get_custom_search_js
+		<% if site["custom_search_js"] != nil %>
+			return "<%= site["custom_search_js"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
+		
+		def get_ab_group
+		<% if site["ab_test_group"] != nil %>
+			return "<%= site["ab_test_group"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
 		
 		
     end  
