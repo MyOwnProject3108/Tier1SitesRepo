@@ -9,7 +9,7 @@ needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: awedasda
-valid_search_term: computer
+valid_search_term: katze
 
 #### site level variables ####
 show_log: true
@@ -45,7 +45,7 @@ num_of_reloads_per_category: 1
 # If category page tracking is not very reliable ,i.e., there are a number of category pages that are tracked as 'Other' page 
 # OR if a site genuinely has a number of Other Page links that can be accessed from the home page navigation menu, 
 # then the following flag, if set to true, will ignore such pages and will try a different link until a category page is found. Default is false.
-ignore_cat_tracked_as_other_page: false
+ignore_cat_tracked_as_other_page: true
 
 # The xpath or id of the html element that contains all the product links on a category page
 product_links: ["div", ':xpath=> "//div[@id=\"product_listing\"]"'] 
@@ -61,9 +61,9 @@ product_link_filter: ["class", "product_link"]
 # Mandatory if you cannot add a product to basket without selecting variants such as colour and size on a product page.
 # Optional, if a site does not require additional product options to be selected when you add a product to basket.
 # Currently only supports options that are displayed as dropdown options in an html select element.
-product_options: 
-     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
-     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"']
+#product_options: 
+#     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
+#     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"']
 
 # If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
 # Products with titles that contain at least one of the following key words wil be excluded from the testing process.
@@ -89,28 +89,14 @@ home_page:
   login_link: ["link", ':href=> "www.zoogigant.de/login.php"']
   search_field: ["text_field", ':id => "search"']
 
-login_page:
-  URL: "www.zoogigant.de/login.php"
-  expected_recs: 0
-  username_field: ["text_field", ':id=>"email"']
-  password_field: ["text_field", ':id=>"pass"']  
-  login_submit: ["button", ':id=>"send2"']
-
-searchresults_page:
-  URL: "http://showcase.peerius.com/index.php/catalogsearch/result/?q=dvd"
-  expected_recs: 0
-  zerosearch_recs: 5
-
 basket_page:
   URL: "http://www.zoogigant.de/shopping_cart.php"
   expected_recs: 5
-  
-checkout_page:
-  URL: "https://www.zoogigant.de/checkout_shipping.php"
-  expected_recs: 0
+  basket_checkout: ["link", ':id => "checkout_button"']
+  basket_remove: ["link", ':id => "button_cart_delete"']  
 
 random_product:
-  expected_recs: 1
+  expected_recs: 2
 
 random_category:
   expected_recs: 1
@@ -118,29 +104,50 @@ random_category:
 random_basket:
   expected_recs: 4
 
-random_order:
+random_checkout:
   expected_recs: 0
   extra_steps:
-      - [radio, id, "login:guest"]
-      - [button, id, "onepage-guest-register-button"]
+      - [link, class, "button_green_big button_set_big"]
       - [pause, 2]
-      - [text_field, id, "billing:firstname", "Web", "autogenerate_firstname"]
-      - [text_field, id, "billing:lastname", "Test", "autogenerate_lastname"]
-      - [text_field, id, "billing:email", "peeriustest@email.com", "autogenerate_email"]
-      - [text_field, id, "billing:street1", "Peerius, 232 Great Guildford Street"]
-      - [text_field, id, "billing:city", "London"]
-      - [text_field, id, "billing:postcode", "SE1 0HS"]
-      - [text_field, id, "billing:region", "London"]
-      - [select_list, id, "billing:country_id", "United Kingdom"]
-      - [text_field, id, "billing:telephone", "02039723222"]
-      - [button, xpath, "//div[@id='billing-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio_optional, id, "s_method_freeshipping_freeshipping"]
-      - [button, xpath, "//div[@id='shipping-method-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [radio, id, "p_method_checkmo"]
-      - [button, xpath, "//div[@id='payment-buttons-container']/button[1]"]
-      - [pause, 5]
-      - [button, xpath, "//div[@id='review-buttons-container']/button[1]"]
-      
+      - [link, xpath, "//div[@id=\"account\"]/div/div[3]/div/div[2]/a"]
+      - [pause, 2]
+      - [radio, name, "gender", "m"]
+      - [text_field, name, "firstname", "Web"]      
+      - [text_field, name, "lastname", "Test"]      
+      - [text_field, name, "email_address", "peeriustest@email.com"]
+      - [text_field, name, "email_address_confirm", "peeriustest@email.com"]
+      - [text_field, name, "street_address", "Peerius, Am Treptower Park 75"]
+      - [text_field, name, "postcode", "12435"]
+      - [text_field, name, "city", "Berlin"]
+      - [select_list, name, "country", "Deutschland"]
+      - [text_field, name, "telephone", "02039723222"]
+      - [link, xpath, "//form[@id=\"create_account\"]/div[2]/a"]
+      - [pause, 2]
+      - [link, xpath, "//form[@id=\"checkout_address\"]/div[4]/a"]
+      - [pause, 2]
+      - [radio, xpath, "//form[@id=\"checkout_payment\"]/div[3]/div[4]/div[1]/input"]
+      - [checkbox, id, "checkbox-withdrawal"]
+      - [checkbox, id, "checkbox-conditions"]
+      - [link, xpath, "//form[@id=\"checkout_payment\"]/div[8]/a"]
+      - [pause, 2]
 
+product_page:
+  URL: "http://www.zoogigant.de/Vogel/Vogelfutter-Zusatz/-0-1325/Vitakraft-Fruchtcocktail-fuer-Sittiche.html"
+  expected_recs: 2
+  add_to_basket_button:  ["link", ':id=> "cart_button"']
+      
+checkout_page:
+  URL: "https://www.zoogigant.de/checkout_shipping.php"
+  expected_recs: 0     
+  
+login_page:
+  URL: "https://www.zoogigant.de/login.php?action=process"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"loginbox-email_address"']
+  password_field: ["text_field", ':id=>"loginbox-password"']  
+  login_submit: ["link", ':class=>"submit-container"']
+
+searchresults_page:
+  URL: "http://www.zoogigant.de/findologic.php?keywords=katze"
+  expected_recs: 0
+  zerosearch_recs: 5
