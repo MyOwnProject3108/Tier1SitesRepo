@@ -35,6 +35,9 @@ Background:
 <% end %>
 @<%= page_name %>_page
 Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
+<% if page_name != "home" %>
+ And I go to the <%= page_name %> page
+<% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>
