@@ -44,6 +44,8 @@ def extra_steps_rule(extra_steps)
 			
 		when "select_list"
 		  	rule += "And I select \"#{step[3]}\" on the #{action} with #{step[1]} \"#{step[2]}\"\n  "
+		when "url"
+		  	rule += "And I go to the #{step[1]} page\n  "
 		else 
 		  	rule += "And I click the #{action} with #{step[1]} \"#{step[2]}\"\n  " if optional==false
 		  	rule += "And I click optional #{action} with #{step[1]} \"#{step[2]}\"\n  " if optional==true
