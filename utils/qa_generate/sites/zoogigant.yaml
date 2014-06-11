@@ -57,7 +57,6 @@ product_links: ["div", ':xpath=> "//div[@id=\"product_listing\"]"']
 # If you want to match using a partial value of an attribute, then you can use [<attribute_name>|<partial_value>%]
 product_link_filter: ["class", "product_link"] 
 
-########################## TO DO from here
 # Mandatory if you cannot add a product to basket without selecting variants such as colour and size on a product page.
 # Optional, if a site does not require additional product options to be selected when you add a product to basket.
 # Currently only supports options that are displayed as dropdown options in an html select element.
@@ -86,8 +85,6 @@ add_to_basket_button: ["link", ':id=> "cart_button"']
 home_page:
   URL: "http://www.zoogigant.de"
   expected_recs: 1
-  login_link: ["link", ':href=> "www.zoogigant.de/login.php"']
-  search_field: ["text_field", ':id => "search"']
 
 basket_page:
   URL: "http://www.zoogigant.de/shopping_cart.php"
@@ -131,23 +128,12 @@ random_checkout:
       - [link, xpath, "//form[@id=\"checkout_payment\"]/div[8]/a"]
       - [pause, 2]
 
-product_page:
+product_page:    
   URL: "http://www.zoogigant.de/Vogel/Vogelfutter-Zusatz/-0-1325/Vitakraft-Fruchtcocktail-fuer-Sittiche.html"
   expected_recs: 2
-  add_to_basket_button:  ["link", ':id=> "cart_button"']
-      
-checkout_page:
-  URL: "https://www.zoogigant.de/checkout_shipping.php"
-  expected_recs: 0     
-  
-login_page:
-  URL: "https://www.zoogigant.de/login.php?action=process"
-  expected_recs: 0
-  username_field: ["text_field", ':id=>"loginbox-email_address"']
-  password_field: ["text_field", ':id=>"loginbox-password"']  
-  login_submit: ["link", ':class=>"submit-container"']
-
+  add_to_basket_button:  ["link", ':id=> "cart_button"']     
+ 
 searchresults_page:
-  URL: "http://www.zoogigant.de/findologic.php?keywords=katze"
+  URL: "http://www.zoogigant.de/findologic.php"
   expected_recs: 0
   zerosearch_recs: 5
