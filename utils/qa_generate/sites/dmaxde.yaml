@@ -3,8 +3,8 @@ pretty_name: DMAX
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: vinod.sathapathi@peerius.com
-password: Pa55word
+username: p.test10@peerius.com
+password: Peerius1234567
 zero_search_term: no
 valid_search_term: machette
 database_num: 1
@@ -12,9 +12,24 @@ channel: web
 site_id: 1379
 integration: json
 
+show_log: true
+category_menu: ["div", ':id => "mainNavigation"']
+categories_to_exclude: ["Home", "GeschenkefinderHie", "Motor", "zubehoer", "wuerze"]
+test_all_categories: true
+wait_time_per_category_page: 2
+max_num_of_categories: 2
+#num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':id => "listing-3col"']
+product_link_filter: ["class", "artbox_thumb"] 
+wait_time_per_product_page: 2
+max_num_of_products: 2
+add_to_basket_button: ["input", ':id => "basketButton"']
+
+
 home_page:
   URL: "http://www.dmax-shop.de/"
-  expected_recs: 9
+  expected_recs: 1
   login_link: ["link", ':title => "Mein Konto"']
   search_field: ["text_field", ':id => "searchfield"']
   #custom_tracking_test: |
@@ -22,46 +37,63 @@ home_page:
 
 product_page:
   URL: "https://www.dmax-shop.de/thumbsup-schluesselfinder-whistle-688.html"
-  expected_recs: 12
+  expected_recs: 1
   add_to_basket_button: ["button", ':id=> "basketButton"']
   extra_steps:
     - [pause, 30]
 
 category_page:
   URL: "http://www.dmax-shop.de/zuhause/essen-und-trinken/"
-  expected_recs: 0
+  expected_recs: 1
 
+random_product:
+  expected_recs: 4
+
+random_category:
+  expected_recs: 1
+  
 basket_page:
   URL: "https://www.dmax-shop.de/checkout/cart"
-  expected_recs: 0
-  basket_checkout: ["link", ':class => "checkout"']
-  basket_remove: ["link", ':class => "del"']
+  expected_recs: 2
 
 login_page:
   URL: "https://www.dmax-shop.de/account"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
   password_field: ["text_field", ':id=>"passwort"']
-  login_submit: ["link", ':class =>"button-middle small"']
+  login_submit: ["button", ':value =>"Anmelden"']
 
 searchresults_page:
   URL: "http://www.dmax-shop.de/SwpFindologic/search?sSearch=machette"
   expected_recs: 3
   zerosearch_recs: 3
 
-
-checkout_page:
-  URL: ""
+random_checkout:
+  URL: "https://www.dmax-shop.de/register/saveRegister"
   expected_recs: 0
   extra_steps:
-    - [select_list, id, "address_title", "Mr"]
-    - [text_field, id, "address_first_name", "P"]
-    - [text_field, id, "address_surname", "Eerius"]
-    - [text_field, id, "address_main_telephone", "02033974940"]
- #   - [p, class, "enter_manual_address"]
-    - [text_field, class, "text address_line_1", "Units 207-211"]
-    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
-    - [text_field, class, "text address_town", "London"]
-    - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
-    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+    - [link, class, "button-right large right checkout"]
+    - [pause, 5]
+  
+random_basket:
+  expected_recs: 0
+  basket_checkout: ["link", ':title => "Zur Kasse gehen!"']
+  basket_remove: ["link", ':class => "del"']
+  
+checkout_page:
+  URL: "https://www.dmax-shop.de/register/saveRegister"
+  expected_recs: 0
+  extra_steps:
+    - [link, class, "button-right large right checkout"]
+    - [pause, 5]
+#    - [select_list, id, "address_title", "Mr"]
+#    - [text_field, id, "address_first_name", "P"]
+#    - [text_field, id, "address_surname", "Eerius"]
+#    - [text_field, id, "address_main_telephone", "02033974940"]
+#   - [p, class, "enter_manual_address"]
+#    - [text_field, class, "text address_line_1", "Units 207-211"]
+#    - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+#    - [text_field, class, "text address_town", "London"]
+#    - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
+#    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
     
