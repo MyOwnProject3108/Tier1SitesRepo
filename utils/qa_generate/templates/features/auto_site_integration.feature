@@ -12,7 +12,7 @@ Feature: <%= site["pretty_name"] %> Integration
 # Tracking/Recommendations Tests 
 <% if site["site_timeout"] %>
 Background:
-	Given the site can take up to <%=site["site_timeout"] %> seconds to load each page.  
+  Given the site can take up to <%=site["site_timeout"] %> seconds to load each page.  
 <% end %>
 
 Background:

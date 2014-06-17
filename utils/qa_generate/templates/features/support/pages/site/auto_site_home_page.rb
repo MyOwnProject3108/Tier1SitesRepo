@@ -16,7 +16,9 @@ module <%= site["site_name"].capitalize %>
 
 		URL = "<%= debug_url(page["URL"]) %>"
 		direct_url URL
+		<% if page["search_field"] %>
         <%= page["search_field"][0] %>(:search, <%= page["search_field"][1] %>)
+        <% end %>
 		#page elements - retained for backward compatibility
 		<% if page["login_link"] %>
 		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)
