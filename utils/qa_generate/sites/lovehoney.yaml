@@ -30,14 +30,14 @@ wait_time_per_category_page: 5
 max_num_of_categories: 1 
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-
+out_of_stock_msg: "Sold out"
 product_links: ["div", ':id=> "products"'] 
 product_link_filter: ["class", "fn"] 
 product_options: 
-     - [ul, ':xpath=> "//form[@id=\"productForm\"]/ul"']
+     - [ul, ':class=> "varieties"'] 
      - [select_list, ':name=> "p"']
-#    - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"']
-
+#    - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"'] //*[@id="productForm"]/ul[2]
+ 
 
 # specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
 wait_time_per_product_page: 2
@@ -73,12 +73,12 @@ category_page:
 basket_page:
   URL: "http://www.lovehoney.co.uk/your-basket/"
   expected_recs: 4 
-  basket_checkout: ["button", ':class => "button proceed-to-checkout std-arrow"']
+  basket_checkout: ["button", ':value => "Proceed to Checkout"']
   basket_remove: ["button", ':class => "remove"']
 
 random_basket:
   expected_recs: 1
-  basket_checkout: ["button", ':class => "button proceed-to-checkout std-arrow"']
+  basket_checkout: ["button", ':value => "Proceed to Checkout"']
   basket_remove: ["button", ':class => "remove"']
   
 login_page:
@@ -97,8 +97,9 @@ checkout_page:
   URL: "https://www.lovehoney.co.uk/checkout/"
   expected_recs: 0
   extra_steps:
-    - [button, id, "has-account-option"]
-    - [text_field, id, "password", "webtest"]
+    #- [button, id, "has-account-option"]
+    - [text_field, id, "t22-email-ext", "webtest@mailinator.com"]
+    - [text_field, id, "t22-password", "webtest"]
     - [button, class, "button std-arrow"]
     - [pause,2]
     

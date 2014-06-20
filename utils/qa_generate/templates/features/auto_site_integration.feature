@@ -167,6 +167,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
   And I go to the basket page
   And I pause for 10 seconds
   And I click checkout
+  And I pause for 2 seconds
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>
