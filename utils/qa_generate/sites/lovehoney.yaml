@@ -25,7 +25,7 @@ show_log: true
 category_menu: ["ul", ':id => "nav"']
 categories_to_exclude: ["title=>Gifts", "title=>Sale", "url=>community", "url=>help"]
 out_of_stock_msg: "Sorry, this item is currently unavailable"
-test_all_categories: true
+test_all_categories: false
 wait_time_per_category_page: 5
 max_num_of_categories: 1 
 num_of_reloads_per_category: 2
@@ -107,8 +107,8 @@ random_checkout:
   expected_recs: 0
   extra_steps:
       - [button, class, "button proceed-to-checkout std-arrow"]
-      - [text_field, id, "email", "webtest@mailinator.com", "generate_email"]
+      - [text_field, id, "t22-email-new", "webtest@mailinator.com", "generate_email"]
 #      - [text_field, id, "password"]
-      - [button, class, "button std-arrow"]
+      - [button, id, "t22-reg-new"]
       - [pause, 2]
     
