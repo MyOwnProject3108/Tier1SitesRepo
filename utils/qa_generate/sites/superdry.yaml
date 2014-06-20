@@ -48,14 +48,14 @@ random_category:
   expected_recs: 0
 
 product_page:
-    URL: "http://www.superdry.com/womens/t-shirts/details/40216/vintage-logo-t-shirt"    
+    URL: "http://www.superdry.com/womens/dresses/details/43255/hepburn-lights-dress"    
     expected_recs: 1
     add_to_basket_button: ["button", ':value => "Add to bag"']
     extra_steps:      
     - [span, xpath, ".//*[@id='js_dropdown_product_id']/span"]
 #   - [span, text, "select size"]
-    - [span, text, "S"]
-    - [pause,50]
+    - [span, text, "M"]
+    - [pause,5]
     
 category_page:
   URL: "http://www.superdry.com/womens/dresses"
