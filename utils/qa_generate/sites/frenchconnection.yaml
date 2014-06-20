@@ -50,7 +50,7 @@ random_basket:
   expected_recs: 1
 
 product_page:
-  URL: "http://www.frenchconnection.com/product/Homeware+Collection+Lighting/8L1D4/Sheehsam+Tripod+Lamp.htm"
+  URL: "http://www.frenchconnection.com/product/Woman+Collections+Shoes/SFBBD/Tamara+Sandals.htm"
   expected_recs: 3
   add_to_basket_button: ["button", ':name => "addToBasket"']
   extra_steps:

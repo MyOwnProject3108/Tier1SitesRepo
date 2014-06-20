@@ -18,7 +18,11 @@ def extra_steps_rule(extra_steps)
 	extra_steps.each do |step|
 		optional = false
 		if step[0].include?("optional")
-			action = step[0].partition("_").first
+		  if step[0].include?("text_field") 
+		    action= "text_field"
+			else 
+			  action = step[0].partition("_").first
+			end
 			optional = true
 		else 
 			action = step[0]
@@ -36,10 +40,12 @@ def extra_steps_rule(extra_steps)
 					rule += "And I auto-generate #{date_type} using \"#{text_value}\" for the #{action} with #{step[1]} \"#{step[2]}\"\n  "
 				else
 					text_value = eval(step[4]+'("'+text_value+'")')
-				    rule += "And I enter \"#{text_value}\" in the #{action} with #{step[1]} \"#{step[2]}\"\n  "
+				    rule += "And I enter \"#{text_value}\" in the #{action} with #{step[1]} \"#{step[2]}\"\n  " if optional==false
+				    rule += "And I enter optional \"#{text_value}\" in the #{action} with #{step[1]} \"#{step[2]}\"\n  " if optional==true
 				end
 			else
-				rule += "And I enter \"#{text_value}\" in the #{action} with #{step[1]} \"#{step[2]}\"\n  "
+				rule += "And I enter \"#{text_value}\" in the #{action} with #{step[1]} \"#{step[2]}\"\n  " if optional==false
+				rule += "And I enter optional \"#{text_value}\" in the #{action} with #{step[1]} \"#{step[2]}\"\n  " if optional==true
 			end
 			
 		when "select_list"

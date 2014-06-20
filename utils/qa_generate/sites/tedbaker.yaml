@@ -51,7 +51,7 @@ random_basket:
   basket_remove: ["link", ':class => "link item_remove"']
 
 product_page:
-  URL: "http://www.tedbaker.com/uk/Womens/Accessories/Bags/LUCON-Small-shopper-bag-Pale-Green/p/108369-38-PALE-GREEN"
+  URL: "http://www.tedbaker.com/uk/Womens/Accessories/Bags/LUCON-Small-shopper-bag-Bright-Pink/p/108369-56-BRIGHT-PINK"
   expected_recs: 1
   add_to_basket_button: ["button", ':class=> "button add_to_cart major full_mobile colour_dark"']
   extra_steps:
