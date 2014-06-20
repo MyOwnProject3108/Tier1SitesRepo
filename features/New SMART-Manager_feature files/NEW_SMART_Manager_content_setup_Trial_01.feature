@@ -51,16 +51,16 @@ Scenario Outline: Users should be able to create new setup for smartcontent on n
  
  Examples: set1
     | setup_name  		             | placement_name		     |creative_name1                              |creative_size1        | user_attribute           | rule1              | creative_name2                        |creative_size2      | rule2    |
-    | "visitor_rule"                 | "Home_JSON_IP"            |"Womenswear"                                |"default"             |"u.visitor"               | "new"              | "Casual - Trousers"                   |"default"           | "default"|
+    | "visitor_rule"                 | "Home_JSON_IP"            |"Womenswear - shirts"                       |"default"             |"u.visitor"               | "new"              | "Casual - Trousers"                   |"default"           | "default"|
 	| "visitor_returning_rule"       | "Home_JSON_IP"            |"Suits"                                     |"default"             |"u.visitor"               | "returning"        | "Shirts - Casual Slim Fit - 4for100"  |"default"           | "default"|
-	| "customer_rule"                | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"u.customer"              | "new"              | "Womenswear"                          |"default"           | "default"|
+	| "customer_rule"                | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"u.customer"              | "new"              | "Womenswear - shirts"                 |"default"           | "default"|
 	| "customer_returning_rule"      | "Home_JSON_IP"            |"Suits"                                     |"default"             |"u.customer"              | "returning"        | "Casual - Trousers"                   |"default"           | "default"|
 	| "gender_rule"                  | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"u.gender"                | "male"             | "Casual - Trousers"                   |"default"           | "default"|
-	| "keyword_rule"                 | "Home_JSON_IP"            |"Shirts - Casual Slim Fit - 4for100"        |"default"             |"keyword"                 | "*shirts"          | "Womenswear"                          |"default"           | "default"|
-	| "source_rule"                  | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"u.source"                | "direct"           | "Womenswear"                          |"default"           | "default"|
-	| "country_GB_rule"              | "Home_JSON_IP"            |"Womenswear"                                |"default"             |"countrycode"             | "GB"               | "Suits"                               |"default"           | "default"|
-	| "country_FR_rule"              | "Home_JSON_IP"            |"Shirts - Casual Slim Fit - 4for100"        |"default"             |"countrycode"             | "FR"               | "Womenswear"                          |"default"           | "default"|
-	| "country_US_rule"              | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"countrycode"             | "US"               | "Womenswear"                          |"default"           | "default"|
+	| "keyword_rule"                 | "Home_JSON_IP"            |"Shirts - Casual Slim Fit - 4for100"        |"default"             |"keyword"                 | "*shirts"          | "Womenswear - shirts"                 |"default"           | "default"|
+	| "source_rule"                  | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"u.source"                | "direct"           | "Womenswear - shirts"                 |"default"           | "default"|
+	| "country_GB_rule"              | "Home_JSON_IP"            |"Womenswear - shirts"                       |"default"             |"countrycode"             | "GB"               | "Suits"                               |"default"           | "default"|
+	| "country_FR_rule"              | "Home_JSON_IP"            |"Shirts - Casual Slim Fit - 4for100"        |"default"             |"countrycode"             | "FR"               | "Womenswear - shirts"                 |"default"           | "default"|
+	| "country_US_rule"              | "Home_JSON_IP"            |"Casual - Trousers"                         |"default"             |"countrycode"             | "US"               | "Womenswear - shirts"                 |"default"           | "default"|
 	
 
 Scenario Outline: Users should be able to create new setup for smartcontent on new UI
@@ -91,13 +91,13 @@ Scenario Outline: Users should be able to create new setup for smartcontent on n
  
  Examples: set2
     | setup_name  		                | placement_name		     |creative_name1                         |creative_size1        | keywords_attribute           | creative_name2                           |creative_size2       | rule2    |
-    | "ppc_rule"                        | "Home_JSON_IP"             |"Womenswear"                           |"default"             | "ppc"                        | "Suits"                                  |"default"            | "default"|
-#	| "source_rule"                     | "Home_JSON_IP"             |"Casual - Trousers"                    |"default"             | "direct"                     | "Shirts - Casual Slim Fit - 4for100"     |"default"            | "default"|
-	| "smart_rule"                      | "Home_JSON_IP"             |"Womenswear"                           |"default"             | "smart"                      | "Casual - Trousers"                      |"default"            | "default"|
-	| "direct_rule"                     | "Home_JSON_IP"             |"Suits"                                |"default"             | "direct"                     | "Womenswear"                             |"default"            | "default"|
-	| "tags_rule"                       | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "tags"                       | "Womenswear"                             |"default"            | "default"|
+    | "ppc_rule"                        | "Home_JSON_IP"             |"Womenswear - shirts"                  |"default"             | "ppc"                        | "Suits"                                  |"default"            | "default"|
+	| "organic_rule"                    | "Home_JSON_IP"             |"Casual - Trousers"                    |"default"             | "direct"                     | "Shirts - Casual Slim Fit - 4for100"     |"default"            | "default"|
+	| "smart_rule"                      | "Home_JSON_IP"             |"Womenswear - shirts"                  |"default"             | "smart"                      | "Casual - Trousers"                      |"default"            | "default"|
+	| "direct_rule"                     | "Home_JSON_IP"             |"Suits"                                |"default"             | "direct"                     | "Womenswear - shirts"                    |"default"            | "default"|
+	| "tags_rule"                       | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "tags"                       | "Womenswear - shirts"                    |"default"            | "default"|
 	| "purchasehistorybycategory_rule"  | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "purchasehistorybycategory"  | "Suits"                                  |"default"            | "default"|
-	| "purchasehistorybyattribute_rule" | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "purchasehistorybyattribute" | "Womenswear"                             |"default"            | "default"|
+	| "purchasehistorybyattribute_rule" | "Home_JSON_IP"             |"Shirts - Casual Slim Fit - 4for100"   |"default"             | "purchasehistorybyattribute" | "Womenswear - shirts"                    |"default"            | "default"|
 	
    
  

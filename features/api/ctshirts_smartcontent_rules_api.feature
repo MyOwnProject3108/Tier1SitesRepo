@@ -27,7 +27,7 @@ Scenario: SMART-content rule "country GB" works using SMART-API
     And I track the home page
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Womenswear"
+	And one of the SMART-content creative names should contain "Womenswear - shirts"
 	
 Scenario: SMART-content rule "country US" works using SMART-API 
     When I post request with USA ip
@@ -68,14 +68,14 @@ Scenario: SMART-content rule "organic" works using SMART-API
     Then I should get an OK status back
 	#And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Suits"
+	And one of the SMART-content creative names should contain "Casual - Trousers"
 	
 Scenario: SMART-content rule "ppc" works using SMART-API 
     When I post home page request with google search engine as previousURI for PPC
     Then I should get an OK status back
 	#And I track the home page
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Womenswear"
+	And one of the SMART-content creative names should contain "Womenswear - shirts"
 	
 Scenario: SMART-content rule "source" from direct works using SMART-API 
     When I post home page request for source as direct
@@ -93,13 +93,13 @@ Scenario: SMART-content rule "smart" from direct works using SMART-API
     When I track the home page
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Womenswear"
+	And one of the SMART-content creative names should contain "Womenswear - shirts"
 	
 Scenario: SMART-content rule "visitor=new" from direct works using SMART-API 
     When I track the home page
      Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
-	And one of the SMART-content creative names should contain "Womenswear"
+	And one of the SMART-content creative names should contain "Womenswear - shirts"
 	
 Scenario: SMART-content rule "visitor returning" from direct works using SMART-API 
 	When I track the home page
@@ -124,7 +124,7 @@ Scenario: Testing the smart content as per "weightage(ex:countrycode = GB)" usin
     Then I should get an OK status back
 	And I should get at least 1 SMART-content creatives in the response
 	#And one of the SMART-content creative names should contain "Shirts - formal"
-	And one of the SMART-content creative names should contain "Womenswear"	
+	And one of the SMART-content creative names should contain "Womenswear - shirts"	
 
 Scenario: Testing the smart content as per "weightage(ex:visitor returning)" using SMART-API 
 	When I track the home page
