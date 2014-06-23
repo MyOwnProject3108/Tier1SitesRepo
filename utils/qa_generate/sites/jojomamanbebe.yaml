@@ -76,7 +76,7 @@ basket_page:
   URL: "http://www.jojomamanbebe.co.uk/docontents.asp"
   expected_recs: 5
   basket_checkout: ["link", ':id => "checkoutBtn"']
-  basket_remove: ["image", ':src => "http://www.jojomamanbebe.co.uk/assets/images/button_remove.jpg"']
+  basket_remove: ["link", ':xpath => "/html/body/div/div/div[6]/div[2]/div/form/div[5]/table[3]/tbody/tr/td/table/tbody/tr/td[3]/table/tbody/tr/td/a[2]"']
 
 login_page:
   URL: "https://www.jojomamanbebe.co.uk/login.asp"
@@ -105,7 +105,7 @@ checkout_page:
 #  - [image, alt, "use Address"]
  # - [pause,10]
 # - [image, src, "https://www.jojomamanbebe.co.uk/assets/images/button_saveAddress.jpg"]
-  - [button, name, "submitSA"]
+  - [button, id, "continue"]
   - [pause,2]
   - [text_field, id, "card_number", "4444333322221111"]
   - [select_list, id, "expiry_month", "May"]
