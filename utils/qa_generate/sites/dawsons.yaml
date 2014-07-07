@@ -47,7 +47,7 @@ add_to_basket_button: ["button", ':class=> "btn-cart"']
   
 home_page:
   URL: "http://www.dawsons.co.uk"
-  expected_recs: 4
+  expected_recs: 1
   #login_link: ["link", ':href=> "somevalue"']
   search_field: ["text_field", ':id => "search"']
 
@@ -60,25 +60,25 @@ login_page:
 
 searchresults_page:
   URL: "http://www.dawsons.co.uk/catalogsearch/result/?q=black+guitar"
-  expected_recs: 4
-  zerosearch_recs: 4
+  expected_recs: 1
+  zerosearch_recs: 1
 
 basket_page:
   URL: "http://www.dawsons.co.uk/checkout/cart/"
-  expected_recs: 4
+  expected_recs: 1
   
 checkout_page:
   URL: "https://www.dawsons.co.uk/checkout/onepage/"
   expected_recs: 0
 
 random_product:
-  expected_recs: 4
+  expected_recs: 1
 
 random_category:
   expected_recs: 0
 
 random_basket:
-  expected_recs: 4
+  expected_recs: 1
   basket_checkout: ["button", ':class => "ir button btn-proceed-checkout btn-checkout"']
   basket_remove: ["a", ':text => "Remove item"']
       

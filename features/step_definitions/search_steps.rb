@@ -11,7 +11,7 @@ When /^I search for a? ?"([^"]*)"$/ do |term|
 	end
 	@current_page.search_field = term
 	# if search_button is defined in yaml then use it to click else use the enter key to submit the search
-	if @current_page.search_button_element
+	if @current_page.search_button_element != nil
 		@current_page.search_button_element.click
 	else
 		@current_page.search_field_element.respond_to?(:send_keys) ? @current_page.search_field_element.send_keys(:enter) : @browser.send_keys(:enter)

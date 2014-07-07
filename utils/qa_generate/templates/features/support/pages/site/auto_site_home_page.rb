@@ -18,7 +18,7 @@ module <%= site["site_name"].capitalize %>
 		direct_url URL
 		#page elements - retained for backward compatibility
 		<% if page["search_field"] %>
-		<%= page["search_field"][0] %>(:search, <%= page["search_field"][1] %>)
+		<%= page["search_field"][0] %>(:search_field, <%= page["search_field"][1] %>)
         <% end %>
 		<% if page["login_link"] %>
 		<%= page["login_link"][0] %>(:login_link, <%= page["login_link"][1] %>)

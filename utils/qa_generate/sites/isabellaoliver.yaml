@@ -41,7 +41,7 @@ home_page:
   URL: "www.isabellaoliver.com/uk"
   expected_recs: 1
   login_link: ["link", ':text => "Account"']
-  search_field: ["text_field", ':class => "textinput overtext"']
+  search_field: ["text_field", ':id => "nav-top-search"']
  # extra_steps:
   # - [text_field, id, "nav-top-search", "dress"]
   #custom_tracking_test: |
