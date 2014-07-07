@@ -223,6 +223,14 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def has_search_button
+		<% if site["search_button"] %>		
+			return true
+		<% else %>
+			return false
+		<% end %>		
+		end
+		
 		def get_ab_group
 		<% if site["ab_test_group"] != nil %>
 			return "<%= site["ab_test_group"] %>"
