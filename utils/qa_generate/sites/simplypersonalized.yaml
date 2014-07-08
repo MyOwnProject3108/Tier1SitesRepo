@@ -11,6 +11,10 @@ password: webtest
 zero_search_term: awedasda
 valid_search_term: book
 
+enable_static_test: false
+static_test_prod_url: ""
+static_test_cat_url: "http://www.simplypersonalized.com/fathers-day-gifts/"
+
 #### site level variables ####
 show_log: true
 
@@ -42,7 +46,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: false
 
 # The xpath or id of the html element that contains all the product links on a category page
-product_links: ["ul", ':xpath=> "//form[@id=\"aspnetForm\"]/div[4]/section/div[2]/div/div/ul"'] 
+product_links: ["div", ':xpath=> "//form[@id=\"aspnetForm\"]/div/section/div[2]/div"'] 
 
 # If there are links that are not product links, you can specify this filter so that links that have a specific attribute are selected. 
 # Links that don't have this attribute or attribute/value pair will be discarded. You can specify [ignore|ignore] if you do not need to specify a filter. 
@@ -60,7 +64,7 @@ product_options:
 
 # If you want to exclude certain products whose title contain one or more keywords, the you can do so by specifying a list of keywords.
 # Products with titles that contain at least one of the following key words wil be excluded from the testing process.
-product_keywords_to_exclude: ["Canvas", "Boot", "Digital", "Mens", "Shoes", "Flop", "Trainer", "Blue", "ml" ]
+product_keywords_to_exclude: ["Canvas"]
 
 
 # If product pages take time to load, you can specify the wait time. Default is 2 secs.
@@ -68,7 +72,7 @@ wait_time_per_product_page: 2
 
 # The upper bound or the max number of products to consider from each category as the random sample size.
 # If set to 3, a random number of products from 1 to 3 will be selected. Default is 1
-max_num_of_products: 2 
+max_num_of_products: 1 
 
 # This is not strictly a random test property and this can be already be set at page level for static URL based tests. 
 # However, this is mandatory for random_basket, random_checkout or end-to-end tests are to work.

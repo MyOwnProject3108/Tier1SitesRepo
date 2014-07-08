@@ -29,6 +29,9 @@ max_num_of_categories: 1
 max_num_of_products: 2 
 add_to_basket_button: ["button", ':id=> "addToBasket"']
 custom_search_js : "document.getElementById('sbox_container').className = 'clearfix open';"
+search_button : ["button", ':id=> "site_search_submit"']
+search_field: ["text_field", ':id => "site_search"']
+
 
 home_page:
   URL: "http://www.frenchconnection.com/"
@@ -36,7 +39,7 @@ home_page:
   login_link: ["link", ':title => "Sign In"']
 #  extra_steps:
 #   - [pause, 20]
-  search_field: ["text_field", ':id => "site_search"']
+  
   #extra_steps:
    #- [button, id, "ctl00_ctl00_btnDoSearch"]
    

@@ -88,18 +88,18 @@ home_page:
 
 basket_page:
   URL: "http://www.zoogigant.de/shopping_cart.php"
-  expected_recs: 5
+  expected_recs: 1
   basket_checkout: ["link", ':id => "checkout_button"']
   basket_remove: ["link", ':id => "button_cart_delete"']  
 
 random_product:
-  expected_recs: 2
+  expected_recs: 1
 
 random_category:
   expected_recs: 1
 
 random_basket:
-  expected_recs: 4
+  expected_recs: 1
 
 random_checkout:
   expected_recs: 0

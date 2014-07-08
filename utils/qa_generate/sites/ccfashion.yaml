@@ -119,7 +119,8 @@ random_checkout:
     - [button, xpath, "//*[@id='registerForm']/fieldset/div[21]/input"]
     - [pause, 5]
     - [button, xpath, "//*[@id='proceedToPaymentBtn']"]
-    
+    - [pause, 5]
+
     
     
     
