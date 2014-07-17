@@ -8,7 +8,7 @@ require 'fileutils'
 require_relative "rules.rb"
 require_relative "helpers.rb"
 
-QA_GENERATE_VERSION = "1.0.20140623"
+QA_GENERATE_VERSION = "2.0.20140717"
 
 
 # Specify commandline options
@@ -40,7 +40,7 @@ dbmapping_file_mode = "w"
 
 cur_path = File.expand_path(".",Dir.pwd)
 sites_yaml_path = cur_path + "/sites"
-templates_path = cur_path + "/templates/features"
+templates_path = cur_path + "/templates/features/auto_generate"
 utils_path = File.expand_path("..",Dir.pwd) 
 output_path = File.expand_path("../..",Dir.pwd)
 
@@ -68,10 +68,10 @@ if(siteName == "" )
 	plog("\tSite config yaml files are in #{sites_yaml_path}/","grey")
 	plog("\tFeature templates are in #{templates_path}/","grey")
 	plog("\tStep definition templates are in #{output_path}/features/step_definitions","grey")
-	plog("\tSupport modules for each page type are in #{templates_path}/support/pages/site","grey")
+	plog("\tSupport modules for each page type are in #{templates_path}/support/pages/","grey")
 	plog("OUTPUT => ","grey")
 	plog("\tFeature files for each site will be generated in #{output_path}/features","grey")
-	plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/#{site_name}/","grey")
+	plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/","grey")
 else
 	plog("#{siteName.upcase} CONFIG => ","grey")
 	plog("\tSite config file\t   : #{sites_yaml_path}/#{site_name}.yaml","grey")
@@ -121,7 +121,7 @@ def generateFiles(site, siteName, opts, output_path, allSites)
 			end
 		end 
 	end
-	plog("\tCreated support modules in : #{output_path}/support/pages/site/","grey") unless allSites
+	plog("\tCreated support modules in : #{output_path}/support/pages/","grey") unless allSites
 	if !allSites && files.length > 4
 		plog("\t\t\t\t   : #{files[0..3].join(", ")}","grey") 
 	    plog("\t\t\t\t   : #{files[4..-1].join(", ")}","grey") 

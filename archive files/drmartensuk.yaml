@@ -1,0 +1,111 @@
+site_name: drmartensuk
+pretty_name: drmartensuk
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: peertest@yahoo.com
+password: 123123
+zero_search_term: dvd
+valid_search_term: boots
+database_num: 6
+site_id: 863
+integration: standard
+
+
+# site variables
+show_log: true
+category_menu: ["div", ':id => "nav_main"']
+categories_to_exclude: ["Industrial","Clearance","Stand for Something","Like us on Facebook","Follow us on Twitter","Contact"]
+test_all_categories: true
+wait_time_per_category_page: 3
+max_num_of_categories: 1
+num_of_reloads_per_category: 5
+
+product_links: ["div", ':xpath=> "/html/body/div[3]/div/div[5]/div[3]/div[2]/div[3]"'] 
+
+product_options: 
+  #  - [ul, ':xpath=> "//div[@id=\"product-buy\"]/form/div/div[2]/div/div/div/div/ul"' ]
+     - [div, ':xpath=> "/html/body/div[3]/div/div[5]/div[3]/div/div[2]/div[4]/div"']
+
+     
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["link", ':id => "prod_add_to_cart_bt"']
+
+
+home_page:
+  URL: "http://uk.drmartens.com/uk/"
+  expected_recs: 0
+  login_link: ["link", ':href => "/uk/login"']
+  search_field: ["text_field", ':id => "search"']
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+product_page:
+  URL: "http://uk.drmartens.com/uk/Accessories/Accessories-Shoe-Care/Dr-Martens-Ultra-Protector/p/AC034001"
+  expected_recs: 3
+  add_to_basket_button: ["link", ':id => "prod_add_to_cart_bt"']
+  extra_steps:
+   - [link, class, "select-size-link in_stock"]
+#   - [link, "text", "UK 10"]
+   - [pause,20]
+
+category_page: 
+ URL: "http://uk.drmartens.com/uk/Mens/Mens-Sandals/c/Mens-Sandals"
+ expected_recs: 0
+
+basket_page:
+  URL: "http://uk.drmartens.com/uk/cart"
+  expected_recs: 1
+  basket_checkout: ["button", ':id=>"checkoutButtonBottom"']
+  basket_remove: ["link", ':href=>"javascript:submitRemove(0);"']
+  
+random_basket:
+  URL: "http://uk.drmartens.com/uk/cart"
+  expected_recs: 1
+  basket_checkout: ["button", ':id=>"checkoutButtonBottom"']
+  basket_remove: ["link", ':href=>"javascript:submitRemove(0);"']
+
+login_page:
+  URL: "https://uk.drmartens.com/uk/login"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"j_username"']
+  password_field: ["text_field", ':id=>"j_password"']
+  login_submit: ["button", ':class=>"form yellowButton"']
+
+searchresults_page:
+  URL: "http://uk.drmartens.com/uk/search"
+  expected_recs: 0
+  zerosearch_recs: 1
+
+checkout_page:
+  URL: "https://store.drmartens.co.uk/checkoutpayment.aspx"
+  expected_recs: 0
+  extra_steps:
+   # - [button, name, "btnContinueCheckout"]
+   # - [pause, 20]
+   # - [link, id, "shippingMethodProceed"]
+   # - [pause, 20]
+   # - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlCreditCardType", "Mastercard"]
+   # - [text_field, id, "cardNumber", "5555555555554444"]
+   # - [text_field, id, "cardHolderName", "Eerius"]
+   # - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryMonth", "03"]
+   # - [select_list, id, "ctl00_ctl00_globalmaincontent_maincontent_payment_ddlExpiryYear", "2015"]
+   # - [text_field, id, "securityCode", "123"]
+   # - [checkbox, id, "chkTermsRead"]
+   # - [link, id, "paymentProceed"]
+   # - [link, id, "confirmProceed"]
+   
+random_checkout:
+  URL: "http://www.superdry.com/"
+  expected_recs: 0
+  extra_steps:
+      - [link, class, "checkout-link checkout_btn"]
+      - [pause, 2]
+      - [link, class, "checkout-link continuecheckout_btn"]
+      - [pause, 2]
+    
