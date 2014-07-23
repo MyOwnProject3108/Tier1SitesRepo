@@ -12,6 +12,7 @@ mob_apikeyliv: qwmngdth1342q
 channel: mobileapp
 site_id: 539
 integration: standard
+client_tier: tier1
 
 
 #### site level variables ####
@@ -44,6 +45,7 @@ random_category:
   expected_recs: 0
   
 product_page:
+  ignore: true
   URL: "http://www.missselfridge.com/en/msuk/product/clothing-299047/dresses-299060/floral-trumpet-hem-dress-2943782?bi=1&ps=40"   
   expected_recs: 2
   add_to_basket_button: ["button", ':id => "btn_add_2_shop_cart"']
@@ -51,10 +53,12 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.missselfridge.com/en/msuk/category/clothing-299047/dresses-299060"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://www.missselfridge.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33055&langId=-1&storeId=12554"
   expected_recs: 4
   basket_checkout: ["link", ':text=> "Checkout"']
@@ -67,6 +71,7 @@ random_basket:
   
 
 login_page:
+  ignore: true
   URL: "https://www.missselfridge.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33055&storeId=12554&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -79,6 +84,7 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0
   extra_steps:
@@ -101,8 +107,8 @@ random_checkout:
   extra_steps:
       - [link, id, "checkout_submit_bottom"]
       - [pause, 2]
-      - [button, id, "btn_register"]
-      - [pause, 2]
+      - [link, id, "btn_register"]
+      - [pause, 5]
       - [select_list, id, "address_title", "Mr"]
       - [text_field, id, "address_first_name", "P"]
       - [text_field, id, "address_surname", "Eerius"]

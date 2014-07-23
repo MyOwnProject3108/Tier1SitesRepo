@@ -26,16 +26,25 @@ module Gant
 		
 		
 		
-		 
+		div(:product_links, :id=> "products")
+		
+		
+		button(:add_to_basket, :class=> "button cta")
+      	 
       	
       	
+		ul(:product_option1, :xpath=> '//div[@id="product_select_chosen"]/div/ul')
+		
 	    
 	    
+		
+		a(:product_options_preselect1, :xpath=> '//div[@id="product_select_chosen"]/a')
+		
 
 		# methods
 		def get_product_link_filter
-		
-			return []
+				
+			return ["class", "img"]
 				
 		end
 		
@@ -59,13 +68,13 @@ module Gant
 		
 		def get_num_of_reloads_per_category
 		
-			return 1
+			return 2
 		
 		end 
 		
 		def get_wait_time_per_category_page
 		
-			return 2
+			return 3
 		
 		end 
 		
@@ -88,8 +97,8 @@ module Gant
 		end
 		
 		def get_num_of_product_options
-		
-			return 0
+				
+			return 1
 				
 		end
 		
@@ -106,20 +115,20 @@ module Gant
 		end
 		
 		def has_product_options_preselect
-		
-			return false
+				
+			return true
 				
 		end
 		
 		def show_log
 		
-			return false
+			return true
 		
 		end 
 		
 		def ignore_cat_tracked_as_other_page
 		
-			return false
+			return true
 		
 		end 
 		

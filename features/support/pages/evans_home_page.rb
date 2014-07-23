@@ -33,6 +33,8 @@ module Evans
       	 
       	
       	
+		select_list(:product_option1, :id=> "product_size_full")
+		
 	    
 	    
 
@@ -92,8 +94,8 @@ module Evans
 		end
 		
 		def get_num_of_product_options
-		
-			return 0
+				
+			return 1
 				
 		end
 		

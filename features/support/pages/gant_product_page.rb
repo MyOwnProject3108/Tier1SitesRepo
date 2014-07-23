@@ -12,6 +12,8 @@ module Gant
       URL = "http://www.superdry.com/womens/t-shirts/details/40216/vintage-logo-t-shirt"
       direct_url URL
 	  # site elements
+      
+      button(:add_to_basket, :class=> "button cta")
        
       # page elements
       

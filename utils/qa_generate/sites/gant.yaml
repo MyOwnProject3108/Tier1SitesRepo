@@ -10,36 +10,73 @@ valid_search_term: jacket
 database_num: 1
 site_id: 1301
 integration: json
+client_tier: tier1
 
+
+
+# site variables
+show_log: true
 category_menu: ["ul", ':id => "gant-primary-navigation"']
 categories_to_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+
+wait_time_per_category_page: 3
+test_all_categories: false
+num_of_reloads_per_category: 2
+product_links: ["div", ':id=> "products"'] 
+product_link_filter: ["class", "img"]
+product_options: 
+     - [ul, ":xpath=> '//div[@id=\"product_select_chosen\"]/div/ul'"]
+     
+product_options_preselect: 
+     - [a, ":xpath=> '//div[@id=\"product_select_chosen\"]/a'"]
+      
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':class=> "button cta"']
+
+
 
 home_page:
   URL: "http://www.gant.co.uk/"
   expected_recs: 0
   login_link: ["link", ':href => "https://www.gant.co.uk/signin"']
   search_field: ["text_field", ':id => "search-text"']
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+  
 
 product_page:
-    URL: "http://www.superdry.com/womens/t-shirts/details/40216/vintage-logo-t-shirt"    
-    expected_recs: 1
-    add_to_basket_button: ["button", ':value => "Add to bag"']
-    extra_steps:      
+  ignore: true
+  URL: "http://www.superdry.com/womens/t-shirts/details/40216/vintage-logo-t-shirt"    
+  expected_recs: 1
+  add_to_basket_button: ["button", ':value => "Add to bag"']
+  extra_steps:      
     - [span, xpath, ".//*[@id='js_dropdown_product_id']/span"]
     - [span, text, "S"]
     - pause[10]
     
 category_page:
+  ignore: true
   URL: "http://www.gant.co.uk/mens-jeans/"
   expected_recs: 0
     
 basket_page:
+  ignore: true
   URL: "https://www.superdry.com/shopping-bag"
   expected_recs: 4
   basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
   basket_remove: ["button", ':class => "cart-delete button"']  
 
 login_page:
+  ignore: true
   URL: "https://www.superdry.com/my-account"
   expected_recs: 0
   username_field: ["text_field", ':id=>"username_login"']
@@ -52,5 +89,6 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.superdry.com/checkout"
   expected_recs: 0 
