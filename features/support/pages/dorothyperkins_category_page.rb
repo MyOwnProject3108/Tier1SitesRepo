@@ -9,7 +9,7 @@ module Dorothyperkins
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.dorothyperkins.com/en/dpuk/category/clothing-203535/dresses-203559"
+      URL = "http://www.dorothyperkins.com/en/dpuk/category/shoes-203538/sandals-203629"
       direct_url URL      
 
     end  
