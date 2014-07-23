@@ -10,6 +10,7 @@ valid_search_term: shirts
 database_num: 7
 site_id: 581
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -46,15 +47,18 @@ random_category:
   expected_recs: 0
 
 product_page:
+  ignore: true
   URL: "http://eu.topman.com/en/tmeu/product/clothing-617800/mens-shirts-617813/white-long-sleeve-smart-shirt-631922?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
+  ignore: true
   URL: "http://eu.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=34064&storeId=13061&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=335478&parent_categoryId=336013&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://eu.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34064&langId=-1&storeId=13061&krypto=bw2BpuZQvDIRSMcapRzCKaWwf9SE8axDf5gpFadKXxCKV0XCrslBPy45tX48BFSUoZle0W1EX9o8%0ADO%2F4DR8U3G8v0EVgPM2DKQgecqmgNDkfd6JBkNaBI%2FxsT%2FMsifHyHORXNhGMpLk%3D&ddkey=http:OrderCalculate"
   expected_recs: 4 
   basket_checkout: ["link", ':class => "btn_checkout"']
@@ -66,6 +70,7 @@ random_basket:
   basket_remove: ["link", ':class => "remove_bag_item"'] 
 
 login_page:
+  ignore: true
   URL: "https://eu.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34064&storeId=13061&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']

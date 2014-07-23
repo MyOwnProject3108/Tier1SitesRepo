@@ -10,6 +10,7 @@ valid_search_term: blue shirt
 database_num: 4
 site_id: 231
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -48,21 +49,25 @@ random_basket:
   expected_recs: 1
 
 product_page:
+  ignore: true
   URL: "http://us.topman.com/en/tmus/product/clothing-172005/mens-shirts-172018/white-curve-collar-long-sleeve-smart-shirt-2351602?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
 category_page:
+  ignore: true
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33059&storeId=13051&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=207526&parent_categoryId=207478&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33059&langId=-1&storeId=13051&geoip=noship"
   expected_recs: 4 
   basket_checkout: ["link", ':class => "btn_checkout"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
+  ignore: true
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33059&storeId=13051&ddkey=http:LogonForm&geoip=noship"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']

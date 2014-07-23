@@ -43,7 +43,7 @@ module Demostore_data_bot
 		# methods
 		def get_product_link_filter
 				
-			return ["class|product-image"]
+			return ["class", "product-image"]
 				
 		end
 		

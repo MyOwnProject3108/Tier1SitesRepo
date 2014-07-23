@@ -10,6 +10,9 @@ valid_search_term: shirt
 database_num: 0
 site_id: 72
 integration: standard
+client_tier: tier1
+
+
 
 #### site level variables ####
 show_log: true
@@ -53,6 +56,7 @@ random_basket:
   basket_remove: ["link", ':title => "Remove All"']
   
 product_page:
+  ignore: true
   URL: "http://www.cottontraders.com/stretch-turtle-neck-top/invt/aa12620"
   expected_recs: 1
   add_to_basket_button: ["link", ':title=> "Click to proceed"']
@@ -61,16 +65,19 @@ product_page:
     - [image, src, "http://www.cottontraders.com/content/ebiz/cottontraders/resources/images/grid_instock.gif"]
 
 category_page:
+  ignore: true
   URL: "http://www.cottontraders.com/mens-shirts/all-mens-shirts-/icat/mens-shirts-all&bklist=icat,5,shop,mens,mensshirts,mens-shirts-all"
   expected_recs: 1 
 
 basket_page:
+  ignore: true
   URL: "http://www.cottontraders.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=cottontraders&log=22"
   expected_recs: 1  
   basket_checkout: ["button", ':class => "right btCheckout"']
   basket_remove: ["link", ':title => "Remove All"']
 
 login_page:
+  ignore: true
   URL: "https://www.cottontraders.co.uk/bin/venda?ex=co_wizr-register&bsref=cottontraders"
   expected_recs: 0 
   username_field: ["text_field", ':id => "email"']
@@ -83,6 +90,7 @@ searchresults_page:
   zerosearch_recs: 5
   
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0  
 

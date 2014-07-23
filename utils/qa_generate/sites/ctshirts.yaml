@@ -13,6 +13,8 @@ database_num: 3
 channel: web
 site_id: 142
 integration: standard
+client_tier: tier1
+
 
 # site variables
 show_log: true
@@ -57,6 +59,7 @@ home_page:
   needs_SPR: yes
   
 product_page:
+  ignore: true
   URL: "http://www.ctshirts.co.uk/men%27s-accessories/men%27s-cufflinks/Navy-fleur-de-lys-motif-enamel-cufflinks?q=peerius||LE370NAV|||||||||||||"    
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "ctl00_contentBody_ctl02_submit"']
@@ -64,10 +67,12 @@ product_page:
     - [pause, 10]
 
 category_page:
+  ignore: true
   URL: "http://www.ctshirts.co.uk/mens-shirts/mens-formal-shirts?q=gbpdefault|||||||||||||||"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.ctshirts.co.uk/Basket.aspx"
   expected_recs: 1
   basket_checkout: ["button", ':id => "ctl00_contentBody_submit"']
@@ -76,6 +81,7 @@ basket_page:
     - [pause, 10]
 
 login_page:
+  ignore: true
   URL: "https://www.ctshirts.co.uk/AccountLogin.aspx"
   expected_recs: 0
   username_field: ["text_field", ':id=>"ctl00_contentBody_email"']
@@ -88,6 +94,7 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0
   extra_steps:
