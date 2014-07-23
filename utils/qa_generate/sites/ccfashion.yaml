@@ -10,6 +10,7 @@ valid_search_term: dress
 database_num: 5
 site_id: 815
 integration: json
+client_tier: tier1
 
 #### site level variables ####
 
