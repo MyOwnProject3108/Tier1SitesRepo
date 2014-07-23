@@ -8,6 +8,9 @@
 <% if site["integration"] %>
 @<%= site["integration"] %>
 <% end %>
+<% if site["client_tier"] %>
+@<%= site["client_tier"] %>
+<% end %>
 Feature: <%= site["pretty_name"] %> Integration
 # Tracking/Recommendations Tests 
 <% if site["site_timeout"] %>

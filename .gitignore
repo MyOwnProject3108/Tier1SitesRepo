@@ -6,7 +6,7 @@ Gemfile.lock
 *.orig
 utils/*.rb
 features/**/auto_*
-features/support/pages/**/auto_*
+features/support/pages/*.rb
 features/auto_*
 *.json
 error_pages/
