@@ -49,7 +49,7 @@ random_category:
   expected_recs: 0
 
 product_page:
-	ignore: true
+    ignore: true
     URL: "http://www.superdry.com/womens/dresses/details/43255/hepburn-lights-dress"    
     expected_recs: 1
     add_to_basket_button: ["button", ':value => "Add to bag"']
