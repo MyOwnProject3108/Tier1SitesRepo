@@ -10,6 +10,7 @@ valid_search_term: dress
 database_num: 7
 site_id: 413
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -17,7 +18,9 @@ category_menu: ["ul", ':id => "nav-top-list"']
 categories_to_exclude: ["Looks We Love", "Worn By", "Magazine", "Shop", "Outlet", "Baukjen"]
 max_num_of_categories: 1
 wait_time_per_category_page: 5
+
 test_all_categories: false
+
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
@@ -54,6 +57,7 @@ random_category:
   expected_recs: 0
 
 product_page:
+  ignore: true
   URL: "http://www.isabellaoliver.com/uk/shop/maternity-clothes/maternity-dresses/serafina-maternity-dress-dark-grey-melange.htm"
   expected_recs: 1
   add_to_basket_button: ["button", ':class=> "btn-lg btn-major fr no-margin"']
@@ -61,10 +65,12 @@ product_page:
     - [pause, 30]
 
 category_page:
+  ignore: true
   URL: "http://www.isabellaoliver.com/maternity-clothes/uk/100/maternity-tops.html?viewall=true"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.isabellaoliver.com/uk/cart"
   expected_recs: 0
   basket_checkout: ["span", ':text => "Secure Checkout"']
@@ -76,6 +82,7 @@ random_basket:
   basket_remove: ["button", ':class => "remove link"']
 
 login_page:
+  ignore: true
   URL: "https://www.isabellaoliver.com/maternity-clothes/uk/member-login.html"
   expected_recs: 0
   username_field: ["text_field", ':id => "loginemail"']
@@ -85,7 +92,7 @@ login_page:
 searchresults_page:
   URL: "http://www.isabellaoliver.com/maternity-clothes?actn=quicksearch&searchtype=all&sort=relevance&keyword=toys"
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 1
 
 checkout_page:
   ignore: true
