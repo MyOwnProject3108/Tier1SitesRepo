@@ -13,6 +13,7 @@ channel: mobileapp
 database_num: 4
 site_id: 223
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -35,6 +36,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
+  ignore: true
   URL: "http://www.topshop.com/en/tsuk/product/clothing-427/dresses-442/v-front-chuck-on-dress-2888889?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -48,10 +50,12 @@ random_category:
   expected_recs: 0
   
 category_page:
+  ignore: true
   URL: "http://www.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33057&storeId=12556&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208524&parent_categoryId=203984&beginIndex=1&pageSize=20"
   expected_recs: 0
   
 basket_page:
+  ignore: true
   URL: "https://www.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33057&langId=-1&storeId=12556" 
   expected_recs: 1
   basket_checkout: ["link", ':class => "btn_checkout"']
@@ -63,6 +67,7 @@ random_basket:
   basket_remove: ["link", ':class => "remove_bag_item"']
   
 login_page:
+  ignore: true
   URL: "https://www.topshop.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33057&storeId=12556&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -75,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 1
   
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0 
   extra_steps:

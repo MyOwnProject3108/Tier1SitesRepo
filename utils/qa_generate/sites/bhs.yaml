@@ -13,6 +13,7 @@ mob_apikeyliv: rye23sdyu342su4t
 channel: mobileapp
 site_id: 413
 integration: standard
+client_tier: tier1
 
 
 # site variables
@@ -46,6 +47,7 @@ random_category:
   expected_recs: 0
   
 product_page:
+  ignore: true
   URL: "http://www.bhs.co.uk/en/bhuk/product/women-1020590/dresses-1020593/black-white-ponte-fit-n-flare-geo-dress-2634399?bi=1&ps=40"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -53,6 +55,7 @@ product_page:
     - [pause, 30]
 
 basket_page:
+  ignore: true
   URL: "https://www.bhs.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34096&langId=-1&storeId=13077"
   expected_recs: 1
   basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
@@ -65,6 +68,7 @@ random_basket:
   
 
 login_page:
+  ignore: true
   URL: "https://www.bhs.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=34096&storeId=13077&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']

@@ -22,9 +22,15 @@ module Dorothyperkins
 		
 		 
 		
+		ul(:category_menu, :id => "nav_catalog_menu")
 		
 		
-		 
+		
+		div(:product_links, :id=> "wrapper_page_content")
+		
+		
+		button(:add_to_basket, :id=> "btn_add_2_shop_cart")
+      	 
       	
       	
 	    
@@ -32,8 +38,8 @@ module Dorothyperkins
 
 		# methods
 		def get_product_link_filter
-		
-			return []
+				
+			return ["data-productid", "*"]
 				
 		end
 		
@@ -63,13 +69,13 @@ module Dorothyperkins
 		
 		def get_wait_time_per_category_page
 		
-			return 2
+			return 5
 		
 		end 
 		
 		def get_categories_to_exclude
-		
-			return []
+				
+			return ["Magazine"]
 				
 		end
 		
@@ -111,13 +117,13 @@ module Dorothyperkins
 		
 		def show_log
 		
-			return false
+			return true
 		
 		end 
 		
 		def ignore_cat_tracked_as_other_page
 		
-			return false
+			return true
 		
 		end 
 		

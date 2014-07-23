@@ -10,6 +10,7 @@ valid_search_term: dress
 database_num: 7
 site_id: 413
 integration: standard
+client_tier: tier1
 
 enable_static_test: false
 static_test_prod_url: "http://www.jojomamanbebe.co.uk/sp+bird-stripe-footless-tights-in-socks-tights-and-shoes+b8666" #"http://www.jojomamanbebe.co.uk/sp+striped-long-sleeved-tops+b8371"
@@ -18,15 +19,12 @@ static_test_cat_url: ""
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "menu"']
-
 categories_to_exclude: ["Gift Sets & Vouchers"]
-
 wait_time_per_category_page: 3
 
 test_all_categories: false
 
 num_of_reloads_per_category: 2
-
 product_links: ["div", ':id=> "partsList"'] 
 product_link_filter: ["class", "pli_product"]
 product_options: 
@@ -61,6 +59,7 @@ random_basket:
   expected_recs: 1
 
 product_page:
+  ignore: true
   URL: "http://www.jojomamanbebe.co.uk/sp+mini-bath-tub-in-bathtime-and-healthcare+b9169"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "iB1"']
@@ -69,16 +68,19 @@ product_page:
 #     - [pause,10]
 
 category_page:
+  ignore: true
   URL: "http://www.jojomamanbebe.co.uk/pp+maternity-tunics-and+shirts"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.jojomamanbebe.co.uk/docontents.asp"
   expected_recs: 5
   basket_checkout: ["link", ':id => "checkoutBtn"']
   basket_remove: ["link", ':xpath => "/html/body/div/div/div[6]/div[2]/div/form/div[5]/table[3]/tbody/tr/td/table/tbody/tr/td[3]/table/tbody/tr/td/a[2]"']
 
 login_page:
+  ignore: true
   URL: "https://www.jojomamanbebe.co.uk/login.asp"
   expected_recs: 0
   username_field: ["text_field", ':name => "email"']
@@ -91,6 +93,7 @@ searchresults_page:
   zerosearch_recs: 4
 
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0
   extra_steps:

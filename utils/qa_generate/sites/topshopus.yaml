@@ -10,6 +10,7 @@ valid_search_term: shirts
 database_num: 4
 site_id: 227
 integration: standard
+client_tier: tier1
 
 
 # site variables
@@ -40,16 +41,21 @@ random_category:
   expected_recs: 0
 
 product_page:
+  ignore: true
   URL: "http://us.topshop.com/en/tsus/product/clothing-70483/dresses-70497/toile-print-babydoll-dress-2905789?bi=1&ps=200"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   extra_steps:
     - [pause, 20]
+	
+	
 category_page:
+  ignore: true
   URL: "http://us.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?catalogId=33060&storeId=13052&langId=-1&viewAllFlag=false&sort_field=Relevance&categoryId=208641&parent_categoryId=208580&beginIndex=1&pageSize=20"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://us.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33060&langId=-1&storeId=13052"
   expected_recs: 4 
   basket_checkout: ["link", ':class => "btn_checkout"']
@@ -61,6 +67,7 @@ random_basket:
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
 login_page:
+  ignore: true
   URL: "https://us.topshop.com/webapp/wcs/stores/servlet/LogonForm?catalogId=33060&storeId=13052&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -73,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 1
   
 checkout_page:
+  ignore: true
   URL: "" 
   expected_recs: 0
   extra_steps:

@@ -19,7 +19,7 @@ integration: standard
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
 categories_to_exclude: ["title => Going Out"]
-test_all_categories: true
+test_all_categories: false
 ignore_cat_tracked_as_other_page: true
 wait_time_per_category_page: 3
 max_num_of_categories: 1 
@@ -101,7 +101,7 @@ random_checkout:
   extra_steps:
       - [link, id, "checkout_submit_bottom"]
       - [pause, 2]
-      - [link, id, "btn_register"]
+      - [button, id, "btn_register"]
       - [pause, 2]
       - [select_list, id, "address_title", "Mr"]
       - [text_field, id, "address_first_name", "P"]

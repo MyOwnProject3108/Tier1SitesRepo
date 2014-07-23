@@ -10,7 +10,7 @@ valid_search_term: toy
 database_num: 3
 site_id: 106
 integration: standard
-
+client_tier: tier1
 
 
 enable_static_test: false
@@ -25,7 +25,9 @@ show_log: true
 category_menu: ["ul", ':id => "nav"']
 categories_to_exclude: ["title=>Gifts", "title=>Sale", "url=>community", "url=>help", "url=>%/lingerie/", "url=>%/bondage/"]
 out_of_stock_msg: "Sorry, this item is currently unavailable"
+
 test_all_categories: false
+
 wait_time_per_category_page: 5
 max_num_of_categories: 1 
 num_of_reloads_per_category: 2
@@ -62,15 +64,18 @@ random_category:
   expected_recs: 0
   
 product_page:
+  ignore: true
   URL: "http://www.lovehoney.co.uk/product.cfm?p=596"
   expected_recs: 4
   add_to_basket_button: ["button", ':class=> "std-arrow"']
 
 category_page:
+  ignore: true
   URL: "http://www.lovehoney.co.uk/lingerie/sexy-costumes/"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.lovehoney.co.uk/your-basket/"
   expected_recs: 4 
   basket_checkout: ["button", ':value => "Proceed to Checkout"']
@@ -82,6 +87,7 @@ random_basket:
   basket_remove: ["button", ':class => "remove"']
   
 login_page:
+  ignore: true
   URL: "https://www.lovehoney.co.uk/your-account/sign-in.html"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
@@ -94,6 +100,7 @@ searchresults_page:
   zerosearch_recs: 1
   
 checkout_page:
+  ignore: true
   URL: "https://www.lovehoney.co.uk/checkout/"
   expected_recs: 0
   extra_steps:

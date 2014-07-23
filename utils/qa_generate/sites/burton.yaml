@@ -12,6 +12,7 @@ mob_apikeyliv: bhrvkw68frbyhu4t
 channel: mobileapp
 site_id: 82
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -40,6 +41,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
+  ignore: true
   URL: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-shirts-281895/green-check-shirt-2845260?bi=1&ps=20"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -51,10 +53,12 @@ random_category:
   expected_recs: 0
 
 category_page:
+  ignore: true
   URL: "http://www.burton.co.uk/en/bruk/category/clothing-281559/mens-jeans-281570"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://www.burton.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=33052&langId=-1&storeId=12551"
   expected_recs: 1
   basket_checkout: ["link", ':title => "Checkout"']
@@ -67,6 +71,7 @@ random_basket:
   
 
 login_page:
+  ignore: true
   URL: "https://www.burton.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=33052&storeId=12551&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']

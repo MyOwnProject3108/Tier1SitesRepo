@@ -10,7 +10,7 @@ valid_search_term: shoe
 database_num: 7
 site_id: 575
 integration: standard
-
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -41,6 +41,7 @@ random_category:
   expected_recs: 0
 
 product_page:
+  ignore: true
   URL: "http://eu.topshop.com/en/tseu/product/clothing-485092/dresses-485107/white-paisley-textured-sweetheart-prom-dress-by-rare-2912299?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -48,10 +49,12 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://eu.topshop.com/en/tseu/category/clothing-485092/dresses-485107"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34058&langId=-1&storeId=13058"
   expected_recs: 1 
   basket_checkout: ["link", ':text => "Checkout"']
@@ -64,6 +67,7 @@ random_basket:
   
 
 login_page:
+  ignore: true
   URL: "https://eu.topshop.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34058&storeId=13058&krypto=ZmXU4%2F298ZR5E%2F0A%2BRepeYwmdebl9zQSPBD8LHbBD%2BmuZ5pEGZo88KNp9F2YJhO8CEqkzHXu08s9%0ANonYFRXhUg%3D%3D&ddkey=http:CatalogNavigationSearchResultCmd"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -76,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 1
   
 checkout_page:
+  ignore: true
   URL: "" 
   expected_recs: 0
   extra_steps:

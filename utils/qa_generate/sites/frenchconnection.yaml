@@ -10,13 +10,16 @@ valid_search_term: dress
 database_num: 3
 site_id: 605
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
 category_menu: ["div", ':class => "top_navigation_dropdown clearfix"']
 categories_to_exclude: ["Woman", "Man", "Homeware", "Outlet", "Discover", "blog"]
 wait_time_per_category_page: 3
+
 test_all_categories: false
+
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "category_product_container"'] 
 product_link_filter: ["class", "category_product_link"]
@@ -53,6 +56,7 @@ random_basket:
   expected_recs: 1
 
 product_page:
+  ignore: true
   URL: "http://www.frenchconnection.com/product/Woman+Collections+Shoes/SFBBD/Tamara+Sandals.htm"
   expected_recs: 3
   add_to_basket_button: ["button", ':name => "addToBasket"']
@@ -61,16 +65,19 @@ product_page:
    - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.frenchconnection.com/category/Woman+Collections+Dresses/Dresses.htm"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.frenchconnection.com/basket.htm"
   expected_recs: 4
   basket_checkout: ["link", ':text => "go to checkout"']
   basket_remove: ["link", ':class => "removeFromBasketButton"']
 
 login_page:
+  ignore: true
   URL: "https://www.frenchconnection.com/login.htm?returnUrl=%2faccount.htm%3fmode%3dmyaccount"
   expected_recs: 0
   username_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtLogonId"']
@@ -83,6 +90,7 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.frenchconnection.com/checkout.htm#"
   expected_recs: 0
   extra_steps:
