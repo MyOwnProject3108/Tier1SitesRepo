@@ -10,6 +10,7 @@ valid_search_term: no
 database_num: 6
 site_id: 82
 integration: standard
+client_tier: tier1
 
 # site variables
 show_log: true
@@ -19,7 +20,9 @@ category_menu_preselect: ["li", ':xpath => "//ul[@id=\"gender\"]/li[2]"']
 num_of_category_menu_preselect_items: 2
 categories_to_exclude: ["Mens"]
 wait_time_per_category_page: 5
+
 test_all_categories: false
+
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 
@@ -51,6 +54,7 @@ random_basket:
   basket_remove: ["link", ':class => "link item_remove"']
 
 product_page:
+  ignore: true
   URL: "http://www.tedbaker.com/uk/Womens/Accessories/Bags/LUCON-Small-shopper-bag-Bright-Pink/p/108369-56-BRIGHT-PINK"
   expected_recs: 1
   add_to_basket_button: ["button", ':class=> "button add_to_cart major full_mobile colour_dark"']
@@ -58,16 +62,19 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.tedbaker.com/women%27s/women%27s_accessories/bags/list.aspx#-"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.tedbaker.com/shoppingbasket/"
   expected_recs: 1
   basket_checkout: ["link", ':href => "/uk/cart/checkout"']
   basket_remove: ["link", ':class => "link item_remove"']  
 
 login_page:
+  ignore: true
   URL: "http://www.tedbaker.com/uk?country=GB"
   expected_recs: 0
   username_field: ["text_field", ':class => "box ng-pristine ng-invalid ng-invalid-required ng-valid-email"']
@@ -82,9 +89,10 @@ searchresults_page:
   expected_recs: 0
   zerosearch_recs: 0
   
-#checkout_page:
- # URL: "" 
-#  expected_recs: 0
+checkout_page:
+  ignore: true
+  URL: "" 
+  expected_recs: 0
   
   
 random_checkout:
