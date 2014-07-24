@@ -12,6 +12,9 @@ site_id: 1301
 integration: json
 client_tier: tier1
 
+enable_static_test: false
+static_test_prod_url: "http://www.gant.co.uk/mens-rugby-shirts/ferngreen-barstripe-heavy-rugger/31596"
+static_test_cat_url: "http://www.gant.co.uk/mens-blazers/"
 
 
 # site variables
