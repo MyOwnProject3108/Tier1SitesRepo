@@ -9,14 +9,14 @@ module Superdrug
 		include PageObject
 		include PeeriusHelper
 
-		URL = "http://www.thewhitecompany.com/"
+		URL = "http://www.superdrug.com/"
 		direct_url URL
 		#page elements - retained for backward compatibility
 		
-		text_field(:search_field, :id => "in_site_search")
+		text_field(:search_field, :id => "search")
         
 		
-		link(:login_link, :link => "Sign in . register")
+		link(:login_link, :class => "account")
 		
         # site elements
 		
@@ -26,24 +26,20 @@ module Superdrug
 		
 		
 		
-		ul(:product_links, :id=> "ls-category-products")
+		div(:product_links, :id=> "product-tiles")
 		
 		
-		button(:add_to_basket, :id=> "btnAddtoBasketTop")
+		button(:add_to_basket, :id=> "productDetailAddToBasket")
       	 
       	
       	
-		select_list(:product_option1, :xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/select")
-		
-		img(:product_option2, :xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/div/img[1]")
-		
 	    
 	    
 
 		# methods
 		def get_product_link_filter
 				
-			return ["class", "text-center"]
+			return ["class", "name"]
 				
 		end
 		
@@ -55,7 +51,7 @@ module Superdrug
 		
 		def get_max_num_of_categories
 		
-			return 5
+			return 2
 		
 		end 
 
@@ -96,14 +92,14 @@ module Superdrug
 		end
 		
 		def get_num_of_product_options
-				
-			return 2
+		
+			return 0
 				
 		end
 		
 		def get_product_keywords_to_exclude
-				
-			return ["Bed", "Linen", "Quilt", "Sheets", "Duvet", "Pillowcases", "Valance", "Protectors"]
+		
+			return []
 				
 		end
 		

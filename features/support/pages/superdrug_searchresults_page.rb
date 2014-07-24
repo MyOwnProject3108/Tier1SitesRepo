@@ -9,7 +9,7 @@ module Superdrug
       include PageObject
       include PeeriusHelper
       
-      URL = "http://www.thewhitecompany.com/search/towel/"
+      URL = ""
       direct_url URL            
     end  
 end

@@ -19,13 +19,13 @@ category_menu: ["ul", ':class => "mega-menu nobullet nopad full-width"']
 
 categories_to_exclude: ["Holiday Shop", "More...", "Brands", "Offers", "Sale"]
 
-test_all_categories: false
+test_all_categories: true
 
 ignore_cat_tracked_as_other_page: true
 
 wait_time_per_category_page: 3
 
-max_num_of_categories: 5 
+max_num_of_categories: 2 
 
 num_of_reloads_per_category: 2
 
@@ -33,84 +33,46 @@ wait_time_per_product_page: 2
 
 max_num_of_products: 1
 
-product_links: ["ul", ':id=> "ls-category-products"']  
+product_links: ["div", ':id=> "product-tiles"']  
 
-product_link_filter: ["class", "text-center"]
+product_link_filter: ["class", "name"]
 
-product_options: 
-    - [select_list, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/select"']
-    - [img, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/div/img[1]"']
+#product_options: 
+#    - [select_list, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/select"']
+#    - [img, ':xpath=> "/html/body/div/div[3]/form/div[2]/div[5]/ul/li/ul/li/div/img[1]"']
     
-product_keywords_to_exclude: ["Bed","Linen","Quilt","Sheets","Duvet","Pillowcases","Valance","Protectors"]
+#product_keywords_to_exclude: ["Bed","Linen","Quilt","Sheets","Duvet","Pillowcases","Valance","Protectors"]
                        
-add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
+add_to_basket_button: ["button", ':id=> "productDetailAddToBasket"']
         
 #### page level config ####
 home_page:
-  URL: "http://www.thewhitecompany.com/"
-  expected_recs: 0
-  login_link: ["link", ':link => "Sign in . register"']
-  search_field: ["text_field", ':id => "in_site_search"']
+  URL: "http://www.superdrug.com/"
+  expected_recs: 1
+  login_link: ["link", ':class => "account"']
+  search_field: ["text_field", ':id => "search"']
 
 random_product:
-  expected_recs: 3
+  expected_recs: 1
   
 random_category:
-  expected_recs: 0
+  expected_recs: 1
   
-product_page:
-  URL: "http://www.thewhitecompany.com/candles-and-fragrance/accessories/ceramic-bottle-arch--white/"
-  expected_recs: 2
-  add_to_basket_button: ["button", ':id=> "btnAddtoBasketTop"']
-  extra_steps:
-    - [pause,10]
-    - [text_field, id, "in-quantities-BAHBANWH", "1"]
-    
-category_page:
-  URL: "http://www.thewhitecompany.com/clothing/tops/"
-  expected_recs: 0
-
-basket_page:
-  URL: "http://www.thewhitecompany.com/shopping-bag/"
-  expected_recs: 2
-  basket_checkout: ["button", ':id => "in_btnCheckout"']
-  basket_remove: ["image", ':id => "remove"']  
-
 random_basket:
   expected_recs: 1
-  basket_checkout: ["button", ':id => "in_btnCheckout"']
-  basket_remove: ["image", ':id => "remove"']
+  basket_checkout: ["button", ':id => "checkoutButtonBottom"']
+  basket_remove: ["link", ':href => "javascript:submitRemove(0);"']
   
-login_page:
-  URL: "https://www.thewhitecompany.com/login.aspx"
-  expected_recs: 0
-  username_field: ["text_field", ':id=>"in_txtEmailAddress"']
-  password_field: ["text_field", ':id=>"in_txtPassword"']  
-  login_submit: ["button", ':id=>"in_bLogin"']
-
 searchresults_page:
-  URL: "http://www.thewhitecompany.com/search/towel/"
+  URL: ""
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 1
   
-checkout_page:
-  URL: "" 
-  expected_recs: 0
-  extra_steps:
-    - [button, id, "in_btnProceed"]
-    - [text_field, id, "in_txtCardNumber", "5555555555554444"]
-    - [text_field, id, "in_txtHolderName", "Eerius"]
-    - [select_list, id, "sl_cardType", "Mastercard"]
-    - [select_list, id, "sl_month", "3"]
-    - [select_list, id, "sl_year", "2015"]
-    - [text_field, id, "in_cscCode", "123"]
-    - [button, id, "in_btnPay"]
-   
 random_checkout:
-  URL: "http://www.thewhitecompany.com/"
+  URL: ""
   expected_recs: 0
   extra_steps:
-      - [input, id, "in_btnCheckout"]
+      - [input, id, "checkoutButtonBottom"]
       - [pause, 2]
       - [text_field, id, "in_txtEmailAddress", "peeriustest@email.com", "autogenerate_email"]
       - [pause, 2]
