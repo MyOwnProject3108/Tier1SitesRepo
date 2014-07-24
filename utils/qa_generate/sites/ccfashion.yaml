@@ -18,6 +18,7 @@ show_log: true
 
 category_menu: ["ul", ':id => "topNavLevel1"']
 categories_to_exclude: ["Shop All Clothes", "Collections", "Persian Blues", "Into the Blue", "Tropical Summer", "Ladies Day", "Cruise", "Geo Graphic", "Graphic Florals", "Botanical Gardens", "Modern Florals", "Summer Blossom", "Riviera Chic", "Aztec Chic", "The Modernist", "Petite", "Accessories", "Style Advice", "Sale", "Viyella"]
+
 test_all_categories: false
 
 wait_time_per_category_page: 5
@@ -56,6 +57,7 @@ random_category:
   expected_recs: 0
 
 product_page:
+  ignore: true	
   URL: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Dresses/Clematis-Posy-Burnout-Dress/6875"
   expected_recs: 2
   add_to_basket_button: ["button", ':id=> "addToBagBtn"']
@@ -64,10 +66,12 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.ccfashion.co.uk/fcp/categorylist/dept/dresses"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "http://www.ccfashion.co.uk/pws/ShippingOptions.ice"
   expected_recs: 2
   basket_checkout: ["image", ':alt => "checkout"']
@@ -80,6 +84,7 @@ random_basket:
   
 # Need to be fixed in code: clicking on sizes which are disabled. It clicks on out of stock size and tried to add to basket. Script fails here.
 login_page:
+  ignore: true
   URL: "https://www.ccfashion.co.uk/pws/secure/ManageAccount.ice?secure_from=login"
   expected_recs: 0
   username_field: ["text_field", ':id=>"j_username"']
@@ -92,6 +97,7 @@ searchresults_page:
   zerosearch_recs: 12
 
 checkout_page:
+  ignore: true
   URL: "https://www.ccfashion.co.uk/pws/secure/CheckoutAddressAction.ice"
   expected_recs: 0
   extra_steps:
