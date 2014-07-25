@@ -59,9 +59,10 @@ random_category:
   expected_recs: 1
   
 random_basket:
-  expected_recs: 1
+  basket_page: ""
   basket_checkout: ["button", ':id => "checkoutButtonBottom"']
   basket_remove: ["link", ':href => "javascript:submitRemove(0);"']
+  expected_recs: 1
   
 searchresults_page:
   URL: ""
@@ -75,11 +76,38 @@ random_checkout:
       - [button, id, "checkoutButtonBottom"]
       - [pause, 2]
       - [button, class, "cta-generic right accept"]
-	  - [text_field, id, "email", "peeriustest@email.com", "autogenerate_email"]
-	  - [text_field, id, "confirmEmail", "peeriustest@email.com", "autogenerate_email"
+	  - [text_field, id, "email", "peeriustest@email.com", "generate_email"]
+	  - [text_field, id, "confirmEmail", "peeriustest@email.com", "generate_email"]
+	  - [text_field, id, "pwd", "123123"]
+	  - [text_field, id, "checkPwd", "123123"]
+	  - [button, id, "next_cta"]
+	  - [select_list, id, "registerForm.title", "Mr"]
+	  - [text_field, id, "first_name", "web", "generate_firstname"]
+      - [text_field, id, "last_name", "Test", "generate_lastname"] 
+	  - [text_field, id, "house_number", "30"]
+	  - [text_field, id, "post_code", "SE1 0HS"]
+	  - [text_field, id, "address1", "Great guildford street"]
+	  - [text_field, id, "post_code", "SE1 0HS"]
+	  - [text_field, id, "mobilePhoneId", "SE1 0HS"]
+	  - [span, id, "mobilePhoneId", "SE1 0HS"]
+	  - [span, class, "icon notext"]
+	  - [span, class, "icon2 notext margin5right"]
+	  - [button, id, "next_cta"]
+	  - [span, class, "txt left"]
+	  - [button, id, "checkout"]
+	  - [button, id, "checkoutButtonBottom"]
+	  - [link, id, "proceed_payment"]
 	  
 	  
-	  confirmEmail
-	  
-	  
+
+
+
+
+
+
+
+
+
+
+
 	  
