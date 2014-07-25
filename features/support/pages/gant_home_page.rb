@@ -147,13 +147,13 @@ module Gant
 		
 		def get_static_test_cat_url
 		
-			return ""
+			return "http://www.gant.co.uk/mens-blazers/"
 		
 		end
 		
 		def get_static_test_prod_url
 		
-			return nil
+			return "http://www.gant.co.uk/mens-rugby-shirts/ferngreen-barstripe-heavy-rugger/31596"
 		
 		end 
 		
