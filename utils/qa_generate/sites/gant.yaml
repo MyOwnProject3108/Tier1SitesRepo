@@ -4,8 +4,8 @@ has_content: no
 has_ranking: no
 needs_SPR: no
 username: webtest@mailinator.com
-password: webtest1234
-zero_search_term: dsavavas
+password: webtest
+zero_search_term: toy
 valid_search_term: jacket
 database_num: 1
 site_id: 1301
@@ -73,8 +73,8 @@ category_page:
     
 basket_page:
   ignore: true
-  URL: "https://www.superdry.com/shopping-bag"
-  expected_recs: 4
+  URL: "http://www.gant.co.uk/bag/"
+  expected_recs: 1
   basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
   basket_remove: ["button", ':class => "cart-delete button"']  
 
@@ -87,11 +87,27 @@ login_page:
   login_submit: ["button", ':name=>"Submit"']
 
 searchresults_page:
-  URL: "http://www.superdry.com/search/jacket"
+  URL: "http://www.gant.co.uk/search/?q=toy"
   expected_recs: 1
   zerosearch_recs: 1
 
 checkout_page:
   ignore: true
   URL: "https://www.superdry.com/checkout"
-  expected_recs: 0 
+  expected_recs: 0
+  
+random_checkout:
+  URL: "http://www.gant.co.uk/"
+  expected_recs: 0
+  extra_steps:
+      - [link, class, "bottom proceed-to-checkout button"]
+      - [pause, 2]
+      - [text_field, id, "email_address_signIn_email", "webtest@mailinator.com"]
+      - [button, id, "next"]
+      - [pause, 2]
+      - [radio, id, "email_address_signIn_isSigningIn_1"]
+      - [pause, 2]
+      - [text_field, id, "email_address_signIn_password", "webtest"]
+      - [pause, 2]
+      - [button, id, "next"]
+      - [pause, 2]

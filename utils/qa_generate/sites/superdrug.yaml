@@ -59,9 +59,10 @@ random_category:
   expected_recs: 1
   
 random_basket:
-  expected_recs: 1
+  basket_page: ""
   basket_checkout: ["button", ':id => "checkoutButtonBottom"']
   basket_remove: ["link", ':href => "javascript:submitRemove(0);"']
+  expected_recs: 1
   
 searchresults_page:
   URL: ""
@@ -72,32 +73,41 @@ random_checkout:
   URL: ""
   expected_recs: 0
   extra_steps:
-      - [input, id, "checkoutButtonBottom"]
+      - [button, id, "checkoutButtonBottom"]
       - [pause, 2]
-      - [text_field, id, "in_txtEmailAddress", "peeriustest@email.com", "autogenerate_email"]
-      - [pause, 2]
-      - [button, id, "IBGuest"]
-      - [pause, 2]
-      - [text_field, id, "in_txtPostCd", "TW3 3TN"]
-      - [button, id, "in_btnPostCodeSearch"]
-      - [pause, 2]
-      - [select_list, id, "in_lstAddressPickList", "Flat 1, Hamilton Court, 147 Hanworth Road, HOUNSLOW"]
-      - [pause, 2]
-      - [button, id, "in_imgBtnSelectAddress"]
-      - [pause, 2]
-      - [text_field, id, "in_txtAddressName", "work"]
-      - [text_field, id, "in_txtFirstName", "test"]
-      - [text_field, id, "in_txtSurname", "test"]
-      - [text_field, id, "in_txtTel", "02039723222"]
-      - [button, id, "in_btnProceed"]
-    
-           
-  #   - [link, id, "in_txtPostCd"]
-  #    - [pause, 2]
-  #    - [select_list, id, "address_title", "Mr"]
-  #    - [text_field, id, "address_first_name", "P"]
-  #    - [text_field, id, "address_surname", "Eerius"]
-  #    - [text_field, id, "address_main_telephone", "02033974940"]
-  #    - [p, class, "enter_manual_address"]
-  #    - [text_field, class, "text address_line_1", "Units 207-211"]
-   
+      - [button, class, "cta-generic right accept"]
+	  - [text_field, id, "email", "peeriustest@email.com", "generate_email"]
+	  - [text_field, id, "confirmEmail", "peeriustest@email.com", "generate_email"]
+	  - [text_field, id, "pwd", "123123"]
+	  - [text_field, id, "checkPwd", "123123"]
+	  - [button, id, "next_cta"]
+	  - [select_list, id, "registerForm.title", "Mr"]
+	  - [text_field, id, "first_name", "web", "generate_firstname"]
+      - [text_field, id, "last_name", "Test", "generate_lastname"] 
+	  - [text_field, id, "house_number", "30"]
+	  - [text_field, id, "post_code", "SE1 0HS"]
+	  - [text_field, id, "address1", "Great guildford street"]
+	  - [text_field, id, "post_code", "SE1 0HS"]
+	  - [text_field, id, "mobilePhoneId", "SE1 0HS"]
+	  - [span, id, "mobilePhoneId", "SE1 0HS"]
+	  - [span, class, "icon notext"]
+	  - [span, class, "icon2 notext margin5right"]
+	  - [button, id, "next_cta"]
+	  - [span, class, "txt left"]
+	  - [button, id, "checkout"]
+	  - [button, id, "checkoutButtonBottom"]
+	  - [link, id, "proceed_payment"]
+	  
+	  
+
+
+
+
+
+
+
+
+
+
+
+	  
