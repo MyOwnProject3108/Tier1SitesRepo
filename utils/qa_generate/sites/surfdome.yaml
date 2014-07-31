@@ -1,0 +1,99 @@
+site_name: surfdome
+pretty_name: surfdome
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: mascara
+valid_search_term: dress
+database_num: 1
+site_id: 1469
+integration: JSON
+
+#### site level variables ####
+show_log: true
+
+#xpath or id to container that contains all the product page links on a category page
+category_menu: ["div",  ':xpath => "//div[@class=\"dropmenudiv_e\" and not (@id=\"menu_departments\") and not (@id=\"new_snow\") and not (@id=\"menu_brands_sub\") and not (@id=\"menu_infant\") and not (@id=\"menu_surf\") and not (@id=\"menu_wake\") and not (@id=\"menu_sale\") ]"']
+#//div[@class=\"dropmenudiv_e\" and not (@id=\"menu_departments\") and not (@id=\"new_snow\")]
+#//div[@class="dropmenudiv_e" and not (@id="menu_departments") and not (@id="new_snow")]
+
+
+categories_to_exclude: ["BRANDS", "INFANT", "DEPARTMENTS", "SURF", "SNOW", "WAKE", "Sale"]
+
+test_all_categories: true
+
+ignore_cat_tracked_as_other_page: true
+
+wait_time_per_category_page: 3
+
+max_num_of_categories: 2 
+
+num_of_reloads_per_category: 2
+
+wait_time_per_product_page: 2
+
+max_num_of_products: 1
+
+product_links: ["div", ':id=> "prodWrapper"']  
+
+product_link_filter: ["href", "/%"]
+
+product_options: 
+    - [select_list, ':id=> "olist"']
+#    - [image, ':id=> "Image1"']
+    
+#product_keywords_to_exclude: ["Bed","Linen","Quilt","Sheets","Duvet","Pillowcases","Valance","Protectors"]
+                       
+add_to_basket_button: ["image", ':id=> "Image1"']
+        
+#### page level config ####
+home_page:
+  URL: "http://www.surfdome.com/"
+  expected_recs: 0
+  login_link: ["link", ':href => "https://www.surfdome.com/account/"']
+  search_field: ["text_field", ':id => "headersearch-box"']
+
+random_product:
+  expected_recs: 0
+  
+random_category:
+  expected_recs: 0
+  
+basket_page: 
+  URL: "http://www.surfdome.com/basket/"
+  
+random_basket:
+  basket_checkout: ["link", ':text => "Checkout >"']
+  basket_remove: ["link", ':class => "feature feature-inline"']
+  expected_recs: 0
+  
+searchresults_page:
+  URL: ""
+  expected_recs: 0
+  zerosearch_recs: 0
+  
+random_checkout:
+  URL: ""
+  expected_recs: 0
+  extra_steps:
+      - [link, text, "Checkout >"]
+      - [pause, 2]
+      - [link, class, "btn btn-action checkout-btn-login"]
+      - [text_field, id, "billFName", "peerius", "autogenerate_email"]
+      - [text_field, name, "billLName", "test", "autogenerate_email"]
+      - [text_field, name, "billAddress1", "30 Great guildford street"]
+      - [text_field, name, "billCity", "London"]
+      - [text_field, name, "otherState", "London"]
+      - [text_field, name, "billZip", "SE1 0HS"]
+      - [checkbox, name, "billEqualShip"]
+      - [text_field, name, "email", "peeriustest@yahoo.com", "generate_email"]
+      - [text_field, name, "email2", "peeriustest@yahoo.com", "generate_email"]
+      - [text_field, name, "phone", "02087656245"]
+      - [button, class, "btn btn-action checkout-btn-confirm"]
+      
+      
+      
+      
+     

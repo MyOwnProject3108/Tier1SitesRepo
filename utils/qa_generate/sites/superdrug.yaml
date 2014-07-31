@@ -58,8 +58,10 @@ random_product:
 random_category:
   expected_recs: 1
   
+basket_page: 
+  URL: "http://www.superdrug.com/cart"
+  
 random_basket:
-  basket_page: ""
   basket_checkout: ["button", ':id => "checkoutButtonBottom"']
   basket_remove: ["link", ':href => "javascript:submitRemove(0);"']
   expected_recs: 1
