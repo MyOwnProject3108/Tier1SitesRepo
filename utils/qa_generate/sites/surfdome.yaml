@@ -65,7 +65,7 @@ basket_page:
   URL: "http://www.surfdome.com/basket/"
   
 random_basket:
-  basket_checkout: ["link", ':text => "Checkout >"']
+  basket_checkout: ["link", ':xpath => "/html/body/div[2]/div[2]/div[3]/div/div[2]/div[1]/form/div/div[3]/a"']
   basket_remove: ["link", ':class => "feature feature-inline"']
   expected_recs: 0
   
@@ -78,8 +78,8 @@ random_checkout:
   URL: ""
   expected_recs: 0
   extra_steps:
-      - [link, text, "Checkout >"]
-      - [pause, 2]
+      - [link, xpath, "/html/body/div[2]/div[2]/div[3]/div/div[2]/div[1]/form/div/div[3]/a"]
+      - [pause, 5]
       - [link, class, "btn btn-action checkout-btn-login"]
       - [text_field, id, "billFName", "peerius", "autogenerate_email"]
       - [text_field, name, "billLName", "test", "autogenerate_email"]
