@@ -6,7 +6,7 @@ needs_SPR: false
 username: faiyyaz.sultana@peerius.com
 password: Pa55word
 zero_search_term: toy
-valid_search_term: blazer
+valid_search_term: socks
 database_num: 4
 mob_apikeyliv: bhrvkw68frbyhu4t
 channel: mobileapp
@@ -81,7 +81,7 @@ login_page:
 searchresults_page:
   URL: "http://www.burton.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12551&catalogId=33052&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 1
   
 checkout_page:
   ignore: true
@@ -117,3 +117,4 @@ random_checkout:
       - [text_field, class, "text address_town", "London"]
       - [text_field, class, "text address_postcode_manual", "SE1 0HS"]
       - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+      - [pause,2]

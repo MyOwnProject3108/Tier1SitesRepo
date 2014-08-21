@@ -48,7 +48,7 @@ random_product:
   expected_recs: 1
   
 random_category:
-  expected_recs: 1
+  expected_recs: 0
   
 random_basket:
   expected_recs: 1

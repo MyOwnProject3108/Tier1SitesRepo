@@ -11,6 +11,20 @@ database_num: 4
 site_id: 219
 integration: standard
 
+
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+categories_to_exclude: ["Magazine"]
+wait_time_per_category_page: 5
+test_all_categories: false
+num_of_reloads_per_category: 1
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':id=> "wrapper_page_content"']
+product_link_filter: ["data-productid", "*"]
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+
 home_page:
   URL: "http://th.dorothyperkins.com/?geoip=home"
   expected_recs: 0
@@ -18,6 +32,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
+  ignore: true
   URL: "http://th.dorothyperkins.com/en/dpth/product/clothing-1584002/dresses-1584223/petite-diamante-2in1-dress-2132864?bi=1&ps=20"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -25,10 +40,19 @@ product_page:
   - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://th.dorothyperkins.com/en/dpth/category/clothing-1584002/dresses-1584223"
+  expected_recs: 0
+  
+      
+random_product:
+  expected_recs: 1
+
+random_category:
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://th.dorothyperkins.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=35099&langId=-1&storeId=13081"
   expected_recs: 4 
   basket_checkout: ["link", ':id => "checkout_submit_bottom"']
@@ -36,6 +60,13 @@ basket_page:
   extra_steps:
     - [pause, 20]  
 
+    
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
+  basket_remove: ["link", ':class => "remove_bag_item"']
+  
+  
 login_page:
   URL: "https://th.dorothyperkins.com/webapp/wcs/stores/servlet/LogonForm?catalogId=35099&storeId=13081&krypto=sL1GNT%2FvNwWYptit8eRIMo2rthXETZZlHvfvrAXs0hP%2FibeBV8saCezmrRkOGCQ1gzotxk%2F07QzE%0A5c5bvHkUSA%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
@@ -49,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 5
   
 checkout_page:
+  ignore: true
   URL: "" 
   expected_recs: 0
   extra_steps:
@@ -64,3 +96,23 @@ checkout_page:
    - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
    - [pause, 20]
+   
+random_checkout:
+  URL: "http://th.dorothyperkins.com/?geoip=home"
+  expected_recs: 0
+  extra_steps:
+   - [link, id, "checkout_submit_bottom"]
+   - [pause, 2]
+   - [link, id, "btn_register"]
+   - [pause, 2]
+   - [select_list, id, "address_title", "Mr"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "0208768789"]
+#  - [p, class, "enter_manual_address"]
+   - [text_field, class, "text address_line_1", "Units 207-211"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "London"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 2]

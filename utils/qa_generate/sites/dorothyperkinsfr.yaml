@@ -11,13 +11,35 @@ database_num: 4
 site_id: 219
 integration: standard
 
+
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+categories_to_exclude: ["Magazine"]
+wait_time_per_category_page: 5
+test_all_categories: false
+num_of_reloads_per_category: 1
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':id=> "wrapper_page_content"']
+product_link_filter: ["data-productid", "*"]
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+
+
 home_page:
   URL: "http://www.dorothyperkins.fr/?geoip=home"
   expected_recs: 0
   login_link: ["link", ':href => "/webapp/wcs/stores/servlet/LogonForm?storeId=13063&catalogId=34068"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
 product_page:
+  ignore: true
   URL: "http://www.dorothyperkins.fr/fr/dpfr/produit/chaussures-695633/chaussures-talons-695684/chaussures-compens%C3%A9es-noires-dp-occasion-2315427?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -25,10 +47,12 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.dorothyperkins.fr/fr/dpfr/cat%C3%A9gorie/v%C3%AAtements-695630/robes-695654"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://www.dorothyperkins.fr/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34068&langId=-2&storeId=13063"
   expected_recs: 4 
   basket_checkout: ["link", ':id => "checkout_submit_bottom"']
@@ -36,7 +60,14 @@ basket_page:
   extra_steps:
     - [pause, 20]  
 
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
+  basket_remove: ["link", ':class => "remove_bag_item"']
+  
+  
 login_page:
+  ignore: true
   URL: "https://www.dorothyperkins.fr/webapp/wcs/stores/servlet/LogonForm?catalogId=34068&storeId=13063&krypto=tLES0XsXm%2F1gRTd22105blzlujkAuyCDmp4dTggdXygPetY77LWxQSYer%2FgQSDVj9Jpt6ylSJTIH%0AG8d%2BvHS3Hw%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -49,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 5
   
 checkout_page:
+  ignore: true
   URL: "" 
   expected_recs: 0
   extra_steps:
@@ -63,3 +95,23 @@ checkout_page:
    - [text_field, class, "text address_town", "London"]
    - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   
+random_checkout:
+  URL: "http://www.dorothyperkins.fr/?geoip=home"
+  expected_recs: 0
+  extra_steps:
+   - [link, id, "checkout_submit_bottom"]
+   - [pause, 2]
+   - [link, id, "btn_register"]
+   - [pause, 2]
+   - [select_list, id, "address_title", "Mme"]
+   - [text_field, id, "address_first_name", "P"]
+   - [text_field, id, "address_surname", "Eerius"]
+   - [text_field, id, "address_main_telephone", "0208768789"]
+#  - [p, class, "enter_manual_address"]
+   - [text_field, class, "text address_line_1", "Units 207-211"]
+   - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+   - [text_field, class, "text address_town", "London"]
+   - [text_field, class, "text address_postcode_manual", "12345"]
+   - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   - [pause, 2]

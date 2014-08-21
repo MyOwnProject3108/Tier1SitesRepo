@@ -11,9 +11,30 @@ database_num: 1
 site_id: 1349
 integration: json
 
+
+# site variables
+show_log: true
+category_menu: ["div", ':class => "mainMenu"']
+categories_to_exclude: ["Catalogue"]
+wait_time_per_category_page: 3
+test_all_categories: false
+num_of_reloads_per_category: 1
+product_links: ["ul", ':class=> "prods prodsFourColumns prodListSearch prodsGrid"'] 
+product_link_filter: ["class", "moredetail"]
+product_options: 
+     - [ul, ':id=> "swatchList_att1"']
+     - [ul, ':id=> "swatchList_att2"']
+     
+      
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 3
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath => "//div[@id=\"addproductbox\"]/input"']
+
+
 home_page:
   URL: "http://www.bonmarche.co.uk"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':href => "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"']
   search_field: ["text_field", ':id => "q"']
 
@@ -25,12 +46,25 @@ product_page:
 category_page:
   URL: "http://www.bonmarche.co.uk/shop-by-product/skirts/icat/skirts/"
   expected_recs: 0
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 1
+  
 
 basket_page:
   URL: "http://www.bonmarche.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=shop&log=22"
   expected_recs: 0
   basket_remove: ["image", ':alt => "Remove"']
-  basket_checkout: ["button", ':class => "button right btCheckout submit"']  
+  basket_checkout: ["button", ':class => "button right btCheckout submit"'] 
+
+random_basket:
+  expected_recs: 1
+  basket_remove: ["image", ':alt => "Remove"']
+  basket_checkout: ["button", ':class => "button right btCheckout submit"'] 
+  
 
 login_page:
   URL: "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"

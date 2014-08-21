@@ -21,7 +21,7 @@ show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
 categories_to_exclude: ["Magazine"]
 wait_time_per_category_page: 5
-test_all_categories: true
+test_all_categories: false
 num_of_reloads_per_category: 1
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':id=> "wrapper_page_content"']

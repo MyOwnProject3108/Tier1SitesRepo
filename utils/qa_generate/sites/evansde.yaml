@@ -11,6 +11,26 @@ database_num: 4
 site_id: 219
 integration: standard
 
+
+# site variables
+show_log: true
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+categories_to_exclude: ["Topshop Magazine","New In","Premium Shoes"]
+wait_time_per_category_page: 3
+test_all_categories: false
+num_of_reloads_per_category: 2
+product_links: ["div", ':id=> "wrapper_page_content"'] 
+product_link_filter: ["data-productid", "*"]
+product_options: 
+      - [select_list, ':id=> "product_size_full"'] 
+      
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
+#out_of_stock_msg: "Sorry, this item is out of stock."
+
+
 home_page:
   URL: "http://www.evansmode.de/?geoip=home"
   expected_recs: 0
@@ -18,6 +38,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
+  ignore: true
   URL: "http://www.evansmode.de/de/evde/produkt/kleidung-912294/kleider-912324/scarlett-jo-2-in-1-sch%C3%B6%C3%9Fchenkleid-schwarz-2318392?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -25,16 +46,28 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.evansmode.de/de/evde/kategorie/kleidung-912294/tops-tuniken-2105037"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://www.evansmode.de/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34082&langId=-3&storeId=13070"
   expected_recs: 4 
   basket_checkout: ["link", ':text => "Zur Kasse"']
   basket_remove: ["link", ':class => "remove_bag_item"']  
 
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+  
 login_page:
+  ignore: true
   URL: "https://www.evansmode.de/webapp/wcs/stores/servlet/LogonForm?catalogId=34082&storeId=13070&krypto=Em4krnn4SpDFAAeZN5seIB7fYO10jgpP5TgdKkiCMYqXBVhY2Y6aWzw%2Bdj8NKSl4NrRrMsyf6sjL%0AOGC3p644Vw%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -47,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 1
   
 checkout_page:
+  ignore: true
   URL: "" 
   expected_recs: 0
   extra_steps:
@@ -61,3 +95,22 @@ checkout_page:
    - [text_field, class, "text address_town", "town"]
    - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   
+random_checkout:
+  URL: "http://www.evansmode.de/?geoip=home"
+  expected_recs: 0
+  extra_steps:
+      - [link, id, "checkout_submit_bottom"]
+      - [pause, 2]
+      - [link, id, "btn_register"]
+      - [pause, 5]
+      - [select_list, id, "address_title", "Herr"]
+      - [text_field, id, "address_first_name", "P"]
+      - [text_field, id, "address_surname", "Eerius"]
+      - [text_field, id, "address_main_telephone", "02033974940"]
+#     - [p, class, "enter_manual_address"]
+      - [text_field, class, "text address_line_1", "Units 207-211"]
+      - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+      - [text_field, class, "text address_town", "London"]
+      - [text_field, class, "text address_postcode_manual", "12345"]
+      - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]

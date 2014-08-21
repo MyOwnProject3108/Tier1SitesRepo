@@ -11,6 +11,26 @@ database_num: 4
 site_id: 219
 integration: standard
 
+
+# site variables
+show_log: true
+category_menu: ["ul", ':id => "nav_catalog_menu"']
+categories_to_exclude: ["Topshop Magazine","New In","Premium Shoes"]
+wait_time_per_category_page: 3
+test_all_categories: false
+num_of_reloads_per_category: 2
+product_links: ["div", ':id=> "wrapper_page_content"'] 
+product_link_filter: ["data-productid", "*"]
+product_options: 
+      - [select_list, ':id=> "product_size_full"'] 
+      
+ignore_cat_tracked_as_other_page: true
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
+#out_of_stock_msg: "Sorry, this item is out of stock."
+
+
 home_page:
   URL: "http://www.evansusa.com/?geoip=home"
   expected_recs: 0
@@ -18,6 +38,7 @@ home_page:
   search_field: ["text_field", ':id => "inp_search_text"']
 
 product_page:
+  ignore: true
   URL: "http://www.evansusa.com/en/evus/product/clothing-942924/dresses-942954/scarlett-jo-black-2-in-1-peplum-dress-2152471?bi=1&ps=20"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
@@ -25,16 +46,28 @@ product_page:
     - [pause, 20]
 
 category_page:
+  ignore: true
   URL: "http://www.evansusa.com/en/evus/category/clothing-942924/dresses-942954"
   expected_recs: 0
 
 basket_page:
+  ignore: true
   URL: "https://www.evansusa.com/webapp/wcs/stores/servlet/OrderItemDisplay?catalogId=34086&langId=-1&storeId=13072"
   expected_recs: 4 
   basket_checkout: ["link", ':id => "checkout_submit_bottom"']
-  basket_remove: ["link", ':class => "remove_bag_item"']  
+  basket_remove: ["link", ':class => "remove_bag_item"']
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1  
 
 login_page:
+  ignore: true
   URL: "https://www.evansusa.com/webapp/wcs/stores/servlet/LogonForm?catalogId=34086&storeId=13072&krypto=S9BNDEagYIb960r1Id1EJpxjhpXx2RJ5AW1q2nkM%2FtN1f7aJdCEUcPswmXH4DT1yGJxeLKSfVzgo%0A43J0q29xhA%3D%3D&ddkey=http:LogonForm"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
@@ -47,6 +80,7 @@ searchresults_page:
   zerosearch_recs: 1
   
 checkout_page:
+  ignore: true
   URL: "" 
   expected_recs: 0
   extra_steps:
@@ -62,3 +96,23 @@ checkout_page:
    - [select_list, id, "shipping_state_select", "Florida"]
    - [text_field, class, "text address_postcode_manual", "12345"]
    - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+   
+random_checkout:
+  URL: "http://euro.evansfashion.com/?geoip=home"
+  expected_recs: 0
+  extra_steps:
+      - [link, id, "checkout_submit_bottom"]
+      - [pause, 2]
+      - [link, id, "btn_register"]
+      - [pause, 5]
+      - [select_list, id, "address_title", "Mr"]
+      - [text_field, id, "address_first_name", "P"]
+      - [text_field, id, "address_surname", "Eerius"]
+      - [text_field, id, "address_main_telephone", "0123456789"]
+#     - [p, class, "enter_manual_address"]
+      - [text_field, class, "text address_line_1", "Units 207-211"]
+      - [text_field, class, "text address_line_2", "30 Great Guilford St"]
+      - [text_field, class, "text address_town", "town"]
+      - [select_list, id, "shipping_state_select", "Florida"]
+      - [text_field, class, "text address_postcode_manual", "12345"]
+      - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
