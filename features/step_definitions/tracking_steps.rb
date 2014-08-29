@@ -158,10 +158,8 @@ def select_product_options
 				plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
 				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if @@show_log
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if @@show_log
-				plog("preselected", "red")
-				#option.links.first.click if option.links.first.exists?
-				option.click #if !option.links.first.exists?
-				plog("selected", "red")
+				option.links.first.click if option.links.first.exists?
+				option.click if !option.links.first.exists?
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
 				product_options.click
