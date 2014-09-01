@@ -441,18 +441,21 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 
 	if !exclude_cat
 		cat_test_response = nil
-		# plog("Checking CATEGORY #{cat_ctr} #{cat_name} : #{cat_url} ...","grey") if @@show_log
+	    plog("Selected CATEGORY is: #{cat_ctr} #{cat_name} : #{cat_url}","grey") if @@show_log
 		cat_test_response = test_category_page(cat_name,cat_url,wait_time_per_category)
 
 		cat_info = cat_test_response.split("|") if cat_test_response != nil
 		if cat_test_response != nil && cat_test_response.include?("SUCCESS")
 			products = @current_page.product_links_element.link_elements
+			
+			if !products
+				fail(PeeriusConfigurationError.new("FAILED :: PRODUCT LINKS NOT FOUND ON CATGEORY PAGE #{cat_info[0]}(#{cat_info[1]}) USING #{@current_page.product_links_element}"))
+			end
 
 			products = get_filtered_product_links(products) 
 
 			if products.length == 0
-				fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]}) using link filter => #{link_filter}"))
-				#break
+				fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]})"))
 			end
 
 			page_info = "Page #{cat_info[3]} of " #if cat_info[3] != 1
