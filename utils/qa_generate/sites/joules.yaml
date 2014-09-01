@@ -51,6 +51,7 @@ category_page:
   expected_recs: 0
   
 product_page:
+ ignore:true
   URL: "http://www.joules.com/Mens-Clothing/Accessories"
   expected_recs: 1
  # add_to_basket_button: ["button", ':class=> "add-to-cart btn-primary"']
@@ -72,7 +73,7 @@ login_page:
   expected_recs: 0
   username_field: ["text_field", ':id=>"j_username"']
   password_field: ["text_field", ':id=>"j_password"']
-  login_submit: ["button", '']  
+  login_submit: ["button", ':class =>"positive"']  
 ####  login_submit: ["button", ':id=>"send2"'] ####
 
 searchresults_page:
