@@ -1,7 +1,7 @@
 <% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
 <% outputName = "cucumber" + (ENV['TEST_ENV_NUMBER'] ? ENV['TEST_ENV_NUMBER'] : "") %>
 <% live_servers = ["pt", "pt1", "pt2"] %>
-<% dev_servers = ["qa1","qa2","test2", "uat", "lander", "mario", "manoj", "tmckiernan", "showcasebe", "tomasz", "sinan", "helene", "gopi"] %>
+<% dev_servers = ["qa1","qa2","test2", "uat", "lander", "kodjo","mario", "manoj", "tmckiernan", "showcasebe", "tomasz", "sinan", "helene", "gopi"] %>
 
 
 <% for server in live_servers %> 
