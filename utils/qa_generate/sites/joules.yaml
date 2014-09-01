@@ -1,0 +1,90 @@
+site_name: joules
+site_id: 407
+database_num: 2
+integration: standard
+pretty_name: Joules
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: kodjo.baah@peerius.com
+password: P@ssw0rd
+zero_search_term: abcd
+valid_search_term: red dress
+
+#### site level variables ####
+show_log: true
+
+category_menu: ["ul", ':id => "nav_main"']
+categories_to_exclude: [""]
+test_all_categories: true
+wait_time_per_category_page: 5
+max_num_of_categories: 10
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+
+product_links: ["ul", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul[1]"'] 
+product_link_filter: ["class","p-name a-center s12 db r clear"] 
+product_options:   
+    - [select_list, ':xpath=> "/html/body/div[2]/div[2]/section/div[3]/form/div[2]/div/div/dl/dd/div/select"']
+                               
+wait_time_per_product_page: 5
+max_num_of_products: 2 
+
+add_to_basket_button: ["button", ':xpath=> "//*[@id=\"addToCartSubmit\"]"']
+
+#### page level config ####
+  
+home_page:
+  URL: "http://www.joules.com/"
+  expected_recs: 0
+  login_link: ["link", ':href=> "https://www.joules.com/login?loginFormType=login"']
+  search_field: ["text_field", ':id => "search"']
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+
+category_page:
+  URL: "http://www.joules.com/Mens-Clothing"
+  expected_recs: 0
+  
+product_page:
+  URL: "http://www.joules.com/Mens-Clothing/Accessories"
+  expected_recs: 1
+ # add_to_basket_button: ["button", ':class=> "add-to-cart btn-primary"']
+  
+
+basket_page:
+  URL: "http://www.alexandalexa.com/checkout/cart/"
+  expected_recs: 1
+  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
+  basket_remove: ["link", ':class => "remove-item"']
+  
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "button btn-proceed-checkout btn-checkout"']
+  basket_remove: ["link", ':class => "remove-item"']
+
+login_page:
+  URL: "https://www.joules.com/login?loginFormType=login"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"j_username"']
+  password_field: ["text_field", ':id=>"j_password"']
+  login_submit: ["button", '']  
+####  login_submit: ["button", ':id=>"send2"'] ####
+
+searchresults_page:
+  URL: "https://www.joules.com/search?text=baby"
+  expected_recs: 0
+  zerosearch_recs: 0
+      
+checkout_page:
+  URL: "http://www.joules.com/cart"
+  expected_recs: 0
+  extra_steps:
+     - [anchor, id, "shipping-btn"]
+     - [pause, 5]
+    
+
