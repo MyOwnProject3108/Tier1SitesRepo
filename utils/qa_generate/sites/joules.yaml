@@ -14,17 +14,23 @@ valid_search_term: red shoes
 #### site level variables ####
 show_log: true
 
-category_menu: ["ul", ':id => "nav_main"']
-categories_to_exclude: [""]
+category_menu: ["div", ':id => "nav_main"']
+categories_to_exclude: ["INSPIRE ME"]
 test_all_categories: true
 wait_time_per_category_page: 5
 max_num_of_categories: 10
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-product_links: ["ul", ':xpath=> "//div[@id=\"product-grid\"]"']
+product_links: ["div", ':xpath=> "//div[@id=\"product-grid\"]"']
 wait_time_per_product_page: 5
 max_num_of_products: 2 
 add_to_basket_button: ["button", ':xpath=> "//*[@id=\"addToCartSubmit\"]"']
+
+
+product_options: 
+     - [select_list, ':xpath=> "/html/body/div[4]/div/div[4]/div[3]/div[4]/div[2]/div[2]/form/ul/li[2]/select"']
+     - [link, ':xpath=> "//div[@class=\"variant_options row\"][1]//ul/li[2]/a"']
+
 
 #### page level config ####
   
@@ -40,35 +46,14 @@ random_product:
 random_category:
   expected_recs: 1
 
-category_page:
-  ignore: true
-  URL: "http://www.joules.com/Mens-Clothing"
-  expected_recs: 0
-  
-product_page:
-  ignore: true
-  URL: "http://www.joules.com/Mens-Clothing/Accessories"
-  expected_recs: 1
- # add_to_basket_button: ["button", ':class=> "add-to-cart btn-primary"']
-  
-
 basket_page:
+  ignore: true
   URL: "http://www.alexandalexa.com/checkout/cart/"
   expected_recs: 1
-  basket_checkout: ["link", ':xpath => "//div[@class=\"row checkout-box\"]/a[2]"']
-  basket_remove: ["link", ':xpath => "//a[starts-with(@id,\"removeAnchor\")]"']
   
 random_basket:
   expected_recs: 1
-  basket_checkout: ["link", ':xpath => "//div[@class=\"row checkout-box\"]/a[2]"']
-  basket_remove: ["link", ':xpath => "//a[starts-with(@id,\"removeAnchor\")]"']
 
-login_page:
-  URL: "https://www.joules.com/login?loginFormType=login"
-  expected_recs: 0
-  username_field: ["text_field", ':id=>"j_username"']
-  password_field: ["text_field", ':id=>"j_password"']
-  login_submit: ["button", ':class =>"positive"']  
 ####  login_submit: ["button", ':id=>"send2"'] ####
 
 searchresults_page:
@@ -76,11 +61,8 @@ searchresults_page:
   expected_recs: 0
   zerosearch_recs: 0
       
-checkout_page:
+random_checkout:
   URL: "http://www.joules.com/cart"
   expected_recs: 0
-  extra_steps:
-     - [anchor, id, "shipping-btn"]
-     - [pause, 5]
-    
 
+    
