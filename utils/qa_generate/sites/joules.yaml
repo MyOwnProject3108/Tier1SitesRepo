@@ -18,12 +18,12 @@ category_menu: ["div", ':id => "nav_main"']
 categories_to_exclude: ["INSPIRE ME"]
 test_all_categories: true
 wait_time_per_category_page: 5
-max_num_of_categories: 10
+max_num_of_categories: 1
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':xpath=> "//div[@id=\"product-grid\"]"']
 wait_time_per_product_page: 5
-max_num_of_products: 2 
+max_num_of_products: 1 
 add_to_basket_button: ["button", ':xpath=> "//*[@id=\"addToCartSubmit\"]"']
 
 
@@ -68,11 +68,23 @@ searchresults_page:
   expected_recs: 1
   zerosearch_recs: 0
       
+### This is to test the product modal box ####
 random_checkout:
   URL: "http://www.joules.com/cart"
   expected_recs: 1
   extra_steps:
-    [button, xpath, "//div[@id=\"cart_popup\"]//div[contains(@class,\"cart-summary\")]/a"]
+    [link, xpath, "//div[@id=\"cart_popup\"]//div[contains(@class,\"cart-summary\")]/a"]
+
+
+random_checkout:
+  URL: "http://www.joules.com/cart"
+  expected_recs: 1
+  extra_steps:
+    - [link, xpath, "//div[@id=\"cart_popup\"]//div[contains(@class,\"cart-summary\")]/a"]
+    - [link, xpath, "//div[contains(@class,\"skin-basket-page\")]//div[contains(@class,\"checkout-box\")]/a[contains(@href,\"/cart/checkout\")]"]
+    - [text_field, id, "j_username", "kodjo.baah@peerius.com"]
+    - [radio, id, "yesForPass"]
+    - [text_field, id, "j_password", "P@ssw0rd"]
 
 random_checkout:
   URL: "http://www.joules.com/cart"
