@@ -67,16 +67,18 @@ random_basket:
 
 searchresults_page:
   URL: "https://www.joules.com/search?text=baby"
-  expected_recs: 1
-  zerosearch_recs: 0
+  expected_recs: 0
+  zerosearch_recs: 1
       
 random_checkout:
   URL: "http://www.joules.com/cart"
-  expected_recs: 1
+  expected_recs: 0
   extra_steps:
  #   - [link, xpath, "//div[@id=\"cart_popup\"]//div[contains(@class,\"cart-summary\")]/a"]
     - [link, xpath, "//div[contains(@class,\"skin-basket-page\")]//div[contains(@class,\"checkout-box\")]/a[contains(@href,\"/cart/checkout\")]"]
+    - [pause, 3]
     - [text_field, id, "j_username", "kodjo.baah@peerius.com"]
     - [radio, id, "yesForPass"]
     - [text_field, id, "j_password", "P@ssw0rd"]
-    
+    - [pause, 3]
+    - [button,xpath,"//*[@id=\"loginCheckoutForm\"]//dl[@id=\"passwordLine\"]//button[contains(@class,\"positive\")]"]    
