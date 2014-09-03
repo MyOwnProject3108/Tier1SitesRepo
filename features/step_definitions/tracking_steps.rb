@@ -117,31 +117,23 @@ def select_product_options
 		#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 		if product_options.exists?
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
-	
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
-				#option = product_options.options[rand(1..product_options.options.length - 1)].text 
 				tries = 1
-				opt_index = rand(1..product_options.options.length - 1)
-				#plog("\tDisabled option => #{product_options.option(:index => opt_index).text} ... #{product_options.option(:index => opt_index).disabled?}","magenta")
+				opt_index = product_options.options.length > 1 ? rand(0..product_options.options.length-1) : 0
 				if product_options.options.length >1 
-					# This is not perfect as we are likley to pick the same option again. Ideally, we could store each selected option that was disabled in an array 
-					# and pick a random one only if it was not picked already. Maybe later.
-					while product_options.option(:index => opt_index).disabled? && tries < product_options.options.length do
-						plog("\tDisabled option => #{product_options.option(:index => opt_index).text} ...","grey") if @@show_log
-						opt_index = rand(1..product_options.options.length - 1)
-						tries = tries + 1
-					end
-					if product_options.option(:index => opt_index).disabled?
-						plog("\tTried #{tries} times. I give up.","red") if @@show_log
-						option_selected = false
-					end
+					options = product_options.options
+					# if there are disabled options, remove them
+					options = options.reject{|opt| opt.disabled?}  
+					# if a product_option_filter is provided, remove options that contain the filter text
+					options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))}[1..-1] if product_option_filter
+					sel_option = options.shuffle.first
+					opt_index = options.length > 1 ? sel_option[:index].to_i : 0
 				end
 				if product_options.disabled? == false 
-					plog("\tSelected option => #{product_options.option(:index => opt_index).text} ...","blue") if @@show_log #&& product_options.visible?
+					plog("\tSelected option => #{sel_option[:text]} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
-					#product_options.when_present.select option 
-					product_options.option(:index => opt_index).when_present.select #if product_options.visible?  #visible option for burton
+					product_options.option(:index =>opt_index).when_present.select #if product_options.visible?  #visible option for burton
 					option_selected = true
 				end
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
