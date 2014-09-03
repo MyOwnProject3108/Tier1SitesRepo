@@ -1,0 +1,85 @@
+site_name: whittard
+site_id: 407
+database_num: 2
+integration: standard
+pretty_name: Whittard
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: kodjo.baah@peerius.com
+password: P@ssw0rd
+zero_search_term: nothing found
+valid_search_term: darjeeling
+
+#### site level variables ####
+show_log: true
+
+out_of_stock_msg: "Sold out online"
+category_menu: ["div", ':id => "nav-top"']
+categories_to_exclude: ["url=>club"]
+test_all_categories: true
+wait_time_per_category_page: 5
+max_num_of_categories: 1
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':xpath=> "//*[@id=\"product-items-content\"]"']
+product_link_filter: ["href", "%?id=%"] 
+wait_time_per_product_page: 5
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "//li[contains(@class,\"prod\")]//a[contains(.,\"Add to Basket\")]"']
+
+
+product_options: 
+     - [select_list, ':id=> "hzmlzzhg"']
+     - [select_list, ':id=> "hzmlzzhh"']
+   
+
+
+#### page level config ####
+  
+home_page:
+  URL: "http://www.whittard.co.uk"
+  expected_recs: 1
+  login_link: ["link", ':href=> "https://www.whittard.co.uk/account"']
+  search_field: ["text_field", ':id => "search"']
+
+login_page:
+  URL: "https://www.whittard.co.uk/account"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"loginemail"']
+  password_field: ["text_field", ':id=>"loginpass"']
+  login_submit: ["button", ':class =>"btn-med login"']    
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+
+basket_page:
+  ignore: true
+  URL: "http://www.whittard.co.uk/cart"
+  expected_recs: 1
+  
+random_basket:
+  expected_recs: 1
+
+####  login_submit: ["button", ':id=>"send2"'] ####
+
+searchresults_page:
+  URL: "http://www.whittard.co.uk/search?searchterm=darjeeling"
+  expected_recs: 0
+  zerosearch_recs: 1
+      
+random_checkout:
+  URL: "http://www.whittard.co.uk/cart"
+  expected_recs: 0
+  extra_steps:
+ #   - [link, xpath, "//div[@id=\"cart_popup\"]//div[contains(@class,\"cart-summary\")]/a"]
+    - [link, xpath, "//div[contains(@class,\"skin-basket-page\")]//div[contains(@class,\"checkout-box\")]/a[contains(@href,\"/cart/checkout\")]"]
+    - [pause, 3]
+    - [text_field, id, "j_username", "kodjo.baah@peerius.com"]
+    - [radio, id, "yesForPass"]
+    - [text_field, id, "j_password", "P@ssw0rd"]
+    - [pause, 3]
+    - [button,xpath,"//*[@id=\"loginCheckoutForm\"]//dl[@id=\"passwordLine\"]//button[contains(@class,\"positive\")]"]    
