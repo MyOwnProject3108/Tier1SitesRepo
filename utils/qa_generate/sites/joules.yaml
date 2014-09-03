@@ -14,7 +14,10 @@ valid_search_term: red shoes
 #### site level variables ####
 show_log: true
 
-out_of_stock_msg: "Sold out online"
+enable_static_test: false
+static_test_prod_url: "http://www.joules.com/Women/Handbags-Purses/Satchel/Womens-Leather-Satchel/Dark-Ruby?id=R_SATCHEL|DKRUBY"
+static_test_cat_url: "http://www.joules.com/Girls-Clothing/Skirts"
+
 category_menu: ["div", ':id => "nav_main"']
 categories_to_exclude: ["url=>inspire-me","url=>writeReview"]
 test_all_categories: true
@@ -28,11 +31,11 @@ wait_time_per_product_page: 5
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':xpath=> "//*[@id=\"addToCartSubmit\"]"']
 
-
 product_options: 
      - [select_list, ':id=> "Size"']
    
-
+product_option_filter:                       
+    - ["option", "text", "%Sold out%"]
 
 #### page level config ####
   
@@ -58,12 +61,9 @@ random_category:
 basket_page:
   ignore: true
   URL: "http://www.joules.com/cart"
-  expected_recs: 1
   
 random_basket:
   expected_recs: 1
-
-####  login_submit: ["button", ':id=>"send2"'] ####
 
 searchresults_page:
   URL: "https://www.joules.com/search?text=baby"
