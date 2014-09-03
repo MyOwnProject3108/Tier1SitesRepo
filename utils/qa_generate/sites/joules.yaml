@@ -8,37 +8,46 @@ has_ranking: no
 needs_SPR: no
 username: kodjo.baah@peerius.com
 password: P@ssw0rd
-zero_search_term: abcd
-valid_search_term: red dress
+zero_search_term: nothing found
+valid_search_term: red shoes
 
 #### site level variables ####
 show_log: true
 
-category_menu: ["ul", ':id => "nav_main"']
-categories_to_exclude: [""]
+out_of_stock_msg: "Sold out online"
+category_menu: ["div", ':id => "nav_main"']
+categories_to_exclude: ["url=>inspire-me","url=>writeReview"]
 test_all_categories: true
 wait_time_per_category_page: 5
-max_num_of_categories: 10
+max_num_of_categories: 1
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-
-product_links: ["ul", ':xpath=> "//div[@id=\"product-list\"]/div[2]/ul[1]"'] 
-product_link_filter: ["class","p-name a-center s12 db r clear"] 
-product_options:   
-    - [select_list, ':xpath=> "/html/body/div[2]/div[2]/section/div[3]/form/div[2]/div/div/dl/dd/div/select"']
-                               
+product_links: ["div", ':xpath=> "//div[@id=\"product-grid\"]"']
+product_link_filter: ["href", "%?id=%"] 
 wait_time_per_product_page: 5
-max_num_of_products: 2 
-
+max_num_of_products: 1 
 add_to_basket_button: ["button", ':xpath=> "//*[@id=\"addToCartSubmit\"]"']
+
+
+product_options: 
+     - [select_list, ':id=> "Size"']
+   
+
 
 #### page level config ####
   
 home_page:
   URL: "http://www.joules.com/"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':href=> "https://www.joules.com/login?loginFormType=login"']
   search_field: ["text_field", ':id => "search"']
+
+login_page:
+  URL: "https://www.joules.com/login?loginFormType=login"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"j_username"']
+  password_field: ["text_field", ':id=>"j_password"']
+  login_submit: ["button", ':class =>"positive"']    
 
 random_product:
   expected_recs: 1
@@ -46,46 +55,30 @@ random_product:
 random_category:
   expected_recs: 0
 
-category_page:
-  URL: "http://www.joules.com/Mens-Clothing"
-  expected_recs: 0
-  
-product_page:
- ignore:true
-  URL: "http://www.joules.com/Mens-Clothing/Accessories"
-  expected_recs: 1
- # add_to_basket_button: ["button", ':class=> "add-to-cart btn-primary"']
-  
-
 basket_page:
-  URL: "http://www.alexandalexa.com/checkout/cart/"
+  ignore: true
+  URL: "http://www.joules.com/cart"
   expected_recs: 1
-  basket_checkout: ["button", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "remove-item"']
   
 random_basket:
   expected_recs: 1
-  basket_checkout: ["link", ':class => "button btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "remove-item"']
 
-login_page:
-  URL: "https://www.joules.com/login?loginFormType=login"
-  expected_recs: 0
-  username_field: ["text_field", ':id=>"j_username"']
-  password_field: ["text_field", ':id=>"j_password"']
-  login_submit: ["button", ':class =>"positive"']  
 ####  login_submit: ["button", ':id=>"send2"'] ####
 
 searchresults_page:
   URL: "https://www.joules.com/search?text=baby"
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 1
       
-checkout_page:
+random_checkout:
   URL: "http://www.joules.com/cart"
   expected_recs: 0
   extra_steps:
-     - [anchor, id, "shipping-btn"]
-     - [pause, 5]
-    
-
+ #   - [link, xpath, "//div[@id=\"cart_popup\"]//div[contains(@class,\"cart-summary\")]/a"]
+    - [link, xpath, "//div[contains(@class,\"skin-basket-page\")]//div[contains(@class,\"checkout-box\")]/a[contains(@href,\"/cart/checkout\")]"]
+    - [pause, 3]
+    - [text_field, id, "j_username", "kodjo.baah@peerius.com"]
+    - [radio, id, "yesForPass"]
+    - [text_field, id, "j_password", "P@ssw0rd"]
+    - [pause, 3]
+    - [button,xpath,"//*[@id=\"loginCheckoutForm\"]//dl[@id=\"passwordLine\"]//button[contains(@class,\"positive\")]"]    
