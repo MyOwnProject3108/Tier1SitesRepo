@@ -14,8 +14,8 @@ valid_search_term: red shoes
 #### site level variables ####
 show_log: true
 
-enable_static_test: false
-static_test_prod_url: "http://www.joules.com/Women/Handbags-Purses/Satchel/Womens-Leather-Satchel/Dark-Ruby?id=R_SATCHEL|DKRUBY"
+enable_static_test: true
+static_test_prod_url: "http://www.joules.com/Girls/Jackets-Coats/Jnr-Fearne/Girls-Parka/Newt?id=R_JNRFEARNE|GREEN"
 static_test_cat_url: "http://www.joules.com/Girls-Clothing/Skirts"
 
 category_menu: ["div", ':id => "nav_main"']
@@ -81,4 +81,24 @@ random_checkout:
     - [radio, id, "yesForPass"]
     - [text_field, id, "j_password", "P@ssw0rd"]
     - [pause, 3]
-    - [button,xpath,"//*[@id=\"loginCheckoutForm\"]//dl[@id=\"passwordLine\"]//button[contains(@class,\"positive\")]"]    
+    - [button,xpath,"//*[@id=\"loginCheckoutForm\"]//dl[@id=\"passwordLine\"]//button[contains(@class,\"positive\")]"]
+    - [pause,1] 
+    - [radio, id, "homeDeliveryRadioId"] 
+    - [pause, 5]
+    - [select_list, id, "deliveryAddress-address.title", "Mr"]  
+    - [text_field, id, "deliveryAddress-address.firstName", "peerius"]
+    - [text_field, id, "deliveryAddress-address.surname", "peerius"]
+    - [text_field, id, "deliveryAddress-address.telephone", "07538670987"]
+    - [text_field, id, "deliveryAddress-qasPostCode", "sw3 3py"]
+    - [select_list, id, "deliveryAddress-address.country", "United Kingdom"]
+    - [button,id,"deliveryAddress-searchButton"]
+    - [pause,2]
+    - [select_list, id, "deliveryAddress-multiple_addresses_select", "101 Samuel Lewis Trust Dwellings, Ixworth Place, London, SW3 3PY"]
+    - [pause,2]
+    - [button,id,"delivery_address_continue_buttonHD"]
+
+
+    
+
+    
+    
