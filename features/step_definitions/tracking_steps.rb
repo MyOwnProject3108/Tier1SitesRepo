@@ -121,13 +121,13 @@ def select_product_options
 			when product_options.is_a?(PageObject::Elements::SelectList)
 				options = product_options.options
 				# if there are disabled options, remove them
-				options = options.reject{|opt| opt.disabled?} if options.length >1 
+				#options = options.reject{|opt| opt.disabled?} if options.length >1 
 				# if a product_option_filter is provided, remove options that contain the filter text
 				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))}[1..-1] if options.length >1 && product_option_filter
 				sel_option = options.shuffle.first
 				opt_index = options.length > 1 ? sel_option[:index].to_i : 0
 				if product_options.disabled? == false 
-					plog("\tSelected option => #{sel_option[:text]} ...","blue") if @@show_log #&& product_options.visible?
+					plog("\tSelected option => #{sel_option.text} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
 					product_options.option(:index =>opt_index).when_present.select #if product_options.visible?  #visible option for burton
 					option_selected = true
