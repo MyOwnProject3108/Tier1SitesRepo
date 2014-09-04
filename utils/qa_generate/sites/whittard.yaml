@@ -1,5 +1,5 @@
 site_name: whittard
-site_id: 407
+site_id: 1265
 database_num: 2
 integration: standard
 pretty_name: Whittard
@@ -22,7 +22,7 @@ wait_time_per_category_page: 5
 max_num_of_categories: 1
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: false
-product_links: ["ol", ':xpath=> "//li[contains(@class,\"product-type\") or contains(@class,\"prod\")]/parent::ol"']
+product_links: ["div", ':id=> "main-content"']
 product_link_filter: ["class","open-quickview"] 
 wait_time_per_product_page: 5
 max_num_of_products: 1 
