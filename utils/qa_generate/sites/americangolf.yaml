@@ -1,0 +1,63 @@
+site_name: americangolf
+site_id: 305
+database_num: 2
+integration: standard
+pretty_name: Americangolf
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: kodjo.baah@peerius.com
+password: P@ssw0rd
+zero_search_term: nothing found
+valid_search_term: red shoes
+
+#### site level variables ####
+show_log: true
+
+category_menu: ["div", ':id => "navigation"']
+categories_to_exclude: ["url=>agrackets","url=>pro-golf-advice"]
+test_all_categories: true
+wait_time_per_category_page: 5
+max_num_of_categories: 1
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':xpath=> "//div[contains(@class,\"search-result-content\")]"']
+product_link_filter: ["img", "*"] 
+wait_time_per_product_page: 5
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':xpath=> "//*[@id=\"addToCartSubmit\"]"']
+
+product_options: 
+     - [select_list, ':id=> "va-hand"']
+     - [select_list, ':id=> "va-shafttype"']
+     - [select_list, ':id=> "va-flex"']
+   
+
+#### page level config ####
+  
+home_page:
+  URL: "http://americangolf.co.uk"
+  expected_recs: 1
+  login_link: ["link", ':href=> "https://americangolf.co.uk/account-edit"']
+  search_field: ["text_field", ':id => "search"']
+
+login_page:
+  URL: "https://www.joules.com/login?loginFormType=login"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"dwfrm_login_username"']
+  password_field: ["text_field", ':id=>"dwfrm_login_password"']
+  login_submit: ["button", ':class =>"login-button button-small"']    
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+
+basket_page:
+  ignore: true
+  URL: "https://americangolf.co.uk/shopping-cart"
+  
+random_basket:
+  expected_recs: 1
+
