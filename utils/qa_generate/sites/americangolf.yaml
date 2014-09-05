@@ -9,7 +9,7 @@ needs_SPR: no
 username: kodjo.baah@peerius.com
 password: P@ssw0rd
 zero_search_term: nothing found
-valid_search_term: red shoes
+valid_search_term: clubs
 
 #### site level variables ####
 show_log: true
@@ -37,7 +37,7 @@ product_options:
   
 home_page:
   URL: "http://americangolf.co.uk"
-  expected_recs: 1
+  expected_recs: 0
   login_link: ["link", ':href=> "https://americangolf.co.uk/account-edit"']
   search_field: ["text_field", ':id => "search"']
 
