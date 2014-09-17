@@ -32,7 +32,7 @@ add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenb
 
 home_page:
   URL: "http://uk.tommy.com/"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':text => "Login"']
   search_field: ["text_field", ':id => "searchinput"']
   
