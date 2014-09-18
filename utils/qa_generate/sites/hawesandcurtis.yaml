@@ -1,0 +1,102 @@
+site_name: hawesandcurtis
+pretty_name: HawesandCurtis
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: vinod.sathapathi@peerius.com
+password: Pa55word
+zero_search_term: toy
+valid_search_term: black shirt
+database_num: 7
+#apikey: rye23sdyu342s
+mob_apikeyliv: rye23sdyu342su4t
+channel: mobileapp
+site_id: 413
+integration: standard
+client_tier: tier1
+
+
+# site variables
+show_log: true
+category_menu: ["ul", ':class => "level-0"']
+categories_to_exclude: ["Size Guide","Blog"]
+wait_time_per_category_page: 5
+test_all_categories: true
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["ul", ':id=> "product-listing"'] 
+#product_link_filter: ["href", "%?id=%"]
+product_options: 
+      - [select_list, ':id=> "InventoryProduct"']
+      
+wait_time_per_product_page: 5
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':id=> "add-to-basket"']
+
+
+        
+#### page level config ####
+
+home_page:
+  URL: "http://www.hawesandcurtis.co.uk/"
+  expected_recs: 0
+  login_link: ["link", ':href => "/account/myaccount"']
+  search_field: ["text_field", ':name => "q"']
+
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+product_page:
+  ignore: true
+  URL: "http://www.hawesandcurtis.co.uk/mens_purple_and_orange_printed_paisley_handkerchief_100percent_silk-harsm008-k15"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id=> "add-to-basket"']
+  extra_steps:
+    - [pause, 2]
+
+basket_page:
+  ignore: true
+  URL: "http://www.hawesandcurtis.co.uk/checkout/shoppingbasket"
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "btn blueBtn right"']
+  basket_remove: ["link", ':class => "remove"']
+  
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "btn blueBtn right"']
+  basket_remove: ["link", ':class => "remove"']
+  
+
+login_page:
+  ignore: true
+  URL: "https://secure.hawesandcurtis.com/checkout/welcome?s=f973e17c-bf02-4805-b870-f35206952d9e"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"EmailAddress"']
+  password_field: ["text_field", ':id=>"Password"']
+  login_submit:   ["button", ':id=>"/html/body/div[1]/section/section/section[1]/form/input[2]"']
+
+searchresults_page:
+  URL: "https://secure.hawesandcurtis.com/search?q=toy"
+  expected_recs: 1
+  zerosearch_recs: 1
+
+checkout_page:
+  ignore: true
+  URL: "https://secure.hawesandcurtis.com/checkout/delivery"
+  expected_recs: 0
+  
+    
+random_checkout:
+  URL: "https://secure.hawesandcurtis.com/checkout/delivery"
+  expected_recs: 0
+  extra_steps:
+    - [link, class, "btn blueBtn right"]
+    - [pause, 2]
+    - [text_field, id, "GuestEmailAddress", "webtest@mailinator.com", "generate_email"]
+    - [button, xpath, "/html/body/div[1]/section/section/section[2]/form/input[3]"]
+    - [pause, 2]
+    
+  
