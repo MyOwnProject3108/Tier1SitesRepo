@@ -1,0 +1,66 @@
+site_name: toppstiles 
+pretty_name: toppstiles
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: peertest@yahoo.com
+password: Pass1234
+zero_search_term: dvd
+valid_search_term: mocha
+database_num: 5
+channel: web 
+site_id: 881
+integration: json
+
+home_page:
+  URL: "http://www.toppstiles.co.uk/"
+  login_link: ["link", ':title => "My Account"']
+  search_field: ["text_field", ':id => "ps"']
+  expected_recs: 0
+ 
+category_page:
+  URL: "http://www.toppstiles.co.uk/section1157/page1/kitchen-tiles/"
+  expected_recs: 0
+ 
+product_page:
+  URL: "http://www.toppstiles.co.uk/"
+  expected_recs: 1
+
+basket_page:
+  URL: "http://www.toppstiles.co.uk/e360/s_basket_view_basket.asp"
+  basket_checkout: ["image", ':alt => "Secure Checkout"']
+  basket_remove: ["image", ':alt => "Delete"']
+  expected_recs: 1
+
+login_page:
+  URL: "https://www.toppstiles.co.uk/youraccount_login.asp"
+  username_field: ["text_field", ':id=>"str_username"']
+  password_field: ["text_field", ':id=>"str_password"']
+  login_submit: ["button", ':value =>"Login"']
+  expected_recs: 0
+  
+searchresults_page:
+  URL: "https://www.toppstiles.co.uk/search_results.asp?s=dscdv&n=1"
+  expected_recs: 3
+  zerosearch_recs: 3
+
+checkout_page:
+  URL: "https://www.toppstiles.co.uk/search_results.asp?s=dscdv&n=1"
+  extra_steps:
+    - [text_field, id, "input_username", "peertest@yahoo.com"]
+    - [text_field, id, "input_password", "Pass1234"]
+    - [image, alt, "Login"]
+    - [radio, name, "rdoMethod"]
+    - [select_list, id, "selPostage", "10 Days: £0.00"]
+    - [text_field, id, "txtPostcode", "SE1 0HS"]
+    - [image, alt, "Lookup address"]
+    - [select_list, id, "selPostage", "SE1 0HS     16 Great Guildford Street, LONDON"]
+    - [select_list, id, "lstResultsStore", "I don't mind"]
+    - [image, alt, "Continue"]
+    - [text_field, id, "dfirstname", "test"]
+    - [text_field, id, "dlastname", "test"]
+    - [select_list, id, "selStoreVisitBeforePurchase", "Yes"]
+    - [image, alt, "Continue"]
+  
+  
+
