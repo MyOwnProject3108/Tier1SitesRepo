@@ -15,6 +15,10 @@ client_tier: tier1
 #### site level variables ####
 show_log: true
 
+enable_static_test: true
+static_test_prod_url: "http://www.superdry.com/mens/t-shirts/details/47457/icarus-limited-t-shirt"
+static_test_cat_url: "http://www.superdry.com/womens/dresses"
+
 category_menu: ["div", ':class => "main-menu"']
 categories_to_exclude: ["menuitem9999"]
 test_all_categories: false
@@ -26,9 +30,9 @@ ignore_cat_tracked_as_other_page: true
 product_links: ["ul", ':class => "grid4"'] 
 product_link_filter: ["rel", "product"]
 product_options: 
-    - [ul, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/ul"']
-product_options_preselect:
-    - [span, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/span[1]"']
+    - [select_list, ':id=> "product_id"']
+#product_options_preselect:
+ #   - [span, ':xpath=> "//form[@id=\"add-to-bag\"]/div[1]/div[1]/span[1]"']
                                
 wait_time_per_product_page: 5
 max_num_of_products: 1

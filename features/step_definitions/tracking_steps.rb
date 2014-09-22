@@ -100,9 +100,13 @@ def test_random_product_page_and_add_to_basket_tracking(add_to_basket)
 	cat_ctr = 1
   	while cat_ctr <= num_categories
   		category = categories[rand(0..categories.length - 1)]
-  		cat_name = category[0]
-		cat_url = category[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_cat_url == "" #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
-		cat_url = @current_page.get_static_test_cat_url if @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != ""
+  		
+		#cat_url = category[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_cat_url == "" #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
+		#cat_url = @current_page.get_static_test_cat_url if @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != ""
+		is_static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != nil ? true : false
+		cat_name = is_static_test_enabled && @current_page.get_static_test_cat_url != nil ? "static_category" : category[0]
+		cat_url = is_static_test_enabled && @current_page.get_static_test_cat_url != nil ? @current_page.get_static_test_cat_url : category[1]
+		
 		cat_ctr = test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, add_to_basket)
   	end
     test_pass.should == true if ENV['DEBUG'] 
@@ -114,8 +118,8 @@ def select_product_options
 	while x <= @current_page.get_num_of_product_options do
 		product_options = eval('@current_page.product_option'+x.to_s+'_element')
 		product_option_filter = @current_page.get_product_option_filter[x-1] if @current_page.get_product_option_filter.length > x-1
-		#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 		if product_options.exists?
+		#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
@@ -141,13 +145,24 @@ def select_product_options
 				option = prod_links[rand(0..prod_links.length - 1)]
 				option.click
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
-				product_options_preselect.click if @current_page.has_product_options_preselect
+				product_options_preselect.when_present.click if @current_page.has_product_options_preselect
 				option = product_options.lis[rand(1..product_options.lis.length - 1)] 
 				plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
 				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if @@show_log
 				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if @@show_log
-				option.links.first.click if option.links.first.exists?
-				option.click if !option.links.first.exists?
+				#if option.links.first.exists?
+				#plog(option.links.first.exists?, "yellow")
+				#	option.links.first.click if !option.links.first.is_a?(PageObject::Elements::Span)
+				#	option.click if option.links.first.is_a?(PageObject::Elements::Span)
+				#else
+				#	option.click
+				#end
+				#option.click
+				begin
+				  option.click
+				  rescue Watir::Exception::UnknownObjectException
+				    option.links.first.click
+  				end
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
 				product_options.click
@@ -202,12 +217,10 @@ def test_random_category_or_all_category_tracking(test_all_categories)
   	while cat_ctr < num_categories  
   		category = categories[cat_ctr] if test_all_categories
 		category = categories[rand(0..categories.length - 1)] if !test_all_categories
-		cat_name = category[0]
-		#cat_url = category[1]
-		is_static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != nil && !test_all_categories ? true : false
+		is_static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != "" && !test_all_categories ? true : false
+		cat_name = is_static_test_enabled ? "" : category[0]
 		cat_url = is_static_test_enabled ? @current_page.get_static_test_cat_url : category[1] 
-		plog("STATIC TEST ENABLED : Testing hard-coded category => #{cat_name} : #{cat_url} ...","grey") if @@show_log 
-		
+		plog("STATIC TEST enabled for category => #{cat_url} ...","grey") if @@show_log && is_static_test_enabled && cat_ctr==0
  		exclude_cat = false
 		if (@current_page.get_categories_to_exclude.length > 0)
 			#cats_to_exclude = @current_page.get_categories_to_exclude*","
@@ -353,7 +366,7 @@ def get_category_page_with_filter(cat_name, cat_url)
 		end
 		
 	end
-    plog("\tCATEGORY #{cat_name} :: #{cat_url} :: has a total of #{total_products} products","grey") if @@show_log && has_more_pages
+    plog("CATEGORY #{cat_name} :: #{cat_url} :: has a total of #{total_products} products","grey") if @@show_log && has_more_pages
 	cat_url = cat_url + paging_url_filter
 	return [cat_url, page_num]
 
@@ -426,11 +439,12 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 	cat_info = Array.new
 
 	exclude_cat = false
-	exclude_cat = should_exclude_category(cat_name,cat_url) if @current_page.get_categories_to_exclude.length > 0
+	exclude_cat = should_exclude_category(cat_name,cat_url) if @current_page.get_categories_to_exclude.length > 0 #&& !@current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != ""
 
 	if !exclude_cat
 		cat_test_response = nil
-	    plog("Selected CATEGORY is: #{cat_ctr} #{cat_name} : #{cat_url}","grey") if @@show_log
+		plog("STATIC TEST enabled for category => #{cat_url} ...","grey") if @@show_log && @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != nil && cat_ctr==1
+	    plog("SELECTED CATEGORY is: #{cat_ctr} #{cat_name} : #{cat_url}","grey") if @@show_log && !@current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != ""
 		cat_test_response = test_category_page(cat_name,cat_url,wait_time_per_category)
 
 		cat_info = cat_test_response.split("|") if cat_test_response != nil
@@ -452,9 +466,10 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 			prod_ctr = 1
 			while prod_ctr <= num_products
 				product = products[rand(0..products.length - 1)]
-				prod_name = product[0]
+				prod_name = @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != "" ? "static_product" : product[0]
 				prod_url = product[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_prod_url == ""
 				prod_url = @current_page.get_static_test_prod_url if @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != ""
+				plog("STATIC TEST enabled for product => #{prod_url} ...","grey") if @@show_log && @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != "" && prod_ctr==1
 
 				exclude_prod = false
 				if (@current_page.get_product_keywords_to_exclude.length > 0)

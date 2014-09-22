@@ -17,7 +17,7 @@ valid_search_term: dvd
 # or for troubleshooting specific scenarios. enable_static_test needs to be set to true for the override to work.
 enable_static_test: false
 static_test_prod_url: "http://showcase.peerius.com/index.php/10455858.html"
-static_test_cat_url: ""
+static_test_cat_url: "http://showcase.peerius.com/index.php/entertainment/blu-ray.html"
 
 #### site level variables ####
 show_log: true
