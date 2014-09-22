@@ -11,27 +11,43 @@ database_num: 1
 site_id: 1339
 integration: standard
 
+enable_static_test: true
+static_test_prod_url: "http://www.jaeger.co.uk/julianne-tote/790015J.html?dwvar_790015J_color=00100&start=1&dwvar_790015J_size=ITM&cgid=accessories-bags"
+static_test_cat_url: "http://www.jaeger.co.uk/accessories/handbags-bags"
+
+
 # site variables
-category_menu: ["div", ':id => "navigation"']
-categories_to_exclude: ["New in","New In"]
+category_menu: ["ul", ':class => "sf-menu sf-js-enabled"']
+categories_to_exclude: ["Boutique","The Journal"]
 wait_time_per_category_page: 3
 test_all_categories: false
+show_log: true
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':class=> "productlisting productlisting2"'] 
+product_options: 
+    - [ul, ":xpath=> '/html/body/div[1]/div[6]/div[2]/div/div[2]/form/div[1]/div[7]/div[2]/div[4]/div/ul'"]
+    #- [ul, ":xpath=> '/html/body/div[1]/div[6]/div[2]/div/div[2]/form/div[1]/div[12]/div/div[1]/div[1]/ul'"]
+      
+product_options_preselect: 
+     - [a, ":xpath=> '//div[@id=\"pdpMain\"]/form/div[1]/div[7]/div[2]/div[2]/div[1]/a[2]'"]
+    # - [a, ":xpath=> '/html/body/div[1]/div[6]/div[2]/div/div[2]/form/div[1]/div[12]/div/div[1]/div[1]/a[2]'"]      
+      
+wait_time_per_product_page: 5
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':id=> "addtobag"']
+
+
 
 home_page:
-  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
+  URL: "http://www.jaeger.co.uk/"
   expected_recs: 0
  #login_link: ["link", ':class => "myAcc"']
   search_field: ["text_field", ':id => "searchinput"']
- # extra_steps:
-  # - [a, text, "MY ACCOUNT"]
-#   - [text_field, id, "dwfrm_login_username", webtest@mailinator.com]
- #  - [text_field, id, "dwfrm_login_password", webtest123]
-#   - [pause,5]
-   #- [button, id, "submit"]
-   #- [pause,30]
+
 
 product_page:
-  URL: "http://www.jaeger.co.uk/Billfold%20Wallet/320024G,en_GB,pd.html?dwvar_320024G_color=07500&dwvar_320024G_size=ITM&start=34&cgid=men-accessories"
+  URL: "http://www.jaeger.co.uk/starlight-print-edie-dress/630186J.html?start=4&dwvar_630186J_color=75500&cgid=women-dresses&dwvar_630186J_size=6"
   expected_recs: 1 
   add_to_basket_button: ["button", ':id=> "addtobag"']
   extra_steps:      
@@ -42,17 +58,27 @@ product_page:
     - [pause,10]
 
 category_page:
-  URL: "http://www.jaeger.co.uk/women-jackets/women-jackets,en_GB,sc.html"
+  URL: "http://www.jaeger.co.uk/womens/dresses"
   expected_recs: 0 
 
+random_product:
+  expected_recs: 1
+  
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+  
 basket_page:
-  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Cart-Show"
+  URL: "http://www.jaeger.co.uk/cart"
   expected_recs: 1  
-  basket_checkout: ["link", ':class => "abtnSecurechkout"']
+  basket_checkout: ["link", ':xpath => "/html/body/div[1]/div[6]/div[2]/div[1]/div[1]/div[5]/div[1]/form/fieldset/div[3]/a"']
   basket_remove: ["button", ':class => "textbutton remove-btn"']
 
 login_page:
-  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Default-Start"
+  URL: "https://www.jaeger.co.uk/login"
   expected_recs: 0 
   username_field: ["text_field", ':id=>"dwfrm_login_username"']
   password_field: ["text_field", ':id=>"dwfrm_login_password"']  
@@ -60,7 +86,7 @@ login_page:
 
 searchresults_page:
   URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Search-Show?q=coats"
-  expected_recs: 0
+  expected_recs: 1
   zerosearch_recs: 1
 #  custom_tracking_test: |
 #   Given I am on the jaeger home page
@@ -74,7 +100,9 @@ searchresults_page:
 checkout_page:
   URL: ""
   expected_recs: 0   
-  extra_steps:      
+  extra_steps: 
+    - [link, class, "abtnSecurechkout"]
+    - [pause, 2]  
     - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
     - [button, id, "isExistingCustomer"]
     - [text_field, id, "dwfrm_login_password", "webtest123"]
@@ -95,6 +123,34 @@ checkout_page:
     - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/ul[1]/li[4]/a[1]"]
     - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
     - [button, id, "checkoutButton"]
+    
+random_checkout:
+  URL: "https://www.jaeger.co.uk/checkout"
+  expected_recs: 0
+  extra_steps: 
+    - [link, class, "abtnSecurechkout"]
+    - [pause, 5]
+    - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
+    - [button, id, "isExistingCustomer"]
+    - [text_field, id, "dwfrm_login_password", "webtest123"]
+    - [button, id, "continueStepABtn"]
+    - [pause,5]
+    - [button, id, "isdelivertoaddress"]
+    - [button, id, "checkoutButton"]
+    - [pause,10]
+    - [button, class, "buttonblack continuecheckout buttonPrimary"]
+    - [text_field, id, "paymentmethods_creditcard_owner", "Peertest"]
+    - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
+    - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
+    - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
+    - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[2]/div[1]/div[1]/a[1]"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[2]/div[1]/div[1]/ul[1]/li[2]/a[1]"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/a[1]"]
+    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/ul[1]/li[4]/a[1]"]
+    - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
+    - [button, id, "checkoutButton"]    
+
 
     
 
