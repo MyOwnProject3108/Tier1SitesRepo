@@ -2,7 +2,7 @@ site_name: gant
 pretty_name: gant
 has_content: no
 has_ranking: no
-needs_SPR: no
+needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: toy
@@ -42,7 +42,7 @@ add_to_basket_button: ["button", ':class=> "button cta"']
 
 home_page:
   URL: "http://www.gant.co.uk/"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':href => "https://www.gant.co.uk/signin"']
   search_field: ["text_field", ':id => "search-text"']
   
