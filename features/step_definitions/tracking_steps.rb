@@ -151,7 +151,7 @@ def select_product_options
 				options = product_options.lis
 				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
 				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
-				option = options[rand(0..options.length - 1)] 
+				option = options.length > 1 ? options[1..-1].shuffle.first : options.shuffle.first  #options[rand(1..options.length - 1)] 
 				opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
 				plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
 				plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
