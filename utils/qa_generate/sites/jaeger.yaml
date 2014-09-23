@@ -57,6 +57,7 @@ product_page:
     - [pause,10]
 
 category_page:
+  ignore: true
   URL: "http://www.jaeger.co.uk/womens/dresses"
   expected_recs: 0 
 
@@ -71,12 +72,14 @@ random_basket:
   expected_recs: 1
   
 basket_page:
+  ignore: true
   URL: "http://www.jaeger.co.uk/cart"
   expected_recs: 1  
   basket_checkout: ["link", ':xpath => "/html/body/div[1]/div[6]/div[2]/div[1]/div[1]/div[5]/div[1]/form/fieldset/div[3]/a"']
   basket_remove: ["button", ':class => "textbutton remove-btn"']
 
 login_page:
+  ignore: true
   URL: "https://www.jaeger.co.uk/login"
   expected_recs: 0 
   username_field: ["text_field", ':id=>"dwfrm_login_username"']
@@ -97,6 +100,7 @@ searchresults_page:
 #    And the debug info should show no SMART-recs
   
 checkout_page:
+  ignore: true
   URL: ""
   expected_recs: 0   
   extra_steps: 
