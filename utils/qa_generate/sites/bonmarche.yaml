@@ -19,11 +19,12 @@ static_test_cat_url: "http://www.bonmarche.co.uk/shop-by-product/skirts/icat/ski
 show_log: true
 
 category_menu: ["div", ':class => "mainMenu"']
-categories_to_exclude: ["Catalogue"]
+categories_to_exclude: ["Catalogue", "Collections", "Shop by Product", "Ann Harvey"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 1
-product_links: ["ul", ':class=> "prods prodsFourColumns prodListSearch prodsGrid"'] 
+#product_links: ["ul", ':class=> "prods prodsFourColumns prodListSearch prodsGrid"']
+product_links: ["ul", ':xpath=> "//div[@id=\"searchResults\"]/div[1]/ul"']
 product_link_filter: ["class", "moredetail"]
 product_options: 
      - [ul, ':id=> "swatchList_att1"']
@@ -62,8 +63,8 @@ login_page:
 
 searchresults_page:
   URL: "https://www.bonmarche.co.uk/search?categoryPathRefs=shop&q=scarf"
-  expected_recs: 0
-  zerosearch_recs: 0
+  expected_recs: 1
+  zerosearch_recs: 1
 
 checkout_page:
   URL: "https://www.bonmarche.co.uk/bin/venda"

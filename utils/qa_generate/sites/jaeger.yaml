@@ -11,7 +11,7 @@ database_num: 1
 site_id: 1339
 integration: standard
 
-enable_static_test: false
+enable_static_test: true
 static_test_prod_url: "http://www.jaeger.co.uk/julianne-tote/790015J.html?dwvar_790015J_color=00100&start=1&dwvar_790015J_size=ITM&cgid=accessories-bags"
 static_test_cat_url: "http://www.jaeger.co.uk/accessories/handbags-bags"
 
@@ -46,6 +46,7 @@ home_page:
 
 
 product_page:
+  ignore: true
   URL: "http://www.jaeger.co.uk/starlight-print-edie-dress/630186J.html?start=4&dwvar_630186J_color=75500&cgid=women-dresses&dwvar_630186J_size=6"
   expected_recs: 1 
   add_to_basket_button: ["button", ':id=> "addtobag"']
@@ -90,14 +91,6 @@ searchresults_page:
   URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Search-Show?q=coats"
   expected_recs: 1
   zerosearch_recs: 1
-#  custom_tracking_test: |
-#   Given I am on the jaeger home page
-#    And I click on the li with class "searchset"
-#    And I click on the div with title "SEARCH"
-#    And I pause for 6 seconds
-#    When I search for "coats"
-#    Then it should be tracked as a search results page
-#    And the debug info should show no SMART-recs
   
 checkout_page:
   ignore: true
