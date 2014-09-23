@@ -118,8 +118,9 @@ def select_product_options
 	while x <= @current_page.get_num_of_product_options do
 		product_options = eval('@current_page.product_option'+x.to_s+'_element')
 		product_option_filter = @current_page.get_product_option_filter[x-1] if @current_page.get_product_option_filter.length > x-1
+		#product_options_link_depth = @current_page.get_product_option_link_depth[x] #if the actual clickable element is located one or more levels deeper than the containing element
 		if product_options.exists?
-		#plog("LIST IS A #{product_options.class}","blue") if @@show_log
+			#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
 			case 
 			when product_options.is_a?(PageObject::Elements::SelectList)
@@ -127,7 +128,8 @@ def select_product_options
 				# if there are disabled options, remove them
 				options = options.reject{|opt| opt.attribute("disabled") } if options.length >1 
 				# if a product_option_filter is provided, remove options that contain the filter text
-				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && product_option_filter
+				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
+				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
 				sel_option = options.length > 1 ? options[1..-1].shuffle.first : options.shuffle.first 
 				opt_index = options.length > 1 ? sel_option.index : 0
 				if product_options.disabled? == false 
@@ -146,23 +148,20 @@ def select_product_options
 				option.click
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
 				product_options_preselect.when_present.click if @current_page.has_product_options_preselect
-				option = product_options.lis[rand(1..product_options.lis.length - 1)] 
+				options = product_options.lis
+				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
+				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
+				option = options[rand(0..options.length - 1)] 
+				opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
 				plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
-				plog("\tSelected option => #{strip_tags(option.html)}","magenta") if @@show_log
-				#plog("\tPre-selected => #{product_options_preselect.html.scan(/<span[^>]*?>(.*?)<\/span>/i).flatten.join(" ")}","magenta") if @@show_log
-				#if option.links.first.exists?
-				#plog(option.links.first.exists?, "yellow")
-				#	option.links.first.click if !option.links.first.is_a?(PageObject::Elements::Span)
-				#	option.click if option.links.first.is_a?(PageObject::Elements::Span)
-				#else
-				#	option.click
-				#end
-				#option.click
+				plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
 				begin
-				  option.click
-				  rescue Watir::Exception::UnknownObjectException
-				    option.links.first.click
+					option.links.first.click
+				rescue 
+					option.click
+					plog("\tException : option.links.first.click did not work - so tried option.click instead","grey")
   				end
+				
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
 				product_options.click

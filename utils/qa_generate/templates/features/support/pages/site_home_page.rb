@@ -142,6 +142,18 @@ module <%= site["site_name"].capitalize %>
 		<% end %>		
 		end
 		
+		#def get_product_option_link_depth
+		#		<% if site["product_options"]%>
+		#		  product_options_link_depths = Array.new
+		#		  <% site["product_options"].each_with_index do |option, idx| %>		
+		#			product_options_link_depths[<%=idx+1%>]= <%= (option[2]? option[2] : 0 )%>
+		#		  <% end %>
+		#			return product_options_link_depths
+		#		<% else %>
+		#			return nil
+		#		<% end %>	
+		#end
+		
 		def get_product_keywords_to_exclude
 		<% if site["product_keywords_to_exclude"] %>		
 			return <%= site["product_keywords_to_exclude"] %>

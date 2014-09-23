@@ -15,7 +15,7 @@ client_tier: tier1
 #### site level variables ####
 show_log: true
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.superdry.com/mens/t-shirts/details/47457/icarus-limited-t-shirt"
 static_test_cat_url: "http://www.superdry.com/womens/dresses"
 
