@@ -148,20 +148,21 @@ def select_product_options
 				option.click
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
 				product_options_preselect.when_present.click if @current_page.has_product_options_preselect
-				options = product_options.lis
+				options = product_options.lis[1..-1]
 				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
 				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
-				option = options.length > 1 ? options[1..-1].shuffle.first : options.shuffle.first  #options[rand(1..options.length - 1)] 
-				opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
-				plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
-				plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
-				begin
-					option.links.first.click
-				rescue 
-					option.click
-					plog("\tException : option.links.first.click did not work - so tried option.click instead","grey")
+				if(options.length > 1 || !@current_page.ignore_single_product_option)
+					option = options[1..-1].shuffle.first #options.length > 1 ? options[1..-1].shuffle.first : options[-1]  #options[rand(1..options.length - 1)] 
+					opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
+					plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
+					plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
+					begin
+						option.links.first.click
+					rescue 
+						option.click
+						plog("\tException : option.links.first.click did not work - so tried option.click instead","grey")
+					end
   				end
-				
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
 				product_options.click

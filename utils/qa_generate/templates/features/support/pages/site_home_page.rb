@@ -243,6 +243,14 @@ module <%= site["site_name"].capitalize %>
 		<% end %>		
 		end
 		
+		def ignore_single_product_option
+		<% if site["ignore_single_product_option"] %>		
+			return true
+		<% else %>
+			return false
+		<% end %>		
+		end
+		
 		def get_ab_group
 		<% if site["ab_test_group"] != nil %>
 			return "<%= site["ab_test_group"] %>"
