@@ -1,10 +1,12 @@
 def expect_recs_rule(expected_recs)
-    rule = "And the debug info should show "
+    rule = "And the debug info "
 
     if expected_recs > 0
-        rule += "at least #{expected_recs}"
+        rule += "should show at least #{expected_recs}"
+    elsif expected_recs == 0
+        rule += "will not show"
     else
-        rule += "no"
+    	rule += "may show"
     end
 
     rule += " SMART-recs"
