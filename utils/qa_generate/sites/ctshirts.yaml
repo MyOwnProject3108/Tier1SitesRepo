@@ -48,7 +48,7 @@ add_to_basket_button: ["button", ':value=> "Add to basket"']
 
 
 home_page:
- # ignore: true # CT Shirts homepage is on SMART-API
+  ignore: true # CT Shirts homepage is on SMART-API
   URL: "http://www.ctshirts.co.uk/default.aspx?q=gbpdefault|||||||||||||||"
   expected_recs: 0
   expected_api_content: 2

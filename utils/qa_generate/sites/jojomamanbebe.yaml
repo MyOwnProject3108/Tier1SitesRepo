@@ -117,6 +117,7 @@ checkout_page:
   - [image, alt, "Continue, to review your order"]
 
 random_checkout:
+  ignore: true
   URL: ""
   expected_recs: 0
   extra_steps:

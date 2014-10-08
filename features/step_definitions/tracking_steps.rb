@@ -16,7 +16,7 @@ Then /^the debug info may show SMART\-recs?$/ do
   	#do nothing
 end
 
-Then /^the debug info should show no SMART\-recs?$/ do
+Then /^the debug info will not show SMART\-recs?$/ do
   	@current_page.debug_recs.should have(0).entries  
 end
 
@@ -139,7 +139,7 @@ def select_product_options
 				if product_options.disabled? == false 
 					plog("\tSelected option => #{sel_option.text} ...","blue") if @@show_log #&& product_options.visible?
 					product_options_preselect.click if @current_page.has_product_options_preselect
-					product_options.option(:index =>opt_index).when_present.select #if product_options.visible?  #visible option for burton
+					product_options.option(:index =>opt_index).when_present.select if product_options.visible?  #visible option for burton,Evans
 					option_selected = true
 				end
 			when product_options.is_a?(PageObject::Elements::Table) #cottontraders
