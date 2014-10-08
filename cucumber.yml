@@ -1,7 +1,7 @@
 <% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
 <% outputName = "cucumber" + (ENV['TEST_ENV_NUMBER'] ? ENV['TEST_ENV_NUMBER'] : "") %>
-<% live_servers = ["pt", "pt1", "pt2", "live"] %>
-<% dev_servers = ["qa1","qa2","test2", "uat", "lander", "kodjo","mario", "manoj", "tmckiernan", "showcasebe", "tomasz", "sinan", "helene", "gopi"] %>
+<% live_servers = ["pt", "pt1", "pt2", "qalive"] %>
+<% dev_servers = ["qa1","qa2","test2", "uat", "lander", "kodjo","mario", "manoj", "tmckiernan", "showcasebe", "tomasz", "sinan", "gopi"] %>
 
 
 <% for server in live_servers %> 
@@ -18,7 +18,6 @@
 default: --profile qa1
 sanity: --profile qa1
 #sanity: --profile test1
-live: --profile pt
 api: --profile qa1_api
 api: --profile qa2_api
 live: --profile pt
