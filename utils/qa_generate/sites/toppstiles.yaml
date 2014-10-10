@@ -45,7 +45,7 @@ login_page:
   
 searchresults_page:
   URL: "https://www.toppstiles.co.uk/search_results.asp?s=dscdv&n=1"
-  expected_recs: 0
+  expected_recs: 1
   zerosearch_recs: 1
 
 checkout_page:
@@ -55,15 +55,14 @@ checkout_page:
     - [text_field, id, "input_username", "peertest@yahoo.com"]
     - [text_field, id, "input_password", "Pass1234"]
     - [input, xpath, "/html/body/div[1]/div[3]/form/input[3]"]
-    - [radio, name, "rdoMethod"]
-    - [select_list, id, "selPostage", "99"]
+    - [radio, xpath, "/html/body/div[1]/form/table[1]/tbody/tr/td[2]/input[3]"]
     - [text_field, id, "txtPostcode", "SE1 0HS"]
     - [image, alt, "Lookup address"]
-    - [select_list, id, "selPostage", "SE1 0HS     16 Great Guildford Street, LONDON"]
-    - [select_list, id, "lstResultsStore", "I don't mind"]
+    - [pause,5]
+    - [select_list, id, "lstResultsStore", "MILE END (2.4 miles away from SE1 0HS)"]
     - [image, alt, "Continue"]
-    - [text_field, id, "dfirstname", "test"]
-    - [text_field, id, "dlastname", "test"]
+    - [text_field, id, "baddress1", "30 great guildford street"]
+    - [text_field, id, "bpostcode", "SE1 0HS"]
     - [select_list, id, "selStoreVisitBeforePurchase", "Yes"]
     - [image, alt, "Continue"]
   
