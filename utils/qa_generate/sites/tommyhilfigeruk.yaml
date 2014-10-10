@@ -14,7 +14,7 @@ client_tier: tier1
 
 #### site level variables ####
 show_log: true
-category_menu: ["ul", ':class => "mainMenu"']
+category_menu: ["ul", ':class => "global_navigation"']
 categories_to_exclude: ["Hilfiger Denim", "Features"]
 
 test_all_categories: false
