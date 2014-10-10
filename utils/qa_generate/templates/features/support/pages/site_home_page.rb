@@ -215,7 +215,7 @@ module <%= site["site_name"].capitalize %>
 		<% if site["static_test_cat_url"] != "" %>
 			return "<%= site["static_test_cat_url"] %>"
 		<% else %>
-			return nil
+			return ""
 		<% end %>
 		end
 		
@@ -223,7 +223,7 @@ module <%= site["site_name"].capitalize %>
 		<% if site["static_test_prod_url"] != nil %>
 			return "<%= site["static_test_prod_url"] %>"
 		<% else %>
-			return nil
+			return ""
 		<% end %>
 		end 
 		

@@ -107,9 +107,8 @@ def test_random_product_page_and_add_to_basket_tracking(add_to_basket)
   		
 		#cat_url = category[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_cat_url == "" #"http://www.cottontraders.com/menswear/mens-swimwear-/icat/mensswimwear" #
 		#cat_url = @current_page.get_static_test_cat_url if @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != ""
-		is_static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != nil ? true : false
-		cat_name = is_static_test_enabled && @current_page.get_static_test_cat_url != nil ? "static_category" : category[0]
-		cat_url = is_static_test_enabled && @current_page.get_static_test_cat_url != nil ? @current_page.get_static_test_cat_url : category[1]
+		cat_name = is_static_test_enabled("C") ? "static_category" : category[0]
+		cat_url = is_static_test_enabled("C") ? @current_page.get_static_test_cat_url : category[1]
 		
 		cat_ctr = test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, add_to_basket)
   	end
@@ -221,8 +220,8 @@ def test_random_category_or_all_category_tracking(test_all_categories)
   	while cat_ctr < num_categories  
   		category = categories[cat_ctr] if test_all_categories
 		category = categories[rand(0..categories.length - 1)] if !test_all_categories
-		is_static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != "" && !test_all_categories ? true : false
-		cat_name = is_static_test_enabled ? "" : category[0]
+		is_static_test_enabled = is_static_test_enabled("C") && !test_all_categories ? true : false
+		cat_name = is_static_test_enabled ? "static category" : category[0]
 		cat_url = is_static_test_enabled ? @current_page.get_static_test_cat_url : category[1] 
 		plog("STATIC TEST enabled for category => #{cat_url} ...","grey") if @@show_log && is_static_test_enabled && cat_ctr==0
  		exclude_cat = false
@@ -447,20 +446,18 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 
 	if !exclude_cat
 		cat_test_response = nil
-		plog("STATIC TEST enabled for category => #{cat_url} ...","grey") if @@show_log && @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != nil && cat_ctr==1
-	    plog("SELECTED CATEGORY is: #{cat_ctr} #{cat_name} : #{cat_url}","grey") if @@show_log && !@current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != ""
+		plog("STATIC TEST enabled for category => #{cat_url} ...","grey") if @@show_log && is_static_test_enabled("C") && cat_ctr==1
+	    plog("SELECTED CATEGORY is: #{cat_ctr} #{cat_name} : #{cat_url}","grey") if @@show_log && !is_static_test_enabled("C") 
 		cat_test_response = test_category_page(cat_name,cat_url,wait_time_per_category)
 
 		cat_info = cat_test_response.split("|") if cat_test_response != nil
 		if cat_test_response != nil && cat_test_response.include?("SUCCESS")
 			products = @current_page.product_links_element.link_elements
-			
 			if !products
 				fail(PeeriusConfigurationError.new("FAILED :: PRODUCT LINKS NOT FOUND ON CATGEORY PAGE #{cat_info[0]}(#{cat_info[1]}) USING #{@current_page.product_links_element}"))
 			end
-
+			
 			products = get_filtered_product_links(products) 
-
 			if products.length == 0
 				fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]})"))
 			end
@@ -470,10 +467,9 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 			prod_ctr = 1
 			while prod_ctr <= num_products
 				product = products[rand(0..products.length - 1)]
-				prod_name = @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != "" ? "static_product" : product[0]
-				prod_url = product[1] if !@current_page.is_static_test_enabled || @current_page.get_static_test_prod_url == ""
-				prod_url = @current_page.get_static_test_prod_url if @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != ""
-				plog("STATIC TEST enabled for product => #{prod_url} ...","grey") if @@show_log && @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != "" && prod_ctr==1
+				prod_name = is_static_test_enabled("P") ? "static_product" : product[0]
+				prod_url = is_static_test_enabled("P") ? @current_page.get_static_test_prod_url : product[1]
+				plog("STATIC TEST enabled for product => #{prod_url} ...","grey") if @@show_log && is_static_test_enabled("P") && prod_ctr==1
 
 				exclude_prod = false
 				if (@current_page.get_product_keywords_to_exclude.length > 0)
@@ -494,6 +490,7 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 					out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
 
 					if out_of_stock == false
+						plog("\tTesting PRODUCT #{prod_name} :: #{prod_url}","yellow") if @@show_log
 						if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
 							if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
 								plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if @@show_log
@@ -548,4 +545,12 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 		plog("\tIGNORING EXCLUDED CATEGORY #{cat_name} : #{cat_url}","grey") if @@show_log
 	end
 	return cat_ctr
+end
+
+
+def is_static_test_enabled(page_type)
+	static_test_enabled = false
+	static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_prod_url != "" ? true : false if page_type == "P"
+	static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != "" ? true : false if page_type == "C"
+	return static_test_enabled
 end

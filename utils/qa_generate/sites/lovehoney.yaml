@@ -12,11 +12,9 @@ site_id: 106
 integration: standard
 client_tier: tier1
 
-
 enable_static_test: false
-static_test_prod_url: "http://www.lovehoney.co.uk/product.cfm?p=13913"
-static_test_cat_url: ""
-
+static_test_prod_url: ""
+static_test_cat_url: "http://www.lovehoney.co.uk/bondage/handcuffs-restraints/"
 
 #### site level variables ####
 show_log: true
@@ -39,16 +37,16 @@ product_options:
      - [ul, ':class=> "varieties"'] 
      - [select_list, ':name=> "p"']
 #    - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"'] //*[@id="productForm"]/ul[2]
- 
+ignore_single_product_option: true 
 
 # specify time to wait in secs as integer for category page to load before trackInfo is read. If not provided deafault used is 2 secs.
 wait_time_per_product_page: 2
 
 # specify the max number of products to pick per category - if set to 3, 1 to 3 products will be randomly picked from each category 
-max_num_of_products: 2 
+max_num_of_products: 1 
 
 # specify identifier for the 'add to basket' button element from product page 
-add_to_basket_button: ["button", ':class=> "button std-arrow double-decker"']
+add_to_basket_button: ["button", ':xpath=> "//form[@id=\"productForm\"]/p[2]/button"']
 
 
 home_page:
