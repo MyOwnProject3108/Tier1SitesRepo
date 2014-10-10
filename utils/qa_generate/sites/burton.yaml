@@ -6,7 +6,7 @@ needs_SPR: false
 username: faiyyaz.sultana@peerius.com
 password: Pa55word
 zero_search_term: toy
-valid_search_term: socks
+valid_search_term: red jacket
 database_num: 4
 mob_apikeyliv: bhrvkw68frbyhu4t
 channel: mobileapp
@@ -23,10 +23,10 @@ test_all_categories: false
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "wrapper_page_content"'] 
 product_link_filter: ["data-productid", "*"]
-product_options: 
-    - [select_list, ':id=> "product_size_full"']
-    - [select_list, ':id=> "choosesize_1"']
-
+#ignore_single_product_option: true
+#product_options: 
+#   - [select_list, ':id=> "product_size_full"']
+#   - [select_list, ':id=> "choosesize_1"']
 
     
 ignore_cat_tracked_as_other_page: true

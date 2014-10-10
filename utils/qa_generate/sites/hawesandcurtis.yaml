@@ -39,7 +39,7 @@ add_to_basket_button: ["button", ':id=> "add-to-basket"']
 
 home_page:
   URL: "http://www.hawesandcurtis.co.uk/"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':href => "/account/myaccount"']
   search_field: ["text_field", ':name => "q"']
 
@@ -47,7 +47,7 @@ random_product:
   expected_recs: 1
 
 random_category:
-  expected_recs: 0
+  expected_recs: 1
   
 product_page:
   ignore: true

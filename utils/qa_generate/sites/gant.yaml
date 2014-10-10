@@ -11,16 +11,18 @@ database_num: 1
 site_id: 1301
 integration: json
 client_tier: tier1
+ab_test_group: 1
 
-enable_static_test: true
-static_test_prod_url: "http://www.gant.co.uk/womens-skirts/blue-donegal-pencil-skirt/31653"
-static_test_cat_url: "http://www.gant.co.uk/mens-blazers/"
+
+enable_static_test: false
+static_test_prod_url: "http://www.gant.co.uk/mens-jeans/blue-desert-twill-jeans/24407"
+static_test_cat_url: "http://www.gant.co.uk/mens-jeans/"
 
 
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "gant-primary-navigation"']
-categories_to_exclude: ["Home", "ELectricals", "Entertainment", "Health & Beauty"]
+categories_to_exclude: ["GANT RUGGER"]
 
 wait_time_per_category_page: 3
 test_all_categories: false
@@ -33,6 +35,7 @@ product_options:
      - [ul, ":xpath=> '//div[@id=\"product_select_chosen\"]/div/ul'"]
 product_option_filter:                       
     - ["li", "text", "%Not Available%"]
+    
 ignore_single_product_option: true 
 
 ignore_cat_tracked_as_other_page: true
@@ -52,7 +55,7 @@ random_product:
   expected_recs: 1
 
 random_category:
-  expected_recs: 0
+  expected_recs: -1
   
 random_basket:
   expected_recs: 1
@@ -71,7 +74,7 @@ product_page:
 category_page:
   ignore: true
   URL: "http://www.gant.co.uk/mens-jeans/"
-  expected_recs: 0
+  expected_recs: -1
     
 basket_page:
   ignore: true
@@ -104,12 +107,12 @@ random_checkout:
   extra_steps:
       - [link, class, "bottom proceed-to-checkout button"]
       - [pause, 2]
-      - [text_field, id, "email_address_signIn_email", "webtest@mailinator.com"]
-      - [button, id, "next"]
-      - [pause, 2]
-      - [radio, id, "email_address_signIn_isSigningIn_1"]
-      - [pause, 2]
-      - [text_field, id, "email_address_signIn_password", "webtest"]
-      - [pause, 2]
-      - [button, id, "next"]
-      - [pause, 2]
+#      - [text_field, id, "email_address_signIn_email", "webtest@mailinator.com"]
+#      - [button, id, "next"]
+#      - [pause, 2]
+#      - [radio, id, "email_address_signIn_isSigningIn_1"]
+#      - [pause, 2]
+#      - [text_field, id, "email_address_signIn_password", "webtest"]
+#      - [pause, 2]
+#      - [button, id, "next"]
+#      - [pause, 2]
