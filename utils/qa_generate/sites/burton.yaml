@@ -17,7 +17,7 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["Facebook","Twitter","Google","Pinterest","Instagram","YouTube","Information Pages","The Knowledge Blog"]
+categories_to_exclude: ["Facebook","Twitter","Google","Pinterest","Instagram","YouTube","Information Pages","The Knowledge Blog", "url=>suits-281561"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
@@ -42,7 +42,7 @@ home_page:
 
 product_page:
   ignore: true
-  URL: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-shirts-281895/green-check-shirt-2845260?bi=1&ps=20"
+  URL: "http://www.burton.co.uk/en/bruk/product/suits-281561/mens-3-piece-suits-282061/3-piece-light-grey-tipped-skinny-fit-suit-2927461?bi=1&ps=20"
   expected_recs: 1
   add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
   

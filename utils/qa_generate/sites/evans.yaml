@@ -14,7 +14,7 @@ site_id: 219
 integration: standard
 client_tier: tier1
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.evans.co.uk/en/evuk/product/accessories-250472/earrings-2862026/evans-pink-naivet%C3%A9-sparkle-earrings-3140566?bi=1&ps=24"
 static_test_cat_url: ""
 
