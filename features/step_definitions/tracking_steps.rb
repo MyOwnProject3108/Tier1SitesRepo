@@ -494,6 +494,7 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 					out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
 
 					if out_of_stock == false
+						plog("\tTesting PRODUCT #{prod_name} :: #{prod_url}","yellow") if @@show_log
 						if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
 							if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
 								plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if @@show_log
