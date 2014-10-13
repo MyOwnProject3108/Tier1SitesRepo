@@ -1,4 +1,3 @@
-.DS_Store
 *.log
 *.html
 Gemfile.lock
@@ -10,6 +9,7 @@ features/support/pages/*.rb
 features/auto_*
 *.json
 error_pages/
-screenshots/
+logs/
+logs/screenshots/
 *.swp
 phantomjs

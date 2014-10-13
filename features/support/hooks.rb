@@ -10,6 +10,12 @@ if ENV['HEADLESS'] == 'true'
   plog("I AM HEADLESS... SO MIGHT NOT REALLY KNOW WHERE AM HEADED...","yellow")
 end
 
+CAPTURE_SCREENSHOT = false
+if ENV['SCREENSHOTONFAILURE']
+  CAPTURE_SCREENSHOT = true
+  plog("I WILL CAPTURE A SCREENSHOT in /logs/screenshots/ FOLDER, IF YOUR TEST FAILS","yellow")
+end
+
 WEBDRIVER=true
 
 web_proxy = ENV["proxy"]
@@ -97,6 +103,10 @@ Before do
   	@db7 = db7
   end
   @sites = sites
+end
+
+After do |scenario|
+  save_screenshot(scenario) if scenario.failed? && CAPTURE_SCREENSHOT == true
 end
 
 AfterStep('@web') do |scenario|

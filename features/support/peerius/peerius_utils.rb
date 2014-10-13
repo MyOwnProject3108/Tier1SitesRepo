@@ -14,3 +14,9 @@ end
 def strip_tags(html)
 	return Sanitize.clean(html).gsub("\n",'')
 end
+
+def save_screenshot(scenario)
+	filename = scenario.file_colon_line.split("\\").last.gsub(":","_line_no_") + "_"+ scenario.source_tag_names[0]
+	filename = filename+"_"+DateTime.now.strftime("%d%b%Y_%H%M%S")
+	@browser.screenshot.save ("logs/screenshots/#{filename}.png")
+end
