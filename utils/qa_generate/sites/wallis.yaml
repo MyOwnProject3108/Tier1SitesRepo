@@ -14,7 +14,7 @@ site_id: 401
 integration: standard
 client_tier: tier1
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.wallis.co.uk/en/wluk/product/petite-265975/petite-leggings-jeggings-266173/black-petite-jegging-3243214?bi=1&ps=20"
 static_test_cat_url: ""
 
@@ -31,7 +31,7 @@ product_links: ["div", ':id=> "wrapper_page_content"']
 product_link_filter: ["data-productid", "*"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart2"']
 
         
 #### page level config ####
