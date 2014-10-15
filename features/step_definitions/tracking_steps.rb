@@ -497,7 +497,7 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 								if @current_page.get_num_of_product_options > 0
 									option_selected = select_product_options
 								end
-								@current_page.add_to_basket_element.when_present.click
+								@current_page.add_to_basket_element.click
 								has_add_to_basket_error_msg = @current_page.get_add_to_basket_error_msg != nil ? true : false
 
 								if has_add_to_basket_error_msg
