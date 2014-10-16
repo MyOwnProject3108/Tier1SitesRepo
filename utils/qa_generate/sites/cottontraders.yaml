@@ -10,9 +10,6 @@ valid_search_term: shirt
 database_num: 0
 site_id: 72
 integration: standard
-client_tier: tier1
-
-
 
 #### site level variables ####
 show_log: true
