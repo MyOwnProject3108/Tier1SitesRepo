@@ -70,6 +70,7 @@ else
    
    #profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile, :desired_capabilities => caps
+   browser.driver.manage.window.maximize
 end
 
 if FigNewton.username("") != "" then
