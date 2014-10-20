@@ -10,7 +10,10 @@ valid_search_term: dress
 database_num: 7
 site_id: 413
 integration: standard
-client_tier: tier1
+
+enable_static_test: false
+static_test_prod_url: "http://www.isabellaoliver.com/uk/sale/sale-jackets-and-coats/salina-maternity-jacket-jet-grey-black.htm"
+static_test_cat_url: ""
 
 # site variables
 show_log: true
