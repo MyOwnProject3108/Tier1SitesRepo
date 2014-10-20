@@ -1,5 +1,5 @@
 site_name: tommyhilfigeruk
-pretty_name: Tommy Hilfiger UK
+pretty_name: TommyHilfiger UK
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -19,15 +19,21 @@ categories_to_exclude: ["Hilfiger Denim", "Features"]
 
 test_all_categories: false
 
-wait_time_per_category_page: 3
+wait_time_per_category_page: 5
 max_num_of_categories: 1
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':id=> "mansory"'] 
 product_link_filter: ["wtname", "listing.productdetail"] 
-wait_time_per_product_page: 2
-max_num_of_products: 2
-add_to_basket_button: ["button", ':class=> "button active addtocartbutton greenbutton a  "']
+wait_time_per_product_page: 5
+max_num_of_products: 1
+add_to_basket_button: ["button", ':class=> "button active addtocartbutton style_2"'] 
+
+custom_product_js: >
+     var er1=document.getElementById('iTrakFrame'); if(er1) er1.parentNode.removeChild(er1);
+     var er2=document.getElementById('iTrakFrame2'); if(er2) er2.parentNode.removeChild(er2);
+     //var er3=document.getElementById('emailOverWrap'); if(er3) er3.parentNode.parentNode.removeChild(er3.parentNode);
+     //var er4=document.getElementsByClassName('ui-widget-overlay ui-front')[0]; if(er4) er4.parentNode.removeChild(er4);
 
 
 home_page:

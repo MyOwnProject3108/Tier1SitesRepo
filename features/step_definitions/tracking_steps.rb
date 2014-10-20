@@ -486,6 +486,10 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 					@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 					@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html' "http://www.cottontraders.com/womens-shirts+blouses/34-sleeve-spot-print-blouse/invt/ab10892" #
 					sleep wait_time_per_product
+					if @current_page.get_custom_product_js != nil
+						@browser.execute_script(@current_page.get_custom_product_js)
+					end
+
 					option_selected = true
 					out_of_stock = false
 					out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
@@ -496,7 +500,7 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 								plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if @@show_log
 								
 								if @current_page.get_custom_basket_js != nil
-										@browser.execute_script(@current_page.get_custom_basket_js)
+									@browser.execute_script(@current_page.get_custom_basket_js)
 								end
 								if @current_page.get_num_of_product_options > 0
 									option_selected = select_product_options
