@@ -259,6 +259,14 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def get_custom_basket_js
+		<% if site["custom_basket_js"] != nil %>
+			return "<%= site["custom_basket_js"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
+		
 		
     end  
 end
