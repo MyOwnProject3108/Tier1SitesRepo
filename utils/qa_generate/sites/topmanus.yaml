@@ -33,6 +33,8 @@ max_num_of_products: 1
 product_keywords_to_exclude: ["Suit"]
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 
+custom_basket_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
+
 home_page:
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13051&catalogId=33059&geoip=noship"
   expected_recs: 0
