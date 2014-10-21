@@ -29,7 +29,7 @@ wait_time_per_product_page: 5
 max_num_of_products: 1
 add_to_basket_button: ["button", ':class=> "button active addtocartbutton style_2"'] 
 
-custom_product_js: >
+product_page_custom_js: >
      var er1=document.getElementById('iTrakFrame'); if(er1) er1.parentNode.removeChild(er1);
      var er2=document.getElementById('iTrakFrame2'); if(er2) er2.parentNode.removeChild(er2);
      //var er3=document.getElementById('emailOverWrap'); if(er3) er3.parentNode.parentNode.removeChild(er3.parentNode);

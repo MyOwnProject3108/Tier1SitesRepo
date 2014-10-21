@@ -36,8 +36,8 @@ product_option_filter:
 wait_time_per_product_page: 2
 
 add_to_basket_button: ["button", ':id=> "addToBasket"']
-custom_search_js : "document.getElementById('sbox_container').className = 'clearfix open';"
-search_button : ["button", ':id=> "site_search_submit"']
+search_custom_js: "document.getElementById('sbox_container').className = 'clearfix open';"
+search_button: ["button", ':id=> "site_search_submit"']
 search_field: ["text_field", ':id => "sli_search_1"']
 
 

@@ -33,7 +33,7 @@ product_link_filter: ["data-productid", "*"]
 #   - [select_list, ':id=> "product_size_full"']
 #   - [select_list, ':id=> "choosesize_1"']
 
-custom_basket_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
+add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
 
     
 ignore_cat_tracked_as_other_page: true

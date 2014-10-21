@@ -33,8 +33,7 @@ ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
-
-custom_basket_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
+add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
 
 home_page:
   URL: "http://www.topman.com/"
