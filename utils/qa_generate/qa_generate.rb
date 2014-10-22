@@ -48,13 +48,6 @@ site_map = {"jmb" => "jojomamanbebe"}
 
 site_name = site_name_param != "" ? (site_map[site_name_param] ? site_map[site_name_param] : site_name_param ) : "<site_name>"
 
-begin
-	site_check = Psych.load_file("sites/#{site_name}.yaml")
-	rescue Exception => e  
-	plog("QA Generate FAILED : Could not find an alias or site configuration file with name #{site_name}.yaml in your /utils/qa_generate/sites folder.","red")
-	abort("")
-end
-
 num_sites = 0
 
 # Generate sitelist
@@ -80,6 +73,12 @@ if(site_name == "<site_name>" )
 	plog("\tFeature files for each site will be generated in #{output_path}/features","grey")
 	plog("\tPage step definition code will be generated in #{output_path}/features/support/pages/","grey")
 else
+	begin
+		site_check = Psych.load_file("sites/#{site_name}.yaml")
+		rescue Exception => e  
+		plog("QA Generate FAILED : Could not find an alias or site configuration file with name #{site_name}.yaml in your /utils/qa_generate/sites folder.","red")
+		abort("")
+	end
 	plog("#{site_name.upcase} CONFIG => ","grey")
 	plog("\tSite config file\t   : #{sites_yaml_path}/#{site_name}.yaml","grey")
 	plog("#{site_name.upcase} OUTPUT => ","grey")
@@ -138,7 +137,7 @@ def generate_files(site, site_name, opts, output_path, do_for_all_sites)
 	return true
 end
 
-if(site_name!="") 
+if(site_name!="<site_name>") 
 	site_file = Psych.load_file("sites/#{site_name}.yaml")
 	# Generate output files from templates for site
 	generate_files(site_file,site_name,opts,output_path,do_for_all_sites=false)
