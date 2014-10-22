@@ -32,6 +32,7 @@ max_num_of_products: 1
 max_num_of_categories: 1
 product_keywords_to_exclude: ["Suit"]
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
 
 
 home_page:

@@ -1,5 +1,5 @@
 site_name: topshopus
-pretty_name: Topshop USA
+pretty_name: Topshop US
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -16,7 +16,7 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["We_Love"]
+categories_to_exclude: ["New In","Premium Shoes", "url=>inspireme", "url=>new-season-style", "url=>topshop-beauty-school", "url=>topshop-magazine", "url=>lookbook", "url=>we-love"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
@@ -24,9 +24,9 @@ product_links: ["div", ':id=> "wrapper_page_content"']
 product_link_filter: ["data-productid", "*"] 
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
-max_num_of_products: 5 
+max_num_of_products: 1 
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
-
+add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
 
 home_page:
   URL: "http://us.topshop.com/?geoip=home"

@@ -482,22 +482,30 @@ def test_product_page(cat_url, cat_name, cat_ctr, num_categories, num_products, 
 				if !exclude_prod
 					prod_name = prod_name[0..30].gsub(/\s\w+\s*$/,'...') if prod_name.length > 30 
 					# plog("\tPRODUCT => #{prod_name} :: #{prod_url}","yellow")
+					plog("\tTesting PRODUCT #{prod_name} :: #{prod_url}","yellow") if @@show_log
 					@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 					@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html' "http://www.cottontraders.com/womens-shirts+blouses/34-sleeve-spot-print-blouse/invt/ab10892" #
 					sleep wait_time_per_product
+					if @current_page.get_product_page_custom_js != nil
+						@browser.execute_script(@current_page.get_product_page_custom_js)
+					end
+
 					option_selected = true
 					out_of_stock = false
 					out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
 
 					if out_of_stock == false
-						plog("\tTesting PRODUCT #{prod_name} :: #{prod_url}","yellow") if @@show_log
 						if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
 							if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
 								plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if @@show_log
+								
+								if @current_page.get_add_to_basket_custom_js != nil
+									@browser.execute_script(@current_page.get_add_to_basket_custom_js)
+								end
 								if @current_page.get_num_of_product_options > 0
 									option_selected = select_product_options
 								end
-								@current_page.add_to_basket_element.when_present.click
+								@current_page.add_to_basket_element.click
 								has_add_to_basket_error_msg = @current_page.get_add_to_basket_error_msg != nil ? true : false
 
 								if has_add_to_basket_error_msg
@@ -554,3 +562,5 @@ def is_static_test_enabled(page_type)
 	static_test_enabled = @current_page.is_static_test_enabled && @current_page.get_static_test_cat_url != "" ? true : false if page_type == "C"
 	return static_test_enabled
 end
+
+	

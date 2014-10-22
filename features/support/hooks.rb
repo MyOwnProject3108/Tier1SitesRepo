@@ -10,6 +10,12 @@ if ENV['HEADLESS'] == 'true'
   plog("I AM HEADLESS... SO MIGHT NOT REALLY KNOW WHERE AM HEADED...","yellow")
 end
 
+CAPTURE_SCREENSHOT = false
+if ENV['SCREENSHOTONFAILURE']
+  CAPTURE_SCREENSHOT = true
+  plog("I WILL CAPTURE A SCREENSHOT in /logs/screenshots/ FOLDER, IF YOUR TEST FAILS","yellow")
+end
+
 WEBDRIVER=true
 
 web_proxy = ENV["proxy"]
@@ -64,6 +70,7 @@ else
    
    #profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile, :desired_capabilities => caps
+   browser.driver.manage.window.maximize
 end
 
 if FigNewton.username("") != "" then
@@ -97,6 +104,10 @@ Before do
   	@db7 = db7
   end
   @sites = sites
+end
+
+After do |scenario|
+  save_screenshot(scenario) if scenario.failed? && CAPTURE_SCREENSHOT == true
 end
 
 AfterStep('@web') do |scenario|

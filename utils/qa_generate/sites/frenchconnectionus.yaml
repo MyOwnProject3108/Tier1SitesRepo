@@ -28,7 +28,7 @@ wait_time_per_product_page: 2
 max_num_of_categories: 1
 max_num_of_products: 2 
 add_to_basket_button: ["button", ':id=> "addToBasket"']
-custom_search_js : "document.getElementById('sbox_container').className = 'clearfix open';"
+search_custom_js: "document.getElementById('sbox_container').className = 'clearfix open';"
 
 home_page:
   URL: "http://usa.frenchconnection.com/"

@@ -11,7 +11,7 @@ database_num: 1
 site_id: 1339
 integration: standard
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.jaeger.co.uk/julianne-tote/790015J.html?dwvar_790015J_color=00100&start=1&dwvar_790015J_size=ITM&cgid=accessories-bags"
 static_test_cat_url: "http://www.jaeger.co.uk/accessories/handbags-bags"
 
