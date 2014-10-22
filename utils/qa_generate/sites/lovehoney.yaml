@@ -5,8 +5,8 @@ has_ranking: no
 needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
-zero_search_term: nappies
-valid_search_term: ring
+zero_search_term: asdgds
+valid_search_term: belt
 database_num: 3
 site_id: 106
 integration: standard

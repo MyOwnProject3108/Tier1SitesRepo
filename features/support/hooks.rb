@@ -104,6 +104,7 @@ Before do
   	@db7 = db7
   end
   @sites = sites
+  
 end
 
 After do |scenario|
@@ -130,7 +131,9 @@ at_exit do
             db7.close
       end
     end
+    plog("==== Test COMPLETED at #{Time.new.inspect} ====", "grey")
 end
+plog("==== Test INITIATED at #{Time.new.inspect} ====", "grey")
 
 #Before do
 #profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"

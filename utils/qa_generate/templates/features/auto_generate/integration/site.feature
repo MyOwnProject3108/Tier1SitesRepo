@@ -1,7 +1,6 @@
 <% if site["ignore"] or site["ignore_web"]%>
 #ignore
 <% end %>
-# Test initiated at <%= Time.new.inspect %>
 @<%= site["site_name"] %>
 @sanity
 @web
@@ -16,12 +15,11 @@
 <% end %>
 Feature: <%= site["pretty_name"] %> Integration
 # Tracking/Recommendations Tests 
-<% if site["site_timeout"] %>
-Background:
-  Given the site can take up to <%=site["site_timeout"] %> seconds to load each page.  
-<% end %>
 
 Background:
+<% if site["site_timeout"] %>
+  Given the site can take up to <%=site["site_timeout"] %> seconds to load each page.  
+<% else %>
   Given I am on the <%= site["site_name"] %> home page
 <% if site["needs_SPR"] %>
   And I use the SPR key
@@ -29,13 +27,13 @@ Background:
 <% if site["ab_test_group"] %>
   And I am in an AB group
 <% end %> 
+<% end %>
 
 <% for page_name in ["home", "category", "product"] %>
 <% if site[page_name+"_page"] %>
 <% page = site[page_name+"_page"] %>
-#
-# Hard coded <%= page_name %> page : <%= page["URL"] %> 
-#
+
+### Hard coded <%= page_name %> page : <%= page["URL"] %> ###
 <% if page["ignore"] %>
 @ignore
 <% end %>
@@ -53,9 +51,7 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 <% end %>
 
 <% if site["random_product"] %>
-#
-# Random product
-#
+### Random product ###
 <% page = site["random_product"] %>
 <% if page["ignore"] %>
 @ignore
@@ -73,9 +69,7 @@ Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %>
 <% end %>
 
 <% if site["random_category"] %>
-#
-# Random category
-#
+### Random category ###
 <% page = site["random_category"] %>
 <% if page["ignore"] %>
 @ignore
@@ -93,9 +87,7 @@ Scenario: A random category page from <%= site["pretty_name"] %> is tracked corr
 <% end %>
 
 <% if site["basket_page"] && site["product_page"] %>
-#
-# Basket page
-#
+### Basket page ###
 <% page = site["basket_page"] %>
 <% if page["ignore"] %>
 @ignore
@@ -123,9 +115,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
 <% end %>
 
 <% if site["random_basket"] %>
-#
-# Random basket
-#
+### Random basket ###
 <% page = site["random_basket"] %>
 <% if page["ignore"] %>
 @ignore
@@ -143,9 +133,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a ran
 <% end %>
 
 <% if site["checkout_page"] && site["product_page"] %>
-#
-# Checkout page
-#
+### Checkout page ###
 <% page = site["checkout_page"] %>
 <% if page["ignore"] %>
 @ignore
@@ -181,9 +169,7 @@ Scenario: <%= site["pretty_name"] %> checkout page is tracked correctly
 <% end %>
 
 <% if site["searchresults_page"] %>
-#
-# Search page
-#
+### Search page ###
 <% page = site["searchresults_page"] %>
 <% if page["ignore"] %>
 @ignore
@@ -199,9 +185,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
 <% end %>
 
 <% if page["zerosearch_recs"] %>
-#
-# Zero search page
-#
+### Zero search page ###
 @zero_search_page
 <% if page["ignore"] %>
 @ignore
@@ -216,9 +200,7 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 <% end %>
 
 <% if site["random_checkout"] %>
-#
-# End to end test - checkout
-#
+### End to end test - Checkout ###
 <% page = site["random_checkout"] %>
 <% if site["category_menu"] %>
 <% if page["ignore"] %>
@@ -240,9 +222,7 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home pa
 <% end %>
 
 <% if site["random_order"] %>
-#
-# End to end test - order 
-#
+### End to end test - Order ###
 <% page = site["random_order"] %>
 <% if site["category_menu"] %>
 <% if page["ignore"] %>
@@ -265,9 +245,7 @@ Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home pag
 
 <% if site["category_menu"] && site["test_all_categories"] == true %>
 <% page = site["home_page"] %>
-#
-# All category pages
-#
+### All category pages ###
 <% if page["ignore"] %>
 @ignore
 <% end %>
@@ -294,9 +272,7 @@ Scenario: All <%= site["pretty_name"] %> category pages are tracked correctly
 
 <% if site["has_content"] %>
 <% page = site["home_page"] %>
-#
-# SMART-content tests
-#
+### SMART-content tests ###
 <% if page["ignore"] %>
 @ignore
 <% end %>

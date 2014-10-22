@@ -5,12 +5,13 @@ has_ranking: no
 needs_SPR: false
 username: faiyyaz.sultana@peerius.com
 password: Pa55word
-zero_search_term: abcd
+#zero_search_term: abcd
 valid_search_term: dress
 database_num: 7
 site_id: 413
 integration: standard
 client_tier: tier1
+short_tag: jmb
 
 enable_static_test: false
 static_test_prod_url: "http://www.jojomamanbebe.co.uk/sp+bird-stripe-footless-tights-in-socks-tights-and-shoes+b8666" #"http://www.jojomamanbebe.co.uk/sp+striped-long-sleeved-tops+b8371"
@@ -90,7 +91,7 @@ login_page:
 searchresults_page:
   URL: "http://www.jojomamanbebe.co.uk/product+t+dress"
   expected_recs: 0
-  zerosearch_recs: 4
+  #zerosearch_recs: 4
 
 checkout_page:
   ignore: true
