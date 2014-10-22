@@ -6,8 +6,8 @@ end
 
 When /^I search for a? ?"([^"]*)"$/ do |term|
 	# if custom search js code is defined for a site then execute the code
-	if @current_page.get_custom_search_js != nil
-		@browser.execute_script(@current_page.get_custom_search_js)
+	if @current_page.get_search_custom_js != nil
+		@browser.execute_script(@current_page.get_search_custom_js)
 	end
 	@current_page.search_field = term
 	# if search_button is defined in yaml then use it to click else use the enter key to submit the search

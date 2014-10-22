@@ -1,5 +1,5 @@
 site_name: thewhitecompany
-pretty_name: thewhitecompany
+pretty_name: TheWhiteCompany
 has_content: no
 has_ranking: no
 needs_SPR: false
@@ -21,7 +21,7 @@ show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "site_container"']
-categories_to_exclude: ["Bedroom", "Gifts", "Our Blog", "url=>help", "url=>inspire-me"]
+categories_to_exclude: ["Bedroom", "Gifts", "Our Blog", "url=>help", "url=>inspire-me", "url=>bed-linen"]
 
 test_all_categories: false
 

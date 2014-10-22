@@ -6,7 +6,7 @@ needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: nappies
-valid_search_term: toy
+valid_search_term: ring
 database_num: 3
 site_id: 106
 integration: standard

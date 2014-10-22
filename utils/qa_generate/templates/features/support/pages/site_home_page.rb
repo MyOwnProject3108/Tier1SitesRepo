@@ -227,9 +227,9 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
-		def get_custom_search_js
-		<% if site["custom_search_js"] != nil %>
-			return "<%= site["custom_search_js"] %>"
+		def get_search_custom_js
+		<% if site["search_custom_js"] != nil %>
+			return "<%= site["search_custom_js"] %>"
 		<% else %>
 			return nil
 		<% end %>
@@ -254,6 +254,22 @@ module <%= site["site_name"].capitalize %>
 		def get_ab_group
 		<% if site["ab_test_group"] != nil %>
 			return "<%= site["ab_test_group"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
+		
+		def get_add_to_basket_custom_js
+		<% if site["add_to_basket_custom_js"] != nil %>
+			return "<%= site["add_to_basket_custom_js"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
+		
+		def get_product_page_custom_js
+		<% if site["product_page_custom_js"] != nil %>
+			return "<%= site["product_page_custom_js"] %>"
 		<% else %>
 			return nil
 		<% end %>
