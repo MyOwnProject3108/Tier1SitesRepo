@@ -62,6 +62,14 @@ module <%= site["site_name"].capitalize %>
 	    end %>
 
 		# methods
+		def get_site_vars
+		<% if site %>
+			return <%= site %>
+		<% else %>
+			return 1
+		<% end %>
+		end 
+		
 		def get_product_link_filter
 		<% if site["product_link_filter"] %>		
 			return <%= site["product_link_filter"] %>
@@ -193,6 +201,14 @@ module <%= site["site_name"].capitalize %>
 			return false
 		<% end %>
 		end 
+		
+		def ignore_categories_without_products
+		<% if site["ignore_categories_without_products"] %>
+			return <%= site["ignore_categories_without_products"] %>
+		<% else %>
+			return false
+		<% end %>
+		end 		
 		
 		def get_add_to_basket_error_msg
 		<% if site["add_to_basket_error_msg"] %>		

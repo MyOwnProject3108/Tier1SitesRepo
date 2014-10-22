@@ -11,6 +11,9 @@
 <% if site["client_tier"] %>
 @<%= site["client_tier"] %>
 <% end %>
+<% if site["short_tag"] %>
+@<%= site["short_tag"] %>
+<% end %>
 Feature: <%= site["pretty_name"] %> Integration
 # Tracking/Recommendations Tests 
 <% if site["site_timeout"] %>
