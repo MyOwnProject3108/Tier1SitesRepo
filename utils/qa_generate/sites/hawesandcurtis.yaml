@@ -19,7 +19,7 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':class => "level-0"']
-categories_to_exclude: ["Size Guide","Blog"]
+categories_to_exclude: ["Size Guide","Blog", "title=>Menswear", "Womenswear", "Shoes & Accessories", "Formal Shirts", "url=>collection"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
