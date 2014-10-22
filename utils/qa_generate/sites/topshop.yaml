@@ -18,7 +18,7 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["Topshop Magazine","New In","Premium Shoes"]
+categories_to_exclude: ["Topshop Magazine","New In","Premium Shoes","url=>brands-a-z", "url=>new-season-style", "url=>beauty-masterclass", "url=>topshop-beauty-school", "url=>swimwear-beachwear", "url=>high-summer-14-lookbook", "url=>inspireme"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
@@ -101,9 +101,9 @@ random_checkout:
   expected_recs: 0
   extra_steps:
       - [link, id, "checkout_submit_bottom"]
-      - [pause, 2]
+      - [pause, 5]
       - [link, id, "btn_register"]
-      - [pause, 2]
+      - [pause, 5]
       - [select_list, id, "address_title", "Mr"]
       - [text_field, id, "address_first_name", "P"]
       - [text_field, id, "address_surname", "Eerius"]

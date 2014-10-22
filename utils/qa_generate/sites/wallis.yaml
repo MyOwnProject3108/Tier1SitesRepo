@@ -14,7 +14,9 @@ site_id: 401
 integration: standard
 client_tier: tier1
 
-
+enable_static_test: false
+static_test_prod_url: "http://www.wallis.co.uk/en/wluk/product/accessories-265999/view-all-accessories-266069/juno-black-metal-bar-purse-3353761?bi=1&ps=20"
+static_test_cat_url: "http://www.wallis.co.uk/en/wluk/category/accessories-265999/bags-purses-266070"
 
 # site variables
 show_log: true
