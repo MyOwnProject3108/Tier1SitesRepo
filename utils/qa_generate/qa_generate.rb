@@ -135,12 +135,12 @@ def generate_files(site, site_name, opts, output_path, do_for_all_sites)
 			end
 		end 
 	end
-	plog("\tSupport modules \t=> #{output_path}/support/pages/","grey") unless do_for_all_sites
+	plog("\tSupport modules => #{output_path}/support/pages/","grey") unless do_for_all_sites
 	if !do_for_all_sites && files.length > 4
-		plog("\t\t\t\t   : #{files[0..3].join(", ")}","grey") 
-	    plog("\t\t\t\t   : #{files[4..-1].join(", ")}","grey") 
+		plog("\t\t\t   : #{files[0..3].join(", ")}","grey") 
+	    plog("\t\t\t   : #{files[4..-1].join(", ")}","grey") 
 	else
-		plog("\t\t\t\t   : #{files.join(", ")}","grey") if !do_for_all_sites 
+		plog("\t\t\t   : #{files.join(", ")}","grey") if !do_for_all_sites 
 	end
 	return true
 end
