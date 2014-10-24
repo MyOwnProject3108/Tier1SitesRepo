@@ -81,8 +81,6 @@ basket_page:
 
 random_basket:
   expected_recs: 1
-  basket_checkout: ["button", ':value => "Proceed to Checkout"']
-  basket_remove: ["button", ':class => "remove"']
   
 login_page:
   ignore: true
@@ -113,13 +111,14 @@ random_checkout:
   URL: "http://www.lovehoney.co.uk/"
   expected_recs: 0
   extra_steps:
-      - [button, class, "button proceed-to-checkout std-arrow"]
+      - [button, class, "button proceed-to-checkout lrg-arrow"]
 #     - [text_field, id, "t22-email-new", "webtest@mailinator.com", "generate_email"]
       - [text_field_optional, id, "t22-email-new", "webtest@mailinator.com", "generate_email"]
 #     - [radio, id, "no-account-option"]
       - [text_field_optional, id, "email", "webtest@mailinator.com", "generate_email"]    #the site has 2 basket->checkout processes
       - [button_optional, id, "no-account-option"]
-      - [text_field_optional, id, "password", "webtest"]
-      - [button, id, "t22-reg-new"]
+#      - [text_field_optional, id, "password", "webtest"]
+      - [button_optional, id, "t22-reg-new"]
+      - [button_optional, class, "button std-arrow"]
       - [pause, 2]
     

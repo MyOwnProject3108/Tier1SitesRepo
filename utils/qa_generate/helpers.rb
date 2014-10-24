@@ -23,3 +23,17 @@ def plog(text, color)
 	puts "\033[1;35m#{text}\033[0m" if color=="magenta"
 	puts "\033[1;36m#{text}\033[0m" if color=="blue"
 end
+
+@site_alias_file = "sites/_sites_alias.txt" #if File.directory?("/sites/")
+@site_alias_file = File.open(@site_alias_file) or die "Unable to open sites alias file..."
+@sites_alias_map = Hash.new
+@site_alias_file.each_line do |line| 
+	vals = line.split("=")
+	@sites_alias_map[vals[1].gsub(/\n/,"")] = vals[0].gsub(/\n/,"") 
+end
+puts 1
+
+def get_alias_for_site(site_name)
+#site_names_map = Hash[@sites_alias_map.to_a.reverse]
+return @sites_alias_map[site_name]
+end

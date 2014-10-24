@@ -23,13 +23,15 @@ Usage:
 
 where [options] are:
 	EOS
-	opt :infile, "Sites filename/directory", :type => :string, :default => "sites"
+	opt :sites_yaml_folder, "Sites YAML directory", :type => :string, :default => "sites"
 	opt :templates, "Template directory", :type => :string, :default => "templates"
 	opt :outfile, "Output directory", :type => :string, :default => "../../"
+	opt :sites_alias_folder, "Sites alias directory", :type => :string, :default => "sites"
 end
 
 # Use an appropriate input directory if one is not supplied.
-opts[:infile] = "sites" unless opts[:infile]
+opts[:sites_yaml_folder] = "sites" unless opts[:sites_yaml_folder]
+opts[:sites_alias_folder] = "sites" unless opts[:sites_alias_folder]
 
 # Start a new sitelist and dbmapping with the first site
 sitelist_file_mode = "w"
@@ -44,9 +46,19 @@ output_path = File.expand_path("../..",Dir.pwd)
 # first argument needs to be site name or site alias listed in the site_map below to run qa_generate for a single site
 site_name_param = ARGV[0] ? ARGV[0] : ""
 
-site_map = {"jmb" => "jojomamanbebe"}
+site_alias_file = opts[:sites_alias_folder] + "/_sites_alias.txt" if File.directory?(opts[:sites_alias_folder])
+site_alias_file = File.open(site_alias_file) or die "Unable to open site alias file..."
+#FileUtils.cp(site_alias_file, output_path + "/features/support/") #file copy file not required for now
 
-site_name = site_name_param != "" ? (site_map[site_name_param] ? site_map[site_name_param] : site_name_param ) : "<site_name>"
+sites_alias_map = Hash.new
+site_alias_file.each_line do |line| 
+	vals = line.split("=")
+	sites_alias_map[vals[0]] = vals[1].gsub(/\n/,"") 
+end
+
+#sites_alias_map = {"jmb" => "jojomamanbebe"}
+
+site_name = site_name_param != "" ? (sites_alias_map[site_name_param] ? sites_alias_map[site_name_param] : site_name_param ) : "<site_name>"
 
 num_sites = 0
 
@@ -80,9 +92,9 @@ else
 		plog("QA Generate FAILED : Could not find an alias or site configuration file with name #{site_name}.yaml in your /utils/qa_generate/sites folder.","red")
 		abort("")
 	end
-	plog("#{site_name.upcase} CONFIG => ","grey")
-	plog("\tSite config file\t   : #{sites_yaml_path}/#{site_name}.yaml","grey")
-	plog("#{site_name.upcase} OUTPUT => ","grey")
+	plog("#{site_name.upcase} CONFIG LOCATION  => #{sites_yaml_path}/#{site_name}.yaml","grey")
+	#plog("\tSite config file\t   : #{sites_yaml_path}/#{site_name}.yaml","grey")
+	plog("#{site_name.upcase} OUTPUT LOCATIONS =>","grey")
 	#plog("\tFeature file \t\t:: #{output_path}/features/auto_#{site_name}_integration.feature","grey")
 	#plog("\tSupport modules \t:: #{output_path}/support/pages/site/","grey")
 end
@@ -115,7 +127,7 @@ def generate_files(site, site_name, opts, output_path, do_for_all_sites)
 				output_file << output_content
 				filename = template_filename.split("/")[-1].gsub(/site/, site["site_name"])
 				if output_filename.include?(".feature")
-					plog("\tGenerated feature file\t   : #{output_filename}","grey") unless do_for_all_sites
+					plog("\tFeature file \t=> #{output_filename}","grey") unless do_for_all_sites
 				else
 					files << filename
 				end
@@ -123,7 +135,7 @@ def generate_files(site, site_name, opts, output_path, do_for_all_sites)
 			end
 		end 
 	end
-	plog("\tGenerated support modules in : #{output_path}/support/pages/","grey") unless do_for_all_sites
+	plog("\tSupport modules \t=> #{output_path}/support/pages/","grey") unless do_for_all_sites
 	if !do_for_all_sites && files.length > 4
 		plog("\t\t\t\t   : #{files[0..3].join(", ")}","grey") 
 	    plog("\t\t\t\t   : #{files[4..-1].join(", ")}","grey") 
@@ -158,19 +170,19 @@ if(site_name!="<site_name>")
 	generate_files(site_file,site_name,opts,output_path,do_for_all_sites=false)
 	plog("## Auto-generation completed for #{site_name.upcase} ##","grey")
 else
-	# Ensure input file exists 
-	Trollop::die :infile, "File: '#{opts[:infile]}' must exist" unless File.exist?(opts[:infile])
-	Trollop::die :infile, "File: '#{opts[:templates]}' must exist" unless File.exist?(opts[:templates])
+	# Ensure config and templates folders exist 
+	Trollop::die :sites_yaml_folder, "File: '#{opts[:sites_yaml_folder]}' must exist" unless File.exist?(opts[:sites_yaml_folder])
+	Trollop::die :templates, "File: '#{opts[:templates]}' must exist" unless File.exist?(opts[:templates])
 
-	input_file = opts[:infile]
-    input_file += "/*.yaml" if File.directory?(input_file)
+	sites_file_path = opts[:sites_yaml_folder]
+    sites_file_path += "/*.yaml" if File.directory?(sites_file_path)
 	
 	# output_path = opts[:outfile].dup
 	# output_path = "../../" unless opts[:outfile]
 	# output_path << '/' if output_path[-1].chr != '/'
 	# output_path = File.dirname(__FILE__)
 
-	site_files = Dir[input_file]
+	site_files = Dir[sites_file_path]
 	num_sites = site_files.length
 	plog("\tGenerating feature files, scenarios and steps for #{num_sites} sites...","grey") #if do_for_all_sites
 	site_names = Array.new

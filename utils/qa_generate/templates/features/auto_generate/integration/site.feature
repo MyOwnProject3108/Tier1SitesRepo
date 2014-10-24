@@ -10,8 +10,8 @@
 <% if site["client_tier"] %>
 @<%= site["client_tier"] %>
 <% end %>
-<% if site["short_tag"] %>
-@<%= site["short_tag"] %>
+<% if get_alias_for_site(site["site_name"]) != nil %>
+@<%= get_alias_for_site(site["site_name"]) %>
 <% end %>
 Feature: <%= site["pretty_name"] %> Integration
 # Tracking/Recommendations Tests 
