@@ -27,6 +27,8 @@ max_num_of_categories: 1
 num_of_reloads_per_category: 5
 ignore_cat_tracked_as_other_page: true
 
+wait_time_per_product_page: 5
+max_num_of_products: 1
 product_links: ["ul", ':class => "grid4"'] 
 product_link_filter: ["rel", "product"]
 product_options: 
@@ -35,10 +37,6 @@ product_options:
 #product_options_preselect:
 #    - [span, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/span"']
 product_page_custom_js: "document.getElementById('product_id').style.display = 'block';"
-
-                               
-wait_time_per_product_page: 2
-max_num_of_products: 1
 
 #add_to_basket_button: ["button", ':xpath=> "//[@id=\"add-to-bag\"]/input[1]"']
 add_to_basket_button: ["button", ':value => "Add to bag"']
