@@ -17,7 +17,7 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["Topman Magazine", "New In", "url=>/home", , "url=>-suits-", "url=>inspire-me", "url=>view-all-brand"]
+categories_to_exclude: ["Topman Magazine", "New In", "url=>/home", "url=>-suits-", "url=>inspire-me", "url=>view-all-brand"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
