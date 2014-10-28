@@ -12,10 +12,14 @@ site_id: 82
 integration: json
 client_tier: tier1
 
+enable_static_test: false
+static_test_prod_url: "http://uk.tommy.com/Wera-Boot/FW56817758,en_GB,pd.html#!color%3D403"
+static_test_cat_url: ""
+ 
 #### site level variables ####
 show_log: true
 category_menu: ["ul", ':class => "global_navigation"']
-categories_to_exclude: ["Hilfiger Denim", "Features"]
+categories_to_exclude: ["Hilfiger Denim", "Features", "url=>GiftCard", "url=>ShopByLook", "url=>Stories"]
 
 test_all_categories: false
 
@@ -30,8 +34,8 @@ max_num_of_products: 1
 add_to_basket_button: ["button", ':class=> "button active addtocartbutton style_2"'] 
 
 product_page_custom_js: >
-     var er1=document.getElementById('iTrakFrame'); if(er1) er1.parentNode.removeChild(er1);
-     var er2=document.getElementById('iTrakFrame2'); if(er2) er2.parentNode.removeChild(er2);
+     var iframes = document.getElementsByTagName('iframe');
+     for (var i = 0; i < iframes.length; i++) {  iframes[i].parentNode.removeChild(iframes[i]); }
      //var er3=document.getElementById('emailOverWrap'); if(er3) er3.parentNode.parentNode.removeChild(er3.parentNode);
      //var er4=document.getElementsByClassName('ui-widget-overlay ui-front')[0]; if(er4) er4.parentNode.removeChild(er4);
 

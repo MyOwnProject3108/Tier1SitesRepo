@@ -6,8 +6,8 @@ end
 When /^I click optional (.+) with (.+) "(.+)"$/ do | element, locator, locator_value |
 	begin
 	  @browser.send(element.to_sym, locator.to_sym => locator_value).wd.location_once_scrolled_into_view  
-	  @browser.send(element.to_sym, locator.to_sym => locator_value).when_present(5).click
-	rescue Watir::Exception::UnknownObjectException
+	  @browser.send(element.to_sym, locator.to_sym => locator_value).when_present.click
+	rescue 
 	  plog("The optional #{element} element with #{locator} \"#{locator_value}\" was not found. Resuming the test...","grey")
  	end
 end

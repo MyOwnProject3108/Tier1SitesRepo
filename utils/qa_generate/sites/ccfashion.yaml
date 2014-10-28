@@ -13,7 +13,7 @@ integration: json
 client_tier: tier1
 
 enable_static_test: false
-static_test_prod_url: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Dresses-/Petite-Pansy-Print-Dress/5792"
+static_test_prod_url: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Petite-Trousers-/Petite-Chocolate-Overdyed-Jeans/6286"
 static_test_cat_url: "http://www.ccfashion.co.uk/fcp/categorylist/dept/knitwear"
 
 #### site level variables ####

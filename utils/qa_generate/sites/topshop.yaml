@@ -79,7 +79,7 @@ login_page:
 searchresults_page:
   URL: "http://www.topshop.com/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12556&catalogId=33057&beginIndex=1&viewAllFlag=false&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dvd&x=0&y=0"
   expected_recs: 0
-  zerosearch_recs: 1
+  zerosearch_recs: 0
   
 checkout_page:
   ignore: true
@@ -99,18 +99,17 @@ checkout_page:
     
     
 random_checkout:
-  URL: "http://www.topshop.com/"
   expected_recs: 0
   extra_steps:
       - [link, id, "checkout_submit_bottom"]
       - [pause, 5]
       - [link_optional, id, "link_create_account"]
       - [pause, 5]
-      - [text_field, id, "create_email", "peeriustest@email.com"]
+      - [text_field, id, "create_email", "peeriustest@email.com", "autogenerate_email"]
 #     - [text_field, id, "create_email", "peeriustest@email.com", "autogenerate_email"]
       - [text_field, id, "create_password", "Pass1234"]
       - [text_field, id, "create_password_confirm", "Pass1234"]
-      - [select_list, id, "address_country", "United Kingdom"]
+#      - [select_list, id, "address_country", "United Kingdom"]
       - [pause, 2]
       - [link, id, "btn_create_account"]
       - [pause, 2]
