@@ -417,6 +417,7 @@ def get_filtered_product_links(product_links)
 		product_links = product_links.reject{|x| !x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
 		# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>
 		product_links = product_links.reject{|x| !x.attribute(filter_attrib_name).include?(filter_attrib_val.gsub("%",'')) } if filter_attrib_val.include?('%')
+		# debug_links_output(product_links)
 		# Collect all links that have an attributes "title" and "href"
 	end
 	product_links = product_links.collect{|x|	x.attribute('title')!="" ?	[x.attribute('title'), x.attribute('href')] : [strip_tags(x.text), x.attribute('href')]}
@@ -585,3 +586,8 @@ def is_static_test_enabled(page_type)
 	return static_test_enabled
 end
 
+def debug_links_output(coll)
+	coll.each do |c|
+		plog(c.attribute("href"),"grey")
+	end
+end
