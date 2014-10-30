@@ -197,7 +197,9 @@ def test_random_category_or_all_category_tracking(test_all_categories)
 	@@show_log = (@current_page.show_log && @current_page.show_log ==  true) ? true : false
 
     categories = @current_page.category_menu_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
-    categories = categories.reject{|x| x[1]==nil }
+    categories = categories.reject{|x| x[1]==nil || x[1]=="" }
+    #debug_catlinks_output(categories)
+    abort("I die")
     categories_to_exclude = nil
     #categories_to_exclude = categories_to_exclude.raw.flatten! if categories_to_exclude != nil && test_all_categories
     categories_to_exclude = @current_page.get_categories_to_exclude if test_all_categories
@@ -591,3 +593,10 @@ def debug_links_output(coll)
 		plog(c.attribute("href"),"grey")
 	end
 end
+
+def debug_catlinks_output(coll)
+	coll.each do |c|
+		plog("#{c[0]} :: #{c[1]}","grey")
+	end
+end
+

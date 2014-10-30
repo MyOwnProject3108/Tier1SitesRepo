@@ -19,7 +19,7 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["Holiday Shop","Be Inspired","Wedding"]
+categories_to_exclude: ["Holiday Shop","Be Inspired","Wedding","url=>suits-"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
