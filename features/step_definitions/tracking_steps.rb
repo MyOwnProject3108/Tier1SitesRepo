@@ -503,6 +503,8 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 				test_pass = false
 			end
 			prod_ctr = prod_ctr + 1 if option_selected
+		else
+			plog("\tIGNORING OUT OF STOCK PRODUCT #{prod_name} : #{prod_url}","grey") if @@show_log
 		end
 	else
 		#prod_ctr = prod_ctr + 1 
