@@ -92,7 +92,7 @@ login_page:
 
 searchresults_page:
   URL: "http://search.lovehoney.co.uk/search?w=toy&p=Q&asug=&view=grid"
-  expected_recs: 0
+  expected_recs: 1
   zerosearch_recs: 1
   
 checkout_page:
