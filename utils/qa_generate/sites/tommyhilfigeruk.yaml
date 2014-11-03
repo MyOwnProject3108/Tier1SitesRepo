@@ -29,7 +29,7 @@ num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':id=> "mansory"'] 
 product_link_filter: ["wtname", "listing.productdetail"] 
-wait_time_per_product_page: 5
+wait_time_per_product_page: 10
 max_num_of_products: 1
 add_to_basket_button: ["button", ':class=> "button active addtocartbutton style_2"'] 
 
@@ -73,7 +73,7 @@ basket_page:
   basket_remove: ["button", ':class => "remove no_print"']
 
 random_basket:
-  expected_recs: 0
+  expected_recs: 1
   basket_checkout: ["button", ':name => "dwfrm_cart_checkoutCart"']
   basket_remove: ["button", ':class => "remove no_print"']
   
