@@ -11,20 +11,28 @@
 module <%= site["site_name"].capitalize %>
   
     class BasketPage
-      include PageObject
-      include PeeriusHelper
-      
-      URL = "<%= debug_url(page["URL"]) %>"
-      direct_url URL
-      <% if page["basket_remove"] %>
-      <%= page["basket_checkout"][0] %>(:basket_checkout, <%= page["basket_checkout"][1] %>)
-      <% end %>
-       
-      <% if page["basket_remove"] %>
-      def remove_product_links
-        <%= page["basket_remove"][0] %>_elements(<%= page["basket_remove"][1] %>)
-      end 
-      <% end %>
+		include PageObject
+		include PeeriusHelper
+
+		URL = "<%= debug_url(page["URL"]) %>"
+		direct_url URL
+		<% if page["basket_remove"] %>
+		<%= page["basket_checkout"][0] %>(:basket_checkout, <%= page["basket_checkout"][1] %>)
+		<% end %>
+
+		<% if page["basket_remove"] %>
+		def remove_product_links
+		<%= page["basket_remove"][0] %>_elements(<%= page["basket_remove"][1] %>)
+		end 
+		<% end %>
+		
+		def get_site_custom_js
+		<% if site["site_custom_js"] != nil %>
+			return "<%= site["site_custom_js"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
     end  
 end
 <% end %>

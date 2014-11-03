@@ -33,11 +33,15 @@ wait_time_per_product_page: 10
 max_num_of_products: 1
 add_to_basket_button: ["button", ':class=> "button active addtocartbutton style_2"'] 
 
-product_page_custom_js: >
+site_custom_js: >
      var iframes = document.getElementsByTagName('iframe');
      for (var i = 0; i < iframes.length; i++) {  iframes[i].parentNode.removeChild(iframes[i]); }
-     //var er3=document.getElementById('emailOverWrap'); if(er3) er3.parentNode.parentNode.removeChild(er3.parentNode);
-     //var er4=document.getElementsByClassName('ui-widget-overlay ui-front')[0]; if(er4) er4.parentNode.removeChild(er4);
+     var er3=document.getElementById('emailOverWrap'); if(er3) er3.parentNode.parentNode.removeChild(er3.parentNode);
+     var er4=document.getElementsByClassName('ui-widget-overlay ui-front')[0]; if(er4) er4.parentNode.removeChild(er4);
+
+search_custom_js: >
+     if(document.getElementsByClassName('search_trigger trigger quick_link')[0]) 
+     document.getElementsByClassName('search_trigger trigger quick_link')[0].click();
 
 
 home_page:
@@ -50,7 +54,7 @@ random_product:
   expected_recs: 1
 
 random_category:
-  expected_recs: 1
+  expected_recs: 0
   
 product_page:
   ignore: true
@@ -63,7 +67,7 @@ product_page:
 category_page:
   ignore: true
   URL: "http://uk.tommy.com/Polos/106000,en_GB,sc.html"
-  expected_recs: 0
+  expected_recs: -1
 
 basket_page:
   ignore: true
@@ -88,8 +92,8 @@ login_page:
 
 searchresults_page:
   URL: "http://uk.tommy.com/on/demandware.store/Sites-GB-Site/en_GB/Search-Show?q=shirt"
-  expected_recs: 0
-  zerosearch_recs: 0
+  expected_recs: 1
+  zerosearch_recs: 1
   
 checkout_page:
   ignore: true

@@ -298,6 +298,9 @@ def test_category_page(cat_name,cat_url,wait_time)
 		@browser.goto cat_url 
 	end
 	sleep wait_time
+	if @current_page.get_site_custom_js != nil
+		@browser.execute_script(@current_page.get_site_custom_js)
+	end
 	cat_name = cat_name.length > 20 ? cat_name[0..17].strip.gsub(/\s\w+\s*$/,'...').gsub(/\s+/, "") : cat_name.strip.gsub(/\s+/, "")
 	reload_attempts = @current_page.get_num_of_reloads_per_category
 	if !(@browser.td(:id => 'trackInfo').exists? && @browser.td(:id => 'trackInfo').text != nil) 
@@ -387,14 +390,17 @@ def should_exclude_category(cat_name, cat_url)
 	
 	cat_info_to_exclude.each do |cat_info|
 	  exclude_cat = true if cat_info.include?(cat_name) # exact title match if => IS NOT included in the cat_info
-	  
-	  if cat_info.include?("=>") # partial title or url match if => IS included in the cat_info
-	  	info_type = cat_info.split("=>")[0] 
-	  	info_value = cat_info.split("=>")[1] 
-	  	
-	  	exclude_cat = true if info_type == "url" && !info_value.include?("%") && cat_url.include?(info_value)
-		exclude_cat = true if info_type == "url" && info_value.include?("%") && cat_url.end_with?(info_value.gsub("%",""))
-	  	exclude_cat = true if info_type == "title" && cat_name.strip.include?(info_value) # partial title match 
+	  begin
+		  if cat_info.include?("=>") # partial title or url match if => IS included in the cat_info
+			info_type = cat_info.split("=>")[0] 
+			info_value = cat_info.split("=>")[1] 
+
+			exclude_cat = true if info_type == "url" && !info_value.include?("%") && cat_url.include?(info_value)
+			exclude_cat = true if info_type == "url" && info_value.include?("%") && cat_url.end_with?(info_value.gsub("%",""))
+			exclude_cat = true if info_type == "title" && cat_name.strip.include?(info_value) # partial title match 
+		  end
+	  rescue
+	  	plog("ERROR WHEN TRYING TO EXCLUDE CATEGORY: #{cat_name} :: #{cat_url}","red")
 	  end
 	end
     return exclude_cat
@@ -457,6 +463,9 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 		@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 		@browser.goto prod_url #'http://showcase.peerius.com/index.php/clothing/mens/tops/10457232.html' "http://www.cottontraders.com/womens-shirts+blouses/34-sleeve-spot-print-blouse/invt/ab10892" #
 		sleep wait_time_per_product
+		if @current_page.get_site_custom_js != nil
+			@browser.execute_script(@current_page.get_site_custom_js)
+		end
 		if @current_page.get_product_page_custom_js != nil
 			@browser.execute_script(@current_page.get_product_page_custom_js)
 		end

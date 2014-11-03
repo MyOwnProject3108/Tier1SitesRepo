@@ -111,6 +111,7 @@ random_checkout:
   URL: "http://www.thewhitecompany.com/"
   expected_recs: 0
   extra_steps:
+      - [pause, 2]
       - [input, id, "in_btnCheckout"]
       - [pause, 2]
       - [text_field, id, "in_txtEmailAddress", "peeriustest@email.com", "autogenerate_email"]

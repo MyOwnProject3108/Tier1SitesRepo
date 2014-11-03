@@ -31,7 +31,6 @@ end
 	vals = line.split("=")
 	@sites_alias_map[vals[1].gsub(/\n/,"")] = vals[0].gsub(/\n/,"") 
 end
-puts 1
 
 def get_alias_for_site(site_name)
 #site_names_map = Hash[@sites_alias_map.to_a.reverse]

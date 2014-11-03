@@ -73,7 +73,6 @@ module PeeriusHelper
       
       # Returns true if the page is actually a page of the expected type
 	  def elem_exists(elem)
-		puts elem
 		return eval("@browser."+elem+".exists?")
       end
 

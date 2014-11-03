@@ -82,8 +82,8 @@ login_page:
 
 searchresults_page:
   URL: "http://www.wallis.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=12557&catalogId=33058&beginIndex=1&viewAllFlag=false&pageSize=20&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dress&x=34&y=17"
-  expected_recs: 0
-  zerosearch_recs: 0
+  expected_recs: 1
+  zerosearch_recs: 1
   
 checkout_page:
   ignore: true
