@@ -59,7 +59,7 @@ random_product:
   expected_recs: 3
   
 random_category:
-  expected_recs: 0
+  expected_recs: 4
   
 product_page:
   ignore: true
@@ -70,7 +70,7 @@ product_page:
 category_page:
   ignore: true
   URL: "http://www.lovehoney.co.uk/lingerie/sexy-costumes/"
-  expected_recs: 0
+  expected_recs: 4
 
 basket_page:
   ignore: true

@@ -14,14 +14,14 @@ client_tier: tier1
 
 enable_static_test: false
 static_test_prod_url: ""
-static_test_cat_url: "http://www.thewhitecompany.com/candles-and-fragrance/bath-and-body/eau-de-toilette/"
+static_test_cat_url: "http://www.thewhitecompany.com/clothing/"
 
 #### site level variables ####
 show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "site_container"']
-categories_to_exclude: ["Bedroom", "Gifts", "Our Blog", "url=>help", "url=>inspire-me", "url=>bed-linen"]
+categories_to_exclude: ["Bedroom", "Gifts", "Our Blog", "url=>help", "url=>inspire-me", "url=>bed-linen", "Clothing", "url=>denim-shop"]
 
 test_all_categories: false
 
