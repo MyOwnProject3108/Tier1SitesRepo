@@ -104,7 +104,7 @@ random_checkout:
   URL: "http://uk.tommy.com/"
   expected_recs: 0
   extra_steps:
-      - [button, class, "button active top"]
+      - [button, class, "button style_2 active bottom"]
       - [pause, 2]
       - [button, id, "continuecheckoutbutton"]
       - [pause, 2]
