@@ -291,6 +291,13 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def get_site_custom_js
+		<% if site["site_custom_js"] != nil %>
+			return "<%= site["site_custom_js"] %>"
+		<% else %>
+			return nil
+		<% end %>
+		end 
 		
     end  
 end
