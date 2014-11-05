@@ -106,8 +106,10 @@ checkout_page:
     - [text_field_optional, id, "t22-password", "webtest"]
     - [button, class, "button std-arrow"]
     - [pause,2]
-    
+
+#we don't track checkout for this site so ignoring random_checkout scenario     
 random_checkout:
+  ignore: true             
   URL: "http://www.lovehoney.co.uk/"
   expected_recs: 0
   extra_steps:
