@@ -551,7 +551,7 @@ def check_category_and_test_product_page(cat_url, cat_name, cat_ctr, num_categor
 		if cat_test_response != nil && cat_test_response.include?("SUCCESS") 
 				products = @current_page.product_links_element.exists? ? @current_page.product_links_element.link_elements : nil
 				if !products 
-					if !@current_page.ignore_categories_without_products
+					if !@current_page.ignore_cat_without_products
 						fail(PeeriusConfigurationError.new("FAILED :: PRODUCT LINKS NOT FOUND ON CATEGORY PAGE #{cat_info[0]}(#{cat_info[1]}) USING #{@current_page.get_site_vars['product_links']}"))
 					else
 						plog("\tIGNORING CATEGORY WITHOUT PRODUCTS for #{cat_name} : #{cat_url}","grey") if @@show_log
@@ -561,7 +561,7 @@ def check_category_and_test_product_page(cat_url, cat_name, cat_ctr, num_categor
 
 				products = get_filtered_product_links(products) 
 				if products.length == 0 
-					if !@current_page.ignore_categories_without_products
+					if !@current_page.ignore_cat_without_products
 						fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]})"))
 					else
 						plog("\tIGNORING CATEGORY WITHOUT PRODUCTS for #{cat_name} : #{cat_url}","grey") if @@show_log

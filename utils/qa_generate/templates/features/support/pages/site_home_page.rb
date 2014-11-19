@@ -202,9 +202,9 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
-		def ignore_categories_without_products
-		<% if site["ignore_categories_without_products"] %>
-			return <%= site["ignore_categories_without_products"] %>
+		def ignore_cat_without_products
+		<% if site["ignore_cat_without_products"] %>
+			return <%= site["ignore_cat_without_products"] %>
 		<% else %>
 			return false
 		<% end %>
