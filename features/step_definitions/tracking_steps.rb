@@ -243,8 +243,8 @@ def test_random_category_or_all_category_tracking(test_all_categories)
 			end
 			tracked_categories << cat_test_response if cat_test_response.include?("SUCCESS")
 			undefined_categories << cat_test_response if cat_test_response.include?("UNDEFINED")
-			failed_categories << cat_test_response if cat_test_response.include?("Other") && !ignore_cat_tracked_as_other_page
-			ignored_categories << cat_test_response if cat_test_response.include?("Other") && ignore_cat_tracked_as_other_page
+			failed_categories << cat_test_response if cat_test_response.include?("OTHER") && !ignore_cat_tracked_as_other_page
+			ignored_categories << cat_test_response if cat_test_response.include?("OTHER") && ignore_cat_tracked_as_other_page
 			
 		else
 			cats_excluded = cats_excluded + 1
@@ -317,7 +317,7 @@ def test_category_page(cat_name,cat_url,wait_time)
 		end
 	end
 	if @browser.td(:id => 'trackInfo').exists?
-		page_type = @browser.td(:id => 'trackInfo').text[/For(.*?)Page/m, 1]
+		page_type = @browser.td(:id => 'trackInfo').text.downcase[/for(.*?)page/m, 1]
 		# Sometimes the element exists but watir is unable to read due to a modal div popup as is the case with tedbaker
 		unless page_type != nil 
 			@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
@@ -325,11 +325,11 @@ def test_category_page(cat_name,cat_url,wait_time)
 			page_type = @browser.td(:id => 'trackInfo').text[/For(.*?)Page/m, 1]
 		end
 		#plog("DEBUG => #{page_type} // #{@browser.div(:id => 'peeriusDebug')}","red")
-		if page_type.include?("Category")
+		if page_type.include?("category")
 			cat_test_response = "#{cat_name}|#{cat_url}|SUCCESS|#{page_num}"
 			# plog("#{cat_name} : \t#{cat_url}\t=> tracked as Category page with unique Id [#{@browser.td(:id => 'categoryUniqueId').text}]","green") if @@show_log
 		else
-			cat_test_response = "#{cat_name}|#{cat_url}|#{page_type}|#{page_num}"
+			cat_test_response = "#{cat_name}|#{cat_url}|#{page_type.upcase}|#{page_num}"
 		end 
 	else
 		cat_test_response = "#{cat_name}|#{cat_url}|<<UNDEFINED>>|#{page_num}"
@@ -475,7 +475,8 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 		out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
 
 		if out_of_stock == false
-			if @browser.td(:id => 'trackInfo').text.include?("ProductPage")
+			page_type = @browser.td(:id => 'trackInfo').text.downcase
+			if page_type.include?("productpage")
 				if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)
 					plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url}","yellow") if @@show_log
 
@@ -501,10 +502,10 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 				else #product page is tracking as expected - nothing more to do
 					plog("\tPRODUCT #{prod_ctr} of #{num_products} => #{prod_name} :: #{prod_url} - tracked as Product Page","green") 
 				end
-			elsif @browser.td(:id => 'trackInfo').text.include?("CategoryPage")
+			elsif page_type.include?("categorypage")
 				plog("\tExpected PRODUCT PAGE but found CATEGORY PAGE :: #{prod_url} => RETRYING...","grey") if @@show_log
 				return prod_ctr
-			elsif @browser.td(:id => 'trackInfo').text.include?("OtherPage")
+			elsif page_type.include?("otherpage")
 				plog("\tExpected PRODUCT PAGE but found OTHER PAGE :: #{prod_url} => RETRYING...","grey") if @@show_log
 				return prod_ctr
 			else
@@ -550,7 +551,7 @@ def check_category_and_test_product_page(cat_url, cat_name, cat_ctr, num_categor
 		if cat_test_response != nil && cat_test_response.include?("SUCCESS") 
 				products = @current_page.product_links_element.exists? ? @current_page.product_links_element.link_elements : nil
 				if !products 
-					if !@current_page.ignore_categories_without_products
+					if !@current_page.ignore_cat_without_products
 						fail(PeeriusConfigurationError.new("FAILED :: PRODUCT LINKS NOT FOUND ON CATEGORY PAGE #{cat_info[0]}(#{cat_info[1]}) USING #{@current_page.get_site_vars['product_links']}"))
 					else
 						plog("\tIGNORING CATEGORY WITHOUT PRODUCTS for #{cat_name} : #{cat_url}","grey") if @@show_log
@@ -560,7 +561,7 @@ def check_category_and_test_product_page(cat_url, cat_name, cat_ctr, num_categor
 
 				products = get_filtered_product_links(products) 
 				if products.length == 0 
-					if !@current_page.ignore_categories_without_products
+					if !@current_page.ignore_cat_without_products
 						fail(PeeriusConfigurationError.new("FAILED :: NO PRODUCTS were found on category page #{cat_info[0]}(#{cat_info[1]})"))
 					else
 						plog("\tIGNORING CATEGORY WITHOUT PRODUCTS for #{cat_name} : #{cat_url}","grey") if @@show_log

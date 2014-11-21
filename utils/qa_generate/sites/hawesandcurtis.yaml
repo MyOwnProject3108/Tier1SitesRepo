@@ -29,7 +29,7 @@ wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-ignore_categories_without_products: true
+ignore_cat_without_products: true
 product_links: ["ul", ':id=> "product-listing"'] 
 #product_link_filter: ["href", "%?id=%"]
 product_options: 
