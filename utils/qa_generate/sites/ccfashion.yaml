@@ -42,6 +42,7 @@ max_num_of_products: 1
 
 add_to_basket_button: ["button", ':id=> "addToBagBtn"']
 add_to_basket_error_msg: "PLEASE SELECT A SIZE"
+ignore_single_product_option: true
 
 #### page level config(static/hard coded) ####
 

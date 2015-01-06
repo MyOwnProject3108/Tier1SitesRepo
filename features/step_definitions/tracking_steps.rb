@@ -154,6 +154,9 @@ def select_product_options
 				options = product_options.lis[1..-1]
 				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
 				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
+				options.each do |o|
+				plog(o,"red")
+				end
 				if(options.length > 1 || !@current_page.ignore_single_product_option)
 					option = options.length > 1 ? options[1..-1].shuffle.first : options[-1]  #options[rand(1..options.length - 1)] 
 					opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
