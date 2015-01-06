@@ -12,9 +12,9 @@ site_id: 815
 integration: json
 client_tier: tier1
 
-enable_static_test: false
-static_test_prod_url: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Petite-Trousers-/Petite-Chocolate-Overdyed-Jeans/6286"
-static_test_cat_url: "http://www.ccfashion.co.uk/fcp/categorylist/dept/knitwear"
+enable_static_test: true
+static_test_prod_url: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Last-Chance-To-Buy/Tobacco-Belted-Flannel-Trousers-Long/6476"
+static_test_cat_url: ""
 
 #### site level variables ####
 

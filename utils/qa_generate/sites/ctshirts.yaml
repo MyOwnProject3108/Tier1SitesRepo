@@ -18,7 +18,7 @@ client_tier: tier1
 
 # site variables
 show_log: true
-category_menu: ["ul", ':xpath => "//div[@id=\"menu\"]/ul"']
+category_menu: ["ul", ':xpath => "//div[@id=\"header_container\"]/div/div[3]/ul"']
 categories_to_exclude: ["Nothing"]
 max_num_of_categories: 1
 wait_time_per_category_page: 2
