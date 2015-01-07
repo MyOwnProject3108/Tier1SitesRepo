@@ -151,14 +151,13 @@ def select_product_options
 				option.click
 			when product_options.is_a?(PageObject::Elements::UnorderedList) #superdry
 				product_options_preselect.when_present.click if @current_page.has_product_options_preselect
-				options = product_options.lis[1..-1]
+				options = product_options.lis[1..-1] if !@current_page.ignore_single_product_option
+				options = product_options.lis  if @current_page.ignore_single_product_option
 				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
 				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
-				options.each do |o|
-				plog(o,"red")
-				end
+				
 				if(options.length > 1 || !@current_page.ignore_single_product_option)
-					option = options.length > 1 ? options[1..-1].shuffle.first : options[-1]  #options[rand(1..options.length - 1)] 
+					option = options.length > 1 ? options[0..-1].shuffle.first : options[-1]  
 					opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
 					plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
 					plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
@@ -168,6 +167,23 @@ def select_product_options
 						option.click
 						plog("\tException : option.links.first.click did not work - so tried option.click instead","grey")
 					end
+					
+					else 
+					#CCFashion Added array sorting logic not to ignore first array object to enable selecting item with only one size available
+					options = product_options.lis[0..-1]
+					options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
+					options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
+					option = options.length <= 1 ? options[0..-1].shuffle.first : options[-1]
+					opt_text = strip_clean(strip_tags(option.html)).to_s != "" ? strip_clean(strip_tags(option.html)).to_s : strip_tags(option.html)
+					plog("\tPre-selected => #{strip_tags(product_options_preselect.html)}","blue") if @@show_log &&  @current_page.has_product_options_preselect
+					plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
+					begin
+						option.links.first.click
+					rescue 
+						option.click
+						plog("\tException : option.links.first.click did not work - so tried option.click instead","grey")
+					end
+		
   				end
 			when product_options.is_a?(PageObject::Elements::Image)
 				plog("\tSelected option => #{product_options} ...","magenta") if @@show_log
@@ -476,6 +492,7 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 		option_selected = true
 		out_of_stock = false
 		out_of_stock = true if @current_page.get_out_of_stock_msg != nil && @browser.text.include?(@current_page.get_out_of_stock_msg)
+	#	abort("outofstock was true") if out_of_stock
 
 		if out_of_stock == false
 			page_type = @browser.td(:id => 'trackInfo').text.downcase

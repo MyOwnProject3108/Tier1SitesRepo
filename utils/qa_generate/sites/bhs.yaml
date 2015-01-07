@@ -16,6 +16,11 @@ integration: standard
 client_tier: tier1
 
 
+enable_static_test: false
+static_test_prod_url: "http://www.bhs.co.uk/en/bhuk/product/girls-3318225/disney-frozen-3512956/disney-frozen-5-pack-briefs-3859850?bi=1&ps=40"
+static_test_cat_url: ""
+
+
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
@@ -29,7 +34,7 @@ product_link_filter: ["data-productid", "*"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
-
+out_of_stock_msg: "Sorry, this item is out of stock."
 
         
 #### page level config ####
