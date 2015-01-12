@@ -14,9 +14,9 @@ client_tier: tier1
 ab_test_group: 1
 
 
-enable_static_test: false
-static_test_prod_url: "http://www.gant.co.uk/mens-jeans/blue-desert-twill-jeans/24407"
-static_test_cat_url: "http://www.gant.co.uk/mens-jeans/"
+enable_static_test: true
+static_test_prod_url: "http://www.gant.co.uk/baby-jeans/red-baby-boys-slim-cord-5-pocket-0-3-yrs/31645"
+static_test_cat_url: ""
 
 
 # site variables
