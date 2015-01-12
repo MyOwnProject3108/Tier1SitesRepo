@@ -16,6 +16,9 @@ module PeeriusDebugInfo
 		  end
 	  end
       @browser.td(:id => 'trackInfo').wait_until_present(60)
+      @browser.refresh
+       #Implicit wait for browser
+       browser.driver.manage.timeouts.implicit_wait = 5
       return @browser.td(:id => 'trackInfo').text 
 	  end
     
