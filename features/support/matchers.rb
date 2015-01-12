@@ -11,8 +11,10 @@ RSpec::Matchers.define :contain_result do |result|
 end
 
 RSpec::Matchers.define :be_tracked_as do |page_type| 
+  
     page_type = page_type.downcase 
     match do |page|
+     
         page.tracked_as.downcase.include? page_type
     end
     failure_message_for_should do |page|
