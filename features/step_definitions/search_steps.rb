@@ -12,7 +12,12 @@ When /^I search for a? ?"([^"]*)"$/ do |term|
 	@current_page.search_field = term
 	# if search_button is defined in yaml then use it to click else use the enter key to submit the search
 	if @current_page.has_search_button
+	
+		begin
 		@current_page.search_button_element.click
+		rescue Selenium::WebDriver::Error::ElementNotVisibleError
+		  @browser.refresh
+		end
 	else
 		@current_page.search_field_element.respond_to?(:send_keys) ? @current_page.search_field_element.send_keys(:return) : @browser.send_keys(:enter)
 	end
