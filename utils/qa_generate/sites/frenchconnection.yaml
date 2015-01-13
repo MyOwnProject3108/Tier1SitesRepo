@@ -113,13 +113,17 @@ checkout_page:
     - [link, id, "paymentProceed"]
    # - [link, id, "confirmProceed"]
    
-#random checkout uses guest checkout so steps below are for guest user/new user registration after basket page.
 
+#No need to login/register to track checkout.
 random_checkout:
   expected_recs: 0
   extra_steps:
       - [link, id, "ctl00_ctl00_globalmaincontent_mainContent_hlCheckout"]
-#     - [text_field, id, "txtGuestEmail", "peertest@yahoo.com", "generate_email"]
+      - [pause, 2]
+#     - [text_field, id, "ctl00_ctl00_globalmaincontent_maincontent_email", "peertest@mailinator.com", "generate_email"]
+#     - [radio, xpath, "//*[@id='login_form_container']/div/div[3]/fieldset[2]/label"]
+#     - [text_field, id, "ctl00_ctl00_globalmaincontent_maincontent_password", "Pass1234"]
+#     - [input, id, "ctl00_ctl00_globalmaincontent_maincontent_login"]
 #     - [link, id, "guest"]
 #     - [radio, id, "rbHomeDelivery"]
 #     - [text_field, id, "txtBuildingNameNumber", "30"]
