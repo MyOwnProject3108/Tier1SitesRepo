@@ -14,8 +14,8 @@ site_id: 82
 integration: standard
 client_tier: tier1
 
-enable_static_test: false
-static_test_prod_url: "http://www.burton.co.uk/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=0&viewAllFlag=&catalogId=33052&storeId=12551&productId=13240958&langId=-1&categoryId=&parent_category_rn=&searchTerm=BR49C09DBLK&resultCount=1&geoip=home"
+enable_static_test: true
+static_test_prod_url: "http://www.burton.co.uk/en/bruk/product/new-in-281844/mens-new-in-1880782/mens-coats-jackets-1880792/black-leather-look-textured-bomber-jacket-3967971?bi=1&ps=20"
 static_test_cat_url: ""
 
 
@@ -40,6 +40,7 @@ ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
+out_of_stock_msg: "Sorry, this item is out of stock."
 
 home_page:
   URL: "http://www.burton.co.uk/?geoip=home"

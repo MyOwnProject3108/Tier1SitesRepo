@@ -15,10 +15,15 @@ site_id: 142
 integration: standard
 client_tier: tier1
 
+enable_static_test: true
+static_test_prod_url: "http://www.ctshirts.co.uk/mens-shirts/view-all/Pink-mini-herringbone-texture-non--iron-cutaway-extra-slim-fit-shirt?q=gbpdefault||rg356pnk|||||1861,||||||||"
+static_test_cat_url: ""
+
+
 
 # site variables
 show_log: true
-category_menu: ["ul", ':xpath => "//div[@id=\"menu\"]/ul"']
+category_menu: ["ul", ':xpath => "//div[@id=\"header_container\"]/div/div[3]/ul"']
 categories_to_exclude: ["Nothing"]
 max_num_of_categories: 1
 wait_time_per_category_page: 2

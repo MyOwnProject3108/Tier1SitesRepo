@@ -20,7 +20,7 @@ generates .feature and page class files in order to test Peerius code on client 
 
 Usage:
 	   qa_generate [options]
-
+# Clarifications
 where [options] are:
 	EOS
 	opt :sites_yaml_folder, "Sites YAML directory", :type => :string, :default => "sites"
@@ -112,7 +112,8 @@ def generate_files(site, site_name, opts, output_path, do_for_all_sites)
 	# Generate output files from templates for site
 	#plog("\t#{site_name.upcase} \t :: Generated feature files, scenarios and step definition code","grey") if do_for_all_sites
 	files = Array.new
-	template_files.each do |template_filename|
+	template_files.each do |template_filename| 
+	  #plog("template file is => #{template_filename} :: #{File.file?(template_filename)}", "grey")
 		if File.file?(template_filename)
 			template_file = File.open(template_filename, "r") { |f| f.read }
 			generator = ERB.new(template_file, 0, "<>")

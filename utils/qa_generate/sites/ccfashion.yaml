@@ -13,8 +13,8 @@ integration: json
 client_tier: tier1
 
 enable_static_test: false
-static_test_prod_url: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Petite-Trousers-/Petite-Chocolate-Overdyed-Jeans/6286"
-static_test_cat_url: "http://www.ccfashion.co.uk/fcp/categorylist/dept/knitwear"
+static_test_prod_url: "http://www.ccfashion.co.uk/fcp/product/countrycasuals/Last-Chance-To-Buy/Tobacco-Belted-Flannel-Trousers-Long/6476"
+static_test_cat_url: ""
 
 #### site level variables ####
 
@@ -42,6 +42,7 @@ max_num_of_products: 1
 
 add_to_basket_button: ["button", ':id=> "addToBagBtn"']
 add_to_basket_error_msg: "PLEASE SELECT A SIZE"
+ignore_single_product_option: true
 
 #### page level config(static/hard coded) ####
 

@@ -14,6 +14,10 @@ site_id: 539
 integration: standard
 client_tier: tier1
 
+enable_static_test: false
+static_test_prod_url: "http://www.missselfridge.com/en/msuk/product/accessories-299050/socks-3435626/snowman-and-loghouse-sock-3511309?bi=1&ps=40"
+static_test_cat_url: ""
+
 
 #### site level variables ####
 
@@ -31,6 +35,7 @@ product_links: ["div", ':id=> "wrapper_page_content"']
 product_link_filter: ["data-productid", "*"]
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
+out_of_stock_msg: "Sorry, this item is out of stock."
 
 home_page:
   URL: "http://www.missselfridge.com/?geoip=home"

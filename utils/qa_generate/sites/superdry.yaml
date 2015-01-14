@@ -15,7 +15,7 @@ client_tier: tier1
 #### site level variables ####
 show_log: true
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.superdry.com/womens/whats-hot/details/49624/slim-fit-joggers"
 static_test_cat_url: "http://www.superdry.com/womens/dresses"
 
@@ -29,7 +29,7 @@ ignore_cat_tracked_as_other_page: true
 
 wait_time_per_product_page: 5
 max_num_of_products: 1
-product_links: ["ul", ':class => "grid4"'] 
+product_links: ["ul", ':class => "grid3"'] 
 product_link_filter: ["rel", "product"]
 product_options: 
     - [select_list, ':id=> "product_id"']
@@ -103,7 +103,7 @@ random_checkout:
   URL: "http://www.superdry.com/"
   expected_recs: 0
   extra_steps:
-      - [link, class, "checkout-link checkout_btn"]
+      - [link, class, "checkout-link orange-button viewbag"]
       - [pause, 2]
-      - [link, class, "checkout-link continuecheckout_btn"]
+      - [link, class, "button primary large checkout-link"]
       - [pause, 2]
