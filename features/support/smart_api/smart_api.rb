@@ -313,7 +313,7 @@ module Peerius
                 "cuid" => "new",
                 "lang" => "en",
                 "site" => "ctshirts",
-                "currentURI" => "http://www.ctshirts.co.uk/Default.aspx?q=|||||||||||||||&spr=1&peeriusTestGoogle=white%20shirts",
+                "currentURI" => "http://www.ctshirts.co.uk?peeriusTestGoogle=shirt",
                 "previousURI" => "http://www.ctshirts.co.uk",
                 "clientToken" => "677ab692r2t3u4t", 
                 "recContent" => "refCodeOnly",
