@@ -1,6 +1,6 @@
 <% common = "--no-source --color --format pretty --tags ~@ignore -r features" %>
 <% outputName = "cucumber" + (ENV['TEST_ENV_NUMBER'] ? ENV['TEST_ENV_NUMBER'] : "") %>
-<% live_servers = ["pt", "pt1", "pt2", "qalive"] %>
+<% live_servers = ["pt", "pt1", "pt2", "qalive", "imp"] %>
 <% dev_servers = ["qa1","qa2","test2", "uat", "lander", "kodjo","mario", "manoj", "tmckiernan", "showcasebe", "tomasz", "sinan", "gopi"] %>
 
 
@@ -21,6 +21,7 @@ sanity: --profile qa1
 api: --profile qa1_api
 api: --profile qa2_api
 live: --profile pt
+imp: --profile imp
 api: --profile test2_api
 live_api: --profile pt_api
 jenkins_live: FIG_NEWTON_FILE=pt1.yml headless=true -r features -f pretty -f json --out <%= outputName %>.json --no-source --tags ~@ignore --tags ~@internal --tags ~@smartmanager

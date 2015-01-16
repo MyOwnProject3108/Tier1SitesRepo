@@ -14,8 +14,8 @@ site_id: 539
 integration: standard
 client_tier: tier1
 
-enable_static_test: false
-static_test_prod_url: "http://www.missselfridge.com/en/msuk/product/accessories-299050/socks-3435626/snowman-and-loghouse-sock-3511309?bi=1&ps=40"
+enable_static_test: true
+static_test_prod_url: "http://www.missselfridge.com/en/msuk/product/dress-shop-299048/little-black-dresses-2468339/black-midi-bardot-dress-3992190?bi=1&ps=40"
 static_test_cat_url: ""
 
 

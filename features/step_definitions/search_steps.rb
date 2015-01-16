@@ -17,6 +17,7 @@ When /^I search for a? ?"([^"]*)"$/ do |term|
 		@current_page.search_button_element.click
 		rescue Selenium::WebDriver::Error::ElementNotVisibleError
 		  @browser.refresh
+		  @browser.driver.manage.timeouts.implicit_wait = 5  
 		end
 	else
 		@current_page.search_field_element.respond_to?(:send_keys) ? @current_page.search_field_element.send_keys(:return) : @browser.send_keys(:enter)
