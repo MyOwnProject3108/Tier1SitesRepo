@@ -4,7 +4,8 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
     # Turn the page description into a page classname (e.g. search page -> SearchPage)
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
-      
+    @browser.refresh
+    @browser.driver.manage.timeouts.implicit_wait = 10  
      rescue Selenium::WebDriver::Error::StaleElementReferenceError
          
       #refresh
@@ -504,6 +505,8 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 	#	abort("outofstock was true") if out_of_stock
 
 		if out_of_stock == false
+			#wait for element to be visible
+			@browser.td(:id => 'trackInfo').wait_until_present
 			page_type = @browser.td(:id => 'trackInfo').text.downcase
 			if page_type.include?("productpage")
 				if(add_to_basket) #if add_to_basket is true add product to basket (for end to end testing)

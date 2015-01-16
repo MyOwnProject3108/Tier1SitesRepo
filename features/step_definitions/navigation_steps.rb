@@ -18,13 +18,13 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
      
     # Turn the page description into a page classname (e.g. search page -> SearchPage)
     page_class_name = page.split.collect!{|x| x.capitalize}.join
-    
+    @browser.driver.manage.timeouts.implicit_wait = 5  
     visit @site+'::'+page_class_name+'Page'
-    if @current_page.get_site_custom_js != nil
-		@browser.execute_script(@current_page.get_site_custom_js)
-		#plog("EXECUTED FOR "+ @site+'::'+page_class_name+'Page', "magenta")
-	end
-    if @current_page.respond_to? "has_expected_title?" then
+   if @current_page.get_site_custom_js != nil
+	 @browser.execute_script(@current_page.get_site_custom_js)
+		plog("EXECUTED FOR "+ @site+'::'+page_class_name+'Page', "magenta")
+      end	
+	    if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end
     

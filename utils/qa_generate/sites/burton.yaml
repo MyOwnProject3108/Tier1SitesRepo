@@ -14,8 +14,8 @@ site_id: 82
 integration: standard
 client_tier: tier1
 
-enable_static_test: false
-static_test_prod_url: "http://www.burton.co.uk/en/bruk/product/shoes-accessories-2673212/mens-hats-2675991/teal-fair-isle-bobble-hat-3588740?bi=1&ps=20"
+enable_static_test: true
+static_test_prod_url: "http://www.burton.co.uk/en/bruk/product/new-in-281844/mens-new-in-1880782/mens-coats-jackets-1880792/black-leather-look-textured-bomber-jacket-3967971?bi=1&ps=20"
 static_test_cat_url: ""
 
 

@@ -71,7 +71,7 @@ else
    #profile.add_extension "features/support/peerius-tfp@peerius.co.uk.xpi"
    browser = Watir::Browser.new :firefox, :profile => profile, :desired_capabilities => caps
    #Implicit wait for browser
-   browser.driver.manage.timeouts.implicit_wait = 5
+   browser.driver.manage.timeouts.implicit_wait = 10
    browser.driver.manage.window.maximize
 end
 
