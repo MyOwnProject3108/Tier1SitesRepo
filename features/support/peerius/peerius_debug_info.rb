@@ -20,7 +20,7 @@ module PeeriusDebugInfo
       return @browser.td(:id => 'trackInfo').text 
       
       rescue Watir::Wait::TimeoutError
-       #  @browser.refresh
+       @browser.refresh
        #Implicit wait for browser
       browser.driver.manage.timeouts.implicit_wait = 10
       return @browser.td(:id => 'trackInfo').text 
