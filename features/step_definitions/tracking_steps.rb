@@ -6,13 +6,18 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
     @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
     @browser.refresh
     @browser.driver.manage.timeouts.implicit_wait = 10  
-     rescue Selenium::WebDriver::Error::StaleElementReferenceError
+     rescue Selenium::WebDriver::Error::StaleElementReferenceError, Selenium::WebDriver::Error::UnhandledAlertError
          
       #refresh
      @browser.refresh
-     @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
+     
+     #Dismiss Alert shown in secured websites after refresh
+     @browser.alert.close
    
+     @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
+    
    end
+
  end
 Then /^the first widget name should be "(.+)"$/ do |debug_widget_name|
   	@current_page.debug_widget_name.should include(debug_widget_name)
