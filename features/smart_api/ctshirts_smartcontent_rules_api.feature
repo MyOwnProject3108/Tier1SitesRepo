@@ -192,7 +192,7 @@ Scenario: SMART-content merchandising rule "Lastviewedcategorywith paramter" wor
     When I track the home page
     Then I should get an OK status back
 	#And one of the SMART-content creative names should contain "ties"
-    And one of the SMART-content creative names should contain "Casual - Trousers - stack"
+    And one of the SMART-content creative names should contain "Casual - Trousers"
 	
 #Activate lastviewedcategoryqa--need to remove ties from last setup for auto_Lastviewedcategory	in Shop admin
 Scenario: SMART-content merchandising rule "Lastviewedcategorywithoutparameter" works with single purchases using SMART-API
@@ -200,7 +200,7 @@ Scenario: SMART-content merchandising rule "Lastviewedcategorywithoutparameter" 
     Then it should get an OK status back
     When I track the home page
     Then I should get an OK status back
-    And one of the SMART-content creative names should contain "Trousers"	
+    And one of the SMART-content creative names should contain "Casual - Trousers"	
 
 
 Scenario: SMART-content A/B groups can be detected using SMART-API "summary"

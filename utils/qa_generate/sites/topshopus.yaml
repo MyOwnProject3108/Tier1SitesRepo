@@ -12,6 +12,8 @@ site_id: 227
 integration: standard
 client_tier: tier1
 
+enable_static_test: false
+static_test_prod_url: "http://us.topshop.com/en/tsus/category/clothing-70483/denim-2622336"
 
 # site variables
 show_log: true
