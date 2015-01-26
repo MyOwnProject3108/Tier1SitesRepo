@@ -46,7 +46,7 @@ search_custom_js: >
 
 home_page:
   URL: "http://uk.tommy.com/"
-  expected_recs: 1
+  expected_recs: -1
   login_link: ["link", ':text => "Login"']
   search_field: ["text_field", ':id => "searchinput"']
   

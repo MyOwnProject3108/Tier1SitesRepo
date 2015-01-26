@@ -12,6 +12,9 @@ site_id: 575
 integration: standard
 client_tier: tier1
 
+enable_static_test: false
+static_test_prod_url: "http://eu.topshop.com/en/tseu/product/make-up-3321535/beauty-gift-sets-3655925/atlantis-eye-palette-2744433?bi=1&ps=20"
+
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
