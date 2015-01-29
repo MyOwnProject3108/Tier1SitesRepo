@@ -17,6 +17,7 @@ client_tier: tier1
 short_tag: hac
 
 
+
 enable_static_test: false
 static_test_prod_url: ""
 static_test_cat_url: "http://www.hawesandcurtis.co.uk/womenswear"
@@ -50,6 +51,7 @@ home_page:
   search_field: ["text_field", ':name => "q"']
 
 random_product:
+  ignore: true
   expected_recs: 1
 
 random_category:
@@ -71,6 +73,7 @@ basket_page:
   basket_remove: ["link", ':class => "remove"']
   
 random_basket:
+  ignore: true
   expected_recs: 1
   basket_checkout: ["link", ':class => "btn blueBtn right"']
   basket_remove: ["link", ':class => "remove"']
@@ -85,6 +88,7 @@ login_page:
   login_submit:   ["button", ':id=>"/html/body/div[1]/section/section/section[1]/form/input[2]"']
 
 searchresults_page:
+  ignore: true
   URL: "https://secure.hawesandcurtis.com/search?q=toy"
   expected_recs: 1
   zerosearch_recs: 1
@@ -96,6 +100,7 @@ checkout_page:
   
     
 random_checkout:
+  ignore: true
   URL: "https://secure.hawesandcurtis.com/checkout/delivery"
   expected_recs: 0
   extra_steps:
