@@ -52,7 +52,7 @@ random_product:
   expected_recs: 3
   
 random_category:
-  expected_recs: 0
+  expected_recs: -1
   
 product_page:
   ignore: true
