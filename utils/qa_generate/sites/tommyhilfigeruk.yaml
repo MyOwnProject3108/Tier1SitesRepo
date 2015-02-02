@@ -13,7 +13,7 @@ integration: json
 client_tier: tier1
 
 enable_static_test: false
-static_test_prod_url: "http://uk.tommy.com/Wera-Boot/FW56817758,en_GB,pd.html#!color%3D403"
+static_test_prod_url: "http://uk.tommy.com/Wera-Boot/FW56817757,en_GB,pd.html#!color%3D212%26size%3D41"
 static_test_cat_url: ""
  
 #### site level variables ####
