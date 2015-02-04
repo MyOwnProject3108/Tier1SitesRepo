@@ -10,6 +10,7 @@ valid_search_term: bag
 database_num: 5
 site_id: 191
 integration: standard
+client_tier: tier1
 
 home_page:
   URL: "http://www.cathkidston.co.uk/"
