@@ -10,7 +10,7 @@ valid_search_term: jacket
 database_num: 1
 site_id: 1301
 integration: json
-client_tier: tier1
+client_tier: tier2
 ab_test_group: 1
 
 
