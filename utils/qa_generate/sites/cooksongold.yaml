@@ -10,7 +10,9 @@ valid_search_term: bullion
 database_num: 1
 site_id: 1409
 integration: json
+client_tier: tier1
 
+#Need to add random scenarios
 home_page:
   URL: "http://www.cooksongold.com/"
   expected_recs: 3
