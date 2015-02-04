@@ -10,6 +10,7 @@ username: peerius@test.com
 password: p1234567
 zero_search_term: awedasda
 valid_search_term: black guitar
+client_tier: tier1
 
 #### site level variables ####
 show_log: true
