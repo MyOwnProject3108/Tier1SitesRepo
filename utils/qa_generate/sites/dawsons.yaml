@@ -65,10 +65,12 @@ searchresults_page:
   zerosearch_recs: 1
 
 basket_page:
+  ignore: true
   URL: "http://www.dawsons.co.uk/checkout/cart/"
   expected_recs: 1
   
 checkout_page:
+  ignore: true
   URL: "https://www.dawsons.co.uk/checkout/onepage/"
   expected_recs: 0
 
