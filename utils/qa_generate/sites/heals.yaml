@@ -10,6 +10,7 @@ valid_search_term: table
 database_num: 1
 site_id: 1469
 integration: JSON
+client_tier: tier2
 
 #### site level variables ####
 show_log: true
