@@ -10,6 +10,7 @@ username: p.test@peerius.com
 password: P1234567
 zero_search_term: awedasda
 valid_search_term: bike
+client_tier: tier2
 
 ### static test properties ###
 
@@ -115,3 +116,17 @@ random_checkout:
         - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Town", "London"]
         - [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_btnSubmit"]
         - [pause, 2]
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
