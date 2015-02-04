@@ -10,6 +10,7 @@ valid_search_term: scarf
 database_num: 1
 site_id: 1349
 integration: json
+client_tier: tier1
 
 enable_static_test: false
 static_test_prod_url: "http://www.bonmarche.co.uk/tops+blouses/multi-stripe-funnel-sweater/invt/09642144"
