@@ -10,6 +10,7 @@ username: faiyyaz.sultana@peerius.com
 password: P@ssw0rd
 zero_search_term: abcd
 valid_search_term: red dress
+client_tier: tier2
 
 #### site level variables ####
 show_log: true
