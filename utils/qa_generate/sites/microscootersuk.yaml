@@ -11,6 +11,7 @@ apikey: j83ui7a6shg3u4t
 database_num: 2
 site_id: 347
 integration: standard
+client_tier: tier2
 
 home_page:
   URL: "http://www.micro-scooters.co.uk/"
