@@ -10,7 +10,7 @@ valid_search_term: top
 database_num: 3
 site_id: 599
 integration: standard
-client_tier: tier1
+client_tier: tier2
 
 enable_static_test: false
 static_test_prod_url: ""
