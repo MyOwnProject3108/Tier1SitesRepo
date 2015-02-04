@@ -10,6 +10,7 @@ valid_search_term: jacket
 database_num: 1
 site_id: 1449
 integration: json
+client_tier: tier2
 
 home_page:
   URL: "http://www.brora.co.uk/"
