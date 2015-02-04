@@ -10,6 +10,7 @@ valid_search_term: no
 database_num: 5
 site_id: 821
 integration: json
+client_tier: tier1
 
 home_page:
   URL: "http://www.chemistdirect.co.uk/"
