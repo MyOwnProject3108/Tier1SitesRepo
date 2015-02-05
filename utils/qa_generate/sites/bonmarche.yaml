@@ -20,7 +20,7 @@ static_test_cat_url: "http://www.bonmarche.co.uk/shop-by-product/skirts/icat/ski
 show_log: true
 
 category_menu: ["div", ':class => "mainMenu"']
-categories_to_exclude: ["Catalogue", "Collections", "Shop by Product", "Ann Harvey"]
+categories_to_exclude: ["Catalogue", "Collections", "Shop by Product", "Ann Harvey","url=>offers"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 1
