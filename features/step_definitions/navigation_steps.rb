@@ -42,14 +42,12 @@ When /^I go to the (.+)page$/ do |page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     
     visit @site+'::'+page_class_name+'Page'
-   begin
+
 	if @current_page.get_site_custom_js != nil
   	@browser.execute_script(@current_page.get_site_custom_js)
 	plog("EXECUTED FOR "+ @site+'::'+page_class_name+'Page', "magenta")
-   end
-  rescue Exception => e
-  puts("Encountered get_custom_js Error")
-	end
+
+ 	end
     if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end

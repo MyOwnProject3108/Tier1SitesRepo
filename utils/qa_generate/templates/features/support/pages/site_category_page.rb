@@ -10,13 +10,21 @@
 <% page = site["category_page"] %>
 module <%= site["site_name"].capitalize %>
   
-    class CategoryPage
+  class CategoryPage
       include PageObject
       include PeeriusHelper
       
       URL = "<%= debug_url(page["URL"]) %>"
       direct_url URL      
 
-    end  
+
+      def get_site_custom_js
+        <% if site["site_custom_js"] != nil %>
+          return "<%= site["site_custom_js"] %>"
+        <% else %>
+          return nil
+        <% end %>
+      end 
+   end
 end
 <% end %>

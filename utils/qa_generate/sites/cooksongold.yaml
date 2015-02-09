@@ -12,30 +12,63 @@ site_id: 1409
 integration: json
 client_tier: tier1
 
-#Need to add random scenarios
+enable_static_test: true
+static_test_prod_url: "http://www.cooksongold.com/Finished-Jewellery/Sterling-Silver-Cubic-Zirconia-----Swirl-Pendant-1-3.0mm-White--------Cubic-Zirconia-prcode-VPS-205"
+static_test_cat_url: "http://www.cooksongold.com/Chain/"
+
+
+# site variables
+
+show_log: true
+category_menu: ["div", ':id => "nn"']
+categories_to_exclude: ["New", "Bullion", "Jewellery Tools", "Clay and Resins", "Chain", "Rings", "Gemstones", "Beads and Stringing", "Finished Jewellery", "Boxes and Sundries"]
+wait_time_per_category_page: 5
+test_all_categories: false
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':class=> "rvwr_items list"'] 
+product_link_filter: ["href", "/*"]
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["link", ':link_text => "Add to Basket"']
+#out_of_stock_msg: "Sorry, this item is out of stock."
+
+
 home_page:
   URL: "http://www.cooksongold.com/"
-  expected_recs: 3
+  expected_recs: 1
   login_link: ["link", ':text => "Log In"']
   search_field: ["text_field", ':id => "query"']
 
 product_page:
     URL: "http://www.cooksongold.com/Solders/9ct-Yellow-Gold-Solder-Panels------Easy-Assay-Quality-.375-prcode-PEB-000"    
-    expected_recs: 8
+    expected_recs: 1
     add_to_basket_button: ["link", ':link_text => "Add to Basket"'] 
-      
+
+random_product:
+    expected_recs: 1
+    
 category_page:
   URL: "http://www.cooksongold.com/Solders/"
-  expected_recs: 4
+  expected_recs: 0
 
+random_category:
+  expected_recs: 0
+  
 basket_page:
   URL: "https://www.cooksongold.com/your_basket.jsp"    
-  expected_recs: 8
-  basket_checkout: ["link", ':link_text => "Checkout", :index => 1']
-  basket_remove: ["link", ':title => "Remove Item"'] 
-  extra_steps:
-      - [select_list, id, "delivery", "CC"]      
+  expected_recs: 1
+  basket_checkout: ["link", ':link_text => "Log In / Register", :index => 1']
+  basket_remove: ["link", ':href => "product_detail.jsp?prod_prefix=VRS&prod_suffix=205N&item=1&Quantity=0&add=D"'] 
+#  extra_steps:
+#      - [select_list, id, "delivery", "CC"]      
  
+random_basket:
+  URL: "https://www.cooksongold.com/your_basket.jsp"
+  expected_recs: 1
+  basket_checkout: ["link", ':link_text => "Log In / Register", :index => 1']
+  basket_remove: ["link", ':href => "product_detail.jsp?prod_prefix=VRS&prod_suffix=205N&item=1&Quantity=0&add=D"'] 
+  
 login_page:
   URL: "https://www.cooksongold.com/login_in.jsp?country=gb&shop=c&language=ENG&site400=001&company=001&siteid=IN"
   expected_recs: 0
@@ -51,3 +84,8 @@ searchresults_page:
 checkout_page:
   URL: "https://www.cooksongold.com/your_order.jsp"
   expected_recs: 0   
+  
+random_checkout:
+  URL: "http://www.cooksongold.com"
+  extra_steps:
+      - [link, id, "checkout_submit_bottom"]

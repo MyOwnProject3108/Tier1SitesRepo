@@ -24,6 +24,14 @@ module <%= site["site_name"].capitalize %>
       <% if page["add_to_basket_button"] %>
       <%= page["add_to_basket_button"][0] %>(:add_to_basket, <%= page["add_to_basket_button"][1] %>)
       <% end %>
+      
+      def get_site_custom_js
+        <% if site["site_custom_js"] != nil %>
+          return "<%= site["site_custom_js"] %>"
+        <% else %>
+          return nil
+        <% end %>
+      end 
     end  
 end
 <% end %>
