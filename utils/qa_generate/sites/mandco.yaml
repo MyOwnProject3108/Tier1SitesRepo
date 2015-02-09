@@ -12,9 +12,13 @@ site_id: 50
 integration: standard
 client_tier: tier1
 
+# site variables
+show_log: true
+category_menu: ["ul", ':class => "menu-category level-1 clearfix"']
+
 home_page:
   URL: "http://www.mandco.com/"
-  expected_recs: 4
+  expected_recs: 0
   login_link: ["link", ':link_text => "Log In / Register"']
   search_field: ["text_field", ':id => "q"']
 
