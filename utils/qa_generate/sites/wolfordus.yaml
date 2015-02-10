@@ -12,14 +12,54 @@ site_id: 1349
 integration: json
 client_tier: tier1
 
+
+enable_static_test: true
+static_test_prod_url: "http://www.wolfordshop.com/Abby-Tights/cp56541/si6670320/cl2/vt01/"
+static_test_cat_url: "http://www.wolfordshop.com/New-Arrivals/cp56541/cl1/"
+
+
+# site variables
+show_log: true
+category_menu: ["div", ':id => "left-sidebar"']
+categories_to_exclude: ["Gallery"]
+wait_time_per_category_page: 5
+test_all_categories: false
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':class=> "cat-listing large-listing"'] 
+product_link_filter: ["href", "*"]
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["link", ':id=> "add-to-cart-button-id"']
+product_options: 
+      - [select_list, ':xpath=> "sizeSelect/option"']
+      
+product_options_preselect: 
+    - [select_list, ":id=> 'sizeSelect'"]     
+
+
+
 home_page:
   URL: "http://www.wolfordshop.com"
   expected_recs: 1
   login_link: ["link", ':href => "http://www.wolfordshop.com/vm/MyAccount/"']
   search_field: ["text_field", ':id => "search-tag"']
   needs_SPR: yes
+  
+random_product:
+  expected_recs: 1
 
+random_category:
+  expected_recs: 1
+  
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':class => "continue-shipto-button button"']
+  basket_remove: ["button", ':class => "checkout-delete-item"']
+  
+  
 product_page:
+    ignore: true
     URL: "http://www.wolfordshop.com/Accessories/Bra-Straps-Naked/cp56538/si4471101/cl2/vt01/"    
     expected_recs: 1
     add_to_basket_button: ["a", ':id => "add-to-cart-button-id"']
@@ -28,17 +68,20 @@ product_page:
     - [span, id, "variant-1-1499"]
     
 category_page:
+  ignore: true
   URL: "http://www.wolfordshop.com/Accessories/cp56538/cl1/vt01/"
   expected_recs: 1
   needs_SPR: yes
 
 basket_page:
+  ignore: true
   URL: "https://www.wolfordshop.com/vm/AddOrder/?omni_scView=scView"
   expected_recs: 1
   basket_remove: ["button", ':class => "checkout-delete-item"']
-  basket_checkout: ["a", ':class => "continue-shipto-button button"']  
+  basket_checkout: ["link", ':class => "continue-shipto-button button"']  
 
 login_page:
+  ignore: true
   URL: "https://www.wolfordshop.com/edealinv/servlet/ExecMacro?ctl_nbr=16690&nurl=control%2FMyAccount.vm&vns_id=5&groupId=6251&ei_reqIP=80.87.30.105&tru_ssl_pg=N&SUBCAMPAIGN_ID=-1&isLogOff=Y&ei_pgparamname=nurl&AllowNonSecureAdmin=Y&isMobileRequest=N"
   expected_recs: 0
   username_field: ["text_field", ':name => "usname", :index => 0']
@@ -51,5 +94,6 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.wolfordshop.com/edealinv/servlet/ExecMacro?ctl_nbr=16690&nurl=control%2FCheckoutShipTo.vm&eurl=control%2FAddOrder.vm&vnpid=19660&CHILD=-1&rurl=control%2FAddOrder.vm&VecMaster=Y&useAdminHost=N&checkoutMethod=Store&Admin=N&venid=2&warn_code=1&MASTER=N&vec_id=14125104&vnsid=5&qnty_15356980=1&flCustOptFilled=Y&storeitem_15356980=Y&userCurrency=USD&ei_pgparamname=nurl&isMobileRequest=N&reloadPage=Y&groupId=6251&SUBCAMPAIGN_ID=-1&tru_ssl_pg=Y&SESSION_ID=webtest%40mailinator.com&storeitem_list=15356980&include_0=Y"
   expected_recs: 0 

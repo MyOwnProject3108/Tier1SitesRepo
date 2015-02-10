@@ -12,9 +12,25 @@ site_id: 50
 integration: standard
 client_tier: tier1
 
+enable_static_test: true
+static_test_prod_url: "http://www.mandco.com/peppa-pig-gingham-swimsuit-pink/358372401300208.html?cgid=10400220010"
+static_test_cat_url: ""
+
+
 # site variables
 show_log: true
 category_menu: ["ul", ':class => "menu-category level-1 clearfix"']
+categories_to_exclude: ["url=>style-file"]
+max_num_of_categories: 1
+wait_time_per_category_page: 2
+test_all_categories: false
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["div", ':class=> "search-result-content"'] 
+product_link_filter: ["class", "*"]
+wait_time_per_product_page: 2
+max_num_of_products: 1
+add_to_basket_button: ["button", ':value=> "Add to Bag"']
 
 home_page:
   URL: "http://www.mandco.com/"
@@ -22,7 +38,20 @@ home_page:
   login_link: ["link", ':link_text => "Log In / Register"']
   search_field: ["text_field", ':id => "q"']
 
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["button", ':class => "button-fancy-large"']
+  basket_remove: ["button", ':value => "Remove"']
+  
+    
 product_page:
+  ignore: true
   URL: "http://www.mandco.com/dresses-/lace-ponte-skater-dress/invt/1209760black&bklist=icat,5,10,10010,10010090,10010090210"
   expected_recs: 3
   add_to_basket_button: ["button", ':id=> "addproduct"']
@@ -32,17 +61,20 @@ product_page:
     - [pause, 3]
 
 category_page:
+  ignore: true
   URL: "http://www.mandco.com/dresses-/new-dresses/icat/10010090190/"
   expected_recs: 0
 
 basket_page:
-  URL: "http://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&log=22"
+  ignore: true
+  URL: "http://www.mandco.com/bag"
   expected_recs: 1 
   basket_checkout: ["button", ':class => "right btCheckout submit"']
   basket_remove: ["link", ':class => "remove"']  
 
 login_page:
-  URL: "https://www.mandco.com/bin/venda?ex=co_wizr-shopcart&display=1&stashid=billtologincaa759c&workflowid=shopcart_1&step=billtologin"
+  ignore: true
+  URL: "https://www.mandco.com/checkout"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
   password_field: ["text_field", ':id=>"password"']  
@@ -54,5 +86,14 @@ searchresults_page:
   zerosearch_recs: 0
   
 checkout_page:
+  ignore: true
   URL: "https://www.mandco.com/bin/venda?ex=co_wizr-shopcart&bsref=mackays&wizard=shopcart&step=confirm&param1=login" 
   expected_recs: 0
+  
+random_checkout:
+  URL: "http://www.mandco.com/"
+  expected_recs: 0
+  extra_steps:
+      - [button, class, "button-fancy-large"]
+      - [pause, 5]
+ 
