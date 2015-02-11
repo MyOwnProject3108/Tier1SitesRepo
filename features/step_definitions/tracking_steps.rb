@@ -150,7 +150,6 @@ def select_product_options
 				options = options.reject{|opt| opt.text.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="text")
 				options = options.reject{|opt| opt.id.include?(product_option_filter[2].gsub("%",''))} if options.length >1 && (product_option_filter && product_option_filter[1]=="id")
 				sel_option = options.length > 1 ? options[1..-1].shuffle.first : options.shuffle.first 
-				abort("#{options.length}")
 				opt_index = options.length > 1 ? sel_option.index : 0
 				if product_options.disabled? == false 
 					plog("\tSelected option => #{sel_option.text} ...","blue") if @@show_log #&& product_options.visible?
