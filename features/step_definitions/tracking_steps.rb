@@ -95,9 +95,14 @@ end
 
 def visit_nav_page(page_index,is_table_data)
     nav_elements = @current_page.category_menu_preselect_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
+	
     #nav_element = nav_elements.flatten!
     nav_link = nav_elements[page_index.raw.flatten![0].to_i] if is_table_data
     nav_link = nav_elements[page_index] if !is_table_data
+	nav_elements.each do |nitem|
+		plog("Category menu preselect item #{page_index} :: "+nitem[0]+nitem[1], "yellow")
+	end
+	plog("\tnav link => #{nav_link[0]} :: #{nav_link[2]} :: #{nav_elements.length}", "yellow") 
     plog("\tNO CATEGORY LINKS on Home Page - USING nav link => #{nav_link[0]} :: #{nav_link[1]}", "yellow") if @@show_log
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 	@browser.goto nav_link[1] 

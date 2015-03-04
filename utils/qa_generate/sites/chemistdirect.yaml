@@ -12,26 +12,69 @@ site_id: 821
 integration: json
 client_tier: tier1
 
+#### site level variables ####
+
+show_log: true
+#may need to send JS to select hidden elements.
+
+category_menu_preselect: ["ul", ':xpath => "//div[@id=\"newMegaMenu\"]/ul"'] 
+num_of_category_menu_preselect_items: 8
+category_menu: ["div", ':class => "panel-content"']
+categories_to_exclude: ["url=>Clearance", "url=>online-doctor", "url=>pharmacy-services", "url=>subscriptions", "url=>tips-and-advice", "url=>sexual"]
+test_all_categories: false
+wait_time_per_category_page: 5
+max_num_of_categories: 1 
+ignore_cat_tracked_as_other_page: true
+num_of_reloads_per_category: 2
+
+product_links: ["ul", ':id=> "search-results"'] 
+product_link_filter: ["class", "name"] 
+#product_options: 
+#      - [ul, ':id=> "sizesList"']    
+#     - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[2]/div/select"'] 
+
+#product_option_filter:                       
+#    - ["li", "id", "sizes%"]
+
+wait_time_per_product_page: 2
+
+max_num_of_products: 1 
+
+add_to_basket_button: ["button", ':xpath => "//div[@class=\"row product-price clearfix\"]/form/button"']
+add_to_basket_error_msg: "PLEASE SELECT A SIZE"
+ignore_single_product_option: true
+site_custom_js: "document.getElementById('newMegaMenu').style.display = 'block';"
+
 home_page:
   URL: "http://www.chemistdirect.co.uk/"
   expected_recs: 4
-  login_link: ["link", ':link => "Sign In"']
-  search_field: ["text_field", ':id => "q"']
+  login_link: ["link", ':id => "btn-account"']
+  search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
   URL: "http://www.chemistdirect.co.uk/salcura-antiac-skin-therapy-spray_1_177583.html"    
   expected_recs: 4
   add_to_basket_button: ["link", ':class => "buy_now"']
+  
+random_product:
+  expected_recs: 1
       
 category_page:
   URL: "http://www.chemistdirect.co.uk/embarrassing-conditions_2_1.html"
   expected_recs: 4
+  
+random_category:
+  expected_recs: -1
 
 basket_page:
   URL: "http://www.chemistdirect.co.uk/shopping_cart.php"
   expected_recs: 8
   basket_checkout: ["button", ':class => "continue_shop_button"']
   basket_remove: ["image", ':src => "images/basket_delete.png"']  
+  
+random_basket:
+  URL: "http://www.chemistdirect.co.uk/basket/product-added/prd-re5"
+  expected_recs: 1
 
 login_page:
   URL: "https://www.chemistdirect.co.uk/registration/sign_in.php"
@@ -53,4 +96,28 @@ checkout_page:
     - [pause,20]
     - [input, id, "addRadio1"]
     - [image, src, "images/buttons/continue.gif"]
+    
+random_checkout:
+  extra_steps: 
+    - [link, class, "btnhuge mobile-hide"]
+    - [button, class, "btn-primary btn-large btn-long"]
+    - [text_field, name, "firstName", "web", "generate_firstname"]
+    - [text_field, name, "lastName", "Test", "generate_lastname"]
+    - [text_field, xpath, "//div[3]/input", "webtest@mailinator.com", "generate_email"]
+    - [link, id, "manual-billing-address"]
+    - [text_field, id, "billingAddress1", "30 Great Guildford Street"]
+    - [text_field, id, "billingTown", "London"]
+    - [text_field, id, "billingPostcode", "SE1 0HS"]
+#   - [div, id, "custom-selecter"]
+    - [select_list, id, "billingCountry", "United Kingdom"]
+    - [button, xpath, "//div[2]/span/fieldset/button[1]"]
+    
+#At present we don't track checkout page on this site.    
+    
+    
+    
+    
+    
+    
+    
     
