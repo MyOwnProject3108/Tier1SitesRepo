@@ -38,8 +38,8 @@ add_to_basket_button: ["button", ':class=> "submit button btn btn_primary btn_la
 home_page:
   URL: "http://www.cathkidston.com/?lng=&ctry=GB"
   expected_recs: 0
-  login_link: ["link", ':text => "Login / Register"']
-  search_field: ["text_field", ':id => "searchBox"']
+  login_link: ["link", ':text => "Login/Register"']
+  search_field: ["text_field", ':id => "top_search"']
   
 random_product:
   expected_recs: 1
@@ -81,9 +81,9 @@ login_page:
   login_submit: ["button", ':name=>"existingLoginButton"']
 
 searchresults_page:
-  URL: "https://www.cathkidston.co.uk/searchadv.aspx?SearchTerm=bag"
-  expected_recs: 0
-  zerosearch_recs: 0
+  URL: "http://www.cathkidston.com/search?page=1&results=48&keywords=dvd&ctry=GB&lng="
+  expected_recs: 1
+  zerosearch_recs: 1
 
 checkout_page:
   ignore: true
@@ -112,9 +112,9 @@ random_checkout:
    - [select_list, id, "title", "Mr"]
    - [text_field, id, "first_name", "test"]
    - [text_field, id, "last_name", "test"]
-   - [text_field, id, "telephone_number", "07818181818"]
-   - [pause,5]
-   - [button, class, "submit button btn btn_primary btn_large btn_block"]
+   - [text_field, id, "telephone_number", "02076724562"]
+   - [pause,10]
+   - [button, xpath, "//div[10]/button"]
    - [pause,5]
    - [text_field, id, "search_postcode", "SE1 0HS"]
    - [span, id, "search_postcode_button"]
