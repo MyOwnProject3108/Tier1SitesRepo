@@ -299,6 +299,14 @@ module <%= site["site_name"].capitalize %>
 		<% end %>
 		end 
 		
+		def get_num_of_category_menu_preselect_items
+    <% if site["num_of_category_menu_preselect_items"] %>    
+      return <%= site["num_of_category_menu_preselect_items"]%>
+    <% else %>
+      return 0
+    <% end %> 
+    end
+    
     end  
 end
 <% end %>

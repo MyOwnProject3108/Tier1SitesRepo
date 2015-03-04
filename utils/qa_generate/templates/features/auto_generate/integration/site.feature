@@ -59,7 +59,7 @@ Scenario: <%= site["pretty_name"] %> <%= page_name %> page is tracked correctly
 @random_product
 Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %> is/are tracked correctly
 <% if site["category_menu_preselect"] %>
-  And I visit the first top navigation page 
+  And I visit a top navigation page 
 <% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
@@ -77,7 +77,7 @@ Scenario: Randomly visited product page or pages from <%= site["pretty_name"] %>
 @random_category
 Scenario: A random category page from <%= site["pretty_name"] %> is tracked correctly
 <% if site["category_menu_preselect"] %>
-  And I visit the first top navigation page 
+  And I visit a top navigation page 
 <% end %>
 <% if page["extra_steps"] %>
   <%= extra_steps_rule(page["extra_steps"]) %>
@@ -123,7 +123,7 @@ Scenario: <%= site["pretty_name"] %> basket page is tracked correctly
 @random_basket
 Scenario: <%= site["pretty_name"] %> basket page is tracked correctly when a random product is added to basket
 <% if site["category_menu_preselect"] %>
-  And I visit the first top navigation page 
+  And I visit a top navigation page 
 <% end %>
   And I add one or more random products to basket 
   And I pause for 2 seconds
@@ -209,7 +209,7 @@ Scenario: <%= site["pretty_name"] %> zero search recommendations are shown
 @random_checkout
 Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home page to checkout page are tracked correctly
 <% if site["category_menu_preselect"] %>
-  And I visit the first top navigation page 
+  And I visit a top navigation page 
 <% end %>
   And I add one or more random products to basket
   And I pause for 5 seconds
@@ -231,7 +231,7 @@ Scenario: End to end test : All pages on <%= site["pretty_name"] %> from home pa
 @random_order
 Scenario: End to end test: All pages on <%= site["pretty_name"] %> from home page to order confirmation are tracked correctly
 <% if site["category_menu_preselect"] %>
-  And I visit the first top navigation page 
+  And I visit a top navigation page 
 <% end %>
   And I add one or more random products to basket 
   And I pause for 5 seconds

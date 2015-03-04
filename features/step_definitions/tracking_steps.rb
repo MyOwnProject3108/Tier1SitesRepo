@@ -56,12 +56,16 @@ When /^I add one or more random products to basket$/ do
   	test_random_product_page_and_add_to_basket_tracking(true)
 end
 
-When /^I visit the top navigation page with index:$/ do |page_index|
-   	visit_nav_page(page_index, true)
+When /^I visit a top navigation page$/ do 
+   	visit_nav_page(false)
 end
 
-When /^I visit the first top navigation page$/ do 
-   	visit_nav_page(0, false)
+When /^I visit a table based top navigation page$/ do 
+    visit_nav_page(true)
+end
+
+When /^I visit the top navigation page with index$/ do |index|
+    visit_nav_page_with_index(index)
 end
 
 @@rand_value = rand(1..999999).to_s
@@ -93,19 +97,25 @@ def autogenerate_email(seed_value, rand_value)
     return prefix+rand_value+'@'+domain
 end
 
-def visit_nav_page(page_index,is_table_data)
+def visit_nav_page(is_table_data)
     nav_elements = @current_page.category_menu_preselect_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
 	
-    #nav_element = nav_elements.flatten!
+    page_index = rand(0..@current_page.get_num_of_category_menu_preselect_items)
     nav_link = nav_elements[page_index.raw.flatten![0].to_i] if is_table_data
     nav_link = nav_elements[page_index] if !is_table_data
-	nav_elements.each do |nitem|
-		plog("Category menu preselect item #{page_index} :: "+nitem[0]+nitem[1], "yellow")
-	end
-	plog("\tnav link => #{nav_link[0]} :: #{nav_link[2]} :: #{nav_elements.length}", "yellow") 
-    plog("\tNO CATEGORY LINKS on Home Page - USING nav link => #{nav_link[0]} :: #{nav_link[1]}", "yellow") if @@show_log
+		plog("\tNO CATEGORY LINKS on Home Page - USING nav link => #{nav_link[0]} :: #{nav_link[1]}", "yellow") if @@show_log
 	@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
 	@browser.goto nav_link[1] 
+end
+
+def visit_nav_page_with_index(page_index,is_table_data)
+    nav_elements = @current_page.category_menu_preselect_element.link_elements.collect{|x| [x.attribute('textContent').gsub("\n",''), x.attribute('href')]}
+  
+    nav_link = nav_elements[page_index.raw.flatten![0].to_i] if is_table_data
+    nav_link = nav_elements[page_index] if !is_table_data
+    plog("\tNO CATEGORY LINKS on Home Page - USING nav link => #{nav_link[0]} :: #{nav_link[1]}", "yellow") if @@show_log
+    @browser.cookies.add 'peerius_pass_peeriusdebug', '1'
+    @browser.goto nav_link[1] 
 end
 	
 # This function extracts all the category links using category_menu element specified in the <sitename>.yaml file

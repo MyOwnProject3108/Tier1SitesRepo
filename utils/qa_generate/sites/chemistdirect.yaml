@@ -43,7 +43,6 @@ max_num_of_products: 1
 add_to_basket_button: ["button", ':xpath => "//div[@class=\"row product-price clearfix\"]/form/button"']
 add_to_basket_error_msg: "PLEASE SELECT A SIZE"
 ignore_single_product_option: true
-site_custom_js: "document.getElementById('newMegaMenu').style.display = 'block';"
 
 home_page:
   URL: "http://www.chemistdirect.co.uk/"
