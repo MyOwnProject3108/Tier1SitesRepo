@@ -1,0 +1,148 @@
+site_name: homebase
+pretty_name: HomeBase
+has_content: no
+has_ranking: no
+needs_SPR: false
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: browse
+valid_search_term: cookware
+database_num: 3
+site_id: 605
+integration: json
+client_tier: tier1
+
+enable_static_test: true
+static_test_prod_url: "http://www.homebase.co.uk/en/homebaseuk/baron-greenhouse---safety-glass---green-frame---8x6ft-450529"
+static_test_cat_url: "http://www.homebase.co.uk/en/homebaseuk/garden/garden-buildings-and-conservatories/greenhouses"
+
+
+# site variables
+show_log: true
+category_menu_preselect: ["ul", ':class => "global-dropdown-content-options"'] 
+category_menu: ["ul", ':xpath => "//div[@id=\"widget_left_nav\"]/ul[1]"']
+categories_to_exclude: ["Project centre", "forum"]
+wait_time_per_category_page: 3
+ignore_cat_tracked_as_other_page: true
+max_num_of_categories: 1
+max_num_of_products: 1 
+
+test_all_categories: false
+
+num_of_reloads_per_category: 2
+product_links: ["div", ':xpath => "//div[@id=\"searchBasedNavigation_widget\"]/div/div/div[4]"'] 
+product_link_filter: ["id", "catalogEntry_img%"]
+
+wait_time_per_product_page: 5
+
+add_to_basket_button: ["span", ':xpath=> "/html/body/div[4]/div[2]/div/div[2]/div[1]/div[3]/div[8]/a/span"']
+
+
+home_page:
+  URL: "http://www.homebase.co.uk/"
+  expected_recs: 0
+  login_link: ["link", ':title => "Sign in"']
+  search_field: ["text_field", ':id => "SimpleSearchForm_SearchTerm"']
+   
+random_product:
+  expected_recs: 0
+
+random_category:
+  expected_recs: 0
+ 
+random_basket:
+  expected_recs: 0
+
+product_page:
+  ignore: true
+  URL: "http://www.homebase.co.uk/en/homebaseuk/lighting/outdoor-wall-lights/metal-oval-bulkhead-180377"
+  expected_recs: 3
+  add_to_basket_button: ["button", ':id => "/html/body/div[4]/div[2]/div/div[2]/div[1]/div[3]/div[8]/a/span"']
+  extra_steps:
+   - [pause, 20]
+
+category_page:
+  ignore: true
+  URL: "http://www.homebase.co.uk/en/homebaseuk/lighting/outdoor-and-garden-lighting/outdoor-wall-lights"
+  expected_recs: 0
+
+basket_page:
+  ignore: true
+  URL: "https://www.homebase.co.uk/AjaxOrderItemDisplayView?catalogId=10011&langId=110&storeId=10201&krypto=NmsDIhYbCX4SKdOmrewTjzeGxZiuIXng12zTff8raCDMGHAnS%2Fq%2F2Cyu%2BtkWvMqcDk6lAojq%2FpOmwVMNR6828s1Ale%2FSBjGtvfBxUT%2BDCUzpfB0nliaEpfHKj15BEGPjKFCE%2FyW5dsPNNJIrjBuKdD4iH18TzsGq89M%2FanvhGDrKeEF06QjC6IdZtW2H7Mb9YxsKLvzjsGrpujZ0oNnWeA%3D%3D"
+  expected_recs: 0
+  basket_checkout: ["link", ':text => "go to checkout"']
+  basket_remove: ["link", ':class => "removeFromBasketButton"']
+  
+random_basket:
+  expected_recs: 0
+  basket_checkout: ["link", ':class => "Checkout"']
+  basket_remove: ["link", ':class => "remove_address_link hover_underline tlignore"']
+
+login_page:
+  ignore: true
+  URL: "https://www.homebase.co.uk/LogonForm?catalogId=10011&myAcctMain=1&langId=110&storeId=10201"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtLogonId"']
+  password_field: ["text_field", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_txtPassword"']
+  login_submit: ["button", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_btnlogin2"']
+
+searchresults_page:
+  URL: "http://www.homebase.co.uk/SearchDisplay?pageSize=43&searchSource=Q&resultCatEntryType=2&pageView=&catalogId=10011&showResultsPage=true&beginIndex=0&langId=110&categoryId=&storeId=10201&sType=SimpleSearch&searchTerm=cookware"
+  expected_recs: 0
+  zerosearch_recs: 0
+
+checkout_page:
+  ignore: true
+  URL: "https://www.homebase.co.uk/hbprocesscheckout?storeId=10201&catalogId=10011&langId=110&krypto=TIIr%2FeqRttbdCi%2FC1hi3fOK8EvIo9ml%2BszhoN4AdUv3OXrodzw4sE9BbNVY6FiSU7YYy1%2B%2FfPpr6Fu4asBgTL435ON2SJqfEaEevUJPWZhz1IEG5yzJEy%2BFeL494jdKDWulLxIcDVK%2FKCxNwdcv%2BI77wbF0y7zyBBITNmyLTbYJezaQVzS6mT%2Bs%2F1dNcch2ZRzLfP3XwRpGKOVJqS45EWwXU3hfiVKimoDN12duJ3VQA5F3hxGlrJo8pLS4ViJk6a141PO7z5OgaQfwbRDeZibIhFMaS%2Fp0C90c37R7hUAPN1cLGxd%2BCX4HqJ3r2DASB6K0foU%2BDWJ7MX%2BqCMvdzOxJsQO%2F%2F%2BTICAQjnEIBc7cGkXKsLcgymSPnbwIBbA52ztStLdyE%2FjM29uLsJbiC7IJlw0h7TmIabHTeE8eLogX68LMi0iQvgKu%2BnP5b%2F%2FzeFy6YMAsUbgDH4%2FFwWGg7K1u9cmqsi%2F7Nzhgmwv5U52hT9vB%2BEU79YvWT%2BrbxFyY7GJNKrMI6brk3xqOKeoZFNOn%2FcFQ2Uh7iSmfOzhgYbzyuEvPwIvoS6AVW50Cq%2Ffnun0qNWfw1avfh6jdWubsGCHiQnHlYPWDFX3yoEOI%2FFHOs9wKdCMKCnAliyLbCcOWI80clWCM7%2BipjbDNbUd%2F6P8xfGGcuFzqKhETG9xKm5falgj29wsrkZO%2BD2lEbddM0rSTbUDTMrFHVP4VYMFB%2FBAIFl4qAi6lLPGgUM2ORVA361SzEgR6xFUhP%2BQ4pgUue9mY6vwZgsPa5hqht73R1l0nxKQ4Go8IvLN0Hv%2BJO1yrAm5CXvRJMqa0PArlb44fkHoMlzgRoFGWCS5Az6%2BV6hFTLjmxrSTssr2lotOeUZ%2FPPZbK4g6iCmwtmT3nDg%2FWeIvmWHTwCkyiJXpcD%2F2Fl1YE10%2BvcHCRL0uBAvoEFQCvSPSRUqiVoOce8OeM9UI7bBvaVSC3RM38DdKBscNMvZyQYtCRHWlAHUAH5W7X1eyPMvM8re%2FQyaZEu1RF3MmTJOWszTiQyyRTqQx%2B4EYk%2F4txAroIxoPBO9VQcb8%2BuYrbfJ2vUA5YVOMoq7zuNWf7FwMluGz2PbqLmNgd0cos5Avg%3D%3D"
+  expected_recs: 0
+  extra_steps:
+     - [link, id, "basket_checkout_button"]
+     - [link, id, "WC_AccountDisplay_links_3"]
+     - [link, id, "ctl00_ctl00_globalmaincontent_mainContent_hlCheckout"]
+     - [pause, 2]
+     - [text_field, id, "WC_UserRegistrationAddForm_NameEntryForm_FormInput_firstName_1", "peeriustest"]
+     - [text_field, id, "WC_UserRegistrationAddForm_NameEntryForm_FormInput_lastName_1", "peeriustest"]
+     - [text_field, id, "WC_UserRegistrationAddForm_AddressEntryForm_FormInput_zipCode_1", "tw3 3tn"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_email1_In_Register_1", "peeriustest@email.com", "autogenerate_email"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_email1Verify_In_Register_1", "peeriustest@email.com", "autogenerate_email"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1", "Pass1234"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_logonPasswordVerify_In_Register_1", "Pass1234"]
+     - [text_field, id, "phone1", "02033974940"]
+     - [button, id, "WC_UserRegistrationAddForm_links_1"]
+   
+
+random_checkout:
+  expected_recs: 0
+  extra_steps:
+     - [link, id, "basket_checkout_button"]
+     - [link, id, "WC_AccountDisplay_links_3"]
+     - [text_field, id, "WC_UserRegistrationAddForm_NameEntryForm_FormInput_firstName_1", "peeriustest"]
+     - [text_field, id, "WC_UserRegistrationAddForm_NameEntryForm_FormInput_lastName_1", "peeriustest"]
+     - [text_field, id, "WC_UserRegistrationAddForm_AddressEntryForm_FormInput_zipCode_1", "tw3 3tn"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_email1_In_Register_1", "peeriustest@email.com", "autogenerate_email"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_email1Verify_In_Register_1", "peeriustest@email.com", "autogenerate_email"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1", "Pass1234"]
+     - [text_field, id, "WC_UserRegistrationAddForm_FormInput_logonPasswordVerify_In_Register_1", "Pass1234"]
+     - [text_field, id, "phone1", "02033974940"]
+     - [button, id, "WC_UserRegistrationAddForm_links_1"]
+     
+     
+     
+     
+     
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    

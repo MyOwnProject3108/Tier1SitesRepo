@@ -466,14 +466,20 @@ def get_filtered_product_links(product_links)
 		link_filter = @current_page.get_product_link_filter
 		filter_attrib_name = link_filter[0]
 		filter_attrib_val = link_filter[1]
+		
 		# Reject links that DO NOT have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>
 		product_links = product_links.reject{|x| x.attribute(filter_attrib_name) != filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%')
+		
+
 		# Reject links that DO have the attribute with name <filter_attrib_name> with matching value <filter_attrib_val>  Added by fayaz
 		#product_links = product_links.reject{|x| x.attribute(filter_attrib_name) = filter_attrib_val} if filter_attrib_name != "ignore" && filter_attrib_val != "*" && !filter_attrib_val.include?('%') && !filter_attrib_val.include?('%')
 		# Reject links that DO NOT have the attribute with name <filter_attrib_name> where the attribute value <filter_attrib_val> is indeterminate or random
 		product_links = product_links.reject{|x| !x.attribute(filter_attrib_name) } if filter_attrib_val == "*"
+	
+    
 		# Reject links that DO NOT have the attribute with name <filter_attrib_name> with partially matching value <filter_attrib_val>
 		product_links = product_links.reject{|x| !x.attribute(filter_attrib_name).include?(filter_attrib_val.gsub("%",'')) } if filter_attrib_val.include?('%')
+		
 		# debug_links_output(product_links)
 		# Collect all links that have an attributes "title" and "href"
 	end
