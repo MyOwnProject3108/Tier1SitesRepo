@@ -5,8 +5,8 @@ has_ranking: no
 needs_SPR: no
 username: p.test@peerius.com
 password: P1234567
-zero_search_term: no
-valid_search_term: no
+zero_search_term: xedcec
+valid_search_term: cream
 database_num: 5
 site_id: 821
 integration: json
@@ -20,7 +20,7 @@ show_log: true
 category_menu_preselect: ["ul", ':xpath => "//div[@id=\"newMegaMenu\"]/ul"'] 
 num_of_category_menu_preselect_items: 8
 category_menu: ["div", ':class => "panel-content"']
-categories_to_exclude: ["url=>Clearance", "url=>online-doctor", "url=>pharmacy-services", "url=>subscriptions", "url=>tips-and-advice", "url=>sexual"]
+categories_to_exclude: ["url=>Clearance", "url=>online-doctor", "url=>pharmacy-services", "url=>subscriptions", "url=>tips-and-advice", "url=>sexual", "url=>pharmacy-services", "url=>prescriptions"]
 test_all_categories: false
 wait_time_per_category_page: 5
 max_num_of_categories: 1 
@@ -41,16 +41,17 @@ wait_time_per_product_page: 2
 max_num_of_products: 1 
 
 add_to_basket_button: ["button", ':xpath => "//div[@class=\"row product-price clearfix\"]/form/button"']
-add_to_basket_error_msg: "PLEASE SELECT A SIZE"
-ignore_single_product_option: true
+#add_to_basket_error_msg: "PLEASE SELECT A SIZE"
+#ignore_single_product_option: true
 
 home_page:
   URL: "http://www.chemistdirect.co.uk/"
-  expected_recs: 4
+  expected_recs: 1
   login_link: ["link", ':id => "btn-account"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
+  ignore: true
   URL: "http://www.chemistdirect.co.uk/salcura-antiac-skin-therapy-spray_1_177583.html"    
   expected_recs: 4
   add_to_basket_button: ["link", ':class => "buy_now"']
@@ -59,6 +60,7 @@ random_product:
   expected_recs: 1
       
 category_page:
+  ignore: true
   URL: "http://www.chemistdirect.co.uk/embarrassing-conditions_2_1.html"
   expected_recs: 4
   
@@ -66,6 +68,7 @@ random_category:
   expected_recs: -1
 
 basket_page:
+  ignore: true
   URL: "http://www.chemistdirect.co.uk/shopping_cart.php"
   expected_recs: 8
   basket_checkout: ["button", ':class => "continue_shop_button"']
@@ -76,6 +79,7 @@ random_basket:
   expected_recs: 1
 
 login_page:
+  ignore: true
   URL: "https://www.chemistdirect.co.uk/registration/sign_in.php"
   expected_recs: 0
   username_field: ["text_field", ':id=>"username"']
@@ -83,12 +87,12 @@ login_page:
   login_submit: ["button", ':name=>"submit"']
 
 searchresults_page:
-  ignore: true
-  URL: ""
+  URL: "http://results.chemistdirect.co.uk/search?w=+ascdsc"
   expected_recs: 0
-  zerosearch_recs: 0
+  zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.chemistdirect.co.uk/registration/pay_confirm.php"
   expected_recs: 0
   extra_steps:
@@ -97,6 +101,7 @@ checkout_page:
     - [image, src, "images/buttons/continue.gif"]
     
 random_checkout:
+  ignore: true
   extra_steps: 
     - [link, class, "btnhuge mobile-hide"]
     - [button, class, "btn-primary btn-large btn-long"]
@@ -108,7 +113,7 @@ random_checkout:
     - [text_field, id, "billingTown", "London"]
     - [text_field, id, "billingPostcode", "SE1 0HS"]
 #   - [div, id, "custom-selecter"]
-    - [select_list, id, "billingCountry", "United Kingdom"]
+    - [select_list, id, "billingCountry", "GBR"]
     - [button, xpath, "//div[2]/span/fieldset/button[1]"]
     
 #At present we don't track checkout page on this site.    
