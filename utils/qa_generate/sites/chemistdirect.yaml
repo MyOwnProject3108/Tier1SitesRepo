@@ -6,7 +6,7 @@ needs_SPR: no
 username: p.test@peerius.com
 password: P1234567
 zero_search_term: xedcec
-valid_search_term: cream
+valid_search_term: paracetamol
 database_num: 5
 site_id: 821
 integration: json

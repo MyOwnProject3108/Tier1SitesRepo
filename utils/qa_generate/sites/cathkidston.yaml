@@ -82,7 +82,7 @@ login_page:
 
 searchresults_page:
   URL: "http://www.cathkidston.com/search?page=1&results=48&keywords=dvd&ctry=GB&lng="
-  expected_recs: 1
+  expected_recs: 0
   zerosearch_recs: 1
 
 checkout_page:

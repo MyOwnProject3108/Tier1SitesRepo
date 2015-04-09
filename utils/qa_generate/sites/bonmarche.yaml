@@ -5,8 +5,8 @@ has_ranking: no
 needs_SPR: no
 username: webtest@mailinator.com
 password: webtest1234
-zero_search_term: jfdsakfkd
-valid_search_term: scarf
+zero_search_term: cscsd
+valid_search_term: blue scarf
 database_num: 1
 site_id: 1349
 integration: json
