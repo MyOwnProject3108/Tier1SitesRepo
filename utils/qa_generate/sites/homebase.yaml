@@ -35,7 +35,7 @@ product_link_filter: ["id", "catalogEntry_img%"]
 
 wait_time_per_product_page: 5
 
-add_to_basket_button: ["span", ':xpath=> "/html/body/div[4]/div[2]/div/div[2]/div[1]/div[3]/div[8]/a/span"']
+add_to_basket_button: ["button", ':xpath => "//span[@id=\"add2CartBtn\"]/span"']
 
 
 home_page:
@@ -55,9 +55,9 @@ random_basket:
 
 product_page:
   ignore: true
-  URL: "http://www.homebase.co.uk/en/homebaseuk/lighting/outdoor-wall-lights/metal-oval-bulkhead-180377"
+  URL: "http://www.homebase.co.uk/en/homebaseuk/baron-greenhouse---safety-glass---green-frame---8x6ft-450529"
   expected_recs: 3
-  add_to_basket_button: ["button", ':id => "/html/body/div[4]/div[2]/div/div[2]/div[1]/div[3]/div[8]/a/span"']
+  add_to_basket_button: ["button", ':xpath => "//span[@id=\"add2CartBtn\"]/span"']
   extra_steps:
    - [pause, 20]
 

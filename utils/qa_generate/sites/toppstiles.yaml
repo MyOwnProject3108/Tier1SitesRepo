@@ -3,8 +3,8 @@ pretty_name: toppstiles
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: peertest@yahoo.com
-password: Pass1234
+username: webtest@mailinator.com
+password: webtest
 zero_search_term: dvd
 valid_search_term: mocha
 database_num: 5
@@ -30,7 +30,7 @@ product_link_filter: ["href", "*"]
 
 wait_time_per_product_page: 3
 max_num_of_products: 1 
-add_to_basket_button: ["button", ':class=> "css_button_charcoal"']
+add_to_basket_button: ["button", ':value=> "Add to basket"']
 
 home_page:
   URL: "http://www.toppstiles.co.uk/"
@@ -50,16 +50,16 @@ random_product:
   
 
 product_page:
-  URL: "http://www.toppstiles.co.uk/tprod44322/section100/Batik-Patchwork-Red.html"
-  add_to_basket_button: ["button", ':class=> "css_button_charcoal"']
+  URL: "http://www.toppstiles.co.uk/tprod45946/section1403/Parthian-Taupe.html"
+  add_to_basket_button: ["button", ':value=> "Add to basket"']
   expected_recs: 1
   extra_steps:
     - [text_field, id, "quantity", "2"]
-    - [pause, 5]
+    - [pause, 10]
 
 basket_page:
   URL: "http://www.toppstiles.co.uk/e360/s_basket_view_basket.asp"
-  basket_checkout: ["image", ':alt => "Secure Checkout"']
+  basket_checkout: ["button", ':value => "Pay Securely Now"']
   basket_remove: ["image", ':alt => "Delete"']
   expected_recs: 1
 
@@ -76,15 +76,18 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.toppstiles.co.uk/search_results.asp?s=dscdv&n=1"
   expected_recs: 0
   extra_steps:
-    - [text_field, id, "input_username", "peertest@yahoo.com"]
-    - [text_field, id, "input_password", "Pass1234"]
-    - [input, xpath, "/html/body/div[1]/div[3]/form/input[3]"]
-    - [radio, xpath, "/html/body/div[1]/form/table[1]/tbody/tr/td[2]/input[3]"]
+    - [text_field, xpath, "//*[@id='frmLogin']/div[1]/table/tbody/tr[1]/td[2]/input[1]", "webtest@mailinator.com"]
+    - [text_field, name, "password", "webtest"]
+    - [button, value, "Login"]
+    - [radio, xpath, "//*[@id='divDeliveryMethod_OptionsHome']/table/tbody/tr[1]/td[1]/input"]
+    - [button, value, "Deliver to Home or Business"]
+    - [pause,2]
     - [text_field, id, "txtPostcode", "SE1 0HS"]
-    - [image, alt, "Lookup address"]
+    - [button, value, "Find Address"]
     - [pause,5]
     - [select_list, id, "lstResultsStore", "MILE END (2.4 miles away from SE1 0HS)"]
     - [image, alt, "Continue"]
