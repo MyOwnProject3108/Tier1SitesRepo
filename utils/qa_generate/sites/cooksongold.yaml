@@ -12,22 +12,22 @@ site_id: 1409
 integration: json
 client_tier: tier1
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.cooksongold.com/Finished-Chain/Sterling-Silver-Compact-1mm-Snake--1640cm-prcode-VV4-01f"
-static_test_cat_url: "http://www.cooksongold.com/Chain/"
+static_test_cat_url: "http://www.cooksongold.com/Finished-Chain/-Alloy=0/-Style=Box_Chain/-Length=0/-Range=0/&prdsearch=y"
 
 
 # site variables
 
 show_log: true
 category_menu: ["div", ':id => "nn"']
-categories_to_exclude: ["New", "Bullion", "Jewellery Tools", "Clay and Resins", "Chain", "Rings", "Gemstones", "Beads and Stringing", "Finished Jewellery", "Boxes and Sundries"]
+categories_to_exclude: ["New", "Bullion", "Jewellery Tools", "Clay and Resins", "Chain", "Rings", "Gemstones", "Beads and Stringing", "Finished Jewellery", "Boxes and Sundries", "url=>%/"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-product_links: ["link", ':class=> "bx-product-link"'] 
-product_link_filter: ["href", "/*"]
+product_links: ["div", ':class=> "rvwr_items list"'] 
+product_link_filter: ["href", "/%"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["div", ':class => "fbtn green"']
@@ -41,14 +41,16 @@ home_page:
   search_field: ["text_field", ':id => "query"']
 
 product_page:
+    ignore: true
     URL: "http://www.cooksongold.com/Solders/9ct-Yellow-Gold-Solder-Panels------Easy-Assay-Quality-.375-prcode-PEB-000"    
     expected_recs: 1
-    add_to_basket_button: ["div", ':class => "fbtn green"'] 
+    add_to_basket_button: ["link", ':xpath => "html/body/div[8]/div[7]/div[2]/div[2]/div/div[2]/div[1]/div/div[1]/a"'] 
 
 random_product:
     expected_recs: 1
     
 category_page:
+  ignore: true
   URL: "http://www.cooksongold.com/Solders/"
   expected_recs: 1
 
@@ -56,19 +58,16 @@ random_category:
   expected_recs: 1
   
 basket_page:
+  ignore: true
   URL: "https://www.cooksongold.com/your_basket.jsp"    
   expected_recs: 1
   basket_checkout: ["link", ':link_text => "Log In / Register", :index => 1']
   basket_remove: ["link", ':href => "product_detail.jsp?prod_prefix=VRS&prod_suffix=205N&item=1&Quantity=0&add=D"'] 
-#  extra_steps:
-#      - [select_list, id, "delivery", "CC"]      
- 
+  
 random_basket:
   URL: "https://www.cooksongold.com/your_basket.jsp"
   expected_recs: 1
-  basket_checkout: ["link", ':link_text => "Log In / Register", :index => 1']
-  basket_remove: ["link", ':href => "product_detail.jsp?prod_prefix=VRS&prod_suffix=205N&item=1&Quantity=0&add=D"'] 
-  
+    
 login_page:
   URL: "https://www.cooksongold.com/login_in.jsp?country=gb&shop=c&language=ENG&site400=001&company=001&siteid=IN"
   expected_recs: 0
@@ -79,7 +78,7 @@ login_page:
 searchresults_page:
   URL: ""
   expected_recs: 1
-  zerosearch_recs: 4
+  zerosearch_recs: 1
 
 checkout_page:
   URL: "https://www.cooksongold.com/your_order.jsp"
@@ -88,4 +87,7 @@ checkout_page:
 random_checkout:
   URL: "http://www.cooksongold.com"
   extra_steps:
-      - [link, id, "checkout_submit_bottom"]
+      - [link, href, "javascript:document.reference.action ='login_in.jsp?country=gb&shop=a&language=ENG&site400=001&company=001&siteid=IN';document.reference.submit();"]
+      - [text_field, xpath, "//div[2]/div/form/ul/li[1]/div/span/input", "test@peerius.com", "generate_email"]
+      - [div, class, "fbtn green"]
+      

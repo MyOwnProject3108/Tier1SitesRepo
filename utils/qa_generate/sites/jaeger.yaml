@@ -9,7 +9,7 @@ zero_search_term: dsafdsfsafsfds
 valid_search_term: coats
 database_num: 1
 site_id: 1339
-integration: standard
+integration: json
 client_tier: tier1
 
 enable_static_test: false
@@ -17,21 +17,17 @@ static_test_prod_url: "http://www.jaeger.co.uk/julianne-tote/790015J.html?dwvar_
 static_test_cat_url: "http://www.jaeger.co.uk/accessories/handbags-bags"
 
 # site variables
-category_menu: ["ul", ':class => "sf-menu sf-js-enabled"']
-categories_to_exclude: ["Boutique","The Journal"]
+category_menu_preselect: ["li", ':class => "top-level"']
+category_menu: ["ul", ':id => "mm-new"']
+categories_to_exclude: ["Journal", "url=> Journal"]
 wait_time_per_category_page: 3
 test_all_categories: false
 show_log: true
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-product_links: ["div", ':class=> "productlisting productlisting2"'] 
+product_links: ["div", ':class=> "productresultarea clearfix"'] 
 product_options: 
-    - [ul, ":xpath=> '//div[@id=\"pdpMain\"]/form/div[1]/div/div/div/div[1]/ul[1]'"]
-    - [ul, ":xpath=> '//div[@id=\"pdpATCDivpdpMain\"]/div/div/div[1]/ul[1]'"]    
-      
-product_options_preselect: 
-    - [a, ":xpath=> '//div[@id=\"pdpMain\"]/form/div/div/div/div/div[1]/a[2]'"]
-    - [a, ":xpath=> '//div[@id=\"pdpATCDivpdpMain\"]/div/div/div[1]/a[2]'"]      
+    - [ul, ":class=> 'size-horz-block swatchesdisplay'"]    
       
 wait_time_per_product_page: 5
 max_num_of_products: 1 
@@ -71,6 +67,7 @@ random_category:
   expected_recs: 0
   
 random_basket:
+  URL: "http://www.jaeger.co.uk/cart"
   expected_recs: 1
   
 basket_page:
@@ -89,8 +86,8 @@ login_page:
   login_submit: ["button", ':id => "submit"']
 
 searchresults_page:
-  URL: "http://www.jaeger.co.uk/on/demandware.store/Sites-JGRUK-Site/en_GB/Search-Show?q=coats"
-  expected_recs: 1
+  URL: "http://www.jaeger.co.uk/womens?q=zxas&altcat=men"
+  expected_recs: 0
   zerosearch_recs: 1
   
 checkout_page:
@@ -127,26 +124,27 @@ random_checkout:
   extra_steps: 
     - [link, class, "abtnSecurechkout"]
     - [pause, 5]
-    - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com"]
-    - [button, id, "isExistingCustomer"]
-    - [text_field, id, "dwfrm_login_password", "webtest123"]
-    - [button, id, "continueStepABtn"]
-    - [pause,5]
-    - [button, id, "isdelivertoaddress"]
-    - [button, id, "checkoutButton"]
-    - [pause,10]
-    - [button, class, "buttonblack continuecheckout buttonPrimary"]
-    - [text_field, id, "paymentmethods_creditcard_owner", "Peertest"]
-    - [text_field, id, "paymentmethods_creditcard_number1", "4111"]
-    - [text_field, id, "paymentmethods_creditcard_number2", "1111"]
-    - [text_field, id, "paymentmethods_creditcard_number3", "1111"]
-    - [text_field, id, "paymentmethods_creditcard_number4", "1111"]
-    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[2]/div[1]/div[1]/a[1]"]
-    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[2]/div[1]/div[1]/ul[1]/li[2]/a[1]"]
-    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/a[1]"]
-    - [a, xpath, "//div[@id='PaymentCardDetailInput']/div[1]/div[4]/div[3]/div[1]/div[1]/ul[1]/li[4]/a[1]"]
-    - [text_field, id, "paymentmethods_creditcard_cvn", "123"]
-    - [button, id, "checkoutButton"]    
+#    - [text_field, id, "dwfrm_login_username", "webtest@mailinator.com", "generate_email"]
+#    - [button, id, "continueStepABtn"]
+#    - [pause,5]
+#    - [button, id, "isdelivertoaddress"]
+#    - [select_list, id, "dwfrm_singleshipping_shippingAddress_addressFields_title", "Mr"]
+#    - [text_field, id, "dwfrm_singleshipping_shippingAddress_addressFields_firstName", "Test"]
+#    - [text_field, id, "dwfrm_singleshipping_shippingAddress_addressFields_lastName", "User"]
+#    - [text_field, id, "dwfrm_singleshipping_shippingAddress_addressFields_phone", "07656345245"]
+#    - [text_field, id, "dwfrm_singleshipping_shippingAddress_addressFields_address1", "30"]
+#    - [text_field, id, "dwfrm_singleshipping_shippingAddress_addressFields_zip", "SE1 0HS"]
+#    - [button, id, "findAddress"]
+#    - [button, id, "addressId0"]
+#    - [button, id, "btnAddressDoctor"]
+#    - [button, id, "checkoutButton"]
+    
+    
+    
+    
+    
+    
+  
 
 
     

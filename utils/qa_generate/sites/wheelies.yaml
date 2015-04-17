@@ -116,17 +116,17 @@ random_checkout:
         - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Town", "London"]
         - [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_btnSubmit"]
         - [pause, 2]
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
