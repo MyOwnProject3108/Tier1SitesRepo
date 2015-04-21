@@ -57,6 +57,7 @@ product_page:
   add_to_basket_button: ["link", ':class => "buy_now"']
   
 random_product:
+  ignore: true
   expected_recs: 1
       
 category_page:
@@ -65,6 +66,7 @@ category_page:
   expected_recs: 4
   
 random_category:
+  ignore: true
   expected_recs: -1
 
 basket_page:
@@ -75,6 +77,7 @@ basket_page:
   basket_remove: ["image", ':src => "images/basket_delete.png"']  
   
 random_basket:
+  ignore: true
   URL: "http://www.chemistdirect.co.uk/basket/product-added/prd-re5"
   expected_recs: 1
 
