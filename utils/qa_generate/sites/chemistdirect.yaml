@@ -14,7 +14,7 @@ client_tier: tier1
 
 enable_static_test: true
 static_test_prod_url: "http://www.chemistdirect.co.uk/bioconcepts-evening-primrose-oil-1000mg/prd-3qj"
-static_test_cat_url: "http://www.chemistdirect.co.uk/vitamins-and-supplements"
+static_test_cat_url: "http://www.chemistdirect.co.uk/medicines/bowel-and-stomach/cat-895"
 
 
 #### site level variables ####
@@ -45,7 +45,7 @@ wait_time_per_product_page: 2
 
 max_num_of_products: 1 
 
-add_to_basket_button: ["button", ':xpath => "//div[@class=\"row product-price clearfix\"]/form/button"']
+add_to_basket_button: ["button", ':xpath => "//button[@name=\"add-to-basket\"]"']
 #add_to_basket_error_msg: "PLEASE SELECT A SIZE"
 #ignore_single_product_option: true
 
@@ -80,7 +80,7 @@ basket_page:
   basket_remove: ["image", ':src => "images/basket_delete.png"']  
   
 random_basket:
-  ignore: true
+  #ignore: true
   URL: "http://www.chemistdirect.co.uk/basket/product-added/prd-re5"
   expected_recs: 1
 
@@ -110,17 +110,41 @@ random_checkout:
   ignore: true
   extra_steps: 
     - [link, class, "btnhuge mobile-hide"]
-    - [button, class, "btn-primary btn-large btn-long"]
-    - [text_field, name, "firstName", "web", "generate_firstname"]
-    - [text_field, name, "lastName", "Test", "generate_lastname"]
-    - [text_field, xpath, "//div[3]/input", "webtest@mailinator.com", "generate_email"]
-    - [link, id, "manual-billing-address"]
-    - [text_field, id, "billingAddress1", "30 Great Guildford Street"]
-    - [text_field, id, "billingTown", "London"]
-    - [text_field, id, "billingPostcode", "SE1 0HS"]
+    - [link, href, "#signin"]
+    - [text_field, id, "signin_email", "qatest@peerius.com"]
+    - [text_field, id, "signin_password", "123123"]
+   # - [text_field, id, "register_confirm_password", "123123"]
+    - [button, xpath, "//fieldset/button"]
+    - [input, name, "firstName", "qa"]
+    - [input, name, "lastName", "test"]
+  #  - [link, id, "manual-billing-address"]
+  # - [text_field, id, "billingAddress1", "30 Great Guildford Street"]
+  #  - [text_field, id, "billingTown", "London"]
+    - [text_field, id, "billingFinderPostCode", "SE1 0HS"]
+    - [button, id, "addressLookup"]
+    - [select_list, id, "foundBillingAddresses", "16, Great Guildford Street, LONDON, SE1 0HS"]
+    - [button, class "btn btn-huge submit-order"]
+    
+    
+    
+    
+    
+  #  - [text_field, name, "firstName", "web", "generate_firstname"]
+  #  - [text_field, name, "lastName", "Test", "generate_lastname"]
+  #  - [text_field, xpath, "//div[3]/input", "webtest@mailinator.com", "generate_email"]
+    
+    
+    
+    
+    
+    
+  #  - [link, id, "manual-billing-address"]
+  #  - [text_field, id, "billingAddress1", "30 Great Guildford Street"]
+  #  - [text_field, id, "billingTown", "London"]
+  #  - [text_field, id, "billingPostcode", "SE1 0HS"]
 #   - [div, id, "custom-selecter"]
-    - [select_list, id, "billingCountry", "GBR"]
-    - [button, xpath, "//div[2]/span/fieldset/button[1]"]
+  #  - [select_list, id, "billingCountry", "United Kingdom       "]
+  #  - [button, xpath, "//div[2]/span/fieldset/button[1]"]
     
 #At present we don't track checkout page on this site.    
     
