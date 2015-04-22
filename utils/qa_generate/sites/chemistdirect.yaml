@@ -12,6 +12,11 @@ site_id: 821
 integration: json
 client_tier: tier1
 
+enable_static_test: true
+static_test_prod_url: "http://www.chemistdirect.co.uk/bioconcepts-evening-primrose-oil-1000mg/prd-3qj"
+static_test_cat_url: "http://www.chemistdirect.co.uk/vitamins-and-supplements"
+
+
 #### site level variables ####
 
 show_log: true
@@ -57,7 +62,6 @@ product_page:
   add_to_basket_button: ["link", ':class => "buy_now"']
   
 random_product:
-  ignore: true
   expected_recs: 1
       
 category_page:
@@ -66,7 +70,6 @@ category_page:
   expected_recs: 4
   
 random_category:
-  ignore: true
   expected_recs: -1
 
 basket_page:
