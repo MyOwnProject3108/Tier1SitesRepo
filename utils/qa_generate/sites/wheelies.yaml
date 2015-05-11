@@ -65,54 +65,53 @@ add_to_basket_button: ["button", ':id=> "ctl00_ContentPlaceHolder1_Repeater1_ctl
 #### page level config ####
 
 home_page:
-URL: "http://www.wheelies.co.uk/"
-expected_recs: 3
-login_link: ["link", ':href=> "http://www.wheelies.co.uk/UserAdmin/Default.aspx"']
-search_field: ["text_field", ':id => "ctl00_ctl03_tbSearch"']
+    URL: "http://www.wheelies.co.uk/"    
+    expected_recs: 3
+    login_link: ["link", ':href=> "http://www.wheelies.co.uk/UserAdmin/Default.aspx"']
+    search_field: ["text_field", ':id => "ctl00_ctl03_tbSearch"']
 
 login_page:
-URL: "https://www.wheelies.co.uk/login-register.aspx"
-expected_recs: 0
-username_field: ["text_field", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_UserName"']
-password_field: ["text_field", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_Password"']
-login_submit: ["button", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_LoginButton"']
+    URL: "https://www.wheelies.co.uk/login-register.aspx"
+    expected_recs: 0
+    username_field: ["text_field", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_UserName"']
+    password_field: ["text_field", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_Password"']
+    login_submit: ["button", ':id=>"ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Login1_LoginButton"']
 
 searchresults_page:
-URL: "http://www.wheelies.co.uk/Catalogue.aspx?search=bike"
-expected_recs: 4
-zerosearch_recs: 4
+    URL: "http://www.wheelies.co.uk/Catalogue.aspx?search=bike"
+    expected_recs: 4
+    zerosearch_recs: 4
 
 basket_page:
-URL: "http://www.wheelies.co.uk/ViewCart.aspx"
-expected_recs: 0
-extra_steps:
-- [pause, 2]
+    URL: "http://www.wheelies.co.uk/ViewCart.aspx"
+    expected_recs: 0
+    extra_steps:
+    - [pause, 2]
 
 checkout_page:
-URL: "https://www.wheelies.co.uk/Checkout.aspx"
-expected_recs: 0
+    URL: "https://www.wheelies.co.uk/Checkout.aspx"
+    expected_recs: 0
 
 random_product:
-expected_recs: 4
-
-random_category:
-expected_recs: 0
+    expected_recs: 4
+    random_category:
+    expected_recs: 0
 
 random_basket:
-expected_recs: 0
-basket_checkout: ["button", ':id => "ctl00_ContentPlaceHolder1_btnCheckOut"']
-basket_remove: ["button", ':class => "ctl00_ContentPlaceHolder1_CartItems_ctl00_DeleteButton"']
+    expected_recs: 0
+    basket_checkout: ["button", ':id => "ctl00_ContentPlaceHolder1_btnCheckOut"']
+    basket_remove: ["button", ':class => "ctl00_ContentPlaceHolder1_CartItems_ctl00_DeleteButton"']
 
 random_checkout:
-expected_recs: 0
-extra_steps:
-- [button, id, "ctl00_ContentPlaceHolder1_btnCheckOut"]
-- [pause, 2]
-- [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_UserName", "PTest"]
-- [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_Password", "P1234567"]
-- [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_LoginButton"]
-- [pause, 2]
-- [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Add1", "Unit 232"]
-- [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Town", "London"]
-- [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_btnSubmit"]
-- [pause, 2]
+    expected_recs: 0
+    extra_steps:
+    - [button, id, "ctl00_ContentPlaceHolder1_btnCheckOut"]
+    - [pause, 2]
+    - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_UserName", "PTest"]
+    - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_Password", "P1234567"]
+    - [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_LoginView_LoginBox_LoginButton"]
+    - [pause, 2]
+    - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Add1", "Unit 232"]
+    - [text_field, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_tbB_Town", "London"]
+    - [button, id, "ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Checkout1_btnSubmit"]
+    - [pause, 2]
