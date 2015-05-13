@@ -1,5 +1,5 @@
-site_name: cathkidston
-pretty_name: cathkidston
+site_name: cathkidstonfr
+pretty_name: Cathkidston FR
 has_content: no
 has_ranking: no
 needs_SPR: no
@@ -36,7 +36,7 @@ add_to_basket_button: ["button", ':class=> "submit button btn btn_primary btn_la
     
     
 home_page:
-  URL: "http://www.cathkidston.com/?lng=&ctry=GB"
+  URL: "http://www.cathkidston.com/pws/ShippingOptions.ice?onSuccess=home&lng=&ctry=FR&channel=PWS_EN"
   expected_recs: 0
   login_link: ["link", ':text => "Login/Register"']
   search_field: ["text_field", ':id => "top_search"']
@@ -54,7 +54,7 @@ random_basket:
 
 product_page:
   ignore: true
-  URL: "http://www.cathkidston.co.uk/p-19941-cath-kidston-kentish-rose-weekend-bag.aspx?referrer=category"    
+  URL: "http://www.cathkidston.com/handbags/button-spot-zipped-handbag-with-detachable-strap-1014799"    
   expected_recs: 6
   add_to_basket_button: ["button", ':class=> "AddToCartButton"']
   extra_steps:
@@ -62,7 +62,7 @@ product_page:
 
 category_page:
   ignore: true
-  URL: "http://www.cathkidston.co.uk/c-486-cath-kidston-messenger-bags.aspx"
+  URL: "http://www.cathkidston.com/bags/top-handles/list?ctry=FR"
   expected_recs: 0
 
 basket_page:
@@ -74,7 +74,7 @@ basket_page:
 
 login_page:
   ignore: true
-  URL: "https://www.cathkidston.co.uk/signin.aspx"
+  URL: "https://www.cathkidston.com/pws/secure/CheckOut.ice?checkout=true&secure_from=checkout"
   expected_recs: 0
   username_field: ["text_field", ':id=>"EMail"']
   password_field: ["text_field", ':id=>"txtPassword"']  
@@ -87,7 +87,7 @@ searchresults_page:
 
 checkout_page:
   ignore: true
-  URL: "https://www.cathkidston.co.uk/checkoutreview.aspx?paymentmethod=CREDIT+CARD"
+  URL: "https://www.cathkidston.com/checkoutreview.aspx?paymentmethod=CREDIT+CARD"
   expected_recs: 0 
   extra_steps:
    - [link, id, "second_checkout_link"]
@@ -112,18 +112,16 @@ random_checkout:
    - [select_list, id, "title", "Mr"]
    - [text_field, id, "first_name", "test"]
    - [text_field, id, "last_name", "test"]
-   - [text_field, id, "telephone_number", "02076724562"]
+   - [text_field, id, "telephone_number", "0123456789"]
    - [pause,10]
    - [button, xpath, "//div[10]/button"]
    - [pause,5]
-   - [text_field, id, "search_postcode", "SE1 0HS"]
-   - [span, id, "search_postcode_button"]
-   - [pause,2]
-   - [select_list, id, "postcode_address_id", "16 Great Guildford Street London SE1"]
-   - [pause,5]
+   - [text_field, id, "address_field_1", "address"]
+   - [text_field, id, "town_field", "town"]
+   - [text_field, id, "postcode_field", "12345"]
    - [button, class, "submit button btn btn_primary btn_large btn_block"]
    - [pause,2]
-    
+
    
    
    
