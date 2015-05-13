@@ -3,9 +3,9 @@ pretty_name: Crew Clothing
 has_content: no
 has_ranking: no
 needs_SPR: false
-username: vinod.sathapathi@peerius.com
-password: Pa55word
-zero_search_term: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: toy
 valid_search_term: dress
 database_num: 7
 #apikey: rye23sdyu342s
@@ -25,15 +25,17 @@ static_test_cat_url: "http://www.crewclothing.co.uk/mens-clothing-accessories/"
 # site variables
 show_log: true
 category_menu: ["div", ':id => "navbar"']
-#categories_to_exclude: ["Holiday Shop","Be Inspired","Wedding","url=>suits-"]
+categories_to_exclude: ["Journal"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':id=> "productDataOnPage"'] 
 product_link_filter: ["id", "link2%"]
-product_options: 
-     - ["div",':id=> "prodgrid"']
+product_options:
+      - ["div",':class=> "avail"']
+#     - ["div",':id=> "prodgrid"']
+
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':xpath=> "/html/body/div/div[3]/div[2]/div/div[3]/div/form/ul/li/input"']
@@ -44,7 +46,7 @@ out_of_stock_msg: "The item you have selected is out of stock"
 
 home_page:
   URL: "http://www.crewclothing.co.uk/"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
@@ -71,20 +73,20 @@ basket_page:
   
 random_basket:
   expected_recs: 1
-  basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
-  basket_remove: ["link", ':class => "remove_bag_item"']
+  basket_checkout: ["link", ':class => "btn1"']
+  basket_remove: ["image", ':src => "/images/buttons/basket_remove_item.png"']
   
 
 login_page:
   ignore: true
-  URL: "https://www.bhs.co.uk/webapp/wcs/stores/servlet/LogonForm?catalogId=34096&storeId=13077&krypto=bw2BpuZQvDKkxtoRhWgVLg%3D%3D&ddkey=http:LogonForm"
+  URL: "https://www.crewclothing.co.uk/page/login/?target=myaccount_page"
   expected_recs: 0
   username_field: ["text_field", ':id=>"login_email"']
   password_field: ["text_field", ':id=>"password"']
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
-  URL: "http://www.bhs.co.uk/webapp/wcs/stores/servlet/CatalogNavigationSearchResultCmd?langId=-1&storeId=13077&catalogId=34096&beginIndex=1&viewAllFlag=false&pageSize=40&searchTermScope=3&searchTermOperator=LIKE&searchType=ALL&sort_field=Relevance&searchTerm=dress"
+  URL: "http://www.crewclothing.co.uk/no-results/?s=toy"
   expected_recs: 0
   zerosearch_recs: 1
 

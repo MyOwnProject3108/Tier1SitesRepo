@@ -21,7 +21,7 @@ static_test_cat_url:
 # site variables
 show_log: true
 category_menu: ["div", ':id => "idlNav"']
-categories_to_exclude: ["More ", "Door Furniture", "Hinges", "Door Closers", "Cabinet Hardware", "Locks & Security", "Screws & Fixings"]
+categories_to_exclude: ["More "]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
@@ -31,7 +31,7 @@ product_links: ["ul", ':class => "productLister"']
 product_link_filter: ["class", "image"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["div", '"title" => "Add to Basket"']
+add_to_basket_button: ["div", ':xpath => "/html/body/div[7]/div[2]/div[2]/div[1]/div[4]/div"']
         
 #### page level config ####
 
@@ -40,4 +40,60 @@ home_page:
   expected_recs: 0
   login_link: ["link", ':title => "Log In"']
   search_field: ["text_field", '"id" => "SearchText"']
+  
+random_category:
+  expected_recs: 0
+  
+random_product:
+  expected_recs: 0
+  
+random_basket:
+  ignore: true
+  expected_recs: 0
+  
+random_checkout:
+  Ignore: true
+  expected_recs: 0
+  extra_steps:
+     - [link, class, "goCheckout buttonL green corners"]
+     - [pause, 2]
+     - [links, id, "btnRegister"]
+     - [text_field, id, "EmailAddress", "qatest@mailinator.com", "generate_email"]
+     - [text_field, id, "Password", "123123"]
+     - [text_field, id, "RepeatPassword", "123123"]
+     - [text_field, id, "FirstName", "Qa", "generate_firstname"]
+     - [text_field, id, "LastName", "Test", "generate_lastname"]
+     - [text_field, id, "Phone1", "07625678234"]
+     - [select_list, id, "Group_Code", "Non Trade"]
+     - [text_field, class, "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input", "On Web"]
+     - [button, id, "btnCreateAccount"]
+     - [text_field, class, "txtAddPc", "SE1 0HS"]
+     - [link, id, "FindLink"]
+     - [pause, 2]
+     - [select_list, class, "ddlAddressList", "Agiletek Engineering Ltd Metal Box Factory Business Centre, 30,  Great Guildford Street, "]
+     - [link, id, "btnAddAddress"]
+     - [pause, 2]
+     - [link, class, "nextStep loadDelOpt button green"]
+     - [link, class, "nextStep button paymentStep green"]
+     - [link, class, "payment button green nextStep"]
+     - [text_field, name, "cardnumber", "4444333322221111"]
+     - [select_list, name, "expirymonth", "07"]
+     - [select_list, name, "expiryyear", "2016"]
+     - [text_field, name, "securitycode", "123"]
+     - [link, id, "proceedButton"]
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
 
