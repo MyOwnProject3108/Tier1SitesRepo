@@ -13,7 +13,7 @@ channel: mobileapp
 database_num: 4
 site_id: 223
 integration: standard
-client_tier: tier1
+
 
 enable_static_test: false
 static_test_prod_url: "http://www.topshop.com/en/tsuk/product/beauty-3326659/eyes-470/brow-fixer-in-worldly-3531457?bi=1&ps=20"
