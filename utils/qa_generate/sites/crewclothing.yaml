@@ -45,15 +45,18 @@ out_of_stock_msg: "The item you have selected is out of stock"
 #### page level config ####
 
 home_page:
+  ignore: true
   URL: "http://www.crewclothing.co.uk/"
   expected_recs: 1
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "inp_search_text"']
 
 random_product:
+  ignore: true
   expected_recs: 1
 
 random_category:
+  ignore: true
   expected_recs: 0
   
 product_page:
@@ -72,6 +75,7 @@ basket_page:
   basket_remove: ["link", ':class => "remove_bag_item"']
   
 random_basket:
+  ignore: true
   expected_recs: 1
   basket_checkout: ["link", ':class => "btn1"']
   basket_remove: ["image", ':src => "/images/buttons/basket_remove_item.png"']
@@ -86,6 +90,7 @@ login_page:
   login_submit: ["link", ':id=>"login_submit"']
 
 searchresults_page:
+  ignore: true
   URL: "http://www.crewclothing.co.uk/no-results/?s=toy"
   expected_recs: 0
   zerosearch_recs: 1
@@ -107,6 +112,7 @@ checkout_page:
     - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
     
 random_checkout:
+  ignore: true
   URL: "http://www.bhs.co.uk/"
   expected_recs: 0
   extra_steps:
