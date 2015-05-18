@@ -2,13 +2,13 @@ site_name: wolfordus
 pretty_name: wolfordus
 has_content: no
 has_ranking: no
-needs_SPR: yes
+needs_SPR: no
 username: webtest@mailinator.com
 password: webtest1234
 zero_search_term: jfdsakfkd
 valid_search_term: leggings
 database_num: 6
-site_id: 1349
+site_id: 1369
 integration: json
 client_tier: tier1
 
@@ -27,24 +27,18 @@ test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':class=> "cat-listing large-listing"'] 
-product_link_filter: ["href", "*"]
+product_link_filter: ["class", "list-item-title express-item"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["link", ':id=> "add-to-cart-button-id"']
 product_options: 
-      - [select_list, ':xpath=> "sizeSelect/option"']
+      - [select_list, ':id=> "sizeSelect"']
       
-product_options_preselect: 
-    - [select_list, ":id=> 'sizeSelect'"]     
-
-
-
 home_page:
   URL: "http://www.wolfordshop.com"
   expected_recs: 1
   login_link: ["link", ':href => "http://www.wolfordshop.com/vm/MyAccount/"']
   search_field: ["text_field", ':id => "search-tag"']
-  needs_SPR: yes
   
 random_product:
   expected_recs: 1
@@ -54,9 +48,6 @@ random_category:
   
 random_basket:
   expected_recs: 1
-  basket_checkout: ["link", ':class => "continue-shipto-button button"']
-  basket_remove: ["button", ':class => "checkout-delete-item"']
-  
   
 product_page:
     ignore: true
@@ -97,3 +88,8 @@ checkout_page:
   ignore: true
   URL: "https://www.wolfordshop.com/edealinv/servlet/ExecMacro?ctl_nbr=16690&nurl=control%2FCheckoutShipTo.vm&eurl=control%2FAddOrder.vm&vnpid=19660&CHILD=-1&rurl=control%2FAddOrder.vm&VecMaster=Y&useAdminHost=N&checkoutMethod=Store&Admin=N&venid=2&warn_code=1&MASTER=N&vec_id=14125104&vnsid=5&qnty_15356980=1&flCustOptFilled=Y&storeitem_15356980=Y&userCurrency=USD&ei_pgparamname=nurl&isMobileRequest=N&reloadPage=Y&groupId=6251&SUBCAMPAIGN_ID=-1&tru_ssl_pg=Y&SESSION_ID=webtest%40mailinator.com&storeitem_list=15356980&include_0=Y"
   expected_recs: 0 
+  
+random_checkout:
+  ignore: true
+  expected_recs: 0
+
