@@ -45,7 +45,6 @@ out_of_stock_msg: "The item you have selected is out of stock"
 #### page level config ####
 
 home_page:
-  ignore: true
   URL: "http://www.crewclothing.co.uk/"
   expected_recs: 1
   login_link: ["link", ':title => "Login"']
