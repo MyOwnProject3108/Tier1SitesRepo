@@ -45,12 +45,15 @@ home_page:
   search_field: ["text_field", ':id => "SimpleSearchForm_SearchTerm"']
    
 random_product:
+  ignore: true
   expected_recs: 0
 
 random_category:
+  ignore: true
   expected_recs: 0
  
 random_basket:
+  ignore: true
   expected_recs: 0
 
 product_page:
@@ -74,6 +77,7 @@ basket_page:
   basket_remove: ["link", ':class => "removeFromBasketButton"']
   
 random_basket:
+  ignore: true
   expected_recs: 0
   basket_checkout: ["link", ':class => "Checkout"']
   basket_remove: ["link", ':class => "remove_address_link hover_underline tlignore"']
@@ -112,6 +116,7 @@ checkout_page:
    
 
 random_checkout:
+  ignore: true
   expected_recs: 0
   extra_steps:
      - [link, id, "basket_checkout_button"]

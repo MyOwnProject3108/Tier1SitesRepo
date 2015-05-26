@@ -12,7 +12,7 @@ site_id: 1409
 integration: json
 client_tier: tier1
 
-enable_static_test: false
+enable_static_test: true
 static_test_prod_url: "http://www.cooksongold.com/Finished-Chain/Sterling-Silver-Compact-1mm-Snake--1640cm-prcode-VV4-01f"
 static_test_cat_url: "http://www.cooksongold.com/Finished-Chain/-Alloy=0/-Style=Box_Chain/-Length=0/-Range=0/&prdsearch=y"
 
@@ -47,7 +47,8 @@ product_page:
     add_to_basket_button: ["link", ':xpath => "html/body/div[8]/div[7]/div[2]/div[2]/div/div[2]/div[1]/div/div[1]/a"'] 
 
 random_product:
-    expected_recs: 1
+  ignore: true
+  expected_recs: 1
     
 category_page:
   ignore: true
@@ -55,6 +56,7 @@ category_page:
   expected_recs: 1
 
 random_category:
+  ignore: true
   expected_recs: 1
   
 basket_page:
@@ -65,10 +67,12 @@ basket_page:
   basket_remove: ["link", ':href => "product_detail.jsp?prod_prefix=VRS&prod_suffix=205N&item=1&Quantity=0&add=D"'] 
   
 random_basket:
+  ignore: true
   URL: "https://www.cooksongold.com/your_basket.jsp"
   expected_recs: 1
     
 login_page:
+  ignore: true
   URL: "https://www.cooksongold.com/login_in.jsp?country=gb&shop=c&language=ENG&site400=001&company=001&siteid=IN"
   expected_recs: 0
   username_field: ["text_field", ':id=>"user"']
@@ -76,15 +80,18 @@ login_page:
   login_submit: ["button", ':value=>"Sign-in"']
 
 searchresults_page:
-  URL: ""
+  ignore: true
+  URL: "http://www.cooksongold.com/category_select.jsp?query=poaipoisdasd"
   expected_recs: 1
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.cooksongold.com/your_order.jsp"
   expected_recs: 0   
   
 random_checkout:
+  ignore: true
   URL: "http://www.cooksongold.com"
   extra_steps:
       - [link, href, "javascript:document.reference.action ='login_in.jsp?country=gb&shop=a&language=ENG&site400=001&company=001&siteid=IN';document.reference.submit();"]
