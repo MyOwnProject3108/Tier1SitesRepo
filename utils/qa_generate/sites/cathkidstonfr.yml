@@ -1,0 +1,130 @@
+site_name: cathkidstonfr
+pretty_name: Cathkidston FR
+has_content: no
+has_ranking: no
+needs_SPR: no
+username: webtest@mailinator.com
+password: webtest
+zero_search_term: dvd
+valid_search_term: bag
+database_num: 5
+site_id: 191
+integration: standard
+client_tier: tier1
+
+
+
+enable_static_test: false
+static_test_prod_url: ""
+static_test_cat_url: ""
+
+
+# site variables
+show_log: true
+category_menu: ["ul", ':class => "level_1 children_9"']
+categories_to_exclude: ["Blog"]
+wait_time_per_category_page: 5
+test_all_categories: false
+num_of_reloads_per_category: 2
+ignore_cat_tracked_as_other_page: true
+product_links: ["ul", ':class=> "product_list"'] 
+product_link_filter: ["class", "img_link"]
+wait_time_per_product_page: 2
+max_num_of_products: 1 
+add_to_basket_button: ["button", ':class=> "submit button btn btn_primary btn_large"']
+
+    
+    
+home_page:
+  URL: "http://www.cathkidston.com/pws/ShippingOptions.ice?onSuccess=home&lng=&ctry=FR&channel=PWS_EN"
+  expected_recs: 0
+  login_link: ["link", ':text => "Login/Register"']
+  search_field: ["text_field", ':id => "top_search"']
+  
+random_product:
+  expected_recs: 1
+
+random_category:
+  expected_recs: 0
+  
+random_basket:
+  expected_recs: 1
+  basket_checkout: ["link", ':id => "second_checkout_link"']
+  basket_remove: ["link", ':class => "remove_all_link"']
+
+product_page:
+  ignore: true
+  URL: "http://www.cathkidston.com/handbags/button-spot-zipped-handbag-with-detachable-strap-1014799"    
+  expected_recs: 6
+  add_to_basket_button: ["button", ':class=> "AddToCartButton"']
+  extra_steps:
+   - [pause,40]
+
+category_page:
+  ignore: true
+  URL: "http://www.cathkidston.com/bags/top-handles/list?ctry=FR"
+  expected_recs: 0
+
+basket_page:
+  ignore: true
+  URL: "http://www.cathkidston.com/pws/ViewBasket.ice?viewBasket=true"
+  expected_recs: 1
+  basket_checkout: ["link", ':id => "second_checkout_link"']
+  basket_remove: ["button", ':class => "CartDeleteButton"']  
+
+login_page:
+  ignore: true
+  URL: "https://www.cathkidston.com/pws/secure/CheckOut.ice?checkout=true&secure_from=checkout"
+  expected_recs: 0
+  username_field: ["text_field", ':id=>"EMail"']
+  password_field: ["text_field", ':id=>"txtPassword"']  
+  login_submit: ["button", ':name=>"existingLoginButton"']
+
+searchresults_page:
+  URL: "http://www.cathkidston.com/search?page=1&results=48&keywords=dvd&ctry=GB&lng=="
+  expected_recs: 0
+  zerosearch_recs: 1
+
+checkout_page:
+  ignore: true
+  URL: "https://www.cathkidston.com/checkoutreview.aspx?paymentmethod=CREDIT+CARD"
+  expected_recs: 0 
+  extra_steps:
+   - [link, id, "second_checkout_link"]
+   - [pause,10]
+   - [text_field, id, "CardName", "Webtest"]
+   - [text_field, id, "CardNumber", "4444333322221111"]
+   - [text_field, id, "CardExtraCode", "123"]
+   - [select_list, id, "CardType", "VISA"]
+   - [select_list, id, "CardExpirationMonth", "04"]
+   - [select_list, id, "CardExpirationYear", "2015"]
+   - [button, class, "PaymentPageContinueCheckoutButton"]
+   - [pause,20]
+   
+random_checkout:
+  expected_recs: 0
+  extra_steps:
+   - [link, id, "second_checkout_link"]
+   - [pause,10]
+   - [text_field, id, "j_username", "webtest@mailinator.com", "generate_email"]
+   - [radio, id, "i_do_not_have_a_password_login_form"]
+   - [pause,5]
+   - [select_list, id, "title", "Mr"]
+   - [text_field, id, "first_name", "test"]
+   - [text_field, id, "last_name", "test"]
+   - [text_field, id, "telephone_number", "0123456789"]
+   - [pause,10]
+   - [button, xpath, "//div[10]/button"]
+   - [pause,5]
+   - [text_field, id, "address_field_1", "address"]
+   - [text_field, id, "town_field", "town"]
+   - [text_field, id, "postcode_field", "12345"]
+   - [button, class, "submit button btn btn_primary btn_large btn_block"]
+   - [pause,2]
+
+   
+   
+   
+   
+   
+   
