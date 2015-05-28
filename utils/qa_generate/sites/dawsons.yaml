@@ -15,7 +15,7 @@ client_tier: tier1
 #### site level variables ####
 show_log: true
 
-category_menu: ["ul", ':id => "main-nav"']
+category_menu: ["div", ':id => "header-nav"']
 
 #categories_to_exclude: ["Neu"]
 
@@ -28,6 +28,7 @@ max_num_of_categories: 1
 num_of_reloads_per_category: 2
 
 ignore_cat_tracked_as_other_page: true
+out_of_stock_msg: "Out of stock"
 
 product_links: ["div", ':class=> "category-products"'] 
 
@@ -42,7 +43,7 @@ wait_time_per_product_page: 2
 
 max_num_of_products: 2 
 
-add_to_basket_button: ["button", ':class=> "btn-cart"']
+add_to_basket_button: ["button", ':class=> "button btn-cart"']
 
 #### page level config ####
   
@@ -81,11 +82,13 @@ random_category:
   expected_recs: 0
 
 random_basket:
+  ignore: true
   expected_recs: 1
   basket_checkout: ["button", ':class => "ir button btn-proceed-checkout btn-checkout"']
   basket_remove: ["a", ':text => "Remove item"']
       
 random_checkout:
+  ignore: true
   expected_recs: 0
   extra_steps:
       - [select_list, class, "delivery_dropdown", "UK Mainland"]
