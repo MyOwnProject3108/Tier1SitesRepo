@@ -31,7 +31,7 @@ product_links: ["ul", ':class => "productLister"']
 product_link_filter: ["class", "image"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["div", ':xpath => "/html/body/div[7]/div[2]/div[2]/div[1]/div[4]/div"']
+add_to_basket_button: ["div", ':text => "Add to Basket"']
         
 #### page level config ####
 
@@ -48,7 +48,6 @@ random_product:
   expected_recs: 0
   
 random_basket:
-  ignore: true
   expected_recs: 0
   
 random_checkout:
