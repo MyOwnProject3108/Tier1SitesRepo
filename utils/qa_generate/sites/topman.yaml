@@ -31,6 +31,7 @@ product_options:
 product_options_preselect:
     - [select_list, ':id=> "product_size_full"']
 product_keywords_to_exclude: ["Suit"]
+out_of_stock_msg : "Sorry, this item is out of stock."
     
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 3
@@ -100,7 +101,10 @@ random_checkout:
   extra_steps:
       - [link, id, "checkout_submit_bottom"]
       - [pause, 2]
-      - [link, id, "btn_register"]
+      - [text_field, id, "create_email", "qatest@mailinator.com", "generate_email"]
+      - [text_field, id, "create_password", "test@123"]
+      - [text_field, id, "create_password_confirm", "test@123"]
+      - [link, id, "btn_create_account"]
       - [pause, 2]
       - [select_list, id, "address_title", "Mr"]
       - [text_field, id, "address_first_name", "P"]
