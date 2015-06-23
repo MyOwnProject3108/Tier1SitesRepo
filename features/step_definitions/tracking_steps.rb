@@ -232,6 +232,7 @@ def select_product_options
 				option.links.first.click if option.links
 				option.click if !option.links
 			else
+			  
 				# do nothing
 			end
 	 	end
@@ -532,7 +533,7 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 	#	abort("outofstock was true") if out_of_stock
 
 		if out_of_stock == false
-			#wait for element to be visible
+		  #wait for element to be visible
 			@browser.td(:id => 'trackInfo').wait_until_present
 			page_type = @browser.td(:id => 'trackInfo').text.downcase
 			if page_type.include?("productpage")

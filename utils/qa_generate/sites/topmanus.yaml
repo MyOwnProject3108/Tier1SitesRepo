@@ -12,7 +12,7 @@ site_id: 231
 integration: standard
 client_tier: tier1
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://us.topman.com/en/tmus/product/sale-4478785/view-all-sale-2344289/beaded-necklace-4359406?bi=1&ps=20"
 static_test_cat_url: "http://us.topman.com/en/tmus/category/shoes-and-accessories-1928535/mens-jewelry-172034"
 

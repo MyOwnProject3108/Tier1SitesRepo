@@ -14,7 +14,7 @@ site_id: 219
 integration: standard
 client_tier: tier1
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.topman.com/webapp/wcs/stores/servlet/ProductDisplay?beginIndex=0&viewAllFlag=&catalogId=33056&storeId=12555&productId=16784926&langId=-1&categoryId=&parent_category_rn=&searchTerm=TM66C35ITAN&resultCount=1&geoip=home"
 
 # site variables
