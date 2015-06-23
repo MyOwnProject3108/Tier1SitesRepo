@@ -5,12 +5,9 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
     @browser.driver.manage.timeouts.implicit_wait = 5
-	number_of_tries ||1
 	
-	rescue Selenium::WebDriver::Error::StaleElementReferenceError, Selenium::WebDriver::Error::UnhandledAlertError
-
-	retry unless(number_of_tries-= 1).zero?
 	
+	rescue Selenium::WebDriver::Error::StaleElementReferenceError, Selenium::WebDriver::Error::UnhandledAlertError	
 	#refresh
      @browser.refresh
 	 @browser.driver.manage.timeouts.implicit_wait = 5
