@@ -7,10 +7,9 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
     @browser.driver.manage.timeouts.implicit_wait = 5
 	
 	
-	rescue Selenium::WebDriver::Error::StaleElementReferenceError, Selenium::WebDriver::Error::UnhandledAlertError	
+	rescue Selenium::WebDriver::Error::StaleElementReferenceError
 	#refresh
-     @browser.refresh
-	 @browser.driver.manage.timeouts.implicit_wait = 5
+     @browser.driver.manage.timeouts.implicit_wait = 5
      @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
 	
 	 #Dismiss Alert shown in secured websites after refresh
