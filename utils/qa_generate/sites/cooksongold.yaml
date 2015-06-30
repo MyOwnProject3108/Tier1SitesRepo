@@ -38,7 +38,7 @@ home_page:
   URL: "http://www.cooksongold.com/"
   expected_recs: 1
   login_link: ["link", ':text => "Log In"']
-  search_field: ["text_field", ':id => "query"']
+  search_field: ["text_field", ':xpath => "//div[@id=\"u_srch_input\"]/input"']
 
 product_page:
     ignore: true
@@ -65,6 +65,7 @@ basket_page:
   basket_remove: ["link", ':href => "product_detail.jsp?prod_prefix=VRS&prod_suffix=205N&item=1&Quantity=0&add=D"'] 
   
 random_basket:
+  ignore: true
   URL: "https://www.cooksongold.com/your_basket.jsp"
   expected_recs: 1
     

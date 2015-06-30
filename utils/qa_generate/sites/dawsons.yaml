@@ -51,7 +51,7 @@ home_page:
   URL: "http://www.dawsons.co.uk"
   expected_recs: 1
   #login_link: ["link", ':href=> "somevalue"']
-  search_field: ["text_field", ':id => "search"']
+  search_field: ["text_field", ':xpath => "//div[@class=\"form-search\"]/input[@id=\"search_1\"]"']
 
 login_page:
   URL: "https://www.dawsons.co.uk/customer/account/login/"
