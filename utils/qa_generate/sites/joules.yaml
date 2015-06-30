@@ -68,7 +68,7 @@ random_basket:
 
 searchresults_page:
   URL: "https://www.joules.com/search?text=baby"
-  expected_recs: 0
+  expected_recs: 1
   zerosearch_recs: 1
       
 random_checkout:
