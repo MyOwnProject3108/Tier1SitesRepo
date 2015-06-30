@@ -5,7 +5,7 @@ has_ranking: no
 needs_SPR: false
 username: webtest@mailinator.com
 password: webtest1234
-zero_search_term: dvd
+zero_search_term: lipstick
 valid_search_term: blue shirt
 database_num: 4
 site_id: 231
@@ -13,24 +13,27 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: false
-static_test_prod_url: "http://us.topman.com/en/tmus/product/sale-4478785/view-all-sale-2344289/beaded-necklace-4359406?bi=1&ps=20"
+static_test_prod_url: "http://us.topman.com/en/tmus/product/shoes-and-accessories-1928535/mens-jewelry-172034/pendant-necklace-4472429?bi=1&ps=20"
 static_test_cat_url: "http://us.topman.com/en/tmus/category/shoes-and-accessories-1928535/mens-jewelry-172034"
 
 
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["Brands","Inspire Me", "url=>navy", "url=>black"]
+categories_to_exclude: ["Brands","Inspire Me", "url=>navy", "url=>black", "url=>-suits-"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "wrapper_page_content"'] 
 product_link_filter: ["data-productid", "*"]
 product_options: 
-    - [select_list, ':id=> "product_size_full"']
+    - [select_list, ':class=> "product_size"']
 product_options_preselect:
     - [select_list, ':id=> "product_size_full"']
 
+product_option_filter:                       
+    - ["option", "text", "%out of stock%"]
+    
 ignore_single_product_option: true
 
 ignore_cat_tracked_as_other_page: true
@@ -40,6 +43,7 @@ max_num_of_products: 1
 product_keywords_to_exclude: ["Suit"]
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
+out_of_stock_msg : "Sorry, this item is out of stock."
 
 home_page:
   URL: "http://us.topman.com/webapp/wcs/stores/servlet/TopCategoriesDisplay?storeId=13051&catalogId=33059&geoip=noship"
@@ -89,28 +93,31 @@ searchresults_page:
   
 checkout_page:
   ignore: true
-  URL: "" 
+  URL: "http://us.topman.com/" 
   expected_recs: 0
   extra_steps:
     - [link, class, btn_proceed_to_payment submit_button chk_button_primary]
 
 random_checkout:
+  URL: "http://us.topman.com/"
   expected_recs: 0
   extra_steps:
-      - [link, id, "checkout_submit_bottom"]
+      - [link, class, "btn_checkout chk_button_primary"]
       - [pause, 2]
-      - [link, id, "btn_register"]
+      - [text_field, id, "create_email", "qatest@mailinator.com", "generate_email"]
+      - [text_field, id, "create_password", "test@123"]
+      - [text_field, id, "create_password_confirm", "test@123"]
+      - [link, id, "btn_create_account"]
       - [pause, 2]
       - [select_list, id, "address_title", "Mr"]
       - [text_field, id, "address_first_name", "P"]
       - [text_field, id, "address_surname", "Eerius"]
       - [text_field, id, "address_main_telephone", "0123456789"]
-#     - [p, class, "enter_manual_address"]
       - [text_field, class, "text address_line_1", "address1"]
       - [text_field, class, "text address_line_2", "address2"]
       - [text_field, class, "text address_town", "baltimore"]
       - [select_list, id, "shipping_state_select", "Maryland"]
       - [text_field, class, "text address_postcode_manual", "21210"]
       - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
-    
+      - [pause,2]
 

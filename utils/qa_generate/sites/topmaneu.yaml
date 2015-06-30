@@ -5,7 +5,7 @@ has_ranking: no
 needs_SPR: false
 username: vinod.sathapathi@peerius.com
 password: Pa55word
-zero_search_term: dvd
+zero_search_term: lipstick
 valid_search_term: shirts
 database_num: 7
 site_id: 581
@@ -15,16 +15,19 @@ client_tier: tier1
 # site variables
 show_log: true
 category_menu: ["ul", ':id => "nav_catalog_menu"']
-categories_to_exclude: ["Brands","Inspire Me","Suits"]
+categories_to_exclude: ["Brands","Inspire Me","Suits", "url=>dune-"]
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
 product_links: ["div", ':id=> "wrapper_page_content"'] 
 product_link_filter: ["data-productid", "*"]
 product_options: 
-    - [select_list, ':id=> "product_size_full"']
+    - [select_list, ':class=> "product_size"']
 product_options_preselect:
     - [select_list, ':id=> "product_size_full"']
+    
+product_option_filter:                       
+    - ["option", "text", "%out of stock%"]
    
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 2
@@ -94,17 +97,20 @@ random_checkout:
   URL: "http://eu.topman.com/"
   expected_recs: 0
   extra_steps:
-      - [link, id, "checkout_submit_bottom"]
+      - [link, class, "btn_checkout chk_button_primary"]
       - [pause, 2]
-      - [link, id, "btn_register"]
+      - [text_field, id, "create_email", "qatest@mailinator.com", "generate_email"]
+      - [text_field, id, "create_password", "test@123"]
+      - [text_field, id, "create_password_confirm", "test@123"]
+      - [link, id, "btn_create_account"]
       - [pause, 2]
       - [select_list, id, "address_title", "Mr"]
       - [text_field, id, "address_first_name", "P"]
       - [text_field, id, "address_surname", "Eerius"]
       - [text_field, id, "address_main_telephone", "0123456789"]
-#     - [p, class, "enter_manual_address"]
       - [text_field, class, "text address_line_1", "address1"]
       - [text_field, class, "text address_line_2", "address2"]
-      - [text_field, class, "text address_town", "dublin"]
-      - [text_field, class, "text address_postcode_manual", "12345"]
+      - [text_field, class, "text address_town", "baltimore"]
+      - [text_field, class, "text address_postcode_manual", "21210"]
       - [link, class, "btn_proceed_to_payment submit_button chk_button_primary"]
+      - [pause,2]
