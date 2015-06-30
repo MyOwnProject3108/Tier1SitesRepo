@@ -85,8 +85,8 @@ login_page:
 
 searchresults_page:
   URL: "http://www.lovehoney.fr/search/?q=abc"
-  expected_recs: 1
-  zerosearch_recs: 1
+  expected_recs: 0
+  zerosearch_recs: 0
   
 checkout_page:
   ignore: true
