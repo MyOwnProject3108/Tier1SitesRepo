@@ -51,7 +51,7 @@ add_to_basket_button: ["button", ':xpath=> "//form[@id=\"productForm\"]/p[2]/but
 
 home_page:
   URL: "http://www.lovehoney.co.uk/"
-  expected_recs: 0
+  expected_recs: 1
   login_link: ["link", ':href=>"https://www.lovehoney.co.uk/your-account/"']
   search_field: ["text_field", ':id => "headerSearch"']
 
