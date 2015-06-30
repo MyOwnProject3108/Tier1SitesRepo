@@ -23,7 +23,7 @@ category_menu: ["div", ':class => "mainMenu"']
 categories_to_exclude: ["Catalogue", "Collections", "Shop by Product", "Ann Harvey","url=>offers"]
 wait_time_per_category_page: 3
 test_all_categories: false
-num_of_reloads_per_category: 1
+num_of_reloads_per_category: 2
 #product_links: ["ul", ':class=> "prods prodsFourColumns prodListSearch prodsGrid"']
 product_links: ["ul", ':xpath=> "//div[@id=\"searchResults\"]/div[1]/ul"']
 product_link_filter: ["class", "moredetail"]
