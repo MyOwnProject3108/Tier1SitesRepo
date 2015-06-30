@@ -21,7 +21,7 @@ show_log: true
 
 #xpath or id to container that contains all the product page links on a category page
 category_menu: ["div", ':id => "site_container"']
-categories_to_exclude: ["Bedroom", "Gifts", "Our Blog", "url=>help", "url=>inspire-me", "url=>bed-linen", "Clothing", "url=>denim-shop", "url=>shop-by-fragrance"]
+categories_to_exclude: ["Bedroom", "Gifts", "Our Blog", "url=>help", "url=>inspire-me", "url=>bed-linen", "Clothing", "url=>denim-shop", "url=>shop-by-fragrance", "url=>mattresses-and-divans"]
 
 test_all_categories: false
 

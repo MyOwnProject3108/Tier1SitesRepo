@@ -4,21 +4,20 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
     # Turn the page description into a page classname (e.g. search page -> SearchPage)
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
-    #@browser.refresh
-    @browser.driver.manage.timeouts.implicit_wait = 10  
-     rescue Selenium::WebDriver::Error::StaleElementReferenceError, Selenium::WebDriver::Error::UnhandledAlertError
-         
-      #refresh
-     @browser.refresh
-     
-     #Dismiss Alert shown in secured websites after refresh
-     @browser.alert.close
-         @browser.driver.manage.timeouts.implicit_wait = 5
-   
+    @browser.driver.manage.timeouts.implicit_wait = 5
+	
+	
+	rescue Selenium::WebDriver::Error::StaleElementReferenceError
+	#refresh
+     @browser.driver.manage.timeouts.implicit_wait = 5
      @current_page.should be_tracked_as page_class_name + ((page.include? "Order") ? "" : "Page")
-    
-   end
-
+	
+	 #Dismiss Alert shown in secured websites after refresh
+	 break
+	 if(browser.alert.exist)
+     @browser.alert.close
+ end
+end
  end
 Then /^the first widget name should be "(.+)"$/ do |debug_widget_name|
   	@current_page.debug_widget_name.should include(debug_widget_name)
@@ -232,6 +231,7 @@ def select_product_options
 				option.links.first.click if option.links
 				option.click if !option.links
 			else
+			  
 				# do nothing
 			end
 	 	end
@@ -532,7 +532,7 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 	#	abort("outofstock was true") if out_of_stock
 
 		if out_of_stock == false
-			#wait for element to be visible
+		  #wait for element to be visible
 			@browser.td(:id => 'trackInfo').wait_until_present
 			page_type = @browser.td(:id => 'trackInfo').text.downcase
 			if page_type.include?("productpage")
