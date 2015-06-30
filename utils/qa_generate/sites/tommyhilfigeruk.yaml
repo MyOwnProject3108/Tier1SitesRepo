@@ -108,4 +108,21 @@ random_checkout:
       - [pause, 5]
       - [button, id, "continuecheckoutbutton"]
       - [pause, 5]
+      - [span, id, "dwfrm_singleshipping_billingAddress_addressFields_salutationSelectBoxIt", "Mr." ]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_firstName", "test"]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_lastName", "peerius"]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_address1", "30 Great Guildford Street"]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_city", "London"]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_zip", "SE1 0HS"]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_email", "test@peerius.com", "generate_email"]
+      - [text_field, id, "dwfrm_singleshipping_billingAddress_addressFields_emailconfirm", "test@peerius.com", "generate_email"]
+      - [button, class, "button style_2 continue continue_right addressSubmitButton"]
+      - [pause, 5]
+      
+      
+      
+      
+      
+      
+      
     

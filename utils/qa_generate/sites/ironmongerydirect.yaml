@@ -10,7 +10,7 @@ valid_search_term: casters
 database_num: 5
 mob_apikeyliv: srfswrw3223dhu4t
 channel: web
-site_id: 2280
+site_id: 2139
 integration: standard
 client_tier: tier1
 
@@ -31,7 +31,7 @@ product_links: ["ul", ':class => "productLister"']
 product_link_filter: ["class", "image"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["div", ':text => "Add to Basket"']
+add_to_basket_button: ["div", ':xpath => "//div[@title=\"Add to Basket\"]"']
         
 #### page level config ####
 
@@ -39,7 +39,7 @@ home_page:
   URL: "http://www.ironmongerydirect.co.uk/"
   expected_recs: 0
   login_link: ["link", ':title => "Log In"']
-  search_field: ["text_field", '"id" => "SearchText"']
+  search_field: ["text_field", ':xpath => "//div[@class=\"idlSearch fh\"]/input[1]"']
   
 random_category:
   expected_recs: 0
