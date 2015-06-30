@@ -34,9 +34,6 @@ product_links: ["div", ':class=> "category-products"']
 
 product_link_filter: ["class","product-image"] 
 
-#product_options: 
-#    - [div, ':id=> "1SizeContainer"']
-
 #product_keywords_to_exclude: ["Canvas", "Boot", "Digital", "Mens", "Shoes", "Flop", "Trainer", "Blue", "ml" ]
 
 wait_time_per_product_page: 2
@@ -82,16 +79,15 @@ random_category:
   expected_recs: 0
 
 random_basket:
-  ignore: true
   expected_recs: 1
   basket_checkout: ["button", ':class => "ir button btn-proceed-checkout btn-checkout"']
   basket_remove: ["a", ':text => "Remove item"']
       
 random_checkout:
-  ignore: true
+  URL: "https://www.dawsons.co.uk/checkout/onepage/"
   expected_recs: 0
   extra_steps:
       - [select_list, class, "delivery_dropdown", "UK Mainland"]
       - [pause, 5]
-      - [url, checkout]
-      - [pause, 10]
+#      - [url, checkout]
+#      - [pause, 10]
