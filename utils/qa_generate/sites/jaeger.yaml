@@ -23,7 +23,7 @@ categories_to_exclude: ["Journal", "url=> Journal"]
 wait_time_per_category_page: 3
 test_all_categories: false
 show_log: true
-num_of_reloads_per_category: 2
+num_of_reloads_per_category: 5
 ignore_cat_tracked_as_other_page: true
 product_links: ["div", ':class=> "productresultarea clearfix"'] 
 product_options: 
@@ -55,8 +55,8 @@ product_page:
     - [pause,10]
 
 category_page:
-  ignore: true
-  URL: "http://www.jaeger.co.uk/womens/dresses"
+  ignore: false
+  URL: "http://www.jaeger.co.uk/mens/casualwear"
   expected_recs: 0 
 
 random_product:
@@ -68,12 +68,12 @@ random_category:
   
 random_basket:
   URL: "http://www.jaeger.co.uk/cart"
-  expected_recs: 1
+  expected_recs: 0
   
 basket_page:
   ignore: true
   URL: "http://www.jaeger.co.uk/cart"
-  expected_recs: 1  
+  expected_recs: 0 
   basket_checkout: ["link", ':xpath => "/html/body/div[1]/div[6]/div[2]/div[1]/div[1]/div[5]/div[1]/form/fieldset/div[3]/a"']
   basket_remove: ["button", ':class => "textbutton remove-btn"']
 
