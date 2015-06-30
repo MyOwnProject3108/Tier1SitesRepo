@@ -152,6 +152,10 @@ def select_product_options
 		product_options = eval('@current_page.product_option'+x.to_s+'_element')
 		product_option_filter = @current_page.get_product_option_filter[x-1] if @current_page.get_product_option_filter.length > x-1
 		#product_options_link_depth = @current_page.get_product_option_link_depth[x] #if the actual clickable element is located one or more levels deeper than the containing element
+		if(product_options == nil)
+				@current_page.add_to_basket_element.click
+			end
+		#plog("HERE #######################################","red")
 		if product_options.exists?
 			#plog("LIST IS A #{product_options.class}","blue") if @@show_log
 			product_options_preselect = eval('@current_page.product_options_preselect'+x.to_s+'_element') if @current_page.has_product_options_preselect
@@ -231,8 +235,8 @@ def select_product_options
 				option.links.first.click if option.links
 				option.click if !option.links
 			else
-			  
-				# do nothing
+					@current_page.add_to_basket_element.click
+				
 			end
 	 	end
 		x = x+1
@@ -532,7 +536,7 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 	#	abort("outofstock was true") if out_of_stock
 
 		if out_of_stock == false
-		  #wait for element to be visible
+				  #wait for element to be visible
 			@browser.td(:id => 'trackInfo').wait_until_present
 			page_type = @browser.td(:id => 'trackInfo').text.downcase
 			if page_type.include?("productpage")
@@ -542,8 +546,10 @@ def test_product_page(product, prod_ctr, num_products, add_to_basket)
 					if @current_page.get_add_to_basket_custom_js != nil
 						@browser.execute_script(@current_page.get_add_to_basket_custom_js)
 					end
+				
 					if @current_page.get_num_of_product_options > 0
 						option_selected = select_product_options
+					
 					end
 					@current_page.add_to_basket_element.click
 					has_add_to_basket_error_msg = @current_page.get_add_to_basket_error_msg != nil ? true : false
