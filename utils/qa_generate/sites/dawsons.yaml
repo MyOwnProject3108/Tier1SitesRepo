@@ -89,5 +89,6 @@ random_checkout:
   extra_steps:
       - [select_list, class, "delivery_dropdown", "UK Mainland"]
       - [pause, 5]
+      - [button, class, "button btn-proceed-checkout btn-checkout"]
 #      - [url, checkout]
 #      - [pause, 10]
