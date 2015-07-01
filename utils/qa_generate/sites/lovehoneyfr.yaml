@@ -13,8 +13,8 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: true
-static_test_prod_url: "http://www.lovehoney.de/product.cfm?p=596"
-static_test_cat_url: "http://www.lovehoney.de/basisartikel/kondome/"
+static_test_prod_url: "http://www.lovehoney.fr/product.cfm?p=25002"
+static_test_cat_url: "http://www.lovehoney.fr/les-indispensables/lubrifiants/"
 
 #### site level variables ####
 show_log: true
@@ -73,6 +73,7 @@ basket_page:
   basket_remove: ["button", ':class => "remove"']
 
 random_basket:
+  URL: "http://www.lovehoney.fr/panier/"
   expected_recs: 1
   
 login_page:
