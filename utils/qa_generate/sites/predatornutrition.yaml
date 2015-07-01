@@ -19,7 +19,7 @@ home_page:
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
-    URL: "http://www.predatornutrition.com/en/armour-v-180-caps/"    
+    URL: "https://www.predatornutrition.com/en/musclepharm-armor-v-120-caps/"    
     expected_recs: 3
     add_to_basket_button: ["button", ':value => "Add to basket"']
     
@@ -28,7 +28,7 @@ category_page:
   expected_recs: 3
 
 basket_page:
-  URL: "http://www.predatornutrition.com/en/checkout/cart/"
+  URL: "https://www.predatornutrition.com/en/checkout"
   expected_recs: 3
   basket_checkout: ["button", ':class => "button button-large place-order btn-proceed-checkout btn-checkout"']
   basket_remove: ["link", ':class => "btn-remove btn-remove2 remove-item"']  
