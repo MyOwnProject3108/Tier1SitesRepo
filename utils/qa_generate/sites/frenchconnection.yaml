@@ -40,6 +40,8 @@ product_option_filter:
 
 wait_time_per_product_page: 2
 
+out_of_stock_msg: Available for dispatch on: out of stock
+
 add_to_basket_button: ["button", ':id=> "addToBasket"']
 search_custom_js: "document.getElementById('sbox_container').className = 'clearfix open';"
 search_button: ["button", ':id=> "site_search_submit"']
