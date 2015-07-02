@@ -20,48 +20,39 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
     page_class_name = page.split.collect!{|x| x.capitalize}.join
     @browser.driver.manage.timeouts.implicit_wait = 5  
     visit @site+'::'+page_class_name+'Page'
+	if @browser.alert.exists?
+	@browser.alert.text
+    @browser.alert.ok 
+	end
+ 
    if @current_page.get_site_custom_js != nil
 	 @browser.execute_script(@current_page.get_site_custom_js)
 		#plog("EXECUTED FOR "+ @site+'::'+page_class_name+'Page', "magenta")
       end	
+	  
 	    if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end
-    
-	# Show the user agent string
-	#pp @browser.html[/<textarea.+>([^<]+)<\/textarea>/,1]
-	#pp @browser.html
-
-	# Make sure the debug data is showing
-	#@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-	#@browser.refresh
+	
 end
 
 When /^I go to the (.+)page$/ do |page|   
+	@browser.send_keys :enter
     # Turn the page description into a page classname (e.g. search page -> SearchPage)
-	
-	begin
-    page_class_name = page.split.collect!{|x| x.capitalize}.join
-    visit @site+'::'+page_class_name+'Page'
-	rescue
-	if @current_page.alert!=nil
-		@browser.alert.ok
-	end
-	end
+	page_class_name = page.split.collect!{|x| x.capitalize}.join
+		
+	visit @site+'::'+page_class_name+'Page'
+	@browser.send_keys :enter
 	
 	if @current_page.get_site_custom_js != nil
   	@browser.execute_script(@current_page.get_site_custom_js)
 	plog("EXECUTED FOR "+ @site+'::'+page_class_name+'Page', "magenta")
 
  	end
-		
-    if @current_page.respond_to? "has_expected_title?" then
+	if @current_page.respond_to? "has_expected_title?" then
         @current_page.should have_expected_title
     end
-
-  # Make sure the debug data is showing
-  #@browser.cookies.add 'peerius_pass_peeriusdebug', '1'
-  #@browser.refresh
+	@browser.execute_script("window.onbeforeunload = null")
 end
 
 When /^I click login$/ do
