@@ -64,7 +64,7 @@ login_page:
 
 searchresults_page:
   URL: "https://www.bonmarche.co.uk/search?categoryPathRefs=shop&q=scarf"
-  expected_recs: 1
+  expected_recs: 0
   zerosearch_recs: 1
 
 checkout_page:
