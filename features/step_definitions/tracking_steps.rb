@@ -197,8 +197,11 @@ def select_product_options
 					plog("\tSelected option => #{opt_text}","magenta") if @@show_log && opt_text!=""
 					begin
 						option.links.first.click
-					rescue 
-						option.click
+						rescue 
+						 # For lovehoney uk its a radio button need to make page object element as a ul PageObject::Elements::Radio
+						optionText = options.  
+						options[1].click
+						option.links.last.click
 						plog("\tException : option.links.first.click did not work - so tried option.click instead","grey")
 					end
 					

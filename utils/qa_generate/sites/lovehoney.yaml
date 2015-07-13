@@ -34,8 +34,10 @@ out_of_stock_msg: "Sold out - changed"
 product_links: ["div", ':id=> "products"'] 
 product_link_filter: ["class", "fn"] 
 product_options: 
-     - [ul, ':xpath=> "//form[@id=\"productForm\"]/ul[2]"'] 
+     #- [ul, ':xpath=> "//form[@id=\"productForm\"]/ul[2]"'] 
+     - [ul, ':class=> "varieties"']
      - [select_list, ':xpath=> "//form[@id=\"productForm\"]/p[1]/select"']
+     
 #    - [select_list, ':xpath=> "//div[@id=\"product-options-wrapper\"]/dl/dd[1]/div/select"'] //*[@id="productForm"]/ul[2]
 #ignore_single_product_option: true 
 
