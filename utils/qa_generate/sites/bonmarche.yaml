@@ -26,6 +26,7 @@ test_all_categories: false
 num_of_reloads_per_category: 2
 #product_links: ["ul", ':class=> "prods prodsFourColumns prodListSearch prodsGrid"']
 product_links: ["ul", ':xpath=> "//div[@id=\"searchResults\"]/div[1]/ul"']
+#product_links: ["ul", ':id=> "js-list-scroll"']
 product_link_filter: ["class", "moredetail"]
 product_options: 
      - [ul, ':id=> "swatchList_att1"']
