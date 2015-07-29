@@ -91,6 +91,7 @@ login_page:
   login_submit: ["button", ':id=>"ctl00_ctl00_globalmaincontent_maincontent_btnlogin2"']
 
 searchresults_page:
+  ignore: true
   URL: "http://www.homebase.co.uk/SearchDisplay?pageSize=43&searchSource=Q&resultCatEntryType=2&pageView=&catalogId=10011&showResultsPage=true&beginIndex=0&langId=110&categoryId=&storeId=10201&sType=SimpleSearch&searchTerm=cookware"
   expected_recs: 0
   zerosearch_recs: 0
