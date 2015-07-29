@@ -6,7 +6,7 @@ needs_SPR: no
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
-valid_search_term: toy
+valid_search_term: test
 database_num: 3
 site_id: 106
 integration: standard
