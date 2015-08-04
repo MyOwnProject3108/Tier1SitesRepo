@@ -48,15 +48,18 @@ add_to_basket_button: ["button", ':xpath => "//section[1]/div[2]/span/button"']
 #ignore_single_product_option: true
 
 home_page:
+  ignore: true
   URL: "http://new.chemistdirect.co.uk/"
   expected_recs: 1
   login_link: ["link", ':class => "cd-account "']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 random_category:
+  ignore: true
   expected_recs: -1
   
 random_product:
+  ignore: true
   expected_recs: 1
 
 random_basket:
