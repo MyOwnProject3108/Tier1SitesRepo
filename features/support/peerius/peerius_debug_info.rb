@@ -25,6 +25,10 @@ module PeeriusDebugInfo
       browser.driver.manage.timeouts.implicit_wait = 10
       return @browser.td(:id => 'trackInfo').text 
     end
+		rescue Watir::Exception::UnknownObjectException
+		exit
+		end
+		
     end
 
      # Returns an array of the recs that appear in the debug info 
