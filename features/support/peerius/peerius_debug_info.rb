@@ -27,9 +27,7 @@ module PeeriusDebugInfo
     end
 		rescue Watir::Exception::UnknownObjectException
 		exit
-		end
-		
-    end
+	end
 
      # Returns an array of the recs that appear in the debug info 
     def debug_recs
