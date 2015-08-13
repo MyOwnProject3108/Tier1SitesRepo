@@ -31,7 +31,7 @@ product_links: ["ul", ':class => "productLister"']
 product_link_filter: ["class", "image"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["div", ':xpath => "//div[@title=\"Add to Basket\"]"']
+add_to_basket_button: ["div", ':xpath => "//div[@class=\"buy\"]/div"']
         
 #### page level config ####
 
@@ -41,6 +41,11 @@ home_page:
   login_link: ["link", ':title => "Log In"']
   search_field: ["text_field", ':xpath => "//div[@class=\"idlSearch fh\"]/input[1]"']
   
+basket_page:
+  ignore: true
+  URL: "http://www.ironmongerydirect.co.uk/basket/"
+  expected_recs: 4 
+  
 random_category:
   expected_recs: 3
   
@@ -48,8 +53,10 @@ random_product:
   expected_recs: 4
   
 random_basket:
+  URL: "http://www.ironmongerydirect.co.uk/basket/"
   expected_recs: 4
-  
+  extra_steps:
+     - [pause, 4]
 random_checkout:
   Ignore: true
   expected_recs: 0
