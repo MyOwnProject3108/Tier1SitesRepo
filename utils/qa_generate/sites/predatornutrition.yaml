@@ -15,7 +15,7 @@ client_tier: tier1
 home_page:
   URL: "http://www.predatornutrition.com/"
   expected_recs: 6
-  login_link: ["link", ':xpath => "//div[1]/div[1]/ul[1]/li[6]/a[2]"']
+  login_link: ["link", ':text => "Login"']
   search_field: ["text_field", ':id => "sli_search_1"']
 
 product_page:
@@ -28,10 +28,10 @@ category_page:
   expected_recs: 3
 
 basket_page:
-  URL: "https://www.predatornutrition.com/en/checkout"
+  URL: "https://www.predatornutrition.com/en/checkout/cart/"
   expected_recs: 3
-  basket_checkout: ["button", ':class => "button button-large place-order btn-proceed-checkout btn-checkout"']
-  basket_remove: ["link", ':class => "btn-remove btn-remove2 remove-item"']  
+  basket_checkout: ["button", ':class => "btn--alpha"']
+  basket_remove: ["link", ':class => "basket__remove"']  
 
 login_page:
   URL: "https://www.predatornutrition.com/en/customer/account/login/"
