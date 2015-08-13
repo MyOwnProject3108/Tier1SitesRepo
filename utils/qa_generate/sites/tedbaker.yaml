@@ -13,7 +13,7 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: false
-static_test_prod_url: ""
+
 static_test_cat_url: "http://www.tedbaker.com/uk/Mens/Accessories/c/category_mens_accessories"
 
 # site variables
@@ -25,7 +25,7 @@ category_menu: ["ul", ':id => "categories_nav"']
 num_of_category_menu_preselect_items: 2
 categories_to_exclude: ["Accessories"]
 wait_time_per_category_page: 5
-
+out_of_stock_msg : "Sorry, this item is out of stock."
 test_all_categories: false
 
 num_of_reloads_per_category: 2
@@ -54,17 +54,24 @@ random_category:
   expected_recs: -1
 
 random_basket:
+  URL: "http://www.tedbaker.com/uk/cart"
   expected_recs: 1
-  basket_checkout: ["link", ':href => "/uk/cart/checkout"']
-  basket_remove: ["link", ':class => "link item_remove"']
+  basket_checkout: ["link", ':text => "Checkout"']
+  basket_remove: ["link", ':text => "Remove"']
+  extra_steps:
+    - [pause, 5]
+    - [link, class, "button add_to_cart_continue major full_mobile colour_dark"]
+ 
+
 
 product_page:
   ignore: true
-  URL: "http://www.tedbaker.com/uk/Womens/Accessories/Bags/LUCON-Small-shopper-bag-Bright-Pink/p/108369-56-BRIGHT-PINK"
+  URL: "http://www.tedbaker.com/uk/Womens/Accessories/Jewellery/EMARI-Crystal-chain-necklace-Black/p/116939-00-BLACK"
   expected_recs: 1
   add_to_basket_button: ["button", ':class=> "button add_to_cart major full_mobile colour_dark"']
   extra_steps:
-    - [pause, 20]
+    - [pause, 5]
+    - [link, class, "button add_to_cart_continue major full_mobile colour_dark"]
 
 category_page:
   ignore: true
@@ -73,10 +80,10 @@ category_page:
 
 basket_page:
   ignore: true
-  URL: "http://www.tedbaker.com/shoppingbasket/"
+  URL: "https://www.tedbaker.com/uk/cart"
   expected_recs: 1
-  basket_checkout: ["link", ':href => "/uk/cart/checkout"']
-  basket_remove: ["link", ':class => "link item_remove"']  
+  basket_checkout: ["link", ':text => "Checkout"']
+  basket_remove: ["link", ':text => "Remove"']
 
 login_page:
   ignore: true
