@@ -37,7 +37,7 @@ Given /^I am on the (.+) (.+)page$/ do |site, page|
 end
 
 When /^I go to the (.+)page$/ do |page|   
-	@browser.send_keys :enter
+	#@browser.send_keys :enter
     # Turn the page description into a page classname (e.g. search page -> SearchPage)
 	page_class_name = page.split.collect!{|x| x.capitalize}.join
 		
