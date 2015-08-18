@@ -67,7 +67,7 @@ category_page:
 
 basket_page:
   ignore: true
-  URL: "http://www.mandco.com/bag"
+  URL: "https://www.mandco.com/bag"
   expected_recs: 1 
   basket_checkout: ["button", ':class => "right btCheckout submit"']
   basket_remove: ["link", ':class => "remove"']  
@@ -91,7 +91,7 @@ checkout_page:
   expected_recs: 0
   
 random_checkout:
-  URL: "http://www.mandco.com/"
+  URL: "https://www.mandco.com/"
   expected_recs: 0
   extra_steps:
       - [button, class, "button-fancy-large"]
