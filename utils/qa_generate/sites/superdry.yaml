@@ -105,5 +105,5 @@ random_checkout:
   extra_steps:
       - [link, class, "checkout-link orange-button viewbag"]
       - [pause, 2]
-      - [link, class, "button primary large checkout-link"]
+      - [link, class, "button primary large"]
       - [pause, 2]
