@@ -26,7 +26,7 @@ module PeeriusDebugInfo
       return @browser.td(:id => 'trackInfo').text 
     end
 		rescue Watir::Exception::UnknownObjectException
-		exit
+		@browser.refresh
 	end
 
      # Returns an array of the recs that appear in the debug info 
