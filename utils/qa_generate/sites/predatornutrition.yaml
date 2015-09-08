@@ -6,7 +6,7 @@ needs_SPR: no
 username: p.test@peerius.com
 password: P1234567
 zero_search_term: dsavavas
-valid_search_term: chocolate
+valid_search_term: juice
 database_num: 6
 site_id: 1307
 integration: json
@@ -41,7 +41,7 @@ login_page:
   login_submit: ["button", ':name=>"send"']
 
 searchresults_page:
-  URL: "http://www.predatornutrition.com/en/catalogsearch/result/?q=chocolate"
+  URL: "http://www.predatornutrition.com/en/catalogsearch/result/?q=juice"
   expected_recs: 0
   zerosearch_recs: 0
 
