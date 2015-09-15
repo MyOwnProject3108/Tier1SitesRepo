@@ -14,8 +14,8 @@ client_tier: tier1
 
 
 
-enable_static_test: false
-static_test_prod_url: ""
+enable_static_test: true
+static_test_prod_url: "http://www.cathkidston.com/technology/spray-flowers-hard-case-for-ipad-air--and--air-2-1016744"
 static_test_cat_url: ""
 
 
