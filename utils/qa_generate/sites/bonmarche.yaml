@@ -36,25 +36,31 @@ max_num_of_products: 1
 add_to_basket_button: ["button", ':text => "Add to Bag"']
 
 home_page:
+  ignore: true
   URL: "http://www.bonmarche.co.uk"
   expected_recs: 1
   login_link: ["link", ':href => "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"']
   search_field: ["text_field", ':id => "q"']
   
 random_product:
+  ignore: true
   expected_recs: 1
 
 random_category:
+  ignore: true
   expected_recs: -1
   
 basket_page:
+  ignore: true
   URL: "http://www.bonmarche.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=shop&log=22"
   expected_recs: 0
 
 random_basket:
+  ignore: true
   expected_recs: 1
 
 login_page:
+  ignore: true
   URL: "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
@@ -68,5 +74,6 @@ searchresults_page:
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.bonmarche.co.uk/bin/venda"
   expected_recs: 0 

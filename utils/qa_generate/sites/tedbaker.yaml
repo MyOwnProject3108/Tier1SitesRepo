@@ -12,9 +12,10 @@ site_id: 82
 integration: standard
 client_tier: tier1
 
-enable_static_test: false
+enable_static_test: true
 
-static_test_cat_url: "http://www.tedbaker.com/uk/Mens/Accessories/c/category_mens_accessories"
+static_test_prod_url: "http://www.tedbaker.com/uk/Mens/Accessories/Ties-Bow-Ties/MOONPOK-Large-spot-silk-pocket-square-Teal/p/124013-13-TEAL"
+static_test_cat_url: ""
 
 # site variables
 show_log: true
@@ -35,7 +36,8 @@ product_links: ["div", ':class=> "product_list index"']
 product_link_filter: ["class", "image"]
 product_options: 
      - [select_list, ':id=> "product_select_size"']
-          
+
+    
 wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':class=> "button add_to_cart major full_mobile colour_dark"']
@@ -108,7 +110,7 @@ checkout_page:
   
   
 random_checkout:
-  URL: "http://www.tedbaker.com/uk?country=GB"
+  URL: "https://www.tedbaker.com/uk/checkout/step0"
   expected_recs: 0
   extra_steps:
       - [link, class, "button major full_mobile colour_dark checkout_secure"]
