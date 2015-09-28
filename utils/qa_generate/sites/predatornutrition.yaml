@@ -10,7 +10,6 @@ valid_search_term: juice
 database_num: 6
 site_id: 1307
 integration: json
-client_tier: tier1
 
 home_page:
   URL: "http://www.predatornutrition.com/"
