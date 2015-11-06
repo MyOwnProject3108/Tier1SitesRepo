@@ -13,7 +13,7 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: true
-static_test_prod_url: "http://www.mandco.com/peppa-pig-gingham-swimsuit-pink/358372401300208.html?cgid=10400220010"
+static_test_prod_url: "http://www.mandco.com/speedo-monogram-black-swimsuit-black/2903466.html?cgid=10028670090&dwvar_2903466_color"
 static_test_cat_url: "http://www.mandco.com/women/dresses/shift-dresses/"
 
 
