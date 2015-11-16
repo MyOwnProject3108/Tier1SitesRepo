@@ -12,7 +12,7 @@ mob_apikeyliv: srfswrw3223dhu4t
 channel: web
 site_id: 2139
 integration: standard
-client_tier: tier1
+#client_tier: tier1
 
 enable_static_test: false
 static_test_prod_url: 
