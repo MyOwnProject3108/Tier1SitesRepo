@@ -6,7 +6,7 @@ needs_SPR: false
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
-valid_search_term: dress
+valid_search_term: red dress
 database_num: 1
 site_id: 50
 integration: standard
