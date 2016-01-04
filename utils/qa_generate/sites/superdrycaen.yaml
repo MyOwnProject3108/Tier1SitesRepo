@@ -1,5 +1,5 @@
-site_name: superdrychchde
-pretty_name: SuperDry CH CH-DE
+site_name: superdrycaen
+pretty_name: SuperDry CA CA-EN
 has_content: no
 has_ranking: no
 needs_SPR: no
@@ -12,43 +12,43 @@ site_id: 821
 integration: json
 
 home_page:
-  URL: "http://www.superdrystore.ch/ch-de/"
+  URL: "http://www.superdrystore.ca/ca-en/"
   expected_recs: 0
-  login_link: ["link", ':href => "http://www.superdrystore.ch/ch-de/my-account"']
+  login_link: ["link", ':title => "Sign in"']
   search_field: ["text_field", ':id => "searchword"']
 
 product_page:
-  URL: "http://www.superdrystore.ch/ch-de/damen/chinos/details/39121/commodity-caprihose"    
+  URL: "http://www.superdrystore.ca/ca-en/womens/chinos/details/39116/commodity-capri-pant"    
   expected_recs: 4
-  add_to_basket_button: ["button", ':src=> "http://www.superdrystore.ch/ch-de/public/images/languages/de-DE/product/add-to-bag.png"']
+  add_to_basket_button: ["button", ':src=> "http://www.superdrystore.ca/ca-en/public/images/languages/en-GB/product/add-to-bag.png"']
   extra_steps:
    - [span, xpath, "//div[@id='js_dropdown_product_id']/span"]
    - [span, text, "XS"]
-   - [pause,50]
+   - [pause,40]
 
     
 category_page:
-  URL: "http://www.superdrystore.ch/ch-de/damen/chinos"
+  URL: "http://www.superdrystore.ca/ca-en/womens/chinos"
   expected_recs: 0
 
 basket_page:
-  URL: "https://www.superdrystore.ch/ch-de/shopping-bag"
+  URL: "https://www.superdrystore.ca/ca-en/shopping-bag"
   expected_recs: 2
   basket_checkout: ["link", ':class => "checkout-link checkout_btn"']
   basket_remove: ["button", ':class => "cart-delete button"']  
 
 login_page:
-  URL: "https://www.superdrystore.ch/ch-de/my-account"
+  URL: "https://www.superdrystore.ca/ca-en/my-account"
   expected_recs: 0
   username_field: ["text_field", ':id=>"username_login"']
   password_field: ["text_field", ':id=>"passwd_login"']  
   login_submit: ["button", ':name=>"Submit"']
 
 searchresults_page:
-  URL: "http://www.superdrystore.ch/ch-de/search/jacket"
+  URL: "http://www.superdrystore.ca/ca-en/search/jacket"
   expected_recs: 5
   zerosearch_recs: 5
 
 checkout_page:
-  URL: "https://www.superdrystore.ch/ch-de/checkout"
+  URL: "https://www.superdrystore.ca/ca-en/checkout"
   expected_recs: 0 

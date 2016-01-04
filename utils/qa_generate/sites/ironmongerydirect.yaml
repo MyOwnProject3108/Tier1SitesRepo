@@ -12,7 +12,7 @@ mob_apikeyliv: srfswrw3223dhu4t
 channel: web
 site_id: 2139
 integration: standard
-client_tier: tier1
+#client_tier: tier1
 
 enable_static_test: false
 static_test_prod_url: 
@@ -31,40 +31,48 @@ product_links: ["ul", ':class => "productLister"']
 product_link_filter: ["class", "image"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["div", ':xpath => "//div[@title=\"Add to Basket\"]"']
+add_to_basket_button: ["div", ':xpath => "//div[@class=\"buy\"]/div"']
         
 #### page level config ####
 
 home_page:
   URL: "http://www.ironmongerydirect.co.uk/"
-  expected_recs: 0
+  expected_recs: 4
   login_link: ["link", ':title => "Log In"']
   search_field: ["text_field", ':xpath => "//div[@class=\"idlSearch fh\"]/input[1]"']
   
+basket_page:
+  ignore: true
+  URL: "http://www.ironmongerydirect.co.uk/basket/"
+  expected_recs: 4 
+  
 random_category:
-  expected_recs: 0
+  expected_recs: 3
   
 random_product:
-  expected_recs: 0
+  expected_recs: 4
   
 random_basket:
-  expected_recs: 0
-  
+  URL: "http://www.ironmongerydirect.co.uk/basket/"
+  expected_recs: 4
+  extra_steps:
+     - [pause, 4]
 random_checkout:
-  Ignore: true
+  ignore: true
   expected_recs: 0
   extra_steps:
-     - [link, class, "goCheckout buttonL green corners"]
+     - [link, class, "goCheckout buttonL corners blue"]
      - [pause, 2]
-     - [links, id, "btnRegister"]
+     - [link, id, "btnContinue"]
      - [text_field, id, "EmailAddress", "qatest@mailinator.com", "generate_email"]
-     - [text_field, id, "Password", "123123"]
-     - [text_field, id, "RepeatPassword", "123123"]
+     - [text_field, id, "ConfirmEmail", "qatest@mailinator.com", "generate_lastname"]
+     - [text_field, id, "Password", "1234abcd"]
+     - [text_field, id, "RepeatPassword", "1234abcd"]
      - [text_field, id, "FirstName", "Qa", "generate_firstname"]
-     - [text_field, id, "LastName", "Test", "generate_lastname"]
      - [text_field, id, "Phone1", "07625678234"]
      - [select_list, id, "Group_Code", "Non Trade"]
-     - [text_field, class, "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input", "On Web"]
+     - [text_field, id, "txtCompanyName", "Peerius Ltd"]
+     - [text_field, class, "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-autocomplete-input", "On Web"]
      - [button, id, "btnCreateAccount"]
      - [text_field, class, "txtAddPc", "SE1 0HS"]
      - [link, id, "FindLink"]
@@ -80,19 +88,3 @@ random_checkout:
      - [select_list, name, "expiryyear", "2016"]
      - [text_field, name, "securitycode", "123"]
      - [link, id, "proceedButton"]
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-

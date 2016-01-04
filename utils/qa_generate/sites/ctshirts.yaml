@@ -6,7 +6,7 @@ needs_SPR: yes
 username: webtest@mailinator.com
 password: webtest
 zero_search_term: dvd
-valid_search_term: shirts
+valid_search_term: red polo
 apikey: 677ab692r2t3u4t
 uat_apikey: 677ab692r2t3u4t
 database_num: 3

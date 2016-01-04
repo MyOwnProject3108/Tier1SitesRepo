@@ -24,39 +24,43 @@ categories_to_exclude: ["url=>offers", "url=>lingerie", "url=>accessories", "url
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
-#product_links: ["ul", ':class=> "prods prodsFourColumns prodListSearch prodsGrid"']
-product_links: ["ul", ':xpath=> "//div[@id=\"searchResults\"]/div[1]/ul"']
-#product_links: ["ul", ':id=> "js-list-scroll"']
-product_link_filter: ["class", "moredetail"]
+#product_links: ["ul", ':xpath=> "//div/section/div/ul/li//h3/a"']
+product_links: ["ul", ':id=> "js-list-scroll"']
+#product_link_filter: ["class", "js-moredetail"]
 product_options: 
      - [ul, ':id=> "swatchList_att1"']
-     - [ul, ':id=> "swatchList_att2"']
-      
+
 ignore_cat_tracked_as_other_page: true
 wait_time_per_product_page: 3
 max_num_of_products: 1 
-add_to_basket_button: ["button", ':xpath => "//div[@id=\"addproductbox\"]/input"']
+add_to_basket_button: ["button", ':text => "Add to Bag"']
 
 home_page:
+  ignore: true
   URL: "http://www.bonmarche.co.uk"
   expected_recs: 1
   login_link: ["link", ':href => "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"']
   search_field: ["text_field", ':id => "q"']
   
 random_product:
+  ignore: true
   expected_recs: 1
 
 random_category:
+  ignore: true
   expected_recs: -1
   
 basket_page:
+  ignore: true
   URL: "http://www.bonmarche.co.uk/bin/venda?ex=co_wizr-shopcart&bsref=shop&log=22"
   expected_recs: 0
 
 random_basket:
+  ignore: true
   expected_recs: 1
 
 login_page:
+  ignore: true
   URL: "https://www.bonmarche.co.uk/bin/venda?ex=co_wizr-register&bsref=shop"
   expected_recs: 0
   username_field: ["text_field", ':id=>"email"']
@@ -64,10 +68,12 @@ login_page:
   login_submit: ["button", ':id=>"signinsubmit"']
 
 searchresults_page:
+  ignore: true
   URL: "https://www.bonmarche.co.uk/search?categoryPathRefs=shop&q=scarf"
   expected_recs: 0
   zerosearch_recs: 1
 
 checkout_page:
+  ignore: true
   URL: "https://www.bonmarche.co.uk/bin/venda"
   expected_recs: 0 

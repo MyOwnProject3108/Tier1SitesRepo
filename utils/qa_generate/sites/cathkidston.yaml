@@ -14,14 +14,14 @@ client_tier: tier1
 
 
 
-enable_static_test: false
-static_test_prod_url: ""
+enable_static_test: true
+static_test_prod_url: "http://www.cathkidston.com/technology/spray-flowers-hard-case-for-ipad-air--and--air-2-1016744"
 static_test_cat_url: ""
 
 
 # site variables
 show_log: true
-category_menu: ["ul", ':class => "level_1 children_9"']
+category_menu: ["ul", ':class => "level_1 children_10"']
 categories_to_exclude: ["Blog", "Inspiration", "Bags", "Fashion", "Accessories", "Home", "Home Furnishing", "Cath Kids", "Baby", "Sale"]
 wait_time_per_category_page: 5
 test_all_categories: false
@@ -119,7 +119,8 @@ random_checkout:
    - [text_field, id, "search_postcode", "SE1 0HS"]
    - [span, id, "search_postcode_button"]
    - [pause,2]
-   - [select_list, id, "postcode_address_id", "16 Great Guildford Street London SE1"]
+   - [select_list, id, "postcode_address_id", "Peerius Ltd Metal Box Factory Business Centre 30 Great Guildford Stree..."]
+   - [text_field, id, "address_field_2", "Metal Box Factory"]
    - [pause,5]
    - [button, class, "submit button btn btn_primary btn_large btn_block"]
    - [pause,2]

@@ -42,7 +42,7 @@ add_to_basket_button: ["button", ':class=> "addtocart-button"']
 
 home_page:
   URL: "http://www.purecollection.com/"
-  expected_recs: 0
+  expected_recs: 10
   login_link: ["link", ':title => "Login"']
   search_field: ["text_field", ':id => "nav-top-search"']
 

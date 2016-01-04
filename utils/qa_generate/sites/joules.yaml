@@ -10,7 +10,6 @@ username: kodjo.baah@peerius.com
 password: P@ssw0rd
 zero_search_term: nothing found
 valid_search_term: red shoes
-client_tier: tier1
 
 #### site level variables ####
 show_log: true

@@ -180,6 +180,7 @@ Scenario: <%= site["pretty_name"] %> search results page is tracked correctly
   <%= extra_steps_rule(page["extra_steps"]) %>
 <% end %>  
   When I search for "<%= site["valid_search_term"] %>"
+  And I pause for 5 seconds
   Then it should be tracked as a search results page
   <%= expect_recs_rule(page["expected_recs"]) %>
 <% end %>
