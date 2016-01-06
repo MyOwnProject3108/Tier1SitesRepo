@@ -36,7 +36,7 @@ add_to_basket_button: ["div", ':xpath => "//*[@id=\"b_product_qty_input\"]/div[1
 
 home_page:
   URL: "http://www.cooksongold.com/"
-  expected_recs: 1
+  expected_recs: 0
   login_link: ["link", ':text => "Log In"']
   search_field: ["text_field", ':xpath => "//div[@id=\"u_srch_input\"]/input"']
 
