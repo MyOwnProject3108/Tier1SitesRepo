@@ -68,7 +68,7 @@ basket_page:
   basket_remove: ["link", ':class => "remove_bag_item"']
   
 random_basket:
-  expected_recs: 1
+  expected_recs: 0
   basket_checkout: ["link", ':class => "btn_checkout chk_button_primary"']
   basket_remove: ["link", ':class => "remove_bag_item"']
   
