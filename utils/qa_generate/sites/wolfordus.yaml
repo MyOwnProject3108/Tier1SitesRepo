@@ -5,8 +5,8 @@ has_ranking: no
 needs_SPR: no
 username: webtest@mailinator.com
 password: webtest1234
-zero_search_term: jfdsakfkd
-valid_search_term: leggings
+zero_search_term: dvd
+valid_search_term: dress
 database_num: 6
 site_id: 1369
 integration: json
@@ -14,31 +14,31 @@ client_tier: tier1
 
 
 enable_static_test: true
-static_test_prod_url: "http://www.wolfordshop.com/Abby-Tights/cp56541/si6670320/cl2/vt01/"
-static_test_cat_url: "http://www.wolfordshop.com/New-Arrivals/cp56541/cl1/"
+static_test_prod_url: "http://www.wolfordshop.com/product/boutique/stardust-dress/59902/g500004720"
+static_test_cat_url: "http://www.wolfordshop.com/products/boutique/new-arrivals/g500004720"
 
 
 # site variables
 show_log: true
-category_menu: ["div", ':id => "left-sidebar"']
+category_menu: ["div", ':id => "left-navigation-categories"']
 categories_to_exclude: ["Gallery"]
 wait_time_per_category_page: 5
 test_all_categories: false
 num_of_reloads_per_category: 2
 ignore_cat_tracked_as_other_page: true
-product_links: ["div", ':class=> "cat-listing large-listing"'] 
-product_link_filter: ["class", "list-item-title express-item"]
+product_links: ["div", ':id=> "listing-products"'] 
+product_link_filter: ["href", "*"]
 wait_time_per_product_page: 2
 max_num_of_products: 1 
-add_to_basket_button: ["link", ':id=> "add-to-cart-button-id"']
+add_to_basket_button: ["div", ':id=> "product-to-cart"']
 product_options: 
-      - [select_list, ':id=> "sizeSelect"']
+      - [select_list, ':id=> "size-select"']
       
 home_page:
   URL: "http://www.wolfordshop.com"
   expected_recs: 1
   login_link: ["link", ':href => "http://www.wolfordshop.com/vm/MyAccount/"']
-  search_field: ["text_field", ':id => "search-tag"']
+  search_field: ["text_field", ':id => "search"']
   
 random_product:
   expected_recs: 1
@@ -66,7 +66,7 @@ category_page:
 
 basket_page:
   ignore: true
-  URL: "https://www.wolfordshop.com/vm/AddOrder/?omni_scView=scView"
+  URL: "http://www.wolfordshop.com/checkout/cart"
   expected_recs: 1
   basket_remove: ["button", ':class => "checkout-delete-item"']
   basket_checkout: ["link", ':class => "continue-shipto-button button"']  
