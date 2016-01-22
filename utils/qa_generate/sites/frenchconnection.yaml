@@ -84,7 +84,7 @@ category_page:
   expected_recs: 0
 
 basket_page:
-  ignore: true
+  ignore: false
   URL: "http://www.frenchconnection.com/basket.htm"
   expected_recs: 4
   basket_checkout: ["link", ':text => "go to checkout"']
