@@ -68,7 +68,7 @@ random_category:
   
 random_basket:
   URL: "http://www.jaeger.co.uk/cart"
-  expected_recs: 0
+  expected_recs: 1
   
 basket_page:
   ignore: true

@@ -13,7 +13,7 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: true
-static_test_prod_url: "http://www.frenchconnection.com/product/Homeware+Collection+Sale+Rugs+And+Flooring/862D5/Grey+Gradient+Wool+Rug.htm"
+static_test_prod_url: "http://www.frenchconnection.com/product/Woman+Collections+Accessories+scarves+and+hats/SSFAC/Camille+Medina+Tile+Scarf.htm"
 static_test_cat_url: ""
 
 
