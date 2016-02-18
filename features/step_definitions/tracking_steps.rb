@@ -18,7 +18,7 @@ Then /^it should be tracked as (?:the|a|an) (.+)page$/ do |page|
      @browser.alert.close
  end
 end
- end
+ end
 Then /^the first widget name should be "(.+)"$/ do |debug_widget_name|
   	@current_page.debug_widget_name.should include(debug_widget_name)
 end

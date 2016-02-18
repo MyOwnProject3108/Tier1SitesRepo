@@ -13,8 +13,8 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: true
-static_test_prod_url: "http://www.lovehoney.co.uk/product.cfm?p=27161"
-static_test_cat_url: "http://www.lovehoney.co.uk/sexy-lingerie/bras-bra-sets/"
+static_test_prod_url: "http://www.lovehoney.co.uk/product.cfm?p=33258"
+static_test_cat_url: "http://www.lovehoney.co.uk/sex/lubricants/"
 
 #### site level variables ####
 show_log: true
@@ -48,7 +48,7 @@ wait_time_per_product_page: 2
 max_num_of_products: 1 
 
 # specify identifier for the 'add to basket' button element from product page 
-add_to_basket_button: ["button", ':xpath=> "//form[@id=\"productForm\"]/p[2]/button"']
+add_to_basket_button: ["button", ':class=> "button lrg-arrow"']
 
 
 home_page:

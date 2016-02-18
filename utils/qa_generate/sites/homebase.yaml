@@ -49,7 +49,7 @@ random_product:
   expected_recs: 0
 
 random_category:
-  ignore: true
+  ignore: false
   expected_recs: 0
  
 random_basket:

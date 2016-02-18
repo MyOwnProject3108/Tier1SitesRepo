@@ -81,6 +81,7 @@ login_page:
   login_submit: ["button", ':name=>"existingLoginButton"']
 
 searchresults_page:
+  ignore: true
   URL: "http://www.cathkidston.com/search?page=1&results=48&keywords=dvd&ctry=GB&lng=="
   expected_recs: 0
   zerosearch_recs: 1
