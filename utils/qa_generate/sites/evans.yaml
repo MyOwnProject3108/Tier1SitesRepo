@@ -14,9 +14,9 @@ site_id: 219
 integration: standard
 client_tier: tier1
 
-enable_static_test: false
-static_test_prod_url: "http://www.evans.co.uk/en/evuk/product/lingerie-250470/multiway-bras-250684/goddess-black-marilyn-bra-3140218?bi=1&ps=24"
-static_test_cat_url: ""
+enable_static_test: true
+static_test_prod_url: "http://www.evans.co.uk/en/evuk/product/clothing-250468/knitwear-250496/navy-heart-jumper-5189772?bi=1&ps=24"
+static_test_cat_url: "http://www.evans.co.uk/en/evuk/category/clothing-250468/knitwear-250496"
 
 
 # site variables
