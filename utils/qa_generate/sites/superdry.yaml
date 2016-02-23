@@ -15,9 +15,9 @@ client_tier: tier1
 #### site level variables ####
 show_log: true
 
-enable_static_test: false
-static_test_prod_url: "http://www.superdry.com/womens/whats-hot/details/49624/slim-fit-joggers"
-static_test_cat_url: "http://www.superdry.com/womens/dresses"
+enable_static_test: true
+static_test_prod_url: "http://www.superdry.com/womens/watches/details/59732/urban-liberty-watch"
+static_test_cat_url: "http://www.superdry.com/womens/watches"
 
 category_menu: ["div", ':class => "main-menu"']
 categories_to_exclude: ["menuitem9999"]
@@ -29,11 +29,11 @@ ignore_cat_tracked_as_other_page: true
 
 wait_time_per_product_page: 5
 max_num_of_products: 1
-product_links: ["ul", ':class => "grid3"'] 
+product_links: ["div", ':id => "product-list"'] 
 product_link_filter: ["rel", "product"]
 product_options: 
-    - [select_list, ':id=> "product_id"']
-#    - [select_list, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/ul"']
+#    - [select_list, ':id=> "product_id"']
+     - [select_list, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/ul"']
 #product_options_preselect:
 #    - [span, ':xpath=> "//div[@id=\"js_dropdown_product_id\"]/span"']
 product_page_custom_js: "document.getElementById('product_id').style.display = 'block';"
