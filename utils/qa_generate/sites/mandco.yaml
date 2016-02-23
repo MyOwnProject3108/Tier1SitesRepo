@@ -14,8 +14,8 @@ client_tier: tier1
 
 enable_static_test: true
 
-static_test_prod_url: "http://www.mandco.com/speedo-monogram-black-swimsuit-black/2903466.html?cgid=10028670090&dwvar_2903466_color"
-static_test_cat_url: "http://www.mandco.com/women/dresses/shift-dresses/"
+static_test_prod_url: "http://www.mandco.com/set-of-four-heart-coasters-grey/481753200200000.html?cgid=10040770020#start=1"
+static_test_cat_url: "http://www.mandco.com/homeware/accessories/decorative-accessories/"
 
 
 # site variables
@@ -31,7 +31,7 @@ product_links: ["div", ':class=> "search-result-content"']
 product_link_filter: ["class", "*"]
 wait_time_per_product_page: 2
 max_num_of_products: 1
-add_to_basket_button: ["button", ':value=> "Add to Bag"']
+add_to_basket_button: ["button", ':id=> "add-to-cart"']
 
 home_page:
   URL: "http://www.mandco.com/"
@@ -95,6 +95,10 @@ random_checkout:
   URL: "https://www.mandco.com/"
   expected_recs: 0
   extra_steps:
-      - [button, class, "button-fancy-large"]
+      - [button, class, "button-fancy-large-dark cart-action-checkout-header-button"]
       - [pause, 5]
+      - [text_field, class, "input-text email email-input required", "webtest@mailinator.com", "generate_email"]
+      - [button, name, "dwfrm_login_unregistered"]
+
+      
  

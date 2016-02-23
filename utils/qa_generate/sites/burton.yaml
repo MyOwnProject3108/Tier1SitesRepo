@@ -15,8 +15,8 @@ integration: standard
 client_tier: tier1
 
 enable_static_test: true
-static_test_prod_url: "http://www.burton.co.uk/webapp/wcs/stores/servlet/ProductDisplay?searchTermScope=3&searchType=ALL&viewAllFlag=false&beginIndex=1&langId=-1&productId=23477939&pageSize=20&searchTerm=BR12L01IBLU&catalogId=33052&DM_PersistentCookieCreated=true&productIdentifierproduct=product&geoip=search&x=25&searchTermOperator=LIKE&sort_field=Relevance&y=11&storeId=12551&qubitRefinements=siteId%3DBurtonUK"
-static_test_cat_url: "http://www.burton.co.uk/en/bruk/category/clothing-281559/mens-jeans-281570"
+static_test_prod_url: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-formal-trousers-3157697/tailored-fit-brown-check-formal-trousers-5332500?bi=1&ps=20"
+static_test_cat_url: "http://www.burton.co.uk/en/bruk/category/clothing-281559/mens-formal-trousers-3157697"
 
 
 # site variables
