@@ -14,7 +14,7 @@ site_id: 82
 integration: standard
 client_tier: tier1
 
-enable_static_test: true
+enable_static_test: false
 static_test_prod_url: "http://www.burton.co.uk/en/bruk/product/clothing-281559/mens-formal-trousers-3157697/tailored-fit-brown-check-formal-trousers-5332500?bi=1&ps=20"
 static_test_cat_url: "http://www.burton.co.uk/en/bruk/category/clothing-281559/mens-formal-trousers-3157697"
 
