@@ -26,8 +26,8 @@ categories_to_exclude: ["Topshop Magazine","New In","Premium Shoes", "Inspiratio
 wait_time_per_category_page: 3
 test_all_categories: false
 num_of_reloads_per_category: 2
-product_links: ["div", ':id=> "wrapper_page_content"'] 
-product_link_filter: ["data-productid", "*"]
+product_links: ["div", ':class => "products col3"'] 
+product_link_filter: ["class", "product_action"]
 product_options: 
       - [select_list, ':id=> "product_size_full"']
       
@@ -36,7 +36,7 @@ wait_time_per_product_page: 2
 max_num_of_products: 1 
 add_to_basket_button: ["button", ':id=> "btn_add_2_shop_cart"']
 out_of_stock_msg: "Sorry, this item is out of stock."
-add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
+#add_to_basket_custom_js: "document.getElementById('product_view_full').parentNode.getElementsByClassName('mousetrap')[0].style.display = 'none';"
 
 home_page:
   URL: "http://www.evans.co.uk/?geoip=home"

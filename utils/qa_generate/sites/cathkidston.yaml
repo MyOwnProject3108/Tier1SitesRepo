@@ -15,13 +15,13 @@ client_tier: tier1
 
 
 enable_static_test: true
-static_test_prod_url: "http://www.cathkidston.com/technology/spray-flowers-hard-case-for-ipad-air--and--air-2-1016744"
-static_test_cat_url: ""
+static_test_prod_url: "http://www.cathkidston.com/technology/latimer-rose-hard-case-for-ipad-air--and---air-2-1017867"
+static_test_cat_url: "http://www.cathkidston.com/accessories/technology/list?ctry=GB"
 
 
 # site variables
 show_log: true
-category_menu: ["ul", ':class => "level_1 children_9"']
+category_menu: ["ul", ':class => "level_1 children_10"']
 categories_to_exclude: ["Blog", "Inspiration", "Bags", "Fashion", "Accessories", "Home", "Home Furnishing", "Cath Kids", "Baby", "Sale"]
 wait_time_per_category_page: 5
 test_all_categories: false

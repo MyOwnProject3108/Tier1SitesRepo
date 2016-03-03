@@ -14,8 +14,8 @@ client_tier: tier1
 
 enable_static_test: true
 
-static_test_prod_url: "http://www.tedbaker.com/uk/Mens/Accessories/Ties-Bow-Ties/MOONPOK-Large-spot-silk-pocket-square-Teal/p/124013-13-TEAL"
-static_test_cat_url: ""
+static_test_prod_url: "http://www.tedbaker.com/uk/Mens/Gifts/Gifts-for-him/THESNAP-Block-colour-leather-bracelet-Oxblood/p/122464-41-OXBLOOD"
+static_test_cat_url: "http://www.tedbaker.com/uk/Mens/Sale/Accessories/c/mens_sale_accessories"
 
 # site variables
 show_log: true
